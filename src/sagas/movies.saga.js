@@ -1,9 +1,11 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { FETCH_MOVIES_START } from '../constants/movies.types';
+import { FETCH_MOVIE_START } from '../constants/movie.types';
 import movieApi from '../api/movie-database';
 import {
   fetchMoviesSuccess,
-  fetchMoviesFailure
+  fetchMoviesFailure,
+  clearMovies
 } from '../actions/movies.action';
 
 function* fetchMoviesAsync({ payload: query }) {
@@ -17,10 +19,18 @@ function* fetchMoviesAsync({ payload: query }) {
   }
 }
 
+function* clearSearchBarOnMovieLoad() {
+  yield put(clearMovies());
+}
+
 function* fetchMoviesStart() {
   yield takeLatest(FETCH_MOVIES_START, fetchMoviesAsync);
 }
 
+function* onMovieInfoLoad() {
+  yield takeLatest(FETCH_MOVIE_START, clearSearchBarOnMovieLoad);
+}
+
 export default function* moviesSaga() {
-  yield all([call(fetchMoviesStart)]);
+  yield all([call(fetchMoviesStart), call(onMovieInfoLoad)]);
 }

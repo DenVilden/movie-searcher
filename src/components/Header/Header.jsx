@@ -18,7 +18,7 @@ const Header = () => {
       <AppBar position="static">
         <Toolbar>
           <Typography color="inherit" noWrap variant="h6">
-            <Link onClick={() => inputValue && clearValue()} to="/">
+            <Link onClick={clearValue} to="/">
               <Logo />
             </Link>
           </Typography>

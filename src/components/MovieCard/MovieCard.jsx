@@ -4,7 +4,6 @@ import { CardActionArea, Typography } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import { Star as StarIcon } from '@material-ui/icons';
 import dayjs from 'dayjs';
-import { useDispatch } from 'react-redux';
 import {
   StyledCard,
   StyledCardMedia,
@@ -13,7 +12,6 @@ import {
   IconWrapper
 } from './MovieCard.styles';
 import noImage from '../../assets/no-image.jpg';
-import { clearMovies } from '../../actions/movies.action';
 
 /* eslint-disable camelcase */
 const MovieCard = ({
@@ -25,8 +23,6 @@ const MovieCard = ({
   vote_average,
   text
 }) => {
-  const dispatch = useDispatch();
-
   const renderRating = () => {
     if (!release_date) {
       return 'Unknown year';
@@ -49,13 +45,7 @@ const MovieCard = ({
 
   return (
     <CardActionArea>
-      <StyledCard
-        elevation={10}
-        onClick={() => {
-          dispatch(clearMovies());
-          history.push(`/movie/${id}`);
-        }}
-      >
+      <StyledCard elevation={10} onClick={() => history.push(`/movie/${id}`)}>
         <StyledCardMedia
           image={
             poster_path

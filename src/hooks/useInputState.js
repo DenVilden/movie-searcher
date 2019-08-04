@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchMoviesStart, clearMovies } from '../actions/movies.action';
+import { fetchMoviesStart } from '../actions/movies.action';
 
 export default (inputValue = '') => {
   const dispatch = useDispatch();
@@ -17,10 +17,9 @@ export default (inputValue = '') => {
     [dispatch]
   );
 
-  const clearState = useCallback(() => {
+  const clearValue = () => {
     setValue('');
-    dispatch(clearMovies());
-  }, [dispatch]);
+  };
 
-  return [value, handleChange, clearState];
+  return [value, handleChange, clearValue];
 };
