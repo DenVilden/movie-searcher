@@ -12,8 +12,6 @@ export default (inputValue = '') => {
 
       if (evt.target.value) {
         dispatch(fetchMoviesStart(evt.target.value));
-      } else {
-        dispatch(clearMovies());
       }
     },
     [dispatch]

@@ -34,7 +34,7 @@ const Header = () => {
           <MoviesFavorites />
         </Toolbar>
       </AppBar>
-      <MoviesSearch loading={loading} />
+      {inputValue && <MoviesSearch loading={loading} />}
     </>
   );
 };
