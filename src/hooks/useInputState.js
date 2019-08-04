@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchSearchMovies, clearMovies } from '../actions/movies.action';
+import { fetchMoviesStart, clearMovies } from '../actions/movies.action';
 
 export default (inputValue = '') => {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ export default (inputValue = '') => {
       setValue(evt.target.value);
 
       if (evt.target.value) {
-        dispatch(fetchSearchMovies(evt.target.value));
+        dispatch(fetchMoviesStart(evt.target.value));
       } else {
         dispatch(clearMovies());
       }

@@ -1,30 +1,20 @@
-/* eslint-disable import/prefer-default-export */
 import {
   FETCH_SIMILAR_START,
   FETCH_SIMILAR_SUCCESS,
   FETCH_SIMILAR_FAILURE
-} from '../types/similar.types';
-import movieApi from '../api/movie-database';
+} from '../constants/similar.types';
 
-const fetchSimilarStart = () => ({
-  type: FETCH_SIMILAR_START
+export const fetchSimilarStart = id => ({
+  type: FETCH_SIMILAR_START,
+  payload: id
 });
 
-const fetchSimilarSuccess = movies => ({
+export const fetchSimilarSuccess = movies => ({
   type: FETCH_SIMILAR_SUCCESS,
   payload: movies
 });
 
-const fetchSimilarFailure = errorMessage => ({
+export const fetchSimilarFailure = error => ({
   type: FETCH_SIMILAR_FAILURE,
-  payload: errorMessage
+  payload: error
 });
-
-export const fetchSimilarMovies = id => dispatch => {
-  dispatch(fetchSimilarStart());
-
-  movieApi
-    .get(`/movie/${id}/similar`)
-    .then(({ data }) => dispatch(fetchSimilarSuccess(data.results)))
-    .catch(({ message }) => dispatch(fetchSimilarFailure(message)));
-};

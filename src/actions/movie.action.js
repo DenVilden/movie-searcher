@@ -1,30 +1,20 @@
-/* eslint-disable import/prefer-default-export */
 import {
   FETCH_MOVIE_START,
   FETCH_MOVIE_SUCCESS,
   FETCH_MOVIE_FAILURE
-} from '../types/movie.types';
-import movieApi from '../api/movie-database';
+} from '../constants/movie.types';
 
-const fetchMovieStart = () => ({
-  type: FETCH_MOVIE_START
+export const fetchMovieStart = id => ({
+  type: FETCH_MOVIE_START,
+  payload: id
 });
 
-const fetchMovieSuccess = movies => ({
+export const fetchMovieSuccess = movies => ({
   type: FETCH_MOVIE_SUCCESS,
   payload: movies
 });
 
-const fetchMovieFailure = errorMessage => ({
+export const fetchMovieFailure = error => ({
   type: FETCH_MOVIE_FAILURE,
-  payload: errorMessage
+  payload: error
 });
-
-export const fetchMovie = id => dispatch => {
-  dispatch(fetchMovieStart());
-
-  movieApi
-    .get(`/movie/${id}`)
-    .then(({ data }) => dispatch(fetchMovieSuccess(data)))
-    .catch(({ message }) => dispatch(fetchMovieFailure(message)));
-};

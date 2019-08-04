@@ -2,7 +2,7 @@ import {
   ADD_TO_FAVORITES,
   REMOVE_FROM_FAVORITES,
   TOGGLE_FAVORITES_OPEN
-} from '../types/favorites.types';
+} from '../constants/favorites.types';
 
 const initialState = {
   open: false,

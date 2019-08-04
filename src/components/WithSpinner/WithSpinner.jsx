@@ -1,22 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { CircularProgress } from '@material-ui/core';
+import { StyledCircularProgress } from './WithSpinner.styles';
 
-const StyledCircularProgress = styled(CircularProgress)`
-  margin-left: 50%;
-  margin-top: 5%;
-`;
-
-const WithSpinner = WrappedComponent => {
-  const Wrapped = ({ loading, ...props }) =>
+export default WrappedComponent => {
+  const hocComponent = ({ loading, ...props }) =>
     loading ? <StyledCircularProgress /> : <WrappedComponent {...props} />;
 
-  Wrapped.propTypes = {
+  hocComponent.propTypes = {
     loading: PropTypes.bool.isRequired
   };
 
-  return Wrapped;
+  return hocComponent;
 };
-
-export default WithSpinner;

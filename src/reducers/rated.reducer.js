@@ -2,24 +2,24 @@ import {
   FETCH_RATED_START,
   FETCH_RATED_SUCCESS,
   FETCH_RATED_FAILURE
-} from '../types/rated.types';
+} from '../constants/rated.types';
 
 const initialState = {
   data: [],
   isFetching: false,
-  errorMessage: ''
+  error: null
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_RATED_START:
-      return { ...state, isFetching: true };
+      return { ...state, isFetching: true, error: null };
 
     case FETCH_RATED_SUCCESS:
-      return { ...state, isFetching: false, data: payload };
+      return { ...state, isFetching: false, data: payload, error: null };
 
     case FETCH_RATED_FAILURE:
-      return { ...state, errorMessage: payload };
+      return { ...state, error: payload };
 
     default:
       return state;
