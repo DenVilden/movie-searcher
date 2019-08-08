@@ -8,21 +8,12 @@ import { StyledTypography } from './MoviesSearch.styles';
 const MoviesSearch = () => {
   const movies = useSelector(selectMoviesData);
 
-  return (
-    <>
-      {movies ? (
-        <MoviesContainer elevation={0} movies={movies.slice(0, 6)} />
-      ) : (
-        <StyledTypography
-          align="center"
-          color="error"
-          gutterBottom
-          variant="h6"
-        >
-          Nothing found
-        </StyledTypography>
-      )}
-    </>
+  return movies ? (
+    <MoviesContainer elevation={0} movies={movies.slice(0, 6)} />
+  ) : (
+    <StyledTypography align="center" color="error" gutterBottom variant="h6">
+      Nothing found
+    </StyledTypography>
   );
 };
 

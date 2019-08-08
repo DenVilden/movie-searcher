@@ -8,7 +8,7 @@
     "@material-ui/styles": "^4.3.0",
     "axios": "0.18.1",
     "dayjs": "^1.8.15",
-    "jss": "^10.0.0-alpha.23",
+    "jss": "10.0.0-alpha.23",
     "numeral": "^2.0.6",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
@@ -34,10 +34,8 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "env": {
-      "browser": true
-    },
     "extends": [
+      "react-app",
       "airbnb",
       "prettier",
       "prettier/react"

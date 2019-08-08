@@ -19,9 +19,9 @@ const MovieCard = ({
   title,
   poster_path,
   release_date,
-  history,
   vote_average,
-  text
+  text,
+  history
 }) => {
   const renderRating = () => {
     if (!release_date) {

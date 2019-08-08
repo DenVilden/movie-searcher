@@ -9,7 +9,7 @@ import {
 function* fetchSimilarAsync({ payload: id }) {
   try {
     const { data } = yield movieApi.get(`/movie/${id}/similar`);
-    yield put(fetchSimilarSuccess(data.results));
+    yield put(fetchSimilarSuccess(data.results.length && data.results));
   } catch (error) {
     yield put(fetchSimilarFailure(error.message));
   }
