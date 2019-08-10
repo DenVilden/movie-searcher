@@ -5,12 +5,14 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom';
+import GlobalStyle from './App.styles';
 import Header from '../components/Header/Header';
 import HomePageContainer from '../pages/HomePage/HomePage.container';
 import MoviePageContainer from '../pages/MoviePage/MoviePage.container';
 
 const App = () => (
   <Router>
+    <GlobalStyle />
     <Header />
     <Switch>
       <Route component={HomePageContainer} exact path="/" />
