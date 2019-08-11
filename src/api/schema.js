@@ -1,13 +1,15 @@
 /* eslint-disable camelcase */
-import {
+import graphql from 'graphql';
+import moviesApi from './movie-database.js';
+
+const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLInt,
   GraphQLSchema,
   GraphQLList,
   GraphQLNonNull
-} from 'graphql';
-import moviesApi from '../src/api/movie-database';
+} = graphql;
 
 const attachPoster = (path, quality = 200) => {
   // eslint-disable-next-line no-param-reassign

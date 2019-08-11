@@ -1,6 +1,6 @@
 import express from 'express';
 import expressGraphQL from 'express-graphql';
-import schema from './schema/schema';
+import schema from './src/api/schema.js';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -14,9 +14,9 @@ app.use(
 );
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('/build'));
+  app.use(express.static('build'));
   app.get('*', (req, res) => {
-    res.sendFile('/build/index.html');
+    res.sendFile('build/index.html');
   });
 }
 
