@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
-import WithSpinner from '../WithSpinner/WithSpinner';
 import { selectMoviesData } from '../../selectors/movies.selector';
 import { StyledTypography } from './MoviesSearch.styles';
 
@@ -17,4 +16,4 @@ const MoviesSearch = () => {
   );
 };
 
-export default WithSpinner(MoviesSearch);
+export default MoviesSearch;

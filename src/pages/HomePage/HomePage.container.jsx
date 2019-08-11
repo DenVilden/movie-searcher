@@ -6,6 +6,7 @@ import { fetchUpcomingStart } from '../../actions/upcoming.action';
 import useFetchEffect from '../../hooks/useFetchEffect';
 import { selectUpcomingFetching } from '../../selectors/upcoming.selector';
 import { selectRatedFetching } from '../../selectors/rated.selector';
+import Spinner from '../../components/Spinner/Spinner';
 
 const HomePageContainer = () => {
   const upcomingLoading = useSelector(selectUpcomingFetching);
@@ -14,7 +15,7 @@ const HomePageContainer = () => {
   useFetchEffect(fetchRatedStart);
   useFetchEffect(fetchUpcomingStart);
 
-  return <HomePage loading={upcomingLoading && ratedLoading} />;
+  return upcomingLoading && ratedLoading ? <Spinner /> : <HomePage />;
 };
 
 export default HomePageContainer;

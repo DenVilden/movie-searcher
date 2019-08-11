@@ -8,6 +8,7 @@ import MoviesSearch from '../MoviesSearch/MoviesSearch';
 import { ReactComponent as Logo } from '../../assets/camera.svg';
 import useInputState from '../../hooks/useInputState';
 import { selectMoviesFetching } from '../../selectors/movies.selector';
+import Spinner from '../Spinner/Spinner';
 
 const Header = () => {
   const loading = useSelector(selectMoviesFetching);
@@ -34,7 +35,7 @@ const Header = () => {
           <MoviesFavorites />
         </Toolbar>
       </AppBar>
-      {inputValue && <MoviesSearch loading={loading} />}
+      {loading ? <Spinner /> : inputValue && <MoviesSearch />}
     </>
   );
 };

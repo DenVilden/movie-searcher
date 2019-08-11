@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Slide } from '@material-ui/core';
 import MovieInfo from '../../components/MovieInfo/MovieInfo';
 import MoviesSimilar from '../../components/MoviesSimilar/MoviesSimilar';
-import WithSpinner from '../../components/WithSpinner/WithSpinner';
 
 const MoviePage = ({ loading }) => (
   <Slide direction="up" in={!loading}>
@@ -22,4 +21,4 @@ MoviePage.propTypes = {
   loading: PropTypes.bool
 };
 
-export default WithSpinner(MoviePage);
+export default MoviePage;
