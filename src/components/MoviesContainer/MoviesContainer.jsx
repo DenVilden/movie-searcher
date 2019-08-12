@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Grow, Typography } from '@material-ui/core';
 import { Root, List, Wrapper } from './MoviesContainer.styles';
-import MovieCard from '../MovieCard/MovieCard';
+import MovieCard from '../MovieCard/MovieCard.container';
 
 const MoviesContainer = ({ movies, title, elevation, padding, text }) => (
   <Root elevation={elevation} padding={padding}>

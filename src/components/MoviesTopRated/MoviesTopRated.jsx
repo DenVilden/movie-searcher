@@ -2,25 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 
-const MoviesUpcoming = ({ movies }) => (
+const MoviesTopRated = ({ movies }) => (
   <MoviesContainer
     elevation={10}
     movies={movies}
     padding={1}
-    text="date"
-    title="Upcoming"
+    text="rating"
+    title="Top Rated"
   />
 );
 
-MoviesUpcoming.propTypes = {
+MoviesTopRated.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
       poster_path: PropTypes.string,
       title: PropTypes.string,
-      release_date: PropTypes.string
+      vote_average: PropTypes.number
     })
   ).isRequired
 };
 
-export default MoviesUpcoming;
+export default MoviesTopRated;

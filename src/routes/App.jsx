@@ -6,19 +6,19 @@ import {
   Redirect
 } from 'react-router-dom';
 import GlobalStyle from './App.styles';
-import Header from '../components/Header/Header';
-import HomePageContainer from '../pages/HomePage/HomePage.container';
-import MoviePageContainer from '../pages/MoviePage/MoviePage.container';
+import Header from '../components/Header/Header.container';
+import HomePage from '../pages/HomePage/HomePage.container';
+import MoviePage from '../pages/MoviePage/MoviePage.container';
 
 const App = () => (
   <Router>
     <GlobalStyle />
     <Header />
     <Switch>
-      <Route component={HomePageContainer} exact path="/" />
+      <Route component={HomePage} exact path="/" />
       <Route
         path="/movie/:id"
-        render={({ match }) => <MoviePageContainer id={match.params.id} />}
+        render={({ match }) => <MoviePage id={match.params.id} />}
       />
       <Route render={() => <Redirect to="/" />} />
     </Switch>

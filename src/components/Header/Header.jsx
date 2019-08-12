@@ -1,43 +1,41 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { SearchBar, StyledSearchIcon, StyledInputBase } from './Header.styles';
-import MoviesFavorites from '../MoviesFavorites/MoviesFavorites';
-import MoviesSearch from '../MoviesSearch/MoviesSearch';
+import MoviesFavorites from '../MoviesFavorites/MoviesFavorites.container';
+import MoviesSearch from '../MoviesSearch/MoviesSearch.container';
 import { ReactComponent as Logo } from '../../assets/camera.svg';
-import useInputState from '../../hooks/useInputState';
-import { selectMoviesFetching } from '../../selectors/movies.selector';
-import Spinner from '../Spinner/Spinner';
 
-const Header = () => {
-  const loading = useSelector(selectMoviesFetching);
-  const [inputValue, setValue, clearValue] = useInputState();
+const Header = ({ inputValue, setInputValue, clearInputValue }) => (
+  <>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography color="inherit" noWrap variant="h6">
+          <Link onClick={clearInputValue} to="/">
+            <Logo />
+          </Link>
+        </Typography>
+        <SearchBar>
+          <StyledSearchIcon />
+          <StyledInputBase
+            onChange={evt => setInputValue(evt.target.value)}
+            placeholder="type a movie name..."
+            type="search"
+            value={inputValue}
+          />
+        </SearchBar>
+        <MoviesFavorites />
+      </Toolbar>
+    </AppBar>
+    {inputValue && <MoviesSearch query={inputValue} />}
+  </>
+);
 
-  return (
-    <>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography color="inherit" noWrap variant="h6">
-            <Link onClick={clearValue} to="/">
-              <Logo />
-            </Link>
-          </Typography>
-          <SearchBar>
-            <StyledSearchIcon />
-            <StyledInputBase
-              onChange={setValue}
-              placeholder="type a movie name..."
-              type="search"
-              value={inputValue}
-            />
-          </SearchBar>
-          <MoviesFavorites />
-        </Toolbar>
-      </AppBar>
-      {loading ? <Spinner /> : inputValue && <MoviesSearch />}
-    </>
-  );
+Header.propTypes = {
+  inputValue: PropTypes.string.isRequired,
+  setInputValue: PropTypes.func.isRequired,
+  clearInputValue: PropTypes.func.isRequired
 };
 
 export default Header;

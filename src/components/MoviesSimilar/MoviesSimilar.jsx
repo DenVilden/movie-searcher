@@ -1,21 +1,30 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
-import { selectSimilarData } from '../../selectors/similar.selector';
 
-const MoviesSimilar = () => {
-  const movies = useSelector(selectSimilarData);
+const MoviesSimilar = ({ movies }) =>
+  movies.length ? (
+    <MoviesContainer
+      elevation={10}
+      movies={movies}
+      padding={1}
+      title="Similar Movies"
+    />
+  ) : null;
 
-  return (
-    movies && (
-      <MoviesContainer
-        elevation={10}
-        movies={movies.slice(0, 6)}
-        padding={1}
-        title="Similar Movies"
-      />
-    )
-  );
+MoviesSimilar.defaultProps = {
+  movies: []
+};
+
+MoviesSimilar.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      title: PropTypes.string,
+      release_date: PropTypes.string,
+      poster_path: PropTypes.string
+    })
+  )
 };
 
 export default MoviesSimilar;

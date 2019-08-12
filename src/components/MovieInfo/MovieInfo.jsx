@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Typography, Divider, Button } from '@material-ui/core';
 import dayjs from 'dayjs';
 import numeral from 'numeral';
@@ -9,13 +10,10 @@ import {
   StyledTypography
 } from './MovieInfo.styles';
 import noImage from '../../assets/no-image.jpg';
-import useToggleSaveState from '../../hooks/useToggleSaveState';
 
 /* eslint-disable camelcase */
-const MovieInfo = () => {
-  const [movie, isExist, toggleSave] = useToggleSaveState();
-
-  const {
+const MovieInfo = ({
+  movie: {
     backdrop_path,
     title,
     overview,
@@ -23,50 +21,65 @@ const MovieInfo = () => {
     revenue,
     vote_average,
     release_date
-  } = movie;
+  },
+  isExist,
+  toggleSave
+}) => (
+  <StyledCard elevation={10}>
+    <StyledCardMedia image={backdrop_path || noImage} src="img" />
+    <StyledCardContent>
+      <StyledTypography gutterBottom variant="h5">
+        {title}
+        <Button
+          color={isExist ? 'secondary' : 'primary'}
+          onClick={toggleSave}
+          variant="contained"
+        >
+          {isExist ? 'Remove from favorites' : 'Add to favorites'}
+        </Button>
+      </StyledTypography>
+      <Typography>{overview}</Typography>
+      <Divider />
+      <Typography>
+        <b>Budget:</b> {budget ? numeral(budget).format('$0,00') : 'no data'}
+      </Typography>
+      <Divider />
+      <Typography>
+        <b>Revenue:</b> {revenue ? numeral(revenue).format('$0,00') : 'no data'}
+      </Typography>
+      <Divider />
+      <Typography>
+        <b>Rating:</b> {vote_average || 'no data'}
+      </Typography>
+      <Divider />
+      <Typography>
+        <b>Release Date:</b> {dayjs(release_date).format('DD MMMM YYYY')}
+      </Typography>
+    </StyledCardContent>
+  </StyledCard>
+);
 
-  return (
-    <StyledCard elevation={10}>
-      <StyledCardMedia
-        image={
-          backdrop_path
-            ? `https://image.tmdb.org/t/p/w500${backdrop_path}`
-            : noImage
-        }
-        src="img"
-      />
-      <StyledCardContent>
-        <StyledTypography gutterBottom variant="h5">
-          {title}
-          <Button
-            color={isExist ? 'secondary' : 'primary'}
-            onClick={toggleSave}
-            variant="contained"
-          >
-            {isExist ? 'Remove from favorites' : 'Add to favorites'}
-          </Button>
-        </StyledTypography>
-        <Typography>{overview}</Typography>
-        <Divider />
-        <Typography>
-          <b>Budget:</b> {budget ? numeral(budget).format('$0,00') : 'no data'}
-        </Typography>
-        <Divider />
-        <Typography>
-          <b>Revenue:</b>{' '}
-          {revenue ? numeral(revenue).format('$0,00') : 'no data'}
-        </Typography>
-        <Divider />
-        <Typography>
-          <b>Rating:</b> {vote_average || 'no data'}
-        </Typography>
-        <Divider />
-        <Typography>
-          <b>Release Date:</b> {dayjs(release_date).format('DD MMMM YYYY')}
-        </Typography>
-      </StyledCardContent>
-    </StyledCard>
-  );
+MovieInfo.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.string,
+    budget: PropTypes.string,
+    revenue: PropTypes.string,
+    overview: PropTypes.string,
+    backdrop_path: PropTypes.string,
+    similarMovies: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        title: PropTypes.string,
+        release_date: PropTypes.string,
+        poster_path: PropTypes.string
+      })
+    )
+  }).isRequired,
+  isExist: PropTypes.bool.isRequired,
+  toggleSave: PropTypes.func.isRequired
 };
 
 export default MovieInfo;

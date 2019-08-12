@@ -1,19 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { gql } from 'apollo-boost';
+import { useQuery } from '@apollo/react-hooks';
 import MoviePage from './MoviePage';
-import useFetchEffect from '../../hooks/useFetchEffect';
-import { fetchMovieStart } from '../../actions/movie.action';
-import { fetchSimilarStart } from '../../actions/similar.action';
-import { selectMovieFetching } from '../../selectors/movie.selector';
 import Spinner from '../../components/Spinner/Spinner';
+import Error from '../../components/Error/Error';
+
+const GET_MOVIE_INFO = gql`
+  query($id: ID!) {
+    movieInfo(id: $id) {
+      id
+      backdrop_path
+      poster_path
+      title
+      overview
+      budget
+      revenue
+      vote_average
+      release_date
+      similarMovies {
+        id
+        title
+        release_date
+        poster_path
+      }
+    }
+  }
+`;
 
 const MoviePageContainer = ({ id }) => {
-  const loading = useSelector(selectMovieFetching);
+  const { loading, error, data } = useQuery(GET_MOVIE_INFO, {
+    variables: { id }
+  });
 
-  useFetchEffect(fetchMovieStart, fetchSimilarStart, id);
-
-  return loading ? <Spinner /> : <MoviePage loading={loading} />;
+  if (loading) return <Spinner />;
+  if (error) {
+    return (
+      <Error align="center" color="error" gutterBottom variant="h6">
+        {error.message}
+      </Error>
+    );
+  }
+  return <MoviePage movie={data.movieInfo} />;
 };
 
 MoviePageContainer.propTypes = {

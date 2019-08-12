@@ -1,19 +1,20 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
-import { selectMoviesData } from '../../selectors/movies.selector';
-import { StyledTypography } from './MoviesSearch.styles';
 
-const MoviesSearch = () => {
-  const movies = useSelector(selectMoviesData);
+const MoviesSearch = ({ movies }) => (
+  <MoviesContainer elevation={0} movies={movies} />
+);
 
-  return movies ? (
-    <MoviesContainer elevation={0} movies={movies.slice(0, 6)} />
-  ) : (
-    <StyledTypography align="center" color="error" gutterBottom variant="h6">
-      Nothing found
-    </StyledTypography>
-  );
+MoviesSearch.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      title: PropTypes.string,
+      release_date: PropTypes.string,
+      poster_path: PropTypes.string
+    })
+  ).isRequired
 };
 
 export default MoviesSearch;
