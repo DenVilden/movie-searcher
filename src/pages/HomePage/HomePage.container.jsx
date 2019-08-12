@@ -1,20 +1,45 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { gql } from 'apollo-boost';
+import { useQuery } from 'react-apollo';
 import HomePage from './HomePage';
-import { fetchRatedStart } from '../../actions/rated.action';
-import { fetchUpcomingStart } from '../../actions/upcoming.action';
-import useFetchEffect from '../../hooks/useFetchEffect';
-import { selectUpcomingFetching } from '../../selectors/upcoming.selector';
-import { selectRatedFetching } from '../../selectors/rated.selector';
+import Spinner from '../../components/Spinner/Spinner';
+import Error from '../../components/Error/Error';
+
+const GET_MOVIES = gql`
+  query {
+    topRated {
+      id
+      title
+      vote_average
+      poster_path
+    }
+    upcoming {
+      id
+      title
+      release_date
+      poster_path
+    }
+  }
+`;
 
 const HomePageContainer = () => {
-  const upcomingLoading = useSelector(selectUpcomingFetching);
-  const ratedLoading = useSelector(selectRatedFetching);
+  const {
+    loading,
+    error,
+    data: { upcoming, topRated }
+  } = useQuery(GET_MOVIES);
 
-  useFetchEffect(fetchRatedStart);
-  useFetchEffect(fetchUpcomingStart);
+  if (loading) return <Spinner />;
 
-  return <HomePage loading={upcomingLoading && ratedLoading} />;
+  if (error) {
+    return (
+      <Error align="center" color="error" variant="h6">
+        {error.message}
+      </Error>
+    );
+  }
+
+  return <HomePage topRated={topRated} upcoming={upcoming} />;
 };
 
 export default HomePageContainer;

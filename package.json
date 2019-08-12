@@ -2,7 +2,7 @@
   "name": "movie-searcher",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
+  "proxy": "http://localhost:5000/",
   "engines": {
     "node": "12.x",
     "yarn": "1.x"
@@ -11,19 +11,21 @@
     "@material-ui/core": "^4.3.2",
     "@material-ui/icons": "^4.2.1",
     "@material-ui/styles": "^4.3.0",
+    "apollo-boost": "^0.4.4",
+    "apollo-server-express": "^2.8.1",
     "axios": "0.18.1",
+    "cors": "^2.8.5",
     "dayjs": "^1.8.15",
     "express": "^4.17.1",
-    "express-graphql": "^0.9.0",
     "graphql": "^14.4.2",
     "jss": "10.0.0-alpha.23",
     "numeral": "^2.0.6",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
+    "react-apollo": "^3.0.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.10.0",
@@ -32,19 +34,20 @@
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
+    "@babel/node": "^7.5.5",
     "concurrently": "^4.1.1",
     "eslint-config-airbnb": "17.1.1",
     "eslint-config-prettier": "^6.0.0",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "react-scripts": "3.0.1"
   },
   "scripts": {
     "client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon --experimental-modules server.js",
-    "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "start": "node --experimental-modules server.js"
+    "start": "nodemon --exec babel-node server.js",
+    "serve": "concurrently --kill-others-on-fail \"yarn start\" \"yarn client\""
   },
   "eslintConfig": {
     "extends": [
@@ -55,8 +58,13 @@
     ],
     "rules": {
       "react/jsx-sort-props": 2,
-      "import/extensions": "off"
+      "import/no-extraneous-dependencies": "off"
     }
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   },
   "browserslist": {
     "production": [

@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { create } from 'jss';
 import { createMuiTheme } from '@material-ui/core';
 import { StylesProvider, jssPreset } from '@material-ui/styles';
 import { ThemeProvider } from 'styled-components';
-import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from './store/store';
+import { ApolloProvider } from 'react-apollo';
+import { ApolloClient } from 'apollo-boost';
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import App from './routes/App';
+import resolvers from './graphql/resolvers';
+import data from './graphql/initialData';
+
+const httpLink = createHttpLink({ uri: '/graphql' });
+const cache = new InMemoryCache();
+
+const client = new ApolloClient({ link: httpLink, cache, resolvers });
+client.writeData({ data });
 
 const theme = createMuiTheme();
 
@@ -17,14 +26,12 @@ const jss = create({
 });
 
 ReactDOM.render(
-  <Provider store={store}>
-    <PersistGate persistor={persistor}>
-      <StylesProvider jss={jss}>
-        <ThemeProvider theme={theme}>
-          <App />
-        </ThemeProvider>
-      </StylesProvider>
-    </PersistGate>
-  </Provider>,
+  <ApolloProvider client={client}>
+    <StylesProvider jss={jss}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </StylesProvider>
+  </ApolloProvider>,
   document.getElementById('root')
 );

@@ -1,17 +1,12 @@
 import express from 'express';
-import expressGraphQL from 'express-graphql';
-import schema from './src/api/schema.js';
+import cors from 'cors';
+import { ApolloServer } from 'apollo-server-express';
+import { typeDefs, resolvers } from './schema/schema';
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(
-  '/graphql',
-  expressGraphQL({
-    schema,
-    graphiql: true
-  })
-);
+app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'));
@@ -20,7 +15,14 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+const server = new ApolloServer({
+  typeDefs,
+  resolvers
+});
+
+server.applyMiddleware({ app, path: '/graphql' });
+
 app.listen(port, () => {
   // eslint-disable-next-line no-console
-  console.log(`Server running on port ${port}`);
+  console.log(`Running a GraphQL API server at localhost:${port}/graphql`);
 });

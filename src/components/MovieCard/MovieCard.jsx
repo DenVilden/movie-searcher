@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CardActionArea, Typography } from '@material-ui/core';
-import { withRouter } from 'react-router-dom';
 import { Star as StarIcon } from '@material-ui/icons';
 import dayjs from 'dayjs';
 import {
@@ -21,10 +20,11 @@ const MovieCard = ({
   release_date,
   vote_average,
   text,
-  history
+  history,
+  clearMovies
 }) => {
   const renderRating = () => {
-    if (!release_date) {
+    if (!release_date && !vote_average) {
       return 'Unknown year';
     }
 
@@ -45,13 +45,15 @@ const MovieCard = ({
 
   return (
     <CardActionArea>
-      <StyledCard elevation={10} onClick={() => history.push(`/movie/${id}`)}>
+      <StyledCard
+        elevation={10}
+        onClick={() => {
+          history.push(`/movie/${id}`);
+          clearMovies();
+        }}
+      >
         <StyledCardMedia
-          image={
-            poster_path
-              ? `https://image.tmdb.org/t/p/w200${poster_path}`
-              : noImage
-          }
+          image={poster_path || noImage}
           src="img"
           title={title}
         />
@@ -67,17 +69,20 @@ const MovieCard = ({
 };
 
 MovieCard.defaultProps = {
-  poster_path: null
+  poster_path: null,
+  vote_average: undefined,
+  release_date: undefined
 };
 
 MovieCard.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  release_date: PropTypes.string.isRequired,
+  release_date: PropTypes.string,
   poster_path: PropTypes.string,
   text: PropTypes.string.isRequired,
-  vote_average: PropTypes.number.isRequired,
-  history: PropTypes.objectOf(PropTypes.any).isRequired
+  vote_average: PropTypes.number,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
+  clearMovies: PropTypes.func.isRequired
 };
 
-export default withRouter(MovieCard);
+export default MovieCard;
