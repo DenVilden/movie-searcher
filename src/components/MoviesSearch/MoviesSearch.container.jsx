@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import MoviesSearch from './MoviesSearch';
 import Spinner from '../Spinner/Spinner';

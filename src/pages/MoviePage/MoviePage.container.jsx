@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { gql } from 'apollo-boost';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from 'react-apollo';
 import MoviePage from './MoviePage';
 import Spinner from '../../components/Spinner/Spinner';
 import ErrorBlock from '../../components/ErrorBlock/ErrorBlock';

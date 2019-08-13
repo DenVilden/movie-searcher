@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useQuery, useMutation } from 'react-apollo';
 import MoviesFavorites from './MoviesFavorites';
 import {
   GET_FAVORITES_STATE,

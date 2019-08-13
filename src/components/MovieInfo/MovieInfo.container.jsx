@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useQuery, useMutation } from 'react-apollo';
 import MovieInfo from './MovieInfo';
 import {
   GET_FAVORITES_DATA,

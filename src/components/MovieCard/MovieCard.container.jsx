@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import { CLEAR_INPUT_VALUE } from '../../graphql/types';
 import MovieCard from './MovieCard';

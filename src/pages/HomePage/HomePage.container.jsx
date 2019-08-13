@@ -1,6 +1,6 @@
 import React from 'react';
 import { gql } from 'apollo-boost';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from 'react-apollo'
 import HomePage from './HomePage';
 import Spinner from '../../components/Spinner/Spinner';
 import ErrorBlock from '../../components/ErrorBlock/ErrorBlock';
