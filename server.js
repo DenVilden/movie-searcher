@@ -1,7 +1,9 @@
 import express from 'express';
 import cors from 'cors';
-import { ApolloServer } from 'apollo-server-express';
-import { typeDefs, resolvers } from './schema/schema';
+import Apollo from 'apollo-server-express';
+import { typeDefs, resolvers } from './schema/schema.js';
+
+const { ApolloServer } = Apollo;
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -17,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
 });
 
 server.applyMiddleware({ app, path: '/graphql' });
