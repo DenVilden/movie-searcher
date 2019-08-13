@@ -8,16 +8,14 @@ import {
 import Header from './Header';
 
 const HeaderContainer = () => {
-  const {
-    data: { inputValue }
-  } = useQuery(GET_INPUT_VALUE);
+  const { data } = useQuery(GET_INPUT_VALUE);
   const [setInputValue] = useMutation(SET_INPUT_VALUE);
   const [clearInputValue] = useMutation(CLEAR_INPUT_VALUE);
 
   return (
     <Header
       clearInputValue={clearInputValue}
-      inputValue={inputValue}
+      inputValue={data.inputValue}
       setInputValue={value => setInputValue({ variables: { value } })}
     />
   );

@@ -3,8 +3,8 @@ const axios = require('axios');
 const { gql } = require('apollo-server-express');
 
 const moviesApi = axios.create({
-  baseURL: `https://api.themoviedb.org/3`,
-  params: { api_key: `${process.env.MOVIE_API_KEY}` }
+  baseURL: 'https://api.themoviedb.org/3',
+  params: { api_key: `${process.env.REACT_APP_MOVIE_API_KEY}` }
 });
 
 const attachPoster = (path, size = 200) => {

@@ -30,7 +30,7 @@ export const typeDefs = gql`
     toggleFavoritesOpen: Boolean!
     addMovieToFavorites(movie: MovieInfo!): [MovieInfo]!
     removeMovieFromFavorites(movie: MovieInfo!): [MovieInfo]!
-    setInputValue: String!
+    setInputValue(value: String!): String!
     clearInputValue: String!
   }
 `;

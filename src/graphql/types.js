@@ -47,3 +47,10 @@ export const GET_FAVORITES_STATE = gql`
     favoritesOpen @client
   }
 `;
+
+export const GET_FAVORITES = gql`
+  query {
+    favoritesOpen @client
+    favorites @client
+  }
+`;
