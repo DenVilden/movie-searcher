@@ -1,19 +1,17 @@
 /* eslint-disable camelcase */
-import Apollo from 'apollo-server-express';
-import axios from 'axios';
-
-const { gql } = Apollo;
+const axios = require('axios');
+const { gql } = require('apollo-server-express');
 
 const moviesApi = axios.create({
   baseURL: `https://api.themoviedb.org/3`,
-  params: { api_key: '7c12a0af6455a8482b81067977d4503e' },
+  params: { api_key: process.env.MOVIE_API_KEY }
 });
 
 const attachPoster = (path, size = 200) => {
   return `https://image.tmdb.org/t/p/w${size}${path}`;
 };
 
-export const typeDefs = gql`
+const typeDefs = gql`
   type Query {
     upcoming: [Upcoming]
     topRated: [TopRated]
@@ -63,7 +61,7 @@ export const typeDefs = gql`
   }
 `;
 
-export const resolvers = {
+const resolvers = {
   Query: {
     upcoming: async () => {
       const { data } = await moviesApi.get('/movie/upcoming');
@@ -75,28 +73,28 @@ export const resolvers = {
       const { data } = await moviesApi.get('/movie/top_rated');
       return data.results.slice(0, 12);
     },
-    moviesSearch: async (parent, { query }) => {
+    moviesSearch: async (_, { query }) => {
       const { data } = await moviesApi.get('/search/movie', {
-        params: { query },
+        params: { query }
       });
       return data.results.slice(0, 6);
     },
-    movieInfo: async (parent, { id }) => {
+    movieInfo: async (_, { id }) => {
       const { data } = await moviesApi.get(`/movie/${id}`);
       return data;
-    },
+    }
   },
   Upcoming: {
-    poster_path: ({ poster_path }) => attachPoster(poster_path),
+    poster_path: ({ poster_path }) => attachPoster(poster_path)
   },
   TopRated: {
-    poster_path: ({ poster_path }) => attachPoster(poster_path),
+    poster_path: ({ poster_path }) => attachPoster(poster_path)
   },
   MoviesSearch: {
-    poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
+    poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path)
   },
   SimilarMovies: {
-    poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
+    poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path)
   },
   MovieInfo: {
     backdrop_path: ({ backdrop_path }) =>
@@ -105,6 +103,8 @@ export const resolvers = {
     similarMovies: async ({ id }) => {
       const { data } = await moviesApi.get(`/movie/${id}/similar`);
       return data.results.slice(0, 6);
-    },
-  },
+    }
+  }
 };
+
+module.exports = { typeDefs, resolvers };

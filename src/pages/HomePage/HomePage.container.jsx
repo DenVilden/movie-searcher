@@ -1,9 +1,9 @@
 import React from 'react';
 import { gql } from 'apollo-boost';
-import { useQuery } from 'react-apollo';
+import { useQuery } from '@apollo/react-hooks';
 import HomePage from './HomePage';
 import Spinner from '../../components/Spinner/Spinner';
-import Error from '../../components/Error/Error';
+import ErrorBlock from '../../components/ErrorBlock/ErrorBlock';
 
 const GET_MOVIES = gql`
   query {
@@ -23,23 +23,15 @@ const GET_MOVIES = gql`
 `;
 
 const HomePageContainer = () => {
-  const {
-    loading,
-    error,
-    data: { upcoming, topRated }
-  } = useQuery(GET_MOVIES);
+  const { loading, error, data } = useQuery(GET_MOVIES);
 
   if (loading) return <Spinner />;
 
   if (error) {
-    return (
-      <Error align="center" color="error" variant="h6">
-        {error.message}
-      </Error>
-    );
+    return <ErrorBlock>{error.message}</ErrorBlock>;
   }
 
-  return <HomePage topRated={topRated} upcoming={upcoming} />;
+  return <HomePage topRated={data.topRated} upcoming={data.upcoming} />;
 };
 
 export default HomePageContainer;

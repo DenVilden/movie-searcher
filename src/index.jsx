@@ -12,10 +12,10 @@ import App from './routes/App';
 import resolvers from './graphql/resolvers';
 import data from './graphql/initialData';
 
-const httpLink = createHttpLink({ uri: '/graphql' });
+const link = createHttpLink();
 const cache = new InMemoryCache();
 
-const client = new ApolloClient({ link: httpLink, cache, resolvers });
+const client = new ApolloClient({ link, cache, resolvers });
 client.writeData({ data });
 
 const theme = createMuiTheme();

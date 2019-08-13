@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import MoviesSearch from './MoviesSearch';
 import Spinner from '../Spinner/Spinner';
-import Error from '../Error/Error';
+import ErrorBlock from '../ErrorBlock/ErrorBlock';
 
 const GET_MOVIES = gql`
   query($query: String!) {
@@ -18,23 +18,21 @@ const GET_MOVIES = gql`
 `;
 
 const MoviesSearchContainer = ({ query }) => {
-  const {
-    loading,
-    error,
-    data: { moviesSearch }
-  } = useQuery(GET_MOVIES, { variables: { query } });
+  const { loading, error, data } = useQuery(GET_MOVIES, {
+    variables: { query }
+  });
 
   if (loading) return <Spinner />;
 
-  if (error || !moviesSearch.length) {
+  if (error || !data.moviesSearch.length) {
     return (
-      <Error align="center" color="error" gutterBottom variant="h6">
+      <ErrorBlock gutterBottom>
         {error ? `${error.message}` : 'Nothing found'}
-      </Error>
+      </ErrorBlock>
     );
   }
 
-  return <MoviesSearch movies={moviesSearch} />;
+  return <MoviesSearch movies={data.moviesSearch} />;
 };
 
 MoviesSearchContainer.propTypes = {
