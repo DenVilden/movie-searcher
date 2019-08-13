@@ -75,7 +75,7 @@ MovieCard.defaultProps = {
 };
 
 MovieCard.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   release_date: PropTypes.string,
   poster_path: PropTypes.string,

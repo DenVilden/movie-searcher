@@ -13,7 +13,7 @@ const HomePage = ({ upcoming, topRated }) => (
 HomePage.propTypes = {
   upcoming: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.number,
       title: PropTypes.string,
       release_date: PropTypes.string,
       poster_path: PropTypes.string
@@ -21,7 +21,7 @@ HomePage.propTypes = {
   ).isRequired,
   topRated: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.number,
       title: PropTypes.string,
       release_date: PropTypes.string,
       vote_average: PropTypes.number

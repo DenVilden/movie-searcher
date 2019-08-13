@@ -1,11 +1,42 @@
+import { gql } from 'apollo-server-express';
 import {
   GET_FAVORITES_STATE,
   GET_FAVORITES_DATA,
   GET_INPUT_VALUE
 } from './types';
 
+export const typeDefs = gql`
+  type SimilarMovies {
+    id: Int!
+    title: String!
+    release_date: String!
+    poster_path: String
+  }
+
+  type MovieInfo {
+    id: ID!
+    title: String!
+    release_date: String!
+    vote_average: Float!
+    budget: Int!
+    revenue: Int!
+    overview: String!
+    poster_path: String
+    backdrop_path: String
+    similarMovies: [SimilarMovies]!
+  }
+
+  type Mutation {
+    toggleFavoritesOpen: Boolean!
+    addMovieToFavorites(movie: MovieInfo!): [MovieInfo]!
+    removeMovieFromFavorites(movie: MovieInfo!): [MovieInfo]!
+    setInputValue: String!
+    clearInputValue: String!
+  }
+`;
+
 /* eslint-disable camelcase */
-export default {
+export const resolvers = {
   Mutation: {
     toggleFavoritesOpen: (_, __, { cache }) => {
       const { favoritesOpen } = cache.readQuery({
@@ -16,6 +47,8 @@ export default {
         query: GET_FAVORITES_STATE,
         data: { favoritesOpen: !favoritesOpen }
       });
+
+      return !favoritesOpen;
     },
 
     addMovieToFavorites: (_, { movie }, { cache }) => {
@@ -23,10 +56,14 @@ export default {
         query: GET_FAVORITES_DATA
       });
 
+      const newFavorites = [...favorites, movie];
+
       cache.writeQuery({
         query: GET_FAVORITES_DATA,
-        data: { favorites: [...favorites, movie] }
+        data: { favorites: newFavorites }
       });
+
+      return newFavorites;
     },
 
     removeMovieFromFavorites: (_, { movie }, { cache }) => {
@@ -34,12 +71,16 @@ export default {
         query: GET_FAVORITES_DATA
       });
 
+      const newFavorites = favorites.filter(
+        favorite => favorite.id !== movie.id
+      );
+
       cache.writeQuery({
         query: GET_FAVORITES_DATA,
-        data: {
-          favorites: favorites.filter(favorite => favorite.id !== movie.id)
-        }
+        data: { favorites: newFavorites }
       });
+
+      return newFavorites;
     },
 
     setInputValue: (_, { value }, { cache }) => {
@@ -47,13 +88,19 @@ export default {
         query: GET_INPUT_VALUE,
         data: { inputValue: value }
       });
+
+      return value;
     },
 
     clearInputValue: (_, __, { cache }) => {
+      const inputValue = '';
+
       cache.writeQuery({
         query: GET_INPUT_VALUE,
-        data: { inputValue: '' }
+        data: { inputValue }
       });
+
+      return inputValue;
     }
   }
 };

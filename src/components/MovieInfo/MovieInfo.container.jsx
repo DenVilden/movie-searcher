@@ -9,13 +9,11 @@ import {
 } from '../../graphql/types';
 
 const MovieInfoContainer = ({ movie }) => {
-  const {
-    data: { favorites }
-  } = useQuery(GET_FAVORITES_DATA);
+  const { data } = useQuery(GET_FAVORITES_DATA);
   const [addToFavorites] = useMutation(ADD_TO_FAVORITES);
   const [removeFromFavorites] = useMutation(REMOVE_FROM_FAVORITES);
 
-  const isExist = favorites.some(favorite => favorite.id === movie.id);
+  const isExist = data.favorites.some(favorite => favorite.id === movie.id);
 
   const toggleSave = useCallback(() => {
     if (isExist) {
@@ -30,17 +28,17 @@ const MovieInfoContainer = ({ movie }) => {
 
 MovieInfoContainer.propTypes = {
   movie: PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.number,
     title: PropTypes.string,
     release_date: PropTypes.string,
-    vote_average: PropTypes.string,
-    budget: PropTypes.string,
-    revenue: PropTypes.string,
+    vote_average: PropTypes.number,
+    budget: PropTypes.number,
+    revenue: PropTypes.number,
     overview: PropTypes.string,
     backdrop_path: PropTypes.string,
     similarMovies: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string,
+        id: PropTypes.number,
         title: PropTypes.string,
         release_date: PropTypes.string,
         poster_path: PropTypes.string

@@ -4,7 +4,8 @@ import MoviesFavorites from './MoviesFavorites';
 import {
   GET_FAVORITES_STATE,
   GET_FAVORITES_DATA,
-  TOGGLE_FAVORITES
+  TOGGLE_FAVORITES,
+  CLEAR_INPUT_VALUE
 } from '../../graphql/types';
 
 const MoviesFavoritesContainer = () => {
@@ -15,9 +16,11 @@ const MoviesFavoritesContainer = () => {
     data: { favorites }
   } = useQuery(GET_FAVORITES_DATA);
   const [toggleFavoritesOpen] = useMutation(TOGGLE_FAVORITES);
+  const [clearInputValue] = useMutation(CLEAR_INPUT_VALUE);
 
   return (
     <MoviesFavorites
+      clearInputValue={clearInputValue}
       favorites={favorites}
       open={favoritesOpen}
       toggleFavorites={toggleFavoritesOpen}

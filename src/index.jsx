@@ -9,13 +9,13 @@ import { ApolloClient } from 'apollo-boost';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import App from './routes/App';
-import resolvers from './graphql/resolvers';
+import { typeDefs, resolvers } from './graphql/resolvers';
 import data from './graphql/initialData';
 
 const link = createHttpLink();
 const cache = new InMemoryCache();
 
-const client = new ApolloClient({ link, cache, resolvers });
+const client = new ApolloClient({ link, cache, typeDefs, resolvers });
 client.writeData({ data });
 
 const theme = createMuiTheme();

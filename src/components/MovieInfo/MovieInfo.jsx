@@ -61,12 +61,12 @@ const MovieInfo = ({
 
 MovieInfo.propTypes = {
   movie: PropTypes.shape({
-    id: PropTypes.string,
+    id: PropTypes.number,
     title: PropTypes.string,
     release_date: PropTypes.string,
-    vote_average: PropTypes.string,
-    budget: PropTypes.string,
-    revenue: PropTypes.string,
+    vote_average: PropTypes.number,
+    budget: PropTypes.number,
+    revenue: PropTypes.number,
     overview: PropTypes.string,
     backdrop_path: PropTypes.string,
     similarMovies: PropTypes.arrayOf(

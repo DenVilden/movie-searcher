@@ -15,7 +15,7 @@ const MoviesTopRated = ({ movies }) => (
 MoviesTopRated.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.number,
       poster_path: PropTypes.string,
       title: PropTypes.string,
       vote_average: PropTypes.number

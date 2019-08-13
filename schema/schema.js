@@ -13,35 +13,35 @@ const attachPoster = (path, size = 200) => {
 
 const typeDefs = gql`
   type Query {
-    upcoming: [Upcoming]
-    topRated: [TopRated]
-    moviesSearch(query: String!): [MoviesSearch]
-    movieInfo(id: ID!): MovieInfo
+    upcoming: [Upcoming]!
+    topRated: [TopRated]!
+    moviesSearch(query: String!): [MoviesSearch]!
+    movieInfo(id: Int!): MovieInfo!
   }
 
   type Upcoming {
-    id: ID!
+    id: Int!
     title: String!
     release_date: String!
     poster_path: String
   }
 
   type TopRated {
-    id: ID!
+    id: Int!
     title: String!
     vote_average: Float!
     poster_path: String
   }
 
   type MoviesSearch {
-    id: ID!
+    id: Int!
     title: String!
     release_date: String!
     poster_path: String
   }
 
   type SimilarMovies {
-    id: ID!
+    id: Int!
     title: String!
     release_date: String!
     poster_path: String
@@ -51,13 +51,13 @@ const typeDefs = gql`
     id: ID!
     title: String!
     release_date: String!
-    vote_average: String!
-    budget: String!
-    revenue: String!
+    vote_average: Float!
+    budget: Int!
+    revenue: Int!
     overview: String!
     poster_path: String
     backdrop_path: String
-    similarMovies: [SimilarMovies]
+    similarMovies: [SimilarMovies]!
   }
 `;
 
@@ -69,33 +69,41 @@ const resolvers = {
         .sort((a, b) => (a.release_date < b.release_date ? 1 : -1))
         .slice(0, 12);
     },
+
     topRated: async () => {
       const { data } = await moviesApi.get('/movie/top_rated');
       return data.results.slice(0, 12);
     },
+
     moviesSearch: async (_, { query }) => {
       const { data } = await moviesApi.get('/search/movie', {
         params: { query }
       });
       return data.results.slice(0, 6);
     },
+
     movieInfo: async (_, { id }) => {
       const { data } = await moviesApi.get(`/movie/${id}`);
       return data;
     }
   },
+
   Upcoming: {
     poster_path: ({ poster_path }) => attachPoster(poster_path)
   },
+
   TopRated: {
     poster_path: ({ poster_path }) => attachPoster(poster_path)
   },
+
   MoviesSearch: {
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path)
   },
+
   SimilarMovies: {
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path)
   },
+
   MovieInfo: {
     backdrop_path: ({ backdrop_path }) =>
       backdrop_path && attachPoster(backdrop_path, 500),

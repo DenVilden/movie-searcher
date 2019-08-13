@@ -15,7 +15,7 @@ const MoviesUpcoming = ({ movies }) => (
 MoviesUpcoming.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.number,
       poster_path: PropTypes.string,
       title: PropTypes.string,
       release_date: PropTypes.string

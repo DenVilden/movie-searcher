@@ -15,7 +15,12 @@ import {
 } from './MoviesFavorites.styles';
 import noImage from '../../assets/no-image.jpg';
 
-const MoviesFavorites = ({ toggleFavorites, open, favorites }) => {
+const MoviesFavorites = ({
+  toggleFavorites,
+  open,
+  favorites,
+  clearInputValue
+}) => {
   const [anchorEl, setAnchor] = useState();
 
   return (
@@ -51,7 +56,7 @@ const MoviesFavorites = ({ toggleFavorites, open, favorites }) => {
         {/* eslint-disable camelcase */}
         {favorites.map(({ id, poster_path, title }) => (
           <CardActionArea key={id} onClick={toggleFavorites}>
-            <Link to={`/movie/${id}`}>
+            <Link onClick={() => clearInputValue()} to={`/movie/${id}`}>
               <CardWrapper>
                 <StyledCardMedia
                   image={poster_path || noImage}
@@ -75,19 +80,20 @@ MoviesFavorites.defaultProps = {
 MoviesFavorites.propTypes = {
   toggleFavorites: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
+  clearInputValue: PropTypes.func.isRequired,
   favorites: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.number,
       title: PropTypes.string,
       release_date: PropTypes.string,
-      vote_average: PropTypes.string,
-      budget: PropTypes.string,
-      revenue: PropTypes.string,
+      vote_average: PropTypes.number,
+      budget: PropTypes.number,
+      revenue: PropTypes.number,
       overview: PropTypes.string,
       backdrop_path: PropTypes.string,
       similarMovies: PropTypes.arrayOf(
         PropTypes.shape({
-          id: PropTypes.string,
+          id: PropTypes.number,
           title: PropTypes.string,
           release_date: PropTypes.string,
           poster_path: PropTypes.string
