@@ -12,13 +12,6 @@ const attachPoster = (path, size = 200) => {
 };
 
 const typeDefs = gql`
-  type Query {
-    upcoming: [Upcoming]!
-    topRated: [TopRated]!
-    moviesSearch(query: String!): [MoviesSearch]!
-    movieInfo(id: Int!): MovieInfo!
-  }
-
   type Upcoming {
     id: Int!
     title: String!
@@ -58,6 +51,13 @@ const typeDefs = gql`
     poster_path: String
     backdrop_path: String
     similarMovies: [SimilarMovies]!
+  }
+
+  type Query {
+    upcoming: [Upcoming]!
+    topRated: [TopRated]!
+    moviesSearch(query: String!): [MoviesSearch]!
+    movieInfo(id: Int!): MovieInfo!
   }
 `;
 
@@ -105,8 +105,9 @@ const resolvers = {
   },
 
   MovieInfo: {
-    backdrop_path: ({ backdrop_path }) =>
-      backdrop_path && attachPoster(backdrop_path, 500),
+    backdrop_path: ({ backdrop_path }) => {
+      return backdrop_path && attachPoster(backdrop_path, 500);
+    },
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
     similarMovies: async ({ id }) => {
       const { data } = await moviesApi.get(`/movie/${id}/similar`);

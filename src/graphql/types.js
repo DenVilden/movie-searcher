@@ -1,7 +1,7 @@
 import { gql } from 'apollo-boost';
 
 export const SET_INPUT_VALUE = gql`
-  mutation($value: String) {
+  mutation($value: String!) {
     setInputValue(value: $value) @client
   }
 `;

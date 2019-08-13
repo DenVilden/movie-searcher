@@ -35,7 +35,6 @@ export const typeDefs = gql`
   }
 `;
 
-/* eslint-disable camelcase */
 export const resolvers = {
   Mutation: {
     toggleFavoritesOpen: (_, __, { cache }) => {
