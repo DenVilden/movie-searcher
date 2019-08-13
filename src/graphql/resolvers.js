@@ -14,7 +14,7 @@ export const typeDefs = gql`
   }
 
   type MovieInfo {
-    id: ID!
+    id: Int!
     title: String!
     release_date: String!
     vote_average: Float!

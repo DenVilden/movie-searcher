@@ -2,7 +2,6 @@ const path = require('path');
 const dotenv = require('dotenv');
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
-const { typeDefs, resolvers } = require('./schema/schema.js');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -16,8 +15,9 @@ if (process.env.NODE_ENV === 'production') {
   dotenv.config();
 }
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const { typeDefs, resolvers } = require('./schema/schema.js');
 
+const server = new ApolloServer({ typeDefs, resolvers });
 server.applyMiddleware({ app });
 
 app.listen(port, () => {

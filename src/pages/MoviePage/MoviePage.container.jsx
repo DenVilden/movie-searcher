@@ -7,7 +7,7 @@ import Spinner from '../../components/Spinner/Spinner';
 import ErrorBlock from '../../components/ErrorBlock/ErrorBlock';
 
 const GET_MOVIE_INFO = gql`
-  query($id: Int!) {
+  query($id: String!) {
     movieInfo(id: $id) {
       id
       backdrop_path

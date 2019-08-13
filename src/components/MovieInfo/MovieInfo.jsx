@@ -71,7 +71,7 @@ MovieInfo.propTypes = {
     backdrop_path: PropTypes.string,
     similarMovies: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string,
+        id: PropTypes.number,
         title: PropTypes.string,
         release_date: PropTypes.string,
         poster_path: PropTypes.string

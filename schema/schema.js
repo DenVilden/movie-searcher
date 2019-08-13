@@ -4,7 +4,7 @@ const { gql } = require('apollo-server-express');
 
 const moviesApi = axios.create({
   baseURL: `https://api.themoviedb.org/3`,
-  params: { api_key: process.env.MOVIE_API_KEY }
+  params: { api_key: `${process.env.MOVIE_API_KEY}` }
 });
 
 const attachPoster = (path, size = 200) => {
@@ -41,7 +41,7 @@ const typeDefs = gql`
   }
 
   type MovieInfo {
-    id: ID!
+    id: Int!
     title: String!
     release_date: String!
     vote_average: Float!
@@ -57,7 +57,7 @@ const typeDefs = gql`
     upcoming: [Upcoming]!
     topRated: [TopRated]!
     moviesSearch(query: String!): [MoviesSearch]!
-    movieInfo(id: Int!): MovieInfo!
+    movieInfo(id: String!): MovieInfo!
   }
 `;
 
