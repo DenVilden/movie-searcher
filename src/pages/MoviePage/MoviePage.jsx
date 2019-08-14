@@ -4,14 +4,20 @@ import { Slide } from '@material-ui/core';
 import MovieInfo from '../../components/MovieInfo/MovieInfo.container';
 import MoviesSimilar from '../../components/MoviesSimilar/MoviesSimilar';
 
-const MoviePage = ({ movie }) => (
-  <Slide direction="up" in>
-    <div>
-      <MovieInfo movie={movie} />
-      <MoviesSimilar movies={movie.similar.results} />
-    </div>
-  </Slide>
-);
+const MoviePage = ({ movie }) => {
+  return movie ? (
+    <Slide direction="up" in>
+      <div>
+        <MovieInfo movie={movie} />
+        <MoviesSimilar movies={movie.similar.results} />
+      </div>
+    </Slide>
+  ) : null;
+};
+
+MoviePage.defaultProps = {
+  movie: undefined
+};
 
 MoviePage.propTypes = {
   movie: PropTypes.shape({
@@ -33,7 +39,7 @@ MoviePage.propTypes = {
         })
       )
     })
-  }).isRequired
+  })
 };
 
 export default MoviePage;

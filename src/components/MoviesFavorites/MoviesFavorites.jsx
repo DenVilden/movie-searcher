@@ -76,10 +76,6 @@ const MoviesFavorites = ({
   );
 };
 
-MoviesFavorites.defaultProps = {
-  favorites: []
-};
-
 MoviesFavorites.propTypes = {
   toggleFavorites: PropTypes.func.isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
@@ -106,7 +102,7 @@ MoviesFavorites.propTypes = {
         )
       })
     })
-  )
+  ).isRequired
 };
 
 export default MoviesFavorites;

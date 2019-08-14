@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 
-const MoviesSimilar = ({ movies }) =>
-  movies.length ? (
+const MoviesSimilar = ({ movies }) => {
+  return movies.length ? (
     <MoviesContainer
       elevation={10}
       movies={movies}
@@ -11,9 +11,6 @@ const MoviesSimilar = ({ movies }) =>
       title="Similar Movies"
     />
   ) : null;
-
-MoviesSimilar.defaultProps = {
-  movies: []
 };
 
 MoviesSimilar.propTypes = {
@@ -24,7 +21,7 @@ MoviesSimilar.propTypes = {
       release_date: PropTypes.string,
       poster_path: PropTypes.string
     })
-  )
+  ).isRequired
 };
 
 export default MoviesSimilar;
