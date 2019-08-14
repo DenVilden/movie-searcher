@@ -18,11 +18,13 @@ const GET_MOVIE_INFO = gql`
       revenue
       vote_average
       release_date
-      similarMovies {
-        id
-        title
-        release_date
-        poster_path
+      similar {
+        results {
+          id
+          title
+          release_date
+          poster_path
+        }
       }
     }
   }

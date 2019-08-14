@@ -36,14 +36,16 @@ MovieInfoContainer.propTypes = {
     revenue: PropTypes.string,
     overview: PropTypes.string,
     backdrop_path: PropTypes.string,
-    similarMovies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number,
-        title: PropTypes.string,
-        release_date: PropTypes.string,
-        poster_path: PropTypes.string
-      })
-    )
+    similar: PropTypes.shape({
+      results: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          title: PropTypes.string,
+          release_date: PropTypes.string,
+          poster_path: PropTypes.string
+        })
+      )
+    })
   }).isRequired
 };
 

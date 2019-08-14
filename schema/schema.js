@@ -41,6 +41,10 @@ const typeDefs = gql`
     poster_path: String
   }
 
+  type SimilarResults {
+    results: [SimilarMovies]!
+  }
+
   type MovieInfo {
     id: Int!
     title: String!
@@ -51,7 +55,7 @@ const typeDefs = gql`
     overview: String!
     poster_path: String
     backdrop_path: String
-    similarMovies: [SimilarMovies]!
+    similar: SimilarResults!
   }
 
   type Query {
@@ -84,10 +88,13 @@ const resolvers = {
     },
 
     movieInfo: async (_, { id }) => {
-      const { data } = await moviesApi.get(`/movie/${id}`);
+      const { data } = await moviesApi.get(`/movie/${id}`, {
+        params: { append_to_response: 'similar' }
+      });
       return data;
     }
   },
+
   /* eslint-disable camelcase */
 
   Upcoming: {
@@ -106,6 +113,10 @@ const resolvers = {
     release_date: ({ release_date }) => release_date.slice(0, 4)
   },
 
+  SimilarResults: {
+    results: ({ results }) => results.slice(0, 6)
+  },
+
   SimilarMovies: {
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
     release_date: ({ release_date }) => release_date.slice(0, 4)
@@ -120,11 +131,7 @@ const resolvers = {
       return dayjs(release_date).format('DD MMMM YYYY');
     },
     budget: ({ budget }) => numeral(budget).format('$0,00'),
-    revenue: ({ revenue }) => numeral(revenue).format('$0,00'),
-    similarMovies: async ({ id }) => {
-      const { data } = await moviesApi.get(`/movie/${id}/similar`);
-      return data.results.slice(0, 6);
-    }
+    revenue: ({ revenue }) => numeral(revenue).format('$0,00')
   }
 };
 

@@ -8,7 +8,7 @@ const MoviePage = ({ movie }) => (
   <Slide direction="up" in>
     <div>
       <MovieInfo movie={movie} />
-      <MoviesSimilar movies={movie.similarMovies} />
+      <MoviesSimilar movies={movie.similar.results} />
     </div>
   </Slide>
 );
@@ -23,14 +23,16 @@ MoviePage.propTypes = {
     revenue: PropTypes.string,
     overview: PropTypes.string,
     backdrop_path: PropTypes.string,
-    similarMovies: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number,
-        title: PropTypes.string,
-        release_date: PropTypes.string,
-        poster_path: PropTypes.string
-      })
-    )
+    similar: PropTypes.shape({
+      results: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          title: PropTypes.string,
+          release_date: PropTypes.string,
+          poster_path: PropTypes.string
+        })
+      )
+    })
   }).isRequired
 };
 
