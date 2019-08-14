@@ -19,8 +19,8 @@ MoviePage.propTypes = {
     title: PropTypes.string,
     release_date: PropTypes.string,
     vote_average: PropTypes.number,
-    budget: PropTypes.number,
-    revenue: PropTypes.number,
+    budget: PropTypes.string,
+    revenue: PropTypes.string,
     overview: PropTypes.string,
     backdrop_path: PropTypes.string,
     similarMovies: PropTypes.arrayOf(

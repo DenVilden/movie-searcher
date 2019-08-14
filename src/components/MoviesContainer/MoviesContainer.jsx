@@ -4,7 +4,7 @@ import { Grid, Grow, Typography } from '@material-ui/core';
 import { Root, List, Wrapper } from './MoviesContainer.styles';
 import MovieCard from '../MovieCard/MovieCard.container';
 
-const MoviesContainer = ({ movies, title, elevation, padding, text }) => (
+const MoviesContainer = ({ movies, title, elevation, padding }) => (
   <Root elevation={elevation} padding={padding}>
     {title && (
       <Typography align="center" gutterBottom variant="h4">
@@ -17,7 +17,7 @@ const MoviesContainer = ({ movies, title, elevation, padding, text }) => (
           <Grid item lg={2} sm={4} xs={6}>
             <Wrapper container justify="center">
               <Grid item>
-                <MovieCard {...movie} text={text} />
+                <MovieCard {...movie} />
               </Grid>
             </Wrapper>
           </Grid>
@@ -30,16 +30,14 @@ const MoviesContainer = ({ movies, title, elevation, padding, text }) => (
 MoviesContainer.defaultProps = {
   title: '',
   elevation: 1,
-  padding: 0,
-  text: ''
+  padding: 0
 };
 
 MoviesContainer.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.any).isRequired,
   title: PropTypes.string,
   elevation: PropTypes.number,
-  padding: PropTypes.number,
-  text: PropTypes.string
+  padding: PropTypes.number
 };
 
 export default MoviesContainer;

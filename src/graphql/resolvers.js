@@ -6,26 +6,6 @@ import {
 } from './types';
 
 export const typeDefs = gql`
-  type SimilarMovies {
-    id: Int!
-    title: String!
-    release_date: String!
-    poster_path: String
-  }
-
-  type MovieInfo {
-    id: Int!
-    title: String!
-    release_date: String!
-    vote_average: Float!
-    budget: Int!
-    revenue: Int!
-    overview: String!
-    poster_path: String
-    backdrop_path: String
-    similarMovies: [SimilarMovies]!
-  }
-
   type Mutation {
     toggleFavoritesOpen: Boolean!
     addMovieToFavorites(movie: MovieInfo!): [MovieInfo]!

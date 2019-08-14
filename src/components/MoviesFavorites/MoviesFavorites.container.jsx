@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery, useMutation } from 'react-apollo';
+import { withRouter } from 'react-router-dom';
 import MoviesFavorites from './MoviesFavorites';
 import {
   GET_FAVORITES,
@@ -7,7 +8,7 @@ import {
   CLEAR_INPUT_VALUE
 } from '../../graphql/types';
 
-const MoviesFavoritesContainer = () => {
+const MoviesFavoritesContainer = props => {
   const { data } = useQuery(GET_FAVORITES);
   const [toggleFavoritesOpen] = useMutation(TOGGLE_FAVORITES);
   const [clearInputValue] = useMutation(CLEAR_INPUT_VALUE);
@@ -18,8 +19,9 @@ const MoviesFavoritesContainer = () => {
       favorites={data.favorites}
       open={data.favoritesOpen}
       toggleFavorites={toggleFavoritesOpen}
+      {...props}
     />
   );
 };
 
-export default MoviesFavoritesContainer;
+export default withRouter(MoviesFavoritesContainer);

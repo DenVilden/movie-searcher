@@ -11,6 +11,7 @@ export const StyledTypography = styled(Typography)`
 
 export const CardWrapper = styled.div`
   display: flex;
+  min-width: 200px;
 `;
 
 export const StyledCardMedia = styled(CardMedia)`

@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Typography, Divider, Button } from '@material-ui/core';
-import dayjs from 'dayjs';
-import numeral from 'numeral';
 import {
   StyledCard,
   StyledCardMedia,
@@ -41,19 +39,19 @@ const MovieInfo = ({
       <Typography>{overview}</Typography>
       <Divider />
       <Typography>
-        <b>Budget:</b> {budget ? numeral(budget).format('$0,00') : 'no data'}
+        <b>Budget:</b> {budget}
       </Typography>
       <Divider />
       <Typography>
-        <b>Revenue:</b> {revenue ? numeral(revenue).format('$0,00') : 'no data'}
+        <b>Revenue:</b> {revenue}
       </Typography>
       <Divider />
       <Typography>
-        <b>Rating:</b> {vote_average || 'no data'}
+        <b>Rating:</b> {vote_average}
       </Typography>
       <Divider />
       <Typography>
-        <b>Release Date:</b> {dayjs(release_date).format('DD MMMM YYYY')}
+        <b>Release Date:</b> {release_date}
       </Typography>
     </StyledCardContent>
   </StyledCard>
@@ -65,8 +63,8 @@ MovieInfo.propTypes = {
     title: PropTypes.string,
     release_date: PropTypes.string,
     vote_average: PropTypes.number,
-    budget: PropTypes.number,
-    revenue: PropTypes.number,
+    budget: PropTypes.string,
+    revenue: PropTypes.string,
     overview: PropTypes.string,
     backdrop_path: PropTypes.string,
     similarMovies: PropTypes.arrayOf(

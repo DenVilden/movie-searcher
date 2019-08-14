@@ -7,7 +7,6 @@ const MoviesUpcoming = ({ movies }) => (
     elevation={10}
     movies={movies}
     padding={1}
-    text="date"
     title="Upcoming"
   />
 );

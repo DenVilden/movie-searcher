@@ -5,7 +5,6 @@ import {
   Favorite as FavoriteIcon,
   FavoriteBorder as FavoriteBorderIcon
 } from '@material-ui/icons';
-import { Link } from 'react-router-dom';
 import {
   Root,
   StyledTypography,
@@ -19,7 +18,8 @@ const MoviesFavorites = ({
   toggleFavorites,
   open,
   favorites,
-  clearInputValue
+  clearInputValue,
+  history
 }) => {
   const [anchorEl, setAnchor] = useState();
 
@@ -56,16 +56,19 @@ const MoviesFavorites = ({
         {/* eslint-disable camelcase */}
         {favorites.map(({ id, poster_path, title }) => (
           <CardActionArea key={id} onClick={toggleFavorites}>
-            <Link onClick={() => clearInputValue()} to={`/movie/${id}`}>
-              <CardWrapper>
-                <StyledCardMedia
-                  image={poster_path || noImage}
-                  src="img"
-                  title={title}
-                />
-                <StyledTypography>{title}</StyledTypography>
-              </CardWrapper>
-            </Link>
+            <CardWrapper
+              onClick={() => {
+                history.push(`/movie/${id}`);
+                clearInputValue();
+              }}
+            >
+              <StyledCardMedia
+                image={poster_path || noImage}
+                src="img"
+                title={title}
+              />
+              <StyledTypography>{title}</StyledTypography>
+            </CardWrapper>
           </CardActionArea>
         ))}
       </StyledPopover>
@@ -79,6 +82,7 @@ MoviesFavorites.defaultProps = {
 
 MoviesFavorites.propTypes = {
   toggleFavorites: PropTypes.func.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
   open: PropTypes.bool.isRequired,
   clearInputValue: PropTypes.func.isRequired,
   favorites: PropTypes.arrayOf(
@@ -87,8 +91,8 @@ MoviesFavorites.propTypes = {
       title: PropTypes.string,
       release_date: PropTypes.string,
       vote_average: PropTypes.number,
-      budget: PropTypes.number,
-      revenue: PropTypes.number,
+      budget: PropTypes.string,
+      revenue: PropTypes.string,
       overview: PropTypes.string,
       backdrop_path: PropTypes.string,
       similarMovies: PropTypes.arrayOf(

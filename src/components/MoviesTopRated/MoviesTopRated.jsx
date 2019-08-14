@@ -7,7 +7,6 @@ const MoviesTopRated = ({ movies }) => (
     elevation={10}
     movies={movies}
     padding={1}
-    text="rating"
     title="Top Rated"
   />
 );

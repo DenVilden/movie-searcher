@@ -13,13 +13,13 @@ export const CLEAR_INPUT_VALUE = gql`
 `;
 
 export const ADD_TO_FAVORITES = gql`
-  mutation($movie: Movie!) {
+  mutation($movie: MovieInfo!) {
     addMovieToFavorites(movie: $movie) @client
   }
 `;
 
 export const REMOVE_FROM_FAVORITES = gql`
-  mutation($movie: Movie!) {
+  mutation($movie: MovieInfo!) {
     removeMovieFromFavorites(movie: $movie) @client
   }
 `;

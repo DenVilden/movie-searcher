@@ -1,6 +1,7 @@
-/* eslint-disable camelcase */
 const axios = require('axios');
 const { gql } = require('apollo-server-express');
+const dayjs = require('dayjs');
+const numeral = require('numeral');
 
 const moviesApi = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
@@ -45,8 +46,8 @@ const typeDefs = gql`
     title: String!
     release_date: String!
     vote_average: Float!
-    budget: Int!
-    revenue: Int!
+    budget: String!
+    revenue: String!
     overview: String!
     poster_path: String
     backdrop_path: String
@@ -87,9 +88,13 @@ const resolvers = {
       return data;
     }
   },
+  /* eslint-disable camelcase */
 
   Upcoming: {
-    poster_path: ({ poster_path }) => attachPoster(poster_path)
+    poster_path: ({ poster_path }) => attachPoster(poster_path),
+    release_date: ({ release_date }) => {
+      return dayjs(release_date).format('DD MMMM YYYY');
+    }
   },
 
   TopRated: {
@@ -97,11 +102,13 @@ const resolvers = {
   },
 
   MoviesSearch: {
-    poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path)
+    poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
+    release_date: ({ release_date }) => release_date.slice(0, 4)
   },
 
   SimilarMovies: {
-    poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path)
+    poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
+    release_date: ({ release_date }) => release_date.slice(0, 4)
   },
 
   MovieInfo: {
@@ -109,6 +116,11 @@ const resolvers = {
       return backdrop_path && attachPoster(backdrop_path, 500);
     },
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
+    release_date: ({ release_date }) => {
+      return dayjs(release_date).format('DD MMMM YYYY');
+    },
+    budget: ({ budget }) => numeral(budget).format('$0,00'),
+    revenue: ({ revenue }) => numeral(revenue).format('$0,00'),
     similarMovies: async ({ id }) => {
       const { data } = await moviesApi.get(`/movie/${id}/similar`);
       return data.results.slice(0, 6);

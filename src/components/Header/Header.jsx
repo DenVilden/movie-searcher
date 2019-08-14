@@ -1,20 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
-import { Link } from 'react-router-dom';
 import { SearchBar, StyledSearchIcon, StyledInputBase } from './Header.styles';
 import MoviesFavorites from '../MoviesFavorites/MoviesFavorites.container';
 import MoviesSearch from '../MoviesSearch/MoviesSearch.container';
 import { ReactComponent as Logo } from '../../assets/camera.svg';
 
-const Header = ({ inputValue, setInputValue, clearInputValue }) => (
+const Header = ({ inputValue, setInputValue, clearInputValue, history }) => (
   <>
     <AppBar position="static">
       <Toolbar>
         <Typography color="inherit" noWrap variant="h6">
-          <Link onClick={clearInputValue} to="/">
-            <Logo />
-          </Link>
+          <Logo
+            onClick={() => {
+              history.push('/');
+              clearInputValue();
+            }}
+          />
         </Typography>
         <SearchBar>
           <StyledSearchIcon />
@@ -35,7 +37,8 @@ const Header = ({ inputValue, setInputValue, clearInputValue }) => (
 Header.propTypes = {
   inputValue: PropTypes.string.isRequired,
   setInputValue: PropTypes.func.isRequired,
-  clearInputValue: PropTypes.func.isRequired
+  clearInputValue: PropTypes.func.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default Header;
