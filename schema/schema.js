@@ -99,7 +99,7 @@ const resolvers = {
   Upcoming: {
     poster_path: ({ poster_path }) => attachPoster(poster_path),
     release_date: ({ release_date }) => {
-      return dayjs(release_date).format('DD MMMM YYYY');
+      return dayjs(release_date).format('DD.MM.YYYY');
     }
   },
 

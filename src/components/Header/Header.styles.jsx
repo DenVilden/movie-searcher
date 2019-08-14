@@ -49,6 +49,7 @@ export const StyledInputBase = styled(props => (
 `;
 
 export const StyledLogo = styled(props => <Logo {...props} />)`
+  cursor: pointer;
   display: none;
   ${({ theme }) => theme.breakpoints.up('sm')} {
     display: block;
