@@ -3,11 +3,11 @@ import { fade } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import { Search as SearchIcon } from '@material-ui/icons';
 import { InputBase } from '@material-ui/core';
+import { ReactComponent as Logo } from '../../assets/camera.svg';
 
 export const SearchBar = styled.div`
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
   background-color: ${({ theme }) => fade(theme.palette.common.white, 0.15)};
-  margin-left: ${({ theme }) => theme.spacing(2)}px;
   position: relative;
   width: auto;
   ${({ theme }) => theme.breakpoints.up('sm')} {
@@ -41,9 +41,16 @@ export const StyledInputBase = styled(props => (
   & .input {
     padding: ${({ theme }) => theme.spacing(1, 1, 1, 7)};
     transition: ${({ theme }) => theme.transitions.create('width')};
-    width: 200px;
+    width: 190px;
     ${({ theme }) => theme.breakpoints.up('md')} {
       width: 400px;
     }
+  }
+`;
+
+export const StyledLogo = styled(props => <Logo {...props} />)`
+  display: none;
+  ${({ theme }) => theme.breakpoints.up('sm')} {
+    display: block;
   }
 `;
