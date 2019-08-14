@@ -8,8 +8,8 @@ const moviesApi = axios.create({
   params: { api_key: `${process.env.REACT_APP_MOVIE_API_KEY}` }
 });
 
-const attachPoster = (path, size = 200) => {
-  return `https://image.tmdb.org/t/p/w${size}${path}`;
+const attachPoster = (path, size = 'w200') => {
+  return `https://image.tmdb.org/t/p/${size}${path}`;
 };
 
 const typeDefs = gql`
@@ -113,7 +113,7 @@ const resolvers = {
 
   MovieInfo: {
     backdrop_path: ({ backdrop_path }) => {
-      return backdrop_path && attachPoster(backdrop_path, 500);
+      return backdrop_path && attachPoster(backdrop_path, 'original');
     },
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
     release_date: ({ release_date }) => {
