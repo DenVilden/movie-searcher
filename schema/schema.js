@@ -8,8 +8,8 @@ const moviesApi = axios.create({
   params: { api_key: `${process.env.REACT_APP_MOVIE_API_KEY}` }
 });
 
-const attachPoster = (path, size = 'w200') => {
-  return `https://image.tmdb.org/t/p/${size}${path}`;
+const attachPoster = (path, size = 200) => {
+  return `https://image.tmdb.org/t/p/w${size}${path}`;
 };
 
 const typeDefs = gql`
@@ -94,7 +94,6 @@ const resolvers = {
       return data;
     }
   },
-
   /* eslint-disable camelcase */
 
   Upcoming: {
@@ -110,21 +109,21 @@ const resolvers = {
 
   MoviesSearch: {
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
-    release_date: ({ release_date }) => release_date.slice(0, 4)
+    release_date: ({ release_date }) => dayjs(release_date).format('YYYY')
+  },
+
+  SimilarMovies: {
+    poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
+    release_date: ({ release_date }) => dayjs(release_date).format('YYYY')
   },
 
   SimilarResults: {
     results: ({ results }) => results.slice(0, 6)
   },
 
-  SimilarMovies: {
-    poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
-    release_date: ({ release_date }) => release_date.slice(0, 4)
-  },
-
   MovieInfo: {
     backdrop_path: ({ backdrop_path }) => {
-      return backdrop_path && attachPoster(backdrop_path, 'original');
+      return backdrop_path && attachPoster(backdrop_path, 500);
     },
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
     release_date: ({ release_date }) => {

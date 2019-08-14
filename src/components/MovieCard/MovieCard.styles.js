@@ -4,7 +4,10 @@ import { Card, CardContent, CardMedia, Typography } from '@material-ui/core';
 export const StyledCard = styled(Card)`
   height: 330px;
   text-align: center;
-  width: 170px;
+  width: 130px;
+  ${({ theme }) => theme.breakpoints.up('sm')} {
+    width: 170px;
+  }
 `;
 
 export const StyledCardMedia = styled(CardMedia)`
