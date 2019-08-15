@@ -19,14 +19,14 @@ const MovieCard = ({
   release_date,
   vote_average,
   history,
-  clearMovies
+  clearInputValue
 }) => (
   <CardActionArea>
     <StyledCard
       elevation={10}
       onClick={() => {
         history.push(`/movie/${id}`);
-        clearMovies();
+        clearInputValue();
       }}
     >
       <StyledCardMedia image={poster_path || noImage} src="img" title={title} />
@@ -59,7 +59,7 @@ MovieCard.propTypes = {
   poster_path: PropTypes.string,
   vote_average: PropTypes.number,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
-  clearMovies: PropTypes.func.isRequired
+  clearInputValue: PropTypes.func.isRequired
 };
 
 export default MovieCard;

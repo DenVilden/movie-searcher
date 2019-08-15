@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useQuery, useMutation } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import MoviesFavorites from './MoviesFavorites';
@@ -13,12 +13,20 @@ const MoviesFavoritesContainer = props => {
   const [toggleFavoritesOpen] = useMutation(TOGGLE_FAVORITES);
   const [clearInputValue] = useMutation(CLEAR_INPUT_VALUE);
 
+  const toggleFavorites = useCallback(() => {
+    toggleFavoritesOpen();
+  }, [toggleFavoritesOpen]);
+
+  const clearInput = useCallback(() => {
+    clearInputValue();
+  }, [clearInputValue]);
+
   return (
     <MoviesFavorites
-      clearInputValue={clearInputValue}
+      clearInputValue={clearInput}
       favorites={data.favorites}
       open={data.favoritesOpen}
-      toggleFavorites={toggleFavoritesOpen}
+      toggleFavorites={toggleFavorites}
       {...props}
     />
   );

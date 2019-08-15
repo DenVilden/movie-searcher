@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useQuery, useMutation } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import {
@@ -13,11 +13,20 @@ const HeaderContainer = props => {
   const [setInputValue] = useMutation(SET_INPUT_VALUE);
   const [clearInputValue] = useMutation(CLEAR_INPUT_VALUE);
 
+  const setValue = useCallback(
+    value => setInputValue({ variables: { value } }),
+    [setInputValue]
+  );
+
+  const clearValue = useCallback(() => {
+    clearInputValue();
+  }, [clearInputValue]);
+
   return (
     <Header
-      clearInputValue={clearInputValue}
+      clearInputValue={clearValue}
       inputValue={data.inputValue}
-      setInputValue={value => setInputValue({ variables: { value } })}
+      setInputValue={setValue}
       {...props}
     />
   );
