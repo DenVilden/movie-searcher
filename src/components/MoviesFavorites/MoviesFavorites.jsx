@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import PropTypes from 'prop-types';
 import { CardActionArea, Divider, IconButton, Badge } from '@material-ui/core';
 import {
@@ -105,4 +105,4 @@ MoviesFavorites.propTypes = {
   ).isRequired
 };
 
-export default MoviesFavorites;
+export default memo(MoviesFavorites);

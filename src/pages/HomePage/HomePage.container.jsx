@@ -3,7 +3,7 @@ import { gql } from 'apollo-boost';
 import { useQuery } from 'react-apollo';
 import HomePage from './HomePage';
 import Spinner from '../../components/Spinner/Spinner';
-import ErrorBlock from '../../components/ErrorBlock/ErrorBlock';
+import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 
 const GET_MOVIES = gql`
   query {
@@ -27,9 +27,7 @@ const HomePageContainer = () => {
 
   if (loading) return <Spinner />;
 
-  if (error) {
-    return <ErrorBlock>{error.message}</ErrorBlock>;
-  }
+  if (error) return <ErrorBoundary>{error.message}</ErrorBoundary>;
 
   return <HomePage movies={data} />;
 };

@@ -5,14 +5,20 @@ import MovieInfo from '../../components/MovieInfo/MovieInfo.container';
 import MoviesSimilar from '../../components/MoviesSimilar/MoviesSimilar';
 
 const MoviePage = ({ movie }) => {
-  return movie ? (
+  if (!movie) return null;
+
+  return (
     <Slide direction="up" in>
       <div>
         <MovieInfo movie={movie} />
         <MoviesSimilar movies={movie.similar.results} />
       </div>
     </Slide>
-  ) : null;
+  );
+};
+
+MoviePage.defaultProps = {
+  movie: undefined
 };
 
 MoviePage.propTypes = {
@@ -35,7 +41,7 @@ MoviePage.propTypes = {
         })
       )
     })
-  }).isRequired
+  })
 };
 
 export default MoviePage;

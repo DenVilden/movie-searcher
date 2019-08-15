@@ -4,12 +4,18 @@ import MoviesUpcoming from '../../components/MoviesUpcoming/MoviesUpcoming';
 import MoviesTopRated from '../../components/MoviesTopRated/MoviesTopRated';
 
 const HomePage = ({ movies }) => {
-  return Object.values(movies).length ? (
+  if (!Object.keys(movies).length) return null;
+
+  return (
     <>
       <MoviesUpcoming movies={movies.upcoming} />
       <MoviesTopRated movies={movies.topRated} />
     </>
-  ) : null;
+  );
+};
+
+HomePage.defaultProps = {
+  movies: {}
 };
 
 HomePage.propTypes = {
@@ -30,7 +36,7 @@ HomePage.propTypes = {
         vote_average: PropTypes.number
       })
     )
-  }).isRequired
+  })
 };
 
 export default HomePage;

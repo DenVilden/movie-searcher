@@ -4,7 +4,7 @@ import { useQuery } from 'react-apollo';
 import { gql } from 'apollo-boost';
 import MoviesSearch from './MoviesSearch';
 import Spinner from '../Spinner/Spinner';
-import ErrorBlock from '../ErrorBlock/ErrorBlock';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
 const GET_MOVIES = gql`
   query($query: String!) {
@@ -17,18 +17,18 @@ const GET_MOVIES = gql`
   }
 `;
 
-const MoviesSearchContainer = ({ query }) => {
+const MoviesSearchContainer = ({ inputValue }) => {
   const { loading, error, data } = useQuery(GET_MOVIES, {
-    variables: { query }
+    variables: { query: inputValue }
   });
 
   if (loading) return <Spinner />;
 
   if (error || !data.moviesSearch.length) {
     return (
-      <ErrorBlock gutterBottom>
-        {error ? `${error.message}` : 'Nothing found'}
-      </ErrorBlock>
+      <ErrorBoundary gutterBottom>
+        {error ? error.message : 'Nothing found'}
+      </ErrorBoundary>
     );
   }
 
@@ -36,7 +36,7 @@ const MoviesSearchContainer = ({ query }) => {
 };
 
 MoviesSearchContainer.propTypes = {
-  query: PropTypes.string.isRequired
+  inputValue: PropTypes.string.isRequired
 };
 
 export default MoviesSearchContainer;

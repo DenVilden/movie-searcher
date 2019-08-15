@@ -34,7 +34,7 @@ const Header = ({ inputValue, setInputValue, clearInputValue, history }) => (
         <MoviesFavorites />
       </Toolbar>
     </AppBar>
-    {inputValue && <MoviesSearch query={inputValue} />}
+    {inputValue && <MoviesSearch inputValue={inputValue} />}
   </>
 );
 

@@ -4,7 +4,7 @@ import { gql } from 'apollo-boost';
 import { useQuery } from 'react-apollo';
 import MoviePage from './MoviePage';
 import Spinner from '../../components/Spinner/Spinner';
-import ErrorBlock from '../../components/ErrorBlock/ErrorBlock';
+import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 
 const GET_MOVIE_INFO = gql`
   query($id: String!) {
@@ -37,9 +37,8 @@ const MoviePageContainer = ({ id }) => {
 
   if (loading) return <Spinner />;
 
-  if (error) {
-    return <ErrorBlock>{error.message}</ErrorBlock>;
-  }
+  if (error) return <ErrorBoundary>{error.message}</ErrorBoundary>;
+
   return <MoviePage movie={data.movieInfo} />;
 };
 

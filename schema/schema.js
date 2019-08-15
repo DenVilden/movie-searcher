@@ -69,7 +69,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     upcoming: async () => {
-      const { data } = await moviesApi.get('/movie/upcomin');
+      const { data } = await moviesApi.get('/movie/upcoming');
       return data.results
         .sort((a, b) => (a.release_date < b.release_date ? 1 : -1))
         .slice(0, 12);

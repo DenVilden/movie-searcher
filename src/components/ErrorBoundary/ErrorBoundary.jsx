@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
 
-const ErrorBlock = styled(({ children, ...props }) => (
+const ErrorBoundary = styled(({ children, ...props }) => (
   <Typography
     align="center"
     classes={{ root: 'root' }}
@@ -18,4 +18,4 @@ const ErrorBlock = styled(({ children, ...props }) => (
   }
 `;
 
-export default ErrorBlock;
+export default ErrorBoundary;
