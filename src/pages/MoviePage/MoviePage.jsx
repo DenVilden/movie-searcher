@@ -15,10 +15,6 @@ const MoviePage = ({ movie }) => {
   ) : null;
 };
 
-MoviePage.defaultProps = {
-  movie: undefined
-};
-
 MoviePage.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number,
@@ -39,7 +35,7 @@ MoviePage.propTypes = {
         })
       )
     })
-  })
+  }).isRequired
 };
 
 export default MoviePage;

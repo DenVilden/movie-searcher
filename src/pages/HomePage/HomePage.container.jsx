@@ -1,6 +1,6 @@
 import React from 'react';
 import { gql } from 'apollo-boost';
-import { useQuery } from 'react-apollo'
+import { useQuery } from 'react-apollo';
 import HomePage from './HomePage';
 import Spinner from '../../components/Spinner/Spinner';
 import ErrorBlock from '../../components/ErrorBlock/ErrorBlock';
@@ -31,7 +31,7 @@ const HomePageContainer = () => {
     return <ErrorBlock>{error.message}</ErrorBlock>;
   }
 
-  return <HomePage topRated={data.topRated} upcoming={data.upcoming} />;
+  return <HomePage movies={data} />;
 };
 
 export default HomePageContainer;
