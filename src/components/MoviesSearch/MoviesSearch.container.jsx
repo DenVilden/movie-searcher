@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from 'react-apollo';
-import { gql } from 'apollo-boost';
+import gql from 'graphql-tag';
 import MoviesSearch from './MoviesSearch';
 import Spinner from '../Spinner/Spinner';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';

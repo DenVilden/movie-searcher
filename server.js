@@ -1,10 +1,13 @@
 const path = require('path');
 const dotenv = require('dotenv');
 const express = require('express');
+const compression = require('compression');
 const { ApolloServer } = require('apollo-server-express');
 
 const app = express();
 const port = process.env.PORT || 5000;
+
+app.use(compression());
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'build')));

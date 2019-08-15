@@ -1,4 +1,4 @@
-import { gql } from 'apollo-boost';
+import gql from 'graphql-tag';
 
 export const SET_INPUT_VALUE = gql`
   mutation($value: String!) {

@@ -5,9 +5,8 @@ import { createMuiTheme } from '@material-ui/core';
 import { StylesProvider, jssPreset } from '@material-ui/styles';
 import { ThemeProvider } from 'styled-components';
 import { ApolloProvider } from 'react-apollo';
-import { ApolloClient } from 'apollo-boost';
+import { ApolloClient } from 'apollo-client';
 import { persistCache } from 'apollo-cache-persist';
-/* eslint-disable import/no-extraneous-dependencies */
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import App from './routes/App';
