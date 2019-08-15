@@ -10,7 +10,7 @@ import { persistCache } from 'apollo-cache-persist';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import App from './routes/App';
-import { typeDefs, resolvers } from './graphql/resolvers';
+import resolvers from './graphql/resolvers';
 import data from './graphql/initialData';
 
 const link = createHttpLink();
@@ -18,7 +18,7 @@ const cache = new InMemoryCache();
 
 const waitOnCache = persistCache({ cache, storage: window.localStorage });
 
-const client = new ApolloClient({ link, cache, typeDefs, resolvers });
+const client = new ApolloClient({ link, cache, resolvers });
 client.writeData({ data });
 
 const theme = createMuiTheme();

@@ -1,21 +1,10 @@
-import { gql } from 'apollo-server-express';
 import {
   GET_FAVORITES_STATE,
   GET_FAVORITES_DATA,
   GET_INPUT_VALUE
 } from './types';
 
-export const typeDefs = gql`
-  type Mutation {
-    toggleFavoritesOpen: Boolean!
-    addMovieToFavorites(movie: MovieInfo!): [MovieInfo]!
-    removeMovieFromFavorites(movie: MovieInfo!): [MovieInfo]!
-    setInputValue(value: String!): String!
-    clearInputValue: String!
-  }
-`;
-
-export const resolvers = {
+export default {
   Mutation: {
     toggleFavoritesOpen: (_, __, { cache }) => {
       const { favoritesOpen } = cache.readQuery({
