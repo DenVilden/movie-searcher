@@ -3,11 +3,13 @@ const dotenv = require('dotenv');
 const express = require('express');
 const compression = require('compression');
 const { ApolloServer } = require('apollo-server-express');
+const enforce = require('express-sslify');
 
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(compression());
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'build')));
@@ -17,6 +19,10 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   dotenv.config();
 }
+
+app.get('/service-worker.js', (req, res) => {
+  res.send(path.resolve(__dirname, '..', 'build', 'service-worker.js'));
+});
 
 const { typeDefs, resolvers } = require('./schema/schema.js');
 
