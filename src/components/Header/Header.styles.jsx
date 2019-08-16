@@ -40,7 +40,6 @@ export const StyledInputBase = styled(props => (
   }
   & .input {
     padding: ${({ theme }) => theme.spacing(1, 1, 1, 7)};
-    transition: ${({ theme }) => theme.transitions.create('width')};
     width: 190px;
     ${({ theme }) => theme.breakpoints.up('md')} {
       width: 400px;

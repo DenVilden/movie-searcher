@@ -14,7 +14,7 @@ const MoviesContainer = ({ movies, title, elevation, padding }) => (
     <List container>
       {movies.map(movie => (
         <Grow key={movie.id} in>
-          <Grid item lg={2} sm={4} xs={6}>
+          <Grid item lg={2} md={3} sm={4} xs={5}>
             <Wrapper container justify="center">
               <Grid item>
                 <MovieCard {...movie} />
