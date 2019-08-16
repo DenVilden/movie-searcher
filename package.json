@@ -56,7 +56,9 @@
       "prettier/react"
     ],
     "rules": {
-      "react/jsx-sort-props": 2
+      "react/jsx-sort-props": 2,
+      "jsx-a11y/label-has-for": "off",
+      "jsx-a11y/label-has-associated-control": "off"
     }
   },
   "browserslist": {

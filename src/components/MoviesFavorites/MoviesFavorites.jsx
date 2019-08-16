@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState, useCallback, memo } from 'react';
 import PropTypes from 'prop-types';
 import { CardActionArea, Divider, IconButton, Badge } from '@material-ui/core';
 import {
@@ -23,15 +23,28 @@ const MoviesFavorites = ({
 }) => {
   const [anchorEl, setAnchor] = useState();
 
+  const toggleAnchor = useCallback(
+    evt => {
+      setAnchor(evt.currentTarget);
+      toggleFavorites();
+    },
+    [toggleFavorites]
+  );
+
+  const goTo = useCallback(
+    id => {
+      history.push(`/movie/${id}`);
+      clearInputValue();
+    },
+    [clearInputValue, history]
+  );
+
   return (
     <Root>
       <IconButton
         color="inherit"
         disabled={!favorites.length}
-        onClick={evt => {
-          setAnchor(evt.currentTarget);
-          toggleFavorites();
-        }}
+        onClick={toggleAnchor}
         variant="contained"
       >
         <Badge badgeContent={favorites.length} color="secondary">
@@ -56,12 +69,7 @@ const MoviesFavorites = ({
         {/* eslint-disable camelcase */}
         {favorites.map(({ id, poster_path, title }) => (
           <CardActionArea key={id} onClick={toggleFavorites}>
-            <CardWrapper
-              onClick={() => {
-                history.push(`/movie/${id}`);
-                clearInputValue();
-              }}
-            >
+            <CardWrapper onClick={() => goTo(id)}>
               <StyledCardMedia
                 image={poster_path || noImage}
                 src="img"

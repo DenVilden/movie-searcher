@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const { typeDefs, resolvers } = require('./schema/schema.js');
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ cors: true, typeDefs, resolvers });
 server.applyMiddleware({ app });
 
 app.listen(port, () => {

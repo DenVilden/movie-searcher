@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Slide } from '@material-ui/core';
 import MovieInfo from '../../components/MovieInfo/MovieInfo.container';
@@ -44,4 +44,4 @@ MoviePage.propTypes = {
   })
 };
 
-export default MoviePage;
+export default memo(MoviePage);

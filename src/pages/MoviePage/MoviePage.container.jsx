@@ -30,7 +30,11 @@ const GET_MOVIE_INFO = gql`
   }
 `;
 
-const MoviePageContainer = ({ id }) => {
+const MoviePageContainer = ({
+  match: {
+    params: { id }
+  }
+}) => {
   const { loading, error, data } = useQuery(GET_MOVIE_INFO, {
     variables: { id }
   });
@@ -43,7 +47,7 @@ const MoviePageContainer = ({ id }) => {
 };
 
 MoviePageContainer.propTypes = {
-  id: PropTypes.string.isRequired
+  match: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default MoviePageContainer;

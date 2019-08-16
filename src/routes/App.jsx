@@ -14,10 +14,7 @@ const App = () => (
     <Switch>
       <Suspense fallback={<Spinner />}>
         <Route component={HomePage} exact path="/" />
-        <Route
-          path="/movie/:id"
-          render={({ match }) => <MoviePage id={match.params.id} />}
-        />
+        <Route component={MoviePage} path="/movie/:id" />
       </Suspense>
     </Switch>
   </Router>
