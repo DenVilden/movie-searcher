@@ -18,7 +18,11 @@ const MovieCard = ({
   clearInputValue,
 }) => (
   <CardActionArea>
-    <Link to={`/movie/${id}`} onClick={clearInputValue}>
+    <Link
+      to={`/movie/${id}`}
+      onClick={clearInputValue}
+      aria-label="Detailed information about movie"
+    >
       <StyledCard elevation={10}>
         <StyledCardMedia
           image={poster_path || noImage}

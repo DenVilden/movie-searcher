@@ -27,13 +27,13 @@ const Header = ({ inputValue, setInputValue, clearInputValue }) => {
       <AppBar position="static">
         <Toolbar>
           <Typography color="inherit" noWrap variant="h6">
-            <Link to="/" onClick={onClear}>
+            <Link to="/" onClick={onClear} aria-label="Go to main page">
               <StyledLogo />
             </Link>
           </Typography>
           <SearchBar>
             <StyledSearchIcon />
-            <label aria-label="SearchBar">
+            <label aria-label="search bar">
               <StyledInputBase
                 onChange={onChange}
                 placeholder="type a movie name..."

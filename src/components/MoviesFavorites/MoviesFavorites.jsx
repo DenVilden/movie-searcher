@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import PropTypes from 'prop-types';
 import { CardActionArea, Divider, IconButton, Badge } from '@material-ui/core';
 import {
@@ -59,7 +59,11 @@ const MoviesFavorites = ({
         {favorites.map(({ id, poster_path, title }) => (
           <CardActionArea key={id} onClick={toggleFavorites}>
             <CardWrapper>
-              <Link to={`/movie/${id}`} onClick={clearInputValue}>
+              <Link
+                to={`/movie/${id}`}
+                onClick={clearInputValue}
+                aria-label="Detailed information about movie"
+              >
                 <StyledCardMedia
                   image={poster_path || noImage}
                   src="img"
@@ -103,4 +107,4 @@ MoviesFavorites.propTypes = {
   ).isRequired,
 };
 
-export default MoviesFavorites;
+export default memo(MoviesFavorites);
