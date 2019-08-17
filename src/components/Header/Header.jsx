@@ -8,7 +8,7 @@ import {
   StyledInputBase,
   StyledLogo,
 } from './Header.styles';
-import MoviesFavorites from '../MoviesFavorites/MoviesFavorites.container';
+import FavoritesDropdown from '../FavoritesDropdown/FavoritesDropdown.container';
 import MoviesSearch from '../MoviesSearch/MoviesSearch.container';
 
 const Header = ({ inputValue, setInputValue, clearInputValue }) => {
@@ -42,7 +42,7 @@ const Header = ({ inputValue, setInputValue, clearInputValue }) => {
               />
             </label>
           </SearchBar>
-          <MoviesFavorites />
+          <FavoritesDropdown />
         </Toolbar>
       </AppBar>
       {inputValue && <MoviesSearch inputValue={inputValue} />}

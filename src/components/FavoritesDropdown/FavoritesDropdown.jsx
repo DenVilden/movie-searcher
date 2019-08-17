@@ -12,10 +12,10 @@ import {
   CardWrapper,
   StyledCardMedia,
   StyledPopover,
-} from './MoviesFavorites.styles';
+} from './FavoritesDropdown.styles';
 import noImage from '../../assets/no-image.jpg';
 
-const MoviesFavorites = ({
+const FavoritesDropdown = ({
   toggleFavorites,
   open,
   favorites,
@@ -79,7 +79,7 @@ const MoviesFavorites = ({
   );
 };
 
-MoviesFavorites.propTypes = {
+FavoritesDropdown.propTypes = {
   toggleFavorites: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   clearInputValue: PropTypes.func.isRequired,
@@ -107,4 +107,4 @@ MoviesFavorites.propTypes = {
   ).isRequired,
 };
 
-export default memo(MoviesFavorites);
+export default memo(FavoritesDropdown);
