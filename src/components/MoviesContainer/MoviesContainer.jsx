@@ -30,14 +30,14 @@ const MoviesContainer = ({ movies, title, elevation, padding }) => (
 MoviesContainer.defaultProps = {
   title: '',
   elevation: 1,
-  padding: 0
+  padding: 0,
 };
 
 MoviesContainer.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.any).isRequired,
   title: PropTypes.string,
   elevation: PropTypes.number,
-  padding: PropTypes.number
+  padding: PropTypes.number,
 };
 
 export default MoviesContainer;

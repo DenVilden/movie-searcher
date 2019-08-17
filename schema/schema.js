@@ -5,7 +5,7 @@ const numeral = require('numeral');
 
 const moviesApi = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
-  params: { api_key: `${process.env.REACT_APP_MOVIE_API_KEY}` }
+  params: { api_key: `${process.env.REACT_APP_MOVIE_API_KEY}` },
 });
 
 const attachPoster = (path, size = 200) => {
@@ -82,43 +82,43 @@ const resolvers = {
 
     moviesSearch: async (_, { query }) => {
       const { data } = await moviesApi.get('/search/movie', {
-        params: { query }
+        params: { query },
       });
       return data.results.slice(0, 6);
     },
 
     movieInfo: async (_, { id }) => {
       const { data } = await moviesApi.get(`/movie/${id}`, {
-        params: { append_to_response: 'similar' }
+        params: { append_to_response: 'similar' },
       });
       return data;
-    }
+    },
   },
-  /* eslint-disable camelcase */
 
+  /* eslint-disable camelcase */
   Upcoming: {
     poster_path: ({ poster_path }) => attachPoster(poster_path),
     release_date: ({ release_date }) => {
       return dayjs(release_date).format('DD.MM.YYYY');
-    }
+    },
   },
 
   TopRated: {
-    poster_path: ({ poster_path }) => attachPoster(poster_path)
+    poster_path: ({ poster_path }) => attachPoster(poster_path),
   },
 
   MoviesSearch: {
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
-    release_date: ({ release_date }) => dayjs(release_date).format('YYYY')
+    release_date: ({ release_date }) => dayjs(release_date).format('YYYY'),
   },
 
   SimilarMovies: {
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
-    release_date: ({ release_date }) => dayjs(release_date).format('YYYY')
+    release_date: ({ release_date }) => dayjs(release_date).format('YYYY'),
   },
 
   SimilarResults: {
-    results: ({ results }) => results.slice(0, 6)
+    results: ({ results }) => results.slice(0, 6),
   },
 
   MovieInfo: {
@@ -130,8 +130,8 @@ const resolvers = {
       return dayjs(release_date).format('DD MMMM YYYY');
     },
     budget: ({ budget }) => numeral(budget).format('$0,00'),
-    revenue: ({ revenue }) => numeral(revenue).format('$0,00')
-  }
+    revenue: ({ revenue }) => numeral(revenue).format('$0,00'),
+  },
 };
 
 module.exports = { typeDefs, resolvers };

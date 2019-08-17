@@ -15,9 +15,8 @@ import resolvers from './graphql/resolvers';
 import data from './graphql/initialData';
 
 const link = createHttpLink();
-const cache = new InMemoryCache();
 
-const waitOnCache = persistCache({ cache, storage: window.localStorage });
+const cache = new InMemoryCache();
 
 const client = new ApolloClient({ link, cache, resolvers });
 client.writeData({ data });
@@ -26,12 +25,13 @@ const theme = createMuiTheme();
 
 const jss = create({
   ...jssPreset(),
-  insertionPoint: document.getElementById('jss-insertion-point')
+  insertionPoint: document.getElementById('jss-insertion-point'),
 });
 
-waitOnCache.then(() => {
-  // eslint-disable-next-line react/no-render-return-value
-  return ReactDOM.render(
+const renderApp = async () => {
+  await persistCache({ cache, storage: window.localStorage });
+
+  ReactDOM.render(
     <ApolloProvider client={client}>
       <StylesProvider jss={jss}>
         <ThemeProvider theme={theme}>
@@ -41,6 +41,8 @@ waitOnCache.then(() => {
     </ApolloProvider>,
     document.getElementById('root')
   );
-});
+};
+
+renderApp();
 
 serviceWorker.register();

@@ -21,9 +21,9 @@ MoviesSimilar.propTypes = {
       id: PropTypes.number,
       title: PropTypes.string,
       release_date: PropTypes.string,
-      poster_path: PropTypes.string
+      poster_path: PropTypes.string,
     })
-  ).isRequired
+  ).isRequired,
 };
 
 export default MoviesSimilar;

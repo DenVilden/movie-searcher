@@ -5,7 +5,7 @@ import {
   StyledCard,
   StyledCardMedia,
   StyledCardContent,
-  StyledTypography
+  StyledTypography,
 } from './MovieInfo.styles';
 import noImage from '../../assets/no-image.jpg';
 
@@ -18,10 +18,10 @@ const MovieInfo = ({
     budget,
     revenue,
     vote_average,
-    release_date
+    release_date,
   },
   isExist,
-  toggleSave
+  toggleSave,
 }) => (
   <StyledCard elevation={10}>
     <StyledCardMedia image={backdrop_path || noImage} src="img" />
@@ -73,13 +73,13 @@ MovieInfo.propTypes = {
           id: PropTypes.number,
           title: PropTypes.string,
           release_date: PropTypes.string,
-          poster_path: PropTypes.string
+          poster_path: PropTypes.string,
         })
-      )
-    })
+      ),
+    }),
   }).isRequired,
   isExist: PropTypes.bool.isRequired,
-  toggleSave: PropTypes.func.isRequired
+  toggleSave: PropTypes.func.isRequired,
 };
 
 export default MovieInfo;

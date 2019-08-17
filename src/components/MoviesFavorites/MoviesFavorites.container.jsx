@@ -5,7 +5,7 @@ import MoviesFavorites from './MoviesFavorites';
 import {
   GET_FAVORITES,
   TOGGLE_FAVORITES,
-  CLEAR_INPUT_VALUE
+  CLEAR_INPUT_VALUE,
 } from '../../graphql/types';
 
 const MoviesFavoritesContainer = props => {

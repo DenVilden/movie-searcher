@@ -15,7 +15,7 @@ const HomePage = ({ movies }) => {
 };
 
 HomePage.defaultProps = {
-  movies: {}
+  movies: {},
 };
 
 HomePage.propTypes = {
@@ -25,7 +25,7 @@ HomePage.propTypes = {
         id: PropTypes.number,
         title: PropTypes.string,
         release_date: PropTypes.string,
-        poster_path: PropTypes.string
+        poster_path: PropTypes.string,
       })
     ),
     topRated: PropTypes.arrayOf(
@@ -33,10 +33,10 @@ HomePage.propTypes = {
         id: PropTypes.number,
         title: PropTypes.string,
         release_date: PropTypes.string,
-        vote_average: PropTypes.number
+        vote_average: PropTypes.number,
       })
-    )
-  })
+    ),
+  }),
 };
 
 export default HomePage;

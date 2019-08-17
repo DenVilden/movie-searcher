@@ -17,9 +17,9 @@ MoviesUpcoming.propTypes = {
       id: PropTypes.number,
       poster_path: PropTypes.string,
       title: PropTypes.string,
-      release_date: PropTypes.string
+      release_date: PropTypes.string,
     })
-  ).isRequired
+  ).isRequired,
 };
 
 export default MoviesUpcoming;

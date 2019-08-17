@@ -5,7 +5,7 @@ import {
   SearchBar,
   StyledSearchIcon,
   StyledInputBase,
-  StyledLogo
+  StyledLogo,
 } from './Header.styles';
 import MoviesFavorites from '../MoviesFavorites/MoviesFavorites.container';
 import MoviesSearch from '../MoviesSearch/MoviesSearch.container';
@@ -17,7 +17,7 @@ const Header = ({ inputValue, setInputValue, clearInputValue, history }) => {
   }, [clearInputValue, history]);
 
   const onChange = useCallback(evt => setInputValue(evt.target.value), [
-    setInputValue
+    setInputValue,
   ]);
 
   return (
@@ -50,7 +50,7 @@ Header.propTypes = {
   inputValue: PropTypes.string.isRequired,
   setInputValue: PropTypes.func.isRequired,
   clearInputValue: PropTypes.func.isRequired,
-  history: PropTypes.objectOf(PropTypes.any).isRequired
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default Header;

@@ -18,7 +18,7 @@ const MoviePage = ({ movie }) => {
 };
 
 MoviePage.defaultProps = {
-  movie: undefined
+  movie: undefined,
 };
 
 MoviePage.propTypes = {
@@ -37,11 +37,11 @@ MoviePage.propTypes = {
           id: PropTypes.number,
           title: PropTypes.string,
           release_date: PropTypes.string,
-          poster_path: PropTypes.string
+          poster_path: PropTypes.string,
         })
-      )
-    })
-  })
+      ),
+    }),
+  }),
 };
 
 export default memo(MoviePage);

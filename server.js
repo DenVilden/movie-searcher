@@ -16,13 +16,12 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });
+  app.get('/service-worker.js', (req, res) => {
+    res.send(path.resolve(__dirname, '..', 'build', 'service-worker.js'));
+  });
 } else {
   dotenv.config();
 }
-
-app.get('/service-worker.js', (req, res) => {
-  res.send(path.resolve(__dirname, '..', 'build', 'service-worker.js'));
-});
 
 const { typeDefs, resolvers } = require('./schema/schema.js');
 

@@ -19,7 +19,7 @@ const GET_MOVIES = gql`
 
 const MoviesSearchContainer = ({ inputValue }) => {
   const { loading, error, data } = useQuery(GET_MOVIES, {
-    variables: { query: inputValue }
+    variables: { query: inputValue },
   });
 
   if (loading) return <Spinner />;
@@ -36,7 +36,7 @@ const MoviesSearchContainer = ({ inputValue }) => {
 };
 
 MoviesSearchContainer.propTypes = {
-  inputValue: PropTypes.string.isRequired
+  inputValue: PropTypes.string.isRequired,
 };
 
 export default MoviesSearchContainer;

@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { CardActionArea, Divider, IconButton, Badge } from '@material-ui/core';
 import {
   Favorite as FavoriteIcon,
-  FavoriteBorder as FavoriteBorderIcon
+  FavoriteBorder as FavoriteBorderIcon,
 } from '@material-ui/icons';
 import {
   Root,
   StyledTypography,
   CardWrapper,
   StyledCardMedia,
-  StyledPopover
+  StyledPopover,
 } from './MoviesFavorites.styles';
 import noImage from '../../assets/no-image.jpg';
 
@@ -19,7 +19,7 @@ const MoviesFavorites = ({
   open,
   favorites,
   clearInputValue,
-  history
+  history,
 }) => {
   const [anchorEl, setAnchor] = useState();
 
@@ -55,13 +55,13 @@ const MoviesFavorites = ({
         anchorEl={anchorEl}
         anchorOrigin={{
           vertical: 'bottom',
-          horizontal: 'center'
+          horizontal: 'center',
         }}
         onClose={toggleFavorites}
         open={open}
         transformOrigin={{
           vertical: 'top',
-          horizontal: 'center'
+          horizontal: 'center',
         }}
       >
         <StyledTypography variant="overline">Favorites</StyledTypography>
@@ -105,12 +105,12 @@ MoviesFavorites.propTypes = {
             id: PropTypes.number,
             title: PropTypes.string,
             release_date: PropTypes.string,
-            poster_path: PropTypes.string
+            poster_path: PropTypes.string,
           })
-        )
-      })
+        ),
+      }),
     })
-  ).isRequired
+  ).isRequired,
 };
 
 export default memo(MoviesFavorites);

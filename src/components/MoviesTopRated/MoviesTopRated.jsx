@@ -17,9 +17,9 @@ MoviesTopRated.propTypes = {
       id: PropTypes.number,
       poster_path: PropTypes.string,
       title: PropTypes.string,
-      vote_average: PropTypes.number
+      vote_average: PropTypes.number,
     })
-  ).isRequired
+  ).isRequired,
 };
 
 export default MoviesTopRated;

@@ -5,7 +5,7 @@ import MovieInfo from './MovieInfo';
 import {
   GET_FAVORITES_DATA,
   ADD_TO_FAVORITES,
-  REMOVE_FROM_FAVORITES
+  REMOVE_FROM_FAVORITES,
 } from '../../graphql/types';
 
 const MovieInfoContainer = ({ movie }) => {
@@ -45,11 +45,11 @@ MovieInfoContainer.propTypes = {
           id: PropTypes.number,
           title: PropTypes.string,
           release_date: PropTypes.string,
-          poster_path: PropTypes.string
+          poster_path: PropTypes.string,
         })
-      )
-    })
-  }).isRequired
+      ),
+    }),
+  }).isRequired,
 };
 
 export default MovieInfoContainer;

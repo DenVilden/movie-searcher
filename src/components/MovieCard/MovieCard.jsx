@@ -7,7 +7,7 @@ import {
   StyledCardMedia,
   StyledCardContent,
   StyledTypography,
-  IconWrapper
+  IconWrapper,
 } from './MovieCard.styles';
 import noImage from '../../assets/no-image.jpg';
 
@@ -19,7 +19,7 @@ const MovieCard = ({
   release_date,
   vote_average,
   history,
-  clearInputValue
+  clearInputValue,
 }) => {
   const goTo = useCallback(() => {
     history.push(`/movie/${id}`);
@@ -54,7 +54,7 @@ const MovieCard = ({
 MovieCard.defaultProps = {
   poster_path: null,
   vote_average: undefined,
-  release_date: undefined
+  release_date: undefined,
 };
 
 MovieCard.propTypes = {
@@ -64,7 +64,7 @@ MovieCard.propTypes = {
   poster_path: PropTypes.string,
   vote_average: PropTypes.number,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
-  clearInputValue: PropTypes.func.isRequired
+  clearInputValue: PropTypes.func.isRequired,
 };
 
 export default MovieCard;

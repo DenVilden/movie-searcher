@@ -32,11 +32,11 @@ const GET_MOVIE_INFO = gql`
 
 const MoviePageContainer = ({
   match: {
-    params: { id }
-  }
+    params: { id },
+  },
 }) => {
   const { loading, error, data } = useQuery(GET_MOVIE_INFO, {
-    variables: { id }
+    variables: { id },
   });
 
   if (loading) return <Spinner />;
@@ -47,7 +47,7 @@ const MoviePageContainer = ({
 };
 
 MoviePageContainer.propTypes = {
-  match: PropTypes.objectOf(PropTypes.any).isRequired
+  match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default MoviePageContainer;

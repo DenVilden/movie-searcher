@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import {
   GET_INPUT_VALUE,
   SET_INPUT_VALUE,
-  CLEAR_INPUT_VALUE
+  CLEAR_INPUT_VALUE,
 } from '../../graphql/types';
 import Header from './Header';
 

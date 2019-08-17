@@ -1,19 +1,19 @@
 import {
   GET_FAVORITES_STATE,
   GET_FAVORITES_DATA,
-  GET_INPUT_VALUE
+  GET_INPUT_VALUE,
 } from './types';
 
 export default {
   Mutation: {
     toggleFavoritesOpen: (_, __, { cache }) => {
       const { favoritesOpen } = cache.readQuery({
-        query: GET_FAVORITES_STATE
+        query: GET_FAVORITES_STATE,
       });
 
       cache.writeQuery({
         query: GET_FAVORITES_STATE,
-        data: { favoritesOpen: !favoritesOpen }
+        data: { favoritesOpen: !favoritesOpen },
       });
 
       return !favoritesOpen;
@@ -21,14 +21,14 @@ export default {
 
     addMovieToFavorites: (_, { movie }, { cache }) => {
       const { favorites } = cache.readQuery({
-        query: GET_FAVORITES_DATA
+        query: GET_FAVORITES_DATA,
       });
 
       const newFavorites = [...favorites, movie];
 
       cache.writeQuery({
         query: GET_FAVORITES_DATA,
-        data: { favorites: newFavorites }
+        data: { favorites: newFavorites },
       });
 
       return newFavorites;
@@ -36,7 +36,7 @@ export default {
 
     removeMovieFromFavorites: (_, { movie }, { cache }) => {
       const { favorites } = cache.readQuery({
-        query: GET_FAVORITES_DATA
+        query: GET_FAVORITES_DATA,
       });
 
       const newFavorites = favorites.filter(
@@ -45,7 +45,7 @@ export default {
 
       cache.writeQuery({
         query: GET_FAVORITES_DATA,
-        data: { favorites: newFavorites }
+        data: { favorites: newFavorites },
       });
 
       return newFavorites;
@@ -54,7 +54,7 @@ export default {
     setInputValue: (_, { value }, { cache }) => {
       cache.writeQuery({
         query: GET_INPUT_VALUE,
-        data: { inputValue: value }
+        data: { inputValue: value },
       });
 
       return value;
@@ -65,10 +65,10 @@ export default {
 
       cache.writeQuery({
         query: GET_INPUT_VALUE,
-        data: { inputValue }
+        data: { inputValue },
       });
 
       return inputValue;
-    }
-  }
+    },
+  },
 };
