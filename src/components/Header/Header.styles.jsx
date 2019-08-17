@@ -26,15 +26,21 @@ export const StyledSearchIcon = styled(SearchIcon)`
   width: ${({ theme }) => theme.spacing(4)}px;
 `;
 
-export const StyledInputBase = styled(props => (
-  <InputBase
-    classes={{
-      root: 'root',
-      input: 'input'
-    }}
-    {...props}
-  />
-))`
+export const StyledInputBase = styled(
+  ({ className, onChange, placeholder, type, value }) => (
+    <InputBase
+      classes={{
+        root: 'root',
+        input: 'input',
+      }}
+      className={className}
+      onChange={onChange}
+      placeholder={placeholder}
+      type={type}
+      value={value}
+    />
+  )
+)`
   &.root {
     color: inherit;
   }
@@ -47,7 +53,9 @@ export const StyledInputBase = styled(props => (
   }
 `;
 
-export const StyledLogo = styled(props => <Logo {...props} />)`
+export const StyledLogo = styled(({ className }) => (
+  <Logo className={className} />
+))`
   cursor: pointer;
   display: none;
   ${({ theme }) => theme.breakpoints.up('sm')} {

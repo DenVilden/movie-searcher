@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import {
   SearchBar,
   StyledSearchIcon,
@@ -10,22 +11,25 @@ import {
 import MoviesFavorites from '../MoviesFavorites/MoviesFavorites.container';
 import MoviesSearch from '../MoviesSearch/MoviesSearch.container';
 
-const Header = ({ inputValue, setInputValue, clearInputValue, history }) => {
-  const goTo = useCallback(() => {
-    history.push('/');
-    clearInputValue();
-  }, [clearInputValue, history]);
+const Header = ({ inputValue, setInputValue, clearInputValue }) => {
+  const onClear = () => {
+    if (inputValue) {
+      clearInputValue();
+    }
+  };
 
-  const onChange = useCallback(evt => setInputValue(evt.target.value), [
-    setInputValue,
-  ]);
+  const onChange = evt => {
+    setInputValue(evt.target.value);
+  };
 
   return (
     <>
       <AppBar position="static">
         <Toolbar>
           <Typography color="inherit" noWrap variant="h6">
-            <StyledLogo onClick={goTo} />
+            <Link to="/" onClick={onClear}>
+              <StyledLogo />
+            </Link>
           </Typography>
           <SearchBar>
             <StyledSearchIcon />
@@ -50,7 +54,6 @@ Header.propTypes = {
   inputValue: PropTypes.string.isRequired,
   setInputValue: PropTypes.func.isRequired,
   clearInputValue: PropTypes.func.isRequired,
-  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default Header;

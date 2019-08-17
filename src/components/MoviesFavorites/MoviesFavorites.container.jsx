@@ -1,6 +1,5 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useQuery, useMutation } from 'react-apollo';
-import { withRouter } from 'react-router-dom';
 import MoviesFavorites from './MoviesFavorites';
 import {
   GET_FAVORITES,
@@ -8,28 +7,19 @@ import {
   CLEAR_INPUT_VALUE,
 } from '../../graphql/types';
 
-const MoviesFavoritesContainer = props => {
+const MoviesFavoritesContainer = () => {
   const { data } = useQuery(GET_FAVORITES);
   const [toggleFavoritesOpen] = useMutation(TOGGLE_FAVORITES);
   const [clearInputValue] = useMutation(CLEAR_INPUT_VALUE);
 
-  const toggleFavorites = useCallback(() => {
-    toggleFavoritesOpen();
-  }, [toggleFavoritesOpen]);
-
-  const clearInput = useCallback(() => {
-    clearInputValue();
-  }, [clearInputValue]);
-
   return (
     <MoviesFavorites
-      clearInputValue={clearInput}
+      clearInputValue={clearInputValue}
       favorites={data.favorites}
       open={data.favoritesOpen}
-      toggleFavorites={toggleFavorites}
-      {...props}
+      toggleFavorites={toggleFavoritesOpen}
     />
   );
 };
 
-export default withRouter(MoviesFavoritesContainer);
+export default MoviesFavoritesContainer;

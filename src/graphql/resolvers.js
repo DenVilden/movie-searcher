@@ -61,14 +61,10 @@ export default {
     },
 
     clearInputValue: (_, __, { cache }) => {
-      const inputValue = '';
-
       cache.writeQuery({
         query: GET_INPUT_VALUE,
-        data: { inputValue },
+        data: { inputValue: '' },
       });
-
-      return inputValue;
     },
   },
 };

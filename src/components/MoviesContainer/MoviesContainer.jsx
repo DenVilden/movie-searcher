@@ -17,7 +17,7 @@ const MoviesContainer = ({ movies, title, elevation, padding }) => (
           <Grid item lg={2} md={3} sm={4} xs={5}>
             <Wrapper container justify="center">
               <Grid item>
-                <MovieCard {...movie} />
+                <MovieCard movie={movie} />
               </Grid>
             </Wrapper>
           </Grid>

@@ -1,7 +1,8 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { CardActionArea, Typography } from '@material-ui/core';
 import { Star as StarIcon } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
 import {
   StyledCard,
   StyledCardMedia,
@@ -13,22 +14,12 @@ import noImage from '../../assets/no-image.jpg';
 
 /* eslint-disable camelcase */
 const MovieCard = ({
-  id,
-  title,
-  poster_path,
-  release_date,
-  vote_average,
-  history,
+  movie: { id, title, poster_path, release_date, vote_average },
   clearInputValue,
-}) => {
-  const goTo = useCallback(() => {
-    history.push(`/movie/${id}`);
-    clearInputValue();
-  }, [clearInputValue, history, id]);
-
-  return (
-    <CardActionArea>
-      <StyledCard elevation={10} onClick={goTo}>
+}) => (
+  <CardActionArea>
+    <Link to={`/movie/${id}`} onClick={clearInputValue}>
+      <StyledCard elevation={10}>
         <StyledCardMedia
           image={poster_path || noImage}
           src="img"
@@ -47,23 +38,18 @@ const MovieCard = ({
           </StyledTypography>
         </StyledCardContent>
       </StyledCard>
-    </CardActionArea>
-  );
-};
-
-MovieCard.defaultProps = {
-  poster_path: null,
-  vote_average: undefined,
-  release_date: undefined,
-};
+    </Link>
+  </CardActionArea>
+);
 
 MovieCard.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  release_date: PropTypes.string,
-  poster_path: PropTypes.string,
-  vote_average: PropTypes.number,
-  history: PropTypes.objectOf(PropTypes.any).isRequired,
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    poster_path: PropTypes.string,
+    vote_average: PropTypes.number,
+  }).isRequired,
   clearInputValue: PropTypes.func.isRequired,
 };
 

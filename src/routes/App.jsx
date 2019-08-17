@@ -11,12 +11,15 @@ const App = () => (
   <Router>
     <GlobalStyle />
     <Header />
-    <Switch>
-      <Suspense fallback={<Spinner />}>
+    <Suspense fallback={<Spinner />}>
+      <Switch>
         <Route component={HomePage} exact path="/" />
-        <Route component={MoviePage} path="/movie/:id" />
-      </Suspense>
-    </Switch>
+        <Route
+          render={({ match }) => <MoviePage id={match.params.id} />}
+          path="/movie/:id"
+        />
+      </Switch>
+    </Suspense>
   </Router>
 );
 

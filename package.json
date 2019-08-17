@@ -59,8 +59,6 @@
       "prettier/react"
     ],
     "rules": {
-      "react/jsx-sort-props": 2,
-      "react/jsx-props-no-spreading": "off",
       "jsx-a11y/label-has-associated-control": "off"
     }
   },

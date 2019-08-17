@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery, useMutation } from 'react-apollo';
 import MovieInfo from './MovieInfo';
@@ -13,18 +13,15 @@ const MovieInfoContainer = ({ movie }) => {
   const [addToFavorites] = useMutation(ADD_TO_FAVORITES);
   const [removeFromFavorites] = useMutation(REMOVE_FROM_FAVORITES);
 
-  const isExist = useMemo(
-    () => data.favorites.some(favorite => favorite.id === movie.id),
-    [data.favorites, movie.id]
-  );
+  const isExist = data.favorites.some(favorite => favorite.id === movie.id);
 
-  const toggleSave = useCallback(() => {
+  const toggleSave = () => {
     if (isExist) {
       removeFromFavorites({ variables: { movie } });
     } else {
       addToFavorites({ variables: { movie } });
     }
-  }, [addToFavorites, isExist, movie, removeFromFavorites]);
+  };
 
   return <MovieInfo isExist={isExist} movie={movie} toggleSave={toggleSave} />;
 };

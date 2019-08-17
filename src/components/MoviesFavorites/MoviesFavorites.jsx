@@ -1,10 +1,11 @@
-import React, { useState, useCallback, memo } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { CardActionArea, Divider, IconButton, Badge } from '@material-ui/core';
 import {
   Favorite as FavoriteIcon,
   FavoriteBorder as FavoriteBorderIcon,
 } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
 import {
   Root,
   StyledTypography,
@@ -19,25 +20,13 @@ const MoviesFavorites = ({
   open,
   favorites,
   clearInputValue,
-  history,
 }) => {
   const [anchorEl, setAnchor] = useState();
 
-  const toggleAnchor = useCallback(
-    evt => {
-      setAnchor(evt.currentTarget);
-      toggleFavorites();
-    },
-    [toggleFavorites]
-  );
-
-  const goTo = useCallback(
-    id => {
-      history.push(`/movie/${id}`);
-      clearInputValue();
-    },
-    [clearInputValue, history]
-  );
+  const toggleAnchor = evt => {
+    setAnchor(evt.currentTarget);
+    toggleFavorites();
+  };
 
   return (
     <Root>
@@ -69,12 +58,14 @@ const MoviesFavorites = ({
         {/* eslint-disable camelcase */}
         {favorites.map(({ id, poster_path, title }) => (
           <CardActionArea key={id} onClick={toggleFavorites}>
-            <CardWrapper onClick={() => goTo(id)}>
-              <StyledCardMedia
-                image={poster_path || noImage}
-                src="img"
-                title={title}
-              />
+            <CardWrapper>
+              <Link to={`/movie/${id}`} onClick={clearInputValue}>
+                <StyledCardMedia
+                  image={poster_path || noImage}
+                  src="img"
+                  title={title}
+                />
+              </Link>
               <StyledTypography>{title}</StyledTypography>
             </CardWrapper>
           </CardActionArea>
@@ -86,7 +77,6 @@ const MoviesFavorites = ({
 
 MoviesFavorites.propTypes = {
   toggleFavorites: PropTypes.func.isRequired,
-  history: PropTypes.objectOf(PropTypes.any).isRequired,
   open: PropTypes.bool.isRequired,
   clearInputValue: PropTypes.func.isRequired,
   favorites: PropTypes.arrayOf(
@@ -113,4 +103,4 @@ MoviesFavorites.propTypes = {
   ).isRequired,
 };
 
-export default memo(MoviesFavorites);
+export default MoviesFavorites;

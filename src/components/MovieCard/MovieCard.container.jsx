@@ -1,17 +1,24 @@
-import React, { useCallback } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import { useMutation } from 'react-apollo';
-import { withRouter } from 'react-router-dom';
 import { CLEAR_INPUT_VALUE } from '../../graphql/types';
 import MovieCard from './MovieCard';
 
-const MovieCardContainer = props => {
+const MovieCardContainer = ({ movie }) => {
   const [clearInputValue] = useMutation(CLEAR_INPUT_VALUE);
 
-  const clearValue = useCallback(() => {
-    clearInputValue();
-  }, [clearInputValue]);
-
-  return <MovieCard clearInputValue={clearValue} {...props} />;
+  return <MovieCard clearInputValue={clearInputValue} movie={movie} />;
 };
 
-export default withRouter(MovieCardContainer);
+MovieCardContainer.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    poster_path: PropTypes.string,
+    vote_average: PropTypes.number,
+  }).isRequired,
+};
+
+export default MovieCardContainer;
