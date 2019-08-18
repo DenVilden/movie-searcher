@@ -5,7 +5,6 @@ import {
   Favorite as FavoriteIcon,
   FavoriteBorder as FavoriteBorderIcon,
 } from '@material-ui/icons';
-import { Link } from 'react-router-dom';
 import {
   Root,
   StyledTypography,
@@ -20,12 +19,19 @@ const FavoritesDropdown = ({
   open,
   favorites,
   clearInputValue,
+  history,
 }) => {
   const [anchorEl, setAnchor] = useState();
 
   const toggleAnchor = evt => {
     setAnchor(evt.currentTarget);
     toggleFavorites();
+  };
+
+  const goTo = id => () => {
+    toggleFavorites();
+    history.push(`/movie/${id}`);
+    clearInputValue();
   };
 
   return (
@@ -57,19 +63,13 @@ const FavoritesDropdown = ({
         <Divider />
         {/* eslint-disable camelcase */}
         {favorites.map(({ id, poster_path, title }) => (
-          <CardActionArea key={id} onClick={toggleFavorites}>
+          <CardActionArea key={id} onClick={goTo(id)}>
             <CardWrapper>
-              <Link
-                to={`/movie/${id}`}
-                onClick={clearInputValue}
-                aria-label="Detailed information about movie"
-              >
-                <StyledCardMedia
-                  image={poster_path || noImage}
-                  src="img"
-                  title={title}
-                />
-              </Link>
+              <StyledCardMedia
+                image={poster_path || noImage}
+                src="img"
+                title={title}
+              />
               <StyledTypography>{title}</StyledTypography>
             </CardWrapper>
           </CardActionArea>
@@ -83,6 +83,7 @@ FavoritesDropdown.propTypes = {
   toggleFavorites: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   clearInputValue: PropTypes.func.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
   favorites: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,

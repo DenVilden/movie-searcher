@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { AppBar, Toolbar } from '@material-ui/core';
 import {
   SearchBar,
   StyledSearchIcon,
   StyledInputBase,
-  StyledLogo,
+  LogoContainer,
 } from './Header.styles';
+import { ReactComponent as Logo } from '../../logo.svg';
 import FavoritesDropdown from '../FavoritesDropdown/FavoritesDropdown.container';
-import MoviesSearch from '../MoviesSearch/MoviesSearch.container';
+import Spinner from '../Spinner/Spinner';
 
-const Header = ({ inputValue, setInputValue, clearInputValue }) => {
+const MoviesSearch = lazy(() =>
+  import('../MoviesSearch/MoviesSearch.container')
+);
+
+const Header = ({ inputValue, setInputValue }) => {
   const onClear = () => {
     if (inputValue) {
-      clearInputValue();
+      setInputValue('');
     }
   };
 
@@ -26,11 +30,9 @@ const Header = ({ inputValue, setInputValue, clearInputValue }) => {
     <>
       <AppBar position="static">
         <Toolbar>
-          <Typography color="inherit" noWrap variant="h6">
-            <Link to="/" onClick={onClear} aria-label="Go to main page">
-              <StyledLogo />
-            </Link>
-          </Typography>
+          <LogoContainer to="/" onClick={onClear}>
+            <Logo />
+          </LogoContainer>
           <SearchBar>
             <StyledSearchIcon />
             <label aria-label="search bar">
@@ -45,7 +47,9 @@ const Header = ({ inputValue, setInputValue, clearInputValue }) => {
           <FavoritesDropdown />
         </Toolbar>
       </AppBar>
-      {inputValue && <MoviesSearch inputValue={inputValue} />}
+      <Suspense fallback={<Spinner />}>
+        {inputValue && <MoviesSearch inputValue={inputValue} />}
+      </Suspense>
     </>
   );
 };
@@ -53,7 +57,6 @@ const Header = ({ inputValue, setInputValue, clearInputValue }) => {
 Header.propTypes = {
   inputValue: PropTypes.string.isRequired,
   setInputValue: PropTypes.func.isRequired,
-  clearInputValue: PropTypes.func.isRequired,
 };
 
 export default Header;

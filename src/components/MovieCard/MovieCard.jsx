@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CardActionArea, Typography } from '@material-ui/core';
 import { Star as StarIcon } from '@material-ui/icons';
-import { Link } from 'react-router-dom';
 import {
   StyledCard,
   StyledCardMedia,
@@ -16,13 +15,15 @@ import noImage from '../../assets/no-image.jpg';
 const MovieCard = ({
   movie: { id, title, poster_path, release_date, vote_average },
   clearInputValue,
-}) => (
-  <CardActionArea>
-    <Link
-      to={`/movie/${id}`}
-      onClick={clearInputValue}
-      aria-label="Detailed information about movie"
-    >
+  history,
+}) => {
+  const goTo = () => {
+    history.push(`/movie/${id}`);
+    clearInputValue();
+  };
+
+  return (
+    <CardActionArea onClick={goTo}>
       <StyledCard elevation={10}>
         <StyledCardMedia
           image={poster_path || noImage}
@@ -42,9 +43,9 @@ const MovieCard = ({
           </StyledTypography>
         </StyledCardContent>
       </StyledCard>
-    </Link>
-  </CardActionArea>
-);
+    </CardActionArea>
+  );
+};
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
@@ -55,6 +56,7 @@ MovieCard.propTypes = {
     vote_average: PropTypes.number,
   }).isRequired,
   clearInputValue: PropTypes.func.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default MovieCard;

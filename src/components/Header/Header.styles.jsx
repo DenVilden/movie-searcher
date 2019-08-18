@@ -3,7 +3,7 @@ import { fade } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import { Search as SearchIcon } from '@material-ui/icons';
 import { InputBase } from '@material-ui/core';
-import { ReactComponent as Logo } from '../../assets/camera.svg';
+import { Link } from 'react-router-dom';
 
 export const SearchBar = styled.div`
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
@@ -53,9 +53,7 @@ export const StyledInputBase = styled(
   }
 `;
 
-export const StyledLogo = styled(({ className }) => (
-  <Logo className={className} />
-))`
+export const LogoContainer = styled(Link)`
   cursor: pointer;
   display: none;
   ${({ theme }) => theme.breakpoints.up('sm')} {
