@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 
-const MoviesSearch = ({ movies }) => (
+const SearchResults = ({ movies }) => (
   <MoviesContainer elevation={0} movies={movies} />
 );
 
-MoviesSearch.propTypes = {
+SearchResults.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
@@ -17,4 +17,4 @@ MoviesSearch.propTypes = {
   ).isRequired,
 };
 
-export default MoviesSearch;
+export default SearchResults;

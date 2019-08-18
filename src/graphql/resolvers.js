@@ -42,12 +42,5 @@ export default {
 
       return value;
     },
-
-    clearInputValue: (_, __, { cache }) => {
-      cache.writeQuery({
-        query: GET_INPUT_VALUE,
-        data: { inputValue: '' },
-      });
-    },
   },
 };

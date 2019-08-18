@@ -14,7 +14,7 @@ import {
 } from './FavoritesDropdown.styles';
 import noImage from '../../assets/no-image.jpg';
 
-const FavoritesDropdown = ({ favorites, clearInputValue, history }) => {
+const FavoritesDropdown = ({ favorites, setInputValue, history }) => {
   const [anchorEl, setAnchor] = useState();
   const [open, toggleOpen] = useState(false);
 
@@ -26,7 +26,7 @@ const FavoritesDropdown = ({ favorites, clearInputValue, history }) => {
   const goTo = id => {
     toggleOpen(!open);
     history.push(`/movie/${id}`);
-    clearInputValue();
+    setInputValue('');
   };
 
   return (
@@ -75,7 +75,7 @@ const FavoritesDropdown = ({ favorites, clearInputValue, history }) => {
 };
 
 FavoritesDropdown.propTypes = {
-  clearInputValue: PropTypes.func.isRequired,
+  setInputValue: PropTypes.func.isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
   favorites: PropTypes.arrayOf(
     PropTypes.shape({

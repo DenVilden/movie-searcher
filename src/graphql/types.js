@@ -6,12 +6,6 @@ export const SET_INPUT_VALUE = gql`
   }
 `;
 
-export const CLEAR_INPUT_VALUE = gql`
-  mutation {
-    clearInputValue @client
-  }
-`;
-
 export const ADD_TO_FAVORITES = gql`
   mutation($movie: MovieInfo!) {
     addMovieToFavorites(movie: $movie) @client

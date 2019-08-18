@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from 'react-apollo';
 import gql from 'graphql-tag';
-import MoviesSearch from './MoviesSearch';
+import SearchResults from './SearchResults';
 import Spinner from '../Spinner/Spinner';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
@@ -17,7 +17,7 @@ const GET_MOVIES = gql`
   }
 `;
 
-const MoviesSearchContainer = ({ inputValue }) => {
+const SearchResultsContainer = ({ inputValue }) => {
   const { loading, error, data } = useQuery(GET_MOVIES, {
     variables: { query: inputValue },
   });
@@ -32,11 +32,11 @@ const MoviesSearchContainer = ({ inputValue }) => {
     );
   }
 
-  return <MoviesSearch movies={data.moviesSearch} />;
+  return <SearchResults movies={data.moviesSearch} />;
 };
 
-MoviesSearchContainer.propTypes = {
+SearchResultsContainer.propTypes = {
   inputValue: PropTypes.string.isRequired,
 };
 
-export default MoviesSearchContainer;
+export default SearchResultsContainer;

@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { useQuery, useMutation } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import FavoritesDropdown from './FavoritesDropdown';
-import { CLEAR_INPUT_VALUE, GET_FAVORITES } from '../../graphql/types';
+import { GET_FAVORITES, SET_INPUT_VALUE } from '../../graphql/types';
 
 const FavoritesDropdownContainer = ({ history }) => {
   const { data } = useQuery(GET_FAVORITES);
-  const [clearInputValue] = useMutation(CLEAR_INPUT_VALUE);
+  const [setInputValue] = useMutation(SET_INPUT_VALUE);
 
   return (
     <FavoritesDropdown
-      clearInputValue={clearInputValue}
+      setInputValue={setInputValue}
       favorites={data.favorites}
       history={history}
     />

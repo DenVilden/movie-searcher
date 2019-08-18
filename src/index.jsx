@@ -9,7 +9,7 @@ import { ApolloClient } from 'apollo-client';
 import { persistCache } from 'apollo-cache-persist';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-import App from './routes/App';
+import App from './routes/App.container';
 import * as serviceWorker from './serviceWorker';
 import resolvers from './graphql/resolvers';
 import data from './graphql/initialData';
