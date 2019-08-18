@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { CardActionArea, Divider, IconButton, Badge } from '@material-ui/core';
 import {
@@ -14,22 +14,17 @@ import {
 } from './FavoritesDropdown.styles';
 import noImage from '../../assets/no-image.jpg';
 
-const FavoritesDropdown = ({
-  toggleFavorites,
-  open,
-  favorites,
-  clearInputValue,
-  history,
-}) => {
+const FavoritesDropdown = ({ favorites, clearInputValue, history }) => {
   const [anchorEl, setAnchor] = useState();
+  const [open, toggleOpen] = useState(false);
 
   const toggleAnchor = evt => {
     setAnchor(evt.currentTarget);
-    toggleFavorites();
+    toggleOpen(!open);
   };
 
-  const goTo = id => () => {
-    toggleFavorites();
+  const goTo = id => {
+    toggleOpen(!open);
     history.push(`/movie/${id}`);
     clearInputValue();
   };
@@ -52,7 +47,7 @@ const FavoritesDropdown = ({
           vertical: 'bottom',
           horizontal: 'center',
         }}
-        onClose={toggleFavorites}
+        onClose={() => toggleOpen(false)}
         open={open}
         transformOrigin={{
           vertical: 'top',
@@ -63,7 +58,7 @@ const FavoritesDropdown = ({
         <Divider />
         {/* eslint-disable camelcase */}
         {favorites.map(({ id, poster_path, title }) => (
-          <CardActionArea key={id} onClick={goTo(id)}>
+          <CardActionArea key={id} onClick={() => goTo(id)}>
             <CardWrapper>
               <StyledCardMedia
                 image={poster_path || noImage}
@@ -80,8 +75,6 @@ const FavoritesDropdown = ({
 };
 
 FavoritesDropdown.propTypes = {
-  toggleFavorites: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
   clearInputValue: PropTypes.func.isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
   favorites: PropTypes.arrayOf(
@@ -108,4 +101,4 @@ FavoritesDropdown.propTypes = {
   ).isRequired,
 };
 
-export default memo(FavoritesDropdown);
+export default FavoritesDropdown;

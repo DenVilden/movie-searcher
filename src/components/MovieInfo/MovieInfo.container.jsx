@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { useQuery, useMutation } from 'react-apollo';
 import MovieInfo from './MovieInfo';
 import {
-  GET_FAVORITES_DATA,
+  GET_FAVORITES,
   ADD_TO_FAVORITES,
   REMOVE_FROM_FAVORITES,
 } from '../../graphql/types';
 
 const MovieInfoContainer = ({ movie }) => {
-  const { data } = useQuery(GET_FAVORITES_DATA);
+  const { data } = useQuery(GET_FAVORITES);
   const [addToFavorites] = useMutation(ADD_TO_FAVORITES);
   const [removeFromFavorites] = useMutation(REMOVE_FROM_FAVORITES);
 

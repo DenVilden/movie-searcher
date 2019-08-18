@@ -24,33 +24,14 @@ export const REMOVE_FROM_FAVORITES = gql`
   }
 `;
 
-export const TOGGLE_FAVORITES = gql`
-  mutation {
-    toggleFavoritesOpen @client
-  }
-`;
-
 export const GET_INPUT_VALUE = gql`
   query {
     inputValue @client
   }
 `;
 
-export const GET_FAVORITES_DATA = gql`
-  query {
-    favorites @client
-  }
-`;
-
-export const GET_FAVORITES_STATE = gql`
-  query {
-    favoritesOpen @client
-  }
-`;
-
 export const GET_FAVORITES = gql`
   query {
-    favoritesOpen @client
     favorites @client
   }
 `;

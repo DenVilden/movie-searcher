@@ -15,44 +15,32 @@ const MoviesSearch = lazy(() =>
   import('../MoviesSearch/MoviesSearch.container')
 );
 
-const Header = ({ inputValue, setInputValue }) => {
-  const onClear = () => {
-    if (inputValue) {
-      setInputValue('');
-    }
-  };
-
-  const onChange = evt => {
-    setInputValue(evt.target.value);
-  };
-
-  return (
-    <>
-      <AppBar position="static">
-        <Toolbar>
-          <LogoContainer to="/" onClick={onClear}>
-            <Logo />
-          </LogoContainer>
-          <SearchBar>
-            <StyledSearchIcon />
-            <label aria-label="search bar">
-              <StyledInputBase
-                onChange={onChange}
-                placeholder="type a movie name..."
-                type="search"
-                value={inputValue}
-              />
-            </label>
-          </SearchBar>
-          <FavoritesDropdown />
-        </Toolbar>
-      </AppBar>
-      <Suspense fallback={<Spinner />}>
-        {inputValue && <MoviesSearch inputValue={inputValue} />}
-      </Suspense>
-    </>
-  );
-};
+const Header = ({ inputValue, setInputValue }) => (
+  <>
+    <AppBar position="static">
+      <Toolbar>
+        <LogoContainer to="/" onClick={setInputValue}>
+          <Logo />
+        </LogoContainer>
+        <SearchBar>
+          <StyledSearchIcon />
+          <label aria-label="search bar">
+            <StyledInputBase
+              onChange={evt => setInputValue(evt.target.value)}
+              placeholder="type a movie name..."
+              type="search"
+              value={inputValue}
+            />
+          </label>
+        </SearchBar>
+        <FavoritesDropdown />
+      </Toolbar>
+    </AppBar>
+    <Suspense fallback={<Spinner />}>
+      {inputValue && <MoviesSearch inputValue={inputValue} />}
+    </Suspense>
+  </>
+);
 
 Header.propTypes = {
   inputValue: PropTypes.string.isRequired,
