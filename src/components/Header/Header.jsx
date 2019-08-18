@@ -19,7 +19,7 @@ const Header = ({ inputValue, setInputValue }) => (
   <>
     <AppBar position="static">
       <Toolbar>
-        <LogoContainer to="/" onClick={setInputValue}>
+        <LogoContainer to="/" onClick={() => setInputValue('')}>
           <Logo />
         </LogoContainer>
         <SearchBar>
