@@ -3,11 +3,8 @@ import PropTypes from 'prop-types';
 import { useQuery, useMutation } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 import FavoritesDropdown from './FavoritesDropdown';
-import {
-  GET_FAVORITES,
-  SET_INPUT_VALUE,
-  TOGGLE_FAVORITES,
-} from '../../graphql/types';
+import { GET_FAVORITES } from '../../graphql/queries';
+import { SET_INPUT_VALUE, TOGGLE_FAVORITES } from '../../graphql/mutations';
 
 const FavoritesDropdownContainer = ({ history, open }) => {
   const {

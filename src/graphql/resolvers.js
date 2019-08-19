@@ -1,4 +1,4 @@
-import { GET_FAVORITES, GET_INPUT_VALUE, GET_FAVORITES_STATE } from './types';
+import { GET_FAVORITES, GET_INPUT_VALUE, GET_FAVORITES_STATE } from './queries';
 
 export default {
   Mutation: {

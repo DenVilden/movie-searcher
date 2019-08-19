@@ -3,18 +3,20 @@ const express = require('express');
 const compression = require('compression');
 const { ApolloServer } = require('apollo-server-express');
 const enforce = require('express-sslify');
-const { typeDefs, resolvers } = require('./schema/schema.js');
+const typeDefs = require('./schema.graphql');
+const resolvers = require('./resolvers.js');
 
 const app = express();
+const buildPath = path.resolve(__dirname, '..', 'build');
 const port = process.env.PORT || 5000;
 
 app.use(compression());
 
 if (process.env.NODE_ENV === 'production') {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
-  app.use(express.static(path.join(__dirname, 'build')));
+  app.use(express.static(path.resolve(buildPath)));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    res.sendFile(path.resolve(buildPath, 'index.html'));
   });
 }
 

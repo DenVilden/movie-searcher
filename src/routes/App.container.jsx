@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-apollo';
-import { GET_INPUT_VALUE } from '../graphql/types';
+import { GET_INPUT_VALUE } from '../graphql/queries';
 import App from './App';
 
 const AppContainer = () => {

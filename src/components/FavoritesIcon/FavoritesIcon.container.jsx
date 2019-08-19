@@ -1,11 +1,8 @@
 import React from 'react';
 import { useQuery, useMutation } from 'react-apollo';
 import FavoritesIcon from './FavoritesIcon';
-import {
-  GET_FAVORITES,
-  GET_FAVORITES_STATE,
-  TOGGLE_FAVORITES,
-} from '../../graphql/types';
+import { GET_FAVORITES, GET_FAVORITES_STATE } from '../../graphql/queries';
+import { TOGGLE_FAVORITES } from '../../graphql/mutations';
 
 const FavoritesIconContainer = () => {
   const {

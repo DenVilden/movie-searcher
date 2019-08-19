@@ -1,10 +1,7 @@
 import React from 'react';
 import { useQuery, useMutation } from 'react-apollo';
-import {
-  GET_INPUT_VALUE,
-  SET_INPUT_VALUE,
-  GET_FAVORITES_STATE,
-} from '../../graphql/types';
+import { GET_INPUT_VALUE, GET_FAVORITES_STATE } from '../../graphql/queries';
+import { SET_INPUT_VALUE } from '../../graphql/mutations';
 import Header from './Header';
 
 const HeaderContainer = () => {

@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery, useMutation } from 'react-apollo';
 import MovieInfo from './MovieInfo';
+import { GET_FAVORITES } from '../../graphql/queries';
 import {
-  GET_FAVORITES,
   ADD_TO_FAVORITES,
   REMOVE_FROM_FAVORITES,
-} from '../../graphql/types';
+} from '../../graphql/mutations';
 
 const MovieInfoContainer = ({ movie }) => {
   const { data } = useQuery(GET_FAVORITES);
