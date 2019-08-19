@@ -3,6 +3,7 @@ const express = require('express');
 const compression = require('compression');
 const { ApolloServer } = require('apollo-server-express');
 const enforce = require('express-sslify');
+const { typeDefs, resolvers } = require('./schema/schema.js');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -16,8 +17,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });
 }
-
-const { typeDefs, resolvers } = require('./schema/schema.js');
 
 const server = new ApolloServer({ typeDefs, resolvers });
 server.applyMiddleware({ app });

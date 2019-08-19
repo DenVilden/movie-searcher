@@ -29,7 +29,9 @@ const jss = create({
 });
 
 const renderApp = async () => {
-  await persistCache({ cache, storage: window.localStorage });
+  if (process.env.NODE_ENV === 'production') {
+    await persistCache({ cache, storage: window.localStorage });
+  }
 
   ReactDOM.render(
     <ApolloProvider client={client}>
