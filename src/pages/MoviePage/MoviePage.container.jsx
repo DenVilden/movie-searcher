@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
 import { useQuery } from 'react-apollo';
 import MoviePage from './MoviePage';
 import Spinner from '../../components/Spinner/Spinner';
-import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
+
+const ErrorBoundary = lazy(() =>
+  import('../../components/ErrorBoundary/ErrorBoundary')
+);
 
 const GET_MOVIE_INFO = gql`
   query($id: String!) {

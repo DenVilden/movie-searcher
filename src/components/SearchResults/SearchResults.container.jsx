@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from 'react-apollo';
 import gql from 'graphql-tag';
 import SearchResults from './SearchResults';
 import Spinner from '../Spinner/Spinner';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+
+const ErrorBoundary = lazy(() => import('../ErrorBoundary/ErrorBoundary'));
 
 const GET_MOVIES = gql`
   query($query: String!) {

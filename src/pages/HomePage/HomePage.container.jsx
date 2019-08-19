@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import gql from 'graphql-tag';
 import { useQuery } from 'react-apollo';
 import HomePage from './HomePage';
 import Spinner from '../../components/Spinner/Spinner';
-import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
+
+const ErrorBoundary = lazy(() =>
+  import('../../components/ErrorBoundary/ErrorBoundary')
+);
 
 const GET_MOVIES = gql`
   query {

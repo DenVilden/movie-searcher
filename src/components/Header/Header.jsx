@@ -9,7 +9,6 @@ import {
 } from './Header.styles';
 import { ReactComponent as Logo } from '../../logo.svg';
 import FavoritesIcon from '../FavoritesIcon/FavoritesIcon.container';
-import Spinner from '../Spinner/Spinner';
 
 const FavoritesDropdown = lazy(() =>
   import('../FavoritesDropdown/FavoritesDropdown.container')
@@ -33,7 +32,7 @@ const Header = ({ inputValue, setInputValue, favoritesOpen }) => (
         </label>
       </SearchBar>
       <FavoritesIcon />
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<> </>}>
         {favoritesOpen && <FavoritesDropdown open={favoritesOpen} />}
       </Suspense>
     </Toolbar>
