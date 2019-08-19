@@ -15,7 +15,7 @@ const FavoritesDropdown = lazy(() =>
   import('../FavoritesDropdown/FavoritesDropdown.container')
 );
 
-const Header = ({ inputValue, setInputValue }) => (
+const Header = ({ inputValue, setInputValue, favoritesOpen }) => (
   <AppBar position="static">
     <Toolbar>
       <LogoContainer to="/" onClick={() => setInputValue('')}>
@@ -34,7 +34,7 @@ const Header = ({ inputValue, setInputValue }) => (
       </SearchBar>
       <FavoritesIcon />
       <Suspense fallback={<Spinner />}>
-        <FavoritesDropdown />
+        {favoritesOpen && <FavoritesDropdown open={favoritesOpen} />}
       </Suspense>
     </Toolbar>
   </AppBar>
@@ -43,6 +43,7 @@ const Header = ({ inputValue, setInputValue }) => (
 Header.propTypes = {
   inputValue: PropTypes.string.isRequired,
   setInputValue: PropTypes.func.isRequired,
+  favoritesOpen: PropTypes.bool.isRequired,
 };
 
 export default Header;
