@@ -1,7 +1,20 @@
-import { GET_FAVORITES, GET_INPUT_VALUE } from './types';
+import { GET_FAVORITES, GET_INPUT_VALUE, GET_FAVORITES_STATE } from './types';
 
 export default {
   Mutation: {
+    toggleFavoritesOpen: (_, __, { cache }) => {
+      const { favoritesOpen } = cache.readQuery({
+        query: GET_FAVORITES_STATE,
+      });
+
+      cache.writeQuery({
+        query: GET_FAVORITES_STATE,
+        data: { favoritesOpen: !favoritesOpen },
+      });
+
+      return !favoritesOpen;
+    },
+
     addMovieToFavorites: (_, { movie }, { cache }) => {
       const { favorites } = cache.readQuery({
         query: GET_FAVORITES,

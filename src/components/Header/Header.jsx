@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
 import { AppBar, Toolbar } from '@material-ui/core';
 import {
@@ -8,7 +8,12 @@ import {
   LogoContainer,
 } from './Header.styles';
 import { ReactComponent as Logo } from '../../logo.svg';
-import FavoritesDropdown from '../FavoritesDropdown/FavoritesDropdown.container';
+import FavoritesIcon from '../FavoritesIcon/FavoritesIcon.container';
+import Spinner from '../Spinner/Spinner';
+
+const FavoritesDropdown = lazy(() =>
+  import('../FavoritesDropdown/FavoritesDropdown.container')
+);
 
 const Header = ({ inputValue, setInputValue }) => (
   <AppBar position="static">
@@ -27,7 +32,10 @@ const Header = ({ inputValue, setInputValue }) => (
           />
         </label>
       </SearchBar>
-      <FavoritesDropdown />
+      <FavoritesIcon />
+      <Suspense fallback={<Spinner />}>
+        <FavoritesDropdown />
+      </Suspense>
     </Toolbar>
   </AppBar>
 );
