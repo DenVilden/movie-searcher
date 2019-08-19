@@ -1,5 +1,4 @@
 const path = require('path');
-const dotenv = require('dotenv');
 const express = require('express');
 const compression = require('compression');
 const { ApolloServer } = require('apollo-server-express');
@@ -16,11 +15,6 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });
-  app.get('/service-worker.js', (req, res) => {
-    res.send(path.resolve(__dirname, '..', 'build', 'service-worker.js'));
-  });
-} else {
-  dotenv.config();
 }
 
 const { typeDefs, resolvers } = require('./schema/schema.js');
