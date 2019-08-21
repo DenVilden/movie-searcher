@@ -3,7 +3,7 @@ const express = require('express');
 const compression = require('compression');
 const { ApolloServer } = require('apollo-server-express');
 const enforce = require('express-sslify');
-const typeDefs = require('./schema.graphql');
+const typeDefs = require('./schema.js');
 const resolvers = require('./resolvers.js');
 
 const app = express();

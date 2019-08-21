@@ -7,7 +7,7 @@ import {
   StyledInputBase,
   LogoContainer,
 } from './Header.styles';
-import { ReactComponent as Logo } from '../../logo.svg';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
 import FavoritesIcon from '../FavoritesIcon/FavoritesIcon.container';
 
 const FavoritesDropdown = lazy(() =>

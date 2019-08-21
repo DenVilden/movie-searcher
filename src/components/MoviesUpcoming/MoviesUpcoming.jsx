@@ -2,14 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MoviesContainer from '../MoviesContainer/MoviesContainer';
 
-const MoviesUpcoming = ({ movies }) => (
-  <MoviesContainer
-    elevation={10}
-    movies={movies}
-    padding={1}
-    title="Upcoming"
-  />
-);
+const MoviesUpcoming = ({ movies }) => {
+  if (!movies.length) return null;
+
+  return (
+    <MoviesContainer
+      elevation={10}
+      movies={movies}
+      padding={1}
+      title="Upcoming"
+    />
+  );
+};
 
 MoviesUpcoming.propTypes = {
   movies: PropTypes.arrayOf(
