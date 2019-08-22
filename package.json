@@ -4,8 +4,8 @@
   "private": true,
   "proxy": "http://localhost:5000",
   "engines": {
-    "node": "12.x",
-    "yarn": "1.x"
+    "node": "12.8.1",
+    "yarn": "1.17.3"
   },
   "dependencies": {
     "@material-ui/core": "^4.3.3",
