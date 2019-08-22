@@ -1,9 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { create } from 'jss';
 import { createMuiTheme } from '@material-ui/core';
-import { StylesProvider, jssPreset } from '@material-ui/styles';
+import { StylesProvider } from '@material-ui/styles';
 import { ThemeProvider } from 'styled-components';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
@@ -17,14 +15,9 @@ client.writeData({ data });
 
 const theme = createMuiTheme();
 
-const jss = create({
-  ...jssPreset(),
-  insertionPoint: document.getElementById('jss-insertion-point'),
-});
-
 const ApolloApp = AppComponent => (
   <ApolloProvider client={client}>
-    <StylesProvider jss={jss}>
+    <StylesProvider injectFirst>
       <ThemeProvider theme={theme}>
         <AppComponent />
       </ThemeProvider>
