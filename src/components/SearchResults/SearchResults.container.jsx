@@ -1,7 +1,7 @@
 import React, { lazy } from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from 'react-apollo';
-import gql from 'graphql-tag';
+import { gql } from 'apollo-boost';
 import SearchResults from './SearchResults';
 import Spinner from '../Spinner/Spinner';
 

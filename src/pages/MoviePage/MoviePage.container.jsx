@@ -1,6 +1,6 @@
 import React, { lazy } from 'react';
 import PropTypes from 'prop-types';
-import gql from 'graphql-tag';
+import { gql } from 'apollo-boost';
 import { useQuery } from 'react-apollo';
 import MoviePage from './MoviePage';
 import Spinner from '../../components/Spinner/Spinner';

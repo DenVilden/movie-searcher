@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import { gql } from 'apollo-boost';
 
 export const TOGGLE_FAVORITES = gql`
   mutation {
@@ -9,6 +9,12 @@ export const TOGGLE_FAVORITES = gql`
 export const SET_INPUT_VALUE = gql`
   mutation($value: String!) {
     setInputValue(value: $value) @client
+  }
+`;
+
+export const CLEAR_INPUT_VALUE = gql`
+  mutation {
+    clearInputValue @client
   }
 `;
 

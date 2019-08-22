@@ -14,12 +14,12 @@ import noImage from '../../assets/no-image.jpg';
 /* eslint-disable camelcase */
 const MovieCard = ({
   movie: { id, title, poster_path, release_date, vote_average },
-  setInputValue,
+  clearInputValue,
   history,
 }) => {
   const goTo = () => {
     history.push(`/movie/${id}`);
-    setInputValue('');
+    clearInputValue('');
   };
 
   return (
@@ -55,7 +55,7 @@ MovieCard.propTypes = {
     poster_path: PropTypes.string,
     vote_average: PropTypes.number,
   }).isRequired,
-  setInputValue: PropTypes.func.isRequired,
+  clearInputValue: PropTypes.func.isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 

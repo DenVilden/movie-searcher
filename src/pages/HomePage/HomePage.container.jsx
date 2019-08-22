@@ -1,5 +1,5 @@
 import React, { lazy } from 'react';
-import gql from 'graphql-tag';
+import { gql } from 'apollo-boost';
 import { useQuery } from 'react-apollo';
 import HomePage from './HomePage';
 import Spinner from '../../components/Spinner/Spinner';
