@@ -17,7 +17,7 @@ const FavoritesDropdown = lazy(() =>
 const Header = ({ inputValue, setInputValue, favoritesOpen }) => (
   <AppBar position="static">
     <Toolbar>
-      <LogoContainer to="/" onClick={() => setInputValue('')}>
+      <LogoContainer onClick={() => setInputValue()} to="/">
         <Logo />
       </LogoContainer>
       <SearchBar>

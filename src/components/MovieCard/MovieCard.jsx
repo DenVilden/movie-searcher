@@ -16,36 +16,30 @@ const MovieCard = ({
   movie: { id, title, poster_path, release_date, vote_average },
   clearInputValue,
   history,
-}) => {
-  const goTo = () => {
-    history.push(`/movie/${id}`);
-    clearInputValue('');
-  };
-
-  return (
-    <CardActionArea onClick={goTo}>
-      <StyledCard elevation={10}>
-        <StyledCardMedia
-          image={poster_path || noImage}
-          src="img"
-          title={title}
-        />
-        <StyledCardContent>
-          <Typography variant="subtitle2">{title}</Typography>
-          <StyledTypography color="textSecondary">
-            {vote_average ? (
-              <IconWrapper>
-                <StarIcon /> {vote_average}
-              </IconWrapper>
-            ) : (
-              release_date || 'Unknown year'
-            )}
-          </StyledTypography>
-        </StyledCardContent>
-      </StyledCard>
-    </CardActionArea>
-  );
-};
+}) => (
+  <CardActionArea
+    onClick={() => {
+      history.push(`/movie/${id}`);
+      clearInputValue();
+    }}
+  >
+    <StyledCard elevation={10}>
+      <StyledCardMedia image={poster_path || noImage} src="img" title={title} />
+      <StyledCardContent>
+        <Typography variant="subtitle2">{title}</Typography>
+        <StyledTypography color="textSecondary">
+          {vote_average ? (
+            <IconWrapper>
+              <StarIcon /> {vote_average}
+            </IconWrapper>
+          ) : (
+            release_date || 'Unknown year'
+          )}
+        </StyledTypography>
+      </StyledCardContent>
+    </StyledCard>
+  </CardActionArea>
+);
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({

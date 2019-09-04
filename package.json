@@ -4,21 +4,21 @@
   "private": true,
   "proxy": "http://localhost:5000",
   "engines": {
-    "node": "12.8.1",
-    "yarn": "1.17.3"
+    "node": "12.x",
+    "yarn": "1.x"
   },
   "dependencies": {
-    "@material-ui/core": "^4.3.3",
+    "@material-ui/core": "^4.4.0",
     "@material-ui/icons": "^4.2.1",
     "@material-ui/styles": "^4.3.3",
     "apollo-boost": "^0.4.4",
-    "apollo-server-express": "^2.8.2",
+    "apollo-server-express": "^2.9.3",
     "axios": "0.18.1",
     "compression": "^1.7.4",
-    "dayjs": "^1.8.15",
+    "dayjs": "^1.8.16",
     "express": "^4.17.1",
     "express-sslify": "^1.2.0",
-    "graphql": "^14.4.2",
+    "graphql": "^14.5.4",
     "numeral": "^2.0.6",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
@@ -26,14 +26,15 @@
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
+    "react-test-renderer": "^16.9.0",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "concurrently": "^4.1.2",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.1.0",
+    "eslint-config-prettier": "^6.2.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "nodemon": "^1.19.1",
+    "nodemon": "^1.19.2",
     "prettier": "^1.18.2"
   },
   "scripts": {
@@ -44,7 +45,9 @@
     "server": "nodemon -r dotenv/config server/server.js",
     "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node server/server.js",
-    "lint": "eslint . --ext .js --ext .jsx"
+    "lint": "eslint . --ext .js --ext .jsx",
+    "lint:fix": "yarn lint --fix",
+    "coverage": "yarn test --coverage --watchAll=false"
   },
   "eslintConfig": {
     "extends": [
@@ -54,7 +57,9 @@
       "prettier/react"
     ],
     "rules": {
-      "jsx-a11y/label-has-associated-control": "off"
+      "jsx-a11y/label-has-associated-control": "off",
+      "react/jsx-props-no-spreading": "off",
+      "react/jsx-sort-props": 2
     }
   },
   "prettier": {

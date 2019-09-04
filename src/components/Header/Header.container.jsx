@@ -11,15 +11,11 @@ const HeaderContainer = () => {
   const { data } = useQuery(GET_INPUT_VALUE);
   const [setInputValue] = useMutation(SET_INPUT_VALUE);
 
-  const setValue = value => {
-    setInputValue({ variables: { value } });
-  };
-
   return (
     <Header
-      inputValue={data.inputValue}
-      setInputValue={setValue}
       favoritesOpen={favoritesOpen}
+      inputValue={data.inputValue}
+      setInputValue={value => setInputValue({ variables: { value } })}
     />
   );
 };

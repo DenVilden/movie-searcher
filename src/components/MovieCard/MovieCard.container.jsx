@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useMutation } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
-import { CLEAR_INPUT_VALUE } from '../../graphql/mutations';
+import { SET_INPUT_VALUE } from '../../graphql/mutations';
 import MovieCard from './MovieCard';
 
 const MovieCardContainer = ({ movie, history }) => {
-  const [clearInputValue] = useMutation(CLEAR_INPUT_VALUE);
+  const [setInputValue] = useMutation(SET_INPUT_VALUE);
 
   return (
     <MovieCard
-      clearInputValue={clearInputValue}
-      movie={movie}
+      clearInputValue={setInputValue}
       history={history}
+      movie={movie}
     />
   );
 };

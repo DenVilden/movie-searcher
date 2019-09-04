@@ -15,10 +15,10 @@ const FavoritesDropdownContainer = ({ history, open }) => {
 
   return (
     <FavoritesDropdown
-      setInputValue={setInputValue}
       favorites={favorites}
-      open={open}
       history={history}
+      open={open}
+      setInputValue={setInputValue}
       toggleFavoritesOpen={toggleFavoritesOpen}
     />
   );

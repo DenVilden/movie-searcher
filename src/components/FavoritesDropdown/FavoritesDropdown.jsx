@@ -15,37 +15,36 @@ const FavoritesDropdown = ({
   history,
   open,
   toggleFavoritesOpen,
-}) => {
-  const goTo = id => {
-    history.push(`/movie/${id}`);
-    setInputValue('');
-    toggleFavoritesOpen();
-  };
-
-  return (
-    <StyledPopover
-      anchorReference="none"
-      onClose={toggleFavoritesOpen}
-      open={open}
-    >
-      <StyledTypography variant="overline">Favorites</StyledTypography>
-      <Divider />
-      {/* eslint-disable camelcase */}
-      {favorites.map(({ id, poster_path, title }) => (
-        <CardActionArea key={id} onClick={() => goTo(id)}>
-          <CardWrapper>
-            <StyledCardMedia
-              image={poster_path || noImage}
-              src="img"
-              title={title}
-            />
-            <StyledTypography>{title}</StyledTypography>
-          </CardWrapper>
-        </CardActionArea>
-      ))}
-    </StyledPopover>
-  );
-};
+}) => (
+  <StyledPopover
+    anchorReference="none"
+    onClose={toggleFavoritesOpen}
+    open={open}
+  >
+    <StyledTypography variant="overline">Favorites</StyledTypography>
+    <Divider />
+    {/* eslint-disable camelcase */}
+    {favorites.map(({ id, poster_path, title }) => (
+      <CardActionArea
+        key={id}
+        onClick={() => {
+          history.push(`/movie/${id}`);
+          setInputValue('');
+          toggleFavoritesOpen();
+        }}
+      >
+        <CardWrapper>
+          <StyledCardMedia
+            image={poster_path || noImage}
+            src="img"
+            title={title}
+          />
+          <StyledTypography>{title}</StyledTypography>
+        </CardWrapper>
+      </CardActionArea>
+    ))}
+  </StyledPopover>
+);
 
 FavoritesDropdown.propTypes = {
   setInputValue: PropTypes.func.isRequired,

@@ -20,8 +20,8 @@ const App = ({ inputValue }) => (
       <Switch>
         <Route component={HomePage} exact path="/" />
         <Route
-          render={({ match }) => <MoviePage id={match.params.id} />}
           path="/movie/:id"
+          render={({ match }) => <MoviePage id={match.params.id} />}
         />
       </Switch>
     </Suspense>

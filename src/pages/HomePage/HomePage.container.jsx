@@ -32,7 +32,7 @@ const HomePageContainer = () => {
 
   if (error) return <ErrorBoundary>{error.message}</ErrorBoundary>;
 
-  return <HomePage upcoming={data.upcoming} topRated={data.topRated} />;
+  return <HomePage topRated={data.topRated} upcoming={data.upcoming} />;
 };
 
 export default HomePageContainer;

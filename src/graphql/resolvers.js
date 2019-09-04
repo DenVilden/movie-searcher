@@ -47,24 +47,13 @@ export default {
       return newFavorites;
     },
 
-    setInputValue: (_, { value }, { cache }) => {
+    setInputValue: (_, { value = '' }, { cache }) => {
       cache.writeQuery({
         query: GET_INPUT_VALUE,
         data: { inputValue: value },
       });
 
       return value;
-    },
-
-    clearInputValue: (_, __, { cache }) => {
-      const clearValue = '';
-
-      cache.writeQuery({
-        query: GET_INPUT_VALUE,
-        data: { inputValue: clearValue },
-      });
-
-      return clearValue;
     },
   },
 };

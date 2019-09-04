@@ -11,14 +11,13 @@ const FavoritesIconContainer = () => {
   const {
     data: { favoritesOpen },
   } = useQuery(GET_FAVORITES_STATE);
-
   const [toggleFavoritesOpen] = useMutation(TOGGLE_FAVORITES);
 
   return (
     <FavoritesIcon
       open={favoritesOpen}
-      total={favorites.length}
       toggle={toggleFavoritesOpen}
+      total={favorites.length}
     />
   );
 };

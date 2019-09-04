@@ -3,15 +3,9 @@ import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
 import Spinner from '../Spinner/Spinner';
 
-const ErrorBoundary = styled(({ children, className, gutterBottom }) => (
+const ErrorBoundary = styled(({ children, ...otherProps }) => (
   <Suspense fallback={<Spinner />}>
-    <Typography
-      align="center"
-      className={className}
-      color="error"
-      gutterBottom={gutterBottom}
-      variant="h6"
-    >
+    <Typography align="center" color="error" variant="h6" {...otherProps}>
       {children}
     </Typography>
   </Suspense>
