@@ -1,35 +1,36 @@
 import React, { lazy, Suspense } from 'react';
-import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import GlobalStyle from './App.styles';
-import Header from '../components/Header/Header.container';
-import Spinner from '../components/Spinner/Spinner';
+import { useQuery } from 'react-apollo';
+import GlobalStyle from '../styles';
+import Header from '../containers/Header';
+import Spinner from '../components/Spinner';
+import { GET_INPUT_VALUE } from '../graphql/queries';
 
-const SearchResults = lazy(() =>
-  import('../components/SearchResults/SearchResults.container')
-);
-const HomePage = lazy(() => import('../pages/HomePage/HomePage.container'));
-const MoviePage = lazy(() => import('../pages/MoviePage/MoviePage.container'));
+const SearchResults = lazy(() => import('../containers/SearchResults'));
+const HomePage = lazy(() => import('../pages/HomePage'));
+const MoviePage = lazy(() => import('../pages/MoviePage'));
 
-const App = ({ inputValue }) => (
-  <Router>
-    <GlobalStyle />
-    <Header />
-    <Suspense fallback={<Spinner />}>
-      {inputValue && <SearchResults inputValue={inputValue} />}
-      <Switch>
-        <Route component={HomePage} exact path="/" />
-        <Route
-          path="/movie/:id"
-          render={({ match }) => <MoviePage id={match.params.id} />}
-        />
-      </Switch>
-    </Suspense>
-  </Router>
-);
+const App = () => {
+  const {
+    data: { inputValue },
+  } = useQuery(GET_INPUT_VALUE);
 
-App.propTypes = {
-  inputValue: PropTypes.string.isRequired,
+  return (
+    <Router>
+      <GlobalStyle />
+      <Header />
+      <Suspense fallback={<Spinner />}>
+        {inputValue && <SearchResults inputValue={inputValue} />}
+        <Switch>
+          <Route component={HomePage} exact path="/" />
+          <Route
+            path="/movie/:id"
+            render={({ match }) => <MoviePage id={match.params.id} />}
+          />
+        </Switch>
+      </Suspense>
+    </Router>
+  );
 };
 
 export default App;

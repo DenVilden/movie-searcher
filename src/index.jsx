@@ -5,10 +5,9 @@ import { StylesProvider } from '@material-ui/styles';
 import { ThemeProvider } from 'styled-components';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from 'apollo-boost';
-import App from './routes/App.container';
+import App from './routes/App';
 import * as serviceWorker from './serviceWorker';
-import resolvers from './graphql/resolvers';
-import data from './graphql/initialData';
+import { data, resolvers } from './graphql/clientState';
 
 const client = new ApolloClient({ resolvers });
 client.writeData({ data });

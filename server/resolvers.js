@@ -4,7 +4,7 @@ const numeral = require('numeral');
 
 const moviesApi = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
-  params: { api_key: `${process.env.REACT_APP_MOVIE_API_KEY}` },
+  params: { api_key: process.env.REACT_APP_MOVIE_API_KEY },
 });
 
 const attachPoster = (path, size = 200) => {
