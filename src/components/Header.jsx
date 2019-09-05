@@ -5,12 +5,12 @@ import styled from 'styled-components';
 import { fade } from '@material-ui/core/styles';
 import { Search as SearchIcon } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
-import FavoritesIcon from '../containers/FavoritesIcon';
+import FavoritesIcon from '../containers/FavoritesIconContainer';
 import { ReactComponent as Logo } from '../assets/logo.svg';
 
-const FavoritesDropdown = lazy(() => {
-  return import('../containers/FavoritesDropdown');
-});
+const FavoritesDropdown = lazy(() =>
+  import('../containers/FavoritesDropdownContainer')
+);
 
 const Header = ({ inputValue, setInputValue, favoritesOpen }) => (
   <AppBar position="static">
@@ -42,6 +42,8 @@ Header.propTypes = {
   setInputValue: PropTypes.func.isRequired,
   favoritesOpen: PropTypes.bool.isRequired,
 };
+
+export default Header;
 
 // STYLES
 const SearchBar = styled.div`
@@ -85,5 +87,3 @@ const LogoContainer = styled(Link)`
     display: block;
   }
 `;
-
-export default Header;

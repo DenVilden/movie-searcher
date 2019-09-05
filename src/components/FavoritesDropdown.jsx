@@ -76,6 +76,8 @@ FavoritesDropdown.propTypes = {
   ).isRequired,
 };
 
+export default FavoritesDropdown;
+
 // STYLES
 const StyledTypography = styled(Typography)`
   padding: ${({ theme }) => theme.spacing(2)}px;
@@ -102,5 +104,3 @@ const StyledPopover = styled(Popover)`
     top: 45px;
   }
 `;
-
-export default FavoritesDropdown;

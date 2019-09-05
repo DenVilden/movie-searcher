@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useQuery, useMutation } from 'react-apollo';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import MovieInfo from '../components/MovieInfo';
 import { GET_FAVORITES_DATA } from '../graphql/queries';
 import { ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES } from '../graphql/mutations';

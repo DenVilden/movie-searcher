@@ -1,12 +1,14 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { useQuery } from 'react-apollo';
+import { useQuery } from '@apollo/react-hooks';
 import GlobalStyle from '../styles';
-import Header from '../containers/Header';
+import Header from '../containers/HeaderContainer';
 import Spinner from '../components/Spinner';
 import { GET_INPUT_VALUE } from '../graphql/queries';
 
-const SearchResults = lazy(() => import('../containers/SearchResults'));
+const SearchResults = lazy(() =>
+  import('../containers/SearchResultsContainer')
+);
 const HomePage = lazy(() => import('../pages/HomePage'));
 const MoviePage = lazy(() => import('../pages/MoviePage'));
 

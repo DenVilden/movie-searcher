@@ -80,6 +80,8 @@ MovieInfo.propTypes = {
   toggleSave: PropTypes.func.isRequired,
 };
 
+export default MovieInfo;
+
 // STYLES
 const StyledCard = styled(Card)`
   background-color: inherit;
@@ -111,5 +113,3 @@ const StyledTypography = styled(Typography)`
   display: flex;
   justify-content: space-between;
 `;
-
-export default MovieInfo;

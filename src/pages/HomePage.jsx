@@ -1,5 +1,5 @@
 import React, { lazy } from 'react';
-import { useQuery } from 'react-apollo';
+import { useQuery } from '@apollo/react-hooks';
 import { GET_MOVIES } from '../graphql/queries';
 import MoviesUpcoming from '../components/MoviesUpcoming';
 import MoviesTopRated from '../components/MoviesTopRated';

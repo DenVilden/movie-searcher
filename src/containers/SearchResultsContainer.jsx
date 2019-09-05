@@ -1,6 +1,6 @@
 import React, { lazy } from 'react';
 import PropTypes from 'prop-types';
-import { useQuery } from 'react-apollo';
+import { useQuery } from '@apollo/react-hooks';
 import { GET_SEARCH_MOVIES } from '../graphql/queries';
 import SearchResults from '../components/SearchResults';
 import Spinner from '../components/Spinner';

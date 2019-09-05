@@ -53,6 +53,8 @@ MovieCard.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
+export default MovieCard;
+
 // STYLES
 const StyledCard = styled(Card)`
   height: 330px;
@@ -83,5 +85,3 @@ const StyledTypography = styled(Typography)`
 const IconWrapper = styled.span`
   display: flex;
 `;
-
-export default MovieCard;

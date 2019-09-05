@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useMutation } from 'react-apollo';
+import { useMutation } from '@apollo/react-hooks';
 import { withRouter } from 'react-router-dom';
 import { SET_INPUT_VALUE } from '../graphql/mutations';
 import MovieCard from '../components/MovieCard';

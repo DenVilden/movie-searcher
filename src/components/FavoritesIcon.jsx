@@ -26,9 +26,9 @@ FavoritesIcon.propTypes = {
   toggle: PropTypes.func.isRequired,
 };
 
+export default FavoritesIcon;
+
 // STYLES
 const StyledIconButton = styled(IconButton)`
   margin-left: auto;
 `;
-
-export default FavoritesIcon;

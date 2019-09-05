@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { createMuiTheme } from '@material-ui/core';
 import { StylesProvider } from '@material-ui/styles';
 import { ThemeProvider } from 'styled-components';
-import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import App from './routes/App';
 import * as serviceWorker from './serviceWorker';

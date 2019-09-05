@@ -1,9 +1,9 @@
 import React, { lazy } from 'react';
 import PropTypes from 'prop-types';
-import { useQuery } from 'react-apollo';
+import { useQuery } from '@apollo/react-hooks';
 import { Slide } from '@material-ui/core';
 import { GET_MOVIE_INFO } from '../graphql/queries';
-import MovieInfo from '../containers/MovieInfo';
+import MovieInfo from '../containers/MovieInfoContainer';
 import MoviesSimilar from '../components/MoviesSimilar';
 import Spinner from '../components/Spinner';
 

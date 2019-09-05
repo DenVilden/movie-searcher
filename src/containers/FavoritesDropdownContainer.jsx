@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useQuery, useMutation } from 'react-apollo';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import { withRouter } from 'react-router-dom';
 import FavoritesDropdown from '../components/FavoritesDropdown';
 import { GET_FAVORITES_DATA } from '../graphql/queries';
