@@ -82,7 +82,7 @@ MovieInfo.propTypes = {
 
 export default MovieInfo;
 
-// STYLES
+/* STYLES */
 const StyledCard = styled(Card)`
   background-color: inherit;
   display: block;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MoviesContainer from './MoviesContainer';
 
 const MoviesTopRated = ({ movies }) => {
-  if (!movies.length) return null;
+  if (!movies) return null;
 
   return (
     <MoviesContainer
@@ -16,7 +16,7 @@ const MoviesTopRated = ({ movies }) => {
 };
 
 MoviesTopRated.defaultProps = {
-  movies: [],
+  movies: null,
 };
 
 MoviesTopRated.propTypes = {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MoviesContainer from './MoviesContainer';
 
 const MoviesSimilar = ({ movies }) => {
-  if (!movies.length) return null;
+  if (!movies || !movies.length) return null;
 
   return (
     <MoviesContainer
@@ -16,7 +16,7 @@ const MoviesSimilar = ({ movies }) => {
 };
 
 MoviesSimilar.defaultProps = {
-  movies: [],
+  movies: null,
 };
 
 MoviesSimilar.propTypes = {

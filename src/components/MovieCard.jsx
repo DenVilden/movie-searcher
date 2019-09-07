@@ -55,7 +55,7 @@ MovieCard.propTypes = {
 
 export default MovieCard;
 
-// STYLES
+/* STYLES */
 const StyledCard = styled(Card)`
   height: 330px;
   text-align: center;

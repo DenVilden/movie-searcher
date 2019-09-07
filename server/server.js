@@ -7,16 +7,16 @@ const typeDefs = require('./schema.js');
 const resolvers = require('./resolvers.js');
 
 const app = express();
-const buildPath = path.resolve(__dirname, '..', 'build');
+const buildPath = path.join(__dirname, '../build');
 const port = process.env.PORT || 5000;
 
 app.use(compression());
 
 if (process.env.NODE_ENV === 'production') {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
-  app.use(express.static(path.resolve(buildPath)));
+  app.use(express.static(buildPath));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(buildPath, 'index.html'));
+    res.sendFile(`${buildPath}/index.html`);
   });
 }
 

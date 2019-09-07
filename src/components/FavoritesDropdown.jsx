@@ -78,7 +78,7 @@ FavoritesDropdown.propTypes = {
 
 export default FavoritesDropdown;
 
-// STYLES
+/* STYLES */
 const StyledTypography = styled(Typography)`
   padding: ${({ theme }) => theme.spacing(2)}px;
 `;

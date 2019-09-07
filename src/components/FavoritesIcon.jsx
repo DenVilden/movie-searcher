@@ -28,7 +28,7 @@ FavoritesIcon.propTypes = {
 
 export default FavoritesIcon;
 
-// STYLES
+/* STYLES */
 const StyledIconButton = styled(IconButton)`
   margin-left: auto;
 `;

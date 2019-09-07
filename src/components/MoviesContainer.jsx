@@ -42,7 +42,7 @@ MoviesContainer.propTypes = {
 
 export default MoviesContainer;
 
-// STYLES
+/* STYLES */
 const Root = styled(Paper)`
   background: none;
   background-color: inherit;

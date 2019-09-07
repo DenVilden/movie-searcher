@@ -45,7 +45,7 @@ Header.propTypes = {
 
 export default Header;
 
-// STYLES
+/* STYLES */
 const SearchBar = styled.div`
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
   background-color: ${({ theme }) => fade(theme.palette.common.white, 0.15)};

@@ -6,7 +6,7 @@ const Spinner = () => <StyledCircularProgress />;
 
 export default Spinner;
 
-// STYLES
+/* STYLES */
 const StyledCircularProgress = styled(CircularProgress)`
   margin-left: 50%;
   margin-top: 5%;
