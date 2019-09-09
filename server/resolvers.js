@@ -1,8 +1,8 @@
-const axios = require('axios');
+const { create } = require('axios');
 const dayjs = require('dayjs');
 const numeral = require('numeral');
 
-const moviesApi = axios.create({
+const axios = create({
   baseURL: 'https://api.themoviedb.org/3',
   params: { api_key: process.env.REACT_APP_MOVIE_API_KEY },
 });
@@ -13,23 +13,23 @@ const attachPoster = (path, size = 200) =>
 module.exports = {
   Query: {
     upcoming: async () => {
-      const { data } = await moviesApi.get('/movie/upcoming');
+      const { data } = await axios.get('/movie/upcoming');
       return data.results
         .sort((a, b) => (a.release_date < b.release_date ? 1 : -1))
         .slice(0, 12);
     },
     topRated: async () => {
-      const { data } = await moviesApi.get('/movie/top_rated');
+      const { data } = await axios.get('/movie/top_rated');
       return data.results.slice(0, 12);
     },
     moviesSearch: async (_, { query }) => {
-      const { data } = await moviesApi.get('/search/movie', {
+      const { data } = await axios.get('/search/movie', {
         params: { query },
       });
       return data.results.slice(0, 6);
     },
     movieInfo: async (_, { id }) => {
-      const { data } = await moviesApi.get(`/movie/${id}`, {
+      const { data } = await axios.get(`/movie/${id}`, {
         params: { append_to_response: 'similar' },
       });
       return data;
