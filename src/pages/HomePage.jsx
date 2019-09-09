@@ -5,14 +5,14 @@ import MoviesUpcoming from '../components/MoviesUpcoming';
 import MoviesTopRated from '../components/MoviesTopRated';
 import Spinner from '../components/Spinner';
 
-const ErrorBoundary = lazy(() => import('../components/ErrorBoundary'));
+const ErrorMessage = lazy(() => import('../components/ErrorMessage'));
 
-const HomePage = () => {
+export default () => {
   const { loading, error, data } = useQuery(GET_MOVIES);
 
   if (loading) return <Spinner />;
 
-  if (error) return <ErrorBoundary>{error.message}</ErrorBoundary>;
+  if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
 
   return (
     <main>
@@ -21,5 +21,3 @@ const HomePage = () => {
     </main>
   );
 };
-
-export default HomePage;

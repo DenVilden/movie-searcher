@@ -5,7 +5,7 @@ import { GET_SEARCH_MOVIES } from '../graphql/queries';
 import SearchResults from '../components/SearchResults';
 import Spinner from '../components/Spinner';
 
-const ErrorBoundary = lazy(() => import('../components/ErrorBoundary'));
+const ErrorMessage = lazy(() => import('../components/ErrorMessage'));
 
 const SearchResultsContainer = ({ inputValue }) => {
   const { loading, error, data } = useQuery(GET_SEARCH_MOVIES, {
@@ -16,9 +16,9 @@ const SearchResultsContainer = ({ inputValue }) => {
 
   if (error || !data.moviesSearch.length) {
     return (
-      <ErrorBoundary gutterBottom>
+      <ErrorMessage gutterBottom>
         {error ? error.message : 'Nothing found'}
-      </ErrorBoundary>
+      </ErrorMessage>
     );
   }
 

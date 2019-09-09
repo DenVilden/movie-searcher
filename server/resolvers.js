@@ -7,9 +7,8 @@ const moviesApi = axios.create({
   params: { api_key: process.env.REACT_APP_MOVIE_API_KEY },
 });
 
-const attachPoster = (path, size = 200) => {
-  return `https://image.tmdb.org/t/p/w${size}${path}`;
-};
+const attachPoster = (path, size = 200) =>
+  `https://image.tmdb.org/t/p/w${size}${path}`;
 
 module.exports = {
   Query: {
@@ -19,19 +18,16 @@ module.exports = {
         .sort((a, b) => (a.release_date < b.release_date ? 1 : -1))
         .slice(0, 12);
     },
-
     topRated: async () => {
       const { data } = await moviesApi.get('/movie/top_rated');
       return data.results.slice(0, 12);
     },
-
     moviesSearch: async (_, { query }) => {
       const { data } = await moviesApi.get('/search/movie', {
         params: { query },
       });
       return data.results.slice(0, 6);
     },
-
     movieInfo: async (_, { id }) => {
       const { data } = await moviesApi.get(`/movie/${id}`, {
         params: { append_to_response: 'similar' },
@@ -39,13 +35,11 @@ module.exports = {
       return data;
     },
   },
-
   /* eslint-disable camelcase */
   Upcoming: {
     poster_path: ({ poster_path }) => attachPoster(poster_path),
-    release_date: ({ release_date }) => {
-      return dayjs(release_date).format('DD.MM.YYYY');
-    },
+    release_date: ({ release_date }) =>
+      dayjs(release_date).format('DD.MM.YYYY'),
   },
 
   TopRated: {
@@ -67,13 +61,11 @@ module.exports = {
   },
 
   MovieInfo: {
-    backdrop_path: ({ backdrop_path }) => {
-      return backdrop_path && attachPoster(backdrop_path, 500);
-    },
+    backdrop_path: ({ backdrop_path }) =>
+      backdrop_path && attachPoster(backdrop_path, 500),
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
-    release_date: ({ release_date }) => {
-      return dayjs(release_date).format('DD MMMM YYYY');
-    },
+    release_date: ({ release_date }) =>
+      dayjs(release_date).format('DD MMMM YYYY'),
     budget: ({ budget }) => numeral(budget).format('$0,00'),
     revenue: ({ revenue }) => numeral(revenue).format('$0,00'),
   },

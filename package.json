@@ -10,9 +10,9 @@
   "dependencies": {
     "@apollo/react-hooks": "^3.1.0",
     "@apollo/react-testing": "^3.1.0",
-    "@material-ui/core": "^4.4.0",
-    "@material-ui/icons": "^4.2.1",
-    "@material-ui/styles": "^4.3.3",
+    "@material-ui/core": "^4.4.1",
+    "@material-ui/icons": "^4.4.1",
+    "@material-ui/styles": "^4.4.1",
     "apollo-boost": "^0.4.4",
     "apollo-server-express": "^2.9.3",
     "axios": "0.18.1",
@@ -39,12 +39,12 @@
     "prettier": "^1.18.2"
   },
   "scripts": {
-    "client": "react-scripts start",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "nodemon -r dotenv/config server/server.js",
-    "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn dev\"",
     "start": "node server/server.js",
     "lint": "eslint . --ext .js --ext .jsx",
     "lint:fix": "yarn lint --fix",

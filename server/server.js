@@ -3,12 +3,13 @@ const express = require('express');
 const compression = require('compression');
 const { ApolloServer } = require('apollo-server-express');
 const enforce = require('express-sslify');
-const typeDefs = require('./schema.js');
-const resolvers = require('./resolvers.js');
+const typeDefs = require('./schema');
+const resolvers = require('./resolvers');
 
 const app = express();
-const buildPath = path.join(__dirname, '../build');
 const port = process.env.PORT || 5000;
+
+const buildPath = path.join(__dirname, '../build');
 
 app.use(compression());
 

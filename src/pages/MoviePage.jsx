@@ -7,7 +7,7 @@ import MovieInfo from '../containers/MovieInfoContainer';
 import MoviesSimilar from '../components/MoviesSimilar';
 import Spinner from '../components/Spinner';
 
-const ErrorBoundary = lazy(() => import('../components/ErrorBoundary'));
+const ErrorMessage = lazy(() => import('../components/ErrorMessage'));
 
 const MoviePage = ({ id }) => {
   const { loading, error, data } = useQuery(GET_MOVIE_INFO, {
@@ -16,7 +16,7 @@ const MoviePage = ({ id }) => {
 
   if (loading) return <Spinner />;
 
-  if (error) return <ErrorBoundary>{error.message}</ErrorBoundary>;
+  if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
 
   return (
     <Slide direction="up" in>
