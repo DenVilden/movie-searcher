@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-const compression = require('compression');
+const expressStaticGzip = require('express-static-gzip');
 const { ApolloServer } = require('apollo-server-express');
 const enforce = require('express-sslify');
 const typeDefs = require('./schema');
@@ -11,11 +11,15 @@ const port = process.env.PORT || 5000;
 
 const buildPath = path.join(__dirname, '../build');
 
-app.use(compression());
-
 if (process.env.NODE_ENV === 'production') {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
-  app.use(express.static(buildPath));
+  app.use(
+    '/',
+    expressStaticGzip(buildPath, {
+      enableBrotli: true,
+      orderPreference: ['br'],
+    })
+  );
   app.get('*', (req, res) => {
     res.sendFile(`${buildPath}/index.html`);
   });
