@@ -49,7 +49,7 @@
     "start": "node server/index",
     "lint": "eslint . --ext .js --ext .jsx",
     "coverage": "yarn test --coverage --watchAll=false",
-    "postbuild": "precompress build"
+    "postbuild": "precompress build/static -t br -i js"
   },
   "eslintConfig": {
     "extends": [

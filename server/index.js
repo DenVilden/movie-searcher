@@ -13,16 +13,7 @@ const buildPath = path.join(__dirname, '../build');
 
 if (process.env.NODE_ENV === 'production') {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
-  app.use(
-    '/',
-    expressStaticGzip(buildPath, {
-      enableBrotli: true,
-      orderPreference: ['br'],
-    })
-  );
-  app.get('*', (req, res) => {
-    res.sendFile(`${buildPath}/index.html`);
-  });
+  app.use('/', expressStaticGzip(buildPath, { enableBrotli: true }));
 }
 
 const server = new ApolloServer({ typeDefs, resolvers });
