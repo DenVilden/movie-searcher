@@ -48,12 +48,14 @@ module.exports = {
 
   MoviesSearch: {
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
-    release_date: ({ release_date }) => dayjs(release_date).format('YYYY'),
+    release_date: ({ release_date }) =>
+      release_date && dayjs(release_date).format('YYYY'),
   },
 
   SimilarMovies: {
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
-    release_date: ({ release_date }) => dayjs(release_date).format('YYYY'),
+    release_date: ({ release_date }) =>
+      release_date && dayjs(release_date).format('YYYY'),
   },
 
   SimilarResults: {
@@ -65,7 +67,7 @@ module.exports = {
       backdrop_path && attachPoster(backdrop_path, 500),
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
     release_date: ({ release_date }) =>
-      dayjs(release_date).format('DD MMMM YYYY'),
+      release_date && dayjs(release_date).format('DD MMMM YYYY'),
     budget: ({ budget }) => numeral(budget).format('$0,00'),
     revenue: ({ revenue }) => numeral(revenue).format('$0,00'),
   },
