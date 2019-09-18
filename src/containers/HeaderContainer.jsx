@@ -4,7 +4,7 @@ import { GET_INPUT_VALUE, GET_FAVORITES_STATE } from '../graphql/queries';
 import { SET_INPUT_VALUE } from '../graphql/mutations';
 import Header from '../components/Header';
 
-export default () => {
+const HeaderContainer = () => {
   const {
     data: { favoritesOpen },
   } = useQuery(GET_FAVORITES_STATE);
@@ -19,3 +19,5 @@ export default () => {
     />
   );
 };
+
+export default HeaderContainer;

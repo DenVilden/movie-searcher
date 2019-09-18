@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
 import Spinner from './Spinner';
 
-export default styled(({ children, ...otherProps }) => (
+const ErrorMessage = styled(({ children, ...otherProps }) => (
   <Suspense fallback={<Spinner />}>
     <Typography align="center" color="error" variant="h6" {...otherProps}>
       {children}
@@ -14,3 +14,5 @@ export default styled(({ children, ...otherProps }) => (
     padding: ${({ theme }) => theme.spacing(4)}px;
   }
 `;
+
+export default ErrorMessage;

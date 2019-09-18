@@ -12,7 +12,7 @@ const SearchResults = lazy(() =>
 const HomePage = lazy(() => import('../pages/HomePage'));
 const MoviePage = lazy(() => import('../pages/MoviePage'));
 
-export default () => {
+const App = () => {
   const {
     data: { inputValue },
   } = useQuery(GET_INPUT_VALUE);
@@ -34,3 +34,5 @@ export default () => {
     </Router>
   );
 };
+
+export default App;

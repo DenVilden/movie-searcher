@@ -34,7 +34,7 @@
     "concurrently": "^4.1.2",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.3.0",
-    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.1.1",
     "nodemon": "^1.19.2",
     "precompress": "^5.1.0",
     "prettier": "^1.18.2"
@@ -44,10 +44,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon -r dotenv/config server/index",
+    "server": "nodemon -r dotenv/config server/index.js",
     "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "start": "node server/index",
-    "lint": "eslint . --ext .js --ext .jsx",
+    "start": "node server/index.js",
+    "lint": "eslint . --ext js,jsx",
     "coverage": "yarn test --coverage --watchAll=false",
     "postbuild": "precompress build/static -t br -i js"
   },
