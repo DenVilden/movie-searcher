@@ -17,13 +17,13 @@ const MovieCard = ({
   clearInputValue,
   history,
 }) => (
-  <CardActionArea
-    onClick={() => {
-      history.push(`/movie/${id}`);
-      clearInputValue();
-    }}
-  >
-    <StyledCard elevation={10}>
+  <StyledCard elevation={10}>
+    <CardActionArea
+      onClick={() => {
+        history.push(`/movie/${id}`);
+        clearInputValue();
+      }}
+    >
       <StyledCardMedia image={poster_path || noImage} src="img" title={title} />
       <StyledCardContent>
         <Typography variant="subtitle2">{title}</Typography>
@@ -37,8 +37,8 @@ const MovieCard = ({
           )}
         </StyledTypography>
       </StyledCardContent>
-    </StyledCard>
-  </CardActionArea>
+    </CardActionArea>
+  </StyledCard>
 );
 
 MovieCard.propTypes = {
