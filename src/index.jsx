@@ -14,16 +14,15 @@ client.writeData({ data });
 
 const theme = createMuiTheme();
 
-const ApolloApp = AppComponent => (
+render(
   <ApolloProvider client={client}>
     <StylesProvider injectFirst>
       <ThemeProvider theme={theme}>
-        <AppComponent />
+        <App />
       </ThemeProvider>
     </StylesProvider>
-  </ApolloProvider>
+  </ApolloProvider>,
+  document.getElementById('root')
 );
-
-render(ApolloApp(App), document.getElementById('root'));
 
 serviceWorker.register();
