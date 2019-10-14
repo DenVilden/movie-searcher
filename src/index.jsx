@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { createMuiTheme } from '@material-ui/core';
-import { StylesProvider } from '@material-ui/styles';
+import { StylesProvider } from '@material-ui/core/styles';
 import { ThemeProvider } from 'styled-components';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
