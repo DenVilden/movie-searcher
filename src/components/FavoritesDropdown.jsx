@@ -99,7 +99,7 @@ const StyledCardMedia = styled(CardMedia)`
 `;
 
 const StyledPopover = styled(Popover)`
-  & .MuiPopover-paper {
+  .MuiPopover-paper {
     right: 16px;
     top: 45px;
   }

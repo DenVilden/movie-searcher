@@ -54,7 +54,7 @@ const SearchBar = styled.div`
   ${({ theme }) => theme.breakpoints.up('sm')} {
     margin-left: ${({ theme }) => theme.spacing(6)}px;
   }
-  &:hover {
+  :hover {
     background-color: ${({ theme }) => fade(theme.palette.common.white, 0.25)};
   }
 `;
@@ -71,7 +71,7 @@ const StyledInputBase = styled(InputBase)`
   &.MuiInputBase-root {
     color: inherit;
   }
-  & .MuiInputBase-input {
+  .MuiInputBase-input {
     padding: ${({ theme }) => theme.spacing(1, 1, 1, 7)};
     width: 190px;
     ${({ theme }) => theme.breakpoints.up('md')} {

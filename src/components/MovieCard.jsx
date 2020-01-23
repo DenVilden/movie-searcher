@@ -84,4 +84,8 @@ const StyledTypography = styled(Typography)`
 
 const IconWrapper = styled.span`
   display: flex;
+
+  svg {
+    height: 0.9em;
+  }
 `;
