@@ -13,26 +13,42 @@ const attachPoster = (path, size = 200) =>
 module.exports = {
   Query: {
     upcoming: async () => {
-      const { data } = await axios.get('/movie/upcoming');
-      return data.results
-        .sort((a, b) => (a.release_date < b.release_date ? 1 : -1))
-        .slice(0, 12);
+      try {
+        const { data } = await axios.get('/movie/upcoming');
+        return data.results
+          .sort((a, b) => (a.release_date < b.release_date ? 1 : -1))
+          .slice(0, 12);
+      } catch (error) {
+        throw new Error(error.response.data.status_message);
+      }
     },
     topRated: async () => {
-      const { data } = await axios.get('/movie/top_rated');
-      return data.results.slice(0, 12);
+      try {
+        const { data } = await axios.get('/movie/top_rated');
+        return data.results.slice(0, 12);
+      } catch (error) {
+        throw new Error(error.response.data.status_message);
+      }
     },
     moviesSearch: async (_, { query }) => {
-      const { data } = await axios.get('/search/movie', {
-        params: { query },
-      });
-      return data.results.slice(0, 6);
+      try {
+        const { data } = await axios.get('/search/movie', {
+          params: { query },
+        });
+        return data.results.slice(0, 6);
+      } catch (error) {
+        throw new Error(error.response.data.status_message);
+      }
     },
     movieInfo: async (_, { id }) => {
-      const { data } = await axios.get(`/movie/${id}`, {
-        params: { append_to_response: 'similar' },
-      });
-      return data;
+      try {
+        const { data } = await axios.get(`/movie/${id}`, {
+          params: { append_to_response: 'similar' },
+        });
+        return data;
+      } catch (error) {
+        throw new Error(error.response.data.status_message);
+      }
     },
   },
   /* eslint-disable camelcase */
