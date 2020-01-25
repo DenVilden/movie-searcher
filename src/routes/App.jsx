@@ -1,5 +1,10 @@
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import GlobalStyle from '../styles';
 import Header from '../components/Header/Header.container';
@@ -29,6 +34,7 @@ const App = () => {
             path="/movie/:id"
             render={({ match }) => <MoviePage id={match.params.id} />}
           />
+          <Route render={() => <Redirect to="/" />} />
         </Switch>
       </Suspense>
     </Router>
