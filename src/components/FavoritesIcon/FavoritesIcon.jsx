@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Badge, IconButton } from '@material-ui/core';
+import { Badge } from '@material-ui/core';
 import {
   Favorite as FavoriteIcon,
   FavoriteBorder as FavoriteBorderIcon,
 } from '@material-ui/icons';
-import styled from 'styled-components';
+import { StyledIconButton } from './FavoritesIcon.styles';
 
 const FavoritesIcon = ({ total, open, toggle }) => (
   <StyledIconButton
@@ -27,8 +27,3 @@ FavoritesIcon.propTypes = {
 };
 
 export default FavoritesIcon;
-
-/* STYLES */
-const StyledIconButton = styled(IconButton)`
-  margin-left: auto;
-`;

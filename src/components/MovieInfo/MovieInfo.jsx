@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Typography, Divider, Button } from '@material-ui/core';
 import {
-  Typography,
-  Divider,
-  Button,
-  CardContent,
-  Card,
-  CardMedia,
-} from '@material-ui/core';
-import styled from 'styled-components';
-import noImage from '../assets/no-image.jpg';
+  StyledCard,
+  StyledCardMedia,
+  StyledCardContent,
+  StyledTypography,
+} from './MovieInfo.styles';
+import noImage from '../../assets/no-image.jpg';
 
 /* eslint-disable camelcase */
 const MovieInfo = ({ movie, isExist, toggleSave }) => {
@@ -81,35 +79,3 @@ MovieInfo.propTypes = {
 };
 
 export default MovieInfo;
-
-/* STYLES */
-const StyledCard = styled(Card)`
-  background-color: inherit;
-  display: block;
-  margin: ${({ theme }) => theme.spacing(2)}px;
-  ${({ theme }) => theme.breakpoints.up('sm')} {
-    display: flex;
-  }
-`;
-
-const StyledCardMedia = styled(CardMedia)`
-  height: 450px;
-  margin: ${({ theme }) => theme.spacing(2)}px;
-  ${({ theme }) => theme.breakpoints.up('sm')} {
-    width: 40%;
-  }
-`;
-
-const StyledCardContent = styled(CardContent)`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  ${({ theme }) => theme.breakpoints.up('sm')} {
-    width: 60%;
-  }
-`;
-
-const StyledTypography = styled(Typography)`
-  display: flex;
-  justify-content: space-between;
-`;

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Grow, Typography, Paper } from '@material-ui/core';
-import styled from 'styled-components';
-import MovieCard from '../containers/MovieCardContainer';
+import { Grid, Grow, Typography } from '@material-ui/core';
+import { Root, List, Wrapper } from './MoviesContainer.styles';
+import MovieCard from '../MovieCard/MovieCard.container';
 
 const MoviesContainer = ({ movies, title, elevation, padding }) => (
   <Root elevation={elevation} padding={padding}>
@@ -41,22 +41,3 @@ MoviesContainer.propTypes = {
 };
 
 export default MoviesContainer;
-
-/* STYLES */
-const Root = styled(Paper)`
-  background: none;
-  background-color: inherit;
-  margin: ${({ theme, padding }) => padding && theme.spacing(2)}px;
-  padding: ${({ theme, padding }) => padding && theme.spacing(2, 0, 4, 0)};
-`;
-
-const List = styled(Grid)`
-  flex-grow: 1;
-  ${({ theme }) => theme.breakpoints.up('sm')} {
-    padding: ${({ theme }) => theme.spacing(0, 2, 0, 2)};
-  }
-`;
-
-const Wrapper = styled(Grid)`
-  margin-top: 10px;
-`;

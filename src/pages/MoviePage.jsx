@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
 import { Slide } from '@material-ui/core';
 import { GET_MOVIE_INFO } from '../graphql/queries';
-import MovieInfo from '../containers/MovieInfoContainer';
-import MoviesSimilar from '../components/MoviesSimilar';
-import Spinner from '../components/Spinner';
+import MovieInfo from '../components/MovieInfo/MovieInfo.container';
+import MoviesSimilar from '../components/MoviesSimilar/MoviesSimilar';
+import Spinner from '../components/Spinner/Spinner';
 
-const ErrorMessage = lazy(() => import('../components/ErrorMessage'));
+const ErrorMessage = lazy(() =>
+  import('../components/ErrorMessage/ErrorMessage')
+);
 
 const MoviePage = ({ id }) => {
   const { loading, error, data } = useQuery(GET_MOVIE_INFO, {

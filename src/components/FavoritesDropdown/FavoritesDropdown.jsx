@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { CardActionArea, Divider } from '@material-ui/core';
 import {
-  CardActionArea,
-  Divider,
-  Typography,
-  CardMedia,
-  Popover,
-} from '@material-ui/core';
-import styled from 'styled-components';
-import noImage from '../assets/no-image.jpg';
+  StyledPopover,
+  StyledTypography,
+  CardWrapper,
+  StyledCardMedia,
+} from './FavoritesDropdown.styles';
+import noImage from '../../assets/no-image.jpg';
 
 const FavoritesDropdown = ({
   favorites,
@@ -49,7 +48,7 @@ const FavoritesDropdown = ({
 
 FavoritesDropdown.propTypes = {
   setInputValue: PropTypes.func.isRequired,
-  history: PropTypes.objectOf(PropTypes.any).isRequired,
+  history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
   open: PropTypes.bool.isRequired,
   toggleFavoritesOpen: PropTypes.func.isRequired,
   favorites: PropTypes.arrayOf(
@@ -77,30 +76,3 @@ FavoritesDropdown.propTypes = {
 };
 
 export default FavoritesDropdown;
-
-/* STYLES */
-const StyledTypography = styled(Typography)`
-  padding: ${({ theme }) => theme.spacing(2)}px;
-`;
-
-const CardWrapper = styled.div`
-  display: flex;
-  min-width: 200px;
-`;
-
-const StyledCardMedia = styled(CardMedia)`
-  height: 56px;
-  margin: ${({ theme }) => theme.spacing(1)}px;
-  width: 50px;
-  display: none;
-  ${({ theme }) => theme.breakpoints.up('sm')} {
-    display: block;
-  }
-`;
-
-const StyledPopover = styled(Popover)`
-  .MuiPopover-paper {
-    right: 16px;
-    top: 45px;
-  }
-`;

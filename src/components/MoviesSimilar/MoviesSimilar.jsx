@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MoviesContainer from './MoviesContainer';
+import MoviesContainer from '../MoviesContainer/MoviesContainer';
 
 const MoviesSimilar = ({ movies }) => {
   if (!movies || !movies.length) return null;

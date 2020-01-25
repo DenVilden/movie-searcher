@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MoviesContainer from './MoviesContainer';
+import MoviesContainer from '../MoviesContainer/MoviesContainer';
 
 const SearchResults = ({ movies }) => (
   <MoviesContainer elevation={0} movies={movies} />
