@@ -10,6 +10,7 @@ export const Root = styled(Paper)`
 
 export const List = styled(Grid)`
   flex-grow: 1;
+
   ${({ theme }) => theme.breakpoints.up('sm')} {
     padding: ${({ theme }) => theme.spacing(0, 2, 0, 2)};
   }

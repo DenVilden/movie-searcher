@@ -11,10 +11,11 @@ export const CardWrapper = styled.div`
 `;
 
 export const StyledCardMedia = styled(CardMedia)`
+  display: none;
   height: 56px;
   margin: ${({ theme }) => theme.spacing(1)}px;
   width: 50px;
-  display: none;
+
   ${({ theme }) => theme.breakpoints.up('sm')} {
     display: block;
   }

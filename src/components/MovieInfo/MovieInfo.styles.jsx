@@ -5,6 +5,7 @@ export const StyledCard = styled(Card)`
   background-color: inherit;
   display: block;
   margin: ${({ theme }) => theme.spacing(2)}px;
+
   ${({ theme }) => theme.breakpoints.up('sm')} {
     display: flex;
   }
@@ -13,6 +14,7 @@ export const StyledCard = styled(Card)`
 export const StyledCardMedia = styled(CardMedia)`
   height: 450px;
   margin: ${({ theme }) => theme.spacing(2)}px;
+
   ${({ theme }) => theme.breakpoints.up('sm')} {
     width: 40%;
   }
@@ -22,6 +24,7 @@ export const StyledCardContent = styled(CardContent)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   ${({ theme }) => theme.breakpoints.up('sm')} {
     width: 60%;
   }

@@ -5,6 +5,7 @@ export const StyledCard = styled(Card)`
   height: 330px;
   text-align: center;
   width: 130px;
+
   ${({ theme }) => theme.breakpoints.up('sm')} {
     width: 170px;
   }

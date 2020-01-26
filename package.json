@@ -18,7 +18,7 @@
     "express": "^4.17.1",
     "express-sslify": "^1.2.0",
     "express-static-gzip": "^2.0.6",
-    "graphql": "^14.5.8",
+    "graphql": "^14.6.0",
     "numeral": "^2.0.6",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
@@ -34,7 +34,9 @@
     "eslint-plugin-prettier": "^3.1.2",
     "nodemon": "^2.0.2",
     "precompress": "^5.1.2",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "stylelint": "12.0.1",
+    "stylelint-config-sass-guidelines": "^6.2.0"
   },
   "scripts": {
     "client": "react-scripts start",
@@ -44,7 +46,7 @@
     "server": "nodemon -r dotenv/config server/index.js",
     "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node server/index.js",
-    "lint": "eslint src --ext js,jsx && eslint server",
+    "lint": "eslint src --ext js,jsx && eslint server && stylelint './src/**/*.jsx'",
     "postbuild": "precompress build/static -t br -i js"
   },
   "eslintIgnore": [
@@ -68,6 +70,12 @@
       "jsx-a11y/label-has-associated-control": "off",
       "react/jsx-props-no-spreading": "off",
       "react/jsx-sort-props": 2
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-sass-guidelines",
+    "rules": {
+      "selector-class-pattern": null
     }
   },
   "browserslist": {
