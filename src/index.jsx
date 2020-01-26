@@ -4,25 +4,34 @@ import { createMuiTheme } from '@material-ui/core';
 import { StylesProvider } from '@material-ui/core/styles';
 import { ThemeProvider } from 'styled-components';
 import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient from 'apollo-boost';
+import ApolloClient, { InMemoryCache } from 'apollo-boost';
+import { persistCache } from 'apollo-cache-persist-dev';
 import App from './routes/App';
 import * as serviceWorker from './serviceWorker';
 import { data, resolvers } from './graphql/clientState';
 
-const client = new ApolloClient({ resolvers });
+const cache = new InMemoryCache();
+
+const client = new ApolloClient({ resolvers, cache });
 client.writeData({ data });
 
 const theme = createMuiTheme();
 
-render(
-  <ApolloProvider client={client}>
-    <StylesProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <App />
-      </ThemeProvider>
-    </StylesProvider>
-  </ApolloProvider>,
-  document.getElementById('root')
-);
+const ApolloApp = async () => {
+  await persistCache({ cache, storage: window.localStorage });
+  client.writeData({ data: { favoritesOpen: false } });
 
+  render(
+    <ApolloProvider client={client}>
+      <StylesProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </StylesProvider>
+    </ApolloProvider>,
+    document.getElementById('root')
+  );
+};
+
+ApolloApp();
 serviceWorker.register();
