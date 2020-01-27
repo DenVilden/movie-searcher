@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
-import Spinner from '../Spinner/Spinner';
+import Spinner from '../components/Spinner';
 
 const ErrorMessage = styled(({ children, ...otherProps }) => (
   <Suspense fallback={<Spinner />}>

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MoviesContainer from '../MoviesContainer/MoviesContainer';
+import MoviesBox from '../components/MoviesBox/MoviesBox';
 
 const MoviesSimilar = ({ movies }) => {
   if (!movies || !movies.length) return null;
 
   return (
-    <MoviesContainer
+    <MoviesBox
       elevation={10}
       movies={movies}
       padding={1}

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Grow, Typography } from '@material-ui/core';
-import { Root, List, Wrapper } from './MoviesContainer.styles';
+import { Root, List, Wrapper } from './MoviesBox.styles';
 import MovieCard from '../MovieCard/MovieCard.container';
 
-const MoviesContainer = ({ movies, title, elevation, padding }) => (
+const MoviesBox = ({ movies, title, elevation, padding }) => (
   <Root elevation={elevation} padding={padding}>
     {title && (
       <Typography align="center" gutterBottom variant="h4">
@@ -27,17 +27,17 @@ const MoviesContainer = ({ movies, title, elevation, padding }) => (
   </Root>
 );
 
-MoviesContainer.defaultProps = {
+MoviesBox.defaultProps = {
   title: '',
   elevation: 1,
   padding: 0,
 };
 
-MoviesContainer.propTypes = {
+MoviesBox.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.any).isRequired,
   title: PropTypes.string,
   elevation: PropTypes.number,
   padding: PropTypes.number,
 };
 
-export default MoviesContainer;
+export default MoviesBox;

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MoviesContainer from '../MoviesContainer/MoviesContainer';
+import MoviesBox from '../../components/MoviesBox/MoviesBox';
 
 const SearchResults = ({ movies }) => (
-  <MoviesContainer elevation={0} movies={movies} />
+  <MoviesBox elevation={0} movies={movies} />
 );
 
 SearchResults.propTypes = {

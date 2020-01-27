@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_SEARCH_MOVIES } from '../../graphql/queries';
 import SearchResults from './SearchResults';
-import Spinner from '../Spinner/Spinner';
+import Spinner from '../../components/Spinner';
 
-const ErrorMessage = lazy(() => import('../ErrorMessage/ErrorMessage'));
+const ErrorMessage = lazy(() => import('../ErrorMessage'));
 
 const SearchResultsContainer = ({ inputValue }) => {
   const { loading, error, data } = useQuery(GET_SEARCH_MOVIES, {

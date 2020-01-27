@@ -1,17 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MoviesContainer from '../MoviesContainer/MoviesContainer';
+import MoviesBox from '../components/MoviesBox/MoviesBox';
 
 const MoviesUpcoming = ({ movies }) => {
   if (!movies) return null;
 
   return (
-    <MoviesContainer
-      elevation={10}
-      movies={movies}
-      padding={1}
-      title="Upcoming"
-    />
+    <MoviesBox elevation={10} movies={movies} padding={1} title="Upcoming" />
   );
 };
 

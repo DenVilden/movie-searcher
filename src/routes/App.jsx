@@ -8,11 +8,11 @@ import {
 import { useQuery } from '@apollo/react-hooks';
 import GlobalStyle from '../styles';
 import Header from '../components/Header/Header.container';
-import Spinner from '../components/Spinner/Spinner';
+import Spinner from '../components/Spinner';
 import { GET_INPUT_VALUE } from '../graphql/queries';
 
 const SearchResults = lazy(() =>
-  import('../components/SearchResults/SearchResults.container')
+  import('../containers/SearchResults/SearchResults.container')
 );
 const HomePage = lazy(() => import('../pages/HomePage'));
 const MoviePage = lazy(() => import('../pages/MoviePage'));
