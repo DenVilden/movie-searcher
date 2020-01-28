@@ -29,9 +29,9 @@
     "styled-components": "^5.0.0"
   },
   "devDependencies": {
-    "concurrently": "^5.0.2",
+    "concurrently": "^5.1.0",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.9.0",
+    "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "nodemon": "^2.0.2",
     "precompress": "^5.1.2",

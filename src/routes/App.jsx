@@ -14,8 +14,8 @@ import { GET_INPUT_VALUE } from '../graphql/queries';
 const SearchResults = lazy(() =>
   import('../containers/SearchResults/SearchResults.container')
 );
-const HomePage = lazy(() => import('../pages/HomePage'));
-const MoviePage = lazy(() => import('../pages/MoviePage'));
+const HomePage = lazy(() => import('../pages/HomePage/HomePage.container'));
+const MoviePage = lazy(() => import('../pages/MoviePage/MoviePage.container'));
 
 const App = () => {
   const {

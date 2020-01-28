@@ -4,7 +4,7 @@ import FavoritesIcon from './FavoritesIcon';
 import { GET_FAVORITES_DATA, GET_FAVORITES_STATE } from '../../graphql/queries';
 import { TOGGLE_FAVORITES } from '../../graphql/mutations';
 
-const FavoritesIconContainer = () => {
+export default () => {
   const {
     data: { favorites },
   } = useQuery(GET_FAVORITES_DATA);
@@ -19,5 +19,3 @@ const FavoritesIconContainer = () => {
     />
   );
 };
-
-export default FavoritesIconContainer;

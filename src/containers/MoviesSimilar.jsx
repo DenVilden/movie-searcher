@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
 
 const MoviesSimilar = ({ movies }) => {
-  if (!movies || !movies.length) return null;
+  if (!movies.length) return null;
 
   return (
     <MoviesBox

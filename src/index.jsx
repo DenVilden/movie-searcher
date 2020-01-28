@@ -15,11 +15,10 @@ const cache = new InMemoryCache();
 const client = new ApolloClient({ resolvers, cache });
 client.writeData({ data });
 
-const theme = createMuiTheme();
-
-const ApolloApp = async () => {
-  await persistCache({ cache, storage: window.localStorage });
+persistCache({ cache, storage: window.localStorage }).then(() => {
   client.writeData({ data: { favoritesOpen: false } });
+
+  const theme = createMuiTheme();
 
   render(
     <ApolloProvider client={client}>
@@ -31,7 +30,6 @@ const ApolloApp = async () => {
     </ApolloProvider>,
     document.getElementById('root')
   );
-};
 
-ApolloApp();
-serviceWorker.register();
+  serviceWorker.register();
+});
