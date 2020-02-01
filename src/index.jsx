@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import { persistCache } from 'apollo-cache-persist-dev';
-import App from './routes/App';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { data, resolvers } from './graphql/clientState';
 
@@ -15,7 +15,7 @@ const cache = new InMemoryCache();
 const client = new ApolloClient({ resolvers, cache });
 client.writeData({ data });
 
-const renderApp = async () => {
+(async () => {
   if (process.env.NODE_ENV === 'production') {
     await persistCache({ cache, storage: window.localStorage });
     client.writeData({ data: { favoritesOpen: false } });
@@ -35,6 +35,4 @@ const renderApp = async () => {
   );
 
   serviceWorker.register();
-};
-
-renderApp();
+})();
