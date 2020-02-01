@@ -5,7 +5,7 @@ import { Root, List, Wrapper } from './MoviesBox.styles';
 import MovieCard from '../MovieCard/MovieCard.container';
 
 const MoviesBox = ({ movies, title, elevation, padding }) => {
-  if (!movies.length) return null;
+  if (!movies.length || !movies) return null;
 
   return (
     <Root elevation={elevation} padding={padding}>
@@ -32,14 +32,13 @@ const MoviesBox = ({ movies, title, elevation, padding }) => {
 };
 
 MoviesBox.defaultProps = {
-  movies: null,
   title: '',
   elevation: 1,
   padding: 0,
 };
 
 MoviesBox.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.any),
+  movies: PropTypes.arrayOf(PropTypes.any).isRequired,
   title: PropTypes.string,
   elevation: PropTypes.number,
   padding: PropTypes.number,
