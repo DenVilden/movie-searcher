@@ -7,7 +7,7 @@ import MoviesBox from '../components/MoviesBox/MoviesBox';
 
 const ErrorMessage = lazy(() => import('../components/ErrorMessage'));
 
-const SearchResults = ({ inputValue, movies }) => {
+const SearchResults = ({ inputValue }) => {
   const { loading, error, data } = useQuery(GET_SEARCH_MOVIES, {
     variables: { query: inputValue },
   });
@@ -22,19 +22,11 @@ const SearchResults = ({ inputValue, movies }) => {
     );
   }
 
-  return <MoviesBox elevation={0} movies={movies} />;
+  return <MoviesBox elevation={0} movies={data.moviesSearch} />;
 };
 
 SearchResults.propTypes = {
   inputValue: PropTypes.string.isRequired,
-  movies: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      title: PropTypes.string,
-      release_date: PropTypes.string,
-      poster_path: PropTypes.string,
-    })
-  ).isRequired,
 };
 
 export default SearchResults;

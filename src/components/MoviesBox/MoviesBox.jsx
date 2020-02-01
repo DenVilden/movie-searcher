@@ -32,13 +32,14 @@ const MoviesBox = ({ movies, title, elevation, padding }) => {
 };
 
 MoviesBox.defaultProps = {
+  movies: null,
   title: '',
   elevation: 1,
   padding: 0,
 };
 
 MoviesBox.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.any).isRequired,
+  movies: PropTypes.arrayOf(PropTypes.any),
   title: PropTypes.string,
   elevation: PropTypes.number,
   padding: PropTypes.number,
