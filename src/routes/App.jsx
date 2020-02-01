@@ -11,15 +11,9 @@ import Header from '../components/Header/Header.container';
 import Spinner from '../components/Spinner';
 import { GET_INPUT_VALUE } from '../graphql/queries';
 
-const SearchResults = lazy(() =>
-  import('../containers/SearchResults/SearchResults.container')
-);
-const HomePage = lazy(() =>
-  import('../containers/HomePage/HomePage.container')
-);
-const MoviePage = lazy(() =>
-  import('../containers/MoviePage/MoviePage.container')
-);
+const SearchResults = lazy(() => import('../containers/SearchResults'));
+const HomePage = lazy(() => import('../containers/HomePage'));
+const MoviePage = lazy(() => import('../containers/MoviePage'));
 
 const App = () => {
   const {
@@ -38,7 +32,7 @@ const App = () => {
             path="/movie/:id"
             render={({ match }) => <MoviePage id={match.params.id} />}
           />
-          <Route render={() => <Redirect to="/" />} />
+          <Redirect to="/" />
         </Switch>
       </Suspense>
     </Router>

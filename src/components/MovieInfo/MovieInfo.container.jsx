@@ -26,10 +26,6 @@ const MovieInfoContainer = ({ movie }) => {
   return <MovieInfo isExist={isExist} movie={movie} toggleSave={toggleSave} />;
 };
 
-MovieInfoContainer.defaultProps = {
-  movie: null,
-};
-
 MovieInfoContainer.propTypes = {
   movie: PropTypes.shape({
     id: PropTypes.number,
@@ -40,17 +36,7 @@ MovieInfoContainer.propTypes = {
     revenue: PropTypes.string,
     overview: PropTypes.string,
     backdrop_path: PropTypes.string,
-    similar: PropTypes.shape({
-      results: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number,
-          title: PropTypes.string,
-          release_date: PropTypes.string,
-          poster_path: PropTypes.string,
-        })
-      ),
-    }),
-  }),
+  }).isRequired,
 };
 
 export default MovieInfoContainer;

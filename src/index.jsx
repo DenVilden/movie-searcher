@@ -15,8 +15,11 @@ const cache = new InMemoryCache();
 const client = new ApolloClient({ resolvers, cache });
 client.writeData({ data });
 
-persistCache({ cache, storage: window.localStorage }).then(() => {
-  client.writeData({ data: { favoritesOpen: false } });
+const renderApp = async () => {
+  if (process.env.NODE_ENV === 'production') {
+    await persistCache({ cache, storage: window.localStorage });
+    client.writeData({ data: { favoritesOpen: false } });
+  }
 
   const theme = createMuiTheme();
 
@@ -32,4 +35,6 @@ persistCache({ cache, storage: window.localStorage }).then(() => {
   );
 
   serviceWorker.register();
-});
+};
+
+renderApp();
