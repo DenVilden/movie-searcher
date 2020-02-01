@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MoviesUpcoming from '../../containers/MoviesUpcoming';
-import MoviesTopRated from '../../containers/MoviesTopRated';
+import MoviesUpcoming from '../MoviesUpcoming';
+import MoviesTopRated from '../MoviesTopRated';
 
 const HomePage = ({ upcoming, topRated }) => (
   <main>

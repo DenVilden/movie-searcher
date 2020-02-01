@@ -4,7 +4,7 @@ import { GET_MOVIES } from '../../graphql/queries';
 import Spinner from '../../components/Spinner';
 import HomePage from './HomePage';
 
-const ErrorMessage = lazy(() => import('../../containers/ErrorMessage'));
+const ErrorMessage = lazy(() => import('../ErrorMessage'));
 
 export default () => {
   const { loading, error, data } = useQuery(GET_MOVIES);

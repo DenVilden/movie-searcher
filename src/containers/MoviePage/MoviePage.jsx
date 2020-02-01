@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Slide } from '@material-ui/core';
 import MovieInfo from '../../components/MovieInfo/MovieInfo.container';
-import MoviesSimilar from '../../containers/MoviesSimilar';
+import MoviesSimilar from '../MoviesSimilar';
 
 const MoviePage = ({ info, similar }) => (
   <Slide direction="up" in>

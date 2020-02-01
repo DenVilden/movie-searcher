@@ -5,7 +5,7 @@ import { GET_MOVIE_INFO } from '../../graphql/queries';
 import Spinner from '../../components/Spinner';
 import MoviePage from './MoviePage';
 
-const ErrorMessage = lazy(() => import('../../containers/ErrorMessage'));
+const ErrorMessage = lazy(() => import('../ErrorMessage'));
 
 const MoviePageContainer = ({ id }) => {
   const { loading, error, data } = useQuery(GET_MOVIE_INFO, {
