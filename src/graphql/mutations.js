@@ -1,11 +1,5 @@
 import { gql } from 'apollo-boost';
 
-export const TOGGLE_FAVORITES = gql`
-  mutation {
-    toggleFavoritesOpen @client
-  }
-`;
-
 export const SET_INPUT_VALUE = gql`
   mutation($value: String!) {
     setInputValue(value: $value) @client

@@ -18,7 +18,6 @@ client.writeData({ data });
 (async () => {
   if (process.env.NODE_ENV === 'production') {
     await persistCache({ cache, storage: window.localStorage });
-    client.writeData({ data: { favoritesOpen: false } });
   }
 
   const theme = createMuiTheme();

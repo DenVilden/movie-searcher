@@ -22,7 +22,7 @@ const SearchResults = ({ inputValue }) => {
     );
   }
 
-  return <MoviesBox elevation={0} movies={data.moviesSearch} />;
+  return <MoviesBox elevation={0} movies={data.moviesSearch} padding={0} />;
 };
 
 SearchResults.propTypes = {

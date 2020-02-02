@@ -15,18 +15,8 @@ const HomePage = () => {
 
   return (
     <main>
-      <MoviesBox
-        elevation={10}
-        movies={data.upcoming}
-        padding={1}
-        title="Upcoming"
-      />
-      <MoviesBox
-        elevation={10}
-        movies={data.topRated}
-        padding={1}
-        title="Top Rated"
-      />
+      <MoviesBox movies={data.upcoming} title="Upcoming" />
+      <MoviesBox movies={data.topRated} title="Top Rated" />
     </main>
   );
 };

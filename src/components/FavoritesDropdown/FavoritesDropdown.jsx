@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CardActionArea, Divider } from '@material-ui/core';
+import { withRouter } from 'react-router-dom';
 import {
   StyledPopover,
   StyledTypography,
@@ -75,4 +76,4 @@ FavoritesDropdown.propTypes = {
   ).isRequired,
 };
 
-export default FavoritesDropdown;
+export default withRouter(FavoritesDropdown);

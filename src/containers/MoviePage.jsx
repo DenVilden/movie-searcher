@@ -24,9 +24,7 @@ const MoviePage = ({ id }) => {
         <MovieInfo movie={data.movieInfo} />
         {data.movieInfo.similar.results && (
           <MoviesBox
-            elevation={10}
             movies={data.movieInfo.similar.results}
-            padding={1}
             title="Similar Movies"
           />
         )}

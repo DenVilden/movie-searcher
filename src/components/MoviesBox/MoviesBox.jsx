@@ -33,8 +33,8 @@ const MoviesBox = ({ movies, title, elevation, padding }) => {
 
 MoviesBox.defaultProps = {
   title: '',
-  elevation: 1,
-  padding: 0,
+  elevation: 10,
+  padding: 1,
 };
 
 MoviesBox.propTypes = {
