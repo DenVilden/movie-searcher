@@ -28,19 +28,24 @@ const MoviePage = ({ id }) => {
 
   if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
 
+  const isExist = favorites.some(favorite => favorite.id === data.movieInfo.id);
+
+  const toggleSave = () => {
+    if (isExist) {
+      removeFromFavorites({ variables: { movie: data.movieInfo } });
+    } else {
+      addToFavorites({ variables: { movie: data.movieInfo } });
+    }
+  };
+
   return (
     <Slide direction="up" in>
       <div>
         <MovieInfo
-          addToFavorites={movie => addToFavorites({ variables: { movie } })}
           favorites={favorites}
-          isExist={favorites.some(
-            favorite => favorite.id === data.movieInfo.id
-          )}
+          isExist={isExist}
           movie={data.movieInfo}
-          removeFromFavorites={movie =>
-            removeFromFavorites({ variables: { movie } })
-          }
+          toggleSave={toggleSave}
         />
         {data.movieInfo.similar.results && (
           <MoviesBox

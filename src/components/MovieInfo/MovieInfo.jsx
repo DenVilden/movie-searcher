@@ -21,20 +21,11 @@ const propTypes = {
     backdrop_path: PropTypes.string,
   }).isRequired,
   isExist: PropTypes.bool.isRequired,
-  addToFavorites: PropTypes.func.isRequired,
-  removeFromFavorites: PropTypes.func.isRequired,
+  toggleSave: PropTypes.func.isRequired,
 };
 
 /* eslint-disable camelcase */
-const MovieInfo = ({ movie, addToFavorites, removeFromFavorites, isExist }) => {
-  const toggleSave = () => {
-    if (isExist) {
-      removeFromFavorites(movie);
-    } else {
-      addToFavorites(movie);
-    }
-  };
-
+const MovieInfo = ({ movie, isExist, toggleSave }) => {
   return (
     <StyledCard elevation={10}>
       <StyledCardMedia image={movie.backdrop_path || noImage} src="img" />
