@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CardActionArea, Typography } from '@material-ui/core';
 import { Star as StarIcon } from '@material-ui/icons';
+import { withRouter } from 'react-router-dom';
 import {
   StyledCard,
   StyledCardMedia,
@@ -10,6 +11,22 @@ import {
   IconWrapper,
 } from './MovieCard.styles';
 import noImage from '../../assets/no-image.jpg';
+
+const propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    poster_path: PropTypes.string,
+    vote_average: PropTypes.number,
+  }).isRequired,
+  clearInputValue: PropTypes.func,
+  history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
+};
+
+const defaultProps = {
+  clearInputValue: null,
+};
 
 /* eslint-disable camelcase */
 const MovieCard = ({
@@ -21,7 +38,7 @@ const MovieCard = ({
     <CardActionArea
       onClick={() => {
         history.push(`/movie/${id}`);
-        clearInputValue();
+        clearInputValue && clearInputValue();
       }}
     >
       <StyledCardMedia image={poster_path || noImage} src="img" title={title} />
@@ -40,17 +57,7 @@ const MovieCard = ({
     </CardActionArea>
   </StyledCard>
 );
+MovieCard.defaultProps = defaultProps;
+MovieCard.propTypes = propTypes;
 
-MovieCard.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    release_date: PropTypes.string,
-    poster_path: PropTypes.string,
-    vote_average: PropTypes.number,
-  }).isRequired,
-  clearInputValue: PropTypes.func.isRequired,
-  history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
-};
-
-export default MovieCard;
+export default withRouter(MovieCard);

@@ -7,6 +7,12 @@ import {
 } from '@material-ui/icons';
 import { StyledIconButton } from './FavoritesIcon.styles';
 
+const propTypes = {
+  open: PropTypes.bool.isRequired,
+  total: PropTypes.number.isRequired,
+  toggle: PropTypes.func.isRequired,
+};
+
 const FavoritesIcon = ({ total, open, toggle }) => (
   <StyledIconButton
     color="inherit"
@@ -20,10 +26,6 @@ const FavoritesIcon = ({ total, open, toggle }) => (
   </StyledIconButton>
 );
 
-FavoritesIcon.propTypes = {
-  open: PropTypes.bool.isRequired,
-  total: PropTypes.number.isRequired,
-  toggle: PropTypes.func.isRequired,
-};
+FavoritesIcon.propTypes = propTypes;
 
 export default FavoritesIcon;

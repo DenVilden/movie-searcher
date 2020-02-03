@@ -2,9 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Grow, Typography } from '@material-ui/core';
 import { Root, List, Wrapper } from './MoviesBox.styles';
-import MovieCard from '../MovieCard/MovieCard.container';
+import MovieCard from '../MovieCard/MovieCard';
 
-const MoviesBox = ({ movies, title, elevation, padding }) => {
+const propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.any).isRequired,
+  title: PropTypes.string,
+  elevation: PropTypes.number,
+  padding: PropTypes.number,
+  clearInputValue: PropTypes.func,
+};
+
+const defaultProps = {
+  title: '',
+  elevation: 10,
+  padding: 1,
+  clearInputValue: null,
+};
+
+const MoviesBox = ({ movies, title, elevation, padding, clearInputValue }) => {
   if (!movies.length || !movies) return null;
 
   return (
@@ -20,7 +35,7 @@ const MoviesBox = ({ movies, title, elevation, padding }) => {
             <Grid item lg={2} md={3} sm={4} xs={6}>
               <Wrapper container justify="center">
                 <Grid item>
-                  <MovieCard movie={movie} />
+                  <MovieCard clearInputValue={clearInputValue} movie={movie} />
                 </Grid>
               </Wrapper>
             </Grid>
@@ -31,17 +46,7 @@ const MoviesBox = ({ movies, title, elevation, padding }) => {
   );
 };
 
-MoviesBox.defaultProps = {
-  title: '',
-  elevation: 10,
-  padding: 1,
-};
-
-MoviesBox.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.any).isRequired,
-  title: PropTypes.string,
-  elevation: PropTypes.number,
-  padding: PropTypes.number,
-};
+MoviesBox.propTypes = propTypes;
+MoviesBox.defaultProps = defaultProps;
 
 export default MoviesBox;

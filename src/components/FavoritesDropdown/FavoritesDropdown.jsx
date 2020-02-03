@@ -10,6 +10,35 @@ import {
 } from './FavoritesDropdown.styles';
 import noImage from '../../assets/no-image.jpg';
 
+const propTypes = {
+  setInputValue: PropTypes.func.isRequired,
+  history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
+  open: PropTypes.bool.isRequired,
+  toggleFavoritesOpen: PropTypes.func.isRequired,
+  favorites: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      release_date: PropTypes.string,
+      vote_average: PropTypes.number,
+      budget: PropTypes.string,
+      revenue: PropTypes.string,
+      overview: PropTypes.string,
+      backdrop_path: PropTypes.string,
+      similar: PropTypes.shape({
+        results: PropTypes.arrayOf(
+          PropTypes.shape({
+            id: PropTypes.number,
+            title: PropTypes.string,
+            release_date: PropTypes.string,
+            poster_path: PropTypes.string,
+          })
+        ),
+      }),
+    })
+  ).isRequired,
+};
+
 const FavoritesDropdown = ({
   favorites,
   setInputValue,
@@ -47,33 +76,6 @@ const FavoritesDropdown = ({
   </StyledPopover>
 );
 
-FavoritesDropdown.propTypes = {
-  setInputValue: PropTypes.func.isRequired,
-  history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
-  open: PropTypes.bool.isRequired,
-  toggleFavoritesOpen: PropTypes.func.isRequired,
-  favorites: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      title: PropTypes.string,
-      release_date: PropTypes.string,
-      vote_average: PropTypes.number,
-      budget: PropTypes.string,
-      revenue: PropTypes.string,
-      overview: PropTypes.string,
-      backdrop_path: PropTypes.string,
-      similar: PropTypes.shape({
-        results: PropTypes.arrayOf(
-          PropTypes.shape({
-            id: PropTypes.number,
-            title: PropTypes.string,
-            release_date: PropTypes.string,
-            poster_path: PropTypes.string,
-          })
-        ),
-      }),
-    })
-  ).isRequired,
-};
+FavoritesDropdown.propTypes = propTypes;
 
 export default withRouter(FavoritesDropdown);

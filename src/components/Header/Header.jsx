@@ -10,14 +10,15 @@ import {
 } from './Header.styles';
 import Favorites from '../../containers/Favorites';
 
-const Header = ({ inputValue, setInputValue, isHomePage }) => (
+const propTypes = {
+  inputValue: PropTypes.string.isRequired,
+  setInputValue: PropTypes.func.isRequired,
+};
+
+const Header = ({ inputValue, setInputValue }) => (
   <AppBar position="static">
     <Toolbar>
-      <LogoContainer
-        aria-label="Logo"
-        onClick={!isHomePage ? () => setInputValue() : null}
-        to="/"
-      >
+      <LogoContainer aria-label="Logo" onClick={() => setInputValue()} to="/">
         <Logo />
       </LogoContainer>
       <SearchBar>
@@ -36,10 +37,6 @@ const Header = ({ inputValue, setInputValue, isHomePage }) => (
   </AppBar>
 );
 
-Header.propTypes = {
-  inputValue: PropTypes.string.isRequired,
-  setInputValue: PropTypes.func.isRequired,
-  isHomePage: PropTypes.bool.isRequired,
-};
+Header.propTypes = propTypes;
 
 export default Header;
