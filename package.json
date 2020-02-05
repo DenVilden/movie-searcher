@@ -15,7 +15,7 @@
     "apollo-cache-persist-dev": "^0.2.1",
     "apollo-server-express": "^2.9.16",
     "axios": "0.18.1",
-    "dayjs": "^1.8.19",
+    "dayjs": "^1.8.20",
     "express": "^4.17.1",
     "express-sslify": "^1.2.0",
     "express-static-gzip": "^2.0.6",
@@ -26,7 +26,7 @@
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.1",
-    "styled-components": "^5.0.0"
+    "styled-components": "^5.0.1"
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
@@ -48,7 +48,7 @@
     "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node server/index.js",
     "lint": "eslint src --ext js,jsx && eslint server && stylelint './src/**/*.jsx'",
-    "postbuild": "precompress build/static -t br -i js"
+    "postbuild": "precompress build -s -e txt"
   },
   "eslintIgnore": [
     "serviceWorker.js"

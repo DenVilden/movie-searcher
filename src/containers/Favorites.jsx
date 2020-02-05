@@ -1,12 +1,9 @@
-import React, { Suspense, lazy, useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import FavoritesIcon from '../components/FavoritesIcon/FavoritesIcon';
+import FavoritesDropdown from '../components/FavoritesDropdown/FavoritesDropdown';
 import { GET_FAVORITES_DATA } from '../graphql/queries';
 import { SET_INPUT_VALUE } from '../graphql/mutations';
-
-const FavoritesDropdown = lazy(() =>
-  import('../components/FavoritesDropdown/FavoritesDropdown')
-);
 
 const Favorites = () => {
   const {
@@ -22,16 +19,14 @@ const Favorites = () => {
         toggle={() => toggleFavorites(!favoritesOpen)}
         total={favorites.length}
       />
-      <Suspense fallback={<> </>}>
-        {favoritesOpen && (
-          <FavoritesDropdown
-            favorites={favorites}
-            open={favoritesOpen}
-            setInputValue={setInputValue}
-            toggleFavoritesOpen={() => toggleFavorites(!favoritesOpen)}
-          />
-        )}
-      </Suspense>
+      {favoritesOpen && (
+        <FavoritesDropdown
+          favorites={favorites}
+          open={favoritesOpen}
+          setInputValue={setInputValue}
+          toggleFavoritesOpen={() => toggleFavorites(!favoritesOpen)}
+        />
+      )}
     </>
   );
 };
