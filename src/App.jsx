@@ -6,7 +6,6 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import GlobalStyle from './styles';
 import Header from './components/Header/Header';
 import Spinner from './components/Spinner';
 import { GET_INPUT_VALUE } from './graphql/queries';
@@ -24,7 +23,6 @@ const App = () => {
 
   return (
     <Router>
-      <GlobalStyle />
       <Header
         inputValue={inputValue}
         setInputValue={value => setInputValue({ variables: { value } })}
