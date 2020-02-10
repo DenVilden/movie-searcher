@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",
-    "@material-ui/core": "^4.9.1",
+    "@material-ui/core": "^4.9.2",
     "@material-ui/icons": "^4.9.1",
     "apollo-boost": "^0.4.7",
     "apollo-cache-persist-dev": "^0.2.1",
@@ -36,7 +36,7 @@
     "nodemon": "^2.0.2",
     "precompress": "^6.0.2",
     "prettier": "^1.19.1",
-    "stylelint": "13.0.0",
+    "stylelint": "13.1.0",
     "stylelint-config-sass-guidelines": "^7.0.0"
   },
   "scripts": {
@@ -47,7 +47,7 @@
     "server": "nodemon -r dotenv/config server/index.js",
     "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node server/index.js",
-    "lint": "eslint src --ext js,jsx && eslint server && stylelint './src/**/*.jsx'",
+    "lint": "eslint src --ext js,jsx && eslint server && stylelint src",
     "postbuild": "precompress build -s -e txt"
   },
   "eslintIgnore": [
@@ -62,7 +62,7 @@
     ],
     "rules": {
       "prettier/prettier": [
-        "error",
+        "warn",
         {
           "trailingComma": "es5",
           "singleQuote": true
@@ -75,6 +75,10 @@
   },
   "stylelint": {
     "extends": "stylelint-config-sass-guidelines",
+    "ignoreFiles": [
+      "**/*.jpg",
+      "**/*.svg"
+    ],
     "rules": {
       "selector-class-pattern": null
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createMuiTheme } from '@material-ui/core';
+import { createMuiTheme, CssBaseline } from '@material-ui/core';
 import { StylesProvider } from '@material-ui/core/styles';
 import { ThemeProvider } from 'styled-components';
 import { ApolloProvider } from '@apollo/react-hooks';
@@ -26,6 +26,7 @@ client.writeData({ data });
     <ApolloProvider client={client}>
       <StylesProvider injectFirst>
         <ThemeProvider theme={theme}>
+          <CssBaseline />
           <App />
         </ThemeProvider>
       </StylesProvider>

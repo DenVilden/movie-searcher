@@ -50,7 +50,7 @@ const MovieCard = ({
               <StarIcon /> {vote_average}
             </IconWrapper>
           ) : (
-            release_date || 'Unknown year'
+            release_date
           )}
         </StyledTypography>
       </StyledCardContent>

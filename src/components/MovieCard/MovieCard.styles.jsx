@@ -12,7 +12,7 @@ export const StyledCard = styled(Card)`
 `;
 
 export const StyledCardMedia = styled(CardMedia)`
-  height: 200px;
+  height: 222px;
   margin: ${({ theme }) => theme.spacing(1, 1, 0, 1)};
 `;
 
@@ -20,6 +20,7 @@ export const StyledCardContent = styled(CardContent)`
   display: flex;
   flex-direction: column;
   height: 100px;
+  padding: ${({ theme }) => theme.spacing(2, 1, 1, 1)};
 `;
 
 export const StyledTypography = styled(Typography)`
