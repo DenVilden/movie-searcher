@@ -33,6 +33,6 @@ client.writeData({ data });
     </ApolloProvider>,
     document.getElementById('root')
   );
-
-  serviceWorker.register();
 })();
+
+serviceWorker.register();

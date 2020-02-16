@@ -23,8 +23,9 @@ const Header = ({ inputValue, setInputValue }) => (
       </LogoContainer>
       <SearchBar>
         <StyledSearchIcon />
-        <label aria-label="search bar">
+        <label aria-label="search bar" htmlFor="input">
           <StyledInputBase
+            id="input"
             onChange={evt => setInputValue(evt.target.value)}
             placeholder="type a movie name..."
             type="search"
