@@ -15,6 +15,7 @@
     "apollo-cache-persist-dev": "^0.2.1",
     "apollo-datasource-rest": "^0.7.0",
     "apollo-server-express": "^2.10.1",
+    "compression": "^1.7.4",
     "dayjs": "^1.8.20",
     "express": "^4.17.1",
     "express-sslify": "^1.2.0",

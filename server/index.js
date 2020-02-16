@@ -3,6 +3,7 @@ const express = require('express');
 const expressStaticGzip = require('express-static-gzip');
 const { ApolloServer } = require('apollo-server-express');
 const enforce = require('express-sslify');
+const compression = require('compression');
 const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
 const MoviesAPI = require('./datasources/Movies');
@@ -14,6 +15,7 @@ const buildPath = path.join(__dirname, '../build');
 
 if (process.env.NODE_ENV === 'production') {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
+  app.use(compression());
   app.use(
     '/',
     expressStaticGzip(buildPath, {
