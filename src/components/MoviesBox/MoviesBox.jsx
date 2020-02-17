@@ -20,7 +20,7 @@ const defaultProps = {
 };
 
 const MoviesBox = ({ movies, title, elevation, padding, clearInputValue }) => {
-  if (!movies.length || !movies) return null;
+  if (!movies.length) return null;
 
   return (
     <Root elevation={elevation} padding={padding}>

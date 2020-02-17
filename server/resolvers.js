@@ -7,14 +7,19 @@ const attachPoster = (path, size = 200) => {
 
 module.exports = {
   Query: {
-    upcoming: (_, __, { dataSources }) => {
-      return dataSources.moviesAPI.getUpcoming();
+    upcoming: async (_, __, { dataSources }) => {
+      const data = await dataSources.moviesAPI.getUpcoming();
+      return data
+        .sort((a, b) => (a.release_date < b.release_date ? 1 : -1))
+        .slice(0, 12);
     },
-    topRated: (_, __, { dataSources }) => {
-      return dataSources.moviesAPI.getTopRated();
+    topRated: async (_, __, { dataSources }) => {
+      const data = await dataSources.moviesAPI.getTopRated();
+      return data.slice(0, 12);
     },
-    moviesSearch: (_, { query }, { dataSources }) => {
-      return dataSources.moviesAPI.getMoviesSearch(query);
+    moviesSearch: async (_, { query }, { dataSources }) => {
+      const data = await dataSources.moviesAPI.getMoviesSearch(query);
+      return data.slice(0, 6);
     },
     movieInfo: (_, { id }, { dataSources }) => {
       return dataSources.moviesAPI.getMovieInfo(id);
@@ -24,7 +29,7 @@ module.exports = {
   Upcoming: {
     poster_path: ({ poster_path }) => attachPoster(poster_path),
     release_date: ({ release_date }) => {
-      return dayjs(release_date).format('DD.MM.YYYY');
+      return release_date ? dayjs(release_date).format('DD.MM.YYYY') : '';
     },
   },
   TopRated: {
@@ -33,13 +38,13 @@ module.exports = {
   MoviesSearch: {
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
     release_date: ({ release_date }) => {
-      return release_date && dayjs(release_date).format('YYYY');
+      return release_date ? dayjs(release_date).format('YYYY') : '';
     },
   },
   SimilarMovies: {
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
     release_date: ({ release_date }) => {
-      return release_date && dayjs(release_date).format('YYYY');
+      return release_date ? dayjs(release_date).format('YYYY') : '';
     },
   },
   SimilarResults: {
@@ -51,7 +56,7 @@ module.exports = {
     },
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
     release_date: ({ release_date }) => {
-      return release_date && dayjs(release_date).format('DD MMMM YYYY');
+      return release_date ? dayjs(release_date).format('DD MMMM YYYY') : '';
     },
     budget: ({ budget }) => numeral(budget).format('$0,00'),
     revenue: ({ revenue }) => numeral(revenue).format('$0,00'),

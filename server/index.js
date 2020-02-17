@@ -34,9 +34,6 @@ const server = new ApolloServer({
   dataSources: () => ({
     moviesAPI: new MoviesAPI(),
   }),
-  context: () => ({
-    key: process.env.REACT_APP_MOVIE_API_KEY,
-  }),
 });
 server.applyMiddleware({ app });
 

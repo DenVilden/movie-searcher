@@ -7,30 +7,89 @@ module.exports = class MoviesAPI extends RESTDataSource {
   }
 
   willSendRequest(request) {
-    request.params.set('api_key', this.context.key);
+    request.params.set('api_key', process.env.REACT_APP_MOVIE_API_KEY);
+  }
+
+  moviesUpcomingReducer(movie) {
+    return {
+      id: movie.id,
+      title: movie.title,
+      release_date: movie.release_date,
+      poster_path: movie.poster_path,
+    };
+  }
+
+  moviesTopRatedReducer(movie) {
+    return {
+      id: movie.id,
+      title: movie.title,
+      vote_average: movie.vote_average,
+      poster_path: movie.poster_path,
+    };
+  }
+
+  moviesSearchReducer(movie) {
+    return {
+      id: movie.id,
+      title: movie.title,
+      release_date: movie.release_date,
+      poster_path: movie.poster_path,
+    };
+  }
+
+  moviesSimilar(movie) {
+    return {
+      id: movie.id,
+      title: movie.title,
+      release_date: movie.release_date,
+      poster_path: movie.poster_path,
+    };
+  }
+
+  movieInfoReducer(movie) {
+    return {
+      id: movie.id,
+      title: movie.title,
+      release_date: movie.release_date,
+      vote_average: movie.vote_average,
+      budget: movie.budget,
+      revenue: movie.revenue,
+      overview: movie.overview,
+      backdrop_path: movie.poster_path,
+      poster_path: movie.poster_path,
+      similar: {
+        results: Array.isArray(movie.similar.results)
+          ? movie.similar.results.map(mov => this.moviesSimilar(mov))
+          : [],
+      },
+    };
   }
 
   async getUpcoming() {
-    const data = await this.get('/movie/upcoming');
-    return data.results
-      .sort((a, b) => (a.release_date < b.release_date ? 1 : -1))
-      .slice(0, 12);
+    const { results } = await this.get('/movie/upcoming');
+    return Array.isArray(results)
+      ? results.map(movie => this.moviesUpcomingReducer(movie))
+      : [];
   }
 
   async getTopRated() {
-    const data = await this.get('/movie/top_rated');
-    return data.results.slice(0, 12);
+    const { results } = await this.get('/movie/top_rated');
+    return Array.isArray(results)
+      ? results.map(movie => this.moviesTopRatedReducer(movie))
+      : [];
   }
 
   async getMoviesSearch(query) {
-    const data = await this.get('/search/movie', { query });
-    return data.results.slice(0, 6);
+    const { results } = await this.get('/search/movie', { query });
+    return Array.isArray(results)
+      ? results.map(movie => this.moviesSearchReducer(movie))
+      : [];
   }
 
   async getMovieInfo(id) {
     const data = await this.get(`/movie/${id}`, {
       append_to_response: 'similar',
     });
-    return data;
+    return this.movieInfoReducer(data);
   }
 };

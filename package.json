@@ -71,7 +71,8 @@
       ],
       "jsx-a11y/label-has-associated-control": "off",
       "react/jsx-props-no-spreading": "off",
-      "react/jsx-sort-props": "warn"
+      "react/jsx-sort-props": "warn",
+      "class-methods-use-this": "off"
     }
   },
   "stylelint": {

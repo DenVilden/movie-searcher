@@ -8,12 +8,12 @@ import ApolloClient, { InMemoryCache } from 'apollo-boost';
 import { persistCache } from 'apollo-cache-persist-dev';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { data, resolvers } from './graphql/clientState';
+import resolvers from './graphql/resolvers';
 
 const cache = new InMemoryCache();
 
 const client = new ApolloClient({ resolvers, cache });
-client.writeData({ data });
+client.writeData({ data: { favorites: [], inputValue: '' } });
 
 (async () => {
   if (process.env.NODE_ENV === 'production') {

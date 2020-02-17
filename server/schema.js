@@ -40,7 +40,7 @@ module.exports = gql`
     vote_average: Float!
     budget: String!
     revenue: String!
-    overview: String!
+    overview: String
     poster_path: String
     backdrop_path: String
     similar: SimilarResults!

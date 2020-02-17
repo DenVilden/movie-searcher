@@ -1,11 +1,6 @@
 import { GET_FAVORITES_DATA, GET_INPUT_VALUE } from './queries';
 
-export const data = {
-  favorites: [],
-  inputValue: '',
-};
-
-export const resolvers = {
+export default {
   Mutation: {
     addMovieToFavorites: (_, { movie }, { cache }) => {
       const { favorites } = cache.readQuery({
