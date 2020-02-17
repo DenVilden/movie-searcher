@@ -49,8 +49,14 @@
     "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node server/index.js",
     "lint": "eslint src --ext js,jsx && eslint server && stylelint src",
-    "test-server": "jest server --watch",
+    "test-server": "jest --watch",
+    "coverage": "yarn test-server --collectCoverage --watchAll=false",
     "postbuild": "precompress build -s -e txt"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "server/**/*.js"
+    ]
   },
   "eslintIgnore": [
     "serviceWorker.js"

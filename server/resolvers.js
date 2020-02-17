@@ -10,8 +10,8 @@ module.exports = {
     upcoming: async (_, __, { dataSources }) => {
       const data = await dataSources.moviesAPI.getUpcoming();
       return data
-        .sort((a, b) => (a.release_date < b.release_date ? 1 : -1))
-        .slice(0, 12);
+        .slice(0, 12)
+        .sort((a, b) => (a.release_date < b.release_date ? 1 : -1));
     },
     topRated: async (_, __, { dataSources }) => {
       const data = await dataSources.moviesAPI.getTopRated();
@@ -27,7 +27,7 @@ module.exports = {
   },
   /* eslint-disable camelcase */
   Upcoming: {
-    poster_path: ({ poster_path }) => attachPoster(poster_path),
+    poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
     release_date: ({ release_date }) => {
       return release_date ? dayjs(release_date).format('DD.MM.YYYY') : '';
     },

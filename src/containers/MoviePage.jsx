@@ -47,7 +47,7 @@ const MoviePage = ({ id }) => {
           movie={data.movieInfo}
           toggleSave={toggleSave}
         />
-        {data.movieInfo.similar.results && (
+        {data.movieInfo.similar.results.length && (
           <MoviesBox
             movies={data.movieInfo.similar.results}
             title="Similar Movies"

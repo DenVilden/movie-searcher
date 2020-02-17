@@ -19,32 +19,28 @@ const defaultProps = {
   clearInputValue: null,
 };
 
-const MoviesBox = ({ movies, title, elevation, padding, clearInputValue }) => {
-  if (!movies.length) return null;
-
-  return (
-    <Root elevation={elevation} padding={padding}>
-      {title && (
-        <Typography align="center" gutterBottom variant="h4">
-          {title}
-        </Typography>
-      )}
-      <List container>
-        {movies.map(movie => (
-          <Grow key={movie.id} in>
-            <Grid item lg={2} md={3} sm={4} xs={6}>
-              <Wrapper container justify="center">
-                <Grid item>
-                  <MovieCard clearInputValue={clearInputValue} movie={movie} />
-                </Grid>
-              </Wrapper>
-            </Grid>
-          </Grow>
-        ))}
-      </List>
-    </Root>
-  );
-};
+const MoviesBox = ({ movies, title, elevation, padding, clearInputValue }) => (
+  <Root elevation={elevation} padding={padding}>
+    {title && (
+      <Typography align="center" gutterBottom variant="h4">
+        {title}
+      </Typography>
+    )}
+    <List container>
+      {movies.map(movie => (
+        <Grow key={movie.id} in>
+          <Grid item lg={2} md={3} sm={4} xs={6}>
+            <Wrapper container justify="center">
+              <Grid item>
+                <MovieCard clearInputValue={clearInputValue} movie={movie} />
+              </Grid>
+            </Wrapper>
+          </Grid>
+        </Grow>
+      ))}
+    </List>
+  </Root>
+);
 
 MoviesBox.propTypes = propTypes;
 MoviesBox.defaultProps = defaultProps;
