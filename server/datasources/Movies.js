@@ -55,7 +55,7 @@ module.exports = class MoviesAPI extends RESTDataSource {
       budget: movie.budget,
       revenue: movie.revenue,
       overview: movie.overview,
-      backdrop_path: movie.poster_path,
+      backdrop_path: movie.backdrop_path,
       poster_path: movie.poster_path,
       similar: {
         results: Array.isArray(movie.similar.results)
@@ -66,23 +66,23 @@ module.exports = class MoviesAPI extends RESTDataSource {
   }
 
   async getUpcoming() {
-    const { results } = await this.get('/movie/upcoming');
-    return Array.isArray(results)
-      ? results.map(movie => this.moviesUpcomingReducer(movie))
+    const data = await this.get('/movie/upcoming');
+    return Array.isArray(data.results)
+      ? data.results.map(movie => this.moviesUpcomingReducer(movie))
       : [];
   }
 
   async getTopRated() {
-    const { results } = await this.get('/movie/top_rated');
-    return Array.isArray(results)
-      ? results.map(movie => this.moviesTopRatedReducer(movie))
+    const data = await this.get('/movie/top_rated');
+    return Array.isArray(data.results)
+      ? data.results.map(movie => this.moviesTopRatedReducer(movie))
       : [];
   }
 
   async getMoviesSearch(query) {
-    const { results } = await this.get('/search/movie', { query });
-    return Array.isArray(results)
-      ? results.map(movie => this.moviesSearchReducer(movie))
+    const data = await this.get('/search/movie', { query });
+    return Array.isArray(data.results)
+      ? data.results.map(movie => this.moviesSearchReducer(movie))
       : [];
   }
 

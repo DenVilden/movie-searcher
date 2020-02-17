@@ -6,7 +6,7 @@ const enforce = require('express-sslify');
 const compression = require('compression');
 const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
-const MoviesAPI = require('./datasources/Movies');
+const MoviesAPI = require('./datasources/movies');
 
 const app = express();
 const port = process.env.PORT || 5000;
