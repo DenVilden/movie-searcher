@@ -1,8 +1,8 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import { Grid, Grow, Typography } from '@material-ui/core';
 import { Root, List, Wrapper } from './MoviesBox.styles';
 import MovieCard from '../MovieCard/MovieCard';
-import GetMovie from '../../types/GetMovie';
 
 const defaultProps = {
   title: '',
@@ -11,7 +11,13 @@ const defaultProps = {
 };
 
 type Props = {
-  movies: GetMovie[];
+  movies: {
+    id: number;
+    title: string;
+    vote_average?: number;
+    poster_path: string | null;
+    release_date?: string;
+  }[];
   clearInputValue?: () => void;
 } & typeof defaultProps;
 

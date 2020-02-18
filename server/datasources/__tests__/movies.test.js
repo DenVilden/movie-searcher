@@ -1,4 +1,4 @@
-const MoviesAPI = require('../movies');
+const MoviesAPI = require('../Movies');
 
 const mocks = {
   get: jest.fn(),

@@ -30,7 +30,7 @@ module.exports = gql`
   }
 
   type SimilarResults {
-    results: [SimilarMovies]!
+    results: [SimilarMovies!]!
   }
 
   type MovieInfo {
@@ -47,9 +47,13 @@ module.exports = gql`
   }
 
   type Query {
-    upcoming: [Upcoming]!
-    topRated: [TopRated]!
-    moviesSearch(query: String!): [MoviesSearch]!
+    upcoming: [Upcoming!]!
+    topRated: [TopRated!]!
+    moviesSearch(query: String!): [MoviesSearch!]!
     movieInfo(id: String!): MovieInfo!
+  }
+
+  type Mutation {
+    _: Boolean
   }
 `;

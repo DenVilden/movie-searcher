@@ -3,15 +3,12 @@ import { useQuery } from '@apollo/react-hooks';
 import { GET_MOVIES } from '../graphql/queries';
 import Spinner from '../components/Spinner';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
-import GetMovie from '../types/GetMovie';
+import { GetMovies } from '../graphql/__generated__/GetMovies';
 
 const ErrorMessage = lazy(() => import('../components/ErrorMessage'));
 
 const HomePage = () => {
-  const { loading, error, data } = useQuery<{
-    upcoming: GetMovie[];
-    topRated: GetMovie[];
-  }>(GET_MOVIES);
+  const { loading, error, data } = useQuery<GetMovies>(GET_MOVIES);
 
   if (loading) return <Spinner />;
 

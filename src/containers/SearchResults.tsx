@@ -1,10 +1,17 @@
 import React, { lazy } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { GET_SEARCH_MOVIES } from '../graphql/queries';
+import { GET_MOVIES_SEARCH } from '../graphql/queries';
 import Spinner from '../components/Spinner';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
 import { SET_INPUT_VALUE } from '../graphql/mutations';
-import GetMovie from '../types/GetMovie';
+import {
+  GetMoviesSearch,
+  GetMoviesSearchVariables,
+} from '../graphql/__generated__/GetMoviesSearch';
+import {
+  SetInputValue,
+  SetInputValueVariables,
+} from '../graphql/__generated__/SetInputValue';
 
 const ErrorMessage = lazy(() => import('../components/ErrorMessage'));
 
@@ -13,18 +20,18 @@ type Props = {
 };
 
 const SearchResults = ({ inputValue }: Props) => {
-  const { loading, error, data } = useQuery<{ moviesSearch: GetMovie[] }>(
-    GET_SEARCH_MOVIES,
+  const { loading, error, data } = useQuery<
+    GetMoviesSearch,
+    GetMoviesSearchVariables
+  >(GET_MOVIES_SEARCH, {
+    variables: { query: inputValue },
+  });
+  const [setInputValue] = useMutation<SetInputValue, SetInputValueVariables>(
+    SET_INPUT_VALUE,
     {
-      variables: { query: inputValue },
+      variables: { value: '' },
     }
   );
-  const [setInputValue] = useMutation<
-    { setInputValue: string },
-    { value: string }
-  >(SET_INPUT_VALUE, {
-    variables: { value: '' },
-  });
 
   if (loading) return <Spinner />;
 

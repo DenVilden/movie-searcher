@@ -3,13 +3,17 @@ import ApolloCache, {
   NormalizedCacheObject,
   gql,
 } from 'apollo-boost';
-import { GET_FAVORITES_DATA, GET_INPUT_VALUE } from './queries';
-import GetMovieInfo from '../types/GetMovieInfo';
+import { GET_FAVORITES, GET_INPUT_VALUE } from './queries';
+import { GetFavorites } from './__generated__/GetFavorites';
 
 export const typeDefs = gql`
+  extend type Query {
+    inputValue: String!
+    favorites: [String!]!
+  }
+
   extend type Mutation {
-    addMovieToFavorites(movie: MovieInfo!): [MovieInfo!]!
-    removeMovieFromFavorites(movie: MovieInfo!): [MovieInfo!]!
+    addOrRemoveFromFavorites(movieId: String!): [String!]!
     setInputValue(value: String!): String!
   }
 `;
@@ -21,52 +25,31 @@ type ResolverFn = (
 ) => any;
 
 interface ApolloResolvers extends Resolvers {
-  Mutation: {
-    [field: string]: ResolverFn;
-  };
+  Mutation: { [field: string]: ResolverFn };
 }
 
 export const resolvers: ApolloResolvers = {
   Mutation: {
-    addMovieToFavorites: (_, { movie }: { movie: GetMovieInfo }, { cache }) => {
-      const queryResult = cache.readQuery<{ favorites: GetMovieInfo[] }>({
-        query: GET_FAVORITES_DATA,
-      });
-
-      if (queryResult) {
-        const { favorites } = queryResult;
-
-        const newFavorites = [...favorites, movie];
-
-        cache.writeQuery({
-          query: GET_FAVORITES_DATA,
-          data: { favorites: newFavorites },
-        });
-        return newFavorites;
-      }
-      return [];
-    },
-    removeMovieFromFavorites: (
+    addOrRemoveFromFavorites: (
       _,
-      { movie }: { movie: GetMovieInfo },
+      { movieId }: { movieId: string },
       { cache }
     ) => {
-      const queryResult = cache.readQuery<{ favorites: GetMovieInfo[] }>({
-        query: GET_FAVORITES_DATA,
+      const queryResult = cache.readQuery<GetFavorites>({
+        query: GET_FAVORITES,
       });
 
       if (queryResult) {
         const { favorites } = queryResult;
 
-        const newFavorites = favorites.filter(
-          favorite => favorite.id !== movie.id
-        );
+        const newFavorites = favorites.includes(movieId)
+          ? favorites.filter(id => id !== movieId)
+          : [...favorites, movieId];
 
         cache.writeQuery({
-          query: GET_FAVORITES_DATA,
+          query: GET_FAVORITES,
           data: { favorites: newFavorites },
         });
-
         return newFavorites;
       }
       return [];

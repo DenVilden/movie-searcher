@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import { Typography, Divider, Button } from '@material-ui/core';
 import {
@@ -7,10 +8,10 @@ import {
   StyledTypography,
 } from './MovieInfo.styles';
 import noImage from '../../assets/no-image.jpg';
-import GetMovieInfo from '../../types/GetMovieInfo';
+import { GetMovieInfo_movieInfo } from '../../graphql/__generated__/GetMovieInfo';
 
 type Props = {
-  movie: GetMovieInfo;
+  movie: GetMovieInfo_movieInfo;
   isExist: boolean;
   toggleSave: () => void;
 };
