@@ -22,6 +22,7 @@ export interface GetMovieInfo_movieInfo_similar {
 
 export interface GetMovieInfo_movieInfo {
   __typename: "MovieInfo";
+  isInFavorites: boolean;
   id: number;
   backdrop_path: string | null;
   poster_path: string | null;

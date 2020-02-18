@@ -7,7 +7,7 @@ export const SET_INPUT_VALUE = gql`
 `;
 
 export const ADD_OR_REMOVE_FROM_FAVORITES = gql`
-  mutation AddOrRemoveFromFavorites($movieId: String!) {
-    addOrRemoveFromFavorites(movieId: $movieId) @client
+  mutation AddOrRemoveFromFavorites($id: String!) {
+    addOrRemoveFromFavorites(id: $id) @client
   }
 `;

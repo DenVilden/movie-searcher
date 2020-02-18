@@ -1,11 +1,10 @@
-import React, { lazy } from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_MOVIES } from '../graphql/queries';
 import Spinner from '../components/Spinner';
+import ErrorMessage from '../components/ErrorMessage';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
 import { GetMovies } from '../graphql/__generated__/GetMovies';
-
-const ErrorMessage = lazy(() => import('../components/ErrorMessage'));
 
 const HomePage = () => {
   const { loading, error, data } = useQuery<GetMovies>(GET_MOVIES);

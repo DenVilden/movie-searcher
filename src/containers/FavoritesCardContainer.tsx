@@ -1,15 +1,14 @@
-import React, { lazy } from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import FavoritesCard from '../components/FavoritesCard/FavoritesCard';
 import { GET_MOVIE_INFO } from '../graphql/queries';
 import Spinner from '../components/Spinner';
+import ErrorMessage from '../components/ErrorMessage';
 import {
   GetMovieInfo,
   GetMovieInfoVariables,
 } from '../graphql/__generated__/GetMovieInfo';
-
-const ErrorMessage = lazy(() => import('../components/ErrorMessage'));
 
 type Props = {
   clearInputValue: () => void;

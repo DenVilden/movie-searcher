@@ -1,7 +1,7 @@
 import React from 'react';
 import { Divider } from '@material-ui/core';
 import { StyledPopover, StyledTypography } from './FavoritesDropdown.styles';
-import FavoritesItem from '../../containers/FavoritesItem';
+import FavoritesCard from '../../containers/FavoritesCardContainer';
 
 type Props = {
   open: boolean;
@@ -24,7 +24,7 @@ const FavoritesDropdown = ({
     <StyledTypography variant="overline">Favorites</StyledTypography>
     <Divider />
     {favorites.map(id => (
-      <FavoritesItem
+      <FavoritesCard
         key={id}
         clearInputValue={clearInputValue}
         id={id}

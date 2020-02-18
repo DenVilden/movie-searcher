@@ -25,7 +25,7 @@ module.exports = {
       return dataSources.moviesAPI.getMovieInfo(id);
     },
   },
-  /* eslint-disable camelcase */
+
   Upcoming: {
     poster_path: ({ poster_path }) => poster_path && attachPoster(poster_path),
     release_date: ({ release_date }) => {

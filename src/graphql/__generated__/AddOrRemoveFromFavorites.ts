@@ -12,5 +12,5 @@ export interface AddOrRemoveFromFavorites {
 }
 
 export interface AddOrRemoveFromFavoritesVariables {
-  movieId: string;
+  id: string;
 }

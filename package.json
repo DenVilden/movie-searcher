@@ -110,7 +110,8 @@
       "react/jsx-sort-props": "warn",
       "class-methods-use-this": "off",
       "react/prop-types": "off",
-      "import/prefer-default-export": "off"
+      "import/prefer-default-export": "off",
+      "camelcase": "off"
     }
   },
   "stylelint": {

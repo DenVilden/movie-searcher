@@ -12,8 +12,8 @@ import { GET_INPUT_VALUE } from './graphql/queries';
 import { SET_INPUT_VALUE } from './graphql/mutations';
 
 const SearchResults = lazy(() => import('./containers/SearchResults'));
-const HomePage = lazy(() => import('./containers/HomePage'));
-const MoviePage = lazy(() => import('./containers/MoviePage'));
+const HomePage = lazy(() => import('./pages/HomePage'));
+const MoviePage = lazy(() => import('./pages/MoviePage'));
 
 const App = () => {
   const { data } = useQuery<{ inputValue: string }>(GET_INPUT_VALUE);

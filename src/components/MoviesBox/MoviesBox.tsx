@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React from 'react';
 import { Grid, Grow, Typography } from '@material-ui/core';
 import { Root, List, Wrapper } from './MoviesBox.styles';

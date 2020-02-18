@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React from 'react';
 import { Typography, Divider, Button } from '@material-ui/core';
 import {
@@ -12,23 +11,21 @@ import { GetMovieInfo_movieInfo } from '../../graphql/__generated__/GetMovieInfo
 
 type Props = {
   movie: GetMovieInfo_movieInfo;
-  isExist: boolean;
   toggleSave: () => void;
 };
 
-/* eslint-disable camelcase */
-const MovieInfo = ({ movie, isExist, toggleSave }: Props) => (
+const MovieInfo = ({ movie, toggleSave }: Props) => (
   <StyledCard elevation={10}>
     <StyledCardMedia image={movie.backdrop_path || noImage} src="img" />
     <StyledCardContent>
       <StyledTypography gutterBottom variant="h5">
         {movie.title}
         <Button
-          color={isExist ? 'secondary' : 'primary'}
+          color={movie.isInFavorites ? 'secondary' : 'primary'}
           onClick={toggleSave}
           variant="contained"
         >
-          {isExist ? 'Remove from favorites' : 'Add to favorites'}
+          {movie.isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
         </Button>
       </StyledTypography>
       <Typography>{movie.overview}</Typography>

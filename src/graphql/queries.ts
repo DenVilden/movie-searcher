@@ -3,6 +3,7 @@ import { gql } from 'apollo-boost';
 export const GET_MOVIE_INFO = gql`
   query GetMovieInfo($id: String!) {
     movieInfo(id: $id) {
+      isInFavorites @client
       id
       backdrop_path
       poster_path

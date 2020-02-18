@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React from 'react';
 import { CardActionArea, Typography } from '@material-ui/core';
 import { Star as StarIcon } from '@material-ui/icons';
@@ -23,7 +22,6 @@ type Props = {
   clearInputValue?: () => void;
 } & RouteComponentProps;
 
-/* eslint-disable camelcase */
 const MovieCard = ({ movie, clearInputValue, history }: Props) => (
   <StyledCard elevation={10}>
     <CardActionArea

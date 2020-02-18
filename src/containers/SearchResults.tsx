@@ -1,7 +1,8 @@
-import React, { lazy } from 'react';
+import React from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { GET_MOVIES_SEARCH } from '../graphql/queries';
 import Spinner from '../components/Spinner';
+import ErrorMessage from '../components/ErrorMessage';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
 import { SET_INPUT_VALUE } from '../graphql/mutations';
 import {
@@ -12,8 +13,6 @@ import {
   SetInputValue,
   SetInputValueVariables,
 } from '../graphql/__generated__/SetInputValue';
-
-const ErrorMessage = lazy(() => import('../components/ErrorMessage'));
 
 type Props = {
   inputValue: string;
