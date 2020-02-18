@@ -8,7 +8,6 @@
 // ====================================================
 
 export interface GetMovieInfo_movieInfo_similar_results {
-  __typename: "SimilarMovies";
   id: number;
   title: string;
   release_date: string;
@@ -16,12 +15,10 @@ export interface GetMovieInfo_movieInfo_similar_results {
 }
 
 export interface GetMovieInfo_movieInfo_similar {
-  __typename: "SimilarResults";
   results: GetMovieInfo_movieInfo_similar_results[];
 }
 
 export interface GetMovieInfo_movieInfo {
-  __typename: "MovieInfo";
   isInFavorites: boolean;
   id: number;
   backdrop_path: string | null;

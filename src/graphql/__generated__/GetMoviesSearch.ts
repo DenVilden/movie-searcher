@@ -8,7 +8,6 @@
 // ====================================================
 
 export interface GetMoviesSearch_moviesSearch {
-  __typename: "MoviesSearch";
   id: number;
   title: string;
   release_date: string;

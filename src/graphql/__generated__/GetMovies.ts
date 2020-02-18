@@ -8,7 +8,6 @@
 // ====================================================
 
 export interface GetMovies_topRated {
-  __typename: "TopRated";
   id: number;
   title: string;
   vote_average: number;
@@ -16,7 +15,6 @@ export interface GetMovies_topRated {
 }
 
 export interface GetMovies_upcoming {
-  __typename: "Upcoming";
   id: number;
   title: string;
   release_date: string;

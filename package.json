@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@types/jest": "^25.1.2",
-    "@types/node": "^13.7.1",
+    "@types/node": "^13.7.2",
     "@types/react": "^16.9.20",
     "@types/react-dom": "^16.9.5",
     "@types/react-router-dom": "^5.1.3",
@@ -59,7 +59,7 @@
     "test-server": "jest --watch",
     "coverage": "yarn test-server --collectCoverage --watchAll=false",
     "postbuild": "precompress build -s -e txt",
-    "codegen": "apollo codegen:generate --endpoint http://localhost:5000/graphql --target typescript"
+    "codegen": "apollo codegen:generate --target typescript --no-addTypename"
   },
   "jest": {
     "collectCoverageFrom": [
