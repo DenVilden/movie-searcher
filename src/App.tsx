@@ -16,25 +16,25 @@ const HomePage = lazy(() => import('./containers/HomePage'));
 const MoviePage = lazy(() => import('./containers/MoviePage'));
 
 const App = () => {
-  const {
-    data: { inputValue },
-  } = useQuery(GET_INPUT_VALUE);
-  const [setInputValue] = useMutation(SET_INPUT_VALUE);
+  const { data } = useQuery<{ inputValue: string }>(GET_INPUT_VALUE);
+  const [setInputValue] = useMutation<
+    { setInputValue: string },
+    { value: string }
+  >(SET_INPUT_VALUE);
+
+  if (!data) throw new Error('Not found');
 
   return (
     <Router>
       <Header
-        inputValue={inputValue}
+        inputValue={data.inputValue}
         setInputValue={value => setInputValue({ variables: { value } })}
       />
       <Suspense fallback={<Spinner />}>
-        {inputValue && <SearchResults inputValue={inputValue} />}
+        {data.inputValue && <SearchResults inputValue={data.inputValue} />}
         <Switch>
           <Route component={HomePage} exact path="/" />
-          <Route
-            path="/movie/:id"
-            render={({ match }) => <MoviePage id={match.params.id} />}
-          />
+          <Route component={MoviePage} path="/movie/:id" />
           <Redirect to="/" />
         </Switch>
       </Suspense>

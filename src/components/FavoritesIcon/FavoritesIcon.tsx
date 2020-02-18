@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Badge } from '@material-ui/core';
 import {
   Favorite as FavoriteIcon,
@@ -7,25 +6,18 @@ import {
 } from '@material-ui/icons';
 import { StyledIconButton } from './FavoritesIcon.styles';
 
-const propTypes = {
-  open: PropTypes.bool.isRequired,
-  total: PropTypes.number.isRequired,
-  toggle: PropTypes.func.isRequired,
+type Props = {
+  open: boolean;
+  total: number;
+  toggle: () => void;
 };
 
-const FavoritesIcon = ({ total, open, toggle }) => (
-  <StyledIconButton
-    color="inherit"
-    disabled={!total}
-    onClick={toggle}
-    variant="contained"
-  >
+const FavoritesIcon = ({ total, open, toggle }: Props) => (
+  <StyledIconButton color="inherit" disabled={!total} onClick={toggle}>
     <Badge badgeContent={total} color="secondary">
       {open ? <FavoriteBorderIcon /> : <FavoriteIcon />}
     </Badge>
   </StyledIconButton>
 );
-
-FavoritesIcon.propTypes = propTypes;
 
 export default FavoritesIcon;

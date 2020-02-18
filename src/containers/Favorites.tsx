@@ -1,36 +1,37 @@
-import React, { Suspense, lazy, useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import FavoritesIcon from '../components/FavoritesIcon/FavoritesIcon';
+import FavoritesDropdown from '../components/FavoritesDropdown/FavoritesDropdown';
 import { GET_FAVORITES_DATA } from '../graphql/queries';
 import { SET_INPUT_VALUE } from '../graphql/mutations';
-
-const FavoritesDropdown = lazy(() =>
-  import('../components/FavoritesDropdown/FavoritesDropdown')
-);
+import GetMovieInfo from '../types/GetMovieInfo';
 
 const Favorites = () => {
-  const {
-    data: { favorites },
-  } = useQuery(GET_FAVORITES_DATA);
-  const [setInputValue] = useMutation(SET_INPUT_VALUE);
+  const { data } = useQuery<{ favorites: GetMovieInfo[] }>(GET_FAVORITES_DATA);
+  const [setInputValue] = useMutation<
+    { setInputValue: string },
+    { value: string }
+  >(SET_INPUT_VALUE, { variables: { value: '' } });
   const [favoritesOpen, toggleFavorites] = useState(false);
 
+  if (!data) throw new Error('Not found');
+
   return (
-    <Suspense fallback={<></>}>
+    <>
       <FavoritesIcon
         open={favoritesOpen}
         toggle={() => toggleFavorites(!favoritesOpen)}
-        total={favorites.length}
+        total={data.favorites.length}
       />
       {favoritesOpen && (
         <FavoritesDropdown
-          favorites={favorites}
+          clearInputValue={setInputValue}
+          favorites={data.favorites}
           open={favoritesOpen}
-          setInputValue={setInputValue}
           toggleFavoritesOpen={() => toggleFavorites(!favoritesOpen)}
         />
       )}
-    </Suspense>
+    </>
   );
 };
 

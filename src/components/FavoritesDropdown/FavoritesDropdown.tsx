@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { CardActionArea, Divider } from '@material-ui/core';
-import { withRouter } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 import {
   StyledPopover,
   StyledTypography,
@@ -9,43 +8,22 @@ import {
   StyledCardMedia,
 } from './FavoritesDropdown.styles';
 import noImage from '../../assets/no-image.jpg';
+import GetMovieInfo from '../../types/GetMovieInfo';
 
-const propTypes = {
-  setInputValue: PropTypes.func.isRequired,
-  history: PropTypes.shape({ push: PropTypes.func.isRequired }).isRequired,
-  open: PropTypes.bool.isRequired,
-  toggleFavoritesOpen: PropTypes.func.isRequired,
-  favorites: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      title: PropTypes.string,
-      release_date: PropTypes.string,
-      vote_average: PropTypes.number,
-      budget: PropTypes.string,
-      revenue: PropTypes.string,
-      overview: PropTypes.string,
-      backdrop_path: PropTypes.string,
-      similar: PropTypes.shape({
-        results: PropTypes.arrayOf(
-          PropTypes.shape({
-            id: PropTypes.number,
-            title: PropTypes.string,
-            release_date: PropTypes.string,
-            poster_path: PropTypes.string,
-          })
-        ),
-      }),
-    })
-  ).isRequired,
-};
+type Props = {
+  clearInputValue: () => void;
+  open: boolean;
+  toggleFavoritesOpen: () => void;
+  favorites: GetMovieInfo[];
+} & RouteComponentProps;
 
 const FavoritesDropdown = ({
   favorites,
-  setInputValue,
+  clearInputValue,
   history,
   open,
   toggleFavoritesOpen,
-}) => (
+}: Props) => (
   <StyledPopover
     anchorReference="none"
     onClose={toggleFavoritesOpen}
@@ -59,7 +37,7 @@ const FavoritesDropdown = ({
         key={id}
         onClick={() => {
           history.push(`/movie/${id}`);
-          setInputValue('');
+          clearInputValue();
           toggleFavoritesOpen();
         }}
       >
@@ -75,7 +53,5 @@ const FavoritesDropdown = ({
     ))}
   </StyledPopover>
 );
-
-FavoritesDropdown.propTypes = propTypes;
 
 export default withRouter(FavoritesDropdown);

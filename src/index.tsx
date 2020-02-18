@@ -4,20 +4,36 @@ import { createMuiTheme, CssBaseline } from '@material-ui/core';
 import { StylesProvider } from '@material-ui/core/styles';
 import { ThemeProvider } from 'styled-components';
 import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient, { InMemoryCache } from 'apollo-boost';
+import ApolloClient, {
+  InMemoryCache,
+  NormalizedCacheObject,
+} from 'apollo-boost';
 import { persistCache } from 'apollo-cache-persist-dev';
+import {
+  PersistentStorage,
+  PersistedData,
+} from 'apollo-cache-persist-dev/types';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import resolvers from './graphql/resolvers';
+import { resolvers, typeDefs } from './graphql/resolvers';
 
 const cache = new InMemoryCache();
 
-const client = new ApolloClient({ resolvers, cache });
+const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+  resolvers,
+  cache,
+  typeDefs,
+});
 client.writeData({ data: { favorites: [], inputValue: '' } });
 
 (async () => {
   if (process.env.NODE_ENV === 'production') {
-    await persistCache({ cache, storage: window.localStorage });
+    await persistCache({
+      cache,
+      storage: window.localStorage as PersistentStorage<
+        PersistedData<NormalizedCacheObject>
+      >,
+    });
   }
 
   const theme = createMuiTheme();

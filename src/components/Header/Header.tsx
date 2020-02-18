@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { AppBar, Toolbar } from '@material-ui/core';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import {
@@ -10,15 +9,15 @@ import {
 } from './Header.styles';
 import Favorites from '../../containers/Favorites';
 
-const propTypes = {
-  inputValue: PropTypes.string.isRequired,
-  setInputValue: PropTypes.func.isRequired,
+type Props = {
+  inputValue: string;
+  setInputValue: (value: string) => void;
 };
 
-const Header = ({ inputValue, setInputValue }) => (
+const Header = ({ inputValue, setInputValue }: Props) => (
   <AppBar position="static">
     <Toolbar>
-      <LogoContainer aria-label="Logo" onClick={() => setInputValue()} to="/">
+      <LogoContainer aria-label="Logo" onClick={() => setInputValue('')} to="/">
         <Logo />
       </LogoContainer>
       <SearchBar>
@@ -37,7 +36,5 @@ const Header = ({ inputValue, setInputValue }) => (
     </Toolbar>
   </AppBar>
 );
-
-Header.propTypes = propTypes;
 
 export default Header;

@@ -1,7 +1,7 @@
 import { gql } from 'apollo-boost';
 
 export const GET_MOVIE_INFO = gql`
-  query($id: String!) {
+  query movieInfo($id: String!) {
     movieInfo(id: $id) {
       id
       backdrop_path
@@ -25,7 +25,7 @@ export const GET_MOVIE_INFO = gql`
 `;
 
 export const GET_MOVIES = gql`
-  query {
+  query getMovies {
     topRated {
       id
       title
@@ -42,7 +42,7 @@ export const GET_MOVIES = gql`
 `;
 
 export const GET_SEARCH_MOVIES = gql`
-  query($query: String!) {
+  query moviesSearch($query: String!) {
     moviesSearch(query: $query) {
       id
       title
@@ -53,13 +53,13 @@ export const GET_SEARCH_MOVIES = gql`
 `;
 
 export const GET_INPUT_VALUE = gql`
-  query {
+  query getInputValue {
     inputValue @client
   }
 `;
 
 export const GET_FAVORITES_DATA = gql`
-  query {
+  query getFavorites {
     favorites @client
   }
 `;

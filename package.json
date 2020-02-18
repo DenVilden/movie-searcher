@@ -22,7 +22,6 @@
     "express-static-gzip": "^2.0.6",
     "graphql": "^14.6.0",
     "numeral": "^2.0.6",
-    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
@@ -30,6 +29,12 @@
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
+    "@types/jest": "^25.1.2",
+    "@types/node": "^13.7.1",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-router-dom": "^5.1.3",
+    "@types/styled-components": "^4.4.3",
     "concurrently": "^5.1.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.10.0",
@@ -38,7 +43,8 @@
     "precompress": "^6.0.2",
     "prettier": "^1.19.1",
     "stylelint": "13.2.0",
-    "stylelint-config-sass-guidelines": "^7.0.0"
+    "stylelint-config-sass-guidelines": "^7.0.0",
+    "typescript": "3.7.5"
   },
   "scripts": {
     "client": "react-scripts start",
@@ -48,7 +54,7 @@
     "server": "nodemon -r dotenv/config server/index.js",
     "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node server/index.js",
-    "lint": "eslint src --ext js,jsx && eslint server && stylelint src",
+    "lint": "eslint src --ext ts,tsx && eslint server && stylelint src",
     "test-server": "jest --watch",
     "coverage": "yarn test-server --collectCoverage --watchAll=false",
     "postbuild": "precompress build -s -e txt"
@@ -59,13 +65,16 @@
     ]
   },
   "eslintIgnore": [
-    "serviceWorker.js"
+    "react-app-env.d.ts",
+    "serviceWorker.ts"
   ],
   "eslintConfig": {
     "extends": [
       "airbnb",
       "react-app",
+      "plugin:import/typescript",
       "plugin:prettier/recommended",
+      "prettier/@typescript-eslint",
       "prettier/react"
     ],
     "rules": {
@@ -76,10 +85,30 @@
           "singleQuote": true
         }
       ],
+      "import/extensions": [
+        "error",
+        {
+          "extensions": [
+            ".ts",
+            ".js"
+          ]
+        }
+      ],
+      "react/jsx-filename-extension": [
+        "error",
+        {
+          "extensions": [
+            ".jsx",
+            ".tsx"
+          ]
+        }
+      ],
       "jsx-a11y/label-has-associated-control": "off",
       "react/jsx-props-no-spreading": "off",
       "react/jsx-sort-props": "warn",
-      "class-methods-use-this": "off"
+      "class-methods-use-this": "off",
+      "react/prop-types": "off",
+      "import/prefer-default-export": "off"
     }
   },
   "stylelint": {

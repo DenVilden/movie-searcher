@@ -1,8 +1,8 @@
-import { Typography, CardMedia, Popover } from '@material-ui/core';
+import { Typography, CardMedia, Popover, Theme } from '@material-ui/core';
 import styled from 'styled-components';
 
 export const StyledTypography = styled(Typography)`
-  padding: ${({ theme }) => theme.spacing(2)}px;
+  padding: ${({ theme }: { theme: Theme }) => theme.spacing(2)}px;
 `;
 
 export const CardWrapper = styled.div`
@@ -13,10 +13,10 @@ export const CardWrapper = styled.div`
 export const StyledCardMedia = styled(CardMedia)`
   display: none;
   height: 56px;
-  margin: ${({ theme }) => theme.spacing(1)}px;
+  margin: ${({ theme }: { theme: Theme }) => theme.spacing(1)}px;
   width: 50px;
 
-  ${({ theme }) => theme.breakpoints.up('sm')} {
+  ${({ theme }: { theme: Theme }) => theme.breakpoints.up('sm')} {
     display: block;
   }
 `;
