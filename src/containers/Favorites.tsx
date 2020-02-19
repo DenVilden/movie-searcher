@@ -1,22 +1,17 @@
 import React, { useState } from 'react';
-import { useQuery, useMutation } from '@apollo/react-hooks';
 import FavoritesIcon from '../components/FavoritesIcon/FavoritesIcon';
 import FavoritesDropdown from '../components/FavoritesDropdown/FavoritesDropdown';
-import { GET_FAVORITES } from '../graphql/queries';
-import { SET_INPUT_VALUE } from '../graphql/mutations';
-import { GetFavorites } from '../graphql/__generated__/GetFavorites';
 import {
-  SetInputValue,
-  SetInputValueVariables,
-} from '../graphql/__generated__/SetInputValue';
+  useGetFavoritesQuery,
+  useSetInputValueMutation,
+} from '../generated/types';
 
 const Favorites = () => {
-  const { data } = useQuery<GetFavorites>(GET_FAVORITES);
+  const { data } = useGetFavoritesQuery();
 
-  const [setInputValue] = useMutation<SetInputValue, SetInputValueVariables>(
-    SET_INPUT_VALUE,
-    { variables: { value: '' } }
-  );
+  const [setInputValue] = useSetInputValueMutation({
+    variables: { value: '' },
+  });
 
   const [favoritesOpen, toggleFavorites] = useState(false);
 

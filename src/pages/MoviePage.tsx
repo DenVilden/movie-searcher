@@ -1,17 +1,11 @@
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
 import { Slide } from '@material-ui/core';
 import { RouteComponentProps } from 'react-router-dom';
-import { GET_MOVIE_INFO, GET_FAVORITES } from '../graphql/queries';
 import Spinner from '../components/Spinner';
 import ErrorMessage from '../components/ErrorMessage';
 import MovieInfo from '../containers/MovieInfoContainer';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
-import {
-  GetMovieInfo,
-  GetMovieInfoVariables,
-} from '../graphql/__generated__/GetMovieInfo';
-import { GetFavorites } from '../graphql/__generated__/GetFavorites';
+import { useGetMovieInfoQuery, useGetFavoritesQuery } from '../generated/types';
 
 type Props = {
   match: { params: { id: string } };
@@ -22,14 +16,11 @@ const MoviePage = ({
     params: { id },
   },
 }: Props) => {
-  const { loading, error, data } = useQuery<
-    GetMovieInfo,
-    GetMovieInfoVariables
-  >(GET_MOVIE_INFO, {
+  const { loading, error, data } = useGetMovieInfoQuery({
     variables: { id },
   });
 
-  const favQuery = useQuery<GetFavorites>(GET_FAVORITES);
+  const favQuery = useGetFavoritesQuery();
 
   if (loading) return <Spinner />;
 

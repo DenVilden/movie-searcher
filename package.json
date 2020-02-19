@@ -8,6 +8,7 @@
     "yarn": "1.22.0"
   },
   "dependencies": {
+    "@apollo/react-common": "^3.1.3",
     "@apollo/react-hooks": "^3.1.3",
     "@material-ui/core": "^4.9.3",
     "@material-ui/icons": "^4.9.1",
@@ -21,6 +22,8 @@
     "express-sslify": "^1.2.0",
     "express-static-gzip": "^2.0.6",
     "graphql": "^14.6.0",
+    "graphql-tag": "^2.10.3",
+    "graphql.macro": "^1.4.2",
     "numeral": "^2.0.6",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -29,13 +32,19 @@
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.12.2",
+    "@graphql-codegen/typescript": "1.12.2",
+    "@graphql-codegen/typescript-operations": "1.12.2",
+    "@graphql-codegen/typescript-react-apollo": "1.12.2",
+    "@graphql-codegen/typescript-resolvers": "1.12.2",
+    "@types/compression": "^1.7.0",
+    "@types/express-sslify": "^1.2.1",
     "@types/jest": "^25.1.2",
     "@types/node": "^13.7.2",
     "@types/react": "^16.9.20",
     "@types/react-dom": "^16.9.5",
     "@types/react-router-dom": "^5.1.3",
     "@types/styled-components": "^4.4.3",
-    "apollo": "^2.22.1",
     "concurrently": "^5.1.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.10.0",
@@ -57,9 +66,9 @@
     "start": "node server/index.js",
     "lint": "eslint src --ext ts,tsx && eslint server && stylelint src",
     "test-server": "jest --watch",
-    "coverage": "yarn test-server --collectCoverage --watchAll=false",
     "postbuild": "precompress build -s -e txt",
-    "codegen": "apollo codegen:generate --target typescript --no-addTypename"
+    "codegen": "graphql-codegen --config codegen.yml",
+    "codegen-server": "graphql-codegen --config server/codegen.yml"
   },
   "jest": {
     "collectCoverageFrom": [

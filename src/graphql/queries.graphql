@@ -1,0 +1,54 @@
+query GetMovieInfo($id: String!) {
+  movieInfo(id: $id) {
+    isInFavorites @client
+    id
+    backdrop_path
+    poster_path
+    title
+    overview
+    budget
+    revenue
+    vote_average
+    release_date
+    similar {
+      results {
+        id
+        title
+        release_date
+        poster_path
+      }
+    }
+  }
+}
+
+query GetMovies {
+  topRated {
+    id
+    title
+    vote_average
+    poster_path
+  }
+  upcoming {
+    id
+    title
+    release_date
+    poster_path
+  }
+}
+
+query GetMoviesSearch($query: String!) {
+  moviesSearch(query: $query) {
+    id
+    title
+    release_date
+    poster_path
+  }
+}
+
+query GetInputValue {
+  inputValue @client
+}
+
+query GetFavorites {
+  favorites @client
+}

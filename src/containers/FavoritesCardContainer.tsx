@@ -1,14 +1,9 @@
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import FavoritesCard from '../components/FavoritesCard/FavoritesCard';
-import { GET_MOVIE_INFO } from '../graphql/queries';
 import Spinner from '../components/Spinner';
 import ErrorMessage from '../components/ErrorMessage';
-import {
-  GetMovieInfo,
-  GetMovieInfoVariables,
-} from '../graphql/__generated__/GetMovieInfo';
+import { useGetMovieInfoQuery } from '../generated/types';
 
 type Props = {
   clearInputValue: () => void;
@@ -22,10 +17,7 @@ const FavoritesItem = ({
   clearInputValue,
   history,
 }: Props) => {
-  const { loading, error, data } = useQuery<
-    GetMovieInfo,
-    GetMovieInfoVariables
-  >(GET_MOVIE_INFO, { variables: { id } });
+  const { loading, error, data } = useGetMovieInfoQuery({ variables: { id } });
 
   if (loading) return <Spinner />;
 

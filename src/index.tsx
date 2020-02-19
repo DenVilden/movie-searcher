@@ -13,9 +13,12 @@ import {
   PersistentStorage,
   PersistedData,
 } from 'apollo-cache-persist-dev/types';
+import { loader } from 'graphql.macro';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { resolvers, typeDefs } from './graphql/resolvers';
+import resolvers from './graphql/resolvers';
+
+const typeDefs = loader('./graphql/schema.graphql');
 
 const cache = new InMemoryCache();
 

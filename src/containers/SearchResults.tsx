@@ -1,36 +1,23 @@
 import React from 'react';
-import { useQuery, useMutation } from '@apollo/react-hooks';
-import { GET_MOVIES_SEARCH } from '../graphql/queries';
 import Spinner from '../components/Spinner';
 import ErrorMessage from '../components/ErrorMessage';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
-import { SET_INPUT_VALUE } from '../graphql/mutations';
 import {
-  GetMoviesSearch,
-  GetMoviesSearchVariables,
-} from '../graphql/__generated__/GetMoviesSearch';
-import {
-  SetInputValue,
-  SetInputValueVariables,
-} from '../graphql/__generated__/SetInputValue';
+  useSetInputValueMutation,
+  useGetMoviesSearchQuery,
+} from '../generated/types';
 
 type Props = {
   inputValue: string;
 };
 
 const SearchResults = ({ inputValue }: Props) => {
-  const { loading, error, data } = useQuery<
-    GetMoviesSearch,
-    GetMoviesSearchVariables
-  >(GET_MOVIES_SEARCH, {
+  const { loading, error, data } = useGetMoviesSearchQuery({
     variables: { query: inputValue },
   });
-  const [setInputValue] = useMutation<SetInputValue, SetInputValueVariables>(
-    SET_INPUT_VALUE,
-    {
-      variables: { value: '' },
-    }
-  );
+  const [setInputValueMutation] = useSetInputValueMutation({
+    variables: { value: '' },
+  });
 
   if (loading) return <Spinner />;
 
@@ -44,7 +31,7 @@ const SearchResults = ({ inputValue }: Props) => {
 
   return (
     <MoviesBox
-      clearInputValue={setInputValue}
+      clearInputValue={setInputValueMutation}
       elevation={0}
       movies={data.moviesSearch}
       padding={0}

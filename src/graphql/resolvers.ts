@@ -1,48 +1,25 @@
-import ApolloCache, {
+import ApolloCache, { NormalizedCacheObject } from 'apollo-boost';
+import {
   Resolvers,
-  NormalizedCacheObject,
-  gql,
-} from 'apollo-boost';
-import { GET_FAVORITES, GET_INPUT_VALUE } from './queries';
-import { GetFavorites } from './__generated__/GetFavorites';
-import { GetMovieInfo_movieInfo } from './__generated__/GetMovieInfo';
-
-export const typeDefs = gql`
-  extend type Query {
-    inputValue: String!
-    favorites: [String!]!
-  }
-
-  extend type MovieInfo {
-    isInFavorites: Boolean!
-  }
-
-  extend type Mutation {
-    addOrRemoveFromFavorites(id: String!): [String!]!
-    setInputValue(value: String!): String!
-  }
-`;
-
-type ResolverFn = (
-  parent: any,
-  args: any,
-  { cache }: { cache: ApolloCache<NormalizedCacheObject> }
-) => any;
-
-interface ResolverMap {
-  [field: string]: ResolverFn;
-}
+  MovieInfoResolvers,
+  GetFavoritesQuery,
+  MutationResolvers,
+  GetFavoritesDocument,
+  GetInputValueDocument,
+} from '../generated/types';
 
 interface ApolloResolvers extends Resolvers {
-  Mutation: ResolverMap;
-  MovieInfo: ResolverMap;
+  Mutation: MutationResolvers;
+  MovieInfo: MovieInfoResolvers;
 }
 
-export const resolvers: ApolloResolvers = {
+type Cache = { cache: ApolloCache<NormalizedCacheObject> };
+
+const resolvers: ApolloResolvers = {
   MovieInfo: {
-    isInFavorites: (movie: GetMovieInfo_movieInfo, __, { cache }): boolean => {
-      const queryResult = cache.readQuery<GetFavorites>({
-        query: GET_FAVORITES,
+    isInFavorites: (movie, __, { cache }: Cache) => {
+      const queryResult = cache.readQuery<GetFavoritesQuery>({
+        query: GetFavoritesDocument,
       });
 
       if (queryResult) {
@@ -52,13 +29,9 @@ export const resolvers: ApolloResolvers = {
     },
   },
   Mutation: {
-    addOrRemoveFromFavorites: (
-      _,
-      { id }: { id: string },
-      { cache }
-    ): string[] => {
-      const queryResult = cache.readQuery<GetFavorites>({
-        query: GET_FAVORITES,
+    addOrRemoveFromFavorites: (_, { id }, { cache }: Cache) => {
+      const queryResult = cache.readQuery<GetFavoritesQuery>({
+        query: GetFavoritesDocument,
       });
 
       if (queryResult) {
@@ -69,19 +42,21 @@ export const resolvers: ApolloResolvers = {
           : [...favorites, id];
 
         cache.writeQuery({
-          query: GET_FAVORITES,
+          query: GetFavoritesDocument,
           data: { favorites: newFavorites },
         });
         return newFavorites;
       }
       return [];
     },
-    setInputValue: (_, { value }: { value: string }, { cache }): string => {
+    setInputValue: (_, { value }, { cache }: Cache): string => {
       cache.writeQuery({
-        query: GET_INPUT_VALUE,
+        query: GetInputValueDocument,
         data: { inputValue: value },
       });
       return value;
     },
   },
 };
+
+export default resolvers;

@@ -52,8 +52,4 @@ module.exports = gql`
     moviesSearch(query: String!): [MoviesSearch!]!
     movieInfo(id: String!): MovieInfo!
   }
-
-  type Mutation {
-    _: Boolean
-  }
 `;

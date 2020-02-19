@@ -5,22 +5,20 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
-import { useQuery, useMutation } from '@apollo/react-hooks';
 import Header from './components/Header/Header';
 import Spinner from './components/Spinner';
-import { GET_INPUT_VALUE } from './graphql/queries';
-import { SET_INPUT_VALUE } from './graphql/mutations';
+import {
+  useGetInputValueQuery,
+  useSetInputValueMutation,
+} from './generated/types';
 
 const SearchResults = lazy(() => import('./containers/SearchResults'));
 const HomePage = lazy(() => import('./pages/HomePage'));
 const MoviePage = lazy(() => import('./pages/MoviePage'));
 
 const App = () => {
-  const { data } = useQuery<{ inputValue: string }>(GET_INPUT_VALUE);
-  const [setInputValue] = useMutation<
-    { setInputValue: string },
-    { value: string }
-  >(SET_INPUT_VALUE);
+  const { data } = useGetInputValueQuery();
+  const [setInputValue] = useSetInputValueMutation();
 
   if (!data) throw new Error('Not found');
 

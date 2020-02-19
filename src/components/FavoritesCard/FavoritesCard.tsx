@@ -10,7 +10,7 @@ import {
 type Props = {
   clearInputValue: () => void;
   toggleFavoritesOpen: () => void;
-  poster: string | null;
+  poster: string | null | undefined;
   title: string;
   goTo: () => void;
 };

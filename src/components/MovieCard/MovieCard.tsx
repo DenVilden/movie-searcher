@@ -16,7 +16,7 @@ type Props = {
     id: number;
     title: string;
     vote_average?: number;
-    poster_path: string | null;
+    poster_path?: string | null | undefined;
     release_date?: string;
   };
   clearInputValue?: () => void;

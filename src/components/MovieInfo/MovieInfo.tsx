@@ -7,14 +7,14 @@ import {
   StyledTypography,
 } from './MovieInfo.styles';
 import noImage from '../../assets/no-image.jpg';
-import { GetMovieInfo_movieInfo } from '../../graphql/__generated__/GetMovieInfo';
+import { MovieInfo } from '../../generated/types';
 
 type Props = {
-  movie: GetMovieInfo_movieInfo;
+  movie: MovieInfo;
   toggleSave: () => void;
 };
 
-const MovieInfo = ({ movie, toggleSave }: Props) => (
+const MovieInfoComponent = ({ movie, toggleSave }: Props) => (
   <StyledCard elevation={10}>
     <StyledCardMedia image={movie.backdrop_path || noImage} src="img" />
     <StyledCardContent>
@@ -49,4 +49,4 @@ const MovieInfo = ({ movie, toggleSave }: Props) => (
   </StyledCard>
 );
 
-export default MovieInfo;
+export default MovieInfoComponent;
