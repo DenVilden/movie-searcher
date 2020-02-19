@@ -18,7 +18,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import resolvers from './graphql/resolvers';
 
-const typeDefs = loader('./graphql/schema');
+const typeDefs = loader('./graphql/schema.graphql');
 
 const cache = new InMemoryCache();
 
