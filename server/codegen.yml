@@ -1,12 +1,11 @@
 overwrite: true
-schema: 'http://localhost:5000/graphql'
+schema: http://localhost:5000/graphql
 generates:
-  server/generated/types.ts:
+  server/types/types.ts:
     plugins:
-      - 'typescript'
-      - 'typescript-operations'
-      - 'typescript-resolvers'
+      - typescript
+      - typescript-resolvers
     config:
       useIndexSignature: true
     hooks:
-      afterOneFileWrite: 'eslint --fix'
+      afterOneFileWrite: eslint --fix

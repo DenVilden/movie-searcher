@@ -8,9 +8,9 @@ import {
 import Header from './components/Header/Header';
 import Spinner from './components/Spinner';
 import {
-  useGetInputValueQuery,
   useSetInputValueMutation,
-} from './generated/types';
+  useGetInputValueQuery,
+} from './__generated__';
 
 const SearchResults = lazy(() => import('./containers/SearchResults'));
 const HomePage = lazy(() => import('./pages/HomePage'));

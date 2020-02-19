@@ -2,7 +2,7 @@ import React from 'react';
 import Spinner from '../components/Spinner';
 import ErrorMessage from '../components/ErrorMessage';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
-import { useGetMoviesQuery } from '../generated/types';
+import { useGetMoviesQuery } from '../__generated__';
 
 const HomePage = () => {
   const { loading, error, data } = useGetMoviesQuery();

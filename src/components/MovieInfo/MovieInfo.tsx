@@ -7,7 +7,7 @@ import {
   StyledTypography,
 } from './MovieInfo.styles';
 import noImage from '../../assets/no-image.jpg';
-import { MovieInfo } from '../../generated/types';
+import { MovieInfo } from '../../types/types';
 
 type Props = {
   movie: MovieInfo;

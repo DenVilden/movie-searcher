@@ -4,7 +4,7 @@ import FavoritesDropdown from '../components/FavoritesDropdown/FavoritesDropdown
 import {
   useGetFavoritesQuery,
   useSetInputValueMutation,
-} from '../generated/types';
+} from '../__generated__';
 
 const Favorites = () => {
   const { data } = useGetFavoritesQuery();

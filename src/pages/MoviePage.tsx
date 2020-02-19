@@ -5,7 +5,7 @@ import Spinner from '../components/Spinner';
 import ErrorMessage from '../components/ErrorMessage';
 import MovieInfo from '../containers/MovieInfoContainer';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
-import { useGetMovieInfoQuery, useGetFavoritesQuery } from '../generated/types';
+import { useGetMovieInfoQuery, useGetFavoritesQuery } from '../__generated__';
 
 type Props = {
   match: { params: { id: string } };

@@ -3,10 +3,10 @@ import Spinner from '../components/Spinner';
 import MovieInfoComponent from '../components/MovieInfo/MovieInfo';
 import ErrorMessage from '../components/ErrorMessage';
 import {
-  MovieInfo,
   useAddOrRemoveFromFavoritesMutation,
   GetMovieInfoDocument,
-} from '../generated/types';
+} from '../__generated__';
+import { MovieInfo } from '../types/types';
 
 type Props = {
   id: string;

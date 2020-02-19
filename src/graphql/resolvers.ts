@@ -1,23 +1,13 @@
-import ApolloCache, { NormalizedCacheObject } from 'apollo-boost';
 import {
-  Resolvers,
-  MovieInfoResolvers,
   GetFavoritesQuery,
-  MutationResolvers,
   GetFavoritesDocument,
   GetInputValueDocument,
-} from '../generated/types';
+} from '../__generated__';
+import { Resolvers } from '../types/types';
 
-interface ApolloResolvers extends Resolvers {
-  Mutation: MutationResolvers;
-  MovieInfo: MovieInfoResolvers;
-}
-
-type Cache = { cache: ApolloCache<NormalizedCacheObject> };
-
-const resolvers: ApolloResolvers = {
+const resolvers: Resolvers = {
   MovieInfo: {
-    isInFavorites: (movie, __, { cache }: Cache) => {
+    isInFavorites: (movie, __, { cache }) => {
       const queryResult = cache.readQuery<GetFavoritesQuery>({
         query: GetFavoritesDocument,
       });
@@ -29,7 +19,7 @@ const resolvers: ApolloResolvers = {
     },
   },
   Mutation: {
-    addOrRemoveFromFavorites: (_, { id }, { cache }: Cache) => {
+    addOrRemoveFromFavorites: (_, { id }, { cache }) => {
       const queryResult = cache.readQuery<GetFavoritesQuery>({
         query: GetFavoritesDocument,
       });
@@ -49,7 +39,7 @@ const resolvers: ApolloResolvers = {
       }
       return [];
     },
-    setInputValue: (_, { value }, { cache }: Cache): string => {
+    setInputValue: (_, { value }, { cache }): string => {
       cache.writeQuery({
         query: GetInputValueDocument,
         data: { inputValue: value },

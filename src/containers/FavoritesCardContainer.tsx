@@ -3,7 +3,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 import FavoritesCard from '../components/FavoritesCard/FavoritesCard';
 import Spinner from '../components/Spinner';
 import ErrorMessage from '../components/ErrorMessage';
-import { useGetMovieInfoQuery } from '../generated/types';
+import { useGetMovieInfoQuery } from '../__generated__';
 
 type Props = {
   clearInputValue: () => void;

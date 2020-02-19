@@ -5,7 +5,7 @@ import MoviesBox from '../components/MoviesBox/MoviesBox';
 import {
   useSetInputValueMutation,
   useGetMoviesSearchQuery,
-} from '../generated/types';
+} from '../__generated__';
 
 type Props = {
   inputValue: string;
