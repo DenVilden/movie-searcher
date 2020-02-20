@@ -6,18 +6,18 @@ import {
 import { Resolvers } from '../types/types';
 
 const resolvers: Resolvers = {
-  // MovieInfo: {
-  //   isInFavorites: (movie, __, { cache }) => {
-  //     const queryResult = cache.readQuery<GetFavoritesQuery>({
-  //       query: GetFavoritesDocument,
-  //     });
+  MovieInfo: {
+    isInFavorites: (movie, __, { cache }) => {
+      const queryResult = cache.readQuery<GetFavoritesQuery>({
+        query: GetFavoritesDocument,
+      });
 
-  //     if (queryResult) {
-  //       return queryResult.favorites.includes(movie.id.toString());
-  //     }
-  //     return false;
-  //   },
-  // },
+      if (queryResult) {
+        return queryResult.favorites.includes(movie.id.toString());
+      }
+      return false;
+    },
+  },
   Mutation: {
     addOrRemoveFromFavorites: (_, { id }, { cache }) => {
       const queryResult = cache.readQuery<GetFavoritesQuery>({

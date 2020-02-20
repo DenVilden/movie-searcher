@@ -5,7 +5,7 @@ import Spinner from '../components/Spinner';
 import ErrorMessage from '../components/ErrorMessage';
 import MovieInfo from '../containers/MovieInfoContainer';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
-import { useGetMovieInfoQuery, useGetFavoritesQuery } from '../__generated__';
+import { useGetMovieInfoQuery } from '../__generated__';
 
 type Props = {
   match: { params: { id: string } };
@@ -20,13 +20,11 @@ const MoviePage = ({
     variables: { id },
   });
 
-  const favQuery = useGetFavoritesQuery();
-
   if (loading) return <Spinner />;
 
   if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
 
-  if (!data || !favQuery.data) throw new Error('Not found');
+  if (!data) throw new Error('Not found');
 
   return (
     <Slide direction="up" in>
