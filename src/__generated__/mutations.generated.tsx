@@ -25,10 +25,6 @@ export const SetInputValueDocument = gql`
     setInputValue(value: $value) @client
   }
 `;
-export type SetInputValueMutationFn = ApolloReactCommon.MutationFunction<
-  SetInputValueMutation,
-  SetInputValueMutationVariables
->;
 
 /**
  * __useSetInputValueMutation__
@@ -73,10 +69,6 @@ export const AddOrRemoveFromFavoritesDocument = gql`
     addOrRemoveFromFavorites(id: $id) @client
   }
 `;
-export type AddOrRemoveFromFavoritesMutationFn = ApolloReactCommon.MutationFunction<
-  AddOrRemoveFromFavoritesMutation,
-  AddOrRemoveFromFavoritesMutationVariables
->;
 
 /**
  * __useAddOrRemoveFromFavoritesMutation__

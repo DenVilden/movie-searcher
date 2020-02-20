@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "strict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "noErrorTruncation": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": false,
+    "outDir": "../dist"
+  }
+}

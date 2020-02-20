@@ -7,5 +7,10 @@ generates:
       - typescript-resolvers
     config:
       useIndexSignature: true
+      fieldContextTypes:
+        - Query.upcoming#./context#Context
+        - Query.topRated#./context#Context
+        - Query.moviesSearch#./context#Context
+        - Query.movieInfo#./context#Context
     hooks:
       afterOneFileWrite: eslint --fix

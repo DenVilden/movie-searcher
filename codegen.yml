@@ -11,9 +11,9 @@ generates:
     config:
       useIndexSignature: true
       fieldContextTypes:
-        - MovieInfo.isInFavorites#../types/context#Context
-        - Mutation.addOrRemoveFromFavorites#../types/context#Context
-        - Mutation.setInputValue#../types/context#Context
+        - MovieInfo.isInFavorites#./context#Context
+        - Mutation.addOrRemoveFromFavorites#./context#Context
+        - Mutation.setInputValue#./context#Context
     hooks:
       afterOneFileWrite: eslint --fix
 
@@ -30,6 +30,7 @@ generates:
       gqlImport: apollo-boost#gql
       withComponent: false
       withHOC: false
+      withMutationFn: false
       withHooks: true
     hooks:
       afterOneFileWrite: eslint --fix

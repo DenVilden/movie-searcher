@@ -1,12 +1,12 @@
-const path = require('path');
-const express = require('express');
-const expressStaticGzip = require('express-static-gzip');
-const { ApolloServer } = require('apollo-server-express');
-const enforce = require('express-sslify');
-const compression = require('compression');
-const typeDefs = require('./schema');
-const resolvers = require('./resolvers');
-const MoviesAPI = require('./datasources/Movies');
+import path from 'path';
+import express from 'express';
+import expressStaticGzip from 'express-static-gzip';
+import { ApolloServer } from 'apollo-server-express';
+import enforce from 'express-sslify';
+import compression from 'compression';
+import typeDefs from './schema';
+import resolvers from './resolvers';
+import MoviesAPI from './datasources/Movies';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -33,6 +33,9 @@ const server = new ApolloServer({
   resolvers,
   dataSources: () => ({
     moviesAPI: new MoviesAPI(),
+  }),
+  context: () => ({
+    key: process.env.REACT_APP_MOVIE_API_KEY,
   }),
 });
 server.applyMiddleware({ app });
