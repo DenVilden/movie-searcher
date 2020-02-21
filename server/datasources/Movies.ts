@@ -16,22 +16,34 @@ export default class MoviesAPI extends RESTDataSource {
     request.params.set('api_key', this.context.key);
   }
 
-  private moviesUpcomingReducer = (
-    movie: typeof mockUpcomingResponse.results[0]
-  ) => ({
-    id: movie.id,
-    title: movie.title,
-    release_date: movie.release_date,
-    poster_path: movie.poster_path,
+  private moviesUpcomingReducer = (movies: typeof mockUpcomingResponse) => ({
+    total_pages: movies.total_pages,
+    page: movies.page,
+    cursor: null,
+    hasMore: null,
+    results: Array.isArray(movies.results)
+      ? movies.results.map(movie => ({
+          id: movie.id,
+          title: movie.title,
+          release_date: movie.release_date,
+          poster_path: movie.poster_path,
+        }))
+      : [],
   });
 
-  private moviesTopRatedReducer = (
-    movie: typeof mockTopRatedResponse.results[0]
-  ) => ({
-    id: movie.id,
-    title: movie.title,
-    vote_average: movie.vote_average,
-    poster_path: movie.poster_path,
+  private moviesTopRatedReducer = (movies: typeof mockTopRatedResponse) => ({
+    total_pages: movies.total_pages,
+    page: movies.page,
+    cursor: null,
+    hasMore: null,
+    results: Array.isArray(movies.results)
+      ? movies.results.map(movie => ({
+          id: movie.id,
+          title: movie.title,
+          vote_average: movie.vote_average,
+          poster_path: movie.poster_path,
+        }))
+      : [],
   });
 
   private moviesSearchReducer = (
@@ -43,44 +55,40 @@ export default class MoviesAPI extends RESTDataSource {
     poster_path: movie.poster_path,
   });
 
-  private moviesSimilar = (movie: any) => ({
-    id: movie.id,
-    title: movie.title,
-    release_date: movie.release_date,
-    poster_path: movie.poster_path,
+  private movieInfoReducer = (movies: typeof mockMovieInfoResponse) => ({
+    id: movies.id,
+    title: movies.title,
+    release_date: movies.release_date,
+    vote_average: movies.vote_average,
+    budget: movies.budget.toString(),
+    revenue: movies.revenue.toString(),
+    overview: movies.overview,
+    backdrop_path: movies.backdrop_path,
+    poster_path: movies.poster_path,
+    similar: Array.isArray(movies.similar.results)
+      ? movies.similar.results.map(movie => ({
+          id: movie.id,
+          title: movie.title,
+          release_date: movie.release_date,
+          poster_path: movie.poster_path,
+        }))
+      : [],
   });
 
-  private movieInfoReducer = (movie: typeof mockMovieInfoResponse) => ({
-    id: movie.id,
-    title: movie.title,
-    release_date: movie.release_date,
-    vote_average: movie.vote_average,
-    budget: movie.budget.toString(),
-    revenue: movie.revenue.toString(),
-    overview: movie.overview,
-    backdrop_path: movie.backdrop_path,
-    poster_path: movie.poster_path,
-    similar: {
-      results: Array.isArray(movie.similar.results)
-        ? movie.similar.results.map((mov: any) => this.moviesSimilar(mov))
-        : [],
-    },
-  });
-
-  async getUpcoming() {
-    const data: typeof mockUpcomingResponse = await this.get('/movie/upcoming');
-    return Array.isArray(data.results)
-      ? data.results.map(movie => this.moviesUpcomingReducer(movie))
-      : [];
+  async getUpcoming(page: number | null | undefined) {
+    const data: typeof mockUpcomingResponse = await this.get(
+      '/movie/upcoming',
+      { page: page || 1 }
+    );
+    return this.moviesUpcomingReducer(data);
   }
 
-  async getTopRated() {
+  async getTopRated(page: number | null | undefined) {
     const data: typeof mockTopRatedResponse = await this.get(
-      '/movie/top_rated'
+      '/movie/top_rated',
+      { page: page || 1 }
     );
-    return Array.isArray(data.results)
-      ? data.results.map((movie: any) => this.moviesTopRatedReducer(movie))
-      : [];
+    return this.moviesTopRatedReducer(data);
   }
 
   async getMoviesSearch(query: string) {

@@ -1,18 +1,34 @@
 import { gql } from 'apollo-server-express';
 
 export default gql`
-  type Upcoming {
+  type UpcomingResults {
     id: Int!
     title: String!
     release_date: String!
     poster_path: String
   }
 
-  type TopRated {
+  type Upcoming {
+    total_pages: Int!
+    cursor: Int
+    hasMore: Boolean
+    page: Int!
+    results: [UpcomingResults!]!
+  }
+
+  type TopRatedResults {
     id: Int!
     title: String!
     vote_average: Float!
     poster_path: String
+  }
+
+  type TopRated {
+    total_pages: Int!
+    cursor: Int
+    hasMore: Boolean
+    page: Int!
+    results: [TopRatedResults!]!
   }
 
   type MoviesSearch {
@@ -22,15 +38,11 @@ export default gql`
     poster_path: String
   }
 
-  type SimilarMovies {
+  type SimilarResults {
     id: Int!
     title: String!
     release_date: String!
     poster_path: String
-  }
-
-  type SimilarResults {
-    results: [SimilarMovies!]!
   }
 
   type MovieInfo {
@@ -43,12 +55,12 @@ export default gql`
     overview: String
     poster_path: String
     backdrop_path: String
-    similar: SimilarResults!
+    similar: [SimilarResults!]!
   }
 
   type Query {
-    upcoming: [Upcoming!]!
-    topRated: [TopRated!]!
+    upcoming(page: Int, cursor: Int): Upcoming!
+    topRated(page: Int, cursor: Int): TopRated!
     moviesSearch(query: String!): [MoviesSearch!]!
     movieInfo(id: String!): MovieInfo!
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Grow, Typography } from '@material-ui/core';
-import { Root, List, Wrapper } from './MoviesBox.styles';
 import MovieCard from '../MovieCard/MovieCard';
+import { Root, Wrapper, StyledButton } from './MoviesBox.styles';
 
 const defaultProps = {
   title: '',
@@ -18,6 +18,8 @@ type Props = {
     release_date?: string;
   }[];
   clearInputValue?: () => void;
+  showAll?: () => void;
+  hasMore?: boolean | null | undefined;
 } & typeof defaultProps;
 
 const MoviesBox = ({
@@ -26,6 +28,8 @@ const MoviesBox = ({
   elevation,
   padding,
   clearInputValue,
+  showAll,
+  hasMore,
 }: Props) => (
   <Root elevation={elevation} padding={padding}>
     {title && (
@@ -33,19 +37,27 @@ const MoviesBox = ({
         {title}
       </Typography>
     )}
-    <List container>
-      {movies.map(movie => (
-        <Grow key={movie.id} in>
-          <Grid item lg={2} md={3} sm={4} xs={6}>
-            <Wrapper container justify="center">
-              <Grid item>
-                <MovieCard clearInputValue={clearInputValue} movie={movie} />
-              </Grid>
-            </Wrapper>
-          </Grid>
-        </Grow>
-      ))}
-    </List>
+    <Grow in>
+      <Grid container>
+        {movies.map(movie => (
+          <Wrapper
+            key={movie.id}
+            container
+            item
+            justify="space-around"
+            md={3}
+            sm={6}
+          >
+            <MovieCard clearInputValue={clearInputValue} movie={movie} />
+          </Wrapper>
+        ))}
+        {hasMore && (
+          <StyledButton onClick={showAll} variant="contained">
+            show all
+          </StyledButton>
+        )}
+      </Grid>
+    </Grow>
   </Root>
 );
 

@@ -24,17 +24,14 @@ const MoviePage = ({
 
   if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
 
-  if (!data) throw new Error('Not found');
+  if (!data) throw new Error('Data Not found');
 
   return (
     <Slide direction="up" in>
       <div>
         <MovieInfo id={id} movie={data.movieInfo} />
-        {data.movieInfo.similar.results.length && (
-          <MoviesBox
-            movies={data.movieInfo.similar.results}
-            title="Similar Movies"
-          />
+        {data.movieInfo.similar.length && (
+          <MoviesBox movies={data.movieInfo.similar} title="Similar Movies" />
         )}
       </div>
     </Slide>

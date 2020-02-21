@@ -11,28 +11,41 @@ query GetMovieInfo($id: String!) {
     vote_average
     release_date
     similar {
-      results {
-        id
-        title
-        release_date
-        poster_path
-      }
+      id
+      title
+      release_date
+      poster_path
     }
   }
 }
 
-query GetMovies {
-  topRated {
-    id
-    title
-    vote_average
-    poster_path
+query GetUpcoming($page: Int, $cursor: Int) {
+  upcoming(page: $page, cursor: $cursor) {
+    total_pages
+    cursor
+    hasMore
+    page
+    results {
+      id
+      title
+      release_date
+      poster_path
+    }
   }
-  upcoming {
-    id
-    title
-    release_date
-    poster_path
+}
+
+query GetTopRated($page: Int, $cursor: Int) {
+  topRated(page: $page, cursor: $cursor) {
+    total_pages
+    cursor
+    hasMore
+    page
+    results {
+      id
+      title
+      vote_average
+      poster_path
+    }
   }
 }
 
