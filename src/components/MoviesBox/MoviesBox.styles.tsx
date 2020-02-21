@@ -4,10 +4,13 @@ import { Grid, Paper, Theme, Button } from '@material-ui/core';
 export const Root = styled(Paper)`
   background: none;
   background-color: inherit;
-  margin: ${({ theme, padding }: { theme: Theme; padding: number }) =>
-    padding && theme.spacing(8, 15, 3, 15)};
   padding: ${({ theme, padding }: { theme: Theme; padding: number }) =>
     padding && theme.spacing(2, 0, 4, 0)};
+
+  ${({ theme }: { theme: Theme }) => theme.breakpoints.up('sm')} {
+    margin: ${({ theme, padding }: { theme: Theme; padding: number }) =>
+      padding && theme.spacing(8, 15, 3, 15)};
+  }
 `;
 
 export const Wrapper = styled(Grid)`
