@@ -18,7 +18,7 @@ type Props = {
     release_date?: string;
   }[];
   clearInputValue?: () => void;
-  showAll?: () => void;
+  showMore?: () => void;
   hasMore?: boolean | null | undefined;
 } & typeof defaultProps;
 
@@ -28,7 +28,7 @@ const MoviesBox = ({
   elevation,
   padding,
   clearInputValue,
-  showAll,
+  showMore,
   hasMore,
 }: Props) => (
   <Root elevation={elevation} padding={padding}>
@@ -46,14 +46,14 @@ const MoviesBox = ({
             item
             justify="space-around"
             md={3}
-            sm={6}
+            xs={6}
           >
             <MovieCard clearInputValue={clearInputValue} movie={movie} />
           </Wrapper>
         ))}
         {hasMore && (
-          <StyledButton onClick={showAll} variant="contained">
-            show all
+          <StyledButton onClick={showMore} variant="contained">
+            show more
           </StyledButton>
         )}
       </Grid>

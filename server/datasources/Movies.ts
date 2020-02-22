@@ -1,4 +1,6 @@
 import { RESTDataSource, RequestOptions } from 'apollo-datasource-rest';
+import dayjs from 'dayjs';
+import numeral from 'numeral';
 import {
   mockUpcomingResponse,
   mockTopRatedResponse,
@@ -16,17 +18,20 @@ export default class MoviesAPI extends RESTDataSource {
     request.params.set('api_key', this.context.key);
   }
 
+  attachPoster = (path: string, size = 200) => {
+    if (!path) return null;
+    return `https://image.tmdb.org/t/p/w${size}${path}`;
+  };
+
   private moviesUpcomingReducer = (movies: typeof mockUpcomingResponse) => ({
     total_pages: movies.total_pages,
     page: movies.page,
-    cursor: null,
-    hasMore: null,
     results: Array.isArray(movies.results)
       ? movies.results.map(movie => ({
           id: movie.id,
           title: movie.title,
-          release_date: movie.release_date,
-          poster_path: movie.poster_path,
+          release_date: dayjs(movie.release_date).format('DD.MM.YYYY'),
+          poster_path: this.attachPoster(movie.poster_path),
         }))
       : [],
   });
@@ -34,43 +39,47 @@ export default class MoviesAPI extends RESTDataSource {
   private moviesTopRatedReducer = (movies: typeof mockTopRatedResponse) => ({
     total_pages: movies.total_pages,
     page: movies.page,
+    results: Array.isArray(movies.results)
+      ? movies.results.map(movie => ({
+          id: movie.id,
+          title: movie.title,
+          vote_average: movie.vote_average,
+          poster_path: this.attachPoster(movie.poster_path),
+        }))
+      : [],
+  });
+
+  private moviesSearchReducer = (movies: typeof mockMoviesSearchResponse) => ({
     cursor: null,
     hasMore: null,
     results: Array.isArray(movies.results)
       ? movies.results.map(movie => ({
           id: movie.id,
           title: movie.title,
-          vote_average: movie.vote_average,
-          poster_path: movie.poster_path,
+          release_date: dayjs(movie.release_date).format('YYYY'),
+          poster_path: this.attachPoster(movie.poster_path),
         }))
       : [],
   });
 
-  private moviesSearchReducer = (
-    movie: typeof mockMoviesSearchResponse.results[0]
-  ) => ({
-    id: movie.id,
-    title: movie.title,
-    release_date: movie.release_date,
-    poster_path: movie.poster_path,
-  });
-
-  private movieInfoReducer = (movies: typeof mockMovieInfoResponse) => ({
-    id: movies.id,
-    title: movies.title,
-    release_date: movies.release_date,
-    vote_average: movies.vote_average,
-    budget: movies.budget.toString(),
-    revenue: movies.revenue.toString(),
-    overview: movies.overview,
-    backdrop_path: movies.backdrop_path,
-    poster_path: movies.poster_path,
-    similar: Array.isArray(movies.similar.results)
-      ? movies.similar.results.map(movie => ({
-          id: movie.id,
-          title: movie.title,
-          release_date: movie.release_date,
-          poster_path: movie.poster_path,
+  private movieInfoReducer = (movie: typeof mockMovieInfoResponse) => ({
+    results: {
+      id: movie.id,
+      title: movie.title,
+      release_date: dayjs(movie.release_date).format('DD MMMM YYYY'),
+      vote_average: movie.vote_average,
+      budget: numeral(movie.budget).format('$0,00'),
+      revenue: numeral(movie.revenue).format('$0,00'),
+      overview: movie.overview,
+      backdrop_path: this.attachPoster(movie.backdrop_path, 500),
+      poster_path: this.attachPoster(movie.poster_path),
+    },
+    similar_results: Array.isArray(movie.similar.results)
+      ? movie.similar.results.map(similarMovie => ({
+          id: similarMovie.id,
+          title: similarMovie.title,
+          release_date: dayjs(similarMovie.release_date).format('YYYY'),
+          poster_path: this.attachPoster(similarMovie.poster_path),
         }))
       : [],
   });
@@ -96,9 +105,7 @@ export default class MoviesAPI extends RESTDataSource {
       '/search/movie',
       { query }
     );
-    return Array.isArray(data.results)
-      ? data.results.map(movie => this.moviesSearchReducer(movie))
-      : [];
+    return this.moviesSearchReducer(data);
   }
 
   async getMovieInfo(id: string) {

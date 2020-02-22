@@ -1,16 +1,18 @@
 query GetMovieInfo($id: String!) {
   movieInfo(id: $id) {
     isInFavorites @client
-    id
-    backdrop_path
-    poster_path
-    title
-    overview
-    budget
-    revenue
-    vote_average
-    release_date
-    similar {
+    results {
+      id
+      backdrop_path
+      poster_path
+      title
+      overview
+      budget
+      revenue
+      vote_average
+      release_date
+    }
+    similar_results {
       id
       title
       release_date
@@ -19,11 +21,9 @@ query GetMovieInfo($id: String!) {
   }
 }
 
-query GetUpcoming($page: Int, $cursor: Int) {
-  upcoming(page: $page, cursor: $cursor) {
+query GetUpcoming($page: Int) {
+  upcoming(page: $page) {
     total_pages
-    cursor
-    hasMore
     page
     results {
       id
@@ -34,11 +34,9 @@ query GetUpcoming($page: Int, $cursor: Int) {
   }
 }
 
-query GetTopRated($page: Int, $cursor: Int) {
-  topRated(page: $page, cursor: $cursor) {
+query GetTopRated($page: Int) {
+  topRated(page: $page) {
     total_pages
-    cursor
-    hasMore
     page
     results {
       id
@@ -49,12 +47,16 @@ query GetTopRated($page: Int, $cursor: Int) {
   }
 }
 
-query GetMoviesSearch($query: String!) {
-  moviesSearch(query: $query) {
-    id
-    title
-    release_date
-    poster_path
+query GetMoviesSearch($query: String!, $cursor: Int) {
+  moviesSearch(query: $query, cursor: $cursor) {
+    cursor
+    hasMore
+    results {
+      id
+      title
+      release_date
+      poster_path
+    }
   }
 }
 

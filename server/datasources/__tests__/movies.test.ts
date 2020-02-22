@@ -19,16 +19,15 @@ api.get = mocks.get;
 
 describe('MoviesAPI.getUpcomingMovies', () => {
   const mockUpcoming = {
-    cursor: null,
-    hasMore: null,
     page: 1,
     total_pages: 20,
     results: [
       {
         id: 496243,
         title: 'Parasite',
-        release_date: '2019-05-30',
-        poster_path: '/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg',
+        poster_path:
+          'https://image.tmdb.org/t/p/w200/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg',
+        release_date: '30.05.2019',
       },
     ],
   };
@@ -44,8 +43,6 @@ describe('MoviesAPI.getUpcomingMovies', () => {
 
 describe('MoviesAPI.getTopRatedMovies', () => {
   const mockTopRated = {
-    cursor: null,
-    hasMore: null,
     page: 1,
     total_pages: 345,
     results: [
@@ -53,7 +50,8 @@ describe('MoviesAPI.getTopRatedMovies', () => {
         id: 19404,
         title: 'Dilwale Dulhania Le Jayenge',
         vote_average: 8.8,
-        poster_path: '/2CAL2433ZeIihfX1Hb2139CX0pW.jpg',
+        poster_path:
+          'https://image.tmdb.org/t/p/w200/2CAL2433ZeIihfX1Hb2139CX0pW.jpg',
       },
     ],
   };
@@ -69,10 +67,17 @@ describe('MoviesAPI.getTopRatedMovies', () => {
 
 describe('MoviesAPI.getMoviesSearch', () => {
   const mockMoviesSearch = {
-    id: 324857,
-    title: 'Spider-Man: Into the Spider-Verse',
-    release_date: '2018-12-06',
-    poster_path: '/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg',
+    cursor: null,
+    hasMore: null,
+    results: [
+      {
+        id: 324857,
+        title: 'Spider-Man: Into the Spider-Verse',
+        release_date: '2018',
+        poster_path:
+          'https://image.tmdb.org/t/p/w200/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg',
+      },
+    ],
   };
 
   it('should get get and transform search movies', async () => {
@@ -80,29 +85,34 @@ describe('MoviesAPI.getMoviesSearch', () => {
     const query = 'spider';
     const res = await api.getMoviesSearch(query);
 
-    expect(res).toEqual([mockMoviesSearch]);
+    expect(res).toEqual(mockMoviesSearch);
     expect(mocks.get).toBeCalledWith('/search/movie', { query });
   });
 });
 
 describe('MoviesAPI.getMovieInfo', () => {
   const mockMovieInfo = {
-    id: 556678,
-    title: 'Emma',
-    release_date: '2020-02-14',
-    vote_average: 7.8,
-    budget: '0',
-    revenue: '0',
-    overview:
-      'A young woman despite the best intentions, heedlessly meddles in people’s romantic affairs as she tries to play matchmaker.',
-    backdrop_path: '/5GbkL9DDRzq3A21nR7Gkv6cFGjq.jpg',
-    poster_path: '/sm8iVzA7kRp0d4BSIsgXjsSBMKV.jpg',
-    similar: [
+    results: {
+      id: 556678,
+      title: 'Emma',
+      release_date: '14 February 2020',
+      vote_average: 7.8,
+      budget: '$0',
+      revenue: '$0',
+      overview:
+        'A young woman despite the best intentions, heedlessly meddles in people’s romantic affairs as she tries to play matchmaker.',
+      backdrop_path:
+        'https://image.tmdb.org/t/p/w500/5GbkL9DDRzq3A21nR7Gkv6cFGjq.jpg',
+      poster_path:
+        'https://image.tmdb.org/t/p/w200/sm8iVzA7kRp0d4BSIsgXjsSBMKV.jpg',
+    },
+    similar_results: [
       {
         id: 281957,
         title: 'The Revenant',
         release_date: '2015',
-        poster_path: '/oXUWEc5i3wYyFnL1Ycu8ppxxPvs.jpg',
+        poster_path:
+          'https://image.tmdb.org/t/p/w200/oXUWEc5i3wYyFnL1Ycu8ppxxPvs.jpg',
       },
     ],
   };

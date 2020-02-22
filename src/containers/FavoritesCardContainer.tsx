@@ -28,9 +28,9 @@ const FavoritesItem = ({
   return (
     <FavoritesCard
       clearInputValue={clearInputValue}
-      goTo={() => history.push(`/movie/${data.movieInfo.id}`)}
-      poster={data.movieInfo.poster_path}
-      title={data.movieInfo.title}
+      goTo={() => history.push(`/movie/${data.movieInfo.results.id}`)}
+      poster={data.movieInfo.results.poster_path}
+      title={data.movieInfo.results.title}
       toggleFavoritesOpen={toggleFavoritesOpen}
     />
   );

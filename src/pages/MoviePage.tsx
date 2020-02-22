@@ -29,9 +29,16 @@ const MoviePage = ({
   return (
     <Slide direction="up" in>
       <div>
-        <MovieInfo id={id} movie={data.movieInfo} />
-        {data.movieInfo.similar.length && (
-          <MoviesBox movies={data.movieInfo.similar} title="Similar Movies" />
+        <MovieInfo
+          id={id}
+          isInFavorites={data.movieInfo.isInFavorites}
+          movie={data.movieInfo.results}
+        />
+        {data.movieInfo.similar_results.length && (
+          <MoviesBox
+            movies={data.movieInfo.similar_results}
+            title="Similar Movies"
+          />
         )}
       </div>
     </Slide>

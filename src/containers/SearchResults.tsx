@@ -12,7 +12,7 @@ type Props = {
 };
 
 const SearchResults = ({ inputValue }: Props) => {
-  const { loading, error, data } = useGetMoviesSearchQuery({
+  const { loading, error, data, fetchMore } = useGetMoviesSearchQuery({
     variables: { query: inputValue },
   });
   const [setInputValueMutation] = useSetInputValueMutation({
@@ -21,7 +21,7 @@ const SearchResults = ({ inputValue }: Props) => {
 
   if (loading) return <Spinner />;
 
-  if (error || !data?.moviesSearch.length) {
+  if (error || !data?.moviesSearch.results.length) {
     return (
       <ErrorMessage gutterBottom>
         {error ? error.message : 'Nothing found'}
@@ -33,8 +33,15 @@ const SearchResults = ({ inputValue }: Props) => {
     <MoviesBox
       clearInputValue={setInputValueMutation}
       elevation={0}
-      movies={data.moviesSearch}
+      hasMore={data.moviesSearch.hasMore}
+      movies={data.moviesSearch.results}
       padding={0}
+      showMore={() =>
+        fetchMore({
+          variables: { cursor: data.moviesSearch.cursor },
+          updateQuery: (prev, { fetchMoreResult }) => fetchMoreResult || prev,
+        })
+      }
     />
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import ErrorMessage from '../components/ErrorMessage';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
@@ -12,7 +12,9 @@ const Wrapper = styled.div`
 `;
 
 const TopRated = () => {
-  const { data, loading, error, refetch, fetchMore } = useGetTopRatedQuery();
+  const { data, loading, error, refetch } = useGetTopRatedQuery();
+
+  const element = useRef<HTMLElement>(null!);
 
   if (loading) return <Spinner />;
 
@@ -20,22 +22,19 @@ const TopRated = () => {
 
   if (!data) throw new Error('Data not found');
 
+  const scrollToTop = () => {
+    element.current.scrollIntoView({
+      behavior: 'smooth',
+    });
+  };
+
   return (
-    <Wrapper>
-      <MoviesBox
-        hasMore={data.topRated.hasMore}
-        movies={data.topRated.results}
-        showAll={() =>
-          fetchMore({
-            variables: { cursor: data.topRated.cursor },
-            updateQuery: (prev, { fetchMoreResult }) => fetchMoreResult || prev,
-          })
-        }
-        title="Top Rated"
-      />
+    <Wrapper ref={element as any}>
+      <MoviesBox movies={data.topRated.results} title="Top Rated" />
       <Pagination
         currentPage={data.topRated.page}
         refetch={refetch}
+        scrollToTop={scrollToTop}
         totalPages={data.topRated.total_pages}
       />
     </Wrapper>

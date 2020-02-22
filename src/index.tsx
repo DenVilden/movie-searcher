@@ -23,9 +23,9 @@ const typeDefs = loader('./graphql/schema.graphql');
 const cache = new InMemoryCache();
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+  typeDefs,
   resolvers,
   cache,
-  typeDefs,
 });
 client.writeData({ data: { favorites: [], inputValue: '' } });
 

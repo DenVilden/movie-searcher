@@ -10,8 +10,6 @@ export default gql`
 
   type Upcoming {
     total_pages: Int!
-    cursor: Int
-    hasMore: Boolean
     page: Int!
     results: [UpcomingResults!]!
   }
@@ -31,11 +29,17 @@ export default gql`
     results: [TopRatedResults!]!
   }
 
-  type MoviesSearch {
+  type MoviesSearchResults {
     id: Int!
     title: String!
     release_date: String!
     poster_path: String
+  }
+
+  type MoviesSearch {
+    cursor: Int
+    hasMore: Boolean
+    results: [MoviesSearchResults!]!
   }
 
   type SimilarResults {
@@ -45,7 +49,7 @@ export default gql`
     poster_path: String
   }
 
-  type MovieInfo {
+  type MovieInfoResults {
     id: Int!
     title: String!
     release_date: String!
@@ -55,13 +59,17 @@ export default gql`
     overview: String
     poster_path: String
     backdrop_path: String
-    similar: [SimilarResults!]!
+  }
+
+  type MovieInfo {
+    results: MovieInfoResults!
+    similar_results: [SimilarResults!]!
   }
 
   type Query {
-    upcoming(page: Int, cursor: Int): Upcoming!
-    topRated(page: Int, cursor: Int): TopRated!
-    moviesSearch(query: String!): [MoviesSearch!]!
+    upcoming(page: Int): Upcoming!
+    topRated(page: Int): TopRated!
+    moviesSearch(query: String!, cursor: Int): MoviesSearch!
     movieInfo(id: String!): MovieInfo!
   }
 `;

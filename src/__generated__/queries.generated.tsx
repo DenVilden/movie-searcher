@@ -10,18 +10,21 @@ export type GetMovieInfoQueryVariables = {
 export type GetMovieInfoQuery = { __typename?: 'Query' } & {
   movieInfo: { __typename?: 'MovieInfo' } & Pick<
     Types.MovieInfo,
-    | 'isInFavorites'
-    | 'id'
-    | 'backdrop_path'
-    | 'poster_path'
-    | 'title'
-    | 'overview'
-    | 'budget'
-    | 'revenue'
-    | 'vote_average'
-    | 'release_date'
+    'isInFavorites'
   > & {
-      similar: Array<
+      results: { __typename?: 'MovieInfoResults' } & Pick<
+        Types.MovieInfoResults,
+        | 'id'
+        | 'backdrop_path'
+        | 'poster_path'
+        | 'title'
+        | 'overview'
+        | 'budget'
+        | 'revenue'
+        | 'vote_average'
+        | 'release_date'
+      >;
+      similar_results: Array<
         { __typename?: 'SimilarResults' } & Pick<
           Types.SimilarResults,
           'id' | 'title' | 'release_date' | 'poster_path'
@@ -32,13 +35,12 @@ export type GetMovieInfoQuery = { __typename?: 'Query' } & {
 
 export type GetUpcomingQueryVariables = {
   page?: Types.Maybe<Types.Scalars['Int']>;
-  cursor?: Types.Maybe<Types.Scalars['Int']>;
 };
 
 export type GetUpcomingQuery = { __typename?: 'Query' } & {
   upcoming: { __typename?: 'Upcoming' } & Pick<
     Types.Upcoming,
-    'total_pages' | 'cursor' | 'hasMore' | 'page'
+    'total_pages' | 'page'
   > & {
       results: Array<
         { __typename?: 'UpcomingResults' } & Pick<
@@ -51,13 +53,12 @@ export type GetUpcomingQuery = { __typename?: 'Query' } & {
 
 export type GetTopRatedQueryVariables = {
   page?: Types.Maybe<Types.Scalars['Int']>;
-  cursor?: Types.Maybe<Types.Scalars['Int']>;
 };
 
 export type GetTopRatedQuery = { __typename?: 'Query' } & {
   topRated: { __typename?: 'TopRated' } & Pick<
     Types.TopRated,
-    'total_pages' | 'cursor' | 'hasMore' | 'page'
+    'total_pages' | 'page'
   > & {
       results: Array<
         { __typename?: 'TopRatedResults' } & Pick<
@@ -70,15 +71,21 @@ export type GetTopRatedQuery = { __typename?: 'Query' } & {
 
 export type GetMoviesSearchQueryVariables = {
   query: Types.Scalars['String'];
+  cursor?: Types.Maybe<Types.Scalars['Int']>;
 };
 
 export type GetMoviesSearchQuery = { __typename?: 'Query' } & {
-  moviesSearch: Array<
-    { __typename?: 'MoviesSearch' } & Pick<
-      Types.MoviesSearch,
-      'id' | 'title' | 'release_date' | 'poster_path'
-    >
-  >;
+  moviesSearch: { __typename?: 'MoviesSearch' } & Pick<
+    Types.MoviesSearch,
+    'cursor' | 'hasMore'
+  > & {
+      results: Array<
+        { __typename?: 'MoviesSearchResults' } & Pick<
+          Types.MoviesSearchResults,
+          'id' | 'title' | 'release_date' | 'poster_path'
+        >
+      >;
+    };
 };
 
 export type GetInputValueQueryVariables = {};
@@ -99,16 +106,18 @@ export const GetMovieInfoDocument = gql`
   query GetMovieInfo($id: String!) {
     movieInfo(id: $id) {
       isInFavorites @client
-      id
-      backdrop_path
-      poster_path
-      title
-      overview
-      budget
-      revenue
-      vote_average
-      release_date
-      similar {
+      results {
+        id
+        backdrop_path
+        poster_path
+        title
+        overview
+        budget
+        revenue
+        vote_average
+        release_date
+      }
+      similar_results {
         id
         title
         release_date
@@ -167,11 +176,9 @@ export type GetMovieInfoQueryResult = ApolloReactCommon.QueryResult<
   GetMovieInfoQueryVariables
 >;
 export const GetUpcomingDocument = gql`
-  query GetUpcoming($page: Int, $cursor: Int) {
-    upcoming(page: $page, cursor: $cursor) {
+  query GetUpcoming($page: Int) {
+    upcoming(page: $page) {
       total_pages
-      cursor
-      hasMore
       page
       results {
         id
@@ -196,7 +203,6 @@ export const GetUpcomingDocument = gql`
  * const { data, loading, error } = useGetUpcomingQuery({
  *   variables: {
  *      page: // value for 'page'
- *      cursor: // value for 'cursor'
  *   },
  * });
  */
@@ -231,11 +237,9 @@ export type GetUpcomingQueryResult = ApolloReactCommon.QueryResult<
   GetUpcomingQueryVariables
 >;
 export const GetTopRatedDocument = gql`
-  query GetTopRated($page: Int, $cursor: Int) {
-    topRated(page: $page, cursor: $cursor) {
+  query GetTopRated($page: Int) {
+    topRated(page: $page) {
       total_pages
-      cursor
-      hasMore
       page
       results {
         id
@@ -260,7 +264,6 @@ export const GetTopRatedDocument = gql`
  * const { data, loading, error } = useGetTopRatedQuery({
  *   variables: {
  *      page: // value for 'page'
- *      cursor: // value for 'cursor'
  *   },
  * });
  */
@@ -295,12 +298,16 @@ export type GetTopRatedQueryResult = ApolloReactCommon.QueryResult<
   GetTopRatedQueryVariables
 >;
 export const GetMoviesSearchDocument = gql`
-  query GetMoviesSearch($query: String!) {
-    moviesSearch(query: $query) {
-      id
-      title
-      release_date
-      poster_path
+  query GetMoviesSearch($query: String!, $cursor: Int) {
+    moviesSearch(query: $query, cursor: $cursor) {
+      cursor
+      hasMore
+      results {
+        id
+        title
+        release_date
+        poster_path
+      }
     }
   }
 `;
@@ -318,6 +325,7 @@ export const GetMoviesSearchDocument = gql`
  * const { data, loading, error } = useGetMoviesSearchQuery({
  *   variables: {
  *      query: // value for 'query'
+ *      cursor: // value for 'cursor'
  *   },
  * });
  */

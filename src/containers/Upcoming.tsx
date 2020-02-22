@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import ErrorMessage from '../components/ErrorMessage';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
@@ -12,7 +12,9 @@ const Wrapper = styled.div`
 `;
 
 const Upcoming = () => {
-  const { data, loading, error, refetch, fetchMore } = useGetUpcomingQuery();
+  const { data, loading, error, refetch } = useGetUpcomingQuery();
+
+  const element = useRef<HTMLDivElement>(null!);
 
   if (loading) return <Spinner />;
 
@@ -20,22 +22,19 @@ const Upcoming = () => {
 
   if (!data) throw new Error('Data not found');
 
+  const scrollToTop = () => {
+    element.current.scrollIntoView({
+      behavior: 'smooth',
+    });
+  };
+
   return (
-    <Wrapper>
-      <MoviesBox
-        hasMore={data.upcoming.hasMore}
-        movies={data.upcoming.results}
-        showAll={() =>
-          fetchMore({
-            variables: { cursor: data.upcoming.cursor },
-            updateQuery: (prev, { fetchMoreResult }) => fetchMoreResult || prev,
-          })
-        }
-        title="Upcoming"
-      />
+    <Wrapper ref={element}>
+      <MoviesBox movies={data.upcoming.results} title="Upcoming" />
       <Pagination
         currentPage={data.upcoming.page}
         refetch={refetch}
+        scrollToTop={scrollToTop}
         totalPages={data.upcoming.total_pages}
       />
     </Wrapper>

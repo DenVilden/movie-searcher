@@ -6,14 +6,15 @@ import {
   useAddOrRemoveFromFavoritesMutation,
   GetMovieInfoDocument,
 } from '../__generated__';
-import { MovieInfo } from '../types/types';
+import { MovieInfoResults } from '../types/types';
 
 type Props = {
   id: string;
-  movie: MovieInfo;
+  movie: MovieInfoResults;
+  isInFavorites: boolean;
 };
 
-const MoviePage = ({ id, movie }: Props) => {
+const MoviePage = ({ id, movie, isInFavorites }: Props) => {
   const [
     addOrRemoveFromFavorites,
     { loading, error },
@@ -27,7 +28,11 @@ const MoviePage = ({ id, movie }: Props) => {
   if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
 
   return (
-    <MovieInfoComponent movie={movie} toggleSave={addOrRemoveFromFavorites} />
+    <MovieInfoComponent
+      isInFavorites={isInFavorites}
+      movie={movie}
+      toggleSave={addOrRemoveFromFavorites}
+    />
   );
 };
 
