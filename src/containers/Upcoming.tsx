@@ -22,19 +22,13 @@ const Upcoming = () => {
 
   if (!data) throw new Error('Data not found');
 
-  const scrollToTop = () => {
-    element.current.scrollIntoView({
-      behavior: 'smooth',
-    });
-  };
-
   return (
     <Wrapper ref={element}>
       <MoviesBox movies={data.upcoming.results} title="Upcoming" />
       <Pagination
         currentPage={data.upcoming.page}
         refetch={refetch}
-        scrollToTop={scrollToTop}
+        scrollToTop={element}
         totalPages={data.upcoming.total_pages}
       />
     </Wrapper>

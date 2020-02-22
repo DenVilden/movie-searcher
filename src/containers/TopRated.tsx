@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 const TopRated = () => {
   const { data, loading, error, refetch } = useGetTopRatedQuery();
 
-  const element = useRef<HTMLElement>(null!);
+  const element = useRef<HTMLDivElement>(null!);
 
   if (loading) return <Spinner />;
 
@@ -22,19 +22,13 @@ const TopRated = () => {
 
   if (!data) throw new Error('Data not found');
 
-  const scrollToTop = () => {
-    element.current.scrollIntoView({
-      behavior: 'smooth',
-    });
-  };
-
   return (
-    <Wrapper ref={element as any}>
+    <Wrapper ref={element}>
       <MoviesBox movies={data.topRated.results} title="Top Rated" />
       <Pagination
         currentPage={data.topRated.page}
         refetch={refetch}
-        scrollToTop={scrollToTop}
+        scrollToTop={element}
         totalPages={data.topRated.total_pages}
       />
     </Wrapper>
