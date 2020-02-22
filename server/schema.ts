@@ -49,7 +49,11 @@ export default gql`
     poster_path: String
   }
 
-  type MovieInfoResults {
+  type SimilarMovies {
+    results: [SimilarResults!]!
+  }
+
+  type MovieInfo {
     id: Int!
     title: String!
     release_date: String!
@@ -59,11 +63,7 @@ export default gql`
     overview: String
     poster_path: String
     backdrop_path: String
-  }
-
-  type MovieInfo {
-    results: MovieInfoResults!
-    similar_results: [SimilarResults!]!
+    similar: SimilarMovies!
   }
 
   type Query {

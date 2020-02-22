@@ -1,5 +1,5 @@
 import React from 'react';
-import Spinner from '../components/Spinner';
+import { LinearProgress } from '@material-ui/core';
 import ErrorMessage from '../components/ErrorMessage';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
 import {
@@ -19,12 +19,12 @@ const SearchResults = ({ inputValue }: Props) => {
     variables: { value: '' },
   });
 
-  if (loading) return <Spinner />;
+  if (loading) return <LinearProgress color="secondary" />;
 
   if (error || !data?.moviesSearch.results.length) {
     return (
       <ErrorMessage gutterBottom>
-        {error ? error.message : 'Nothing found'}
+        {error?.message || 'Nothing found'}
       </ErrorMessage>
     );
   }

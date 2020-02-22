@@ -5,12 +5,13 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
+import { LinearProgress } from '@material-ui/core';
 import Header from './components/Header/Header';
-import Spinner from './components/Spinner';
 import {
   useSetInputValueMutation,
   useGetInputValueQuery,
 } from './__generated__';
+import ErrorMessage from './components/ErrorMessage';
 
 const SearchResults = lazy(() => import('./containers/SearchResults'));
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -20,7 +21,7 @@ const App = () => {
   const { data } = useGetInputValueQuery();
   const [setInputValue] = useSetInputValueMutation();
 
-  if (!data) throw new Error('Not found');
+  if (!data) return <ErrorMessage>Data not found</ErrorMessage>;
 
   return (
     <Router>
@@ -28,7 +29,7 @@ const App = () => {
         inputValue={data.inputValue}
         setInputValue={value => setInputValue({ variables: { value } })}
       />
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<LinearProgress color="secondary" />}>
         {data.inputValue && <SearchResults inputValue={data.inputValue} />}
         <Switch>
           <Route component={HomePage} exact path="/" />

@@ -27,12 +27,6 @@ export enum CacheControlScope {
 
 export type MovieInfo = {
   __typename?: 'MovieInfo';
-  results: MovieInfoResults;
-  similar_results: Array<SimilarResults>;
-};
-
-export type MovieInfoResults = {
-  __typename?: 'MovieInfoResults';
   id: Scalars['Int'];
   title: Scalars['String'];
   release_date: Scalars['String'];
@@ -42,6 +36,7 @@ export type MovieInfoResults = {
   overview?: Maybe<Scalars['String']>;
   poster_path?: Maybe<Scalars['String']>;
   backdrop_path?: Maybe<Scalars['String']>;
+  similar: SimilarMovies;
 };
 
 export type MoviesSearch = {
@@ -82,6 +77,11 @@ export type QueryMoviesSearchArgs = {
 
 export type QueryMovieInfoArgs = {
   id: Scalars['String'];
+};
+
+export type SimilarMovies = {
+  __typename?: 'SimilarMovies';
+  results: Array<SimilarResults>;
 };
 
 export type SimilarResults = {
@@ -247,7 +247,7 @@ export type ResolversTypes = ResolversObject<{
   MoviesSearch: ResolverTypeWrapper<MoviesSearch>;
   MoviesSearchResults: ResolverTypeWrapper<MoviesSearchResults>;
   MovieInfo: ResolverTypeWrapper<MovieInfo>;
-  MovieInfoResults: ResolverTypeWrapper<MovieInfoResults>;
+  SimilarMovies: ResolverTypeWrapper<SimilarMovies>;
   SimilarResults: ResolverTypeWrapper<SimilarResults>;
   CacheControlScope: CacheControlScope;
   Upload: ResolverTypeWrapper<Scalars['Upload']>;
@@ -267,7 +267,7 @@ export type ResolversParentTypes = ResolversObject<{
   MoviesSearch: MoviesSearch;
   MoviesSearchResults: MoviesSearchResults;
   MovieInfo: MovieInfo;
-  MovieInfoResults: MovieInfoResults;
+  SimilarMovies: SimilarMovies;
   SimilarResults: SimilarResults;
   CacheControlScope: CacheControlScope;
   Upload: Scalars['Upload'];
@@ -276,23 +276,6 @@ export type ResolversParentTypes = ResolversObject<{
 export type MovieInfoResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['MovieInfo'] = ResolversParentTypes['MovieInfo']
-> = ResolversObject<{
-  results?: Resolver<
-    ResolversTypes['MovieInfoResults'],
-    ParentType,
-    ContextType
-  >;
-  similar_results?: Resolver<
-    Array<ResolversTypes['SimilarResults']>,
-    ParentType,
-    ContextType
-  >;
-  __isTypeOf?: isTypeOfResolverFn<ParentType>;
-}>;
-
-export type MovieInfoResultsResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['MovieInfoResults'] = ResolversParentTypes['MovieInfoResults']
 > = ResolversObject<{
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -311,6 +294,7 @@ export type MovieInfoResultsResolvers<
     ParentType,
     ContextType
   >;
+  similar?: Resolver<ResolversTypes['SimilarMovies'], ParentType, ContextType>;
   __isTypeOf?: isTypeOfResolverFn<ParentType>;
 }>;
 
@@ -371,6 +355,18 @@ export type QueryResolvers<
     Context,
     RequireFields<QueryMovieInfoArgs, 'id'>
   >;
+}>;
+
+export type SimilarMoviesResolvers<
+  ContextType = any,
+  ParentType extends ResolversParentTypes['SimilarMovies'] = ResolversParentTypes['SimilarMovies']
+> = ResolversObject<{
+  results?: Resolver<
+    Array<ResolversTypes['SimilarResults']>,
+    ParentType,
+    ContextType
+  >;
+  __isTypeOf?: isTypeOfResolverFn<ParentType>;
 }>;
 
 export type SimilarResultsResolvers<
@@ -455,10 +451,10 @@ export interface UploadScalarConfig
 
 export type Resolvers<ContextType = any> = ResolversObject<{
   MovieInfo?: MovieInfoResolvers<ContextType>;
-  MovieInfoResults?: MovieInfoResultsResolvers<ContextType>;
   MoviesSearch?: MoviesSearchResolvers<ContextType>;
   MoviesSearchResults?: MoviesSearchResultsResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  SimilarMovies?: SimilarMoviesResolvers<ContextType>;
   SimilarResults?: SimilarResultsResolvers<ContextType>;
   TopRated?: TopRatedResolvers<ContextType>;
   TopRatedResults?: TopRatedResultsResolvers<ContextType>;

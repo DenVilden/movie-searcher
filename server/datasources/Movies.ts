@@ -6,7 +6,7 @@ import {
   mockTopRatedResponse,
   mockMoviesSearchResponse,
   mockMovieInfoResponse,
-} from './__mocks__/responses';
+} from './responses';
 
 export default class MoviesAPI extends RESTDataSource {
   constructor() {
@@ -18,7 +18,7 @@ export default class MoviesAPI extends RESTDataSource {
     request.params.set('api_key', this.context.key);
   }
 
-  attachPoster = (path: string, size = 200) => {
+  private attachPoster = (path: string, size = 200) => {
     if (!path) return null;
     return `https://image.tmdb.org/t/p/w${size}${path}`;
   };
@@ -63,28 +63,28 @@ export default class MoviesAPI extends RESTDataSource {
   });
 
   private movieInfoReducer = (movie: typeof mockMovieInfoResponse) => ({
-    results: {
-      id: movie.id,
-      title: movie.title,
-      release_date: dayjs(movie.release_date).format('DD MMMM YYYY'),
-      vote_average: movie.vote_average,
-      budget: numeral(movie.budget).format('$0,00'),
-      revenue: numeral(movie.revenue).format('$0,00'),
-      overview: movie.overview,
-      backdrop_path: this.attachPoster(movie.backdrop_path, 500),
-      poster_path: this.attachPoster(movie.poster_path),
+    id: movie.id,
+    title: movie.title,
+    release_date: dayjs(movie.release_date).format('DD MMMM YYYY'),
+    vote_average: movie.vote_average,
+    budget: numeral(movie.budget).format('$0,00'),
+    revenue: numeral(movie.revenue).format('$0,00'),
+    overview: movie.overview,
+    backdrop_path: this.attachPoster(movie.backdrop_path, 500),
+    poster_path: this.attachPoster(movie.poster_path),
+    similar: {
+      results: Array.isArray(movie.similar.results)
+        ? movie.similar.results.map(similarMovie => ({
+            id: similarMovie.id,
+            title: similarMovie.title,
+            release_date: dayjs(similarMovie.release_date).format('YYYY'),
+            poster_path: this.attachPoster(similarMovie.poster_path),
+          }))
+        : [],
     },
-    similar_results: Array.isArray(movie.similar.results)
-      ? movie.similar.results.map(similarMovie => ({
-          id: similarMovie.id,
-          title: similarMovie.title,
-          release_date: dayjs(similarMovie.release_date).format('YYYY'),
-          poster_path: this.attachPoster(similarMovie.poster_path),
-        }))
-      : [],
   });
 
-  async getUpcoming(page: number | null | undefined) {
+  async getUpcoming(page?: number | null) {
     const data: typeof mockUpcomingResponse = await this.get(
       '/movie/upcoming',
       { page: page || 1 }
@@ -92,7 +92,7 @@ export default class MoviesAPI extends RESTDataSource {
     return this.moviesUpcomingReducer(data);
   }
 
-  async getTopRated(page: number | null | undefined) {
+  async getTopRated(page?: number | null) {
     const data: typeof mockTopRatedResponse = await this.get(
       '/movie/top_rated',
       { page: page || 1 }

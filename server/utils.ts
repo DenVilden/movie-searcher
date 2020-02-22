@@ -1,11 +1,9 @@
-import { MoviesSearch, MoviesSearchResults } from './types/types';
-
 export const paginateResults = (
-  data: MoviesSearch,
-  cursor: number | null | undefined,
+  data: any,
+  cursor?: number | null,
   pageSize = 4
 ) => {
-  let results: MoviesSearchResults[] = [];
+  let results = [];
 
   if (!cursor) {
     results = data.results.slice(0, pageSize);

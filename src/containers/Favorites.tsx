@@ -15,7 +15,7 @@ const Favorites = () => {
 
   const [favoritesOpen, toggleFavorites] = useState(false);
 
-  if (!data) throw new Error('Not found');
+  if (!data) throw new Error('Data not found');
 
   return (
     <>

@@ -14,12 +14,12 @@ type Props = {
     id: number;
     title: string;
     vote_average?: number;
-    poster_path?: string | null | undefined;
+    poster_path?: string | null;
     release_date?: string;
   }[];
   clearInputValue?: () => void;
   showMore?: () => void;
-  hasMore?: boolean | null | undefined;
+  hasMore?: boolean | null;
 } & typeof defaultProps;
 
 const MoviesBox = ({
@@ -40,14 +40,7 @@ const MoviesBox = ({
     <Grow in>
       <Grid container>
         {movies.map(movie => (
-          <Wrapper
-            key={movie.id}
-            container
-            item
-            justify="space-around"
-            md={3}
-            xs={6}
-          >
+          <Wrapper key={movie.id} container item justify="center" md={3} xs={6}>
             <MovieCard clearInputValue={clearInputValue} movie={movie} />
           </Wrapper>
         ))}

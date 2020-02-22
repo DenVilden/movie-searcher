@@ -7,26 +7,25 @@ import {
   StyledTypography,
 } from './MovieInfo.styles';
 import noImage from '../../assets/no-image.jpg';
-import { MovieInfoResults } from '../../types/types';
+import { MovieInfo } from '../../types/types';
 
 type Props = {
-  movie: MovieInfoResults;
+  movie: MovieInfo;
   toggleSave: () => void;
-  isInFavorites: boolean;
 };
 
-const MovieInfoComponent = ({ movie, toggleSave, isInFavorites }: Props) => (
+const MovieInfoComponent = ({ movie, toggleSave }: Props) => (
   <StyledCard elevation={10}>
     <StyledCardMedia image={movie.backdrop_path || noImage} src="img" />
     <StyledCardContent>
       <StyledTypography gutterBottom variant="h5">
         {movie.title}
         <Button
-          color={isInFavorites ? 'secondary' : 'primary'}
+          color={movie.isInFavorites ? 'secondary' : 'primary'}
           onClick={toggleSave}
           variant="contained"
         >
-          {isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
+          {movie.isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
         </Button>
       </StyledTypography>
       <Typography>{movie.overview}</Typography>

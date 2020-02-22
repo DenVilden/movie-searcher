@@ -13,7 +13,7 @@ const resolvers: Resolvers = {
       });
 
       if (queryResult) {
-        return queryResult.favorites.includes(movie.results.id.toString());
+        return queryResult.favorites.includes(movie.id.toString());
       }
       return false;
     },

@@ -1,0 +1,10 @@
+{
+  "globals": {
+    "ts-jest": {
+      "tsConfig": "server/tsconfig.json"
+    }
+  },
+  "collectCoverageFrom": ["**/*.ts"],
+  "preset": "ts-jest",
+  "testEnvironment": "node"
+}

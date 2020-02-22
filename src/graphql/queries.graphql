@@ -1,21 +1,44 @@
 query GetMovieInfo($id: String!) {
   movieInfo(id: $id) {
     isInFavorites @client
+    id
+    backdrop_path
+    poster_path
+    title
+    overview
+    budget
+    revenue
+    vote_average
+    release_date
+    similar {
+      results {
+        id
+        title
+        release_date
+        poster_path
+      }
+    }
+  }
+}
+
+query GetMovies($page: Int) {
+  upcoming(page: $page) {
+    total_pages
+    page
     results {
       id
-      backdrop_path
-      poster_path
       title
-      overview
-      budget
-      revenue
-      vote_average
       release_date
+      poster_path
     }
-    similar_results {
+  }
+  topRated(page: $page) {
+    total_pages
+    page
+    results {
       id
       title
-      release_date
+      vote_average
       poster_path
     }
   }

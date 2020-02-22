@@ -10,24 +10,52 @@ export type GetMovieInfoQueryVariables = {
 export type GetMovieInfoQuery = { __typename?: 'Query' } & {
   movieInfo: { __typename?: 'MovieInfo' } & Pick<
     Types.MovieInfo,
-    'isInFavorites'
+    | 'isInFavorites'
+    | 'id'
+    | 'backdrop_path'
+    | 'poster_path'
+    | 'title'
+    | 'overview'
+    | 'budget'
+    | 'revenue'
+    | 'vote_average'
+    | 'release_date'
   > & {
-      results: { __typename?: 'MovieInfoResults' } & Pick<
-        Types.MovieInfoResults,
-        | 'id'
-        | 'backdrop_path'
-        | 'poster_path'
-        | 'title'
-        | 'overview'
-        | 'budget'
-        | 'revenue'
-        | 'vote_average'
-        | 'release_date'
-      >;
-      similar_results: Array<
-        { __typename?: 'SimilarResults' } & Pick<
-          Types.SimilarResults,
+      similar: { __typename?: 'SimilarMovies' } & {
+        results: Array<
+          { __typename?: 'SimilarResults' } & Pick<
+            Types.SimilarResults,
+            'id' | 'title' | 'release_date' | 'poster_path'
+          >
+        >;
+      };
+    };
+};
+
+export type GetMoviesQueryVariables = {
+  page?: Types.Maybe<Types.Scalars['Int']>;
+};
+
+export type GetMoviesQuery = { __typename?: 'Query' } & {
+  upcoming: { __typename?: 'Upcoming' } & Pick<
+    Types.Upcoming,
+    'total_pages' | 'page'
+  > & {
+      results: Array<
+        { __typename?: 'UpcomingResults' } & Pick<
+          Types.UpcomingResults,
           'id' | 'title' | 'release_date' | 'poster_path'
+        >
+      >;
+    };
+  topRated: { __typename?: 'TopRated' } & Pick<
+    Types.TopRated,
+    'total_pages' | 'page'
+  > & {
+      results: Array<
+        { __typename?: 'TopRatedResults' } & Pick<
+          Types.TopRatedResults,
+          'id' | 'title' | 'vote_average' | 'poster_path'
         >
       >;
     };
@@ -106,22 +134,22 @@ export const GetMovieInfoDocument = gql`
   query GetMovieInfo($id: String!) {
     movieInfo(id: $id) {
       isInFavorites @client
-      results {
-        id
-        backdrop_path
-        poster_path
-        title
-        overview
-        budget
-        revenue
-        vote_average
-        release_date
-      }
-      similar_results {
-        id
-        title
-        release_date
-        poster_path
+      id
+      backdrop_path
+      poster_path
+      title
+      overview
+      budget
+      revenue
+      vote_average
+      release_date
+      similar {
+        results {
+          id
+          title
+          release_date
+          poster_path
+        }
       }
     }
   }
@@ -174,6 +202,77 @@ export type GetMovieInfoLazyQueryHookResult = ReturnType<
 export type GetMovieInfoQueryResult = ApolloReactCommon.QueryResult<
   GetMovieInfoQuery,
   GetMovieInfoQueryVariables
+>;
+export const GetMoviesDocument = gql`
+  query GetMovies($page: Int) {
+    upcoming(page: $page) {
+      total_pages
+      page
+      results {
+        id
+        title
+        release_date
+        poster_path
+      }
+    }
+    topRated(page: $page) {
+      total_pages
+      page
+      results {
+        id
+        title
+        vote_average
+        poster_path
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetMoviesQuery__
+ *
+ * To run a query within a React component, call `useGetMoviesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetMoviesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetMoviesQuery({
+ *   variables: {
+ *      page: // value for 'page'
+ *   },
+ * });
+ */
+export function useGetMoviesQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    GetMoviesQuery,
+    GetMoviesQueryVariables
+  >
+) {
+  return ApolloReactHooks.useQuery<GetMoviesQuery, GetMoviesQueryVariables>(
+    GetMoviesDocument,
+    baseOptions
+  );
+}
+export function useGetMoviesLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    GetMoviesQuery,
+    GetMoviesQueryVariables
+  >
+) {
+  return ApolloReactHooks.useLazyQuery<GetMoviesQuery, GetMoviesQueryVariables>(
+    GetMoviesDocument,
+    baseOptions
+  );
+}
+export type GetMoviesQueryHookResult = ReturnType<typeof useGetMoviesQuery>;
+export type GetMoviesLazyQueryHookResult = ReturnType<
+  typeof useGetMoviesLazyQuery
+>;
+export type GetMoviesQueryResult = ApolloReactCommon.QueryResult<
+  GetMoviesQuery,
+  GetMoviesQueryVariables
 >;
 export const GetUpcomingDocument = gql`
   query GetUpcoming($page: Int) {

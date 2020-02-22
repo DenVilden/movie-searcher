@@ -4,7 +4,7 @@ import {
   mockTopRatedResponse,
   mockMoviesSearchResponse,
   mockMovieInfoResponse,
-} from '../__mocks__/responses';
+} from '../responses';
 
 const mocks = {
   get: jest.fn(),
@@ -92,29 +92,29 @@ describe('MoviesAPI.getMoviesSearch', () => {
 
 describe('MoviesAPI.getMovieInfo', () => {
   const mockMovieInfo = {
-    results: {
-      id: 556678,
-      title: 'Emma',
-      release_date: '14 February 2020',
-      vote_average: 7.8,
-      budget: '$0',
-      revenue: '$0',
-      overview:
-        'A young woman despite the best intentions, heedlessly meddles in people’s romantic affairs as she tries to play matchmaker.',
-      backdrop_path:
-        'https://image.tmdb.org/t/p/w500/5GbkL9DDRzq3A21nR7Gkv6cFGjq.jpg',
-      poster_path:
-        'https://image.tmdb.org/t/p/w200/sm8iVzA7kRp0d4BSIsgXjsSBMKV.jpg',
+    id: 556678,
+    title: 'Emma',
+    release_date: '14 February 2020',
+    vote_average: 7.8,
+    budget: '$0',
+    revenue: '$0',
+    overview:
+      'A young woman despite the best intentions, heedlessly meddles in people’s romantic affairs as she tries to play matchmaker.',
+    backdrop_path:
+      'https://image.tmdb.org/t/p/w500/5GbkL9DDRzq3A21nR7Gkv6cFGjq.jpg',
+    poster_path:
+      'https://image.tmdb.org/t/p/w200/sm8iVzA7kRp0d4BSIsgXjsSBMKV.jpg',
+    similar: {
+      results: [
+        {
+          id: 281957,
+          title: 'The Revenant',
+          release_date: '2015',
+          poster_path:
+            'https://image.tmdb.org/t/p/w200/oXUWEc5i3wYyFnL1Ycu8ppxxPvs.jpg',
+        },
+      ],
     },
-    similar_results: [
-      {
-        id: 281957,
-        title: 'The Revenant',
-        release_date: '2015',
-        poster_path:
-          'https://image.tmdb.org/t/p/w200/oXUWEc5i3wYyFnL1Ycu8ppxxPvs.jpg',
-      },
-    ],
   };
 
   it('should get get and transform movie info', async () => {

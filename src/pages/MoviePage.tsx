@@ -1,11 +1,14 @@
 import React from 'react';
-import { Slide } from '@material-ui/core';
+import { Slide, LinearProgress } from '@material-ui/core';
 import { RouteComponentProps } from 'react-router-dom';
-import Spinner from '../components/Spinner';
 import ErrorMessage from '../components/ErrorMessage';
-import MovieInfo from '../containers/MovieInfoContainer';
+import MovieInfo from '../components/MovieInfo/MovieInfo';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
-import { useGetMovieInfoQuery } from '../__generated__';
+import {
+  useGetMovieInfoQuery,
+  useAddOrRemoveFromFavoritesMutation,
+  GetMovieInfoDocument,
+} from '../__generated__';
 
 type Props = {
   match: { params: { id: string } };
@@ -20,26 +23,29 @@ const MoviePage = ({
     variables: { id },
   });
 
-  if (loading) return <Spinner />;
+  const [addOrRemoveFromFavorites] = useAddOrRemoveFromFavoritesMutation({
+    variables: { id },
+    refetchQueries: [{ query: GetMovieInfoDocument, variables: { id } }],
+  });
 
-  if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
+  if (loading) return <LinearProgress color="secondary" />;
 
-  if (!data) throw new Error('Data Not found');
+  if (error || !data)
+    return <ErrorMessage>{error?.message || 'Data not found'}</ErrorMessage>;
 
   return (
     <Slide direction="up" in>
       <div>
         <MovieInfo
-          id={id}
-          isInFavorites={data.movieInfo.isInFavorites}
-          movie={data.movieInfo.results}
+          movie={data.movieInfo}
+          toggleSave={addOrRemoveFromFavorites}
         />
-        {data.movieInfo.similar_results.length && (
+        {data.movieInfo.similar.results.length ? (
           <MoviesBox
-            movies={data.movieInfo.similar_results}
+            movies={data.movieInfo.similar.results}
             title="Similar Movies"
           />
-        )}
+        ) : null}
       </div>
     </Slide>
   );

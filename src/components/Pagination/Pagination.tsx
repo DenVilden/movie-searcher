@@ -7,7 +7,7 @@ const Pagination = ({
   currentPage,
   scrollToTop,
 }: {
-  refetch: ({ page }: { page: number }) => void;
+  refetch: ({ variables: { page } }: { variables: { page: number } }) => void;
   totalPages: number;
   currentPage: number;
   scrollToTop?: React.MutableRefObject<HTMLElement>;
@@ -16,10 +16,11 @@ const Pagination = ({
 
   const handleChange = (_: React.SyntheticEvent, value: number) => {
     setPage(value);
-    refetch({ page: value });
+    refetch({ variables: { page: value } });
     scrollToTop &&
       scrollToTop.current.scrollIntoView({
         behavior: 'smooth',
+        block: 'start',
       });
   };
 

@@ -29,7 +29,7 @@ const resolvers: Resolvers = {
     },
   },
   MovieInfo: {
-    similar_results: ({ similar_results }) => similar_results.slice(0, 4),
+    similar: ({ similar }) => paginateResults(similar),
   },
 };
 

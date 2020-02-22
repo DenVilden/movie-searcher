@@ -56,6 +56,7 @@
     "prettier": "^1.19.1",
     "stylelint": "13.2.0",
     "stylelint-config-sass-guidelines": "^7.0.0",
+    "ts-jest": "^25.2.1",
     "typescript": "3.7.5"
   },
   "scripts": {
@@ -69,15 +70,10 @@
     "serve": "concurrently --kill-others-on-fail -n \"TS-Server,Node,TS-Client\" -c \"cyan.bold,green.bold,yellow.bold\" \"yarn ts-watch\" \"yarn server\" \"yarn client\"",
     "start": "node dist/index.js",
     "lint": "eslint src --ext ts,tsx && eslint server --ext ts && stylelint src",
-    "test-server": "jest dist --watch",
+    "test-server": "jest server --config server/jest.config.json",
     "postbuild": "precompress build -s -e txt && yarn compile",
     "codegen": "graphql-codegen --config codegen.yml",
     "codegen-server": "graphql-codegen --config server/codegen.yml"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "dist/**/*.js"
-    ]
   },
   "eslintIgnore": [
     "react-app-env.d.ts",
@@ -131,7 +127,8 @@
     "extends": "stylelint-config-sass-guidelines",
     "ignoreFiles": [
       "**/*.jpg",
-      "**/*.svg"
+      "**/*.svg",
+      "**/*.graphql"
     ],
     "rules": {
       "selector-class-pattern": null

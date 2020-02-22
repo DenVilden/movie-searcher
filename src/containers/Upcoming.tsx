@@ -1,38 +1,44 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
+import { LinearProgress } from '@material-ui/core';
 import ErrorMessage from '../components/ErrorMessage';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
-import { useGetUpcomingQuery } from '../__generated__';
+import { useGetUpcomingLazyQuery } from '../__generated__';
 import Pagination from '../components/Pagination/Pagination';
-import Spinner from '../components/Spinner';
+import { Upcoming } from '../types/types';
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const Upcoming = () => {
-  const { data, loading, error, refetch } = useGetUpcomingQuery();
+type Props = {
+  initialData: Upcoming;
+};
+
+const UpcomingContainer = ({ initialData }: Props) => {
+  const [refetch, { data, loading, error }] = useGetUpcomingLazyQuery();
 
   const element = useRef<HTMLDivElement>(null!);
 
-  if (loading) return <Spinner />;
+  if (loading) return <LinearProgress color="secondary" />;
 
   if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
 
-  if (!data) throw new Error('Data not found');
-
   return (
     <Wrapper ref={element}>
-      <MoviesBox movies={data.upcoming.results} title="Upcoming" />
+      <MoviesBox
+        movies={data?.upcoming.results || initialData.results}
+        title="Upcoming"
+      />
       <Pagination
-        currentPage={data.upcoming.page}
+        currentPage={data?.upcoming.page || initialData.page}
         refetch={refetch}
         scrollToTop={element}
-        totalPages={data.upcoming.total_pages}
+        totalPages={data?.upcoming.total_pages || initialData.total_pages}
       />
     </Wrapper>
   );
 };
 
-export default Upcoming;
+export default UpcomingContainer;

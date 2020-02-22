@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { LinearProgress } from '@material-ui/core';
 import FavoritesCard from '../components/FavoritesCard/FavoritesCard';
-import Spinner from '../components/Spinner';
 import ErrorMessage from '../components/ErrorMessage';
 import { useGetMovieInfoQuery } from '../__generated__';
 
@@ -11,7 +11,7 @@ type Props = {
   id: string;
 } & RouteComponentProps;
 
-const FavoritesItem = ({
+const FavoritesCardContainer = ({
   id,
   toggleFavoritesOpen,
   clearInputValue,
@@ -19,21 +19,20 @@ const FavoritesItem = ({
 }: Props) => {
   const { loading, error, data } = useGetMovieInfoQuery({ variables: { id } });
 
-  if (loading) return <Spinner />;
+  if (loading) return <LinearProgress />;
 
-  if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
-
-  if (!data) throw new Error('Not found');
+  if (error || !data)
+    return <ErrorMessage>{error?.message || 'Data not found'}</ErrorMessage>;
 
   return (
     <FavoritesCard
       clearInputValue={clearInputValue}
-      goTo={() => history.push(`/movie/${data.movieInfo.results.id}`)}
-      poster={data.movieInfo.results.poster_path}
-      title={data.movieInfo.results.title}
+      goTo={() => history.push(`/movie/${data.movieInfo.id}`)}
+      poster={data.movieInfo.poster_path}
+      title={data.movieInfo.title}
       toggleFavoritesOpen={toggleFavoritesOpen}
     />
   );
 };
 
-export default withRouter(FavoritesItem);
+export default withRouter(FavoritesCardContainer);
