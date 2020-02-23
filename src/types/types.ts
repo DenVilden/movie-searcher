@@ -81,11 +81,14 @@ export type Query = {
 
 export type QueryMovieInfoArgs = {
   id: Scalars['String'];
+  cursor?: Maybe<Scalars['Int']>;
+  pageSize?: Maybe<Scalars['Int']>;
 };
 
 export type QueryMoviesSearchArgs = {
   query: Scalars['String'];
   cursor?: Maybe<Scalars['Int']>;
+  pageSize?: Maybe<Scalars['Int']>;
 };
 
 export type QueryTopRatedArgs = {
@@ -98,6 +101,8 @@ export type QueryUpcomingArgs = {
 
 export type SimilarMovies = {
   __typename?: 'SimilarMovies';
+  cursor?: Maybe<Scalars['Int']>;
+  hasMore?: Maybe<Scalars['Boolean']>;
   results: Array<SimilarResults>;
 };
 
@@ -254,8 +259,8 @@ export type DirectiveResolverFn<
 export type ResolversTypes = ResolversObject<{
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']>;
-  MovieInfo: ResolverTypeWrapper<MovieInfo>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
+  MovieInfo: ResolverTypeWrapper<MovieInfo>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   SimilarMovies: ResolverTypeWrapper<SimilarMovies>;
   SimilarResults: ResolverTypeWrapper<SimilarResults>;
@@ -275,8 +280,8 @@ export type ResolversTypes = ResolversObject<{
 export type ResolversParentTypes = ResolversObject<{
   Query: {};
   String: Scalars['String'];
-  MovieInfo: MovieInfo;
   Int: Scalars['Int'];
+  MovieInfo: MovieInfo;
   Boolean: Scalars['Boolean'];
   SimilarMovies: SimilarMovies;
   SimilarResults: SimilarResults;
@@ -405,6 +410,8 @@ export type SimilarMoviesResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['SimilarMovies'] = ResolversParentTypes['SimilarMovies']
 > = ResolversObject<{
+  cursor?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  hasMore?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   results?: Resolver<
     Array<ResolversTypes['SimilarResults']>,
     ParentType,

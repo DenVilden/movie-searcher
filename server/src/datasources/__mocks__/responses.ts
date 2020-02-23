@@ -74,6 +74,23 @@ export const mockMoviesSearchResponse = {
         'Miles Morales is juggling his life between being a high school student and being a spider-man. When Wilson "Kingpin" Fisk uses a super collider, others from across the Spider-Verse are transported to this dimension.',
       release_date: '2018-12-06',
     },
+    {
+      popularity: 22.96,
+      vote_count: 11134,
+      video: false,
+      poster_path: '/rZd0y1X1Gw4t5B3f01Qzj8DYY66.jpg',
+      id: 557,
+      adult: false,
+      backdrop_path: '/5yAEbTXiJZQpNx7eCyyOhnY9MYw.jpg',
+      original_language: 'en',
+      original_title: 'Spider-Man',
+      genre_ids: [28, 14],
+      title: 'Spider-Man',
+      vote_average: 7.1,
+      overview:
+        'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers.',
+      release_date: '2002-05-01',
+    },
   ],
 };
 
@@ -129,8 +146,94 @@ export const mockMovieInfoResponse = {
         release_date: '2015',
         poster_path: '/oXUWEc5i3wYyFnL1Ycu8ppxxPvs.jpg',
       },
+      {
+        id: 656968,
+        title: 'A Christmas Carol',
+        release_date: '2019',
+        poster_path: '/tKW48tnZKaHLBIxxgoAf9BIpyRv.jpg',
+      },
     ],
     total_pages: 461,
     total_results: 9217,
+  },
+};
+
+export const mockUpcoming = {
+  page: 1,
+  total_pages: 20,
+  results: [
+    {
+      id: 496243,
+      title: 'Parasite',
+      poster_path:
+        'https://image.tmdb.org/t/p/w200/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg',
+      release_date: '30.05.2019',
+    },
+  ],
+};
+
+export const mockTopRated = {
+  page: 1,
+  total_pages: 345,
+  results: [
+    {
+      id: 19404,
+      title: 'Dilwale Dulhania Le Jayenge',
+      vote_average: 8.8,
+      poster_path:
+        'https://image.tmdb.org/t/p/w200/2CAL2433ZeIihfX1Hb2139CX0pW.jpg',
+    },
+  ],
+};
+
+export const mockMoviesSearch = {
+  results: [
+    {
+      id: 324857,
+      title: 'Spider-Man: Into the Spider-Verse',
+      release_date: '2018',
+      poster_path:
+        'https://image.tmdb.org/t/p/w200/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg',
+    },
+    {
+      title: 'Spider-Man',
+      id: 557,
+      release_date: '2002',
+      poster_path:
+        'https://image.tmdb.org/t/p/w200/rZd0y1X1Gw4t5B3f01Qzj8DYY66.jpg',
+    },
+  ],
+};
+
+export const mockMovieInfo = {
+  id: 556678,
+  title: 'Emma',
+  release_date: '14 February 2020',
+  vote_average: 7.8,
+  budget: '$0',
+  revenue: '$0',
+  overview:
+    'A young woman despite the best intentions, heedlessly meddles in people’s romantic affairs as she tries to play matchmaker.',
+  backdrop_path:
+    'https://image.tmdb.org/t/p/w500/5GbkL9DDRzq3A21nR7Gkv6cFGjq.jpg',
+  poster_path:
+    'https://image.tmdb.org/t/p/w200/sm8iVzA7kRp0d4BSIsgXjsSBMKV.jpg',
+  similar: {
+    results: [
+      {
+        id: 281957,
+        title: 'The Revenant',
+        release_date: '2015',
+        poster_path:
+          'https://image.tmdb.org/t/p/w200/oXUWEc5i3wYyFnL1Ycu8ppxxPvs.jpg',
+      },
+      {
+        id: 656968,
+        title: 'A Christmas Carol',
+        release_date: '2019',
+        poster_path:
+          'https://image.tmdb.org/t/p/w200/tKW48tnZKaHLBIxxgoAf9BIpyRv.jpg',
+      },
+    ],
   },
 };

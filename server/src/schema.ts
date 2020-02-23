@@ -50,6 +50,8 @@ export default gql`
   }
 
   type SimilarMovies {
+    cursor: Int
+    hasMore: Boolean
     results: [SimilarResults!]!
   }
 
@@ -69,7 +71,7 @@ export default gql`
   type Query {
     upcoming(page: Int): Upcoming!
     topRated(page: Int): TopRated!
-    moviesSearch(query: String!, cursor: Int): MoviesSearch!
-    movieInfo(id: String!): MovieInfo!
+    moviesSearch(query: String!, cursor: Int, pageSize: Int): MoviesSearch!
+    movieInfo(id: String!, cursor: Int, pageSize: Int): MovieInfo!
   }
 `;

@@ -1,9 +1,10 @@
 export const paginateResults = (
   data: any,
   cursor?: number | null,
-  pageSize = 4
+  size?: number | null
 ) => {
   let results = [];
+  const pageSize = size || 4;
 
   if (!cursor) {
     results = data.results.slice(0, pageSize);

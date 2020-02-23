@@ -17,19 +17,19 @@ const resolvers: Resolvers = {
       const data: TopRated = await dataSources.moviesAPI.getTopRated(page);
       return data;
     },
-    moviesSearch: async (_, { query, cursor }, { dataSources }) => {
+    moviesSearch: async (_, { query, cursor, pageSize }, { dataSources }) => {
       const data: MoviesSearch = await dataSources.moviesAPI.getMoviesSearch(
         query
       );
-      return paginateResults(data, cursor);
+      return paginateResults(data, cursor, pageSize);
     },
-    movieInfo: async (_, { id }, { dataSources }) => {
+    movieInfo: async (_, { id, cursor, pageSize }, { dataSources }) => {
       const data: MovieInfo = await dataSources.moviesAPI.getMovieInfo(id);
-      return data;
+      return {
+        ...data,
+        similar: paginateResults(data.similar, cursor, pageSize),
+      };
     },
-  },
-  MovieInfo: {
-    similar: ({ similar }) => paginateResults(similar),
   },
 };
 

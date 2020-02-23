@@ -1,12 +1,13 @@
 overwrite: true
 schema: http://localhost:5000/graphql
 generates:
-  server/types/types.ts:
+  server/src/types/types.ts:
     plugins:
       - typescript
       - typescript-resolvers
     config:
       useIndexSignature: true
+      noSchemaStitching: true
       fieldContextTypes:
         - Query.upcoming#./context#Context
         - Query.topRated#./context#Context

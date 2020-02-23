@@ -73,14 +73,19 @@ export type QueryTopRatedArgs = {
 export type QueryMoviesSearchArgs = {
   query: Scalars['String'];
   cursor?: Maybe<Scalars['Int']>;
+  pageSize?: Maybe<Scalars['Int']>;
 };
 
 export type QueryMovieInfoArgs = {
   id: Scalars['String'];
+  cursor?: Maybe<Scalars['Int']>;
+  pageSize?: Maybe<Scalars['Int']>;
 };
 
 export type SimilarMovies = {
   __typename?: 'SimilarMovies';
+  cursor?: Maybe<Scalars['Int']>;
+  hasMore?: Maybe<Scalars['Boolean']>;
   results: Array<SimilarResults>;
 };
 
@@ -136,14 +141,12 @@ export type ResolverFn<TResult, TParent, TContext, TArgs> = (
   info: GraphQLResolveInfo
 ) => Promise<TResult> | TResult;
 
-export type StitchingResolver<TResult, TParent, TContext, TArgs> = {
-  fragment: string;
-  resolve: ResolverFn<TResult, TParent, TContext, TArgs>;
-};
-
-export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> =
-  | ResolverFn<TResult, TParent, TContext, TArgs>
-  | StitchingResolver<TResult, TParent, TContext, TArgs>;
+export type Resolver<
+  TResult,
+  TParent = {},
+  TContext = {},
+  TArgs = {}
+> = ResolverFn<TResult, TParent, TContext, TArgs>;
 
 export type SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
@@ -361,6 +364,8 @@ export type SimilarMoviesResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['SimilarMovies'] = ResolversParentTypes['SimilarMovies']
 > = ResolversObject<{
+  cursor?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  hasMore?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   results?: Resolver<
     Array<ResolversTypes['SimilarResults']>,
     ParentType,

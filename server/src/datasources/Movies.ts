@@ -6,7 +6,7 @@ import {
   mockTopRatedResponse,
   mockMoviesSearchResponse,
   mockMovieInfoResponse,
-} from './responses';
+} from './__mocks__/responses';
 
 export default class MoviesAPI extends RESTDataSource {
   constructor() {
@@ -30,7 +30,9 @@ export default class MoviesAPI extends RESTDataSource {
       ? movies.results.map(movie => ({
           id: movie.id,
           title: movie.title,
-          release_date: dayjs(movie.release_date).format('DD.MM.YYYY'),
+          release_date:
+            movie.release_date &&
+            dayjs(movie.release_date).format('DD.MM.YYYY'),
           poster_path: this.attachPoster(movie.poster_path),
         }))
       : [],
@@ -50,13 +52,12 @@ export default class MoviesAPI extends RESTDataSource {
   });
 
   private moviesSearchReducer = (movies: typeof mockMoviesSearchResponse) => ({
-    cursor: null,
-    hasMore: null,
     results: Array.isArray(movies.results)
       ? movies.results.map(movie => ({
           id: movie.id,
           title: movie.title,
-          release_date: dayjs(movie.release_date).format('YYYY'),
+          release_date:
+            movie.release_date && dayjs(movie.release_date).format('YYYY'),
           poster_path: this.attachPoster(movie.poster_path),
         }))
       : [],
@@ -65,7 +66,8 @@ export default class MoviesAPI extends RESTDataSource {
   private movieInfoReducer = (movie: typeof mockMovieInfoResponse) => ({
     id: movie.id,
     title: movie.title,
-    release_date: dayjs(movie.release_date).format('DD MMMM YYYY'),
+    release_date:
+      movie.release_date && dayjs(movie.release_date).format('DD MMMM YYYY'),
     vote_average: movie.vote_average,
     budget: numeral(movie.budget).format('$0,00'),
     revenue: numeral(movie.revenue).format('$0,00'),
@@ -77,7 +79,9 @@ export default class MoviesAPI extends RESTDataSource {
         ? movie.similar.results.map(similarMovie => ({
             id: similarMovie.id,
             title: similarMovie.title,
-            release_date: dayjs(similarMovie.release_date).format('YYYY'),
+            release_date:
+              similarMovie.release_date &&
+              dayjs(similarMovie.release_date).format('YYYY'),
             poster_path: this.attachPoster(similarMovie.poster_path),
           }))
         : [],
