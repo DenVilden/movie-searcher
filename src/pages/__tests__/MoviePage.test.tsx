@@ -77,8 +77,8 @@ describe('MoviePage', () => {
     expect(errorElement).toHaveTextContent(/Error/i);
   });
 
-  it('should refetch movie and add to favorites', async () => {
-    const mock = [mocks[0], mocks[0]];
+  it('should refetch movie and toggle favorites', async () => {
+    const mock = [mocks[0], mocks[0], mocks[0]];
 
     const cache = new InMemoryCache();
     cache.writeQuery({
@@ -98,25 +98,6 @@ describe('MoviePage', () => {
     fireEvent.click(favoritesButton);
 
     await waitForElement(() => getByText(/Remove from favorites/i));
-  });
-
-  it('should refetch movie and remove from favorites', async () => {
-    const mock = [mocks[0], mocks[0]];
-
-    const cache = new InMemoryCache();
-    cache.writeQuery({
-      query: GetFavoritesDocument,
-      data: { favorites: [] },
-    });
-
-    const { getByTestId, getByText } = renderApollo(<MoviePage id="1" />, {
-      mocks: mock,
-      cache,
-    });
-
-    const favoritesButton = await waitForElement(() =>
-      getByTestId('favorites-button')
-    );
 
     fireEvent.click(favoritesButton);
 
