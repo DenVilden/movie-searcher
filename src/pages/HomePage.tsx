@@ -3,7 +3,7 @@ import { Grid, LinearProgress } from '@material-ui/core';
 import Upcoming from '../containers/Upcoming';
 import TopRated from '../containers/TopRated';
 import { useGetMoviesQuery } from '../__generated__';
-import ErrorMessage from '../components/ErrorMessage';
+import ErrorMessage from '../containers/ErrorMessage';
 
 const HomePage = () => {
   const { data, error, loading } = useGetMoviesQuery();

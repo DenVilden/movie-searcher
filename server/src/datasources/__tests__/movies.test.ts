@@ -14,12 +14,10 @@ const mocks = {
   get: jest.fn(),
 };
 
-const MockMoviesAPI = class MockMoviesAPI extends MoviesAPI {
-  // eslint-disable-next-line class-methods-use-this
-  get(): any {}
-};
+class MockMoviesAPI extends MoviesAPI {
+  get = mocks.get;
+}
 const api = new MockMoviesAPI();
-api.get = mocks.get;
 
 describe('getUpcomingMovies', () => {
   it('should get upcoming', async () => {

@@ -13,6 +13,7 @@ const ErrorMessage = styled(
       align="center"
       color="error"
       gutterBottom={gutterBottom}
+      role="errormessage"
       variant="h6"
       {...otherProps}
     >

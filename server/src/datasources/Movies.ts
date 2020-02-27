@@ -14,6 +14,7 @@ export default class MoviesAPI extends RESTDataSource {
     this.baseURL = 'https://api.themoviedb.org/3';
   }
 
+  // TODO: figure out how to test this
   protected willSendRequest(request: RequestOptions) {
     request.params.set('api_key', this.context.key);
   }

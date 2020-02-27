@@ -1,37 +1,33 @@
 import React from 'react';
 import { LinearProgress } from '@material-ui/core';
-import ErrorMessage from '../components/ErrorMessage';
+import ErrorMessage from './ErrorMessage';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
-import {
-  useSetInputValueMutation,
-  useGetMoviesSearchQuery,
-} from '../__generated__';
+import { useGetMoviesSearchQuery } from '../__generated__';
 
 type Props = {
-  inputValue: string;
+  query: string;
 };
 
-const SearchResults = ({ inputValue }: Props) => {
+const SearchResults = ({ query }: Props) => {
   const { loading, error, data, fetchMore } = useGetMoviesSearchQuery({
-    variables: { query: inputValue },
-  });
-  const [setInputValueMutation] = useSetInputValueMutation({
-    variables: { value: '' },
+    variables: { query },
   });
 
   if (loading) return <LinearProgress color="secondary" />;
 
-  if (error || !data?.moviesSearch.results.length) {
+  if (error || !data) {
     return (
       <ErrorMessage gutterBottom>
-        {error?.message || 'Nothing found'}
+        {error?.message || 'No data found'}
       </ErrorMessage>
     );
   }
 
+  if (!data.moviesSearch.results.length)
+    return <ErrorMessage gutterBottom>No results</ErrorMessage>;
+
   return (
     <MoviesBox
-      clearInputValue={setInputValueMutation}
       elevation={0}
       hasMore={data.moviesSearch.hasMore}
       movies={data.moviesSearch.results}

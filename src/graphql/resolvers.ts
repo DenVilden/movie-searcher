@@ -12,10 +12,7 @@ const resolvers: Resolvers = {
         query: GetFavoritesDocument,
       });
 
-      if (queryResult) {
-        return queryResult.favorites.includes(movie.id.toString());
-      }
-      return false;
+      return queryResult!.favorites.includes(movie.id.toString());
     },
   },
   Mutation: {
@@ -24,22 +21,20 @@ const resolvers: Resolvers = {
         query: GetFavoritesDocument,
       });
 
-      if (queryResult) {
-        const { favorites } = queryResult;
+      const { favorites } = queryResult!;
 
-        const newFavorites = favorites.includes(id)
-          ? favorites.filter(favId => favId !== id)
-          : [...favorites, id];
+      const newFavorites = favorites.includes(id)
+        ? favorites.filter(favId => favId !== id)
+        : [...favorites, id];
 
-        cache.writeQuery({
-          query: GetFavoritesDocument,
-          data: { favorites: newFavorites },
-        });
-        return newFavorites;
-      }
-      return [];
+      cache.writeQuery({
+        query: GetFavoritesDocument,
+        data: { favorites: newFavorites },
+      });
+
+      return newFavorites;
     },
-    setInputValue: (_, { value }, { cache }): string => {
+    setInputValue: (_, { value }, { cache }) => {
       cache.writeQuery({
         query: GetInputValueDocument,
         data: { inputValue: value },

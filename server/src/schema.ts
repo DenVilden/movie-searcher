@@ -23,8 +23,6 @@ export default gql`
 
   type TopRated {
     total_pages: Int!
-    cursor: Int
-    hasMore: Boolean
     page: Int!
     results: [TopRatedResults!]!
   }

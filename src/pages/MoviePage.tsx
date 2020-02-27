@@ -1,51 +1,57 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Slide, LinearProgress } from '@material-ui/core';
-import { RouteComponentProps } from 'react-router-dom';
-import ErrorMessage from '../components/ErrorMessage';
+import ErrorMessage from '../containers/ErrorMessage';
 import MovieInfo from '../components/MovieInfo/MovieInfo';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
 import {
   useGetMovieInfoQuery,
+  useSetInputValueMutation,
   useAddOrRemoveFromFavoritesMutation,
   GetMovieInfoDocument,
 } from '../__generated__';
 
 type Props = {
-  match: { params: { id: string } };
-} & RouteComponentProps;
+  id: string;
+};
 
-const MoviePage = ({
-  match: {
-    params: { id },
-  },
-}: Props) => {
+const MoviePage = ({ id }: Props) => {
   const { loading, error, data } = useGetMovieInfoQuery({
     variables: { id },
   });
 
-  const [addOrRemoveFromFavorites] = useAddOrRemoveFromFavoritesMutation({
-    variables: { id },
-    refetchQueries: [{ query: GetMovieInfoDocument, variables: { id } }],
-  });
+  const [setInputValue] = useSetInputValueMutation();
+
+  const [addOrRemoveFromFavorites] = useAddOrRemoveFromFavoritesMutation();
+
+  useEffect(() => {
+    setInputValue({ variables: { value: '' } });
+  }, [setInputValue, id]);
 
   if (loading) return <LinearProgress color="secondary" />;
 
   if (error || !data)
-    return <ErrorMessage>{error?.message || 'Data not found'}</ErrorMessage>;
+    return <ErrorMessage>{error?.message || 'No data found'}</ErrorMessage>;
 
   return (
     <Slide direction="up" in>
       <div>
         <MovieInfo
+          addOrRemoveFromFavorites={() =>
+            addOrRemoveFromFavorites({
+              variables: { id },
+              refetchQueries: [
+                { query: GetMovieInfoDocument, variables: { id } },
+              ],
+            })
+          }
           movie={data.movieInfo}
-          toggleSave={addOrRemoveFromFavorites}
         />
-        {data.movieInfo.similar.results.length ? (
+        {!!data.movieInfo.similar.results.length && (
           <MoviesBox
             movies={data.movieInfo.similar.results}
             title="Similar Movies"
           />
-        ) : null}
+        )}
       </div>
     </Slide>
   );

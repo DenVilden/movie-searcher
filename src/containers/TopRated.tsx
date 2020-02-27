@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { LinearProgress } from '@material-ui/core';
-import ErrorMessage from '../components/ErrorMessage';
+import ErrorMessage from './ErrorMessage';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
 import { useGetTopRatedLazyQuery } from '../__generated__';
 import Pagination from '../components/Pagination/Pagination';

@@ -1,39 +1,40 @@
 import React from 'react';
 import { CardActionArea } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 import noImage from '../../assets/no-image.jpg';
 import {
   StyledTypography,
   CardWrapper,
   StyledCardMedia,
 } from './FavoritesCard.styles';
+import { MovieInfo } from '../../types/types';
 
 type Props = {
-  clearInputValue: () => void;
   toggleFavoritesOpen: () => void;
-  poster: string | null | undefined;
-  title: string;
-  goTo: () => void;
+  movie: MovieInfo;
 };
 
-const FavoritesCard = ({
-  clearInputValue,
-  toggleFavoritesOpen,
-  poster,
-  title,
-  goTo,
-}: Props) => (
-  <CardActionArea
-    onClick={() => {
-      goTo();
-      clearInputValue();
-      toggleFavoritesOpen();
-    }}
-  >
-    <CardWrapper>
-      <StyledCardMedia image={poster || noImage} src="img" title={title} />
-      <StyledTypography>{title}</StyledTypography>
-    </CardWrapper>
-  </CardActionArea>
-);
+const FavoritesCard = ({ toggleFavoritesOpen, movie }: Props) => {
+  const history = useHistory();
+
+  return (
+    <CardActionArea
+      data-testid="favorites-card"
+      onClick={() => {
+        history.push(`/movie/${movie.id}`);
+        toggleFavoritesOpen();
+      }}
+    >
+      <CardWrapper>
+        <StyledCardMedia
+          image={movie.poster_path || noImage}
+          src="img"
+          title={movie.title}
+        />
+        <StyledTypography>{movie.title}</StyledTypography>
+      </CardWrapper>
+    </CardActionArea>
+  );
+};
 
 export default FavoritesCard;

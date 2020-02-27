@@ -117,8 +117,6 @@ export type SimilarResults = {
 export type TopRated = {
   __typename?: 'TopRated';
   total_pages: Scalars['Int'];
-  cursor?: Maybe<Scalars['Int']>;
-  hasMore?: Maybe<Scalars['Boolean']>;
   page: Scalars['Int'];
   results: Array<TopRatedResults>;
 };
@@ -440,8 +438,6 @@ export type TopRatedResolvers<
   ParentType extends ResolversParentTypes['TopRated'] = ResolversParentTypes['TopRated']
 > = ResolversObject<{
   total_pages?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  cursor?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  hasMore?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   page?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   results?: Resolver<
     Array<ResolversTypes['TopRatedResults']>,

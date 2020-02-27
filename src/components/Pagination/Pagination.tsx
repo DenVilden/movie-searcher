@@ -1,17 +1,19 @@
 import React from 'react';
 import { StyledPagination } from './Pagination.styles';
 
+type Props = {
+  refetch: ({ variables: { page } }: { variables: { page: number } }) => void;
+  totalPages: number;
+  currentPage: number;
+  scrollToTop?: React.MutableRefObject<HTMLElement>;
+};
+
 const Pagination = ({
   totalPages,
   refetch,
   currentPage,
   scrollToTop,
-}: {
-  refetch: ({ variables: { page } }: { variables: { page: number } }) => void;
-  totalPages: number;
-  currentPage: number;
-  scrollToTop?: React.MutableRefObject<HTMLElement>;
-}) => {
+}: Props) => {
   const [page, setPage] = React.useState(currentPage);
 
   const handleChange = (_: React.SyntheticEvent, value: number) => {

@@ -2,9 +2,8 @@ import { InputBase, Theme } from '@material-ui/core';
 import styled from 'styled-components';
 import { fade } from '@material-ui/core/styles';
 import { Search as SearchIcon } from '@material-ui/icons';
-import { Link } from 'react-router-dom';
 
-export const SearchBar = styled.div`
+export const StyledSearchBar = styled.div`
   background-color: ${({ theme }: { theme: Theme }) =>
     fade(theme.palette.common.white, 0.15)};
   border-radius: ${({ theme }: { theme: Theme }) => theme.shape.borderRadius}px;
@@ -41,14 +40,5 @@ export const StyledInputBase = styled(InputBase)`
     ${({ theme }: { theme: Theme }) => theme.breakpoints.up('md')} {
       width: 400px;
     }
-  }
-`;
-
-export const LogoContainer = styled(Link)`
-  cursor: pointer;
-  display: none;
-
-  ${({ theme }) => theme.breakpoints.up('sm')} {
-    display: block;
   }
 `;

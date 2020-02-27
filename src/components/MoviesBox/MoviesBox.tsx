@@ -17,7 +17,6 @@ type Props = {
     poster_path?: string | null;
     release_date?: string;
   }[];
-  clearInputValue?: () => void;
   showMore?: () => void;
   hasMore?: boolean | null;
 } & typeof defaultProps;
@@ -27,12 +26,11 @@ const MoviesBox = ({
   title,
   elevation,
   padding,
-  clearInputValue,
   showMore,
   hasMore,
 }: Props) => (
   <Root elevation={elevation} padding={padding}>
-    {title && (
+    {!!title && (
       <Typography align="center" gutterBottom variant="h4">
         {title}
       </Typography>
@@ -40,12 +38,24 @@ const MoviesBox = ({
     <Grow in>
       <Grid container>
         {movies.map(movie => (
-          <Wrapper key={movie.id} container item justify="center" md={3} xs={6}>
-            <MovieCard clearInputValue={clearInputValue} movie={movie} />
+          <Wrapper
+            key={movie.id}
+            container
+            data-testid="search-result"
+            item
+            justify="center"
+            md={3}
+            xs={6}
+          >
+            <MovieCard movie={movie} />
           </Wrapper>
         ))}
         {hasMore && (
-          <StyledButton onClick={showMore} variant="contained">
+          <StyledButton
+            data-testid="show-more"
+            onClick={showMore}
+            variant="contained"
+          >
             show more
           </StyledButton>
         )}

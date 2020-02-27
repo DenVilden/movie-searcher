@@ -7,14 +7,14 @@ import {
   StyledTypography,
 } from './MovieInfo.styles';
 import noImage from '../../assets/no-image.jpg';
-import { MovieInfo } from '../../types/types';
+import { MovieInfo as MovieInfoType } from '../../types/types';
 
 type Props = {
-  movie: MovieInfo;
-  toggleSave: () => void;
+  movie: MovieInfoType;
+  addOrRemoveFromFavorites: () => void;
 };
 
-const MovieInfoComponent = ({ movie, toggleSave }: Props) => (
+const MovieInfo = ({ movie, addOrRemoveFromFavorites }: Props) => (
   <StyledCard elevation={10}>
     <StyledCardMedia image={movie.backdrop_path || noImage} src="img" />
     <StyledCardContent>
@@ -22,7 +22,8 @@ const MovieInfoComponent = ({ movie, toggleSave }: Props) => (
         {movie.title}
         <Button
           color={movie.isInFavorites ? 'secondary' : 'primary'}
-          onClick={toggleSave}
+          data-testid="favorites-button"
+          onClick={addOrRemoveFromFavorites}
           variant="contained"
         >
           {movie.isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
@@ -49,4 +50,4 @@ const MovieInfoComponent = ({ movie, toggleSave }: Props) => (
   </StyledCard>
 );
 
-export default MovieInfoComponent;
+export default MovieInfo;

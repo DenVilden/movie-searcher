@@ -100,8 +100,6 @@ export type SimilarResults = {
 export type TopRated = {
   __typename?: 'TopRated';
   total_pages: Scalars['Int'];
-  cursor?: Maybe<Scalars['Int']>;
-  hasMore?: Maybe<Scalars['Boolean']>;
   page: Scalars['Int'];
   results: Array<TopRatedResults>;
 };
@@ -244,10 +242,10 @@ export type ResolversTypes = ResolversObject<{
   UpcomingResults: ResolverTypeWrapper<UpcomingResults>;
   String: ResolverTypeWrapper<Scalars['String']>;
   TopRated: ResolverTypeWrapper<TopRated>;
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   TopRatedResults: ResolverTypeWrapper<TopRatedResults>;
   Float: ResolverTypeWrapper<Scalars['Float']>;
   MoviesSearch: ResolverTypeWrapper<MoviesSearch>;
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   MoviesSearchResults: ResolverTypeWrapper<MoviesSearchResults>;
   MovieInfo: ResolverTypeWrapper<MovieInfo>;
   SimilarMovies: ResolverTypeWrapper<SimilarMovies>;
@@ -264,10 +262,10 @@ export type ResolversParentTypes = ResolversObject<{
   UpcomingResults: UpcomingResults;
   String: Scalars['String'];
   TopRated: TopRated;
-  Boolean: Scalars['Boolean'];
   TopRatedResults: TopRatedResults;
   Float: Scalars['Float'];
   MoviesSearch: MoviesSearch;
+  Boolean: Scalars['Boolean'];
   MoviesSearchResults: MoviesSearchResults;
   MovieInfo: MovieInfo;
   SimilarMovies: SimilarMovies;
@@ -394,8 +392,6 @@ export type TopRatedResolvers<
   ParentType extends ResolversParentTypes['TopRated'] = ResolversParentTypes['TopRated']
 > = ResolversObject<{
   total_pages?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  cursor?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  hasMore?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   page?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   results?: Resolver<
     Array<ResolversTypes['TopRatedResults']>,

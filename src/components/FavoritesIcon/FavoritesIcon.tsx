@@ -13,7 +13,12 @@ type Props = {
 };
 
 const FavoritesIcon = ({ total, open, toggle }: Props) => (
-  <StyledIconButton color="inherit" disabled={!total} onClick={toggle}>
+  <StyledIconButton
+    color="inherit"
+    data-testid="icon-button"
+    disabled={!total}
+    onClick={toggle}
+  >
     <Badge badgeContent={total} color="secondary">
       {open ? <FavoriteBorderIcon /> : <FavoriteIcon />}
     </Badge>
