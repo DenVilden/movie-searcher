@@ -9,9 +9,9 @@ generates:
       useIndexSignature: true
       noSchemaStitching: true
       fieldContextTypes:
-        - Query.upcoming#./context#Context
-        - Query.topRated#./context#Context
-        - Query.moviesSearch#./context#Context
-        - Query.movieInfo#./context#Context
+        - Query.upcoming#../datasources/Movies#Context
+        - Query.topRated#../datasources/Movies#Context
+        - Query.moviesSearch#../datasources/Movies#Context
+        - Query.movieInfo#../datasources/Movies#Context
     hooks:
       afterOneFileWrite: eslint --fix

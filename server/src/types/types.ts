@@ -3,7 +3,7 @@ import {
   GraphQLScalarType,
   GraphQLScalarTypeConfig,
 } from 'graphql';
-import { Context } from './context';
+import { Context } from '../datasources/Movies';
 
 export type Maybe<T> = T | null;
 export type RequireFields<T, K extends keyof T> = {

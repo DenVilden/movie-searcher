@@ -8,7 +8,14 @@ import {
   mockMovieInfoResponse,
 } from './__mocks__/responses';
 
-export default class MoviesAPI extends RESTDataSource {
+export interface Context {
+  dataSources: {
+    moviesAPI: MoviesAPI;
+  };
+  key: string;
+}
+
+export default class MoviesAPI extends RESTDataSource<Context> {
   constructor() {
     super();
     this.baseURL = 'https://api.themoviedb.org/3';
@@ -20,8 +27,7 @@ export default class MoviesAPI extends RESTDataSource {
   }
 
   private attachPoster = (path: string, size = 200) => {
-    if (!path) return null;
-    return `https://image.tmdb.org/t/p/w${size}${path}`;
+    return path ? `https://image.tmdb.org/t/p/w${size}${path}` : null;
   };
 
   private moviesUpcomingReducer = (movies: typeof mockUpcomingResponse) => ({

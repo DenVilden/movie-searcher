@@ -7,7 +7,7 @@ import {
 } from './types/types';
 import { paginateResults } from './utils';
 
-const resolvers: Resolvers = {
+export default {
   Query: {
     upcoming: async (_, { page }, { dataSources }) => {
       const data: Upcoming = await dataSources.moviesAPI.getUpcoming(page);
@@ -31,6 +31,4 @@ const resolvers: Resolvers = {
       };
     },
   },
-};
-
-export default resolvers;
+} as Resolvers;
