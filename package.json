@@ -22,7 +22,7 @@
     "apollo-datasource-rest": "^0.8.0",
     "apollo-server-express": "^2.11.0",
     "compression": "^1.7.4",
-    "dayjs": "^1.8.21",
+    "dayjs": "^1.8.22",
     "express": "^4.17.1",
     "express-sslify": "^1.2.0",
     "express-static-gzip": "^2.0.6",
@@ -36,12 +36,12 @@
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.12.2",
-    "@graphql-codegen/near-operation-file-preset": "^1.12.2",
-    "@graphql-codegen/typescript": "1.12.2",
-    "@graphql-codegen/typescript-operations": "1.12.2",
-    "@graphql-codegen/typescript-react-apollo": "1.12.2",
-    "@graphql-codegen/typescript-resolvers": "1.12.2",
+    "@graphql-codegen/cli": "^1.13.0",
+    "@graphql-codegen/near-operation-file-preset": "^1.13.0",
+    "@graphql-codegen/typescript": "1.13.0",
+    "@graphql-codegen/typescript-operations": "1.13.0",
+    "@graphql-codegen/typescript-react-apollo": "1.13.0",
+    "@graphql-codegen/typescript-resolvers": "1.13.0",
     "@types/compression": "^1.7.0",
     "@types/express-sslify": "^1.2.1",
     "@types/jest": "^25.1.4",
@@ -56,12 +56,12 @@
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "nodemon": "^2.0.2",
-    "precompress": "^6.1.0",
+    "precompress": "^6.1.1",
     "prettier": "^1.19.1",
-    "stylelint": "13.2.0",
+    "stylelint": "13.2.1",
     "stylelint-config-sass-guidelines": "^7.0.0",
     "ts-jest": "^25.2.1",
-    "typescript": "3.7.5"
+    "typescript": "3.8.3"
   },
   "scripts": {
     "client": "react-scripts start",
