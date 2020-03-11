@@ -1,0 +1,36 @@
+overwrite: true
+schema:
+  - http://localhost:5000/graphql
+  - src/graphql/schema.graphql
+documents: src/**/*.graphql
+generates:
+  src/__generated__/types.ts:
+    plugins:
+      - typescript
+      - typescript-resolvers
+    config:
+      useIndexSignature: true
+      fieldContextTypes:
+        - MovieInfo.isInFavorites#../types/context#Context
+        - Mutation.addOrRemoveFromFavorites#../types/context#Context
+        - Mutation.setInputValue#../types/context#Context
+    hooks:
+      afterOneFileWrite: eslint --fix
+
+  src/__generated__:
+    preset: near-operation-file
+    presetConfig:
+      extension: .generated.tsx
+      baseTypesPath: types.ts
+      folder: ../__generated__
+    plugins:
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      gqlImport: apollo-boost#gql
+      withComponent: false
+      withHOC: false
+      withMutationFn: false
+      withHooks: true
+    hooks:
+      afterOneFileWrite: eslint --fix

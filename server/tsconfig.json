@@ -8,11 +8,10 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "noErrorTruncation": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "allowJs": false,
-    "outDir": "../dist"
+    "outDir": "dist"
   },
   "exclude": ["**/*.test.ts"]
 }

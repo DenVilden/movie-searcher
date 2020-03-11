@@ -27,6 +27,8 @@ export const mockUpcomingResponse = {
   total_pages: 20,
 };
 
+export type MockUpcomingResponse = typeof mockUpcomingResponse;
+
 export const mockTopRatedResponse = {
   page: 1,
   total_results: 6893,
@@ -51,6 +53,8 @@ export const mockTopRatedResponse = {
     },
   ],
 };
+
+export type MockTopRatedResponse = typeof mockTopRatedResponse;
 
 export const mockMoviesSearchResponse = {
   page: 1,
@@ -93,6 +97,8 @@ export const mockMoviesSearchResponse = {
     },
   ],
 };
+
+export type MockMoviesSearchResponse = typeof mockMoviesSearchResponse;
 
 export const mockMovieInfoResponse = {
   adult: false,
@@ -157,6 +163,8 @@ export const mockMovieInfoResponse = {
     total_results: 9217,
   },
 };
+
+export type MockMovieInfoResponse = typeof mockMovieInfoResponse;
 
 export const mockUpcoming = {
   page: 1,

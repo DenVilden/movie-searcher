@@ -2,10 +2,10 @@ import { RESTDataSource, RequestOptions } from 'apollo-datasource-rest';
 import dayjs from 'dayjs';
 import numeral from 'numeral';
 import {
-  mockUpcomingResponse,
-  mockTopRatedResponse,
-  mockMoviesSearchResponse,
-  mockMovieInfoResponse,
+  MockUpcomingResponse,
+  MockTopRatedResponse,
+  MockMoviesSearchResponse,
+  MockMovieInfoResponse,
 } from './__mocks__/responses';
 
 export interface Context {
@@ -30,7 +30,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
     return path ? `https://image.tmdb.org/t/p/w${size}${path}` : null;
   };
 
-  private moviesUpcomingReducer = (movies: typeof mockUpcomingResponse) => ({
+  private moviesUpcomingReducer = (movies: MockUpcomingResponse) => ({
     total_pages: movies.total_pages,
     page: movies.page,
     results: Array.isArray(movies.results)
@@ -45,7 +45,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
       : [],
   });
 
-  private moviesTopRatedReducer = (movies: typeof mockTopRatedResponse) => ({
+  private moviesTopRatedReducer = (movies: MockTopRatedResponse) => ({
     total_pages: movies.total_pages,
     page: movies.page,
     results: Array.isArray(movies.results)
@@ -58,7 +58,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
       : [],
   });
 
-  private moviesSearchReducer = (movies: typeof mockMoviesSearchResponse) => ({
+  private moviesSearchReducer = (movies: MockMoviesSearchResponse) => ({
     results: Array.isArray(movies.results)
       ? movies.results.map(movie => ({
           id: movie.id,
@@ -70,7 +70,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
       : [],
   });
 
-  private movieInfoReducer = (movie: typeof mockMovieInfoResponse) => ({
+  private movieInfoReducer = (movie: MockMovieInfoResponse) => ({
     id: movie.id,
     title: movie.title,
     release_date:
@@ -96,31 +96,28 @@ export default class MoviesAPI extends RESTDataSource<Context> {
   });
 
   async getUpcoming(page?: number | null) {
-    const data: typeof mockUpcomingResponse = await this.get(
-      '/movie/upcoming',
-      { page: page || 1 }
-    );
+    const data: MockUpcomingResponse = await this.get('/movie/upcoming', {
+      page: page || 1,
+    });
     return this.moviesUpcomingReducer(data);
   }
 
   async getTopRated(page?: number | null) {
-    const data: typeof mockTopRatedResponse = await this.get(
-      '/movie/top_rated',
-      { page: page || 1 }
-    );
+    const data: MockTopRatedResponse = await this.get('/movie/top_rated', {
+      page: page || 1,
+    });
     return this.moviesTopRatedReducer(data);
   }
 
   async getMoviesSearch(query: string) {
-    const data: typeof mockMoviesSearchResponse = await this.get(
-      '/search/movie',
-      { query }
-    );
+    const data: MockMoviesSearchResponse = await this.get('/search/movie', {
+      query,
+    });
     return this.moviesSearchReducer(data);
   }
 
   async getMovieInfo(id: string) {
-    const data: typeof mockMovieInfoResponse = await this.get(`/movie/${id}`, {
+    const data: MockMovieInfoResponse = await this.get(`/movie/${id}`, {
       append_to_response: 'similar',
     });
     return this.movieInfoReducer(data);

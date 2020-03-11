@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/prefer-default-export
 export const paginateResults = (
   data: any,
   cursor?: number | null,
