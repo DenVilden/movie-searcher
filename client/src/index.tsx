@@ -13,10 +13,10 @@ import {
   PersistentStorage,
   PersistedData,
 } from 'apollo-cache-persist-dev/types';
+import { loader } from 'graphql.macro';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import resolvers from './graphql/resolvers';
-import { loader } from 'graphql.macro';
 
 const cache = new InMemoryCache();
 
@@ -27,6 +27,7 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
 });
 client.writeData({ data: { favorites: [], inputValue: '' } });
 
+// eslint-disable-next-line import/prefer-default-export
 export const theme = createMuiTheme();
 
 (async () => {

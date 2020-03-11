@@ -2,6 +2,10 @@
   "name": "movie-searcher-server",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "13.10.1",
+    "yarn": "1.22.4"
+  },
   "dependencies": {
     "apollo-datasource-rest": "^0.8.0",
     "apollo-server-express": "^2.11.0",
@@ -42,7 +46,7 @@
   "scripts": {
     "serve": "nodemon -e ts,graphql -x ts-node --transpile-only -r dotenv/config src/index.ts",
     "start": "node dist/index.js",
-    "lint": "eslint --ext ts",
+    "lint": "eslint src --ext ts",
     "test": "jest",
     "postbuild": "tsc && cd ../client && yarn && yarn build && precompress build -s -e txt",
     "codegen": "graphql-codegen",

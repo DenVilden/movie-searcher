@@ -7,7 +7,7 @@ import {
   waitForElement,
   fireEvent,
 } from '../../setupTests';
-import { Upcoming as UpcomingType } from '../../types/types';
+import { Upcoming as UpcomingType } from '../../__generated__/types';
 
 const mocks = [
   {

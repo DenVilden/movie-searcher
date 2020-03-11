@@ -5,7 +5,7 @@ import ErrorMessage from './ErrorMessage';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
 import { useGetUpcomingLazyQuery } from '../__generated__';
 import Pagination from '../components/Pagination/Pagination';
-import { Upcoming } from '../types/types';
+import { Upcoming } from '../__generated__/types';
 
 const Wrapper = styled.div`
   display: flex;

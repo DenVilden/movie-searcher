@@ -7,7 +7,7 @@ import {
   waitForElement,
   fireEvent,
 } from '../../setupTests';
-import { TopRated as TopRatedType } from '../../types/types';
+import { TopRated as TopRatedType } from '../../__generated__/types';
 
 const mocks = [
   {
