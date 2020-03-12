@@ -2680,11 +2680,6 @@ apollo-cache-inmemory@^1.6.5:
     ts-invariant "^0.4.0"
     tslib "^1.10.0"
 
-apollo-cache-persist-dev@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/apollo-cache-persist-dev/-/apollo-cache-persist-dev-0.2.1.tgz#c622c091db75cf7a76f4663fb74da02cda271b31"
-  integrity sha512-YvrNw3cdtRg2rUXEVBJNVbiEpAdWvDx7+053wdnGlymCU1qm/ymciX7L+CKklpbXJ3p+fYxa07dUNJYRhppBhQ==
-
 apollo-cache@1.3.4, apollo-cache@^1.3.4:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/apollo-cache/-/apollo-cache-1.3.4.tgz#0c9f63c793e1cd6e34c450f7668e77aff58c9a42"
@@ -3693,9 +3688,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001020, caniuse-lite@^1.0.30001023, caniuse-lite@^1.0.30001030:
-  version "1.0.30001033"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001033.tgz#60c328fb56860de60f9a2cb419c31fb80587cba0"
-  integrity sha512-8Ibzxee6ibc5q88cM1usPsMpJOG5CTq0s/dKOmlekPbDGKt+UrnOOTPSjQz3kVo6yL7N4SB5xd+FGLHQmbzh6A==
+  version "1.0.30001034"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001034.tgz#612d2bed8cdf49067a1bdab3f90da41f5104fb02"
+  integrity sha512-MoARDV6F990onyNm6uC0F7nV1ZSkEmlVapmfxVmEB+my2FKtHPDJnp2qgo7qnnXqCT/NpS1FbgdyjJ8Knb427g==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -4952,9 +4947,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.341, electron-to-chromium@^1.3.363:
-  version "1.3.375"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.375.tgz#e290d59d316024e5499057944c10d05c518b7a24"
-  integrity sha512-zmaFnYVBtfpF8bGRYxgPeVAlXB7N3On8rjBE2ROc6wOpTPpzRWaiHo6KkbJMvlH07CH33uks/TEb6kuMMn8q6A==
+  version "1.3.376"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.376.tgz#7cb7b5205564a06c8f8ecfbe832cbd47a1224bb1"
+  integrity sha512-cv/PYVz5szeMz192ngilmezyPNFkUjuynuL2vNdiqIrio440nfTDdc0JJU0TS2KHLSVCs9gBbt4CFqM+HcBnjw==
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
