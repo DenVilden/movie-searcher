@@ -56,10 +56,10 @@ export type MoviesSearchResults = {
 
 export type Query = {
   __typename?: 'Query';
-  upcoming: Upcoming;
-  topRated: TopRated;
-  moviesSearch: MoviesSearch;
-  movieInfo: MovieInfo;
+  upcoming?: Maybe<Upcoming>;
+  topRated?: Maybe<TopRated>;
+  moviesSearch?: Maybe<MoviesSearch>;
+  movieInfo?: Maybe<MovieInfo>;
 };
 
 export type QueryUpcomingArgs = {
@@ -333,25 +333,25 @@ export type QueryResolvers<
   ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
 > = ResolversObject<{
   upcoming?: Resolver<
-    ResolversTypes['Upcoming'],
+    Maybe<ResolversTypes['Upcoming']>,
     ParentType,
     Context,
     RequireFields<QueryUpcomingArgs, never>
   >;
   topRated?: Resolver<
-    ResolversTypes['TopRated'],
+    Maybe<ResolversTypes['TopRated']>,
     ParentType,
     Context,
     RequireFields<QueryTopRatedArgs, never>
   >;
   moviesSearch?: Resolver<
-    ResolversTypes['MoviesSearch'],
+    Maybe<ResolversTypes['MoviesSearch']>,
     ParentType,
     Context,
     RequireFields<QueryMoviesSearchArgs, 'query'>
   >;
   movieInfo?: Resolver<
-    ResolversTypes['MovieInfo'],
+    Maybe<ResolversTypes['MovieInfo']>,
     ParentType,
     Context,
     RequireFields<QueryMovieInfoArgs, 'id'>

@@ -64,8 +64,8 @@ type MovieInfo {
 }
 
 type Query {
-  upcoming(page: Int): Upcoming!
-  topRated(page: Int): TopRated!
-  moviesSearch(query: String!, cursor: Int, pageSize: Int): MoviesSearch!
-  movieInfo(id: String!, cursor: Int, pageSize: Int): MovieInfo!
+  upcoming(page: Int): Upcoming
+  topRated(page: Int): TopRated
+  moviesSearch(query: String!, cursor: Int, pageSize: Int): MoviesSearch
+  movieInfo(id: String!, cursor: Int, pageSize: Int): MovieInfo
 }

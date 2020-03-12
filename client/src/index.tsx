@@ -24,6 +24,7 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   typeDefs: loader('./graphql/schema.graphql'),
   resolvers,
   cache,
+  uri: process.env.REACT_APP_URL,
 });
 client.writeData({ data: { favorites: [], inputValue: '' } });
 
