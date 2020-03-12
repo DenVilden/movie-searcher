@@ -14,7 +14,7 @@ const FavoritesItem = ({ id, toggleFavoritesOpen }: Props) => {
 
   if (loading) return <LinearProgress />;
 
-  if (error || !data)
+  if (error || !data?.movieInfo)
     return <ErrorMessage>{error?.message || 'No data found'}</ErrorMessage>;
 
   return (

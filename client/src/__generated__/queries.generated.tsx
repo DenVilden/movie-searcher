@@ -39,32 +39,28 @@ export type GetMoviesQueryVariables = {
 };
 
 export type GetMoviesQuery = { __typename?: 'Query' } & {
-  upcoming: Types.Maybe<
-    { __typename?: 'Upcoming' } & Pick<
-      Types.Upcoming,
-      'total_pages' | 'page'
-    > & {
-        results: Array<
-          { __typename?: 'UpcomingResults' } & Pick<
-            Types.UpcomingResults,
-            'id' | 'title' | 'release_date' | 'poster_path'
-          >
-        >;
-      }
-  >;
-  topRated: Types.Maybe<
-    { __typename?: 'TopRated' } & Pick<
-      Types.TopRated,
-      'total_pages' | 'page'
-    > & {
-        results: Array<
-          { __typename?: 'TopRatedResults' } & Pick<
-            Types.TopRatedResults,
-            'id' | 'title' | 'vote_average' | 'poster_path'
-          >
-        >;
-      }
-  >;
+  upcoming: { __typename?: 'Upcoming' } & Pick<
+    Types.Upcoming,
+    'total_pages' | 'page'
+  > & {
+      results: Array<
+        { __typename?: 'UpcomingResults' } & Pick<
+          Types.UpcomingResults,
+          'id' | 'title' | 'release_date' | 'poster_path'
+        >
+      >;
+    };
+  topRated: { __typename?: 'TopRated' } & Pick<
+    Types.TopRated,
+    'total_pages' | 'page'
+  > & {
+      results: Array<
+        { __typename?: 'TopRatedResults' } & Pick<
+          Types.TopRatedResults,
+          'id' | 'title' | 'vote_average' | 'poster_path'
+        >
+      >;
+    };
 };
 
 export type GetUpcomingQueryVariables = {
@@ -72,19 +68,17 @@ export type GetUpcomingQueryVariables = {
 };
 
 export type GetUpcomingQuery = { __typename?: 'Query' } & {
-  upcoming: Types.Maybe<
-    { __typename?: 'Upcoming' } & Pick<
-      Types.Upcoming,
-      'total_pages' | 'page'
-    > & {
-        results: Array<
-          { __typename?: 'UpcomingResults' } & Pick<
-            Types.UpcomingResults,
-            'id' | 'title' | 'release_date' | 'poster_path'
-          >
-        >;
-      }
-  >;
+  upcoming: { __typename?: 'Upcoming' } & Pick<
+    Types.Upcoming,
+    'total_pages' | 'page'
+  > & {
+      results: Array<
+        { __typename?: 'UpcomingResults' } & Pick<
+          Types.UpcomingResults,
+          'id' | 'title' | 'release_date' | 'poster_path'
+        >
+      >;
+    };
 };
 
 export type GetTopRatedQueryVariables = {
@@ -92,19 +86,17 @@ export type GetTopRatedQueryVariables = {
 };
 
 export type GetTopRatedQuery = { __typename?: 'Query' } & {
-  topRated: Types.Maybe<
-    { __typename?: 'TopRated' } & Pick<
-      Types.TopRated,
-      'total_pages' | 'page'
-    > & {
-        results: Array<
-          { __typename?: 'TopRatedResults' } & Pick<
-            Types.TopRatedResults,
-            'id' | 'title' | 'vote_average' | 'poster_path'
-          >
-        >;
-      }
-  >;
+  topRated: { __typename?: 'TopRated' } & Pick<
+    Types.TopRated,
+    'total_pages' | 'page'
+  > & {
+      results: Array<
+        { __typename?: 'TopRatedResults' } & Pick<
+          Types.TopRatedResults,
+          'id' | 'title' | 'vote_average' | 'poster_path'
+        >
+      >;
+    };
 };
 
 export type GetMoviesSearchQueryVariables = {
@@ -113,19 +105,17 @@ export type GetMoviesSearchQueryVariables = {
 };
 
 export type GetMoviesSearchQuery = { __typename?: 'Query' } & {
-  moviesSearch: Types.Maybe<
-    { __typename?: 'MoviesSearch' } & Pick<
-      Types.MoviesSearch,
-      'cursor' | 'hasMore'
-    > & {
-        results: Array<
-          { __typename?: 'MoviesSearchResults' } & Pick<
-            Types.MoviesSearchResults,
-            'id' | 'title' | 'release_date' | 'poster_path'
-          >
-        >;
-      }
-  >;
+  moviesSearch: { __typename?: 'MoviesSearch' } & Pick<
+    Types.MoviesSearch,
+    'cursor' | 'hasMore'
+  > & {
+      results: Array<
+        { __typename?: 'MoviesSearchResults' } & Pick<
+          Types.MoviesSearchResults,
+          'id' | 'title' | 'release_date' | 'poster_path'
+        >
+      >;
+    };
 };
 
 export type GetInputValueQueryVariables = {};

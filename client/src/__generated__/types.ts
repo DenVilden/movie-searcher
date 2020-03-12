@@ -74,9 +74,9 @@ export type Query = {
   favorites: Array<Scalars['String']>;
   inputValue: Scalars['String'];
   movieInfo?: Maybe<MovieInfo>;
-  moviesSearch?: Maybe<MoviesSearch>;
-  topRated?: Maybe<TopRated>;
-  upcoming?: Maybe<Upcoming>;
+  moviesSearch: MoviesSearch;
+  topRated: TopRated;
+  upcoming: Upcoming;
 };
 
 export type QueryMovieInfoArgs = {
@@ -385,19 +385,19 @@ export type QueryResolvers<
     RequireFields<QueryMovieInfoArgs, 'id'>
   >;
   moviesSearch?: Resolver<
-    Maybe<ResolversTypes['MoviesSearch']>,
+    ResolversTypes['MoviesSearch'],
     ParentType,
     ContextType,
     RequireFields<QueryMoviesSearchArgs, 'query'>
   >;
   topRated?: Resolver<
-    Maybe<ResolversTypes['TopRated']>,
+    ResolversTypes['TopRated'],
     ParentType,
     ContextType,
     RequireFields<QueryTopRatedArgs, never>
   >;
   upcoming?: Resolver<
-    Maybe<ResolversTypes['Upcoming']>,
+    ResolversTypes['Upcoming'],
     ParentType,
     ContextType,
     RequireFields<QueryUpcomingArgs, never>

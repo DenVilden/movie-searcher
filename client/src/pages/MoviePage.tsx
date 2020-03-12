@@ -29,7 +29,7 @@ const MoviePage = ({ id }: Props) => {
 
   if (loading) return <LinearProgress color="secondary" />;
 
-  if (error || !data)
+  if (error || !data?.movieInfo)
     return <ErrorMessage>{error?.message || 'No data found'}</ErrorMessage>;
 
   return (
