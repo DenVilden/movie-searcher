@@ -5,13 +5,7 @@ import {
   GetInputValueDocument,
   GetFavoritesDocument,
 } from '../../__generated__';
-import {
-  renderApollo,
-  cleanup,
-  waitForElement,
-  fireEvent,
-  wait,
-} from '../../setupTests';
+import { renderApollo, cleanup, fireEvent } from '../../setupTests';
 
 describe('Header', () => {
   afterEach(cleanup);
@@ -27,20 +21,18 @@ describe('Header', () => {
       data: { favorites: [] },
     });
 
-    const { getByPlaceholderText } = renderApollo(<Header />, {
+    const { findByPlaceholderText } = renderApollo(<Header />, {
       cache,
     });
 
-    const inputElement = await waitForElement(() =>
-      getByPlaceholderText('type a movie name...')
+    const inputElement = await findByPlaceholderText('type a movie name...');
+
+    fireEvent.change(inputElement, { target: { value: 'test' } });
+
+    const changedInputElement = await findByPlaceholderText(
+      'type a movie name...'
     );
 
-    const inputValue = 'test';
-
-    fireEvent.change(inputElement, { target: { value: inputValue } });
-
-    await wait();
-
-    expect(inputElement).toHaveValue(inputValue);
+    expect(changedInputElement).toHaveProperty('value', 'test');
   });
 });

@@ -1,5 +1,5 @@
-import React, { Suspense, lazy } from 'react';
-import { AppBar, Toolbar, LinearProgress } from '@material-ui/core';
+import React from 'react';
+import { AppBar, Toolbar } from '@material-ui/core';
 import {
   useGetInputValueQuery,
   useSetInputValueMutation,
@@ -7,8 +7,7 @@ import {
 import Favorites from './Favorites';
 import Logo from '../components/Logo/Logo';
 import SearchBar from '../components/SearchBar/SearchBar';
-
-const SearchResults = lazy(() => import('./SearchResults'));
+import SearchResults from './SearchResults';
 
 const Header = () => {
   const { data } = useGetInputValueQuery();
@@ -17,7 +16,7 @@ const Header = () => {
   if (!data) throw new Error('No data found');
 
   return (
-    <Suspense fallback={<LinearProgress color="secondary" />}>
+    <>
       <AppBar position="static">
         <Toolbar>
           <Logo />
@@ -29,7 +28,7 @@ const Header = () => {
         </Toolbar>
       </AppBar>
       {data.inputValue && <SearchResults query={data.inputValue} />}
-    </Suspense>
+    </>
   );
 };
 

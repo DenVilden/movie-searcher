@@ -1,17 +1,12 @@
 import React from 'react';
-import HomePage from '../HomePage';
-import { GetMoviesDocument } from '../../__generated__';
-import {
-  renderApollo,
-  cleanup,
-  waitForElement,
-  fireEvent,
-} from '../../setupTests';
+import HomePage from '../pages/index';
+import { GetMoviesDocument } from '../__generated__';
+import { renderApollo, cleanup, fireEvent } from '../setupTests';
 
 const mockHistoryPush = jest.fn();
 
-jest.mock('react-router-dom', () => ({
-  useHistory: () => ({
+jest.mock('next/router', () => ({
+  useRouter: () => ({
     push: mockHistoryPush,
   }),
 }));
@@ -65,26 +60,28 @@ describe('HomePage', () => {
         request: {
           query: GetMoviesDocument,
         },
-        error: new Error('Error'),
+        error: new Error('an error has occurred'),
       },
     ];
 
-    const { getByRole } = renderApollo(<HomePage />, { mocks: mockError });
+    const { findByText } = renderApollo(<HomePage />, {
+      mocks: mockError,
+    });
 
-    const errorElement = await waitForElement(() => getByRole(/errormessage/i));
+    const errorElement = await findByText(/an error has occurred/i);
 
-    expect(errorElement).toHaveTextContent(/Error/i);
+    expect(errorElement).toBeTruthy();
   });
 
   it('should redirect to correct url when movie card is clicked', async () => {
-    const { getAllByTestId } = renderApollo(<HomePage />, { mocks });
+    const { findAllByTestId } = renderApollo(<HomePage />, {
+      mocks,
+    });
 
-    const cardButtonElement = await waitForElement(
-      () => getAllByTestId('card-button')[0]
-    );
+    const cardButtonElement = await findAllByTestId('card-button');
 
-    fireEvent.click(cardButtonElement);
+    fireEvent.click(cardButtonElement[0]);
 
-    expect(mockHistoryPush).toHaveBeenCalledWith('/movie/1');
+    expect(mockHistoryPush).toHaveBeenCalledWith('/movie/[id]', '/movie/1');
   });
 });

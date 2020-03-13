@@ -6,7 +6,6 @@ import {
   StyledCardContent,
   StyledTypography,
 } from './MovieInfo.styles';
-import noImage from '../../assets/no-image.jpg';
 import { MovieInfo as MovieInfoType } from '../../__generated__/types';
 
 type Props = {
@@ -16,7 +15,7 @@ type Props = {
 
 const MovieInfo = ({ movie, addOrRemoveFromFavorites }: Props) => (
   <StyledCard elevation={10}>
-    <StyledCardMedia image={movie.backdrop_path || noImage} src="img" />
+    <StyledCardMedia image={movie.backdrop_path || 'no-image.jpg'} src="img" />
     <StyledCardContent>
       <StyledTypography gutterBottom variant="h5">
         {movie.title}

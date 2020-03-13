@@ -5,18 +5,12 @@ import {
   GetFavoritesDocument,
   GetMovieInfoDocument,
 } from '../../__generated__';
-import {
-  renderApollo,
-  cleanup,
-  waitForElement,
-  fireEvent,
-  wait,
-} from '../../setupTests';
+import { renderApollo, cleanup, fireEvent } from '../../setupTests';
 
 const mockHistoryPush = jest.fn();
 
-jest.mock('react-router-dom', () => ({
-  useHistory: () => ({
+jest.mock('next/router', () => ({
+  useRouter: () => ({
     push: mockHistoryPush,
   }),
 }));
@@ -69,24 +63,20 @@ describe('Favorites', () => {
       data: { favorites: ['1'] },
     });
 
-    const { getByTestId } = renderApollo(<Favorites />, {
+    const { findByTestId } = renderApollo(<Favorites />, {
       mocks,
       cache,
     });
 
-    const iconButton = await waitForElement(() => getByTestId('icon-button'));
+    const iconButton = await findByTestId('icon-button');
 
     fireEvent.click(iconButton);
 
-    await wait();
-
-    const cardButtonElement = await waitForElement(() =>
-      getByTestId('favorites-card')
-    );
+    const cardButtonElement = await findByTestId('favorites-card');
 
     fireEvent.click(cardButtonElement);
 
-    expect(mockHistoryPush).toHaveBeenCalledWith('/movie/1');
+    expect(mockHistoryPush).toHaveBeenCalledWith('/movie/[id]', '/movie/1');
   });
 
   it('should close favorites on click away', async () => {
@@ -96,23 +86,21 @@ describe('Favorites', () => {
       data: { favorites: ['1'] },
     });
 
-    const { getByTestId, queryByTestId } = renderApollo(<Favorites />, {
+    const { findByTestId, queryByTestId } = renderApollo(<Favorites />, {
       mocks,
       cache,
     });
 
-    const iconButton = await waitForElement(() => getByTestId('icon-button'));
+    const iconButton = await findByTestId('icon-button');
 
     fireEvent.click(iconButton);
 
-    const dropdownElement = await waitForElement(() =>
-      getByTestId(/dropdown/i)
-    );
+    const dropdownElement = await findByTestId('dropdown');
 
     // fireEvent.keyDown(searchBar, { key: 'Escape', code: 27 });
     fireEvent.click(dropdownElement.firstChild as Element);
 
-    expect(queryByTestId(/dropdown/i)).toBeNull();
+    expect(queryByTestId('dropdown')).toBeNull();
   });
 
   it('should render error on open favorites', async () => {
@@ -128,21 +116,21 @@ describe('Favorites', () => {
           query: GetMovieInfoDocument,
           variables: { id: '1' },
         },
-        error: new Error('Error'),
+        error: new Error('an error has occurred'),
       },
     ];
 
-    const { getByTestId, getByRole } = renderApollo(<Favorites />, {
+    const { findByTestId, findByText } = renderApollo(<Favorites />, {
       mocks: mockError,
       cache,
     });
 
-    const iconButton = await waitForElement(() => getByTestId('icon-button'));
+    const iconButton = await findByTestId('icon-button');
 
     fireEvent.click(iconButton);
 
-    const errorElement = await waitForElement(() => getByRole(/errormessage/i));
+    const errorElement = await findByText(/an error has occurred/i);
 
-    expect(errorElement).toHaveTextContent(/Error/i);
+    expect(errorElement).toBeTruthy();
   });
 });

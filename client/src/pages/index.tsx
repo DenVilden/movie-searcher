@@ -10,8 +10,9 @@ const HomePage = () => {
 
   if (loading) return <LinearProgress color="secondary" />;
 
-  if (error || !data)
-    return <ErrorMessage>{error?.message || 'Data not found'}</ErrorMessage>;
+  if (error) return <ErrorMessage error={error} />;
+
+  if (!data) throw new Error('No data found');
 
   return (
     <Grid container>

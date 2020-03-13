@@ -1,12 +1,7 @@
 import React from 'react';
 import Upcoming from '../Upcoming';
 import { GetUpcomingDocument } from '../../__generated__';
-import {
-  renderApollo,
-  cleanup,
-  waitForElement,
-  fireEvent,
-} from '../../setupTests';
+import { renderApollo, cleanup, fireEvent } from '../../setupTests';
 import { Upcoming as UpcomingType } from '../../__generated__/types';
 
 const mocks = [
@@ -68,40 +63,36 @@ describe('Upcoming', () => {
       {
         request: {
           query: GetUpcomingDocument,
-          variables: { page: 1 },
+          variables: { page: 2 },
         },
-        error: new Error('Error'),
+        error: new Error('an error has occurred'),
       },
     ];
 
-    const { getByRole, getByLabelText } = renderApollo(
+    const { findByText, findByLabelText } = renderApollo(
       <Upcoming initialData={mocks[0].result.data.upcoming as UpcomingType} />,
       { mocks: mockError }
     );
 
-    const pageButton = await waitForElement(() =>
-      getByLabelText(/Go to next page/i)
-    );
+    const pageButton = await findByLabelText('Go to next page');
 
     fireEvent.click(pageButton);
 
-    const errorElement = await waitForElement(() => getByRole(/errormessage/i));
+    const errorElement = await findByText(/an error has occurred/i);
 
-    expect(errorElement).toHaveTextContent(/Error/i);
+    expect(errorElement).toBeTruthy();
   });
 
   it('should switch page and refetch movies', async () => {
-    const { getByLabelText, getByText } = renderApollo(
+    const { findByLabelText, findByText } = renderApollo(
       <Upcoming initialData={mocks[0].result.data.upcoming as UpcomingType} />,
       { mocks }
     );
 
-    const pageButton = await waitForElement(() =>
-      getByLabelText(/Go to next page/i)
-    );
+    const pageButton = await findByLabelText('Go to next page');
 
     fireEvent.click(pageButton);
 
-    await waitForElement(() => getByText(/page-2/i));
+    await findByText('page-2');
   });
 });

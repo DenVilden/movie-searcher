@@ -1,16 +1,16 @@
 import React from 'react';
 import { InMemoryCache } from 'apollo-boost';
-import MoviePage from '../MoviePage';
-import {
-  GetMovieInfoDocument,
-  GetFavoritesDocument,
-} from '../../__generated__';
-import {
-  renderApollo,
-  cleanup,
-  waitForElement,
-  fireEvent,
-} from '../../setupTests';
+import MoviePage from '../pages/movie/[id]';
+import { GetMovieInfoDocument, GetFavoritesDocument } from '../__generated__';
+import { renderApollo, cleanup, fireEvent } from '../setupTests';
+
+jest.mock('next/router', () => ({
+  useRouter: () => ({
+    query: {
+      id: '1',
+    },
+  }),
+}));
 
 const mocks = [
   {
@@ -64,17 +64,17 @@ describe('MoviePage', () => {
             id: '1',
           },
         },
-        error: new Error('Error'),
+        error: new Error('an error has occurred'),
       },
     ];
 
-    const { getByRole } = renderApollo(<MoviePage id="1" />, {
+    const { findByText } = renderApollo(<MoviePage />, {
       mocks: mockError,
     });
 
-    const errorElement = await waitForElement(() => getByRole(/errormessage/i));
+    const errorElement = await findByText(/an error has occurred/i);
 
-    expect(errorElement).toHaveTextContent(/Error/i);
+    expect(errorElement).toBeTruthy();
   });
 
   it('should refetch movie and toggle favorites', async () => {
@@ -86,21 +86,19 @@ describe('MoviePage', () => {
       data: { favorites: ['1'] },
     });
 
-    const { getByTestId, getByText } = renderApollo(<MoviePage id="1" />, {
+    const { findByTestId, findByText } = renderApollo(<MoviePage />, {
       mocks: mock,
       cache,
     });
 
-    const favoritesButton = await waitForElement(() =>
-      getByTestId('favorites-button')
-    );
+    const favoritesButton = await findByTestId('favorites-button');
 
     fireEvent.click(favoritesButton);
 
-    await waitForElement(() => getByText(/Remove from favorites/i));
+    await findByText('Remove from favorites');
 
     fireEvent.click(favoritesButton);
 
-    await waitForElement(() => getByText(/Add to favorites/i));
+    await findByText('Add to favorites');
   });
 });

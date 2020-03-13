@@ -1,29 +1,24 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Typography, Theme } from '@material-ui/core';
+import Error from 'next/error';
+import { ApolloError } from 'apollo-boost';
 
 type Props = {
-  children: string;
-  gutterBottom?: boolean;
+  error: ApolloError;
 };
 
-const ErrorMessage = styled(
-  ({ children, gutterBottom, ...otherProps }: Props) => (
-    <Typography
-      align="center"
-      color="error"
-      gutterBottom={gutterBottom}
-      role="errormessage"
-      variant="h6"
-      {...otherProps}
-    >
-      {children}
-    </Typography>
-  )
-)`
-  &.MuiTypography-root {
-    padding: ${({ theme }: { theme: Theme }) => theme.spacing(4)}px;
-  }
-`;
+const ErrorContainer = ({ error }: Props) => (
+  <Error
+    statusCode={
+      error.graphQLErrors.length
+        ? error.graphQLErrors[0].extensions?.response.status
+        : 500
+    }
+    title={
+      error.graphQLErrors.length
+        ? error.graphQLErrors[0].extensions?.response.statusText
+        : error.networkError?.message
+    }
+  />
+);
 
-export default ErrorMessage;
+export default ErrorContainer;

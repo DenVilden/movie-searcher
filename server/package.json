@@ -19,7 +19,7 @@
     "@graphql-codegen/typescript": "1.13.0",
     "@graphql-codegen/typescript-resolvers": "1.13.0",
     "@types/jest": "^25.1.4",
-    "@types/node": "^13.9.0",
+    "@types/node": "^13.9.1",
     "@types/numeral": "^0.0.26",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
@@ -51,5 +51,42 @@
     ],
     "preset": "ts-jest",
     "testEnvironment": "node"
+  },
+  "eslintConfig": {
+    "env": {
+      "jest": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "airbnb-base",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:import/typescript",
+      "plugin:prettier/recommended",
+      "prettier/@typescript-eslint"
+    ],
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "warn",
+        {
+          "trailingComma": "es5",
+          "singleQuote": true
+        }
+      ],
+      "import/extensions": [
+        "error",
+        {
+          "extensions": [
+            ".ts",
+            ".js"
+          ]
+        }
+      ],
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/camelcase": "off"
+    }
   }
 }

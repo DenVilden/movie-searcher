@@ -23,7 +23,7 @@ const UpcomingContainer = ({ initialData }: Props) => {
 
   if (loading) return <LinearProgress color="secondary" />;
 
-  if (error) return <ErrorMessage>{error.message}</ErrorMessage>;
+  if (error) return <ErrorMessage error={error} />;
 
   return (
     <Wrapper ref={element}>

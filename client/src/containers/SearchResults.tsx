@@ -1,6 +1,7 @@
 import React from 'react';
 import { LinearProgress } from '@material-ui/core';
 import ErrorMessage from './ErrorMessage';
+import NotFoundMessage from '../components/NotFoundMessage/NotFoundMessage';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
 import { useGetMoviesSearchQuery } from '../__generated__';
 
@@ -15,16 +16,13 @@ const SearchResults = ({ query }: Props) => {
 
   if (loading) return <LinearProgress color="secondary" />;
 
-  if (error || !data) {
-    return (
-      <ErrorMessage gutterBottom>
-        {error?.message || 'No data found'}
-      </ErrorMessage>
-    );
+  if (error) {
+    return <ErrorMessage error={error} />;
   }
 
-  if (!data.moviesSearch.results.length)
-    return <ErrorMessage gutterBottom>No results</ErrorMessage>;
+  if (!data) throw new Error('No data found');
+
+  if (!data.moviesSearch.results.length) return <NotFoundMessage />;
 
   return (
     <MoviesBox

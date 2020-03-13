@@ -1,13 +1,7 @@
 import React from 'react';
 import SearchResults from '../SearchResults';
 import { GetMoviesSearchDocument } from '../../__generated__';
-import {
-  renderApollo,
-  cleanup,
-  waitForElement,
-  fireEvent,
-  wait,
-} from '../../setupTests';
+import { renderApollo, cleanup, fireEvent, wait } from '../../setupTests';
 
 const query = 'test-title';
 
@@ -73,30 +67,26 @@ describe('SearchResults', () => {
   afterEach(cleanup);
 
   it('should render error state', async () => {
-    const error = 'An error has occurred';
-
     const mockError = [
       {
         request: {
           query: GetMoviesSearchDocument,
           variables: { query },
         },
-        error: new Error(error),
+        error: new Error('an error has occurred'),
       },
     ];
 
-    const { getByRole } = renderApollo(<SearchResults query={query} />, {
+    const { findByText } = renderApollo(<SearchResults query={query} />, {
       mocks: mockError,
     });
 
-    const errorElement = await waitForElement(() => getByRole(/errormessage/i));
+    const errorElement = await findByText(/an error has occurred/i);
 
-    expect(errorElement).toHaveTextContent(error);
+    expect(errorElement).toBeTruthy();
   });
 
   it('should show message if no results found', async () => {
-    const message = 'No results';
-
     const mockMessage = [
       {
         request: {
@@ -116,34 +106,34 @@ describe('SearchResults', () => {
       },
     ];
 
-    const { getByRole } = renderApollo(<SearchResults query={query} />, {
+    const { findByText } = renderApollo(<SearchResults query={query} />, {
       mocks: mockMessage,
     });
 
-    const errorElement = await waitForElement(() => getByRole(/errormessage/i));
+    const errorElement = await findByText('No results');
 
-    expect(errorElement).toHaveTextContent(message);
+    expect(errorElement).toBeTruthy();
   });
 
   it('should fetch more results when show more button is clicked', async () => {
-    const { getByTestId, getAllByTestId } = renderApollo(
+    const { findByTestId, findAllByTestId } = renderApollo(
       <SearchResults query={query} />,
       {
         mocks,
       }
     );
 
-    const searchResults = await waitForElement(() =>
-      getAllByTestId('search-result')
-    );
+    const searchResults = await findAllByTestId('search-result');
 
     expect(searchResults).toHaveLength(1);
 
-    fireEvent.click(getByTestId('show-more'));
+    const showMoreButton = await findByTestId('show-more');
+
+    fireEvent.click(showMoreButton);
 
     await wait();
 
-    const updatedResults = getAllByTestId('search-result');
+    const updatedResults = await findAllByTestId('search-result');
 
     expect(updatedResults).toHaveLength(2);
   });
@@ -162,22 +152,20 @@ describe('SearchResults', () => {
       },
     ];
 
-    const { getByTestId, getAllByTestId } = renderApollo(
+    const { findByTestId, findAllByTestId } = renderApollo(
       <SearchResults query={query} />,
       {
         mocks: mocksFail,
       }
     );
 
-    const searchResults = await waitForElement(() =>
-      getAllByTestId('search-result')
-    );
+    const searchResults = await findAllByTestId('search-result');
 
-    fireEvent.click(getByTestId('show-more'));
+    const showMoreButton = await findByTestId('show-more');
 
-    await wait();
+    fireEvent.click(showMoreButton);
 
-    const updatedResults = getAllByTestId('search-result');
+    const updatedResults = await findAllByTestId('search-result');
 
     expect(updatedResults).toEqual(searchResults);
   });

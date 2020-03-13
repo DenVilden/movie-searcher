@@ -1,4 +1,4 @@
-import { theme } from './index';
+import { theme } from './pages/_app';
 
 type CustomTheme = typeof theme;
 

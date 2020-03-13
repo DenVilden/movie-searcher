@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardActionArea, Typography } from '@material-ui/core';
 import { Star as StarIcon } from '@material-ui/icons';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import {
   StyledCard,
   StyledCardMedia,
@@ -9,7 +9,6 @@ import {
   StyledTypography,
   IconWrapper,
 } from './MovieCard.styles';
-import noImage from '../../assets/no-image.jpg';
 
 type Props = {
   movie: {
@@ -22,16 +21,16 @@ type Props = {
 };
 
 const MovieCard = ({ movie }: Props) => {
-  const history = useHistory();
+  const router = useRouter();
 
   return (
     <StyledCard elevation={10}>
       <CardActionArea
         data-testid="card-button"
-        onClick={() => history.push(`/movie/${movie.id}`)}
+        onClick={() => router.push(`/movie/[id]`, `/movie/${movie.id}`)}
       >
         <StyledCardMedia
-          image={movie.poster_path || noImage}
+          image={movie.poster_path || '/no-image.jpg'}
           src="img"
           title={movie.title}
         />

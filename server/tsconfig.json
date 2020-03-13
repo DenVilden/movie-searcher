@@ -11,7 +11,9 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "allowJs": false,
+    "noEmit": true,
     "outDir": "dist"
   },
-  "exclude": ["**/*.test.ts"]
+  "exclude": ["**/*.test.ts"],
+  "include": ["src"]
 }

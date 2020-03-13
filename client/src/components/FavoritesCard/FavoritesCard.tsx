@@ -1,7 +1,6 @@
 import React from 'react';
 import { CardActionArea } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
-import noImage from '../../assets/no-image.jpg';
+import { useRouter } from 'next/router';
 import {
   StyledTypography,
   CardWrapper,
@@ -15,19 +14,19 @@ type Props = {
 };
 
 const FavoritesCard = ({ toggleFavoritesOpen, movie }: Props) => {
-  const history = useHistory();
+  const router = useRouter();
 
   return (
     <CardActionArea
       data-testid="favorites-card"
       onClick={() => {
-        history.push(`/movie/${movie.id}`);
+        router.push('/movie/[id]', `/movie/${movie.id}`);
         toggleFavoritesOpen();
       }}
     >
       <CardWrapper>
         <StyledCardMedia
-          image={movie.poster_path || noImage}
+          image={movie.poster_path || '/no-image.jpg'}
           src="img"
           title={movie.title}
         />
