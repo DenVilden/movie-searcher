@@ -12,11 +12,12 @@ import {
 } from '../../__generated__';
 
 const MoviePage = () => {
-  const router = useRouter();
-  const id = router.query.id.toString();
+  const {
+    query: { id },
+  } = useRouter();
 
   const { loading, error, data } = useGetMovieInfoQuery({
-    variables: { id },
+    variables: { id: id as string },
   });
 
   const [setInputValue] = useSetInputValueMutation();
@@ -39,9 +40,12 @@ const MoviePage = () => {
         <MovieInfo
           addOrRemoveFromFavorites={() =>
             addOrRemoveFromFavorites({
-              variables: { id },
+              variables: { id: id as string },
               refetchQueries: [
-                { query: GetMovieInfoDocument, variables: { id } },
+                {
+                  query: GetMovieInfoDocument,
+                  variables: { id: id as string },
+                },
               ],
             })
           }
