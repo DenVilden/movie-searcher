@@ -6,6 +6,7 @@ import Favorites from './Favorites';
 import Logo from '../components/Logo/Logo';
 import SearchBar from '../components/SearchBar/SearchBar';
 import SearchResults from './SearchResults';
+import withApollo from '../lib/withApollo';
 
 const Header = () => {
   const { data } = useGetInputValueQuery();
@@ -30,4 +31,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default withApollo(Header);

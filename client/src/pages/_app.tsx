@@ -3,14 +3,6 @@ import App from 'next/app';
 import Head from 'next/head';
 import { createMuiTheme, CssBaseline, StylesProvider } from '@material-ui/core';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
-import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient, {
-  NormalizedCacheObject,
-  InMemoryCache,
-} from 'apollo-boost';
-import withApollo from 'next-with-apollo';
-import { loader } from 'graphql.macro';
-import resolvers from '../graphql/resolvers';
 import Layout from '../containers/Layout';
 
 const GlobalStyle = createGlobalStyle`
@@ -21,9 +13,7 @@ const GlobalStyle = createGlobalStyle`
 
 export const theme = createMuiTheme();
 
-class NextApp extends App<{
-  apollo: ApolloClient<NormalizedCacheObject>;
-}> {
+export default class NextApp extends App {
   componentDidMount() {
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles?.parentElement) {
@@ -32,7 +22,7 @@ class NextApp extends App<{
   }
 
   render() {
-    const { Component, apollo, pageProps } = this.props;
+    const { Component } = this.props;
 
     return (
       <>
@@ -46,29 +36,16 @@ class NextApp extends App<{
           <link href="https://image.tmdb.org" rel="preconnect" />
           <title>Movie Searcher</title>
         </Head>
-        <ApolloProvider client={apollo}>
-          <StylesProvider injectFirst>
-            <ThemeProvider theme={theme}>
-              <Layout>
-                <CssBaseline />
-                <GlobalStyle />
-                <Component {...pageProps} />
-              </Layout>
-            </ThemeProvider>
-          </StylesProvider>
-        </ApolloProvider>
+        <StylesProvider injectFirst>
+          <ThemeProvider theme={theme}>
+            <Layout>
+              <CssBaseline />
+              <GlobalStyle />
+              <Component />
+            </Layout>
+          </ThemeProvider>
+        </StylesProvider>
       </>
     );
   }
 }
-
-export default withApollo(({ initialState }) => {
-  const client = new ApolloClient({
-    typeDefs: loader('../graphql/schema.graphql'),
-    resolvers,
-    uri: process.env.SERVER_URL,
-    cache: new InMemoryCache().restore(initialState || {}),
-  });
-  client.writeData({ data: { favorites: [], inputValue: '' } });
-  return client;
-})(NextApp);

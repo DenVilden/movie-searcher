@@ -10,10 +10,11 @@ import { MovieInfo as MovieInfoType } from '../../generated/types';
 
 type Props = {
   movie: MovieInfoType;
+  loading: boolean;
   addOrRemoveFromFavorites: () => void;
 };
 
-const MovieInfo = ({ movie, addOrRemoveFromFavorites }: Props) => (
+const MovieInfo = ({ movie, addOrRemoveFromFavorites, loading }: Props) => (
   <StyledCard elevation={10}>
     <StyledCardMedia image={movie.backdrop_path || 'no-image.jpg'} src="img" />
     <StyledCardContent>
@@ -22,10 +23,16 @@ const MovieInfo = ({ movie, addOrRemoveFromFavorites }: Props) => (
         <Button
           color={movie.isInFavorites ? 'secondary' : 'primary'}
           data-testid="favorites-button"
+          disabled={loading}
           onClick={addOrRemoveFromFavorites}
           variant="contained"
         >
-          {movie.isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
+          {/* eslint-disable-next-line no-nested-ternary */}
+          {loading
+            ? 'Saving'
+            : movie.isInFavorites
+            ? 'Remove from favorites'
+            : 'Add to favorites'}
         </Button>
       </StyledTypography>
       <Typography>{movie.overview}</Typography>

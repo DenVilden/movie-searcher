@@ -12,6 +12,7 @@ import {
   useSetInputValueMutation,
   useAddOrRemoveFromFavoritesMutation,
 } from '../../generated/mutations.generated';
+import withApollo from '../../lib/withApollo';
 
 const MoviePage = () => {
   const {
@@ -24,7 +25,10 @@ const MoviePage = () => {
 
   const [setInputValue] = useSetInputValueMutation();
 
-  const [addOrRemoveFromFavorites] = useAddOrRemoveFromFavoritesMutation();
+  const [
+    addOrRemoveFromFavorites,
+    favoritesMutationOptions,
+  ] = useAddOrRemoveFromFavoritesMutation();
 
   useEffect(() => {
     setInputValue({ variables: { value: '' } });
@@ -51,6 +55,7 @@ const MoviePage = () => {
               ],
             })
           }
+          loading={favoritesMutationOptions.loading}
           movie={data.movieInfo}
         />
         {!!data.movieInfo.similar.results.length && (
@@ -64,4 +69,4 @@ const MoviePage = () => {
   );
 };
 
-export default MoviePage;
+export default withApollo(MoviePage);
