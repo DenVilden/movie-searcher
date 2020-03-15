@@ -4,8 +4,8 @@ import Favorites from '../Favorites';
 import {
   GetFavoritesDocument,
   GetMovieInfoDocument,
-} from '../../__generated__';
-import { renderApollo, cleanup, fireEvent } from '../../setupTests';
+} from '../../generated/queries.generated';
+import { renderApollo, fireEvent } from '../../setupTests';
 
 const mockHistoryPush = jest.fn();
 
@@ -54,8 +54,6 @@ const mocks = [
 ];
 
 describe('Favorites', () => {
-  afterEach(cleanup);
-
   it('should redirect to correct url on when favorites item clicked', async () => {
     const cache = new InMemoryCache();
     cache.writeQuery({

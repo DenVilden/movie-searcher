@@ -3,7 +3,7 @@ import { LinearProgress } from '@material-ui/core';
 import ErrorMessage from './ErrorMessage';
 import NotFoundMessage from '../components/NotFoundMessage/NotFoundMessage';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
-import { useGetMoviesSearchQuery } from '../__generated__';
+import { useGetMoviesSearchQuery } from '../generated/queries.generated';
 
 type Props = {
   query: string;

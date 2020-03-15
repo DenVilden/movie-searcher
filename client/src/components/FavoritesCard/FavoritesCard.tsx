@@ -6,7 +6,7 @@ import {
   CardWrapper,
   StyledCardMedia,
 } from './FavoritesCard.styles';
-import { MovieInfo } from '../../__generated__/types';
+import { MovieInfo } from '../../generated/types';
 
 type Props = {
   toggleFavoritesOpen: () => void;

@@ -1,17 +1,13 @@
 overwrite: true
 schema: http://localhost:5000/graphql
 generates:
-  src/__generated__/types.ts:
+  src/generated/types.ts:
     plugins:
       - typescript
       - typescript-resolvers
     config:
       useIndexSignature: true
       noSchemaStitching: true
-      fieldContextTypes:
-        - Query.upcoming#../datasources/Movies#Context
-        - Query.topRated#../datasources/Movies#Context
-        - Query.moviesSearch#../datasources/Movies#Context
-        - Query.movieInfo#../datasources/Movies#Context
+      contextType: ../datasources/Movies#Context
     hooks:
       afterOneFileWrite: eslint --fix

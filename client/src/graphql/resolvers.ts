@@ -1,9 +1,10 @@
+import ApolloCache, { NormalizedCacheObject } from 'apollo-boost';
 import {
   GetFavoritesQuery,
   GetFavoritesDocument,
   GetInputValueDocument,
-} from '../__generated__';
-import { Resolvers } from '../__generated__/types';
+} from '../generated/queries.generated';
+import { Resolvers } from '../generated/types';
 
 export default {
   MovieInfo: {
@@ -42,4 +43,4 @@ export default {
       return value;
     },
   },
-} as Resolvers;
+} as Resolvers<ApolloCache<NormalizedCacheObject>>;

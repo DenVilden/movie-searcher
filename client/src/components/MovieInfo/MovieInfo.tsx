@@ -6,7 +6,7 @@ import {
   StyledCardContent,
   StyledTypography,
 } from './MovieInfo.styles';
-import { MovieInfo as MovieInfoType } from '../../__generated__/types';
+import { MovieInfo as MovieInfoType } from '../../generated/types';
 
 type Props = {
   movie: MovieInfoType;

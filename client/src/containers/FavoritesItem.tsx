@@ -2,7 +2,7 @@ import React from 'react';
 import { LinearProgress } from '@material-ui/core';
 import FavoritesCard from '../components/FavoritesCard/FavoritesCard';
 import ErrorMessage from './ErrorMessage';
-import { useGetMovieInfoQuery } from '../__generated__';
+import { useGetMovieInfoQuery } from '../generated/queries.generated';
 
 type Props = {
   toggleFavoritesOpen: () => void;

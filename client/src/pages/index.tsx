@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, LinearProgress } from '@material-ui/core';
 import Upcoming from '../containers/Upcoming';
 import TopRated from '../containers/TopRated';
-import { useGetMoviesQuery } from '../__generated__';
+import { useGetMoviesQuery } from '../generated/queries.generated';
 import ErrorMessage from '../containers/ErrorMessage';
 
 const HomePage = () => {

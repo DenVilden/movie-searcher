@@ -1,7 +1,7 @@
 import React from 'react';
 import HomePage from '../pages/index';
-import { GetMoviesDocument } from '../__generated__';
-import { renderApollo, cleanup, fireEvent } from '../setupTests';
+import { GetMoviesDocument } from '../generated/queries.generated';
+import { renderApollo, fireEvent } from '../setupTests';
 
 const mockHistoryPush = jest.fn();
 
@@ -52,8 +52,6 @@ const mocks = [
 ];
 
 describe('HomePage', () => {
-  afterEach(cleanup);
-
   it('should render error state', async () => {
     const mockError = [
       {

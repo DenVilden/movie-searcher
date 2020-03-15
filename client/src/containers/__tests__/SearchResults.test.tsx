@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchResults from '../SearchResults';
-import { GetMoviesSearchDocument } from '../../__generated__';
-import { renderApollo, cleanup, fireEvent, wait } from '../../setupTests';
+import { GetMoviesSearchDocument } from '../../generated/queries.generated';
+import { renderApollo, fireEvent, wait } from '../../setupTests';
 
 const query = 'test-title';
 
@@ -64,8 +64,6 @@ const mocks = [
 ];
 
 describe('SearchResults', () => {
-  afterEach(cleanup);
-
   it('should render error state', async () => {
     const mockError = [
       {
@@ -164,6 +162,8 @@ describe('SearchResults', () => {
     const showMoreButton = await findByTestId('show-more');
 
     fireEvent.click(showMoreButton);
+
+    await wait();
 
     const updatedResults = await findAllByTestId('search-result');
 

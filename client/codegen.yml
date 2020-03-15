@@ -2,27 +2,24 @@ overwrite: true
 schema:
   - http://localhost:5000/graphql
   - src/graphql/schema.graphql
-documents: src/**/*.graphql
+documents: src/graphql/**/*.graphql
 generates:
-  src/__generated__/types.ts:
+  src/generated/types.ts:
     plugins:
       - typescript
       - typescript-resolvers
     config:
       useIndexSignature: true
-      fieldContextTypes:
-        - MovieInfo.isInFavorites#../types/context#Context
-        - Mutation.addOrRemoveFromFavorites#../types/context#Context
-        - Mutation.setInputValue#../types/context#Context
+      noSchemaStitching: true
     hooks:
       afterOneFileWrite: eslint --fix
 
-  src/__generated__:
+  src/generated:
     preset: near-operation-file
     presetConfig:
       extension: .generated.tsx
       baseTypesPath: types.ts
-      folder: ../__generated__
+      folder: ../generated
     plugins:
       - typescript-operations
       - typescript-react-apollo

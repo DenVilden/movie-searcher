@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { LinearProgress } from '@material-ui/core';
 import ErrorMessage from './ErrorMessage';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
-import { useGetTopRatedLazyQuery } from '../__generated__';
+import { useGetTopRatedLazyQuery } from '../generated/queries.generated';
 import Pagination from '../components/Pagination/Pagination';
-import { TopRated } from '../__generated__/types';
+import { TopRated } from '../generated/types';
 
 const Wrapper = styled.div`
   display: flex;

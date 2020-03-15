@@ -1,8 +1,8 @@
 import React from 'react';
 import TopRated from '../TopRated';
-import { GetTopRatedDocument } from '../../__generated__';
-import { renderApollo, cleanup, fireEvent } from '../../setupTests';
-import { TopRated as TopRatedType } from '../../__generated__/types';
+import { GetTopRatedDocument } from '../../generated/queries.generated';
+import { renderApollo, fireEvent } from '../../setupTests';
+import { TopRated as TopRatedType } from '../../generated/types';
 
 const mocks = [
   {
@@ -56,8 +56,6 @@ const mocks = [
 ];
 
 describe('TopRated', () => {
-  afterEach(cleanup);
-
   it('should render error state', async () => {
     const mockError = [
       {

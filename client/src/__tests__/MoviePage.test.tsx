@@ -1,8 +1,11 @@
 import React from 'react';
 import { InMemoryCache } from 'apollo-boost';
 import MoviePage from '../pages/movie/[id]';
-import { GetMovieInfoDocument, GetFavoritesDocument } from '../__generated__';
-import { renderApollo, cleanup, fireEvent } from '../setupTests';
+import {
+  GetMovieInfoDocument,
+  GetFavoritesDocument,
+} from '../generated/queries.generated';
+import { renderApollo, fireEvent } from '../setupTests';
 
 jest.mock('next/router', () => ({
   useRouter: () => ({
@@ -53,8 +56,6 @@ const mocks = [
 ];
 
 describe('MoviePage', () => {
-  afterEach(cleanup);
-
   it('should render error state', async () => {
     const mockError = [
       {

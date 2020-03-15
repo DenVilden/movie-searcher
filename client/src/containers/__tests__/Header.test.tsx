@@ -4,12 +4,10 @@ import Header from '../Header';
 import {
   GetInputValueDocument,
   GetFavoritesDocument,
-} from '../../__generated__';
-import { renderApollo, cleanup, fireEvent } from '../../setupTests';
+} from '../../generated/queries.generated';
+import { renderApollo, fireEvent } from '../../setupTests';
 
 describe('Header', () => {
-  afterEach(cleanup);
-
   it('should update input with new value', async () => {
     const cache = new InMemoryCache();
     cache.writeQuery({

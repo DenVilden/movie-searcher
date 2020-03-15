@@ -1,8 +1,8 @@
 import React from 'react';
 import Upcoming from '../Upcoming';
-import { GetUpcomingDocument } from '../../__generated__';
-import { renderApollo, cleanup, fireEvent } from '../../setupTests';
-import { Upcoming as UpcomingType } from '../../__generated__/types';
+import { GetUpcomingDocument } from '../../generated/queries.generated';
+import { renderApollo, fireEvent } from '../../setupTests';
+import { Upcoming as UpcomingType } from '../../generated/types';
 
 const mocks = [
   {
@@ -56,8 +56,6 @@ const mocks = [
 ];
 
 describe('Upcoming', () => {
-  afterEach(cleanup);
-
   it('should render error state', async () => {
     const mockError = [
       {

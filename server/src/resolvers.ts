@@ -4,7 +4,7 @@ import {
   TopRated,
   MoviesSearch,
   MovieInfo,
-} from './__generated__/types';
+} from './generated/types';
 import { paginateResults } from './utils';
 
 export default {

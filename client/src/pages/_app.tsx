@@ -32,7 +32,7 @@ class NextApp extends App<{
   }
 
   render() {
-    const { Component, apollo } = this.props;
+    const { Component, apollo, pageProps } = this.props;
 
     return (
       <>
@@ -52,7 +52,7 @@ class NextApp extends App<{
               <Layout>
                 <CssBaseline />
                 <GlobalStyle />
-                <Component />
+                <Component {...pageProps} />
               </Layout>
             </ThemeProvider>
           </StylesProvider>
@@ -63,10 +63,10 @@ class NextApp extends App<{
 }
 
 export default withApollo(({ initialState }) => {
-  const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+  const client = new ApolloClient({
     typeDefs: loader('../graphql/schema.graphql'),
     resolvers,
-    uri: process.env.REACT_APP_SERVER_URL,
+    uri: process.env.SERVER_URL,
     cache: new InMemoryCache().restore(initialState || {}),
   });
   client.writeData({ data: { favorites: [], inputValue: '' } });

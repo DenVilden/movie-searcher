@@ -6,10 +6,12 @@ import MoviesBox from '../../components/MoviesBox/MoviesBox';
 import ErrorMessage from '../../containers/ErrorMessage';
 import {
   useGetMovieInfoQuery,
+  GetMovieInfoDocument,
+} from '../../generated/queries.generated';
+import {
   useSetInputValueMutation,
   useAddOrRemoveFromFavoritesMutation,
-  GetMovieInfoDocument,
-} from '../../__generated__';
+} from '../../generated/mutations.generated';
 
 const MoviePage = () => {
   const {
