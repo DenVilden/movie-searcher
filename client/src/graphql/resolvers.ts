@@ -1,4 +1,4 @@
-import ApolloCache, { NormalizedCacheObject } from 'apollo-boost';
+import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import {
   GetFavoritesQuery,
   GetFavoritesDocument,
@@ -43,4 +43,4 @@ export default {
       return value;
     },
   },
-} as Resolvers<ApolloCache<NormalizedCacheObject>>;
+} as Resolvers<ApolloClient<NormalizedCacheObject>>;

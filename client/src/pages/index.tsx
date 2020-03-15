@@ -1,13 +1,12 @@
 import React from 'react';
 import { Grid, LinearProgress } from '@material-ui/core';
-// import { getDataFromTree } from '@apollo/react-ssr';
 import Upcoming from '../containers/Upcoming';
 import TopRated from '../containers/TopRated';
 import { useGetMoviesQuery } from '../generated/queries.generated';
 import ErrorMessage from '../containers/ErrorMessage';
 import withApollo from '../lib/withApollo';
 
-const HomePage = () => {
+export const HomePage = () => {
   const { data, error, loading } = useGetMoviesQuery();
 
   if (loading) return <LinearProgress color="secondary" />;

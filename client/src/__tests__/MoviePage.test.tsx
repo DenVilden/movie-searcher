@@ -1,6 +1,6 @@
 import React from 'react';
-import { InMemoryCache } from 'apollo-boost';
-import MoviePage from '../pages/movie/[id]';
+import { InMemoryCache } from '@apollo/client';
+import { MoviePage } from '../pages/movie/[id]';
 import {
   GetMovieInfoDocument,
   GetFavoritesDocument,

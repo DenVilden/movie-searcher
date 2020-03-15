@@ -8,7 +8,7 @@ import SearchBar from '../components/SearchBar/SearchBar';
 import SearchResults from './SearchResults';
 import withApollo from '../lib/withApollo';
 
-const Header = () => {
+export const Header = () => {
   const { data } = useGetInputValueQuery();
   const [setInputValue] = useSetInputValueMutation();
 

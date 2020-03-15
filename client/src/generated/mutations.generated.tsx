@@ -1,6 +1,6 @@
-import { gql } from 'apollo-boost';
-import * as ApolloReactCommon from '@apollo/react-common';
-import * as ApolloReactHooks from '@apollo/react-hooks';
+import { gql } from '@apollo/client';
+import * as ApolloReactCommon from '@apollo/client';
+import * as ApolloReactHooks from '@apollo/client';
 import * as Types from './types';
 
 export type SetInputValueMutationVariables = {

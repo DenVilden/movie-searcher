@@ -22,7 +22,7 @@ export default class NextApp extends App {
   }
 
   render() {
-    const { Component } = this.props;
+    const { Component, pageProps } = this.props;
 
     return (
       <>
@@ -41,7 +41,7 @@ export default class NextApp extends App {
             <Layout>
               <CssBaseline />
               <GlobalStyle />
-              <Component />
+              <Component {...pageProps} />
             </Layout>
           </ThemeProvider>
         </StylesProvider>

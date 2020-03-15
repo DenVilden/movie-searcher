@@ -24,7 +24,8 @@ generates:
       - typescript-operations
       - typescript-react-apollo
     config:
-      gqlImport: apollo-boost#gql
+      reactApolloVersion: 3
+      gqlImport: '@apollo/client#gql'
       withComponent: false
       withHOC: false
       withMutationFn: false

@@ -14,7 +14,7 @@ import {
 } from '../../generated/mutations.generated';
 import withApollo from '../../lib/withApollo';
 
-const MoviePage = () => {
+export const MoviePage = () => {
   const {
     query: { id },
   } = useRouter();

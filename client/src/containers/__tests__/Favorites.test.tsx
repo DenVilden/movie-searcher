@@ -1,5 +1,5 @@
 import React from 'react';
-import { InMemoryCache } from 'apollo-boost';
+import { InMemoryCache } from '@apollo/client';
 import Favorites from '../Favorites';
 import {
   GetFavoritesDocument,

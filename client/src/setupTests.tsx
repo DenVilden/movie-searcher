@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { MockedProvider, MockedResponse } from '@apollo/react-testing';
+import { MockedProvider, MockedResponse } from '@apollo/client/testing';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './pages/_app';
 import defaultResolvers from './graphql/resolvers';
