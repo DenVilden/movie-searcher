@@ -4,16 +4,13 @@ import Upcoming from '../containers/Upcoming';
 import TopRated from '../containers/TopRated';
 import { useGetMoviesQuery } from '../generated/queries.generated';
 import ErrorMessage from '../containers/ErrorMessage';
-import withApollo from '../lib/withApollo';
 
-export const HomePage = () => {
-  const { data, error, loading } = useGetMoviesQuery();
-
-  if (loading || !data) return <LinearProgress color="secondary" />;
+const HomePage = () => {
+  const { data, error } = useGetMoviesQuery();
 
   if (error) return <ErrorMessage error={error} />;
 
-  return (
+  return data ? (
     <Grid container>
       <Grid item lg={6}>
         <Upcoming initialData={data.upcoming} />
@@ -22,7 +19,9 @@ export const HomePage = () => {
         <TopRated initialData={data.topRated} />
       </Grid>
     </Grid>
+  ) : (
+    <LinearProgress color="secondary" />
   );
 };
 
-export default withApollo(HomePage);
+export default HomePage;

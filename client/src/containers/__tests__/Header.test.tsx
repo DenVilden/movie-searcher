@@ -1,6 +1,6 @@
 import React from 'react';
 import { InMemoryCache } from '@apollo/client';
-import { Header } from '../Header';
+import Header from '../Header';
 import {
   GetInputValueDocument,
   GetFavoritesDocument,

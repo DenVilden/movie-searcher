@@ -6,31 +6,27 @@ import MoviesBox from '../components/MoviesBox/MoviesBox';
 import ErrorMessage from '../containers/ErrorMessage';
 import {
   GetMovieInfoDocument,
-  useGetMovieInfoLazyQuery,
+  useGetMovieInfoQuery,
 } from '../generated/queries.generated';
 import {
   useSetInputValueMutation,
   useAddOrRemoveFromFavoritesMutation,
 } from '../generated/mutations.generated';
-import withApollo from '../lib/withApollo';
 
-export const MoviePage = () => {
+const MoviePage = () => {
   const {
     query: { id },
   } = useRouter();
 
-  const [fetchMovieInfo, { loading, error, data }] = useGetMovieInfoLazyQuery({
+  const { loading, error, data } = useGetMovieInfoQuery({
     variables: { id: id as string },
   });
 
   const [setInputValue] = useSetInputValueMutation();
 
   useEffect(() => {
-    if (id) {
-      fetchMovieInfo();
-    }
     setInputValue({ variables: { value: '' } });
-  }, [id, fetchMovieInfo, setInputValue]);
+  }, [id, setInputValue]);
 
   const [
     addOrRemoveFromFavorites,
@@ -70,4 +66,4 @@ export const MoviePage = () => {
   );
 };
 
-export default withApollo(MoviePage);
+export default MoviePage;

@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import { LinearProgress } from '@material-ui/core';
 import ErrorMessage from './ErrorMessage';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
 import { useGetTopRatedLazyQuery } from '../generated/queries.generated';
@@ -17,11 +16,9 @@ type Props = {
 };
 
 const TopRatedContainer = ({ initialData }: Props) => {
-  const [refetch, { data, loading, error }] = useGetTopRatedLazyQuery();
+  const [refetch, { data, error }] = useGetTopRatedLazyQuery();
 
   const element = useRef<HTMLDivElement>(null!);
-
-  if (loading) return <LinearProgress color="secondary" />;
 
   if (error) return <ErrorMessage error={error} />;
 

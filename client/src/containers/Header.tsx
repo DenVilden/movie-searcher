@@ -6,15 +6,12 @@ import Favorites from './Favorites';
 import Logo from '../components/Logo/Logo';
 import SearchBar from '../components/SearchBar/SearchBar';
 import SearchResults from './SearchResults';
-import withApollo from '../lib/withApollo';
 
-export const Header = () => {
+const Header = () => {
   const { data } = useGetInputValueQuery();
   const [setInputValue] = useSetInputValueMutation();
 
-  if (!data) throw new Error('No data found');
-
-  return (
+  return data ? (
     <>
       <AppBar position="static">
         <Toolbar>
@@ -28,7 +25,7 @@ export const Header = () => {
       </AppBar>
       {data.inputValue && <SearchResults query={data.inputValue} />}
     </>
-  );
+  ) : null;
 };
 
-export default withApollo(Header);
+export default Header;

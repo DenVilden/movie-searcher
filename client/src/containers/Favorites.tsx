@@ -8,9 +8,7 @@ const Favorites = () => {
 
   const [favoritesOpen, toggleFavorites] = useState(false);
 
-  if (!data) throw new Error('No data found');
-
-  return (
+  return data ? (
     <>
       <FavoritesIcon
         open={favoritesOpen}
@@ -25,7 +23,7 @@ const Favorites = () => {
         />
       )}
     </>
-  );
+  ) : null;
 };
 
 export default Favorites;
