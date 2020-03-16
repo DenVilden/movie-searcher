@@ -1,30 +1,20 @@
-import {
-  Resolvers,
-  Upcoming,
-  TopRated,
-  MoviesSearch,
-  MovieInfo,
-} from './generated/types';
+import { Resolvers } from './generated/types';
 import { paginateResults } from './utils';
 
 export default {
   Query: {
-    upcoming: async (_, { page }, { dataSources }) => {
-      const data: Upcoming = await dataSources.moviesAPI.getUpcoming(page);
-      return data;
+    upcoming: (_, { page }, { dataSources }) => {
+      return dataSources.moviesAPI.getUpcoming(page);
     },
-    topRated: async (_, { page }, { dataSources }) => {
-      const data: TopRated = await dataSources.moviesAPI.getTopRated(page);
-      return data;
+    topRated: (_, { page }, { dataSources }) => {
+      return dataSources.moviesAPI.getTopRated(page);
     },
     moviesSearch: async (_, { query, cursor, pageSize }, { dataSources }) => {
-      const data: MoviesSearch = await dataSources.moviesAPI.getMoviesSearch(
-        query
-      );
+      const data = await dataSources.moviesAPI.getMoviesSearch(query);
       return paginateResults(data, cursor, pageSize);
     },
     movieInfo: async (_, { id, cursor, pageSize }, { dataSources }) => {
-      const data: MovieInfo = await dataSources.moviesAPI.getMovieInfo(id);
+      const data = await dataSources.moviesAPI.getMovieInfo(id);
       return {
         ...data,
         similar: paginateResults(data.similar, cursor, pageSize),

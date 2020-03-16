@@ -10,7 +10,6 @@ import { loader } from 'graphql.macro';
 import resolvers from '../graphql/resolvers';
 
 export default withApollo(
-  // @ts-ignore
   ({ initialState }) => {
     const client = new ApolloClient({
       typeDefs: loader('../graphql/schema.graphql'),

@@ -1,6 +1,6 @@
 import React from 'react';
 import { InMemoryCache } from '@apollo/client';
-import { MoviePage } from '../pages/movie/[id]';
+import { MoviePage } from '../pages/movie';
 import {
   GetMovieInfoDocument,
   GetFavoritesDocument,

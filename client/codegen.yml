@@ -11,8 +11,6 @@ generates:
     config:
       useIndexSignature: true
       noSchemaStitching: true
-    hooks:
-      afterOneFileWrite: eslint --fix
 
   src/generated:
     preset: near-operation-file
@@ -30,5 +28,3 @@ generates:
       withHOC: false
       withMutationFn: false
       withHooks: true
-    hooks:
-      afterOneFileWrite: eslint --fix

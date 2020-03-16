@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import { Slide, LinearProgress } from '@material-ui/core';
 import { useRouter } from 'next/router';
-import MovieInfo from '../../components/MovieInfo/MovieInfo';
-import MoviesBox from '../../components/MoviesBox/MoviesBox';
-import ErrorMessage from '../../containers/ErrorMessage';
+import MovieInfo from '../components/MovieInfo/MovieInfo';
+import MoviesBox from '../components/MoviesBox/MoviesBox';
+import ErrorMessage from '../containers/ErrorMessage';
 import {
   useGetMovieInfoQuery,
   GetMovieInfoDocument,
-} from '../../generated/queries.generated';
+} from '../generated/queries.generated';
 import {
   useSetInputValueMutation,
   useAddOrRemoveFromFavoritesMutation,
-} from '../../generated/mutations.generated';
-import withApollo from '../../lib/withApollo';
+} from '../generated/mutations.generated';
+import withApollo from '../lib/withApollo';
 
 export const MoviePage = () => {
   const {

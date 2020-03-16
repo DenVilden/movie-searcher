@@ -78,7 +78,8 @@
     "preset": "ts-jest"
   },
   "eslintIgnore": [
-    "next-env.d.ts"
+    "next-env.d.ts",
+    "src/generated/**/*"
   ],
   "eslintConfig": {
     "extends": [

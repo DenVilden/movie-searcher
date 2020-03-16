@@ -9,7 +9,7 @@
   "dependencies": {
     "apollo-datasource-rest": "^0.8.0",
     "apollo-server": "^2.11.0",
-    "dayjs": "^1.8.22",
+    "dayjs": "^1.8.23",
     "graphql": "^14.6.0",
     "graphql-import": "0.7.1",
     "numeral": "^2.0.6"
@@ -52,6 +52,9 @@
     "preset": "ts-jest",
     "testEnvironment": "node"
   },
+  "eslintIgnore": [
+    "src/generated/**/*"
+  ],
   "eslintConfig": {
     "env": {
       "jest": true

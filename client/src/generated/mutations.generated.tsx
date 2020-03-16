@@ -1,30 +1,35 @@
+import * as Types from './types';
+
 import { gql } from '@apollo/client';
 import * as ApolloReactCommon from '@apollo/client';
 import * as ApolloReactHooks from '@apollo/client';
-import * as Types from './types';
 
 export type SetInputValueMutationVariables = {
   value: Types.Scalars['String'];
 };
 
-export type SetInputValueMutation = { __typename?: 'Mutation' } & Pick<
-  Types.Mutation,
-  'setInputValue'
->;
+
+export type SetInputValueMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Types.Mutation, 'setInputValue'>
+);
 
 export type AddOrRemoveFromFavoritesMutationVariables = {
   id: Types.Scalars['String'];
 };
 
-export type AddOrRemoveFromFavoritesMutation = {
-  __typename?: 'Mutation';
-} & Pick<Types.Mutation, 'addOrRemoveFromFavorites'>;
+
+export type AddOrRemoveFromFavoritesMutation = (
+  { __typename?: 'Mutation' }
+  & Pick<Types.Mutation, 'addOrRemoveFromFavorites'>
+);
+
 
 export const SetInputValueDocument = gql`
-  mutation SetInputValue($value: String!) {
-    setInputValue(value: $value) @client
-  }
-`;
+    mutation SetInputValue($value: String!) {
+  setInputValue(value: $value) @client
+}
+    `;
 
 /**
  * __useSetInputValueMutation__
@@ -43,32 +48,17 @@ export const SetInputValueDocument = gql`
  *   },
  * });
  */
-export function useSetInputValueMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<
-    SetInputValueMutation,
-    SetInputValueMutationVariables
-  >
-) {
-  return ApolloReactHooks.useMutation<
-    SetInputValueMutation,
-    SetInputValueMutationVariables
-  >(SetInputValueDocument, baseOptions);
-}
-export type SetInputValueMutationHookResult = ReturnType<
-  typeof useSetInputValueMutation
->;
-export type SetInputValueMutationResult = ApolloReactCommon.MutationResult<
-  SetInputValueMutation
->;
-export type SetInputValueMutationOptions = ApolloReactCommon.BaseMutationOptions<
-  SetInputValueMutation,
-  SetInputValueMutationVariables
->;
+export function useSetInputValueMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SetInputValueMutation, SetInputValueMutationVariables>) {
+        return ApolloReactHooks.useMutation<SetInputValueMutation, SetInputValueMutationVariables>(SetInputValueDocument, baseOptions);
+      }
+export type SetInputValueMutationHookResult = ReturnType<typeof useSetInputValueMutation>;
+export type SetInputValueMutationResult = ApolloReactCommon.MutationResult<SetInputValueMutation>;
+export type SetInputValueMutationOptions = ApolloReactCommon.BaseMutationOptions<SetInputValueMutation, SetInputValueMutationVariables>;
 export const AddOrRemoveFromFavoritesDocument = gql`
-  mutation AddOrRemoveFromFavorites($id: String!) {
-    addOrRemoveFromFavorites(id: $id) @client
-  }
-`;
+    mutation AddOrRemoveFromFavorites($id: String!) {
+  addOrRemoveFromFavorites(id: $id) @client
+}
+    `;
 
 /**
  * __useAddOrRemoveFromFavoritesMutation__
@@ -87,24 +77,9 @@ export const AddOrRemoveFromFavoritesDocument = gql`
  *   },
  * });
  */
-export function useAddOrRemoveFromFavoritesMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<
-    AddOrRemoveFromFavoritesMutation,
-    AddOrRemoveFromFavoritesMutationVariables
-  >
-) {
-  return ApolloReactHooks.useMutation<
-    AddOrRemoveFromFavoritesMutation,
-    AddOrRemoveFromFavoritesMutationVariables
-  >(AddOrRemoveFromFavoritesDocument, baseOptions);
-}
-export type AddOrRemoveFromFavoritesMutationHookResult = ReturnType<
-  typeof useAddOrRemoveFromFavoritesMutation
->;
-export type AddOrRemoveFromFavoritesMutationResult = ApolloReactCommon.MutationResult<
-  AddOrRemoveFromFavoritesMutation
->;
-export type AddOrRemoveFromFavoritesMutationOptions = ApolloReactCommon.BaseMutationOptions<
-  AddOrRemoveFromFavoritesMutation,
-  AddOrRemoveFromFavoritesMutationVariables
->;
+export function useAddOrRemoveFromFavoritesMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<AddOrRemoveFromFavoritesMutation, AddOrRemoveFromFavoritesMutationVariables>) {
+        return ApolloReactHooks.useMutation<AddOrRemoveFromFavoritesMutation, AddOrRemoveFromFavoritesMutationVariables>(AddOrRemoveFromFavoritesDocument, baseOptions);
+      }
+export type AddOrRemoveFromFavoritesMutationHookResult = ReturnType<typeof useAddOrRemoveFromFavoritesMutation>;
+export type AddOrRemoveFromFavoritesMutationResult = ApolloReactCommon.MutationResult<AddOrRemoveFromFavoritesMutation>;
+export type AddOrRemoveFromFavoritesMutationOptions = ApolloReactCommon.BaseMutationOptions<AddOrRemoveFromFavoritesMutation, AddOrRemoveFromFavoritesMutationVariables>;

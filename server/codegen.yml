@@ -9,5 +9,3 @@ generates:
       useIndexSignature: true
       noSchemaStitching: true
       contextType: ../datasources/Movies#Context
-    hooks:
-      afterOneFileWrite: eslint --fix
