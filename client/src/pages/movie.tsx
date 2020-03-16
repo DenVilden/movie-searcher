@@ -6,7 +6,7 @@ import MoviesBox from '../components/MoviesBox/MoviesBox';
 import ErrorMessage from '../containers/ErrorMessage';
 import {
   GetMovieInfoDocument,
-  useGetMovieInfoQuery,
+  useGetMovieInfoLazyQuery,
 } from '../generated/queries.generated';
 import {
   useSetInputValueMutation,
@@ -18,15 +18,18 @@ const MoviePage = () => {
     query: { id },
   } = useRouter();
 
-  const { loading, error, data } = useGetMovieInfoQuery({
-    variables: { id: id as string },
-  });
+  const [fetchMovies, { loading, error, data }] = useGetMovieInfoLazyQuery();
 
   const [setInputValue] = useSetInputValueMutation();
 
   useEffect(() => {
+    if (id) {
+      fetchMovies({
+        variables: { id: id as string },
+      });
+    }
     setInputValue({ variables: { value: '' } });
-  }, [id, setInputValue]);
+  }, [id, fetchMovies, setInputValue]);
 
   const [
     addOrRemoveFromFavorites,
