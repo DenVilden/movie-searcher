@@ -5,8 +5,8 @@ import MovieInfo from '../components/MovieInfo/MovieInfo';
 import MoviesBox from '../components/MoviesBox/MoviesBox';
 import ErrorMessage from '../containers/ErrorMessage';
 import {
-  useGetMovieInfoQuery,
   GetMovieInfoDocument,
+  useGetMovieInfoLazyQuery,
 } from '../generated/queries.generated';
 import {
   useSetInputValueMutation,
@@ -19,9 +19,15 @@ export const MoviePage = () => {
     query: { id },
   } = useRouter();
 
-  const { loading, error, data } = useGetMovieInfoQuery({
+  const [fetchMovieInfo, { loading, error, data }] = useGetMovieInfoLazyQuery({
     variables: { id: id as string },
   });
+
+  useEffect(() => {
+    if (id) {
+      fetchMovieInfo();
+    }
+  }, [id, fetchMovieInfo]);
 
   const [setInputValue] = useSetInputValueMutation();
 
@@ -34,11 +40,9 @@ export const MoviePage = () => {
     setInputValue({ variables: { value: '' } });
   }, [setInputValue, id]);
 
-  if (loading) return <LinearProgress color="secondary" />;
+  if (loading || !data?.movieInfo) return <LinearProgress color="secondary" />;
 
   if (error) return <ErrorMessage error={error} />;
-
-  if (!data?.movieInfo) throw new Error('Not found');
 
   return (
     <Slide direction="up" in>

@@ -9,11 +9,9 @@ import withApollo from '../lib/withApollo';
 export const HomePage = () => {
   const { data, error, loading } = useGetMoviesQuery();
 
-  if (loading) return <LinearProgress color="secondary" />;
+  if (loading || !data) return <LinearProgress color="secondary" />;
 
   if (error) return <ErrorMessage error={error} />;
-
-  if (!data) throw new Error('No data found');
 
   return (
     <Grid container>

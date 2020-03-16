@@ -14,13 +14,11 @@ const SearchResults = ({ query }: Props) => {
     variables: { query },
   });
 
-  if (loading) return <LinearProgress color="secondary" />;
+  if (loading || !data) return <LinearProgress color="secondary" />;
 
   if (error) {
     return <ErrorMessage error={error} />;
   }
-
-  if (!data) throw new Error('No data found');
 
   if (!data.moviesSearch.results.length) return <NotFoundMessage />;
 
