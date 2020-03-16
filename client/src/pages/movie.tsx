@@ -23,22 +23,19 @@ export const MoviePage = () => {
     variables: { id: id as string },
   });
 
+  const [setInputValue] = useSetInputValueMutation();
+
   useEffect(() => {
     if (id) {
       fetchMovieInfo();
     }
-  }, [id, fetchMovieInfo]);
-
-  const [setInputValue] = useSetInputValueMutation();
+    setInputValue({ variables: { value: '' } });
+  }, [id, fetchMovieInfo, setInputValue]);
 
   const [
     addOrRemoveFromFavorites,
     favoritesMutationOptions,
   ] = useAddOrRemoveFromFavoritesMutation();
-
-  useEffect(() => {
-    setInputValue({ variables: { value: '' } });
-  }, [setInputValue, id]);
 
   if (loading || !data?.movieInfo) return <LinearProgress color="secondary" />;
 

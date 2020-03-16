@@ -27,13 +27,8 @@ export default class NextApp extends App {
     return (
       <>
         <Head>
+          <meta charSet="utf-8" />
           <meta content="width=device-width, initial-scale=1" name="viewport" />
-          <link
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-            rel="stylesheet"
-          />
-          <link href="/favicon.ico" rel="shortcut icon" />
-          <link href="https://image.tmdb.org" rel="preconnect" />
           <title>Movie Searcher</title>
         </Head>
         <StylesProvider injectFirst>

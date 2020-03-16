@@ -1,5 +1,10 @@
 import React from 'react';
-import Document, { DocumentContext } from 'next/document';
+import Document, {
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import { ServerStyleSheet } from 'styled-components';
 
@@ -34,4 +39,25 @@ export default class NextDocument extends Document {
       styledComponentsSheet.seal();
     }
   };
+
+  render() {
+    return (
+      <html lang="en">
+        <Head>
+          <link href="/favicon.ico" rel="shortcut icon" />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+          <script
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html:
+                '</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" media="print" onload="this.media=\'all\'" /><script>',
+            }}
+          />
+        </body>
+      </html>
+    );
+  }
 }
