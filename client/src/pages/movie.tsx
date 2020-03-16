@@ -36,9 +36,9 @@ const MoviePage = () => {
     favoritesMutationOptions,
   ] = useAddOrRemoveFromFavoritesMutation();
 
-  if (loading || !data?.movieInfo) return <LinearProgress color="secondary" />;
-
   if (error) return <ErrorMessage error={error} />;
+
+  if (loading || !data?.movieInfo) return <LinearProgress color="secondary" />;
 
   return (
     <Slide direction="up" in>

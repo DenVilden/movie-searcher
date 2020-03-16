@@ -12,9 +12,9 @@ type Props = {
 const FavoritesItem = ({ id, toggleFavoritesOpen }: Props) => {
   const { loading, error, data } = useGetMovieInfoQuery({ variables: { id } });
 
-  if (loading || !data?.movieInfo) return <LinearProgress />;
-
   if (error) return <ErrorMessage error={error} />;
+
+  if (loading || !data?.movieInfo) return <LinearProgress />;
 
   return (
     <FavoritesCard
