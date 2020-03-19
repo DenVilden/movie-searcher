@@ -12,8 +12,10 @@ import {
   useSetInputValueMutation,
   useAddOrRemoveFromFavoritesMutation,
 } from '../generated/mutations.generated';
+import { withApollo } from '../lib/withApollo';
+import Header from '../containers/Header';
 
-const MoviePage = () => {
+export const MoviePage = () => {
   const {
     query: { id },
   } = useRouter();
@@ -38,35 +40,40 @@ const MoviePage = () => {
 
   if (error) return <ErrorMessage error={error} />;
 
-  if (loading || !data?.movieInfo) return <LinearProgress color="secondary" />;
-
   return (
-    <Slide direction="up" in>
-      <div>
-        <MovieInfo
-          addOrRemoveFromFavorites={() =>
-            addOrRemoveFromFavorites({
-              variables: { id: id as string },
-              refetchQueries: [
-                {
-                  query: GetMovieInfoDocument,
+    <>
+      <Header />
+      {loading || !data?.movieInfo ? (
+        <LinearProgress color="secondary" />
+      ) : (
+        <Slide direction="up" in>
+          <div>
+            <MovieInfo
+              addOrRemoveFromFavorites={() =>
+                addOrRemoveFromFavorites({
                   variables: { id: id as string },
-                },
-              ],
-            })
-          }
-          loading={favoritesMutationOptions.loading}
-          movie={data.movieInfo}
-        />
-        {!!data.movieInfo.similar.results.length && (
-          <MoviesBox
-            movies={data.movieInfo.similar.results}
-            title="Similar Movies"
-          />
-        )}
-      </div>
-    </Slide>
+                  refetchQueries: [
+                    {
+                      query: GetMovieInfoDocument,
+                      variables: { id: id as string },
+                    },
+                  ],
+                })
+              }
+              loading={favoritesMutationOptions.loading}
+              movie={data.movieInfo}
+            />
+            {!!data.movieInfo.similar.results.length && (
+              <MoviesBox
+                movies={data.movieInfo.similar.results}
+                title="Similar Movies"
+              />
+            )}
+          </div>
+        </Slide>
+      )}
+    </>
   );
 };
 
-export default MoviePage;
+export default withApollo()(MoviePage);

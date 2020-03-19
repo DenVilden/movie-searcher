@@ -4,24 +4,31 @@ import Upcoming from '../containers/Upcoming';
 import TopRated from '../containers/TopRated';
 import { useGetMoviesQuery } from '../generated/queries.generated';
 import ErrorMessage from '../containers/ErrorMessage';
+import { withApollo } from '../lib/withApollo';
+import Header from '../containers/Header';
 
-const HomePage = () => {
+export const HomePage = () => {
   const { data, error } = useGetMoviesQuery();
 
   if (error) return <ErrorMessage error={error} />;
 
-  return data ? (
-    <Grid container>
-      <Grid item lg={6}>
-        <Upcoming initialData={data.upcoming} />
-      </Grid>
-      <Grid item lg={6}>
-        <TopRated initialData={data.topRated} />
-      </Grid>
-    </Grid>
-  ) : (
-    <LinearProgress color="secondary" />
+  return (
+    <>
+      <Header />
+      {data ? (
+        <Grid container>
+          <Grid item lg={6}>
+            <Upcoming initialData={data.upcoming} />
+          </Grid>
+          <Grid item lg={6}>
+            <TopRated initialData={data.topRated} />
+          </Grid>
+        </Grid>
+      ) : (
+        <LinearProgress color="secondary" />
+      )}
+    </>
   );
 };
 
-export default HomePage;
+export default withApollo({ ssr: true })(HomePage);

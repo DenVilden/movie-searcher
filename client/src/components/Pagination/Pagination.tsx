@@ -16,18 +16,20 @@ const Pagination = ({
 }: Props) => {
   const [page, setPage] = React.useState(currentPage);
 
-  const handleChange = (_: React.SyntheticEvent, value: number) => {
-    setPage(value);
-    refetch({ variables: { page: value } });
-    scrollToTop &&
-      scrollToTop.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-  };
-
   return (
-    <StyledPagination count={totalPages} onChange={handleChange} page={page} />
+    <StyledPagination
+      count={totalPages}
+      onChange={(_, value: number) => {
+        setPage(value);
+        refetch({ variables: { page: value } });
+        scrollToTop &&
+          scrollToTop.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+      }}
+      page={page}
+    />
   );
 };
 

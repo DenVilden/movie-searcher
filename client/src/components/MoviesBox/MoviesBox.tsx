@@ -29,13 +29,13 @@ const MoviesBox = ({
   showMore,
   hasMore,
 }: Props) => (
-  <Root elevation={elevation} padding={padding}>
-    {!!title && (
-      <Typography align="center" gutterBottom variant="h4">
-        {title}
-      </Typography>
-    )}
-    <Grow in>
+  <Grow in>
+    <Root elevation={elevation} padding={padding}>
+      {!!title && (
+        <Typography align="center" gutterBottom variant="h4">
+          {title}
+        </Typography>
+      )}
       <Grid container>
         {movies.map(movie => (
           <Wrapper
@@ -60,8 +60,8 @@ const MoviesBox = ({
           </StyledButton>
         )}
       </Grid>
-    </Grow>
-  </Root>
+    </Root>
+  </Grow>
 );
 
 MoviesBox.defaultProps = defaultProps;

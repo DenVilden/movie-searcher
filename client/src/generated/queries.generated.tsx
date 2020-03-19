@@ -11,7 +11,7 @@ export type GetMovieInfoQueryVariables = {
 
 export type GetMovieInfoQuery = (
   { __typename?: 'Query' }
-  & { movieInfo: Types.Maybe<(
+  & { movieInfo?: Types.Maybe<(
     { __typename?: 'MovieInfo' }
     & Pick<Types.MovieInfo, 'isInFavorites' | 'id' | 'backdrop_path' | 'poster_path' | 'title' | 'overview' | 'budget' | 'revenue' | 'vote_average' | 'release_date'>
     & { similar: (

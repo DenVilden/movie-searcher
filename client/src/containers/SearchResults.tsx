@@ -16,9 +16,9 @@ const SearchResults = ({ query }: Props) => {
 
   if (error) return <ErrorMessage error={error} />;
 
-  if (!data?.moviesSearch.results.length) return <NotFoundMessage />;
-
   if (loading || !data) return <LinearProgress color="secondary" />;
+
+  if (!data?.moviesSearch.results.length) return <NotFoundMessage />;
 
   return (
     <MoviesBox

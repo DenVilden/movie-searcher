@@ -44,7 +44,7 @@ export default class NextDocument extends Document {
     return (
       <html lang="en">
         <Head>
-          <link href="/favicon.ico" rel="shortcut icon" />
+          <meta content="Movie searcher app" name="description" />
         </Head>
         <body>
           <Main />
@@ -53,7 +53,7 @@ export default class NextDocument extends Document {
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html:
-                '</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" media="print" onload="this.media=\'all\'" /><script>',
+                '</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" media="print" onload="this.media=\'all\'"/><script>',
             }}
           />
         </body>
