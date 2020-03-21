@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, Divider, Button } from '@material-ui/core';
+import Head from 'next/head';
 import {
   StyledCard,
   StyledCardMedia,
@@ -16,6 +17,9 @@ type Props = {
 
 const MovieInfo = ({ movie, addOrRemoveFromFavorites, loading }: Props) => (
   <StyledCard elevation={10}>
+    <Head>
+      <title>{movie.title}</title>
+    </Head>
     <StyledCardMedia image={movie.backdrop_path || 'no-image.jpg'} src="img" />
     <StyledCardContent>
       <StyledTypography gutterBottom variant="h5">

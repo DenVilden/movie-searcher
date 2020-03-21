@@ -5,7 +5,7 @@ import TopRated from '../containers/TopRated';
 import { useGetMoviesQuery } from '../generated/queries.generated';
 import ErrorMessage from '../containers/ErrorMessage';
 import { withApollo } from '../lib/withApollo';
-import Header from '../containers/Header';
+import Layout from '../containers/Layout';
 
 export const HomePage = () => {
   const { data, error } = useGetMoviesQuery();
@@ -13,8 +13,7 @@ export const HomePage = () => {
   if (error) return <ErrorMessage error={error} />;
 
   return (
-    <>
-      <Header />
+    <Layout>
       {data ? (
         <Grid container>
           <Grid item lg={6}>
@@ -27,7 +26,7 @@ export const HomePage = () => {
       ) : (
         <LinearProgress color="secondary" />
       )}
-    </>
+    </Layout>
   );
 };
 

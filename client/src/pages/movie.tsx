@@ -13,7 +13,7 @@ import {
   useAddOrRemoveFromFavoritesMutation,
 } from '../generated/mutations.generated';
 import { withApollo } from '../lib/withApollo';
-import Header from '../containers/Header';
+import Layout from '../containers/Layout';
 
 export const MoviePage = () => {
   const {
@@ -41,8 +41,7 @@ export const MoviePage = () => {
   if (error) return <ErrorMessage error={error} />;
 
   return (
-    <>
-      <Header />
+    <Layout>
       {loading || !data?.movieInfo ? (
         <LinearProgress color="secondary" />
       ) : (
@@ -72,7 +71,7 @@ export const MoviePage = () => {
           </div>
         </Slide>
       )}
-    </>
+    </Layout>
   );
 };
 

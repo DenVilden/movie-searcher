@@ -56,7 +56,7 @@ export default class NextApp extends App {
 
 export const createApolloClient = (
   initialState: NormalizedCacheObject,
-  ctx: NextPageContext | undefined
+  ctx?: NextPageContext
 ) => {
   // The `ctx` (NextPageContext) will only be present on the server.
   // use it to extract auth headers (ctx.req) or similar.
@@ -64,7 +64,6 @@ export const createApolloClient = (
     typeDefs: loader('../graphql/schema.graphql'),
     resolvers,
     ssrMode: Boolean(ctx),
-    uri: process.env.SERVER_URL,
     link: new HttpLink({
       uri: process.env.SERVER_URL,
       credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
