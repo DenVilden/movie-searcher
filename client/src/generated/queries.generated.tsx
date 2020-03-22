@@ -5,7 +5,7 @@ import * as ApolloReactCommon from '@apollo/client';
 import * as ApolloReactHooks from '@apollo/client';
 
 export type GetMovieInfoQueryVariables = {
-  id: Types.Scalars['String'];
+  id: Types.Scalars['ID'];
 };
 
 
@@ -82,7 +82,7 @@ export type GetTopRatedQuery = (
 
 export type GetMoviesSearchQueryVariables = {
   query: Types.Scalars['String'];
-  cursor?: Types.Maybe<Types.Scalars['Int']>;
+  pageSize?: Types.Maybe<Types.Scalars['Int']>;
 };
 
 
@@ -90,20 +90,11 @@ export type GetMoviesSearchQuery = (
   { __typename?: 'Query' }
   & { moviesSearch: (
     { __typename?: 'MoviesSearch' }
-    & Pick<Types.MoviesSearch, 'cursor' | 'hasMore'>
     & { results: Array<(
       { __typename?: 'MoviesSearchResults' }
       & Pick<Types.MoviesSearchResults, 'id' | 'title'>
     )> }
   ) }
-);
-
-export type GetInputValueQueryVariables = {};
-
-
-export type GetInputValueQuery = (
-  { __typename?: 'Query' }
-  & Pick<Types.Query, 'inputValue'>
 );
 
 export type GetFavoritesQueryVariables = {};
@@ -116,7 +107,7 @@ export type GetFavoritesQuery = (
 
 
 export const GetMovieInfoDocument = gql`
-    query GetMovieInfo($id: String!) {
+    query GetMovieInfo($id: ID!) {
   movieInfo(id: $id) {
     isInFavorites @client
     id
@@ -295,10 +286,8 @@ export type GetTopRatedQueryHookResult = ReturnType<typeof useGetTopRatedQuery>;
 export type GetTopRatedLazyQueryHookResult = ReturnType<typeof useGetTopRatedLazyQuery>;
 export type GetTopRatedQueryResult = ApolloReactCommon.QueryResult<GetTopRatedQuery, GetTopRatedQueryVariables>;
 export const GetMoviesSearchDocument = gql`
-    query GetMoviesSearch($query: String!, $cursor: Int) {
-  moviesSearch(query: $query, cursor: $cursor) {
-    cursor
-    hasMore
+    query GetMoviesSearch($query: String!, $pageSize: Int) {
+  moviesSearch(query: $query, pageSize: $pageSize) {
     results {
       id
       title
@@ -320,7 +309,7 @@ export const GetMoviesSearchDocument = gql`
  * const { data, loading, error } = useGetMoviesSearchQuery({
  *   variables: {
  *      query: // value for 'query'
- *      cursor: // value for 'cursor'
+ *      pageSize: // value for 'pageSize'
  *   },
  * });
  */
@@ -333,36 +322,6 @@ export function useGetMoviesSearchLazyQuery(baseOptions?: ApolloReactHooks.LazyQ
 export type GetMoviesSearchQueryHookResult = ReturnType<typeof useGetMoviesSearchQuery>;
 export type GetMoviesSearchLazyQueryHookResult = ReturnType<typeof useGetMoviesSearchLazyQuery>;
 export type GetMoviesSearchQueryResult = ApolloReactCommon.QueryResult<GetMoviesSearchQuery, GetMoviesSearchQueryVariables>;
-export const GetInputValueDocument = gql`
-    query GetInputValue {
-  inputValue @client
-}
-    `;
-
-/**
- * __useGetInputValueQuery__
- *
- * To run a query within a React component, call `useGetInputValueQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetInputValueQuery` returns an object from Apollo Client that contains loading, error, and data properties 
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetInputValueQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetInputValueQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetInputValueQuery, GetInputValueQueryVariables>) {
-        return ApolloReactHooks.useQuery<GetInputValueQuery, GetInputValueQueryVariables>(GetInputValueDocument, baseOptions);
-      }
-export function useGetInputValueLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetInputValueQuery, GetInputValueQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<GetInputValueQuery, GetInputValueQueryVariables>(GetInputValueDocument, baseOptions);
-        }
-export type GetInputValueQueryHookResult = ReturnType<typeof useGetInputValueQuery>;
-export type GetInputValueLazyQueryHookResult = ReturnType<typeof useGetInputValueLazyQuery>;
-export type GetInputValueQueryResult = ApolloReactCommon.QueryResult<GetInputValueQuery, GetInputValueQueryVariables>;
 export const GetFavoritesDocument = gql`
     query GetFavorites {
   favorites @client

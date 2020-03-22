@@ -63,7 +63,7 @@ export const createApolloClient = (
   const client = new ApolloClient({
     typeDefs: loader('../graphql/schema.graphql'),
     resolvers,
-    ssrMode: Boolean(ctx),
+    ssrMode: !!ctx,
     link: new HttpLink({
       uri: process.env.SERVER_URL,
       credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`

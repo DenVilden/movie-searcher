@@ -1,10 +1,14 @@
 import React from 'react';
-import { Badge } from '@material-ui/core';
+import { Badge, IconButton } from '@material-ui/core';
 import {
   Favorite as FavoriteIcon,
   FavoriteBorder as FavoriteBorderIcon,
 } from '@material-ui/icons';
-import { StyledIconButton } from './FavoritesIcon.styles';
+import styled from 'styled-components';
+
+const StyledIconButton = styled(IconButton)`
+  margin-left: auto;
+`;
 
 type Props = {
   open: boolean;

@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchResults from '../../components/SearchBar/SearchBar';
+import SearchResults from '../../components/SearchBar';
 import { GetMoviesSearchDocument } from '../../generated/queries.generated';
 import { renderApollo, fireEvent, wait } from '../../setupTests';
 

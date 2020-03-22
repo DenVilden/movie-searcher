@@ -1,11 +1,11 @@
 import React from 'react';
 import { InMemoryCache } from '@apollo/client';
-import { MoviePage } from '../pages/movie';
+import { MoviePage } from '../movie';
 import {
   GetMovieInfoDocument,
   GetFavoritesDocument,
-} from '../generated/queries.generated';
-import { renderApollo, fireEvent } from '../setupTests';
+} from '../../generated/queries.generated';
+import { renderApollo, fireEvent } from '../../setupTests';
 
 jest.mock('next/router', () => ({
   useRouter: () => ({

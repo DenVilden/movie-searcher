@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Slide, LinearProgress } from '@material-ui/core';
 import { useRouter } from 'next/router';
-import MovieInfo from '../components/MovieInfo/MovieInfo';
-import MoviesBox from '../components/MoviesBox/MoviesBox';
+import MovieInfo from '../components/MovieInfo';
+import MoviesBox from '../components/MoviesBox';
 import ErrorMessage from '../containers/ErrorMessage';
 import {
   GetMovieInfoDocument,
@@ -10,7 +10,7 @@ import {
 } from '../generated/queries.generated';
 import { useAddOrRemoveFromFavoritesMutation } from '../generated/mutations.generated';
 import { withApollo } from '../lib/withApollo';
-import Layout from '../containers/Layout';
+import withLayout from '../containers/withLayout';
 
 export const MoviePage = () => {
   const {
@@ -34,39 +34,35 @@ export const MoviePage = () => {
 
   if (error) return <ErrorMessage error={error} />;
 
+  if (loading || !data?.movieInfo) return <LinearProgress color="secondary" />;
+
   return (
-    <Layout>
-      {loading || !data?.movieInfo ? (
-        <LinearProgress color="secondary" />
-      ) : (
-        <Slide direction="up" in>
-          <div>
-            <MovieInfo
-              addOrRemoveFromFavorites={() =>
-                addOrRemoveFromFavorites({
+    <Slide direction="up" in>
+      <div>
+        <MovieInfo
+          addOrRemoveFromFavorites={() =>
+            addOrRemoveFromFavorites({
+              variables: { id: id as string },
+              refetchQueries: [
+                {
+                  query: GetMovieInfoDocument,
                   variables: { id: id as string },
-                  refetchQueries: [
-                    {
-                      query: GetMovieInfoDocument,
-                      variables: { id: id as string },
-                    },
-                  ],
-                })
-              }
-              loading={favoritesMutationOptions.loading}
-              movie={data.movieInfo}
-            />
-            {!!data.movieInfo.similar.results.length && (
-              <MoviesBox
-                movies={data.movieInfo.similar.results}
-                title="Similar Movies"
-              />
-            )}
-          </div>
-        </Slide>
-      )}
-    </Layout>
+                },
+              ],
+            })
+          }
+          loading={favoritesMutationOptions.loading}
+          movie={data.movieInfo}
+        />
+        {!!data.movieInfo.similar.results.length && (
+          <MoviesBox
+            movies={data.movieInfo.similar.results}
+            title="Similar Movies"
+          />
+        )}
+      </div>
+    </Slide>
   );
 };
 
-export default withApollo()(MoviePage);
+export default withApollo()(withLayout(MoviePage));

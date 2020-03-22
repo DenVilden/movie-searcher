@@ -1,4 +1,4 @@
-query GetMovieInfo($id: String!) {
+query GetMovieInfo($id: ID!) {
   movieInfo(id: $id) {
     isInFavorites @client
     id
@@ -70,10 +70,8 @@ query GetTopRated($page: Int) {
   }
 }
 
-query GetMoviesSearch($query: String!, $cursor: Int) {
-  moviesSearch(query: $query, cursor: $cursor) {
-    cursor
-    hasMore
+query GetMoviesSearch($query: String!, $pageSize: Int) {
+  moviesSearch(query: $query, pageSize: $pageSize) {
     results {
       id
       title

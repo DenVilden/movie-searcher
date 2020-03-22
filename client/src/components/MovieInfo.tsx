@@ -1,13 +1,49 @@
 import React from 'react';
-import { Typography, Divider, Button } from '@material-ui/core';
-import Head from 'next/head';
 import {
-  StyledCard,
-  StyledCardMedia,
-  StyledCardContent,
-  StyledTypography,
-} from './MovieInfo.styles';
-import { MovieInfo as MovieInfoType } from '../../generated/types';
+  Typography,
+  Divider,
+  Button,
+  CardContent,
+  Card,
+  CardMedia,
+} from '@material-ui/core';
+import Head from 'next/head';
+import styled from 'styled-components';
+import { MovieInfo as MovieInfoType } from '../generated/types';
+
+const StyledCard = styled(Card)`
+  background-color: inherit;
+  display: block;
+  margin: ${props => props.theme.spacing(2)}px;
+
+  ${props => props.theme.breakpoints.up('sm')} {
+    display: flex;
+  }
+`;
+
+const StyledCardMedia = styled(CardMedia)`
+  height: 450px;
+  margin: ${props => props.theme.spacing(2)}px;
+
+  ${props => props.theme.breakpoints.up('sm')} {
+    width: 40%;
+  }
+`;
+
+const StyledCardContent = styled(CardContent)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  ${props => props.theme.breakpoints.up('sm')} {
+    width: 60%;
+  }
+`;
+
+const StyledTypography = styled(Typography)`
+  display: flex;
+  justify-content: space-between;
+`;
 
 type Props = {
   movie: MovieInfoType;

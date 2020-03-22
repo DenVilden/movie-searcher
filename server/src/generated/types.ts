@@ -71,7 +71,7 @@ export type QueryMoviesSearchArgs = {
 
 
 export type QueryMovieInfoArgs = {
-  id: Scalars['String'];
+  id: Scalars['ID'];
   cursor?: Maybe<Scalars['Int']>;
   pageSize?: Maybe<Scalars['Int']>;
 };
@@ -199,6 +199,7 @@ export type ResolversTypes = ResolversObject<{
   MoviesSearch: ResolverTypeWrapper<MoviesSearch>,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
   MoviesSearchResults: ResolverTypeWrapper<MoviesSearchResults>,
+  ID: ResolverTypeWrapper<Scalars['ID']>,
   MovieInfo: ResolverTypeWrapper<MovieInfo>,
   SimilarMovies: ResolverTypeWrapper<SimilarMovies>,
   SimilarResults: ResolverTypeWrapper<SimilarResults>,
@@ -219,6 +220,7 @@ export type ResolversParentTypes = ResolversObject<{
   MoviesSearch: MoviesSearch,
   Boolean: Scalars['Boolean'],
   MoviesSearchResults: MoviesSearchResults,
+  ID: Scalars['ID'],
   MovieInfo: MovieInfo,
   SimilarMovies: SimilarMovies,
   SimilarResults: SimilarResults,

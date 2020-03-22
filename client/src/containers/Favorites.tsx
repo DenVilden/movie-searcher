@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import FavoritesIcon from '../components/FavoritesIcon/FavoritesIcon';
-import FavoritesDropdown from '../components/FavoritesDropdown/FavoritesDropdown';
+import FavoritesIcon from '../components/FavoritesIcon';
+import FavoritesDropdown from '../components/FavoritesDropdown';
 import { useGetFavoritesQuery } from '../generated/queries.generated';
 
 const Favorites = () => {

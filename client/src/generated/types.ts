@@ -47,7 +47,6 @@ export type MoviesSearchResults = {
 export type Mutation = {
    __typename?: 'Mutation';
   addOrRemoveFromFavorites: Array<Scalars['String']>;
-  setInputValue: Scalars['String'];
 };
 
 
@@ -55,15 +54,9 @@ export type MutationAddOrRemoveFromFavoritesArgs = {
   id: Scalars['String'];
 };
 
-
-export type MutationSetInputValueArgs = {
-  value: Scalars['String'];
-};
-
 export type Query = {
    __typename?: 'Query';
   favorites: Array<Scalars['String']>;
-  inputValue: Scalars['String'];
   movieInfo?: Maybe<MovieInfo>;
   moviesSearch: MoviesSearch;
   topRated: TopRated;
@@ -72,7 +65,7 @@ export type Query = {
 
 
 export type QueryMovieInfoArgs = {
-  id: Scalars['String'];
+  id: Scalars['ID'];
   cursor?: Maybe<Scalars['Int']>;
   pageSize?: Maybe<Scalars['Int']>;
 };
@@ -208,6 +201,7 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = ResolversObject<{
   Query: ResolverTypeWrapper<{}>,
   String: ResolverTypeWrapper<Scalars['String']>,
+  ID: ResolverTypeWrapper<Scalars['ID']>,
   Int: ResolverTypeWrapper<Scalars['Int']>,
   MovieInfo: ResolverTypeWrapper<MovieInfo>,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
@@ -229,6 +223,7 @@ export type ResolversTypes = ResolversObject<{
 export type ResolversParentTypes = ResolversObject<{
   Query: {},
   String: Scalars['String'],
+  ID: Scalars['ID'],
   Int: Scalars['Int'],
   MovieInfo: MovieInfo,
   Boolean: Scalars['Boolean'],
@@ -276,12 +271,10 @@ export type MoviesSearchResultsResolvers<ContextType = any, ParentType extends R
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
   addOrRemoveFromFavorites?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType, RequireFields<MutationAddOrRemoveFromFavoritesArgs, 'id'>>,
-  setInputValue?: Resolver<ResolversTypes['String'], ParentType, ContextType, RequireFields<MutationSetInputValueArgs, 'value'>>,
 }>;
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
   favorites?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType>,
-  inputValue?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   movieInfo?: Resolver<Maybe<ResolversTypes['MovieInfo']>, ParentType, ContextType, RequireFields<QueryMovieInfoArgs, 'id' | 'cursor' | 'pageSize'>>,
   moviesSearch?: Resolver<ResolversTypes['MoviesSearch'], ParentType, ContextType, RequireFields<QueryMoviesSearchArgs, 'query' | 'cursor' | 'pageSize'>>,
   topRated?: Resolver<ResolversTypes['TopRated'], ParentType, ContextType, RequireFields<QueryTopRatedArgs, 'page'>>,

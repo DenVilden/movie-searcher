@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import ErrorMessage from './ErrorMessage';
-import MoviesBox from '../components/MoviesBox/MoviesBox';
+import MoviesBox from '../components/MoviesBox';
 import { useGetUpcomingLazyQuery } from '../generated/queries.generated';
-import Pagination from '../components/Pagination/Pagination';
+import Pagination from '../components/Pagination';
 import { Upcoming } from '../generated/types';
 
 const Wrapper = styled.div`
