@@ -21,8 +21,8 @@ query GetMovieInfo($id: String!) {
   }
 }
 
-query GetMovies($page: Int) {
-  upcoming(page: $page) {
+query GetMovies {
+  upcoming {
     total_pages
     page
     results {
@@ -32,7 +32,7 @@ query GetMovies($page: Int) {
       poster_path
     }
   }
-  topRated(page: $page) {
+  topRated {
     total_pages
     page
     results {
@@ -77,14 +77,8 @@ query GetMoviesSearch($query: String!, $cursor: Int) {
     results {
       id
       title
-      release_date
-      poster_path
     }
   }
-}
-
-query GetInputValue {
-  inputValue @client
 }
 
 query GetFavorites {

@@ -1,5 +1,5 @@
 import styled, { DefaultTheme } from 'styled-components';
-import { Grid, Paper, Button } from '@material-ui/core';
+import { Grid, Paper } from '@material-ui/core';
 
 type Props = {
   padding: number;
@@ -17,12 +17,7 @@ export const Root = styled(Paper)`
 export const Wrapper = styled(Grid)`
   margin-top: 10px;
 
-  ${props => props.theme.breakpoints.up('sm')} {
-    padding: ${props => props.theme.spacing(0, 2, 0, 2)};
+  ${(props) => props.theme.breakpoints.up('sm')} {
+    padding: ${(props) => props.theme.spacing(0, 2, 0, 2)};
   }
-`;
-
-export const StyledButton = styled(Button)`
-  margin: auto;
-  margin-top: 70px;
 `;

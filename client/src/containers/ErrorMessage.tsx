@@ -11,13 +11,13 @@ const ErrorContainer = ({ error }: Props) => (
     statusCode={
       // TODO: test these cases
       error.graphQLErrors.length
-        ? error.graphQLErrors[0].extensions?.response.status
+        ? error.graphQLErrors[0].extensions?.response?.status
         : 500
     }
     title={
       // TODO: test these cases
       error.graphQLErrors.length
-        ? error.graphQLErrors[0].extensions?.response.statusText
+        ? error.graphQLErrors[0].extensions?.response?.statusText
         : error.networkError?.message
     }
   />

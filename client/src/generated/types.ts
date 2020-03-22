@@ -42,8 +42,6 @@ export type MoviesSearchResults = {
    __typename?: 'MoviesSearchResults';
   id: Scalars['Int'];
   title: Scalars['String'];
-  release_date: Scalars['String'];
-  poster_path?: Maybe<Scalars['String']>;
 };
 
 export type Mutation = {
@@ -273,8 +271,6 @@ export type MoviesSearchResolvers<ContextType = any, ParentType extends Resolver
 export type MoviesSearchResultsResolvers<ContextType = any, ParentType extends ResolversParentTypes['MoviesSearchResults'] = ResolversParentTypes['MoviesSearchResults']> = ResolversObject<{
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
-  release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
-  poster_path?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   __isTypeOf?: isTypeOfResolverFn<ParentType>,
 }>;
 
@@ -286,10 +282,10 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
   favorites?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType>,
   inputValue?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
-  movieInfo?: Resolver<Maybe<ResolversTypes['MovieInfo']>, ParentType, ContextType, RequireFields<QueryMovieInfoArgs, 'id'>>,
-  moviesSearch?: Resolver<ResolversTypes['MoviesSearch'], ParentType, ContextType, RequireFields<QueryMoviesSearchArgs, 'query'>>,
-  topRated?: Resolver<ResolversTypes['TopRated'], ParentType, ContextType, RequireFields<QueryTopRatedArgs, never>>,
-  upcoming?: Resolver<ResolversTypes['Upcoming'], ParentType, ContextType, RequireFields<QueryUpcomingArgs, never>>,
+  movieInfo?: Resolver<Maybe<ResolversTypes['MovieInfo']>, ParentType, ContextType, RequireFields<QueryMovieInfoArgs, 'id' | 'cursor' | 'pageSize'>>,
+  moviesSearch?: Resolver<ResolversTypes['MoviesSearch'], ParentType, ContextType, RequireFields<QueryMoviesSearchArgs, 'query' | 'cursor' | 'pageSize'>>,
+  topRated?: Resolver<ResolversTypes['TopRated'], ParentType, ContextType, RequireFields<QueryTopRatedArgs, 'page'>>,
+  upcoming?: Resolver<ResolversTypes['Upcoming'], ParentType, ContextType, RequireFields<QueryUpcomingArgs, 'page'>>,
 }>;
 
 export type SimilarMoviesResolvers<ContextType = any, ParentType extends ResolversParentTypes['SimilarMovies'] = ResolversParentTypes['SimilarMovies']> = ResolversObject<{

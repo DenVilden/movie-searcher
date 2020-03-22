@@ -2,7 +2,6 @@ import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import {
   GetFavoritesQuery,
   GetFavoritesDocument,
-  GetInputValueDocument,
 } from '../generated/queries.generated';
 import { Resolvers } from '../generated/types';
 
@@ -25,7 +24,7 @@ export default {
       const { favorites } = queryResult!;
 
       const newFavorites = favorites.includes(id)
-        ? favorites.filter(favId => favId !== id)
+        ? favorites.filter((favId) => favId !== id)
         : [...favorites, id];
 
       cache.writeQuery({
@@ -34,13 +33,6 @@ export default {
       });
 
       return newFavorites;
-    },
-    setInputValue: (_, { value }, { cache }) => {
-      cache.writeQuery({
-        query: GetInputValueDocument,
-        data: { inputValue: value },
-      });
-      return value;
     },
   },
 } as Resolvers<ApolloClient<NormalizedCacheObject>>;

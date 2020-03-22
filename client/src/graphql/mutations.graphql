@@ -1,7 +1,3 @@
-mutation SetInputValue($value: String!) {
-  setInputValue(value: $value) @client
-}
-
 mutation AddOrRemoveFromFavorites($id: String!) {
   addOrRemoveFromFavorites(id: $id) @client
 }

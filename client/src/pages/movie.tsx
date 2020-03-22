@@ -8,10 +8,7 @@ import {
   GetMovieInfoDocument,
   useGetMovieInfoLazyQuery,
 } from '../generated/queries.generated';
-import {
-  useSetInputValueMutation,
-  useAddOrRemoveFromFavoritesMutation,
-} from '../generated/mutations.generated';
+import { useAddOrRemoveFromFavoritesMutation } from '../generated/mutations.generated';
 import { withApollo } from '../lib/withApollo';
 import Layout from '../containers/Layout';
 
@@ -22,16 +19,13 @@ export const MoviePage = () => {
 
   const [fetchMovies, { loading, error, data }] = useGetMovieInfoLazyQuery();
 
-  const [setInputValue] = useSetInputValueMutation();
-
   useEffect(() => {
     if (id) {
       fetchMovies({
         variables: { id: id as string },
       });
     }
-    setInputValue({ variables: { value: '' } });
-  }, [id, fetchMovies, setInputValue]);
+  }, [id, fetchMovies]);
 
   const [
     addOrRemoveFromFavorites,

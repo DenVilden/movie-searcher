@@ -199,16 +199,10 @@ export const mockMoviesSearch = {
     {
       id: 324857,
       title: 'Spider-Man: Into the Spider-Verse',
-      release_date: '2018',
-      poster_path:
-        'https://image.tmdb.org/t/p/w200/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg',
     },
     {
       title: 'Spider-Man',
       id: 557,
-      release_date: '2002',
-      poster_path:
-        'https://image.tmdb.org/t/p/w200/rZd0y1X1Gw4t5B3f01Qzj8DYY66.jpg',
     },
   ],
 };

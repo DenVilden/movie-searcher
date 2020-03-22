@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { MockedProvider, MockedResponse } from '@apollo/client/testing';
 import { ThemeProvider } from 'styled-components';
+import { ApolloCache, NormalizedCacheObject } from '@apollo/client';
 import { theme } from './pages/_app';
 import defaultResolvers from './graphql/resolvers';
 
@@ -10,8 +11,8 @@ window.HTMLElement.prototype.scrollIntoView = jest.fn();
 type RenderApolloOptions = {
   mocks?: MockedResponse[];
   addTypeName?: boolean;
-  cache?: any;
-  resolvers?: any;
+  cache?: ApolloCache<NormalizedCacheObject>;
+  resolvers?: {};
 };
 
 export const renderApollo = (

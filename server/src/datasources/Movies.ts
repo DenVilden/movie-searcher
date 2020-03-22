@@ -63,9 +63,6 @@ export default class MoviesAPI extends RESTDataSource<Context> {
       ? movies.results.map(movie => ({
           id: movie.id,
           title: movie.title,
-          release_date:
-            movie.release_date && dayjs(movie.release_date).format('YYYY'),
-          poster_path: this.attachPoster(movie.poster_path),
         }))
       : [],
   });
@@ -95,16 +92,16 @@ export default class MoviesAPI extends RESTDataSource<Context> {
     },
   });
 
-  async getUpcoming(page?: number | null) {
+  async getUpcoming(page: number) {
     const data: MockUpcomingResponse = await this.get('/movie/upcoming', {
-      page: page || 1,
+      page,
     });
     return this.moviesUpcomingReducer(data);
   }
 
-  async getTopRated(page?: number | null) {
+  async getTopRated(page: number) {
     const data: MockTopRatedResponse = await this.get('/movie/top_rated', {
-      page: page || 1,
+      page,
     });
     return this.moviesTopRatedReducer(data);
   }

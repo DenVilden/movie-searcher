@@ -75,10 +75,9 @@ export const createApolloClient = (
     query: gql`
       {
         favorites
-        inputValue
       }
     `,
-    data: { favorites: [], inputValue: '' },
+    data: { favorites: [] },
   });
   return client;
 };

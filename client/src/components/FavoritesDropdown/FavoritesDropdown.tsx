@@ -18,7 +18,7 @@ const FavoritesDropdown = ({ favorites, open, toggleFavoritesOpen }: Props) => (
   >
     <StyledTypography variant="overline">Favorites</StyledTypography>
     <Divider />
-    {favorites.map(id => (
+    {favorites.map((id) => (
       <FavoritesItem
         key={id}
         id={id}

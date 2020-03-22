@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 
 type Props = {
-  children: any;
+  children: React.ReactElement;
 };
 
 const Layout = ({ children }: Props) => (

@@ -24,9 +24,7 @@ export type GetMovieInfoQuery = (
   )> }
 );
 
-export type GetMoviesQueryVariables = {
-  page?: Types.Maybe<Types.Scalars['Int']>;
-};
+export type GetMoviesQueryVariables = {};
 
 
 export type GetMoviesQuery = (
@@ -95,7 +93,7 @@ export type GetMoviesSearchQuery = (
     & Pick<Types.MoviesSearch, 'cursor' | 'hasMore'>
     & { results: Array<(
       { __typename?: 'MoviesSearchResults' }
-      & Pick<Types.MoviesSearchResults, 'id' | 'title' | 'release_date' | 'poster_path'>
+      & Pick<Types.MoviesSearchResults, 'id' | 'title'>
     )> }
   ) }
 );
@@ -168,8 +166,8 @@ export type GetMovieInfoQueryHookResult = ReturnType<typeof useGetMovieInfoQuery
 export type GetMovieInfoLazyQueryHookResult = ReturnType<typeof useGetMovieInfoLazyQuery>;
 export type GetMovieInfoQueryResult = ApolloReactCommon.QueryResult<GetMovieInfoQuery, GetMovieInfoQueryVariables>;
 export const GetMoviesDocument = gql`
-    query GetMovies($page: Int) {
-  upcoming(page: $page) {
+    query GetMovies {
+  upcoming {
     total_pages
     page
     results {
@@ -179,7 +177,7 @@ export const GetMoviesDocument = gql`
       poster_path
     }
   }
-  topRated(page: $page) {
+  topRated {
     total_pages
     page
     results {
@@ -204,7 +202,6 @@ export const GetMoviesDocument = gql`
  * @example
  * const { data, loading, error } = useGetMoviesQuery({
  *   variables: {
- *      page: // value for 'page'
  *   },
  * });
  */
@@ -305,8 +302,6 @@ export const GetMoviesSearchDocument = gql`
     results {
       id
       title
-      release_date
-      poster_path
     }
   }
 }

@@ -11,13 +11,13 @@ export default {
     },
     moviesSearch: async (_, { query, cursor, pageSize }, { dataSources }) => {
       const data = await dataSources.moviesAPI.getMoviesSearch(query);
-      return paginateResults(data, cursor, pageSize);
+      return paginateResults(data, pageSize, cursor);
     },
     movieInfo: async (_, { id, cursor, pageSize }, { dataSources }) => {
       const data = await dataSources.moviesAPI.getMovieInfo(id);
       return {
         ...data,
-        similar: paginateResults(data.similar, cursor, pageSize),
+        similar: paginateResults(data.similar, pageSize, cursor),
       };
     },
   },

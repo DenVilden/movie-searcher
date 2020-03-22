@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Grow, Typography } from '@material-ui/core';
 import MovieCard from '../MovieCard/MovieCard';
-import { Root, Wrapper, StyledButton } from './MoviesBox.styles';
+import { Root, Wrapper } from './MoviesBox.styles';
 
 const defaultProps = {
   title: '',
@@ -17,18 +17,9 @@ type Props = {
     poster_path?: string | null;
     release_date?: string;
   }[];
-  showMore?: () => void;
-  hasMore?: boolean | null;
 } & typeof defaultProps;
 
-const MoviesBox = ({
-  movies,
-  title,
-  elevation,
-  padding,
-  showMore,
-  hasMore,
-}: Props) => (
+const MoviesBox = ({ movies, title, elevation, padding }: Props) => (
   <Grow in>
     <Root elevation={elevation} padding={padding}>
       {!!title && (
@@ -37,7 +28,7 @@ const MoviesBox = ({
         </Typography>
       )}
       <Grid container>
-        {movies.map(movie => (
+        {movies.map((movie) => (
           <Wrapper
             key={movie.id}
             container
@@ -50,15 +41,6 @@ const MoviesBox = ({
             <MovieCard movie={movie} />
           </Wrapper>
         ))}
-        {hasMore && (
-          <StyledButton
-            data-testid="show-more"
-            onClick={showMore}
-            variant="contained"
-          >
-            show more
-          </StyledButton>
-        )}
       </Grid>
     </Root>
   </Grow>

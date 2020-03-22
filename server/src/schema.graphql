@@ -27,8 +27,6 @@ type TopRated {
 type MoviesSearchResults {
   id: Int!
   title: String!
-  release_date: String!
-  poster_path: String
 }
 
 type MoviesSearch {
@@ -64,8 +62,12 @@ type MovieInfo {
 }
 
 type Query {
-  upcoming(page: Int): Upcoming!
-  topRated(page: Int): TopRated!
-  moviesSearch(query: String!, cursor: Int, pageSize: Int): MoviesSearch!
-  movieInfo(id: String!, cursor: Int, pageSize: Int): MovieInfo
+  upcoming(page: Int = 1): Upcoming!
+  topRated(page: Int = 1): TopRated!
+  moviesSearch(
+    query: String!
+    cursor: Int = null
+    pageSize: Int = 4
+  ): MoviesSearch!
+  movieInfo(id: String!, cursor: Int = null, pageSize: Int = 4): MovieInfo
 }
