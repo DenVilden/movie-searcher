@@ -1,7 +1,7 @@
 import React from 'react';
-import { HomePage } from '../index';
-import { GetMoviesDocument } from '../../generated/queries.generated';
-import { renderApollo, fireEvent } from '../../setupTests';
+import { HomePage } from '../pages/index';
+import { GetMoviesDocument } from '../generated/queries.generated';
+import { renderApollo, fireEvent } from '../setupTests';
 
 const mockHistoryPush = jest.fn();
 
