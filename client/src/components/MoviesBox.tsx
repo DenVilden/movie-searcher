@@ -15,8 +15,8 @@ const Root = styled(Paper)`
 const Wrapper = styled(Grid)`
   margin-top: 10px;
 
-  ${props => props.theme.breakpoints.up('sm')} {
-    padding: ${props => props.theme.spacing(0, 2, 0, 2)};
+  ${(props) => props.theme.breakpoints.up('sm')} {
+    padding: ${(props) => props.theme.spacing(0, 2, 0, 2)};
   }
 `;
 
@@ -45,7 +45,7 @@ const MoviesBox = ({ movies, title, elevation, padding }: Props) => (
         </Typography>
       )}
       <Grid container>
-        {movies.map(movie => (
+        {movies.map((movie) => (
           <Wrapper
             key={movie.id}
             container

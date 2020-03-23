@@ -11,7 +11,7 @@ import ErrorMessage from '../containers/ErrorMessage';
 import { useGetMovieInfoQuery } from '../generated/queries.generated';
 
 const StyledTypography = styled(Typography)`
-  padding: ${props => props.theme.spacing(2)}px;
+  padding: ${(props) => props.theme.spacing(2)}px;
 `;
 
 const CardWrapper = styled.div`
@@ -22,10 +22,10 @@ const CardWrapper = styled.div`
 const StyledCardMedia = styled(CardMedia)`
   display: none;
   height: 56px;
-  margin: ${props => props.theme.spacing(1)}px;
+  margin: ${(props) => props.theme.spacing(1)}px;
   width: 50px;
 
-  ${props => props.theme.breakpoints.up('sm')} {
+  ${(props) => props.theme.breakpoints.up('sm')} {
     display: block;
   }
 `;

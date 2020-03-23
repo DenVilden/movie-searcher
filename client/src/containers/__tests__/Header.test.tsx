@@ -1,26 +1,36 @@
 import React from 'react';
-import { InMemoryCache } from '@apollo/client';
 import Header from '../Header';
-import {
-  GetInputValueDocument,
-  GetFavoritesDocument,
-} from '../../generated/queries.generated';
 import { renderApollo, fireEvent } from '../../setupTests';
+import { GetMoviesSearchDocument } from '../../generated/queries.generated';
 
+const mocks = [
+  {
+    request: {
+      query: GetMoviesSearchDocument,
+      variables: { query: 'test' },
+    },
+    result: {
+      data: {
+        moviesSearch: {
+          __typename: 'MoviesSearch',
+          results: [
+            {
+              __typename: 'MoviesSearchResults',
+              id: 1,
+              title: 'test-title',
+            },
+          ],
+        },
+      },
+    },
+  },
+];
+
+// TODO: figure out how to test lazy queries
 describe('Header', () => {
   it('should update input with new value', async () => {
-    const cache = new InMemoryCache();
-    cache.writeQuery({
-      query: GetInputValueDocument,
-      data: { inputValue: '' },
-    });
-    cache.writeQuery({
-      query: GetFavoritesDocument,
-      data: { favorites: [] },
-    });
-
     const { findByPlaceholderText } = renderApollo(<Header />, {
-      cache,
+      mocks,
     });
 
     const inputElement = await findByPlaceholderText('type a movie name...');

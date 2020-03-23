@@ -26,5 +26,4 @@ generates:
       gqlImport: '@apollo/client#gql'
       withComponent: false
       withHOC: false
-      withMutationFn: false
       withHooks: true

@@ -69,7 +69,7 @@ describe('[Query.moviesSearch]', () => {
     if (resolvers.Query?.moviesSearch) {
       const res = await resolvers.Query.moviesSearch(
         {} as any,
-        { cursor: 1 } as any,
+        { cursor: 1, pageSize: 2 } as any,
         mockContext as any,
         {} as any
       );

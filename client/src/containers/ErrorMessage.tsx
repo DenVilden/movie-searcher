@@ -6,21 +6,21 @@ type Props = {
   error: ApolloError;
 };
 
-const ErrorContainer = ({ error }: Props) => (
+const ErrorMessage = ({ error }: Props) => (
   <Error
     statusCode={
-      // TODO: test these cases
-      error.graphQLErrors.length
-        ? error.graphQLErrors[0].extensions?.response?.status
-        : 500
+      error.graphQLErrors?.length
+        ? error.graphQLErrors[0].extensions!.response.status
+        : //
+          //@ts-ignore
+          error.networkError!.statusCode
     }
     title={
-      // TODO: test these cases
-      error.graphQLErrors.length
-        ? error.graphQLErrors[0].extensions?.response?.statusText
-        : error.networkError?.message
+      error.graphQLErrors?.length
+        ? error.graphQLErrors[0].extensions!.response.statusText
+        : error.networkError!.message
     }
   />
 );
 
-export default ErrorContainer;
+export default ErrorMessage;

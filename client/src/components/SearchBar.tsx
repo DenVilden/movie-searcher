@@ -12,7 +12,7 @@ import { fade } from '@material-ui/core/styles';
 import { Search as SearchIcon } from '@material-ui/icons';
 import { useGetMoviesSearchLazyQuery } from '../generated/queries.generated';
 
-const StyledAutocomplete = styled(props => <Autocomplete {...props} />)`
+const StyledAutocomplete = styled((props) => <Autocomplete {...props} />)`
   .MuiInputBase-root:before,
   .MuiInputBase-root:after {
     display: none;
@@ -24,32 +24,33 @@ const StyledAutocomplete = styled(props => <Autocomplete {...props} />)`
 `;
 
 const StyledSearchBar = styled.div`
-  background-color: ${props => fade(props.theme.palette.common.white, 0.15)};
-  border-radius: ${props => props.theme.shape.borderRadius}px;
+  background-color: ${(props) => fade(props.theme.palette.common.white, 0.15)};
+  border-radius: ${(props) => props.theme.shape.borderRadius}px;
   position: relative;
   width: auto;
 
-  ${props => props.theme.breakpoints.up('sm')} {
-    margin-left: ${props => props.theme.spacing(6)}px;
+  ${(props) => props.theme.breakpoints.up('sm')} {
+    margin-left: ${(props) => props.theme.spacing(6)}px;
   }
 
   :hover {
-    background-color: ${props => fade(props.theme.palette.common.white, 0.25)};
+    background-color: ${(props) =>
+      fade(props.theme.palette.common.white, 0.25)};
   }
 `;
 
 const StyledSearchIcon = styled(SearchIcon)`
   height: 100%;
-  margin-left: ${props => props.theme.spacing(1)}px;
+  margin-left: ${(props) => props.theme.spacing(1)}px;
   pointer-events: none;
   position: absolute;
-  width: ${props => props.theme.spacing(4)}px;
+  width: ${(props) => props.theme.spacing(4)}px;
 `;
 
 const StyledInputBase = styled(TextField)`
-  padding: ${props => props.theme.spacing(0.5, 0.5, 0.3, 7)};
+  padding: ${(props) => props.theme.spacing(0.5, 0.5, 0.3, 7)};
   width: 300px;
-  ${props => props.theme.breakpoints.up('md')} {
+  ${(props) => props.theme.breakpoints.up('md')} {
     width: 800px;
   }
 `;
@@ -64,7 +65,6 @@ const SearchBar = () => {
   return (
     <StyledAutocomplete
       freeSolo
-      id="downshift"
       inputValue={inputValue}
       onChange={(
         _: React.ChangeEvent<HTMLLIElement>,
@@ -76,7 +76,7 @@ const SearchBar = () => {
             pathname: '/movie',
             query: {
               id: data?.moviesSearch.results.find(
-                movie => movie.title === value
+                (movie) => movie.title === value
               )?.id,
             },
           });
@@ -95,7 +95,7 @@ const SearchBar = () => {
         }
       }}
       open={!!inputValue}
-      options={data?.moviesSearch.results.map(movie => movie.title) || []}
+      options={data?.moviesSearch.results.map((movie) => movie.title) || []}
       renderInput={(params: RenderInputParams) => (
         <StyledSearchBar>
           <StyledSearchIcon />

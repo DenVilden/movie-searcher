@@ -20,6 +20,7 @@ export const AddOrRemoveFromFavoritesDocument = gql`
   addOrRemoveFromFavorites(id: $id) @client
 }
     `;
+export type AddOrRemoveFromFavoritesMutationFn = ApolloReactCommon.MutationFunction<AddOrRemoveFromFavoritesMutation, AddOrRemoveFromFavoritesMutationVariables>;
 
 /**
  * __useAddOrRemoveFromFavoritesMutation__

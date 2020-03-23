@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import FavoritesCard from './FavoritesCard';
 
 const StyledTypography = styled(Typography)`
-  padding: ${props => props.theme.spacing(2)}px;
+  padding: ${(props) => props.theme.spacing(2)}px;
 `;
 
 const StyledPopover = styled(Popover)`
@@ -29,7 +29,7 @@ const FavoritesDropdown = ({ favorites, open, toggleFavoritesOpen }: Props) => (
   >
     <StyledTypography variant="overline">Favorites</StyledTypography>
     <Divider />
-    {favorites.map(id => (
+    {favorites.map((id) => (
       <FavoritesCard
         key={id}
         id={id}

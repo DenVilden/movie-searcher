@@ -54,7 +54,7 @@ const mocks = [
 ];
 
 describe('Favorites', () => {
-  it('should redirect to correct url on when favorites item clicked', async () => {
+  it('should redirect to correct url when favorites item clicked', async () => {
     const cache = new InMemoryCache();
     cache.writeQuery({
       query: GetFavoritesDocument,
@@ -76,7 +76,7 @@ describe('Favorites', () => {
 
     expect(mockHistoryPush).toHaveBeenCalledWith({
       pathname: '/movie',
-      query: { id: 1 },
+      query: { id: '1' },
     });
   });
 

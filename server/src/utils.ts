@@ -1,9 +1,5 @@
 // eslint-disable-next-line import/prefer-default-export
-export const paginateResults = (
-  data: any,
-  size: number,
-  cursor: number | null
-) => {
+export const paginateResults = (data: any, size = 4, cursor: number | null) => {
   let results = [];
 
   if (!cursor) {

@@ -14,18 +14,18 @@ import { MovieInfo as MovieInfoType } from '../generated/types';
 const StyledCard = styled(Card)`
   background-color: inherit;
   display: block;
-  margin: ${props => props.theme.spacing(2)}px;
+  margin: ${(props) => props.theme.spacing(2)}px;
 
-  ${props => props.theme.breakpoints.up('sm')} {
+  ${(props) => props.theme.breakpoints.up('sm')} {
     display: flex;
   }
 `;
 
 const StyledCardMedia = styled(CardMedia)`
   height: 450px;
-  margin: ${props => props.theme.spacing(2)}px;
+  margin: ${(props) => props.theme.spacing(2)}px;
 
-  ${props => props.theme.breakpoints.up('sm')} {
+  ${(props) => props.theme.breakpoints.up('sm')} {
     width: 40%;
   }
 `;
@@ -35,7 +35,7 @@ const StyledCardContent = styled(CardContent)`
   flex-direction: column;
   justify-content: space-between;
 
-  ${props => props.theme.breakpoints.up('sm')} {
+  ${(props) => props.theme.breakpoints.up('sm')} {
     width: 60%;
   }
 `;
@@ -69,7 +69,7 @@ const MovieInfo = ({ movie, addOrRemoveFromFavorites, loading }: Props) => (
         >
           {/* eslint-disable-next-line no-nested-ternary */}
           {loading
-            ? 'Saving'
+            ? 'Updating'
             : movie.isInFavorites
             ? 'Remove from favorites'
             : 'Add to favorites'}

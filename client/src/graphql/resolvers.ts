@@ -24,7 +24,7 @@ export default {
       const { favorites } = queryResult!;
 
       const newFavorites = favorites.includes(id)
-        ? favorites.filter(favId => favId !== id)
+        ? favorites.filter((favId) => favId !== id)
         : [...favorites, id];
 
       cache.writeQuery({

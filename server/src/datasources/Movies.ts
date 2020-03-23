@@ -34,7 +34,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
     total_pages: movies.total_pages,
     page: movies.page,
     results: Array.isArray(movies.results)
-      ? movies.results.map(movie => ({
+      ? movies.results.map((movie) => ({
           id: movie.id,
           title: movie.title,
           release_date:
@@ -49,7 +49,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
     total_pages: movies.total_pages,
     page: movies.page,
     results: Array.isArray(movies.results)
-      ? movies.results.map(movie => ({
+      ? movies.results.map((movie) => ({
           id: movie.id,
           title: movie.title,
           vote_average: movie.vote_average,
@@ -60,7 +60,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
 
   private moviesSearchReducer = (movies: MockMoviesSearchResponse) => ({
     results: Array.isArray(movies.results)
-      ? movies.results.map(movie => ({
+      ? movies.results.map((movie) => ({
           id: movie.id,
           title: movie.title,
         }))
@@ -80,7 +80,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
     poster_path: this.attachPoster(movie.poster_path),
     similar: {
       results: Array.isArray(movie.similar.results)
-        ? movie.similar.results.map(similarMovie => ({
+        ? movie.similar.results.map((similarMovie) => ({
             id: similarMovie.id,
             title: similarMovie.title,
             release_date:
@@ -92,14 +92,14 @@ export default class MoviesAPI extends RESTDataSource<Context> {
     },
   });
 
-  async getUpcoming(page: number) {
+  async getUpcoming(page = 1) {
     const data: MockUpcomingResponse = await this.get('/movie/upcoming', {
       page,
     });
     return this.moviesUpcomingReducer(data);
   }
 
-  async getTopRated(page: number) {
+  async getTopRated(page = 1) {
     const data: MockTopRatedResponse = await this.get('/movie/top_rated', {
       page,
     });

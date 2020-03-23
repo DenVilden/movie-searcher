@@ -9,10 +9,10 @@ import {
   useGetMovieInfoLazyQuery,
 } from '../generated/queries.generated';
 import { useAddOrRemoveFromFavoritesMutation } from '../generated/mutations.generated';
-import { withApollo } from '../lib/withApollo';
-import withLayout from '../containers/withLayout';
+import { withApollo } from '../hocs/withApollo';
+import withLayout from '../hocs/withLayout';
 
-export const MoviePage = () => {
+export const MoviePage = withLayout(() => {
   const {
     query: { id },
   } = useRouter();
@@ -63,6 +63,6 @@ export const MoviePage = () => {
       </div>
     </Slide>
   );
-};
+});
 
-export default withApollo()(withLayout(MoviePage));
+export default withApollo()(MoviePage);

@@ -19,7 +19,7 @@
     "@graphql-codegen/typescript": "1.13.1",
     "@graphql-codegen/typescript-resolvers": "1.13.1",
     "@types/jest": "^25.1.4",
-    "@types/node": "^13.9.2",
+    "@types/node": "^13.9.3",
     "@types/numeral": "^0.0.26",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
@@ -39,7 +39,7 @@
   "scripts": {
     "serve": "nodemon -e ts,graphql -x ts-node --transpile-only -r dotenv/config src/index.ts",
     "start": "node dist/index.js",
-    "lint": "eslint src --ext ts",
+    "lint": "eslint src --ext ts --fix",
     "test": "jest",
     "build": "tsc",
     "codegen": "graphql-codegen",
@@ -74,9 +74,7 @@
       "prettier/prettier": [
         "warn",
         {
-          "trailingComma": "es5",
-          "singleQuote": true,
-          "arrowParens": "avoid"
+          "singleQuote": true
         }
       ],
       "import/extensions": [

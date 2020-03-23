@@ -6,7 +6,7 @@ const LogoContainer = styled.a`
   cursor: pointer;
   display: none;
 
-  ${props => props.theme.breakpoints.up('sm')} {
+  ${(props) => props.theme.breakpoints.up('sm')} {
     display: block;
   }
 `;
