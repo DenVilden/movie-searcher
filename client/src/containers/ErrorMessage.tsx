@@ -12,7 +12,7 @@ const ErrorMessage = ({ error }: Props) => (
       error.graphQLErrors?.length
         ? error.graphQLErrors[0].extensions!.response.status
         : //
-          //@ts-ignore
+          // @ts-ignore
           error.networkError!.statusCode
     }
     title={

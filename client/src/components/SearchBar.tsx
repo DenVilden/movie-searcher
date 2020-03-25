@@ -55,7 +55,11 @@ const StyledInputBase = styled(TextField)`
   }
 `;
 
-const SearchBar = () => {
+type Props = {
+  testing: boolean;
+};
+
+const SearchBar = ({ testing }: Props) => {
   const [inputValue, setInputValue] = useState('');
 
   const [fetchMovies, { data }] = useGetMoviesSearchLazyQuery();
@@ -64,6 +68,7 @@ const SearchBar = () => {
 
   return (
     <StyledAutocomplete
+      disablePortal={testing}
       freeSolo
       inputValue={inputValue}
       onChange={(

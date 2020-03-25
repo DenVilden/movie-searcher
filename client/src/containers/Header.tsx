@@ -4,14 +4,20 @@ import Favorites from './Favorites';
 import Logo from '../components/Logo';
 import SearchBar from '../components/SearchBar';
 
-const Header = () => (
+const defaultProps = {
+  testing: false,
+};
+
+const Header = ({ testing }: typeof defaultProps) => (
   <AppBar position="static">
     <Toolbar>
       <Logo />
-      <SearchBar />
+      <SearchBar testing={testing} />
       <Favorites />
     </Toolbar>
   </AppBar>
 );
+
+Header.defaultProps = defaultProps;
 
 export default Header;

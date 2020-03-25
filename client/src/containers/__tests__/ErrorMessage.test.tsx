@@ -1,6 +1,6 @@
 import React from 'react';
-import ErrorMessage from '../ErrorMessage';
 import { render } from '@testing-library/react';
+import ErrorMessage from '../ErrorMessage';
 
 describe('ErrorMessage', () => {
   it('should return server side error', async () => {
@@ -10,7 +10,7 @@ describe('ErrorMessage', () => {
       ],
     };
 
-    const { findByText, debug } = render(<ErrorMessage error={mockError} />);
+    const { findByText } = render(<ErrorMessage error={mockError} />);
 
     await findByText(/an error/i);
     await findByText('500');
