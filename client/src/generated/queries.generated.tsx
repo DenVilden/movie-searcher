@@ -135,7 +135,7 @@ export const GetMovieInfoDocument = gql`
  * __useGetMovieInfoQuery__
  *
  * To run a query within a React component, call `useGetMovieInfoQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetMovieInfoQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useGetMovieInfoQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -185,7 +185,7 @@ export const GetMoviesDocument = gql`
  * __useGetMoviesQuery__
  *
  * To run a query within a React component, call `useGetMoviesQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetMoviesQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useGetMoviesQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -224,7 +224,7 @@ export const GetUpcomingDocument = gql`
  * __useGetUpcomingQuery__
  *
  * To run a query within a React component, call `useGetUpcomingQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetUpcomingQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useGetUpcomingQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -264,7 +264,7 @@ export const GetTopRatedDocument = gql`
  * __useGetTopRatedQuery__
  *
  * To run a query within a React component, call `useGetTopRatedQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetTopRatedQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useGetTopRatedQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -300,7 +300,7 @@ export const GetMoviesSearchDocument = gql`
  * __useGetMoviesSearchQuery__
  *
  * To run a query within a React component, call `useGetMoviesSearchQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetMoviesSearchQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useGetMoviesSearchQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -332,7 +332,7 @@ export const GetFavoritesDocument = gql`
  * __useGetFavoritesQuery__
  *
  * To run a query within a React component, call `useGetFavoritesQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetFavoritesQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useGetFavoritesQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;

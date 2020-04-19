@@ -9,13 +9,67 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  /** The `Upload` scalar type represents a file upload. */
   Upload: any;
 };
 
-export enum CacheControlScope {
-  Public = 'PUBLIC',
-  Private = 'PRIVATE'
-}
+export type UpcomingResults = {
+   __typename?: 'UpcomingResults';
+  id: Scalars['Int'];
+  title: Scalars['String'];
+  release_date: Scalars['String'];
+  poster_path?: Maybe<Scalars['String']>;
+};
+
+export type Upcoming = {
+   __typename?: 'Upcoming';
+  total_pages: Scalars['Int'];
+  page: Scalars['Int'];
+  results: Array<UpcomingResults>;
+};
+
+export type TopRatedResults = {
+   __typename?: 'TopRatedResults';
+  id: Scalars['Int'];
+  title: Scalars['String'];
+  vote_average: Scalars['Float'];
+  poster_path?: Maybe<Scalars['String']>;
+};
+
+export type TopRated = {
+   __typename?: 'TopRated';
+  total_pages: Scalars['Int'];
+  page: Scalars['Int'];
+  results: Array<TopRatedResults>;
+};
+
+export type MoviesSearchResults = {
+   __typename?: 'MoviesSearchResults';
+  id: Scalars['Int'];
+  title: Scalars['String'];
+};
+
+export type MoviesSearch = {
+   __typename?: 'MoviesSearch';
+  cursor?: Maybe<Scalars['Int']>;
+  hasMore?: Maybe<Scalars['Boolean']>;
+  results: Array<MoviesSearchResults>;
+};
+
+export type SimilarResults = {
+   __typename?: 'SimilarResults';
+  id: Scalars['Int'];
+  title: Scalars['String'];
+  release_date: Scalars['String'];
+  poster_path?: Maybe<Scalars['String']>;
+};
+
+export type SimilarMovies = {
+   __typename?: 'SimilarMovies';
+  cursor?: Maybe<Scalars['Int']>;
+  hasMore?: Maybe<Scalars['Boolean']>;
+  results: Array<SimilarResults>;
+};
 
 export type MovieInfo = {
    __typename?: 'MovieInfo';
@@ -29,19 +83,6 @@ export type MovieInfo = {
   poster_path?: Maybe<Scalars['String']>;
   backdrop_path?: Maybe<Scalars['String']>;
   similar: SimilarMovies;
-};
-
-export type MoviesSearch = {
-   __typename?: 'MoviesSearch';
-  cursor?: Maybe<Scalars['Int']>;
-  hasMore?: Maybe<Scalars['Boolean']>;
-  results: Array<MoviesSearchResults>;
-};
-
-export type MoviesSearchResults = {
-   __typename?: 'MoviesSearchResults';
-  id: Scalars['Int'];
-  title: Scalars['String'];
 };
 
 export type Query = {
@@ -76,50 +117,10 @@ export type QueryMovieInfoArgs = {
   pageSize?: Maybe<Scalars['Int']>;
 };
 
-export type SimilarMovies = {
-   __typename?: 'SimilarMovies';
-  cursor?: Maybe<Scalars['Int']>;
-  hasMore?: Maybe<Scalars['Boolean']>;
-  results: Array<SimilarResults>;
-};
-
-export type SimilarResults = {
-   __typename?: 'SimilarResults';
-  id: Scalars['Int'];
-  title: Scalars['String'];
-  release_date: Scalars['String'];
-  poster_path?: Maybe<Scalars['String']>;
-};
-
-export type TopRated = {
-   __typename?: 'TopRated';
-  total_pages: Scalars['Int'];
-  page: Scalars['Int'];
-  results: Array<TopRatedResults>;
-};
-
-export type TopRatedResults = {
-   __typename?: 'TopRatedResults';
-  id: Scalars['Int'];
-  title: Scalars['String'];
-  vote_average: Scalars['Float'];
-  poster_path?: Maybe<Scalars['String']>;
-};
-
-export type Upcoming = {
-   __typename?: 'Upcoming';
-  total_pages: Scalars['Int'];
-  page: Scalars['Int'];
-  results: Array<UpcomingResults>;
-};
-
-export type UpcomingResults = {
-   __typename?: 'UpcomingResults';
-  id: Scalars['Int'];
-  title: Scalars['String'];
-  release_date: Scalars['String'];
-  poster_path?: Maybe<Scalars['String']>;
-};
+export enum CacheControlScope {
+  Public = 'PUBLIC',
+  Private = 'PRIVATE'
+}
 
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
@@ -188,44 +189,102 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = ResolversObject<{
-  Query: ResolverTypeWrapper<{}>,
+  String: ResolverTypeWrapper<Scalars['String']>,
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
+  UpcomingResults: ResolverTypeWrapper<UpcomingResults>,
   Int: ResolverTypeWrapper<Scalars['Int']>,
   Upcoming: ResolverTypeWrapper<Upcoming>,
-  UpcomingResults: ResolverTypeWrapper<UpcomingResults>,
-  String: ResolverTypeWrapper<Scalars['String']>,
-  TopRated: ResolverTypeWrapper<TopRated>,
   TopRatedResults: ResolverTypeWrapper<TopRatedResults>,
   Float: ResolverTypeWrapper<Scalars['Float']>,
-  MoviesSearch: ResolverTypeWrapper<MoviesSearch>,
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
+  TopRated: ResolverTypeWrapper<TopRated>,
   MoviesSearchResults: ResolverTypeWrapper<MoviesSearchResults>,
-  ID: ResolverTypeWrapper<Scalars['ID']>,
-  MovieInfo: ResolverTypeWrapper<MovieInfo>,
-  SimilarMovies: ResolverTypeWrapper<SimilarMovies>,
+  MoviesSearch: ResolverTypeWrapper<MoviesSearch>,
   SimilarResults: ResolverTypeWrapper<SimilarResults>,
+  SimilarMovies: ResolverTypeWrapper<SimilarMovies>,
+  MovieInfo: ResolverTypeWrapper<MovieInfo>,
+  Query: ResolverTypeWrapper<{}>,
+  ID: ResolverTypeWrapper<Scalars['ID']>,
   CacheControlScope: CacheControlScope,
   Upload: ResolverTypeWrapper<Scalars['Upload']>,
 }>;
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = ResolversObject<{
-  Query: {},
+  String: Scalars['String'],
+  Boolean: Scalars['Boolean'],
+  UpcomingResults: UpcomingResults,
   Int: Scalars['Int'],
   Upcoming: Upcoming,
-  UpcomingResults: UpcomingResults,
-  String: Scalars['String'],
-  TopRated: TopRated,
   TopRatedResults: TopRatedResults,
   Float: Scalars['Float'],
-  MoviesSearch: MoviesSearch,
-  Boolean: Scalars['Boolean'],
+  TopRated: TopRated,
   MoviesSearchResults: MoviesSearchResults,
-  ID: Scalars['ID'],
-  MovieInfo: MovieInfo,
-  SimilarMovies: SimilarMovies,
+  MoviesSearch: MoviesSearch,
   SimilarResults: SimilarResults,
+  SimilarMovies: SimilarMovies,
+  MovieInfo: MovieInfo,
+  Query: {},
+  ID: Scalars['ID'],
   CacheControlScope: CacheControlScope,
   Upload: Scalars['Upload'],
+}>;
+
+export type UpcomingResultsResolvers<ContextType = Context, ParentType extends ResolversParentTypes['UpcomingResults'] = ResolversParentTypes['UpcomingResults']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  poster_path?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  __isTypeOf?: isTypeOfResolverFn<ParentType>,
+}>;
+
+export type UpcomingResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Upcoming'] = ResolversParentTypes['Upcoming']> = ResolversObject<{
+  total_pages?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  page?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  results?: Resolver<Array<ResolversTypes['UpcomingResults']>, ParentType, ContextType>,
+  __isTypeOf?: isTypeOfResolverFn<ParentType>,
+}>;
+
+export type TopRatedResultsResolvers<ContextType = Context, ParentType extends ResolversParentTypes['TopRatedResults'] = ResolversParentTypes['TopRatedResults']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>,
+  poster_path?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  __isTypeOf?: isTypeOfResolverFn<ParentType>,
+}>;
+
+export type TopRatedResolvers<ContextType = Context, ParentType extends ResolversParentTypes['TopRated'] = ResolversParentTypes['TopRated']> = ResolversObject<{
+  total_pages?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  page?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  results?: Resolver<Array<ResolversTypes['TopRatedResults']>, ParentType, ContextType>,
+  __isTypeOf?: isTypeOfResolverFn<ParentType>,
+}>;
+
+export type MoviesSearchResultsResolvers<ContextType = Context, ParentType extends ResolversParentTypes['MoviesSearchResults'] = ResolversParentTypes['MoviesSearchResults']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  __isTypeOf?: isTypeOfResolverFn<ParentType>,
+}>;
+
+export type MoviesSearchResolvers<ContextType = Context, ParentType extends ResolversParentTypes['MoviesSearch'] = ResolversParentTypes['MoviesSearch']> = ResolversObject<{
+  cursor?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  hasMore?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+  results?: Resolver<Array<ResolversTypes['MoviesSearchResults']>, ParentType, ContextType>,
+  __isTypeOf?: isTypeOfResolverFn<ParentType>,
+}>;
+
+export type SimilarResultsResolvers<ContextType = Context, ParentType extends ResolversParentTypes['SimilarResults'] = ResolversParentTypes['SimilarResults']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  poster_path?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  __isTypeOf?: isTypeOfResolverFn<ParentType>,
+}>;
+
+export type SimilarMoviesResolvers<ContextType = Context, ParentType extends ResolversParentTypes['SimilarMovies'] = ResolversParentTypes['SimilarMovies']> = ResolversObject<{
+  cursor?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  hasMore?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+  results?: Resolver<Array<ResolversTypes['SimilarResults']>, ParentType, ContextType>,
+  __isTypeOf?: isTypeOfResolverFn<ParentType>,
 }>;
 
 export type MovieInfoResolvers<ContextType = Context, ParentType extends ResolversParentTypes['MovieInfo'] = ResolversParentTypes['MovieInfo']> = ResolversObject<{
@@ -242,19 +301,6 @@ export type MovieInfoResolvers<ContextType = Context, ParentType extends Resolve
   __isTypeOf?: isTypeOfResolverFn<ParentType>,
 }>;
 
-export type MoviesSearchResolvers<ContextType = Context, ParentType extends ResolversParentTypes['MoviesSearch'] = ResolversParentTypes['MoviesSearch']> = ResolversObject<{
-  cursor?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
-  hasMore?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
-  results?: Resolver<Array<ResolversTypes['MoviesSearchResults']>, ParentType, ContextType>,
-  __isTypeOf?: isTypeOfResolverFn<ParentType>,
-}>;
-
-export type MoviesSearchResultsResolvers<ContextType = Context, ParentType extends ResolversParentTypes['MoviesSearchResults'] = ResolversParentTypes['MoviesSearchResults']> = ResolversObject<{
-  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
-  __isTypeOf?: isTypeOfResolverFn<ParentType>,
-}>;
-
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
   upcoming?: Resolver<ResolversTypes['Upcoming'], ParentType, ContextType, RequireFields<QueryUpcomingArgs, 'page'>>,
   topRated?: Resolver<ResolversTypes['TopRated'], ParentType, ContextType, RequireFields<QueryTopRatedArgs, 'page'>>,
@@ -262,66 +308,21 @@ export type QueryResolvers<ContextType = Context, ParentType extends ResolversPa
   movieInfo?: Resolver<Maybe<ResolversTypes['MovieInfo']>, ParentType, ContextType, RequireFields<QueryMovieInfoArgs, 'id' | 'cursor' | 'pageSize'>>,
 }>;
 
-export type SimilarMoviesResolvers<ContextType = Context, ParentType extends ResolversParentTypes['SimilarMovies'] = ResolversParentTypes['SimilarMovies']> = ResolversObject<{
-  cursor?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
-  hasMore?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
-  results?: Resolver<Array<ResolversTypes['SimilarResults']>, ParentType, ContextType>,
-  __isTypeOf?: isTypeOfResolverFn<ParentType>,
-}>;
-
-export type SimilarResultsResolvers<ContextType = Context, ParentType extends ResolversParentTypes['SimilarResults'] = ResolversParentTypes['SimilarResults']> = ResolversObject<{
-  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
-  release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
-  poster_path?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
-  __isTypeOf?: isTypeOfResolverFn<ParentType>,
-}>;
-
-export type TopRatedResolvers<ContextType = Context, ParentType extends ResolversParentTypes['TopRated'] = ResolversParentTypes['TopRated']> = ResolversObject<{
-  total_pages?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
-  page?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
-  results?: Resolver<Array<ResolversTypes['TopRatedResults']>, ParentType, ContextType>,
-  __isTypeOf?: isTypeOfResolverFn<ParentType>,
-}>;
-
-export type TopRatedResultsResolvers<ContextType = Context, ParentType extends ResolversParentTypes['TopRatedResults'] = ResolversParentTypes['TopRatedResults']> = ResolversObject<{
-  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
-  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>,
-  poster_path?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
-  __isTypeOf?: isTypeOfResolverFn<ParentType>,
-}>;
-
-export type UpcomingResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Upcoming'] = ResolversParentTypes['Upcoming']> = ResolversObject<{
-  total_pages?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
-  page?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
-  results?: Resolver<Array<ResolversTypes['UpcomingResults']>, ParentType, ContextType>,
-  __isTypeOf?: isTypeOfResolverFn<ParentType>,
-}>;
-
-export type UpcomingResultsResolvers<ContextType = Context, ParentType extends ResolversParentTypes['UpcomingResults'] = ResolversParentTypes['UpcomingResults']> = ResolversObject<{
-  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
-  release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
-  poster_path?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
-  __isTypeOf?: isTypeOfResolverFn<ParentType>,
-}>;
-
 export interface UploadScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Upload'], any> {
   name: 'Upload'
 }
 
 export type Resolvers<ContextType = Context> = ResolversObject<{
-  MovieInfo?: MovieInfoResolvers<ContextType>,
-  MoviesSearch?: MoviesSearchResolvers<ContextType>,
-  MoviesSearchResults?: MoviesSearchResultsResolvers<ContextType>,
-  Query?: QueryResolvers<ContextType>,
-  SimilarMovies?: SimilarMoviesResolvers<ContextType>,
-  SimilarResults?: SimilarResultsResolvers<ContextType>,
-  TopRated?: TopRatedResolvers<ContextType>,
-  TopRatedResults?: TopRatedResultsResolvers<ContextType>,
-  Upcoming?: UpcomingResolvers<ContextType>,
   UpcomingResults?: UpcomingResultsResolvers<ContextType>,
+  Upcoming?: UpcomingResolvers<ContextType>,
+  TopRatedResults?: TopRatedResultsResolvers<ContextType>,
+  TopRated?: TopRatedResolvers<ContextType>,
+  MoviesSearchResults?: MoviesSearchResultsResolvers<ContextType>,
+  MoviesSearch?: MoviesSearchResolvers<ContextType>,
+  SimilarResults?: SimilarResultsResolvers<ContextType>,
+  SimilarMovies?: SimilarMoviesResolvers<ContextType>,
+  MovieInfo?: MovieInfoResolvers<ContextType>,
+  Query?: QueryResolvers<ContextType>,
   Upload?: GraphQLScalarType,
 }>;
 
