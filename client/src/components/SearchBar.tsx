@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   Autocomplete,
   AutocompleteChangeReason,
-  RenderInputParams,
+  AutocompleteRenderInputParams,
   AutocompleteInputChangeReason,
 } from '@material-ui/lab';
 import { useRouter } from 'next/router';
@@ -101,7 +101,7 @@ const SearchBar = ({ testing }: Props) => {
       }}
       open={!!inputValue}
       options={data?.moviesSearch.results.map((movie) => movie.title) || []}
-      renderInput={(params: RenderInputParams) => (
+      renderInput={(params: AutocompleteRenderInputParams) => (
         <StyledSearchBar>
           <StyledSearchIcon />
           <StyledInputBase {...params} placeholder="type a movie name..." />
