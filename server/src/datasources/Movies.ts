@@ -10,6 +10,7 @@ import {
 
 export interface Context {
   dataSources: {
+    // eslint-disable-next-line no-use-before-define
     moviesAPI: MoviesAPI;
   };
   key: string;

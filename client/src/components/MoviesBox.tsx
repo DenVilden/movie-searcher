@@ -34,6 +34,9 @@ type Props = {
     poster_path?: string | null;
     release_date?: string;
   }[];
+  title?: string;
+  elevation?: number;
+  padding?: number;
 } & typeof defaultProps;
 
 const MoviesBox = ({ movies, title, elevation, padding }: Props) => (

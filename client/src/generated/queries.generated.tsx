@@ -1,12 +1,10 @@
 import * as Types from './types';
 
 import { gql } from '@apollo/client';
-import * as ApolloReactCommon from '@apollo/client';
-import * as ApolloReactHooks from '@apollo/client';
-
-export type GetMovieInfoQueryVariables = {
+import * as Apollo from '@apollo/client';
+export type GetMovieInfoQueryVariables = Types.Exact<{
   id: Types.Scalars['ID'];
-};
+}>;
 
 
 export type GetMovieInfoQuery = (
@@ -24,7 +22,7 @@ export type GetMovieInfoQuery = (
   )> }
 );
 
-export type GetMoviesQueryVariables = {};
+export type GetMoviesQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
 export type GetMoviesQuery = (
@@ -46,9 +44,9 @@ export type GetMoviesQuery = (
   ) }
 );
 
-export type GetUpcomingQueryVariables = {
+export type GetUpcomingQueryVariables = Types.Exact<{
   page?: Types.Maybe<Types.Scalars['Int']>;
-};
+}>;
 
 
 export type GetUpcomingQuery = (
@@ -63,9 +61,9 @@ export type GetUpcomingQuery = (
   ) }
 );
 
-export type GetTopRatedQueryVariables = {
+export type GetTopRatedQueryVariables = Types.Exact<{
   page?: Types.Maybe<Types.Scalars['Int']>;
-};
+}>;
 
 
 export type GetTopRatedQuery = (
@@ -80,10 +78,10 @@ export type GetTopRatedQuery = (
   ) }
 );
 
-export type GetMoviesSearchQueryVariables = {
+export type GetMoviesSearchQueryVariables = Types.Exact<{
   query: Types.Scalars['String'];
   pageSize?: Types.Maybe<Types.Scalars['Int']>;
-};
+}>;
 
 
 export type GetMoviesSearchQuery = (
@@ -97,7 +95,7 @@ export type GetMoviesSearchQuery = (
   ) }
 );
 
-export type GetFavoritesQueryVariables = {};
+export type GetFavoritesQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
 export type GetFavoritesQuery = (
@@ -147,15 +145,15 @@ export const GetMovieInfoDocument = gql`
  *   },
  * });
  */
-export function useGetMovieInfoQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetMovieInfoQuery, GetMovieInfoQueryVariables>) {
-        return ApolloReactHooks.useQuery<GetMovieInfoQuery, GetMovieInfoQueryVariables>(GetMovieInfoDocument, baseOptions);
+export function useGetMovieInfoQuery(baseOptions?: Apollo.QueryHookOptions<GetMovieInfoQuery, GetMovieInfoQueryVariables>) {
+        return Apollo.useQuery<GetMovieInfoQuery, GetMovieInfoQueryVariables>(GetMovieInfoDocument, baseOptions);
       }
-export function useGetMovieInfoLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetMovieInfoQuery, GetMovieInfoQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<GetMovieInfoQuery, GetMovieInfoQueryVariables>(GetMovieInfoDocument, baseOptions);
+export function useGetMovieInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMovieInfoQuery, GetMovieInfoQueryVariables>) {
+          return Apollo.useLazyQuery<GetMovieInfoQuery, GetMovieInfoQueryVariables>(GetMovieInfoDocument, baseOptions);
         }
 export type GetMovieInfoQueryHookResult = ReturnType<typeof useGetMovieInfoQuery>;
 export type GetMovieInfoLazyQueryHookResult = ReturnType<typeof useGetMovieInfoLazyQuery>;
-export type GetMovieInfoQueryResult = ApolloReactCommon.QueryResult<GetMovieInfoQuery, GetMovieInfoQueryVariables>;
+export type GetMovieInfoQueryResult = Apollo.QueryResult<GetMovieInfoQuery, GetMovieInfoQueryVariables>;
 export const GetMoviesDocument = gql`
     query GetMovies {
   upcoming {
@@ -196,15 +194,15 @@ export const GetMoviesDocument = gql`
  *   },
  * });
  */
-export function useGetMoviesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetMoviesQuery, GetMoviesQueryVariables>) {
-        return ApolloReactHooks.useQuery<GetMoviesQuery, GetMoviesQueryVariables>(GetMoviesDocument, baseOptions);
+export function useGetMoviesQuery(baseOptions?: Apollo.QueryHookOptions<GetMoviesQuery, GetMoviesQueryVariables>) {
+        return Apollo.useQuery<GetMoviesQuery, GetMoviesQueryVariables>(GetMoviesDocument, baseOptions);
       }
-export function useGetMoviesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetMoviesQuery, GetMoviesQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<GetMoviesQuery, GetMoviesQueryVariables>(GetMoviesDocument, baseOptions);
+export function useGetMoviesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMoviesQuery, GetMoviesQueryVariables>) {
+          return Apollo.useLazyQuery<GetMoviesQuery, GetMoviesQueryVariables>(GetMoviesDocument, baseOptions);
         }
 export type GetMoviesQueryHookResult = ReturnType<typeof useGetMoviesQuery>;
 export type GetMoviesLazyQueryHookResult = ReturnType<typeof useGetMoviesLazyQuery>;
-export type GetMoviesQueryResult = ApolloReactCommon.QueryResult<GetMoviesQuery, GetMoviesQueryVariables>;
+export type GetMoviesQueryResult = Apollo.QueryResult<GetMoviesQuery, GetMoviesQueryVariables>;
 export const GetUpcomingDocument = gql`
     query GetUpcoming($page: Int) {
   upcoming(page: $page) {
@@ -236,15 +234,15 @@ export const GetUpcomingDocument = gql`
  *   },
  * });
  */
-export function useGetUpcomingQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetUpcomingQuery, GetUpcomingQueryVariables>) {
-        return ApolloReactHooks.useQuery<GetUpcomingQuery, GetUpcomingQueryVariables>(GetUpcomingDocument, baseOptions);
+export function useGetUpcomingQuery(baseOptions?: Apollo.QueryHookOptions<GetUpcomingQuery, GetUpcomingQueryVariables>) {
+        return Apollo.useQuery<GetUpcomingQuery, GetUpcomingQueryVariables>(GetUpcomingDocument, baseOptions);
       }
-export function useGetUpcomingLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetUpcomingQuery, GetUpcomingQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<GetUpcomingQuery, GetUpcomingQueryVariables>(GetUpcomingDocument, baseOptions);
+export function useGetUpcomingLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetUpcomingQuery, GetUpcomingQueryVariables>) {
+          return Apollo.useLazyQuery<GetUpcomingQuery, GetUpcomingQueryVariables>(GetUpcomingDocument, baseOptions);
         }
 export type GetUpcomingQueryHookResult = ReturnType<typeof useGetUpcomingQuery>;
 export type GetUpcomingLazyQueryHookResult = ReturnType<typeof useGetUpcomingLazyQuery>;
-export type GetUpcomingQueryResult = ApolloReactCommon.QueryResult<GetUpcomingQuery, GetUpcomingQueryVariables>;
+export type GetUpcomingQueryResult = Apollo.QueryResult<GetUpcomingQuery, GetUpcomingQueryVariables>;
 export const GetTopRatedDocument = gql`
     query GetTopRated($page: Int) {
   topRated(page: $page) {
@@ -276,15 +274,15 @@ export const GetTopRatedDocument = gql`
  *   },
  * });
  */
-export function useGetTopRatedQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetTopRatedQuery, GetTopRatedQueryVariables>) {
-        return ApolloReactHooks.useQuery<GetTopRatedQuery, GetTopRatedQueryVariables>(GetTopRatedDocument, baseOptions);
+export function useGetTopRatedQuery(baseOptions?: Apollo.QueryHookOptions<GetTopRatedQuery, GetTopRatedQueryVariables>) {
+        return Apollo.useQuery<GetTopRatedQuery, GetTopRatedQueryVariables>(GetTopRatedDocument, baseOptions);
       }
-export function useGetTopRatedLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetTopRatedQuery, GetTopRatedQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<GetTopRatedQuery, GetTopRatedQueryVariables>(GetTopRatedDocument, baseOptions);
+export function useGetTopRatedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetTopRatedQuery, GetTopRatedQueryVariables>) {
+          return Apollo.useLazyQuery<GetTopRatedQuery, GetTopRatedQueryVariables>(GetTopRatedDocument, baseOptions);
         }
 export type GetTopRatedQueryHookResult = ReturnType<typeof useGetTopRatedQuery>;
 export type GetTopRatedLazyQueryHookResult = ReturnType<typeof useGetTopRatedLazyQuery>;
-export type GetTopRatedQueryResult = ApolloReactCommon.QueryResult<GetTopRatedQuery, GetTopRatedQueryVariables>;
+export type GetTopRatedQueryResult = Apollo.QueryResult<GetTopRatedQuery, GetTopRatedQueryVariables>;
 export const GetMoviesSearchDocument = gql`
     query GetMoviesSearch($query: String!, $pageSize: Int) {
   moviesSearch(query: $query, pageSize: $pageSize) {
@@ -313,15 +311,15 @@ export const GetMoviesSearchDocument = gql`
  *   },
  * });
  */
-export function useGetMoviesSearchQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetMoviesSearchQuery, GetMoviesSearchQueryVariables>) {
-        return ApolloReactHooks.useQuery<GetMoviesSearchQuery, GetMoviesSearchQueryVariables>(GetMoviesSearchDocument, baseOptions);
+export function useGetMoviesSearchQuery(baseOptions?: Apollo.QueryHookOptions<GetMoviesSearchQuery, GetMoviesSearchQueryVariables>) {
+        return Apollo.useQuery<GetMoviesSearchQuery, GetMoviesSearchQueryVariables>(GetMoviesSearchDocument, baseOptions);
       }
-export function useGetMoviesSearchLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetMoviesSearchQuery, GetMoviesSearchQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<GetMoviesSearchQuery, GetMoviesSearchQueryVariables>(GetMoviesSearchDocument, baseOptions);
+export function useGetMoviesSearchLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMoviesSearchQuery, GetMoviesSearchQueryVariables>) {
+          return Apollo.useLazyQuery<GetMoviesSearchQuery, GetMoviesSearchQueryVariables>(GetMoviesSearchDocument, baseOptions);
         }
 export type GetMoviesSearchQueryHookResult = ReturnType<typeof useGetMoviesSearchQuery>;
 export type GetMoviesSearchLazyQueryHookResult = ReturnType<typeof useGetMoviesSearchLazyQuery>;
-export type GetMoviesSearchQueryResult = ApolloReactCommon.QueryResult<GetMoviesSearchQuery, GetMoviesSearchQueryVariables>;
+export type GetMoviesSearchQueryResult = Apollo.QueryResult<GetMoviesSearchQuery, GetMoviesSearchQueryVariables>;
 export const GetFavoritesDocument = gql`
     query GetFavorites {
   favorites @client
@@ -343,12 +341,12 @@ export const GetFavoritesDocument = gql`
  *   },
  * });
  */
-export function useGetFavoritesQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetFavoritesQuery, GetFavoritesQueryVariables>) {
-        return ApolloReactHooks.useQuery<GetFavoritesQuery, GetFavoritesQueryVariables>(GetFavoritesDocument, baseOptions);
+export function useGetFavoritesQuery(baseOptions?: Apollo.QueryHookOptions<GetFavoritesQuery, GetFavoritesQueryVariables>) {
+        return Apollo.useQuery<GetFavoritesQuery, GetFavoritesQueryVariables>(GetFavoritesDocument, baseOptions);
       }
-export function useGetFavoritesLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetFavoritesQuery, GetFavoritesQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<GetFavoritesQuery, GetFavoritesQueryVariables>(GetFavoritesDocument, baseOptions);
+export function useGetFavoritesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetFavoritesQuery, GetFavoritesQueryVariables>) {
+          return Apollo.useLazyQuery<GetFavoritesQuery, GetFavoritesQueryVariables>(GetFavoritesDocument, baseOptions);
         }
 export type GetFavoritesQueryHookResult = ReturnType<typeof useGetFavoritesQuery>;
 export type GetFavoritesLazyQueryHookResult = ReturnType<typeof useGetFavoritesLazyQuery>;
-export type GetFavoritesQueryResult = ApolloReactCommon.QueryResult<GetFavoritesQuery, GetFavoritesQueryVariables>;
+export type GetFavoritesQueryResult = Apollo.QueryResult<GetFavoritesQuery, GetFavoritesQueryVariables>;

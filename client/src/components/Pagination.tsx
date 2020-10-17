@@ -10,7 +10,7 @@ type Props = {
   refetch: ({ variables: { page } }: { variables: { page: number } }) => void;
   totalPages: number;
   currentPage: number;
-  scrollToTop?: React.MutableRefObject<HTMLElement>;
+  scrollToTop: React.MutableRefObject<HTMLElement>;
 };
 
 const Pagination = ({
