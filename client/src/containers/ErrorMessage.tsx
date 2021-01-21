@@ -1,6 +1,5 @@
-import React from 'react';
-import Error from 'next/error';
-import { ApolloError } from '@apollo/client';
+import Error from "next/error";
+import { ApolloError } from "@apollo/client";
 
 type Props = {
   error: ApolloError;

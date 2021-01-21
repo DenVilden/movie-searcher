@@ -21,9 +21,6 @@ generates:
     plugins:
       - typescript-operations
       - typescript-react-apollo
-    config:
-      reactApolloVersion: 3
-      gqlImport: '@apollo/client#gql'
-      withComponent: false
-      withHOC: false
-      withHooks: true
+hooks:
+  afterAllFileWrite:
+    - prettier --write

@@ -1,19 +1,18 @@
-import React from 'react';
-import App from 'next/app';
-import Head from 'next/head';
-import { createMuiTheme, CssBaseline, StylesProvider } from '@material-ui/core';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import App from "next/app";
+import Head from "next/head";
+import { createMuiTheme, CssBaseline, StylesProvider } from "@material-ui/core";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 import {
   ApolloClient,
   InMemoryCache,
   gql,
   HttpLink,
   NormalizedCacheObject,
-} from '@apollo/client';
-import { loader } from 'graphql.macro';
-import fetch from 'isomorphic-unfetch';
-import { NextPageContext } from 'next';
-import resolvers from '../graphql/resolvers';
+} from "@apollo/client";
+import { loader } from "graphql.macro";
+import fetch from "isomorphic-unfetch";
+import { NextPageContext } from "next";
+import resolvers from "../graphql/resolvers";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -25,7 +24,7 @@ export const theme = createMuiTheme();
 
 export default class NextApp extends App {
   componentDidMount() {
-    const jssStyles = document.querySelector('#jss-server-side');
+    const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles?.parentElement) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
@@ -61,12 +60,12 @@ export const createApolloClient = (
   // The `ctx` (NextPageContext) will only be present on the server.
   // use it to extract auth headers (ctx.req) or similar.
   const client = new ApolloClient({
-    typeDefs: loader('../graphql/schema.graphql'),
+    typeDefs: loader("../graphql/schema.graphql"),
     resolvers,
     ssrMode: !!ctx,
     link: new HttpLink({
       uri: process.env.SERVER_URL,
-      credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
+      credentials: "same-origin", // Additional fetch() options like `credentials` or `headers`
       fetch,
     }),
     cache: new InMemoryCache().restore(initialState),

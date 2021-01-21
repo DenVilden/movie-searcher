@@ -1,5 +1,5 @@
-import { Resolvers } from './generated/types';
-import { paginateResults } from './utils';
+import { Resolvers } from "./generated/types";
+import { paginateResults } from "./utils";
 
 export default {
   Query: {

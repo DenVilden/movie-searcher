@@ -1,7 +1,6 @@
-import React from 'react';
-import { Divider, Typography, Popover } from '@material-ui/core';
-import styled from 'styled-components';
-import FavoritesCard from './FavoritesCard';
+import { Divider, Typography, Popover } from "@material-ui/core";
+import styled from "styled-components";
+import FavoritesCard from "./FavoritesCard";
 
 const StyledTypography = styled(Typography)`
   padding: ${(props) => props.theme.spacing(2)}px;

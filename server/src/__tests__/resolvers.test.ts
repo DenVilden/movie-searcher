@@ -1,12 +1,12 @@
-import resolvers from '../resolvers';
+import resolvers from "../resolvers";
 import {
   mockUpcoming,
   mockTopRated,
   mockMoviesSearch,
   mockMovieInfo,
-} from '../datasources/__mocks__/responses';
+} from "../datasources/__mocks__/responses";
 
-describe('[Query.upcoming]', () => {
+describe("[Query.upcoming]", () => {
   const mockContext = {
     dataSources: {
       moviesAPI: { getUpcoming: jest.fn() },
@@ -15,7 +15,7 @@ describe('[Query.upcoming]', () => {
 
   const { getUpcoming } = mockContext.dataSources.moviesAPI;
 
-  it('calls upcoming', async () => {
+  it("calls upcoming", async () => {
     getUpcoming.mockReturnValueOnce(mockUpcoming);
 
     if (resolvers.Query?.upcoming) {
@@ -30,7 +30,7 @@ describe('[Query.upcoming]', () => {
   });
 });
 
-describe('[Query.topRated]', () => {
+describe("[Query.topRated]", () => {
   const mockContext = {
     dataSources: {
       moviesAPI: { getTopRated: jest.fn() },
@@ -39,7 +39,7 @@ describe('[Query.topRated]', () => {
 
   const { getTopRated } = mockContext.dataSources.moviesAPI;
 
-  it('calls topRated', async () => {
+  it("calls topRated", async () => {
     getTopRated.mockReturnValueOnce(mockTopRated);
 
     if (resolvers.Query?.topRated) {
@@ -54,7 +54,7 @@ describe('[Query.topRated]', () => {
   });
 });
 
-describe('[Query.moviesSearch]', () => {
+describe("[Query.moviesSearch]", () => {
   const mockContext = {
     dataSources: {
       moviesAPI: { getMoviesSearch: jest.fn() },
@@ -63,7 +63,7 @@ describe('[Query.moviesSearch]', () => {
 
   const { getMoviesSearch } = mockContext.dataSources.moviesAPI;
 
-  it('calls moviesSearch and preserve cursor', async () => {
+  it("calls moviesSearch and preserve cursor", async () => {
     getMoviesSearch.mockReturnValueOnce(mockMoviesSearch);
 
     if (resolvers.Query?.moviesSearch) {
@@ -78,7 +78,7 @@ describe('[Query.moviesSearch]', () => {
   });
 });
 
-describe('[Query.movieInfo]', () => {
+describe("[Query.movieInfo]", () => {
   const mockContext = {
     dataSources: {
       moviesAPI: { getMovieInfo: jest.fn() },
@@ -87,7 +87,7 @@ describe('[Query.movieInfo]', () => {
 
   const { getMovieInfo } = mockContext.dataSources.moviesAPI;
 
-  it('calls movieInfo.similar and paginate results', async () => {
+  it("calls movieInfo.similar and paginate results", async () => {
     getMovieInfo.mockReturnValueOnce(mockMovieInfo);
 
     if (resolvers.Query?.movieInfo) {

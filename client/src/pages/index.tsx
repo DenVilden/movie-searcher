@@ -1,11 +1,10 @@
-import React from 'react';
-import { Grid, LinearProgress } from '@material-ui/core';
-import Upcoming from '../containers/Upcoming';
-import TopRated from '../containers/TopRated';
-import { useGetMoviesQuery } from '../generated/queries.generated';
-import ErrorMessage from '../containers/ErrorMessage';
-import { withApollo } from '../hocs/withApollo';
-import withLayout from '../hocs/withLayout';
+import { Grid, LinearProgress } from "@material-ui/core";
+import Upcoming from "../containers/Upcoming";
+import TopRated from "../containers/TopRated";
+import { useGetMoviesQuery } from "../generated/queries.generated";
+import ErrorMessage from "../containers/ErrorMessage";
+import { withApollo } from "../hocs/withApollo";
+import withLayout from "../hocs/withLayout";
 
 export const HomePage = withLayout(() => {
   const { data, error } = useGetMoviesQuery();

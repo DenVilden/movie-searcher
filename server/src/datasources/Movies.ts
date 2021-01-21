@@ -1,15 +1,16 @@
-import { RESTDataSource, RequestOptions } from 'apollo-datasource-rest';
-import dayjs from 'dayjs';
-import numeral from 'numeral';
+import { RESTDataSource, RequestOptions } from "apollo-datasource-rest";
+import dayjs from "dayjs";
+import numeral from "numeral";
 import {
   MockUpcomingResponse,
   MockTopRatedResponse,
   MockMoviesSearchResponse,
   MockMovieInfoResponse,
-} from './__mocks__/responses';
+} from "./__mocks__/responses";
 
 export interface Context {
   dataSources: {
+    // eslint-disable-next-line no-use-before-define
     moviesAPI: MoviesAPI;
   };
   key: string;
@@ -18,12 +19,12 @@ export interface Context {
 export default class MoviesAPI extends RESTDataSource<Context> {
   constructor() {
     super();
-    this.baseURL = 'https://api.themoviedb.org/3';
+    this.baseURL = "https://api.themoviedb.org/3";
   }
 
   // TODO: figure out how to test this
   protected willSendRequest(request: RequestOptions) {
-    request.params.set('api_key', this.context.key);
+    request.params.set("api_key", this.context.key);
   }
 
   private attachPoster = (path: string, size = 200) => {
@@ -39,7 +40,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
           title: movie.title,
           release_date:
             movie.release_date &&
-            dayjs(movie.release_date).format('DD.MM.YYYY'),
+            dayjs(movie.release_date).format("DD.MM.YYYY"),
           poster_path: this.attachPoster(movie.poster_path),
         }))
       : [],
@@ -71,10 +72,10 @@ export default class MoviesAPI extends RESTDataSource<Context> {
     id: movie.id,
     title: movie.title,
     release_date:
-      movie.release_date && dayjs(movie.release_date).format('DD MMMM YYYY'),
+      movie.release_date && dayjs(movie.release_date).format("DD MMMM YYYY"),
     vote_average: movie.vote_average,
-    budget: numeral(movie.budget).format('$0,00'),
-    revenue: numeral(movie.revenue).format('$0,00'),
+    budget: numeral(movie.budget).format("$0,00"),
+    revenue: numeral(movie.revenue).format("$0,00"),
     overview: movie.overview,
     backdrop_path: this.attachPoster(movie.backdrop_path, 500),
     poster_path: this.attachPoster(movie.poster_path),
@@ -85,7 +86,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
             title: similarMovie.title,
             release_date:
               similarMovie.release_date &&
-              dayjs(similarMovie.release_date).format('YYYY'),
+              dayjs(similarMovie.release_date).format("YYYY"),
             poster_path: this.attachPoster(similarMovie.poster_path),
           }))
         : [],
@@ -93,21 +94,21 @@ export default class MoviesAPI extends RESTDataSource<Context> {
   });
 
   async getUpcoming(page = 1) {
-    const data: MockUpcomingResponse = await this.get('/movie/upcoming', {
+    const data: MockUpcomingResponse = await this.get("/movie/upcoming", {
       page,
     });
     return this.moviesUpcomingReducer(data);
   }
 
   async getTopRated(page = 1) {
-    const data: MockTopRatedResponse = await this.get('/movie/top_rated', {
+    const data: MockTopRatedResponse = await this.get("/movie/top_rated", {
       page,
     });
     return this.moviesTopRatedReducer(data);
   }
 
   async getMoviesSearch(query: string) {
-    const data: MockMoviesSearchResponse = await this.get('/search/movie', {
+    const data: MockMoviesSearchResponse = await this.get("/search/movie", {
       query,
     });
     return this.moviesSearchReducer(data);
@@ -115,7 +116,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
 
   async getMovieInfo(id: string) {
     const data: MockMovieInfoResponse = await this.get(`/movie/${id}`, {
-      append_to_response: 'similar',
+      append_to_response: "similar",
     });
     return this.movieInfoReducer(data);
   }

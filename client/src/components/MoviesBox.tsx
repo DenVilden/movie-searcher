@@ -1,7 +1,6 @@
-import React from 'react';
-import { Grid, Grow, Typography, Paper } from '@material-ui/core';
-import styled, { DefaultTheme } from 'styled-components';
-import MovieCard from './MovieCard';
+import { Grid, Grow, Typography, Paper } from "@material-ui/core";
+import styled, { DefaultTheme } from "styled-components";
+import MovieCard from "./MovieCard";
 
 const Root = styled(Paper)`
   background: none;
@@ -15,13 +14,13 @@ const Root = styled(Paper)`
 const Wrapper = styled(Grid)`
   margin-top: 10px;
 
-  ${(props) => props.theme.breakpoints.up('sm')} {
+  ${(props) => props.theme.breakpoints.up("sm")} {
     padding: ${(props) => props.theme.spacing(0, 2, 0, 2)};
   }
 `;
 
 const defaultProps = {
-  title: '',
+  title: "",
   elevation: 10,
   padding: 1,
 };

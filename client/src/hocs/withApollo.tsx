@@ -1,13 +1,13 @@
-import React, { ReactNode } from 'react';
-import App, { AppContext } from 'next/app';
-import Head from 'next/head';
+import { ReactNode } from "react";
+import App, { AppContext } from "next/app";
+import Head from "next/head";
 import {
   ApolloProvider,
   ApolloClient,
   NormalizedCacheObject,
-} from '@apollo/client';
-import { NextPageContext, NextPage } from 'next';
-import { createApolloClient } from '../pages/_app';
+} from "@apollo/client";
+import { NextPageContext, NextPage } from "next";
+import { createApolloClient } from "../pages/_app";
 
 interface NextPageContextWithApollo extends NextPageContext {
   apolloClient: ApolloClient<NormalizedCacheObject> | null;
@@ -33,7 +33,7 @@ const initApolloClient = (
 ) => {
   // Make sure to create a new client for every server-side request so that data
   // isn't shared between connections (which would be bad)
-  if (typeof window === 'undefined') {
+  if (typeof window === "undefined") {
     return createApolloClient(initialState, ctx);
   }
 
@@ -56,12 +56,12 @@ export const initOnContext = (ctx: NextPageContextApp): NextPageContextApp => {
 
   // We consider installing `withApollo({ ssr: true })` on global App level
   // as antipattern since it disables project wide Automatic Static Optimization.
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === "development") {
     if (inAppContext) {
       // eslint-disable-next-line no-console
       console.warn(
-        'Warning: You have opted-out of Automatic Static Optimization due to `withApollo` in `pages/_app`.\n' +
-          'Read more: https://err.sh/next.js/opt-out-auto-static-optimization\n'
+        "Warning: You have opted-out of Automatic Static Optimization due to `withApollo` in `pages/_app`.\n" +
+          "Read more: https://err.sh/next.js/opt-out-auto-static-optimization\n"
       );
     }
   }
@@ -77,7 +77,6 @@ export const initOnContext = (ctx: NextPageContextApp): NextPageContextApp => {
   // Otherwise, the component would have to call initApollo() again but this
   // time without the context. Once that happens, the following code will make sure we send
   // the prop as `null` to the browser.
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
   // @ts-ignore
   apolloClient.toJSON = () => null;
 
@@ -129,9 +128,9 @@ export const withApollo = ({ ssr = false } = {}) => (
   };
 
   // Set the correct displayName in development
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== "production") {
     const displayName =
-      PageComponent.displayName || PageComponent.name || 'Component';
+      PageComponent.displayName || PageComponent.name || "Component";
     WithApollo.displayName = `withApollo(${displayName})`;
   }
 
@@ -151,7 +150,7 @@ export const withApollo = ({ ssr = false } = {}) => (
       }
 
       // Only on the server:
-      if (typeof window === 'undefined') {
+      if (typeof window === "undefined") {
         const { AppTree } = ctx;
         // When redirecting, the response is finished.
         // No point in continuing to render
@@ -164,7 +163,9 @@ export const withApollo = ({ ssr = false } = {}) => (
           try {
             // Import `@apollo/react-ssr` dynamically.
             // We don't want to have this in our client bundle.
-            const { getDataFromTree } = await import('@apollo/react-ssr');
+            const { getDataFromTree } = await import(
+              "@apollo/client/react/ssr"
+            );
 
             // Since AppComponents and PageComponents have different context types
             // we need to modify their props a little.
@@ -188,7 +189,7 @@ export const withApollo = ({ ssr = false } = {}) => (
             // https://www.apollographql.com/docs/react/api/react-apollo.html#graphql-query-data-error
 
             // eslint-disable-next-line no-console
-            console.error('Error while running `getDataFromTree`', error);
+            console.error("Error while running `getDataFromTree`", error);
           }
 
           // getDataFromTree does not call componentWillUnmount

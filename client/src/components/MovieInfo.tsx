@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Typography,
   Divider,
@@ -6,17 +5,17 @@ import {
   CardContent,
   Card,
   CardMedia,
-} from '@material-ui/core';
-import Head from 'next/head';
-import styled from 'styled-components';
-import { MovieInfo as MovieInfoType } from '../generated/types';
+} from "@material-ui/core";
+import Head from "next/head";
+import styled from "styled-components";
+import { MovieInfo as MovieInfoType } from "../generated/types";
 
 const StyledCard = styled(Card)`
   background-color: inherit;
   display: block;
   margin: ${(props) => props.theme.spacing(2)}px;
 
-  ${(props) => props.theme.breakpoints.up('sm')} {
+  ${(props) => props.theme.breakpoints.up("sm")} {
     display: flex;
   }
 `;
@@ -25,7 +24,7 @@ const StyledCardMedia = styled(CardMedia)`
   height: 450px;
   margin: ${(props) => props.theme.spacing(2)}px;
 
-  ${(props) => props.theme.breakpoints.up('sm')} {
+  ${(props) => props.theme.breakpoints.up("sm")} {
     width: 40%;
   }
 `;
@@ -35,7 +34,7 @@ const StyledCardContent = styled(CardContent)`
   flex-direction: column;
   justify-content: space-between;
 
-  ${(props) => props.theme.breakpoints.up('sm')} {
+  ${(props) => props.theme.breakpoints.up("sm")} {
     width: 60%;
   }
 `;
@@ -56,12 +55,12 @@ const MovieInfo = ({ movie, addOrRemoveFromFavorites, loading }: Props) => (
     <Head>
       <title>{movie.title}</title>
     </Head>
-    <StyledCardMedia image={movie.backdrop_path || 'no-image.jpg'} src="img" />
+    <StyledCardMedia image={movie.backdrop_path || "no-image.jpg"} src="img" />
     <StyledCardContent>
       <StyledTypography gutterBottom variant="h5">
         {movie.title}
         <Button
-          color={movie.isInFavorites ? 'secondary' : 'primary'}
+          color={movie.isInFavorites ? "secondary" : "primary"}
           data-testid="favorites-button"
           disabled={loading}
           onClick={addOrRemoveFromFavorites}
@@ -69,10 +68,10 @@ const MovieInfo = ({ movie, addOrRemoveFromFavorites, loading }: Props) => (
         >
           {/* eslint-disable-next-line no-nested-ternary */}
           {loading
-            ? 'Updating'
+            ? "Updating"
             : movie.isInFavorites
-            ? 'Remove from favorites'
-            : 'Add to favorites'}
+            ? "Remove from favorites"
+            : "Add to favorites"}
         </Button>
       </StyledTypography>
       <Typography>{movie.overview}</Typography>

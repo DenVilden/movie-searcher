@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Pagination as PaginationComponent } from '@material-ui/lab';
+import { useState } from "react";
+import styled from "styled-components";
+import { Pagination as PaginationComponent } from "@material-ui/lab";
 
 const StyledPagination = styled(PaginationComponent)`
   margin: auto;
@@ -29,13 +29,17 @@ const Pagination = ({
         refetch({ variables: { page: value } });
         scrollToTop &&
           scrollToTop.current.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
+            behavior: "smooth",
+            block: "start",
           });
       }}
       page={page}
     />
   );
+};
+
+Pagination.defaultProps = {
+  scrollToTop: undefined,
 };
 
 export default Pagination;

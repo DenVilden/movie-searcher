@@ -1,10 +1,9 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { MockedProvider, MockedResponse } from '@apollo/client/testing';
-import { ThemeProvider } from 'styled-components';
-import { ApolloCache, NormalizedCacheObject } from '@apollo/client';
-import { theme } from './pages/_app';
-import defaultResolvers from './graphql/resolvers';
+import { render } from "@testing-library/react";
+import { MockedProvider, MockedResponse } from "@apollo/client/testing";
+import { ThemeProvider } from "styled-components";
+import { ApolloCache, NormalizedCacheObject } from "@apollo/client";
+import { theme } from "./pages/_app";
+import defaultResolvers from "./graphql/resolvers";
 
 window.HTMLElement.prototype.scrollIntoView = jest.fn();
 
@@ -30,4 +29,4 @@ export const renderApollo = (
     </MockedProvider>
   );
 
-export * from '@testing-library/react';
+export * from "@testing-library/react";

@@ -3,56 +3,56 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "14.x",
     "yarn": "1.x"
   },
   "dependencies": {
-    "@apollo/client": "^3.0.0-beta.44",
-    "@apollo/react-ssr": "^4.0.0-beta.1",
-    "@material-ui/core": "^4.9.12",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "^4.0.0-alpha.51",
-    "@testing-library/react": "^10.0.3",
+    "@apollo/client": "^3.3.7",
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@testing-library/react": "^11.2.3",
     "dotenv": "^8.2.0",
-    "graphql": "^15.0.0",
+    "graphql": "^15.4.0",
     "graphql.macro": "^1.4.2",
-    "isomorphic-unfetch": "^3.0.0",
-    "next": "^9.3.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "styled-components": "^5.1.0"
+    "isomorphic-unfetch": "^3.1.0",
+    "next": "^10.0.5",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.13.3",
-    "@graphql-codegen/near-operation-file-preset": "^1.13.3",
-    "@graphql-codegen/typescript": "1.13.3",
-    "@graphql-codegen/typescript-operations": "1.13.3",
-    "@graphql-codegen/typescript-react-apollo": "1.13.3",
-    "@graphql-codegen/typescript-resolvers": "1.13.3",
-    "@types/jest": "^25.2.1",
-    "@types/node": "^13.13.4",
-    "@types/react": "^16.9.34",
-    "@types/react-dom": "^16.9.6",
-    "@types/styled-components": "^5.1.0",
-    "@typescript-eslint/eslint-plugin": "^2.29.0",
-    "@typescript-eslint/parser": "^2.29.0",
+    "@graphql-codegen/cli": "^1.20.0",
+    "@graphql-codegen/near-operation-file-preset": "^1.17.13",
+    "@graphql-codegen/typescript": "1.20.0",
+    "@graphql-codegen/typescript-operations": "1.17.13",
+    "@graphql-codegen/typescript-react-apollo": "2.2.1",
+    "@graphql-codegen/typescript-resolvers": "1.18.1",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.22",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/styled-components": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.14.0",
+    "@typescript-eslint/parser": "^4.14.0",
     "babel-eslint": "^10.1.0",
-    "babel-plugin-macros": "^2.8.0",
-    "babel-plugin-styled-components": "^1.10.7",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.1.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-config-react-app": "^5.2.1",
-    "eslint-plugin-flowtype": "^4.7.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.3",
-    "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^3.0.0",
-    "jest": "^25.4.0",
-    "prettier": "^2.0.5",
-    "ts-jest": "^25.4.0",
-    "typescript": "3.8.3"
+    "babel-plugin-macros": "^3.0.1",
+    "babel-plugin-styled-components": "^1.12.0",
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-testing-library": "^3.10.1",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
+    "typescript": "4.1.2"
   },
   "scripts": {
     "serve": "next",
@@ -61,14 +61,13 @@
     "deploy": "yarn build && yarn export",
     "start": "next start",
     "test": "jest",
-    "lint": "eslint src --ext ts,tsx --fix",
-    "codegen": "graphql-codegen",
-    "coverage": "jest --collectCoverage"
+    "lint": "eslint . --ext ts,tsx --fix",
+    "codegen": "graphql-codegen"
   },
   "jest": {
     "globals": {
       "ts-jest": {
-        "tsConfig": "tsconfig.jest.json"
+        "tsconfig": "tsconfig.jest.json"
       }
     },
     "collectCoverageFrom": [
@@ -89,18 +88,13 @@
     "extends": [
       "airbnb",
       "react-app",
+      "react-app/jest",
       "plugin:import/typescript",
       "plugin:prettier/recommended",
       "prettier/@typescript-eslint",
       "prettier/react"
     ],
     "rules": {
-      "prettier/prettier": [
-        "warn",
-        {
-          "singleQuote": true
-        }
-      ],
       "import/extensions": [
         "error",
         {
@@ -120,10 +114,11 @@
         }
       ],
       "react/jsx-props-no-spreading": "off",
-      "react/jsx-sort-props": "warn",
       "react/prop-types": "off",
       "camelcase": "off",
-      "import/named": "off"
+      "import/named": "off",
+      "react/default-props-match-prop-types": "off",
+      "react/react-in-jsx-scope": "off"
     }
   },
   "babel": {

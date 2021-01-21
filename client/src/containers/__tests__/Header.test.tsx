@@ -1,11 +1,10 @@
-import React from 'react';
-import Header from '../Header';
-import { renderApollo, fireEvent } from '../../setupTests';
-import { GetMoviesSearchDocument } from '../../generated/queries.generated';
+import Header from "../Header";
+import { renderApollo, fireEvent } from "../../setupTests";
+import { GetMoviesSearchDocument } from "../../generated/queries.generated";
 
 const mockHistoryPush = jest.fn();
 
-jest.mock('next/router', () => ({
+jest.mock("next/router", () => ({
   useRouter: () => ({
     push: mockHistoryPush,
   }),
@@ -15,17 +14,17 @@ const mocks = [
   {
     request: {
       query: GetMoviesSearchDocument,
-      variables: { query: 'test', pageSize: 8 },
+      variables: { query: "test", pageSize: 8 },
     },
     result: {
       data: {
         moviesSearch: {
-          __typename: 'MoviesSearch',
+          __typename: "MoviesSearch",
           results: [
             {
-              __typename: 'MoviesSearchResults',
+              __typename: "MoviesSearchResults",
               id: 1,
-              title: 'test-title',
+              title: "test-title",
             },
           ],
         },
@@ -35,8 +34,8 @@ const mocks = [
 ];
 
 // TODO: figure out how to test lazy queries
-describe('Header', () => {
-  it('should update input with new value and fetch movies', async () => {
+describe("Header", () => {
+  it("should update input with new value and fetch movies", async () => {
     const { findByPlaceholderText, findByText } = renderApollo(
       <Header testing />,
       {
@@ -44,18 +43,18 @@ describe('Header', () => {
       }
     );
 
-    const inputElement = await findByPlaceholderText('type a movie name...');
+    const inputElement = await findByPlaceholderText("type a movie name...");
 
-    fireEvent.change(inputElement, { target: { value: 'test' } });
+    fireEvent.change(inputElement, { target: { value: "test" } });
 
-    const searchResult = await findByText('test-title');
+    const searchResult = await findByText("test-title");
 
     expect(searchResult).toBeTruthy();
 
-    expect(inputElement).toHaveProperty('value', 'test');
+    expect(inputElement).toHaveProperty("value", "test");
   });
 
-  it('should clear input value on click', async () => {
+  it("should clear input value on click", async () => {
     const { findByPlaceholderText, findByTitle } = renderApollo(
       <Header testing />,
       {
@@ -63,20 +62,20 @@ describe('Header', () => {
       }
     );
 
-    const inputElement = await findByPlaceholderText('type a movie name...');
+    const inputElement = await findByPlaceholderText("type a movie name...");
 
-    fireEvent.change(inputElement, { target: { value: 'test' } });
+    fireEvent.change(inputElement, { target: { value: "test" } });
 
-    expect(inputElement).toHaveProperty('value', 'test');
+    expect(inputElement).toHaveProperty("value", "test");
 
-    const clearButton = await findByTitle('Clear');
+    const clearButton = await findByTitle("Clear");
 
     fireEvent.click(clearButton);
 
-    expect(inputElement).toHaveProperty('value', '');
+    expect(inputElement).toHaveProperty("value", "");
   });
 
-  it('should redirect to correct url on click', async () => {
+  it("should redirect to correct url on click", async () => {
     const { findByPlaceholderText, findByText } = renderApollo(
       <Header testing />,
       {
@@ -84,16 +83,16 @@ describe('Header', () => {
       }
     );
 
-    const inputElement = await findByPlaceholderText('type a movie name...');
+    const inputElement = await findByPlaceholderText("type a movie name...");
 
-    fireEvent.change(inputElement, { target: { value: 'test' } });
+    fireEvent.change(inputElement, { target: { value: "test" } });
 
-    const searchResult = await findByText('test-title');
+    const searchResult = await findByText("test-title");
 
     fireEvent.click(searchResult);
 
     expect(mockHistoryPush).toHaveBeenCalledWith({
-      pathname: '/movie',
+      pathname: "/movie",
       query: { id: 1 },
     });
   });

@@ -1,21 +1,20 @@
-import React from 'react';
 import {
   CardActionArea,
   Typography,
   Card,
   CardContent,
   CardMedia,
-} from '@material-ui/core';
-import { Star as StarIcon } from '@material-ui/icons';
-import { useRouter } from 'next/router';
-import styled from 'styled-components';
+} from "@material-ui/core";
+import { Star as StarIcon } from "@material-ui/icons";
+import { useRouter } from "next/router";
+import styled from "styled-components";
 
 const StyledCard = styled(Card)`
   height: 330px;
   text-align: center;
   width: 130px;
 
-  ${(props) => props.theme.breakpoints.up('sm')} {
+  ${(props) => props.theme.breakpoints.up("sm")} {
     width: 170px;
   }
 `;
@@ -64,11 +63,11 @@ const MovieCard = ({ movie }: Props) => {
       <CardActionArea
         data-testid="card-button"
         onClick={() =>
-          router.push({ pathname: '/movie', query: { id: movie.id } })
+          router.push({ pathname: "/movie", query: { id: movie.id } })
         }
       >
         <StyledCardMedia
-          image={movie.poster_path || '/no-image.jpg'}
+          image={movie.poster_path || "/no-image.jpg"}
           src="img"
           title={movie.title}
         />

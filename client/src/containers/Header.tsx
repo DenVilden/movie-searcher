@@ -1,8 +1,7 @@
-import React from 'react';
-import { AppBar, Toolbar } from '@material-ui/core';
-import Favorites from './Favorites';
-import Logo from '../components/Logo';
-import SearchBar from '../components/SearchBar';
+import { AppBar, Toolbar } from "@material-ui/core";
+import Favorites from "./Favorites";
+import Logo from "../components/Logo";
+import SearchBar from "../components/SearchBar";
 
 const defaultProps = {
   testing: false,

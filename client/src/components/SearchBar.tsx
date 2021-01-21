@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 import {
   Autocomplete,
   AutocompleteChangeReason,
   AutocompleteInputChangeReason,
-} from '@material-ui/lab';
-import { useRouter } from 'next/router';
-import { TextField } from '@material-ui/core';
-import styled from 'styled-components';
-import { fade } from '@material-ui/core/styles';
-import { Search as SearchIcon } from '@material-ui/icons';
-import { useGetMoviesSearchLazyQuery } from '../generated/queries.generated';
+} from "@material-ui/lab";
+import { useRouter } from "next/router";
+import { TextField } from "@material-ui/core";
+import styled from "styled-components";
+import { fade } from "@material-ui/core/styles";
+import { Search as SearchIcon } from "@material-ui/icons";
+import { useGetMoviesSearchLazyQuery } from "../generated/queries.generated";
 
 const StyledAutocomplete = styled((props) => <Autocomplete {...props} />)`
   .MuiInputBase-root:before,
@@ -28,7 +28,7 @@ const StyledSearchBar = styled.div`
   position: relative;
   width: auto;
 
-  ${(props) => props.theme.breakpoints.up('sm')} {
+  ${(props) => props.theme.breakpoints.up("sm")} {
     margin-left: ${(props) => props.theme.spacing(6)}px;
   }
 
@@ -49,7 +49,7 @@ const StyledSearchIcon = styled(SearchIcon)`
 const StyledInputBase = styled(TextField)`
   padding: ${(props) => props.theme.spacing(0.5, 0.5, 0.3, 7)};
   width: 300px;
-  ${(props) => props.theme.breakpoints.up('md')} {
+  ${(props) => props.theme.breakpoints.up("md")} {
     width: 800px;
   }
 `;
@@ -59,7 +59,7 @@ type Props = {
 };
 
 const SearchBar = ({ testing }: Props) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   const [fetchMovies, { data, loading }] = useGetMoviesSearchLazyQuery();
 
@@ -76,9 +76,9 @@ const SearchBar = ({ testing }: Props) => {
         value: string | null,
         reason: AutocompleteChangeReason
       ) => {
-        if (reason === 'select-option') {
+        if (reason === "select-option") {
           router.push({
-            pathname: '/movie',
+            pathname: "/movie",
             query: {
               id: data?.moviesSearch.results.find(
                 (movie) => movie.title === value
@@ -92,11 +92,11 @@ const SearchBar = ({ testing }: Props) => {
         value: string,
         reason: AutocompleteInputChangeReason
       ) => {
-        if (reason === 'input') {
+        if (reason === "input") {
           setInputValue(value);
           fetchMovies({ variables: { query: value, pageSize: 8 } });
         } else {
-          setInputValue('');
+          setInputValue("");
         }
       }}
       open={!!inputValue}

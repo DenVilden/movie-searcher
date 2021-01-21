@@ -1,10 +1,9 @@
-import React from 'react';
-import { Badge, IconButton } from '@material-ui/core';
+import { Badge, IconButton } from "@material-ui/core";
 import {
   Favorite as FavoriteIcon,
   FavoriteBorder as FavoriteBorderIcon,
-} from '@material-ui/icons';
-import styled from 'styled-components';
+} from "@material-ui/icons";
+import styled from "styled-components";
 
 const StyledIconButton = styled(IconButton)`
   margin-left: auto;

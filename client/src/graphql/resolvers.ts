@@ -1,9 +1,9 @@
-import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
+import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
 import {
   GetFavoritesQuery,
   GetFavoritesDocument,
-} from '../generated/queries.generated';
-import { Resolvers } from '../generated/types';
+} from "../generated/queries.generated";
+import { Resolvers } from "../generated/types";
 
 export default {
   MovieInfo: {

@@ -1,13 +1,12 @@
-import React from 'react';
 import Document, {
   Html,
   Head,
   Main,
   NextScript,
   DocumentContext,
-} from 'next/document';
-import { ServerStyleSheets } from '@material-ui/core/styles';
-import { ServerStyleSheet } from 'styled-components';
+} from "next/document";
+import { ServerStyleSheets } from "@material-ui/core/styles";
+import { ServerStyleSheet } from "styled-components";
 
 export default class NextDocument extends Document {
   static getInitialProps = async (ctx: DocumentContext) => {

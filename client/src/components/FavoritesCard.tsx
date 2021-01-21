@@ -1,14 +1,13 @@
-import React from 'react';
 import {
   CardActionArea,
   LinearProgress,
   Typography,
   CardMedia,
-} from '@material-ui/core';
-import { useRouter } from 'next/router';
-import styled from 'styled-components';
-import ErrorMessage from '../containers/ErrorMessage';
-import { useGetMovieInfoQuery } from '../generated/queries.generated';
+} from "@material-ui/core";
+import { useRouter } from "next/router";
+import styled from "styled-components";
+import ErrorMessage from "../containers/ErrorMessage";
+import { useGetMovieInfoQuery } from "../generated/queries.generated";
 
 const StyledTypography = styled(Typography)`
   padding: ${(props) => props.theme.spacing(2)}px;
@@ -25,7 +24,7 @@ const StyledCardMedia = styled(CardMedia)`
   margin: ${(props) => props.theme.spacing(1)}px;
   width: 50px;
 
-  ${(props) => props.theme.breakpoints.up('sm')} {
+  ${(props) => props.theme.breakpoints.up("sm")} {
     display: block;
   }
 `;
@@ -48,13 +47,13 @@ const FavoritesCard = ({ toggleFavoritesOpen, id }: Props) => {
     <CardActionArea
       data-testid="favorites-card"
       onClick={() => {
-        router.push({ pathname: '/movie', query: { id } });
+        router.push({ pathname: "/movie", query: { id } });
         toggleFavoritesOpen();
       }}
     >
       <CardWrapper>
         <StyledCardMedia
-          image={data.movieInfo.poster_path || '/no-image.jpg'}
+          image={data.movieInfo.poster_path || "/no-image.jpg"}
           src="img"
           title={data.movieInfo.title}
         />

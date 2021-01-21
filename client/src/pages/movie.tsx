@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
-import { Slide, LinearProgress } from '@material-ui/core';
-import { useRouter } from 'next/router';
-import MovieInfo from '../components/MovieInfo';
-import MoviesBox from '../components/MoviesBox';
-import ErrorMessage from '../containers/ErrorMessage';
+import { useEffect } from "react";
+import { Slide, LinearProgress } from "@material-ui/core";
+import { useRouter } from "next/router";
+import MovieInfo from "../components/MovieInfo";
+import MoviesBox from "../components/MoviesBox";
+import ErrorMessage from "../containers/ErrorMessage";
 import {
   GetMovieInfoDocument,
   useGetMovieInfoLazyQuery,
-} from '../generated/queries.generated';
-import { useAddOrRemoveFromFavoritesMutation } from '../generated/mutations.generated';
-import { withApollo } from '../hocs/withApollo';
-import withLayout from '../hocs/withLayout';
+} from "../generated/queries.generated";
+import { useAddOrRemoveFromFavoritesMutation } from "../generated/mutations.generated";
+import { withApollo } from "../hocs/withApollo";
+import withLayout from "../hocs/withLayout";
 
 export const MoviePage = withLayout(() => {
   const {

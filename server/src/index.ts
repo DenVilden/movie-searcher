@@ -1,12 +1,12 @@
-import { ApolloServer } from 'apollo-server';
-import { importSchema } from 'graphql-import';
-import resolvers from './resolvers';
-import MoviesAPI from './datasources/Movies';
+import { ApolloServer } from "apollo-server";
+import { loadFiles } from "graphql-import-files";
+import resolvers from "./resolvers";
+import MoviesAPI from "./datasources/Movies";
 
 const { CLIENT_URL, PORT, MOVIE_API_KEY } = process.env;
 
 const server = new ApolloServer({
-  typeDefs: importSchema('./src/schema.graphql'),
+  typeDefs: loadFiles("./src/schema.graphql"),
   resolvers,
   dataSources: () => ({
     moviesAPI: new MoviesAPI(),

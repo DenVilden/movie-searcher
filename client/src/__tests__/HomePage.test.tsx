@@ -1,11 +1,10 @@
-import React from 'react';
-import { HomePage } from '../pages/index';
-import { GetMoviesDocument } from '../generated/queries.generated';
-import { renderApollo, fireEvent } from '../setupTests';
+import { HomePage } from "../pages/index";
+import { GetMoviesDocument } from "../generated/queries.generated";
+import { renderApollo, fireEvent } from "../setupTests";
 
 const mockHistoryPush = jest.fn();
 
-jest.mock('next/router', () => ({
+jest.mock("next/router", () => ({
   useRouter: () => ({
     push: mockHistoryPush,
   }),
@@ -19,28 +18,28 @@ const mocks = [
     result: {
       data: {
         upcoming: {
-          __typename: 'Upcoming',
+          __typename: "Upcoming",
           total_pages: 20,
           page: 1,
           results: [
             {
-              __typename: 'UpcomingResults',
+              __typename: "UpcomingResults",
               id: 1,
-              title: 'test',
-              release_date: '2020',
+              title: "test",
+              release_date: "2020",
               poster_path: null,
             },
           ],
         },
         topRated: {
-          __typename: 'TopRated',
+          __typename: "TopRated",
           total_pages: 20,
           page: 1,
           results: [
             {
-              __typename: 'TopRatedResults',
+              __typename: "TopRatedResults",
               id: 1,
-              title: 'test',
+              title: "test",
               vote_average: 5,
               poster_path: null,
             },
@@ -51,14 +50,14 @@ const mocks = [
   },
 ];
 
-describe('HomePage', () => {
-  it('should render error state', async () => {
+describe("HomePage", () => {
+  it("should render error state", async () => {
     const mockError = [
       {
         request: {
           query: GetMoviesDocument,
         },
-        error: new Error('an error has occurred'),
+        error: new Error("an error has occurred"),
       },
     ];
 
@@ -71,17 +70,17 @@ describe('HomePage', () => {
     expect(errorElement).toBeTruthy();
   });
 
-  it('should redirect to correct url when movie card is clicked', async () => {
+  it("should redirect to correct url when movie card is clicked", async () => {
     const { findAllByTestId } = renderApollo(<HomePage />, {
       mocks,
     });
 
-    const cardButtonElement = await findAllByTestId('card-button');
+    const cardButtonElement = await findAllByTestId("card-button");
 
     fireEvent.click(cardButtonElement[0]);
 
     expect(mockHistoryPush).toHaveBeenCalledWith({
-      pathname: '/movie',
+      pathname: "/movie",
       query: { id: 1 },
     });
   });

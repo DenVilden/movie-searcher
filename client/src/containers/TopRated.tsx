@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
-import styled from 'styled-components';
-import ErrorMessage from './ErrorMessage';
-import MoviesBox from '../components/MoviesBox';
-import { useGetTopRatedLazyQuery } from '../generated/queries.generated';
-import Pagination from '../components/Pagination';
-import { TopRated } from '../generated/types';
+import { useRef } from "react";
+import styled from "styled-components";
+import ErrorMessage from "./ErrorMessage";
+import MoviesBox from "../components/MoviesBox";
+import { useGetTopRatedLazyQuery } from "../generated/queries.generated";
+import Pagination from "../components/Pagination";
+import { TopRated } from "../generated/types";
 
 const Wrapper = styled.div`
   display: flex;

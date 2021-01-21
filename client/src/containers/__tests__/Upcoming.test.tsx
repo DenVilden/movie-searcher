@@ -1,8 +1,7 @@
-import React from 'react';
-import Upcoming from '../Upcoming';
-import { GetUpcomingDocument } from '../../generated/queries.generated';
-import { renderApollo, fireEvent } from '../../setupTests';
-import { Upcoming as UpcomingType } from '../../generated/types';
+import Upcoming from "../Upcoming";
+import { GetUpcomingDocument } from "../../generated/queries.generated";
+import { renderApollo, fireEvent } from "../../setupTests";
+import { Upcoming as UpcomingType } from "../../generated/types";
 
 const mocks = [
   {
@@ -13,15 +12,15 @@ const mocks = [
     result: {
       data: {
         upcoming: {
-          __typename: 'Upcoming',
+          __typename: "Upcoming",
           total_pages: 20,
           page: 1,
           results: [
             {
-              __typename: 'UpcomingResults',
+              __typename: "UpcomingResults",
               id: 1,
-              title: 'page-1',
-              release_date: '1500',
+              title: "page-1",
+              release_date: "1500",
               poster_path: null,
             },
           ],
@@ -37,15 +36,15 @@ const mocks = [
     result: {
       data: {
         upcoming: {
-          __typename: 'Upcoming',
+          __typename: "Upcoming",
           total_pages: 20,
           page: 2,
           results: [
             {
-              __typename: 'UpcomingResults',
+              __typename: "UpcomingResults",
               id: 2,
-              title: 'page-2',
-              release_date: '1500',
+              title: "page-2",
+              release_date: "1500",
               poster_path: null,
             },
           ],
@@ -55,15 +54,15 @@ const mocks = [
   },
 ];
 
-describe('Upcoming', () => {
-  it('should render error state', async () => {
+describe("Upcoming", () => {
+  it("should render error state", async () => {
     const mockError = [
       {
         request: {
           query: GetUpcomingDocument,
           variables: { page: 2 },
         },
-        error: new Error('an error has occurred'),
+        error: new Error("an error has occurred"),
       },
     ];
 
@@ -72,7 +71,7 @@ describe('Upcoming', () => {
       { mocks: mockError }
     );
 
-    const pageButton = await findByLabelText('Go to next page');
+    const pageButton = await findByLabelText("Go to next page");
 
     fireEvent.click(pageButton);
 
@@ -81,16 +80,16 @@ describe('Upcoming', () => {
     expect(errorElement).toBeTruthy();
   });
 
-  it('should switch page and refetch movies', async () => {
+  it("should switch page and refetch movies", async () => {
     const { findByLabelText, findByText } = renderApollo(
       <Upcoming initialData={mocks[0].result.data.upcoming as UpcomingType} />,
       { mocks }
     );
 
-    const pageButton = await findByLabelText('Go to next page');
+    const pageButton = await findByLabelText("Go to next page");
 
     fireEvent.click(pageButton);
 
-    await findByText('page-2');
+    await findByText("page-2");
   });
 });

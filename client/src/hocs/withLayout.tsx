@@ -1,9 +1,12 @@
-import React from 'react';
-import Header from '../containers/Header';
+import Header from "../containers/Header";
 
-export default (WrappedComponent: React.ComponentType) => ({ ...props }) => (
+const withLayout = (WrappedComponent: React.ComponentType) => ({
+  ...props
+}) => (
   <>
     <Header />
     <WrappedComponent {...props} />
   </>
 );
+
+export default withLayout;

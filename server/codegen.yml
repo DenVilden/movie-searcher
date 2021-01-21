@@ -9,3 +9,6 @@ generates:
       useIndexSignature: true
       noSchemaStitching: true
       contextType: ../datasources/Movies#Context
+hooks:
+  afterAllFileWrite:
+    - prettier --write
