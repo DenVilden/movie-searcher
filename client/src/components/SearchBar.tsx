@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   Autocomplete,
   AutocompleteChangeReason,
-  RenderInputParams,
   AutocompleteInputChangeReason,
 } from '@material-ui/lab';
 import { useRouter } from 'next/router';
@@ -62,7 +61,7 @@ type Props = {
 const SearchBar = ({ testing }: Props) => {
   const [inputValue, setInputValue] = useState('');
 
-  const [fetchMovies, { data }] = useGetMoviesSearchLazyQuery();
+  const [fetchMovies, { data, loading }] = useGetMoviesSearchLazyQuery();
 
   const router = useRouter();
 
@@ -71,6 +70,7 @@ const SearchBar = ({ testing }: Props) => {
       disablePortal={testing}
       freeSolo
       inputValue={inputValue}
+      loading={loading}
       onChange={(
         _: React.ChangeEvent<HTMLLIElement>,
         value: string | null,
@@ -101,7 +101,7 @@ const SearchBar = ({ testing }: Props) => {
       }}
       open={!!inputValue}
       options={data?.moviesSearch.results.map((movie) => movie.title) || []}
-      renderInput={(params: RenderInputParams) => (
+      renderInput={(params: any) => (
         <StyledSearchBar>
           <StyledSearchIcon />
           <StyledInputBase {...params} placeholder="type a movie name..." />

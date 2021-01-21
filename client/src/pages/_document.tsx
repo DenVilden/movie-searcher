@@ -1,5 +1,6 @@
 import React from 'react';
 import Document, {
+  Html,
   Head,
   Main,
   NextScript,
@@ -42,7 +43,7 @@ export default class NextDocument extends Document {
 
   render() {
     return (
-      <html lang="en">
+      <Html>
         <Head>
           <meta content="Movie searcher app" name="description" />
         </Head>
@@ -57,7 +58,7 @@ export default class NextDocument extends Document {
             }}
           />
         </body>
-      </html>
+      </Html>
     );
   }
 }
