@@ -63,7 +63,10 @@ const MovieCard = ({ movie }: Props) => {
       <CardActionArea
         data-testid="card-button"
         onClick={() =>
-          router.push({ pathname: "/movie", query: { id: movie.id } })
+          router.push(
+            { pathname: "/movie", query: { id: movie.id } },
+            `/movie/${movie.id}`
+          )
         }
       >
         <StyledCardMedia

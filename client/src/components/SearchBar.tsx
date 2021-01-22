@@ -77,14 +77,19 @@ const SearchBar = ({ testing }: Props) => {
         reason: AutocompleteChangeReason
       ) => {
         if (reason === "select-option") {
-          router.push({
-            pathname: "/movie",
-            query: {
-              id: data?.moviesSearch.results.find(
-                (movie) => movie.title === value
-              )?.id,
+          const id = data?.moviesSearch.results.find(
+            (movie) => movie.title === value
+          )?.id;
+
+          router.push(
+            {
+              pathname: "/movie",
+              query: {
+                id,
+              },
             },
-          });
+            `/movie/${id}`
+          );
         }
       }}
       onInputChange={(
