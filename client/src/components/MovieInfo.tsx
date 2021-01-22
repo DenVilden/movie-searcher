@@ -15,7 +15,7 @@ const StyledCard = styled(Card)`
   display: block;
   margin: ${(props) => props.theme.spacing(2)}px;
 
-  ${(props) => props.theme.breakpoints.up("sm")} {
+  ${(props) => props.theme.breakpoints.up("md")} {
     display: flex;
   }
 `;
@@ -24,7 +24,7 @@ const StyledCardMedia = styled(CardMedia)`
   height: 450px;
   margin: ${(props) => props.theme.spacing(2)}px;
 
-  ${(props) => props.theme.breakpoints.up("sm")} {
+  ${(props) => props.theme.breakpoints.up("md")} {
     width: 40%;
   }
 `;
@@ -34,7 +34,7 @@ const StyledCardContent = styled(CardContent)`
   flex-direction: column;
   justify-content: space-between;
 
-  ${(props) => props.theme.breakpoints.up("sm")} {
+  ${(props) => props.theme.breakpoints.up("md")} {
     width: 60%;
   }
 `;

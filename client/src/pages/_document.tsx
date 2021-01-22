@@ -42,7 +42,7 @@ export default class NextDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
           <meta content="Movie searcher app" name="description" />
         </Head>

@@ -11,7 +11,6 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@testing-library/react": "^11.2.3",
-    "dotenv": "^8.2.0",
     "graphql": "^15.4.0",
     "graphql.macro": "^1.4.2",
     "isomorphic-unfetch": "^3.1.0",
@@ -130,7 +129,8 @@
         "styled-components",
         {
           "ssr": true,
-          "displayName": true
+          "displayName": true,
+          "pure": true
         }
       ],
       [

@@ -64,7 +64,7 @@ export const createApolloClient = (
     resolvers,
     ssrMode: !!ctx,
     link: new HttpLink({
-      uri: process.env.SERVER_URL,
+      uri: process.env.NEXT_PUBLIC_SERVER_URL,
       credentials: "same-origin", // Additional fetch() options like `credentials` or `headers`
       fetch,
     }),
