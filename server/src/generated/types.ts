@@ -1,8 +1,4 @@
-import {
-  GraphQLResolveInfo,
-  GraphQLScalarType,
-  GraphQLScalarTypeConfig,
-} from "graphql";
+import { GraphQLResolveInfo } from "graphql";
 import { Context } from "../datasources/Movies";
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -23,8 +19,6 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** The `Upload` scalar type represents a file upload. */
-  Upload: any;
 };
 
 export type UpcomingResults = {
@@ -74,7 +68,7 @@ export type SimilarResults = {
   __typename?: "SimilarResults";
   id: Scalars["Int"];
   title: Scalars["String"];
-  release_date: Scalars["String"];
+  release_date?: Maybe<Scalars["String"]>;
   poster_path?: Maybe<Scalars["String"]>;
 };
 
@@ -126,11 +120,6 @@ export type QueryMovieInfoArgs = {
   cursor?: Maybe<Scalars["Int"]>;
   pageSize?: Maybe<Scalars["Int"]>;
 };
-
-export enum CacheControlScope {
-  Public = "PUBLIC",
-  Private = "PRIVATE",
-}
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
 export type ResolversObject<TObject> = WithIndex<TObject>;
@@ -257,8 +246,6 @@ export type ResolversTypes = ResolversObject<{
   MovieInfo: ResolverTypeWrapper<MovieInfo>;
   Query: ResolverTypeWrapper<{}>;
   ID: ResolverTypeWrapper<Scalars["ID"]>;
-  CacheControlScope: CacheControlScope;
-  Upload: ResolverTypeWrapper<Scalars["Upload"]>;
 }>;
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -278,20 +265,7 @@ export type ResolversParentTypes = ResolversObject<{
   MovieInfo: MovieInfo;
   Query: {};
   ID: Scalars["ID"];
-  Upload: Scalars["Upload"];
 }>;
-
-export type CacheControlDirectiveArgs = {
-  maxAge?: Maybe<Scalars["Int"]>;
-  scope?: Maybe<CacheControlScope>;
-};
-
-export type CacheControlDirectiveResolver<
-  Result,
-  Parent,
-  ContextType = Context,
-  Args = CacheControlDirectiveArgs
-> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
 export type UpcomingResultsResolvers<
   ContextType = Context,
@@ -380,7 +354,11 @@ export type SimilarResultsResolvers<
 > = ResolversObject<{
   id?: Resolver<ResolversTypes["Int"], ParentType, ContextType>;
   title?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
-  release_date?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
+  release_date?: Resolver<
+    Maybe<ResolversTypes["String"]>,
+    ParentType,
+    ContextType
+  >;
   poster_path?: Resolver<
     Maybe<ResolversTypes["String"]>,
     ParentType,
@@ -458,11 +436,6 @@ export type QueryResolvers<
   >;
 }>;
 
-export interface UploadScalarConfig
-  extends GraphQLScalarTypeConfig<ResolversTypes["Upload"], any> {
-  name: "Upload";
-}
-
 export type Resolvers<ContextType = Context> = ResolversObject<{
   UpcomingResults?: UpcomingResultsResolvers<ContextType>;
   Upcoming?: UpcomingResolvers<ContextType>;
@@ -474,7 +447,6 @@ export type Resolvers<ContextType = Context> = ResolversObject<{
   SimilarMovies?: SimilarMoviesResolvers<ContextType>;
   MovieInfo?: MovieInfoResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
-  Upload?: GraphQLScalarType;
 }>;
 
 /**
@@ -482,14 +454,3 @@ export type Resolvers<ContextType = Context> = ResolversObject<{
  * Use "Resolvers" root object instead. If you wish to get "IResolvers", add "typesPrefix: I" to your config.
  */
 export type IResolvers<ContextType = Context> = Resolvers<ContextType>;
-export type DirectiveResolvers<ContextType = Context> = ResolversObject<{
-  cacheControl?: CacheControlDirectiveResolver<any, any, ContextType>;
-}>;
-
-/**
- * @deprecated
- * Use "DirectiveResolvers" root object instead. If you wish to get "IDirectiveResolvers", add "typesPrefix: I" to your config.
- */
-export type IDirectiveResolvers<
-  ContextType = Context
-> = DirectiveResolvers<ContextType>;

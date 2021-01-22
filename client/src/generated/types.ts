@@ -73,7 +73,7 @@ export type SimilarResults = {
   __typename?: "SimilarResults";
   id: Scalars["Int"];
   title: Scalars["String"];
-  release_date: Scalars["String"];
+  release_date?: Maybe<Scalars["String"]>;
   poster_path?: Maybe<Scalars["String"]>;
 };
 
@@ -392,7 +392,11 @@ export type SimilarResultsResolvers<
 > = ResolversObject<{
   id?: Resolver<ResolversTypes["Int"], ParentType, ContextType>;
   title?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
-  release_date?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
+  release_date?: Resolver<
+    Maybe<ResolversTypes["String"]>,
+    ParentType,
+    ContextType
+  >;
   poster_path?: Resolver<
     Maybe<ResolversTypes["String"]>,
     ParentType,

@@ -38,7 +38,7 @@ type MoviesSearch {
 type SimilarResults {
   id: Int!
   title: String!
-  release_date: String!
+  release_date: String
   poster_path: String
 }
 
