@@ -10,6 +10,8 @@ generates:
       - typescript-resolvers
       - typescript-operations
       - typescript-react-apollo
+    config:
+      useIndexSignature: true
 hooks:
   afterAllFileWrite:
     - prettier --write

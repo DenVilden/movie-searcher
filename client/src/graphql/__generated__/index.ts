@@ -5,7 +5,6 @@ import {
 } from "graphql";
 import { gql } from "@apollo/client";
 import * as Apollo from "@apollo/client";
-
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
@@ -145,6 +144,9 @@ export type MutationAddOrRemoveFromFavoritesArgs = {
   id: Scalars["String"];
 };
 
+export type WithIndex<TObject> = TObject & Record<string, any>;
+export type ResolversObject<TObject> = WithIndex<TObject>;
+
 export type ResolverTypeWrapper<T> = Promise<T> | T;
 
 export type LegacyStitchingResolver<TResult, TParent, TContext, TArgs> = {
@@ -260,7 +262,7 @@ export type DirectiveResolverFn<
 ) => TResult | Promise<TResult>;
 
 /** Mapping between all available schema types and the resolvers types */
-export type ResolversTypes = {
+export type ResolversTypes = ResolversObject<{
   UpcomingResults: ResolverTypeWrapper<UpcomingResults>;
   Int: ResolverTypeWrapper<Scalars["Int"]>;
   String: ResolverTypeWrapper<Scalars["String"]>;
@@ -279,10 +281,10 @@ export type ResolversTypes = {
   CacheControlScope: CacheControlScope;
   Upload: ResolverTypeWrapper<Scalars["Upload"]>;
   Mutation: ResolverTypeWrapper<{}>;
-};
+}>;
 
 /** Mapping between all available schema types and the resolvers parents */
-export type ResolversParentTypes = {
+export type ResolversParentTypes = ResolversObject<{
   UpcomingResults: UpcomingResults;
   Int: Scalars["Int"];
   String: Scalars["String"];
@@ -300,7 +302,7 @@ export type ResolversParentTypes = {
   ID: Scalars["ID"];
   Upload: Scalars["Upload"];
   Mutation: {};
-};
+}>;
 
 export type CacheControlDirectiveArgs = {
   maxAge?: Maybe<Scalars["Int"]>;
@@ -317,7 +319,7 @@ export type CacheControlDirectiveResolver<
 export type UpcomingResultsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["UpcomingResults"] = ResolversParentTypes["UpcomingResults"]
-> = {
+> = ResolversObject<{
   id?: Resolver<ResolversTypes["Int"], ParentType, ContextType>;
   title?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
   release_date?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
@@ -327,12 +329,12 @@ export type UpcomingResultsResolvers<
     ContextType
   >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
+}>;
 
 export type UpcomingResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["Upcoming"] = ResolversParentTypes["Upcoming"]
-> = {
+> = ResolversObject<{
   total_pages?: Resolver<ResolversTypes["Int"], ParentType, ContextType>;
   page?: Resolver<ResolversTypes["Int"], ParentType, ContextType>;
   results?: Resolver<
@@ -341,12 +343,12 @@ export type UpcomingResolvers<
     ContextType
   >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
+}>;
 
 export type TopRatedResultsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["TopRatedResults"] = ResolversParentTypes["TopRatedResults"]
-> = {
+> = ResolversObject<{
   id?: Resolver<ResolversTypes["Int"], ParentType, ContextType>;
   title?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
   vote_average?: Resolver<ResolversTypes["Float"], ParentType, ContextType>;
@@ -356,12 +358,12 @@ export type TopRatedResultsResolvers<
     ContextType
   >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
+}>;
 
 export type TopRatedResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["TopRated"] = ResolversParentTypes["TopRated"]
-> = {
+> = ResolversObject<{
   total_pages?: Resolver<ResolversTypes["Int"], ParentType, ContextType>;
   page?: Resolver<ResolversTypes["Int"], ParentType, ContextType>;
   results?: Resolver<
@@ -370,21 +372,21 @@ export type TopRatedResolvers<
     ContextType
   >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
+}>;
 
 export type MoviesSearchResultsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["MoviesSearchResults"] = ResolversParentTypes["MoviesSearchResults"]
-> = {
+> = ResolversObject<{
   id?: Resolver<ResolversTypes["Int"], ParentType, ContextType>;
   title?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
+}>;
 
 export type MoviesSearchResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["MoviesSearch"] = ResolversParentTypes["MoviesSearch"]
-> = {
+> = ResolversObject<{
   cursor?: Resolver<Maybe<ResolversTypes["Int"]>, ParentType, ContextType>;
   hasMore?: Resolver<Maybe<ResolversTypes["Boolean"]>, ParentType, ContextType>;
   results?: Resolver<
@@ -393,12 +395,12 @@ export type MoviesSearchResolvers<
     ContextType
   >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
+}>;
 
 export type SimilarResultsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["SimilarResults"] = ResolversParentTypes["SimilarResults"]
-> = {
+> = ResolversObject<{
   id?: Resolver<ResolversTypes["Int"], ParentType, ContextType>;
   title?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
   release_date?: Resolver<
@@ -412,12 +414,12 @@ export type SimilarResultsResolvers<
     ContextType
   >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
+}>;
 
 export type SimilarMoviesResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["SimilarMovies"] = ResolversParentTypes["SimilarMovies"]
-> = {
+> = ResolversObject<{
   cursor?: Resolver<Maybe<ResolversTypes["Int"]>, ParentType, ContextType>;
   hasMore?: Resolver<Maybe<ResolversTypes["Boolean"]>, ParentType, ContextType>;
   results?: Resolver<
@@ -426,12 +428,12 @@ export type SimilarMoviesResolvers<
     ContextType
   >;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
+}>;
 
 export type MovieInfoResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["MovieInfo"] = ResolversParentTypes["MovieInfo"]
-> = {
+> = ResolversObject<{
   backdrop_path?: Resolver<
     Maybe<ResolversTypes["String"]>,
     ParentType,
@@ -452,12 +454,12 @@ export type MovieInfoResolvers<
   title?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
   vote_average?: Resolver<ResolversTypes["Float"], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
+}>;
 
 export type QueryResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["Query"] = ResolversParentTypes["Query"]
-> = {
+> = ResolversObject<{
   favorites?: Resolver<
     Array<ResolversTypes["String"]>,
     ParentType,
@@ -487,7 +489,7 @@ export type QueryResolvers<
     ContextType,
     RequireFields<QueryUpcomingArgs, "page">
   >;
-};
+}>;
 
 export interface UploadScalarConfig
   extends GraphQLScalarTypeConfig<ResolversTypes["Upload"], any> {
@@ -497,16 +499,16 @@ export interface UploadScalarConfig
 export type MutationResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes["Mutation"] = ResolversParentTypes["Mutation"]
-> = {
+> = ResolversObject<{
   addOrRemoveFromFavorites?: Resolver<
     Array<ResolversTypes["String"]>,
     ParentType,
     ContextType,
     RequireFields<MutationAddOrRemoveFromFavoritesArgs, "id">
   >;
-};
+}>;
 
-export type Resolvers<ContextType = any> = {
+export type Resolvers<ContextType = any> = ResolversObject<{
   UpcomingResults?: UpcomingResultsResolvers<ContextType>;
   Upcoming?: UpcomingResolvers<ContextType>;
   TopRatedResults?: TopRatedResultsResolvers<ContextType>;
@@ -519,16 +521,16 @@ export type Resolvers<ContextType = any> = {
   Query?: QueryResolvers<ContextType>;
   Upload?: GraphQLScalarType;
   Mutation?: MutationResolvers<ContextType>;
-};
+}>;
 
 /**
  * @deprecated
  * Use "Resolvers" root object instead. If you wish to get "IResolvers", add "typesPrefix: I" to your config.
  */
 export type IResolvers<ContextType = any> = Resolvers<ContextType>;
-export type DirectiveResolvers<ContextType = any> = {
+export type DirectiveResolvers<ContextType = any> = ResolversObject<{
   cacheControl?: CacheControlDirectiveResolver<any, any, ContextType>;
-};
+}>;
 
 /**
  * @deprecated
