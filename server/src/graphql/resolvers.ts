@@ -1,7 +1,7 @@
-import { Resolvers } from "./generated/types";
-import { paginateResults } from "./utils";
+import { Resolvers } from "./__generated__";
+import { paginateResults } from "../datasources/utils";
 
-export default {
+const resolvers: Resolvers = {
   Query: {
     upcoming: (_, { page }, { dataSources }) => {
       return dataSources.moviesAPI.getUpcoming(page);
@@ -21,4 +21,6 @@ export default {
       };
     },
   },
-} as Resolvers;
+};
+
+export default resolvers;

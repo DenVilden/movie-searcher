@@ -8,7 +8,7 @@
   "dependencies": {
     "apollo-datasource-rest": "^0.9.7",
     "apollo-server": "^2.19.2",
-    "dayjs": "^1.10.3",
+    "dayjs": "^1.10.4",
     "graphql": "^15.4.0",
     "graphql-import-files": "^1.0.10",
     "numeral": "^2.0.6"
@@ -46,14 +46,14 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.ts",
-      "!src/generated/*.ts",
+      "!src/graphql/__generated__",
       "!src/index.ts"
     ],
     "preset": "ts-jest",
     "testEnvironment": "node"
   },
   "eslintIgnore": [
-    "src/generated/**/*"
+    "src/graphql/__generated__"
   ],
   "eslintConfig": {
     "extends": [
@@ -74,7 +74,6 @@
         }
       ],
       "@typescript-eslint/explicit-module-boundary-types": "off",
-      "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/camelcase": "off"
     }
   }

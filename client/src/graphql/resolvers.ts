@@ -2,10 +2,10 @@ import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
 import {
   GetFavoritesQuery,
   GetFavoritesDocument,
-} from "../generated/queries.generated";
-import { Resolvers } from "../generated/types";
+  Resolvers,
+} from "./__generated__";
 
-export default {
+const resolvers: Resolvers<ApolloClient<NormalizedCacheObject>> = {
   MovieInfo: {
     isInFavorites: (movie, __, { cache }) => {
       const queryResult = cache.readQuery<GetFavoritesQuery>({
@@ -35,4 +35,6 @@ export default {
       return newFavorites;
     },
   },
-} as Resolvers<ApolloClient<NormalizedCacheObject>>;
+};
+
+export default resolvers;

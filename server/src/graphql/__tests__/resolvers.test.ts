@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import resolvers from "../resolvers";
 import {
   mockUpcoming,
   mockTopRated,
   mockMoviesSearch,
   mockMovieInfo,
-} from "../datasources/__mocks__/responses";
+} from "../../datasources/__mocks__/responses";
 
 describe("[Query.upcoming]", () => {
   const mockContext = {

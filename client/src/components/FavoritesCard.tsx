@@ -7,7 +7,7 @@ import {
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import ErrorMessage from "../containers/ErrorMessage";
-import { useGetMovieInfoQuery } from "../generated/queries.generated";
+import { useGetMovieInfoQuery } from "../graphql/__generated__";
 
 const StyledTypography = styled(Typography)`
   padding: ${(props) => props.theme.spacing(2)}px;

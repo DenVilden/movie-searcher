@@ -1,6 +1,6 @@
-import { HomePage } from "../pages/index";
-import { GetMoviesDocument } from "../generated/queries.generated";
-import { renderApollo, fireEvent } from "../setupTests";
+import { HomePage } from "../index";
+import { GetMoviesDocument } from "../../graphql/__generated__";
+import { renderApollo, fireEvent } from "../../setupTests";
 
 const mockHistoryPush = jest.fn();
 
@@ -79,9 +79,12 @@ describe("HomePage", () => {
 
     fireEvent.click(cardButtonElement[0]);
 
-    expect(mockHistoryPush).toHaveBeenCalledWith({
-      pathname: "/movie",
-      query: { id: 1 },
-    });
+    expect(mockHistoryPush).toHaveBeenCalledWith(
+      {
+        pathname: "/movie",
+        query: { id: 1 },
+      },
+      "/movie/1"
+    );
   });
 });

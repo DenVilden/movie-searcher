@@ -1,6 +1,6 @@
 import Header from "../Header";
 import { renderApollo, fireEvent } from "../../setupTests";
-import { GetMoviesSearchDocument } from "../../generated/queries.generated";
+import { GetMoviesSearchDocument } from "../../graphql/__generated__";
 
 const mockHistoryPush = jest.fn();
 
@@ -33,7 +33,6 @@ const mocks = [
   },
 ];
 
-// TODO: figure out how to test lazy queries
 describe("Header", () => {
   it("should update input with new value and fetch movies", async () => {
     const { findByPlaceholderText, findByText } = renderApollo(
@@ -91,9 +90,12 @@ describe("Header", () => {
 
     fireEvent.click(searchResult);
 
-    expect(mockHistoryPush).toHaveBeenCalledWith({
-      pathname: "/movie",
-      query: { id: 1 },
-    });
+    expect(mockHistoryPush).toHaveBeenCalledWith(
+      {
+        pathname: "/movie",
+        query: { id: 1 },
+      },
+      "/movie/1"
+    );
   });
 });

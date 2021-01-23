@@ -4,21 +4,10 @@ schema:
   - src/graphql/schema.graphql
 documents: src/graphql/**/*.graphql
 generates:
-  src/generated/types.ts:
+  src/graphql/__generated__/index.ts:
     plugins:
       - typescript
       - typescript-resolvers
-    config:
-      useIndexSignature: true
-      noSchemaStitching: true
-
-  src/generated:
-    preset: near-operation-file
-    presetConfig:
-      extension: .generated.tsx
-      baseTypesPath: types.ts
-      folder: ../generated
-    plugins:
       - typescript-operations
       - typescript-react-apollo
 hooks:

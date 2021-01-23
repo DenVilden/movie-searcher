@@ -3,7 +3,7 @@ import Favorites from "../Favorites";
 import {
   GetFavoritesDocument,
   GetMovieInfoDocument,
-} from "../../generated/queries.generated";
+} from "../../graphql/__generated__";
 import { renderApollo, fireEvent } from "../../setupTests";
 
 const mockHistoryPush = jest.fn();

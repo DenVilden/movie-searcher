@@ -1,7 +1,9 @@
 import TopRated from "../TopRated";
-import { GetTopRatedDocument } from "../../generated/queries.generated";
+import {
+  GetTopRatedDocument,
+  TopRated as TopRatedType,
+} from "../../graphql/__generated__";
 import { renderApollo, fireEvent } from "../../setupTests";
-import { TopRated as TopRatedType } from "../../generated/types";
 
 const mocks = [
   {

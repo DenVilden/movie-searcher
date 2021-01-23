@@ -2,9 +2,8 @@ import { useRef } from "react";
 import styled from "styled-components";
 import ErrorMessage from "./ErrorMessage";
 import MoviesBox from "../components/MoviesBox";
-import { useGetUpcomingLazyQuery } from "../generated/queries.generated";
+import { useGetUpcomingLazyQuery, Upcoming } from "../graphql/__generated__";
 import Pagination from "../components/Pagination";
-import { Upcoming } from "../generated/types";
 
 const Wrapper = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import FavoritesIcon from "../components/FavoritesIcon";
 import FavoritesDropdown from "../components/FavoritesDropdown";
-import { useGetFavoritesQuery } from "../generated/queries.generated";
+import { useGetFavoritesQuery } from "../graphql/__generated__";
 
 const Favorites = () => {
   const { data } = useGetFavoritesQuery();

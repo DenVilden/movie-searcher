@@ -7,8 +7,8 @@ import ErrorMessage from "../../containers/ErrorMessage";
 import {
   GetMovieInfoDocument,
   useGetMovieInfoLazyQuery,
-} from "../../generated/queries.generated";
-import { useAddOrRemoveFromFavoritesMutation } from "../../generated/mutations.generated";
+  useAddOrRemoveFromFavoritesMutation,
+} from "../../graphql/__generated__";
 import { withApollo } from "../../hocs/withApollo";
 import withLayout from "../../hocs/withLayout";
 

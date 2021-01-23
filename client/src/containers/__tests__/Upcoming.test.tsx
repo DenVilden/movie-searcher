@@ -1,7 +1,9 @@
 import Upcoming from "../Upcoming";
-import { GetUpcomingDocument } from "../../generated/queries.generated";
+import {
+  GetUpcomingDocument,
+  Upcoming as UpcomingType,
+} from "../../graphql/__generated__";
 import { renderApollo, fireEvent } from "../../setupTests";
-import { Upcoming as UpcomingType } from "../../generated/types";
 
 const mocks = [
   {
