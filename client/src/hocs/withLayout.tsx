@@ -5,6 +5,7 @@ const withLayout = (WrappedComponent: React.ComponentType) => ({
 }) => (
   <>
     <Header />
+    {/* eslint-disable-next-line react/jsx-props-no-spreading */}
     <WrappedComponent {...props} />
   </>
 );

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import App from "next/app";
 import Head from "next/head";
 import { createMuiTheme, CssBaseline, StylesProvider } from "@material-ui/core";

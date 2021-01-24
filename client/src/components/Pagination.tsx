@@ -38,8 +38,4 @@ const Pagination = ({
   );
 };
 
-Pagination.defaultProps = {
-  scrollToTop: undefined,
-};
-
 export default Pagination;

@@ -47,7 +47,6 @@
     "eslint-plugin-testing-library": "^3.10.1",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
-    "ts-jest": "^26.4.4",
     "typescript": "4.1.2"
   },
   "scripts": {
@@ -59,11 +58,6 @@
     "codegen": "graphql-codegen"
   },
   "jest": {
-    "globals": {
-      "ts-jest": {
-        "tsconfig": "tsconfig.jest.json"
-      }
-    },
     "collectCoverageFrom": [
       "src/containers/**/*.tsx",
       "src/components/**/*.tsx",
@@ -71,8 +65,7 @@
       "src/graphql/*.ts",
       "!src/pages/_app.tsx",
       "!src/pages/_document.tsx"
-    ],
-    "preset": "ts-jest"
+    ]
   },
   "eslintIgnore": [
     "next-env.d.ts",
@@ -107,12 +100,10 @@
           ]
         }
       ],
-      "react/jsx-props-no-spreading": "off",
       "react/prop-types": "off",
-      "camelcase": "off",
-      "import/named": "off",
-      "react/default-props-match-prop-types": "off",
-      "react/react-in-jsx-scope": "off"
+      "react/react-in-jsx-scope": "off",
+      "react/require-default-props": "off",
+      "camelcase": "off"
     }
   },
   "babel": {
@@ -124,8 +115,7 @@
         "styled-components",
         {
           "ssr": true,
-          "displayName": true,
-          "pure": true
+          "displayName": true
         }
       ],
       [

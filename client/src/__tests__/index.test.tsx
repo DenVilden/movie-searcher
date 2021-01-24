@@ -1,4 +1,4 @@
-import { HomePage } from "../pages/index";
+import { HomePage } from "../pages";
 import { GetMoviesDocument } from "../graphql/__generated__";
 import { renderApollo, fireEvent } from "../setupTests";
 

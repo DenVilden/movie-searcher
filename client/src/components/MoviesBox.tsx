@@ -19,12 +19,6 @@ const Wrapper = styled(Grid)`
   }
 `;
 
-const defaultProps = {
-  title: "",
-  elevation: 10,
-  padding: 1,
-};
-
 type Props = {
   movies: {
     id: number;
@@ -33,9 +27,17 @@ type Props = {
     poster_path?: string | null;
     release_date?: string | null;
   }[];
-} & typeof defaultProps;
+  title?: string;
+  elevation?: number;
+  padding?: number;
+};
 
-const MoviesBox = ({ movies, title, elevation, padding }: Props) => (
+const MoviesBox = ({
+  movies,
+  title = "",
+  elevation = 10,
+  padding = 1,
+}: Props) => (
   <Grow in>
     <Root elevation={elevation} padding={padding}>
       {!!title && (
@@ -61,7 +63,5 @@ const MoviesBox = ({ movies, title, elevation, padding }: Props) => (
     </Root>
   </Grow>
 );
-
-MoviesBox.defaultProps = defaultProps;
 
 export default MoviesBox;
