@@ -27,11 +27,13 @@ const Pagination = ({
       onChange={(_, value: number) => {
         setPage(value);
         refetch({ variables: { page: value } });
-        scrollToTop &&
+        return (
+          scrollToTop &&
           scrollToTop.current.scrollIntoView({
             behavior: "smooth",
             block: "start",
-          });
+          })
+        );
       }}
       page={page}
     />

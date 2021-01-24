@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Error from "next/error";
 import { ApolloError } from "@apollo/client";
 
@@ -10,7 +11,7 @@ const ErrorMessage = ({ error }: Props) => (
     statusCode={
       error.graphQLErrors?.length
         ? error.graphQLErrors[0].extensions!.response.status
-        : //
+        : // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           error.networkError!.statusCode
     }

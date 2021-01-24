@@ -54,7 +54,7 @@ const mocks = [
   },
 ];
 
-describe("MoviePage", () => {
+describe("moviePage", () => {
   it("should render error state", async () => {
     const mockError = [
       {
@@ -95,10 +95,10 @@ describe("MoviePage", () => {
 
     fireEvent.click(favoritesButton);
 
-    await findByText("Remove from favorites");
+    expect(findByText("Remove from favorites")).toBeTruthy();
 
     fireEvent.click(favoritesButton);
 
-    await findByText("Add to favorites");
+    expect(findByText("Add to favorites")).toBeTruthy();
   });
 });

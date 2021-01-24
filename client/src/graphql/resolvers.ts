@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
 import {
   GetFavoritesQuery,

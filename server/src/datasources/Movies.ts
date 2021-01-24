@@ -6,7 +6,7 @@ import {
   MockTopRatedResponse,
   MockMoviesSearchResponse,
   MockMovieInfoResponse,
-} from "./__mocks__/responses";
+} from "../mocks/responses";
 
 export interface Context {
   dataSources: {

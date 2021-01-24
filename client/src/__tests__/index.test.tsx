@@ -50,7 +50,7 @@ const mocks = [
   },
 ];
 
-describe("HomePage", () => {
+describe("homePage", () => {
   it("should render error state", async () => {
     const mockError = [
       {

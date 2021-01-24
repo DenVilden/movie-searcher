@@ -8,7 +8,7 @@ import {
   mockTopRated,
   mockMoviesSearch,
   mockMovieInfo,
-} from "../__mocks__/responses";
+} from "../../mocks/responses";
 
 const mocks = {
   get: jest.fn(),
@@ -26,8 +26,8 @@ describe("getUpcomingMovies", () => {
     const page = 1;
     const res = await api.getUpcoming(page);
 
-    expect(res).toEqual(mockUpcoming);
-    expect(mocks.get).toBeCalledWith("/movie/upcoming", { page });
+    expect(res).toStrictEqual(mockUpcoming);
+    expect(mocks.get).toHaveBeenCalledWith("/movie/upcoming", { page });
   });
 
   it("should get 1st page if no page specified", async () => {
@@ -35,20 +35,20 @@ describe("getUpcomingMovies", () => {
 
     const res = await api.getUpcoming();
 
-    expect(res).toEqual(mockUpcoming);
-    expect(mocks.get).toBeCalledWith("/movie/upcoming", { page: 1 });
+    expect(res).toStrictEqual(mockUpcoming);
+    expect(mocks.get).toHaveBeenCalledWith("/movie/upcoming", { page: 1 });
   });
 });
 
 describe("getTopRatedMovies", () => {
-  it("should get and transform top rated movies ", async () => {
+  it("should get and transform top rated movies", async () => {
     mocks.get.mockReturnValueOnce(mockTopRatedResponse);
 
     const page = 1;
     const res = await api.getTopRated(page);
 
-    expect(res).toEqual(mockTopRated);
-    expect(mocks.get).toBeCalledWith("/movie/top_rated", { page });
+    expect(res).toStrictEqual(mockTopRated);
+    expect(mocks.get).toHaveBeenCalledWith("/movie/top_rated", { page });
   });
 
   it("should get 1st page if no page specified", async () => {
@@ -56,8 +56,8 @@ describe("getTopRatedMovies", () => {
 
     const res = await api.getTopRated();
 
-    expect(res).toEqual(mockTopRated);
-    expect(mocks.get).toBeCalledWith("/movie/top_rated", { page: 1 });
+    expect(res).toStrictEqual(mockTopRated);
+    expect(mocks.get).toHaveBeenCalledWith("/movie/top_rated", { page: 1 });
   });
 });
 
@@ -68,8 +68,8 @@ describe("getMoviesSearch", () => {
     const query = "spider";
     const res = await api.getMoviesSearch(query);
 
-    expect(res).toEqual(mockMoviesSearch);
-    expect(mocks.get).toBeCalledWith("/search/movie", { query });
+    expect(res).toStrictEqual(mockMoviesSearch);
+    expect(mocks.get).toHaveBeenCalledWith("/search/movie", { query });
   });
 });
 
@@ -80,8 +80,8 @@ describe("getMovieInfo", () => {
     const id = "556678";
     const res = await api.getMovieInfo(id);
 
-    expect(res).toEqual(mockMovieInfo);
-    expect(mocks.get).toBeCalledWith(`/movie/${id}`, {
+    expect(res).toStrictEqual(mockMovieInfo);
+    expect(mocks.get).toHaveBeenCalledWith(`/movie/${id}`, {
       append_to_response: "similar",
     });
   });

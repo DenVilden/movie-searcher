@@ -33,7 +33,7 @@ const mocks = [
   },
 ];
 
-describe("Header", () => {
+describe("header", () => {
   it("should update input with new value and fetch movies", async () => {
     const { findByPlaceholderText, findByText } = renderApollo(
       <Header testing />,

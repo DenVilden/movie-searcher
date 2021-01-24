@@ -1,21 +1,23 @@
 import { render } from "@testing-library/react";
 import ErrorMessage from "../ErrorMessage";
 
-describe("ErrorMessage", () => {
-  it("should return server side error", async () => {
+describe("errorMessage", () => {
+  it("should return server side error", () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const mockError: any = {
       graphQLErrors: [
         { extensions: { response: { status: 500, statusText: "an error" } } },
       ],
     };
 
-    const { findByText } = render(<ErrorMessage error={mockError} />);
+    const { getByText } = render(<ErrorMessage error={mockError} />);
 
-    await findByText(/an error/i);
-    await findByText("500");
+    expect(getByText(/an error/i)).toBeTruthy();
+    expect(getByText("500")).toBeTruthy();
   });
 
-  it("should return client side error", async () => {
+  it("should return client side error", () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const mockError: any = {
       networkError: {
         statusCode: 401,
@@ -23,9 +25,9 @@ describe("ErrorMessage", () => {
       },
     };
 
-    const { findByText } = render(<ErrorMessage error={mockError} />);
+    const { getByText } = render(<ErrorMessage error={mockError} />);
 
-    await findByText(/an error/i);
-    await findByText("401");
+    expect(getByText(/an error/i)).toBeTruthy();
+    expect(getByText("401")).toBeTruthy();
   });
 });

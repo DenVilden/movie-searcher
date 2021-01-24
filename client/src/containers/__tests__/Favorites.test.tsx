@@ -52,7 +52,7 @@ const mocks = [
   },
 ];
 
-describe("Favorites", () => {
+describe("favorites", () => {
   it("should redirect to correct url when favorites item clicked", async () => {
     const cache = new InMemoryCache();
     cache.writeQuery({

@@ -107,6 +107,7 @@ const SearchBar = ({ testing }: Props) => {
       }}
       open={!!inputValue}
       options={data?.moviesSearch.results.map((movie) => movie.title) || []}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       renderInput={(params: any) => (
         <StyledSearchBar>
           <StyledSearchIcon />

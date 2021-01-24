@@ -56,7 +56,7 @@ const mocks = [
   },
 ];
 
-describe("TopRated", () => {
+describe("topRated", () => {
   it("should render error state", async () => {
     const mockError = [
       {
@@ -92,6 +92,6 @@ describe("TopRated", () => {
 
     fireEvent.click(pageButton);
 
-    await findByText("page-2");
+    expect(findByText("page-2")).toBeTruthy();
   });
 });

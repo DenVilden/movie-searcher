@@ -1,17 +1,18 @@
 import { render } from "@testing-library/react";
 import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import { ThemeProvider } from "styled-components";
-import { ApolloCache, NormalizedCacheObject } from "@apollo/client";
+import { ApolloCache, NormalizedCacheObject, Resolvers } from "@apollo/client";
 import { theme } from "./pages/_app";
 import defaultResolvers from "./graphql/resolvers";
 
+// eslint-disable-next-line jest/prefer-spy-on
 window.HTMLElement.prototype.scrollIntoView = jest.fn();
 
 type RenderApolloOptions = {
   mocks?: MockedResponse[];
   addTypeName?: boolean;
   cache?: ApolloCache<NormalizedCacheObject>;
-  resolvers?: {};
+  resolvers?: Resolvers;
 };
 
 export const renderApollo = (

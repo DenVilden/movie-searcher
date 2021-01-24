@@ -17,6 +17,7 @@ type Props = {
 const TopRatedContainer = ({ initialData }: Props) => {
   const [refetch, { data, error }] = useGetTopRatedLazyQuery();
 
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const element = useRef<HTMLDivElement>(null!);
 
   if (error) return <ErrorMessage error={error} />;

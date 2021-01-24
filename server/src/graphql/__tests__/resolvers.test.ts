@@ -5,7 +5,7 @@ import {
   mockTopRated,
   mockMoviesSearch,
   mockMovieInfo,
-} from "../../datasources/__mocks__/responses";
+} from "../../mocks/responses";
 
 describe("[Query.upcoming]", () => {
   const mockContext = {
@@ -19,15 +19,14 @@ describe("[Query.upcoming]", () => {
   it("calls upcoming", async () => {
     getUpcoming.mockReturnValueOnce(mockUpcoming);
 
-    if (resolvers.Query?.upcoming) {
-      const res = await resolvers.Query.upcoming(
-        {} as any,
-        {} as any,
-        mockContext as any,
-        {} as any
-      );
-      expect(res).toEqual(mockUpcoming);
-    }
+    const res = await resolvers.Query.upcoming(
+      {} as any,
+      {} as any,
+      mockContext as any,
+      {} as any
+    );
+
+    expect(res).toStrictEqual(mockUpcoming);
   });
 });
 
@@ -43,15 +42,14 @@ describe("[Query.topRated]", () => {
   it("calls topRated", async () => {
     getTopRated.mockReturnValueOnce(mockTopRated);
 
-    if (resolvers.Query?.topRated) {
-      const res = await resolvers.Query.topRated(
-        {} as any,
-        {} as any,
-        mockContext as any,
-        {} as any
-      );
-      expect(res).toEqual(mockTopRated);
-    }
+    const res = await resolvers.Query.topRated(
+      {} as any,
+      {} as any,
+      mockContext as any,
+      {} as any
+    );
+
+    expect(res).toStrictEqual(mockTopRated);
   });
 });
 
@@ -67,15 +65,18 @@ describe("[Query.moviesSearch]", () => {
   it("calls moviesSearch and preserve cursor", async () => {
     getMoviesSearch.mockReturnValueOnce(mockMoviesSearch);
 
-    if (resolvers.Query?.moviesSearch) {
-      const res = await resolvers.Query.moviesSearch(
-        {} as any,
-        { cursor: 1, pageSize: 2 } as any,
-        mockContext as any,
-        {} as any
-      );
-      expect(res).toEqual({ ...mockMoviesSearch, cursor: 2, hasMore: false });
-    }
+    const res = await resolvers.Query.moviesSearch(
+      {} as any,
+      { cursor: 1, pageSize: 2 } as any,
+      mockContext as any,
+      {} as any
+    );
+
+    expect(res).toStrictEqual({
+      ...mockMoviesSearch,
+      cursor: 2,
+      hasMore: false,
+    });
   });
 });
 
@@ -91,22 +92,20 @@ describe("[Query.movieInfo]", () => {
   it("calls movieInfo.similar and paginate results", async () => {
     getMovieInfo.mockReturnValueOnce(mockMovieInfo);
 
-    if (resolvers.Query?.movieInfo) {
-      const res = await resolvers.Query.movieInfo(
-        {} as any,
-        { pageSize: 1 } as any,
-        mockContext as any,
-        {} as any
-      );
+    const res = await resolvers.Query.movieInfo(
+      {} as any,
+      { pageSize: 1 } as any,
+      mockContext as any,
+      {} as any
+    );
 
-      expect(res).toEqual({
-        ...mockMovieInfo,
-        similar: {
-          results: [mockMovieInfo.similar.results[0]],
-          cursor: 1,
-          hasMore: true,
-        },
-      });
-    }
+    expect(res).toStrictEqual({
+      ...mockMovieInfo,
+      similar: {
+        results: [mockMovieInfo.similar.results[0]],
+        cursor: 1,
+        hasMore: true,
+      },
+    });
   });
 });
