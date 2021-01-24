@@ -73,10 +73,7 @@ describe("favorites", () => {
 
     fireEvent.click(cardButtonElement);
 
-    expect(mockHistoryPush).toHaveBeenCalledWith({
-      pathname: "/movie",
-      query: { id: "1" },
-    });
+    expect(mockHistoryPush).toHaveBeenCalledWith("/movie/[id]", "/movie/1");
   });
 
   it("should close favorites on click away", async () => {
