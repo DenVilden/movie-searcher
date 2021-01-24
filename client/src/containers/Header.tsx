@@ -3,11 +3,11 @@ import Favorites from "./Favorites";
 import Logo from "../components/Logo";
 import SearchBar from "../components/SearchBar";
 
-const Header = ({ testing = false }) => (
+const Header = () => (
   <AppBar position="static">
     <Toolbar>
       <Logo />
-      <SearchBar testing={testing} />
+      <SearchBar />
       <Favorites />
     </Toolbar>
   </AppBar>

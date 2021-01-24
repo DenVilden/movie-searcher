@@ -35,12 +35,9 @@ const mocks = [
 
 describe("header", () => {
   it("should update input with new value and fetch movies", async () => {
-    const { findByPlaceholderText, findByText } = renderApollo(
-      <Header testing />,
-      {
-        mocks,
-      }
-    );
+    const { findByPlaceholderText, findByText } = renderApollo(<Header />, {
+      mocks,
+    });
 
     const inputElement = await findByPlaceholderText("type a movie name...");
 
@@ -54,12 +51,9 @@ describe("header", () => {
   });
 
   it("should clear input value on click", async () => {
-    const { findByPlaceholderText, findByTitle } = renderApollo(
-      <Header testing />,
-      {
-        mocks,
-      }
-    );
+    const { findByPlaceholderText, findByTitle } = renderApollo(<Header />, {
+      mocks,
+    });
 
     const inputElement = await findByPlaceholderText("type a movie name...");
 
@@ -75,12 +69,9 @@ describe("header", () => {
   });
 
   it("should redirect to correct url on click", async () => {
-    const { findByPlaceholderText, findByText } = renderApollo(
-      <Header testing />,
-      {
-        mocks,
-      }
-    );
+    const { findByPlaceholderText, findByText } = renderApollo(<Header />, {
+      mocks,
+    });
 
     const inputElement = await findByPlaceholderText("type a movie name...");
 
