@@ -2,8 +2,14 @@
 import { useEffect } from "react";
 import { AppProps } from "next/app";
 import Head from "next/head";
-import { createMuiTheme, StylesProvider } from "@material-ui/core";
-import { ThemeProvider } from "styled-components";
+import { createMuiTheme, StylesProvider, CssBaseline } from "@material-ui/core";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    min-width: 320px;
+  }
+`;
 
 export const theme = createMuiTheme();
 
@@ -26,6 +32,8 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
       </Head>
       <StylesProvider injectFirst>
         <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <GlobalStyle />
           <Component {...pageProps} />
         </ThemeProvider>
       </StylesProvider>
