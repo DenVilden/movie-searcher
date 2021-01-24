@@ -8,22 +8,22 @@ const Favorites = () => {
 
   const [favoritesOpen, toggleFavorites] = useState(false);
 
-  return data ? (
+  return (
     <>
       <FavoritesIcon
         open={favoritesOpen}
         toggle={() => toggleFavorites(!favoritesOpen)}
-        total={data.favorites.length}
+        total={data?.favorites.length}
       />
       {favoritesOpen && (
         <FavoritesDropdown
-          favorites={data.favorites}
+          favorites={data?.favorites}
           open={favoritesOpen}
           toggleFavoritesOpen={() => toggleFavorites(!favoritesOpen)}
         />
       )}
     </>
-  ) : null;
+  );
 };
 
 export default Favorites;

@@ -16,10 +16,14 @@ const StyledPopover = styled(Popover)`
 type Props = {
   open: boolean;
   toggleFavoritesOpen: () => void;
-  favorites: string[];
+  favorites?: string[];
 };
 
-const FavoritesDropdown = ({ favorites, open, toggleFavoritesOpen }: Props) => (
+const FavoritesDropdown = ({
+  favorites = [],
+  open,
+  toggleFavoritesOpen,
+}: Props) => (
   <StyledPopover
     anchorReference="none"
     data-testid="dropdown"

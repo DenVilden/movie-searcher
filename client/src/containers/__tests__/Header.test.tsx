@@ -90,12 +90,6 @@ describe("header", () => {
 
     fireEvent.click(searchResult);
 
-    expect(mockHistoryPush).toHaveBeenCalledWith(
-      {
-        pathname: "/movie",
-        query: { id: 1 },
-      },
-      "/movie/1"
-    );
+    expect(mockHistoryPush).toHaveBeenCalledWith("/movie/[id]", "/movie/1");
   });
 });

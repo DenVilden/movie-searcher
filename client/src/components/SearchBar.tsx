@@ -81,16 +81,7 @@ const SearchBar = ({ testing }: Props) => {
           const id = data?.moviesSearch.results.find(
             (movie) => movie.title === value
           )?.id;
-
-          router.push(
-            {
-              pathname: "/movie",
-              query: {
-                id,
-              },
-            },
-            `/movie/${id}`
-          );
+          router.push("/movie/[id]", `/movie/${id}`);
         }
       }}
       onInputChange={(

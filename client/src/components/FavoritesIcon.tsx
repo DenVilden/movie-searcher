@@ -11,11 +11,11 @@ const StyledIconButton = styled(IconButton)`
 
 type Props = {
   open: boolean;
-  total: number;
+  total?: number;
   toggle: () => void;
 };
 
-const FavoritesIcon = ({ total, open, toggle }: Props) => (
+const FavoritesIcon = ({ total = 0, open, toggle }: Props) => (
   <StyledIconButton
     color="inherit"
     data-testid="icon-button"
