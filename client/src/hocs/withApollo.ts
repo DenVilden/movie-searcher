@@ -28,4 +28,4 @@ client.writeQuery({
   data: { favorites: [] },
 });
 
-export default withApollo(client);
+export default withApollo(client)({ ssr: true });

@@ -65,4 +65,4 @@ export const MoviePage = withLayout(() => {
   );
 });
 
-export default withApollo({ ssr: true })(MoviePage);
+export default withApollo(MoviePage);

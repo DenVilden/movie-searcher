@@ -25,4 +25,4 @@ export const HomePage = withLayout(() => {
   );
 });
 
-export default withApollo({ ssr: true })(HomePage);
+export default withApollo(HomePage);

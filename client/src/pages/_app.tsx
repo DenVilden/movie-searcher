@@ -1,15 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useEffect } from "react";
 import { AppProps } from "next/app";
-import Head from "next/head";
-import { createMuiTheme, StylesProvider, CssBaseline } from "@material-ui/core";
-import { ThemeProvider, createGlobalStyle } from "styled-components";
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    min-width: 320px;
-  }
-`;
+import { createMuiTheme, StylesProvider } from "@material-ui/core";
+import { ThemeProvider } from "styled-components";
 
 export const theme = createMuiTheme();
 
@@ -23,21 +16,11 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
   }, []);
 
   return (
-    <>
-      <Head>
-        <meta charSet="utf-8" />
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <link href="/favicon.ico" rel="shortcut icon" />
-        <title>Movie Searcher</title>
-      </Head>
-      <StylesProvider injectFirst>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <GlobalStyle />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </StylesProvider>
-    </>
+    <StylesProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </StylesProvider>
   );
 };
 
