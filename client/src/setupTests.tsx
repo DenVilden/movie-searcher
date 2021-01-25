@@ -1,3 +1,4 @@
+import "cross-fetch/polyfill";
 import { render } from "@testing-library/react";
 import { MockedProvider, MockedResponse } from "@apollo/client/testing";
 import { ThemeProvider } from "styled-components";
