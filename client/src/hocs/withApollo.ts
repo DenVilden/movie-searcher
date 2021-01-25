@@ -3,6 +3,11 @@ import { loader } from "graphql.macro";
 import { withApollo } from "next-apollo";
 import resolvers from "../graphql/resolvers";
 
+if (process.env.NODE_ENV === "test") {
+  // eslint-disable-next-line global-require
+  require("cross-fetch/polyfill");
+}
+
 const client = new ApolloClient({
   typeDefs: loader("../graphql/schema.graphql"),
   resolvers,
