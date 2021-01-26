@@ -7,20 +7,19 @@ import MoviesBox from "../../components/MoviesBox";
 import ErrorMessage from "../../containers/ErrorMessage";
 import { useGetMovieInfoLazyQuery } from "../../graphql/__generated__";
 import withApollo, { favoritesVar } from "../../lib/apollo";
+import Header from "../../containers/Header";
 
 export const MoviePage = () => {
   const favorites = useReactiveVar(favoritesVar);
 
-  const {
-    query: { id },
-  } = useRouter();
+  const { id } = useRouter().query as { id: string };
 
   const [fetchMovies, { loading, error, data }] = useGetMovieInfoLazyQuery();
 
   useEffect(() => {
     if (id) {
       fetchMovies({
-        variables: { id: id as string },
+        variables: { id },
       });
     }
   }, [id, fetchMovies]);
@@ -30,27 +29,30 @@ export const MoviePage = () => {
   if (loading || !data?.movieInfo) return <LinearProgress color="secondary" />;
 
   const addOrRemoveFromFavorites = () => {
-    return favorites.includes(id as string)
+    return favorites.includes(id)
       ? favoritesVar(favorites.filter((favId) => favId !== id))
-      : favoritesVar([...favorites, id as string]);
+      : favoritesVar([...favorites, id]);
   };
 
   return (
-    <Slide direction="up" in>
-      <div>
-        <MovieInfo
-          addOrRemoveFromFavorites={addOrRemoveFromFavorites}
-          movie={data.movieInfo}
-          isInFavorites={favorites.includes(id as string)}
-        />
-        {!!data.movieInfo.similar.results.length && (
-          <MoviesBox
-            movies={data.movieInfo.similar.results}
-            title="Similar Movies"
+    <>
+      <Header />
+      <Slide direction="up" in>
+        <div>
+          <MovieInfo
+            addOrRemoveFromFavorites={addOrRemoveFromFavorites}
+            movie={data.movieInfo}
+            isInFavorites={favorites.includes(id)}
           />
-        )}
-      </div>
-    </Slide>
+          {!!data.movieInfo.similar.results.length && (
+            <MoviesBox
+              movies={data.movieInfo.similar.results}
+              title="Similar Movies"
+            />
+          )}
+        </div>
+      </Slide>
+    </>
   );
 };
 

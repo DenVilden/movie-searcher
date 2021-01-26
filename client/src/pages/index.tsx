@@ -4,6 +4,7 @@ import TopRated from "../containers/TopRated";
 import { useGetMoviesQuery } from "../graphql/__generated__";
 import ErrorMessage from "../containers/ErrorMessage";
 import withApollo from "../lib/apollo";
+import Header from "../containers/Header";
 
 export const HomePage = () => {
   const { data, error } = useGetMoviesQuery();
@@ -13,14 +14,17 @@ export const HomePage = () => {
   if (!data) return <LinearProgress color="secondary" />;
 
   return (
-    <Grid container>
-      <Grid item lg={6}>
-        <Upcoming initialData={data.upcoming} />
+    <>
+      <Header />
+      <Grid container>
+        <Grid item lg={6}>
+          <Upcoming initialData={data.upcoming} />
+        </Grid>
+        <Grid item lg={6}>
+          <TopRated initialData={data.topRated} />
+        </Grid>
       </Grid>
-      <Grid item lg={6}>
-        <TopRated initialData={data.topRated} />
-      </Grid>
-    </Grid>
+    </>
   );
 };
 

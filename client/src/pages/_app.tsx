@@ -4,9 +4,6 @@ import { AppProps } from "next/app";
 import { createMuiTheme, StylesProvider, CssBaseline } from "@material-ui/core";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import Head from "next/head";
-import { ApolloProvider } from "@apollo/client";
-import Header from "../containers/Header";
-import { client } from "../lib/apollo";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -42,9 +39,6 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <GlobalStyle />
-          <ApolloProvider client={client}>
-            <Header />
-          </ApolloProvider>
           <Component {...pageProps} />
         </ThemeProvider>
       </StylesProvider>
