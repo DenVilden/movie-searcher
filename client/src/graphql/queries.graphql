@@ -1,6 +1,5 @@
 query GetMovieInfo($id: ID!) {
   movieInfo(id: $id) {
-    isInFavorites @client
     id
     backdrop_path
     poster_path
@@ -77,8 +76,4 @@ query GetMoviesSearch($query: String!, $pageSize: Int) {
       title
     }
   }
-}
-
-query GetFavorites {
-  favorites @client
 }

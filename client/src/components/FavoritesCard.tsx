@@ -47,7 +47,7 @@ const FavoritesCard = ({ toggleFavoritesOpen, id }: Props) => {
     <CardActionArea
       data-testid="favorites-card"
       onClick={() => {
-        router.push("/movie/[id]", `/movie/${id}`);
+        router.push(`/movie/${id}`);
         toggleFavoritesOpen();
       }}
     >

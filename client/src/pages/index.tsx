@@ -3,10 +3,9 @@ import Upcoming from "../containers/Upcoming";
 import TopRated from "../containers/TopRated";
 import { useGetMoviesQuery } from "../graphql/__generated__";
 import ErrorMessage from "../containers/ErrorMessage";
-import withApollo from "../hocs/withApollo";
-import withLayout from "../hocs/withLayout";
+import withApollo from "../lib/apollo";
 
-export const HomePage = withLayout(() => {
+export const HomePage = () => {
   const { data, error } = useGetMoviesQuery();
 
   if (error) return <ErrorMessage error={error} />;
@@ -23,6 +22,6 @@ export const HomePage = withLayout(() => {
       </Grid>
     </Grid>
   );
-});
+};
 
 export default withApollo(HomePage);

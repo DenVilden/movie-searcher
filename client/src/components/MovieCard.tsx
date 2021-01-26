@@ -62,7 +62,7 @@ const MovieCard = ({ movie }: Props) => {
     <StyledCard elevation={10}>
       <CardActionArea
         data-testid="card-button"
-        onClick={() => router.push("/movie/[id]", `/movie/${movie.id}`)}
+        onClick={() => router.push(`/movie/${movie.id}`)}
       >
         <StyledCardMedia
           image={movie.poster_path || "/no-image.jpg"}

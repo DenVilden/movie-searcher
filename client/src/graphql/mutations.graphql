@@ -1,3 +1,0 @@
-mutation AddOrRemoveFromFavorites($id: String!) {
-  addOrRemoveFromFavorites(id: $id) @client
-}

@@ -1,10 +1,7 @@
-import { InMemoryCache } from "@apollo/client";
 import Favorites from "../Favorites";
-import {
-  GetFavoritesDocument,
-  GetMovieInfoDocument,
-} from "../../graphql/__generated__";
+import { GetMovieInfoDocument } from "../../graphql/__generated__";
 import { renderApollo, fireEvent } from "../../setupTests";
+import { favoritesVar } from "../../lib/apollo";
 
 const mockHistoryPush = jest.fn();
 
@@ -24,7 +21,6 @@ const mocks = [
       data: {
         movieInfo: {
           __typename: "MovieInfo",
-          isInFavorites: false,
           id: 1,
           backdrop_path: null,
           poster_path: null,
@@ -53,16 +49,11 @@ const mocks = [
 ];
 
 describe("favorites", () => {
-  it("should redirect to correct url when favorites item clicked", async () => {
-    const cache = new InMemoryCache();
-    cache.writeQuery({
-      query: GetFavoritesDocument,
-      data: { favorites: ["1"] },
-    });
+  favoritesVar(["1"]);
 
+  it("should redirect to correct url when favorites item clicked", async () => {
     const { findByTestId } = renderApollo(<Favorites />, {
       mocks,
-      cache,
     });
 
     const iconButton = await findByTestId("icon-button");
@@ -73,19 +64,12 @@ describe("favorites", () => {
 
     fireEvent.click(cardButtonElement);
 
-    expect(mockHistoryPush).toHaveBeenCalledWith("/movie/[id]", "/movie/1");
+    expect(mockHistoryPush).toHaveBeenCalledWith("/movie/1");
   });
 
   it("should close favorites on click away", async () => {
-    const cache = new InMemoryCache();
-    cache.writeQuery({
-      query: GetFavoritesDocument,
-      data: { favorites: ["1"] },
-    });
-
     const { findByTestId, queryByTestId } = renderApollo(<Favorites />, {
       mocks,
-      cache,
     });
 
     const iconButton = await findByTestId("icon-button");
@@ -101,12 +85,6 @@ describe("favorites", () => {
   });
 
   it("should render error on open favorites", async () => {
-    const cache = new InMemoryCache();
-    cache.writeQuery({
-      query: GetFavoritesDocument,
-      data: { favorites: ["1"] },
-    });
-
     const mockError = [
       {
         request: {
@@ -119,7 +97,6 @@ describe("favorites", () => {
 
     const { findByTestId, findByText } = renderApollo(<Favorites />, {
       mocks: mockError,
-      cache,
     });
 
     const iconButton = await findByTestId("icon-button");

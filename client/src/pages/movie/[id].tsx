@@ -1,18 +1,16 @@
 import { useEffect } from "react";
 import { Slide, LinearProgress } from "@material-ui/core";
 import { useRouter } from "next/router";
+import { useReactiveVar } from "@apollo/client";
 import MovieInfo from "../../components/MovieInfo";
 import MoviesBox from "../../components/MoviesBox";
 import ErrorMessage from "../../containers/ErrorMessage";
-import {
-  GetMovieInfoDocument,
-  useGetMovieInfoLazyQuery,
-  useAddOrRemoveFromFavoritesMutation,
-} from "../../graphql/__generated__";
-import withApollo from "../../hocs/withApollo";
-import withLayout from "../../hocs/withLayout";
+import { useGetMovieInfoLazyQuery } from "../../graphql/__generated__";
+import withApollo, { favoritesVar } from "../../lib/apollo";
 
-export const MoviePage = withLayout(() => {
+export const MoviePage = () => {
+  const favorites = useReactiveVar(favoritesVar);
+
   const {
     query: { id },
   } = useRouter();
@@ -27,32 +25,23 @@ export const MoviePage = withLayout(() => {
     }
   }, [id, fetchMovies]);
 
-  const [
-    addOrRemoveFromFavorites,
-    favoritesMutationOptions,
-  ] = useAddOrRemoveFromFavoritesMutation();
-
   if (error) return <ErrorMessage error={error} />;
 
   if (loading || !data?.movieInfo) return <LinearProgress color="secondary" />;
+
+  const addOrRemoveFromFavorites = () => {
+    return favorites.includes(id as string)
+      ? favoritesVar(favorites.filter((favId) => favId !== id))
+      : favoritesVar([...favorites, id as string]);
+  };
 
   return (
     <Slide direction="up" in>
       <div>
         <MovieInfo
-          addOrRemoveFromFavorites={() =>
-            addOrRemoveFromFavorites({
-              variables: { id: id as string },
-              refetchQueries: [
-                {
-                  query: GetMovieInfoDocument,
-                  variables: { id: id as string },
-                },
-              ],
-            })
-          }
-          loading={favoritesMutationOptions.loading}
+          addOrRemoveFromFavorites={addOrRemoveFromFavorites}
           movie={data.movieInfo}
+          isInFavorites={favorites.includes(id as string)}
         />
         {!!data.movieInfo.similar.results.length && (
           <MoviesBox
@@ -63,6 +52,6 @@ export const MoviePage = withLayout(() => {
       </div>
     </Slide>
   );
-});
+};
 
 export default withApollo(MoviePage);

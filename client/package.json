@@ -11,7 +11,6 @@
     "critters": "^0.0.6",
     "cross-fetch": "^3.0.6",
     "graphql": "^15.4.0",
-    "graphql.macro": "^1.4.2",
     "next": "^10.0.5",
     "next-apollo": "^5.0.4",
     "react": "^17.0.1",
@@ -19,20 +18,17 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.20.0",
-    "@graphql-codegen/typescript": "1.20.0",
-    "@graphql-codegen/typescript-operations": "1.17.13",
+    "@graphql-codegen/cli": "^1.20.1",
+    "@graphql-codegen/typescript": "1.20.1",
+    "@graphql-codegen/typescript-operations": "1.17.14",
     "@graphql-codegen/typescript-react-apollo": "2.2.1",
-    "@graphql-codegen/typescript-resolvers": "1.18.1",
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.22",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/styled-components": "^5.1.7",
-    "@typescript-eslint/eslint-plugin": "^4.14.0",
-    "@typescript-eslint/parser": "^4.14.0",
-    "babel-plugin-macros": "^3.0.1",
-    "babel-plugin-styled-components": "^1.12.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
     "eslint": "^7.18.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.2.0",
@@ -60,7 +56,6 @@
       "src/containers/**/*.tsx",
       "src/components/**/*.tsx",
       "src/pages/**/*.tsx",
-      "src/graphql/*.ts",
       "!src/pages/_app.tsx",
       "!src/pages/_document.tsx"
     ]
@@ -118,9 +113,6 @@
           "ssr": true,
           "displayName": true
         }
-      ],
-      [
-        "macros"
       ]
     ]
   }

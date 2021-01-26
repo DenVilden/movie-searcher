@@ -79,6 +79,6 @@ describe("homePage", () => {
 
     fireEvent.click(cardButtonElement[0]);
 
-    expect(mockHistoryPush).toHaveBeenCalledWith("/movie/[id]", "/movie/1");
+    expect(mockHistoryPush).toHaveBeenCalledWith("/movie/1");
   });
 });

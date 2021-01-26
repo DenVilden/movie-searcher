@@ -78,7 +78,7 @@ const SearchBar = () => {
           const id = data?.moviesSearch.results.find(
             (movie) => movie.title === value
           )?.id;
-          router.push("/movie/[id]", `/movie/${id}`);
+          router.push(`/movie/${id}`);
         }
       }}
       onInputChange={(

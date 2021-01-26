@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { useReactiveVar } from "@apollo/client";
 import FavoritesIcon from "../components/FavoritesIcon";
 import FavoritesDropdown from "../components/FavoritesDropdown";
-import { useGetFavoritesQuery } from "../graphql/__generated__";
+import { favoritesVar } from "../lib/apollo";
 
 const Favorites = () => {
-  const { data } = useGetFavoritesQuery();
+  const favorites = useReactiveVar(favoritesVar);
 
   const [favoritesOpen, toggleFavorites] = useState(false);
 
@@ -13,11 +14,11 @@ const Favorites = () => {
       <FavoritesIcon
         open={favoritesOpen}
         toggle={() => toggleFavorites(!favoritesOpen)}
-        total={data?.favorites.length}
+        total={favorites.length}
       />
       {favoritesOpen && (
         <FavoritesDropdown
-          favorites={data?.favorites}
+          favorites={favorites}
           open={favoritesOpen}
           toggleFavoritesOpen={() => toggleFavorites(!favoritesOpen)}
         />

@@ -1,9 +1,5 @@
-import { InMemoryCache } from "@apollo/client";
 import { MoviePage } from "../pages/movie/[id]";
-import {
-  GetMovieInfoDocument,
-  GetFavoritesDocument,
-} from "../graphql/__generated__";
+import { GetMovieInfoDocument } from "../graphql/__generated__";
 import { renderApollo, fireEvent } from "../setupTests";
 
 jest.mock("next/router", () => ({
@@ -26,7 +22,6 @@ const mocks = [
       data: {
         movieInfo: {
           __typename: "MovieInfo",
-          isInFavorites: false,
           id: 1,
           backdrop_path: null,
           poster_path: null,
@@ -77,28 +72,25 @@ describe("moviePage", () => {
     expect(errorElement).toBeTruthy();
   });
 
-  it("should refetch movie and toggle favorites", async () => {
+  it("should toggle favorites", async () => {
     const mock = [mocks[0], mocks[0], mocks[0]];
-
-    const cache = new InMemoryCache();
-    cache.writeQuery({
-      query: GetFavoritesDocument,
-      data: { favorites: ["1"] },
-    });
 
     const { findByTestId, findByText } = renderApollo(<MoviePage />, {
       mocks: mock,
-      cache,
     });
 
     const favoritesButton = await findByTestId("favorites-button");
 
     fireEvent.click(favoritesButton);
 
-    expect(findByText("Remove from favorites")).toBeTruthy();
+    const removeButton = await findByText("Remove from favorites");
+
+    expect(removeButton).toBeTruthy();
 
     fireEvent.click(favoritesButton);
 
-    expect(findByText("Add to favorites")).toBeTruthy();
+    const addButton = await findByText("Add to favorites");
+
+    expect(addButton).toBeTruthy();
   });
 });

@@ -46,11 +46,15 @@ const StyledTypography = styled(Typography)`
 
 type Props = {
   movie: MovieInfoType;
-  loading: boolean;
-  addOrRemoveFromFavorites: () => void;
+  addOrRemoveFromFavorites: () => string[];
+  isInFavorites: boolean;
 };
 
-const MovieInfo = ({ movie, addOrRemoveFromFavorites, loading }: Props) => (
+const MovieInfo = ({
+  movie,
+  addOrRemoveFromFavorites,
+  isInFavorites,
+}: Props) => (
   <StyledCard elevation={10}>
     <Head>
       <title>{movie.title}</title>
@@ -60,18 +64,12 @@ const MovieInfo = ({ movie, addOrRemoveFromFavorites, loading }: Props) => (
       <StyledTypography gutterBottom variant="h5">
         {movie.title}
         <Button
-          color={movie.isInFavorites ? "secondary" : "primary"}
+          color={isInFavorites ? "secondary" : "primary"}
           data-testid="favorites-button"
-          disabled={loading}
           onClick={addOrRemoveFromFavorites}
           variant="contained"
         >
-          {/* eslint-disable-next-line no-nested-ternary */}
-          {loading
-            ? "Updating"
-            : movie.isInFavorites
-            ? "Remove from favorites"
-            : "Add to favorites"}
+          {isInFavorites ? "Remove from favorites" : "Add to favorites"}
         </Button>
       </StyledTypography>
       <Typography>{movie.overview}</Typography>

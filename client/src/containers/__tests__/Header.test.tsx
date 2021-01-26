@@ -81,6 +81,6 @@ describe("header", () => {
 
     fireEvent.click(searchResult);
 
-    expect(mockHistoryPush).toHaveBeenCalledWith("/movie/[id]", "/movie/1");
+    expect(mockHistoryPush).toHaveBeenCalledWith("/movie/1");
   });
 });
