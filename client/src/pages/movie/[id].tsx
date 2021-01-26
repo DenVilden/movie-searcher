@@ -7,9 +7,9 @@ import MoviesBox from "../../components/MoviesBox";
 import ErrorMessage from "../../containers/ErrorMessage";
 import { useGetMovieInfoLazyQuery } from "../../graphql";
 import withApollo, { favoritesVar } from "../../lib/apollo";
-import Header from "../../containers/Header";
+import withHeader from "../../lib/withHeader";
 
-export const MoviePage = () => {
+export const MoviePage = withHeader(() => {
   const favorites = useReactiveVar(favoritesVar);
 
   const { id } = useRouter().query as { id: string };
@@ -43,25 +43,22 @@ export const MoviePage = () => {
   };
 
   return (
-    <>
-      <Header />
-      <Slide direction="up" in>
-        <div>
-          <MovieInfo
-            addOrRemoveFromFavorites={addOrRemoveFromFavorites}
-            movie={data.movieInfo}
-            isInFavorites={favorites.includes(id)}
+    <Slide direction="up" in>
+      <div>
+        <MovieInfo
+          addOrRemoveFromFavorites={addOrRemoveFromFavorites}
+          movie={data.movieInfo}
+          isInFavorites={favorites.includes(id)}
+        />
+        {!!data.movieInfo.similar.results.length && (
+          <MoviesBox
+            movies={data.movieInfo.similar.results}
+            title="Similar Movies"
           />
-          {!!data.movieInfo.similar.results.length && (
-            <MoviesBox
-              movies={data.movieInfo.similar.results}
-              title="Similar Movies"
-            />
-          )}
-        </div>
-      </Slide>
-    </>
+        )}
+      </div>
+    </Slide>
   );
-};
+});
 
 export default withApollo(MoviePage);
