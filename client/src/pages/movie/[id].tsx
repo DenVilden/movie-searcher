@@ -34,10 +34,8 @@ export const MoviePage = withHeader(() => {
     if (favorites.includes(id)) {
       newFavorites = favorites.filter((favId) => favId !== id);
       favoritesVar(newFavorites);
-      localStorage.setItem("favorites", JSON.stringify(newFavorites));
     } else {
       newFavorites = favoritesVar([...favorites, id]);
-      localStorage.setItem("favorites", JSON.stringify(newFavorites));
     }
     return newFavorites;
   };

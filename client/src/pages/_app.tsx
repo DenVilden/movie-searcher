@@ -4,6 +4,7 @@ import { AppProps } from "next/app";
 import { createMuiTheme, StylesProvider, CssBaseline } from "@material-ui/core";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import Head from "next/head";
+import { useReactiveVar } from "@apollo/client";
 import { favoritesVar } from "../lib/apollo";
 
 const GlobalStyle = createGlobalStyle`
@@ -15,6 +16,8 @@ const GlobalStyle = createGlobalStyle`
 export const theme = createMuiTheme();
 
 const NextApp = ({ Component, pageProps }: AppProps) => {
+  const favorites = useReactiveVar(favoritesVar);
+
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
@@ -22,11 +25,15 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
       jssStyles.parentElement.removeChild(jssStyles);
     }
 
-    const favorites = localStorage.getItem("favorites");
-    if (favorites) {
-      favoritesVar(JSON.parse(favorites));
+    const initialFavorites = localStorage.getItem("favorites");
+    if (initialFavorites) {
+      favoritesVar(JSON.parse(initialFavorites));
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   return (
     <>
