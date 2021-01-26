@@ -10,7 +10,7 @@ import { TextField } from "@material-ui/core";
 import styled from "styled-components";
 import { fade } from "@material-ui/core/styles";
 import { Search as SearchIcon } from "@material-ui/icons";
-import { useGetMoviesSearchLazyQuery } from "../graphql/__generated__";
+import { useGetMoviesSearchLazyQuery } from "../graphql";
 
 const StyledAutocomplete = styled((props) => <Autocomplete {...props} />)`
   .MuiInputBase-root:before,

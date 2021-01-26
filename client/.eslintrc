@@ -1,0 +1,29 @@
+{
+  "extends": [
+    "airbnb",
+    "react-app",
+    "react-app/jest",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/react"
+  ],
+  "ignorePatterns": ["next-env.d.ts", "src/graphql/__generated__"],
+  "rules": {
+    "import/extensions": [
+      "error",
+      {
+        "extensions": [".ts", ".js"]
+      }
+    ],
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".jsx", ".tsx"]
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "camelcase": "off",
+    "react/require-default-props": "off"
+  }
+}

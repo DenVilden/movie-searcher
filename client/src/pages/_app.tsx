@@ -4,6 +4,7 @@ import { AppProps } from "next/app";
 import { createMuiTheme, StylesProvider, CssBaseline } from "@material-ui/core";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import Head from "next/head";
+import { favoritesVar } from "../lib/apollo";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -19,6 +20,11 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles?.parentElement) {
       jssStyles.parentElement.removeChild(jssStyles);
+    }
+
+    const favorites = localStorage.getItem("favorites");
+    if (favorites) {
+      favoritesVar(JSON.parse(favorites));
     }
   }, []);
 

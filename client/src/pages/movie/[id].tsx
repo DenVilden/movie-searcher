@@ -5,7 +5,7 @@ import { useReactiveVar } from "@apollo/client";
 import MovieInfo from "../../components/MovieInfo";
 import MoviesBox from "../../components/MoviesBox";
 import ErrorMessage from "../../containers/ErrorMessage";
-import { useGetMovieInfoLazyQuery } from "../../graphql/__generated__";
+import { useGetMovieInfoLazyQuery } from "../../graphql";
 import withApollo, { favoritesVar } from "../../lib/apollo";
 import Header from "../../containers/Header";
 
@@ -29,9 +29,17 @@ export const MoviePage = () => {
   if (loading || !data?.movieInfo) return <LinearProgress color="secondary" />;
 
   const addOrRemoveFromFavorites = () => {
-    return favorites.includes(id)
-      ? favoritesVar(favorites.filter((favId) => favId !== id))
-      : favoritesVar([...favorites, id]);
+    let newFavorites: string[] = [];
+
+    if (favorites.includes(id)) {
+      newFavorites = favorites.filter((favId) => favId !== id);
+      favoritesVar(newFavorites);
+      localStorage.setItem("favorites", JSON.stringify(newFavorites));
+    } else {
+      newFavorites = favoritesVar([...favorites, id]);
+      localStorage.setItem("favorites", JSON.stringify(newFavorites));
+    }
+    return newFavorites;
   };
 
   return (

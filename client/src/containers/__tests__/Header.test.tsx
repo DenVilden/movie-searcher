@@ -1,6 +1,6 @@
 import Header from "../Header";
 import { renderApollo, fireEvent } from "../../setupTests";
-import { GetMoviesSearchDocument } from "../../graphql/__generated__";
+import { GetMoviesSearchDocument } from "../../graphql";
 
 const mockHistoryPush = jest.fn();
 

@@ -5,17 +5,25 @@
   "engines": {
     "node": "15.x"
   },
+  "scripts": {
+    "serve": "nodemon -e ts,graphql,json -r dotenv/config src/index.ts",
+    "start": "node dist/index.js",
+    "lint": "eslint . --ext ts --fix",
+    "test": "jest",
+    "build": "tsc",
+    "codegen": "graphql-codegen"
+  },
   "dependencies": {
     "apollo-datasource-rest": "^0.9.7",
     "apollo-server": "^2.19.2",
     "dayjs": "^1.10.4",
-    "graphql": "^15.4.0",
+    "graphql": "^15.5.0",
     "graphql-import-files": "^1.0.10",
     "numeral": "^2.0.6"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.20.1",
-    "@graphql-codegen/typescript": "1.20.1",
+    "@graphql-codegen/typescript": "1.20.2",
     "@graphql-codegen/typescript-resolvers": "1.18.1",
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.22",
@@ -35,58 +43,5 @@
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
     "typescript": "4.1.2"
-  },
-  "scripts": {
-    "serve": "nodemon -e ts,graphql,json -r dotenv/config src/index.ts",
-    "start": "node dist/index.js",
-    "lint": "eslint . --ext ts --fix",
-    "test": "jest",
-    "build": "tsc",
-    "codegen": "graphql-codegen"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.ts",
-      "!src/graphql/__generated__",
-      "!src/index.ts"
-    ],
-    "preset": "ts-jest",
-    "testEnvironment": "node",
-    "globals": {
-      "ts-jest": {
-        "diagnostics": {
-          "ignoreCodes": [
-            2722
-          ]
-        }
-      }
-    }
-  },
-  "eslintIgnore": [
-    "src/graphql/__generated__"
-  ],
-  "eslintConfig": {
-    "extends": [
-      "airbnb-base",
-      "plugin:jest/all",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:import/typescript",
-      "plugin:prettier/recommended",
-      "prettier/@typescript-eslint"
-    ],
-    "rules": {
-      "import/extensions": [
-        "error",
-        {
-          "extensions": [
-            ".ts",
-            ".js"
-          ]
-        }
-      ],
-      "@typescript-eslint/explicit-module-boundary-types": "off",
-      "@typescript-eslint/camelcase": "off",
-      "jest/prefer-expect-assertions": "off"
-    }
   }
 }

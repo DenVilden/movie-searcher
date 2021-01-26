@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 import Head from "next/head";
 import styled from "styled-components";
-import { MovieInfo as MovieInfoType } from "../graphql/__generated__";
+import { MovieInfo as MovieInfoType } from "../graphql";
 
 const StyledCard = styled(Card)`
   background-color: inherit;

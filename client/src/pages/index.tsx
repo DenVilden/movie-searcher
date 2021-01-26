@@ -1,7 +1,7 @@
 import { Grid, LinearProgress } from "@material-ui/core";
 import Upcoming from "../containers/Upcoming";
 import TopRated from "../containers/TopRated";
-import { useGetMoviesQuery } from "../graphql/__generated__";
+import { useGetMoviesQuery } from "../graphql";
 import ErrorMessage from "../containers/ErrorMessage";
 import withApollo from "../lib/apollo";
 import Header from "../containers/Header";

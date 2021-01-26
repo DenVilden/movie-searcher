@@ -1,5 +1,5 @@
 import Favorites from "../Favorites";
-import { GetMovieInfoDocument } from "../../graphql/__generated__";
+import { GetMovieInfoDocument } from "../../graphql";
 import { renderApollo, fireEvent } from "../../setupTests";
 import { favoritesVar } from "../../lib/apollo";
 

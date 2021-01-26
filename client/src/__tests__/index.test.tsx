@@ -1,5 +1,5 @@
 import { HomePage } from "../pages";
-import { GetMoviesDocument } from "../graphql/__generated__";
+import { GetMoviesDocument } from "../graphql";
 import { renderApollo, fireEvent } from "../setupTests";
 
 const mockHistoryPush = jest.fn();

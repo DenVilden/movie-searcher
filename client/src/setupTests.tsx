@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./pages/_app";
 
 // eslint-disable-next-line jest/prefer-spy-on
-window.HTMLElement.prototype.scrollIntoView = jest.fn();
+HTMLElement.prototype.scrollIntoView = jest.fn();
 
 type RenderApolloOptions = {
   mocks?: MockedResponse[];

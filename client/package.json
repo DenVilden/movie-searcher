@@ -2,6 +2,14 @@
   "name": "movie-searcher-client",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "serve": "next",
+    "build": "next build",
+    "start": "next start",
+    "test": "jest",
+    "lint": "eslint . --ext ts,tsx --fix",
+    "codegen": "graphql-codegen"
+  },
   "dependencies": {
     "@apollo/client": "^3.3.7",
     "@material-ui/core": "^4.11.3",
@@ -10,7 +18,7 @@
     "@testing-library/react": "^11.2.3",
     "critters": "^0.0.6",
     "cross-fetch": "^3.0.6",
-    "graphql": "^15.4.0",
+    "graphql": "^15.5.0",
     "next": "^10.0.5",
     "next-apollo": "^5.0.4",
     "react": "^17.0.1",
@@ -45,74 +53,5 @@
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "typescript": "4.1.2"
-  },
-  "scripts": {
-    "serve": "next",
-    "build": "next build",
-    "start": "next start",
-    "test": "jest",
-    "lint": "eslint . --ext ts,tsx --fix",
-    "codegen": "graphql-codegen"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/containers/**/*.tsx",
-      "src/components/**/*.tsx",
-      "src/pages/**/*.tsx",
-      "!src/pages/_app.tsx",
-      "!src/pages/_document.tsx"
-    ]
-  },
-  "eslintIgnore": [
-    "next-env.d.ts",
-    "src/graphql/__generated__"
-  ],
-  "eslintConfig": {
-    "extends": [
-      "airbnb",
-      "react-app",
-      "react-app/jest",
-      "plugin:import/typescript",
-      "plugin:prettier/recommended",
-      "prettier/@typescript-eslint",
-      "prettier/react"
-    ],
-    "rules": {
-      "import/extensions": [
-        "error",
-        {
-          "extensions": [
-            ".ts",
-            ".js"
-          ]
-        }
-      ],
-      "react/jsx-filename-extension": [
-        "error",
-        {
-          "extensions": [
-            ".jsx",
-            ".tsx"
-          ]
-        }
-      ],
-      "react/react-in-jsx-scope": "off",
-      "camelcase": "off",
-      "react/require-default-props": "off"
-    }
-  },
-  "babel": {
-    "presets": [
-      "next/babel"
-    ],
-    "plugins": [
-      [
-        "styled-components",
-        {
-          "ssr": true,
-          "displayName": true
-        }
-      ]
-    ]
   }
 }
