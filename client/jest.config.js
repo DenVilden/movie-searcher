@@ -6,5 +6,6 @@ module.exports = {
     "!src/**/*.d.ts",
     "!src/setupTests.tsx",
     "!src/lib/**/*.{ts,tsx}",
+    "!src/**/*.styles.{ts,tsx}",
   ],
 };

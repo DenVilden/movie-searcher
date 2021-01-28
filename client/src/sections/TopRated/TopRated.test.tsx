@@ -1,4 +1,4 @@
-import TopRated from "../TopRated";
+import TopRated from "./TopRated";
 import { GetTopRatedDocument, TopRated as TopRatedType } from "../../graphql";
 import { renderApollo, fireEvent } from "../../setupTests";
 

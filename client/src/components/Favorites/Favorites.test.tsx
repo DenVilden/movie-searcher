@@ -1,5 +1,5 @@
-import Favorites from "../Favorites";
-import { GetMovieInfoDocument } from "../../graphql";
+import Favorites from "./Favorites";
+import { GetMovieInfoDocument, MovieInfo } from "../../graphql";
 import { renderApollo, fireEvent } from "../../setupTests";
 import { favoritesVar } from "../../lib/apollo";
 
@@ -49,7 +49,7 @@ const mocks = [
 ];
 
 describe("favorites", () => {
-  favoritesVar(["1"]);
+  favoritesVar([mocks[0].result.data.movieInfo as MovieInfo]);
 
   it("should redirect to correct url when favorites item clicked", async () => {
     const { findByTestId } = renderApollo(<Favorites />, {
@@ -65,46 +65,5 @@ describe("favorites", () => {
     fireEvent.click(cardButtonElement);
 
     expect(mockHistoryPush).toHaveBeenCalledWith("/movie/1");
-  });
-
-  it("should close favorites on click away", async () => {
-    const { findByTestId, queryByTestId } = renderApollo(<Favorites />, {
-      mocks,
-    });
-
-    const iconButton = await findByTestId("icon-button");
-
-    fireEvent.click(iconButton);
-
-    const dropdownElement = await findByTestId("dropdown");
-
-    // fireEvent.keyDown(searchBar, { key: 'Escape', code: 27 });
-    fireEvent.click(dropdownElement.firstChild as Element);
-
-    expect(queryByTestId("dropdown")).toBeNull();
-  });
-
-  it("should render error on open favorites", async () => {
-    const mockError = [
-      {
-        request: {
-          query: GetMovieInfoDocument,
-          variables: { id: "1" },
-        },
-        error: new Error("an error has occurred"),
-      },
-    ];
-
-    const { findByTestId, findByText } = renderApollo(<Favorites />, {
-      mocks: mockError,
-    });
-
-    const iconButton = await findByTestId("icon-button");
-
-    fireEvent.click(iconButton);
-
-    const errorElement = await findByText(/an error has occurred/i);
-
-    expect(errorElement).toBeTruthy();
   });
 });

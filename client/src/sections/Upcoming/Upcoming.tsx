@@ -1,14 +1,7 @@
 import { useRef } from "react";
-import styled from "styled-components";
-import ErrorMessage from "./ErrorMessage";
-import MoviesBox from "../components/MoviesBox";
-import { useGetUpcomingLazyQuery, Upcoming } from "../graphql";
-import Pagination from "../components/Pagination";
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+import { ErrorMessage, Pagination, MoviesBox } from "../../components";
+import { useGetUpcomingLazyQuery, Upcoming } from "../../graphql";
+import { Wrapper } from "./Upcoming.styles";
 
 type Props = {
   initialData: Upcoming;

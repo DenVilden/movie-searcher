@@ -1,4 +1,4 @@
-import Header from "../Header";
+import Header from "./Header";
 import { renderApollo, fireEvent } from "../../setupTests";
 import { GetMoviesSearchDocument } from "../../graphql";
 

@@ -1,12 +1,13 @@
 import { ApolloClient, InMemoryCache, HttpLink, makeVar } from "@apollo/client";
 import { withApollo } from "next-apollo";
+import { MovieInfo } from "../graphql";
 
 if (process.env.NODE_ENV === "test") {
   // eslint-disable-next-line global-require
   require("cross-fetch/polyfill");
 }
 
-export const favoritesVar = makeVar<string[]>([]);
+export const favoritesVar = makeVar<MovieInfo[]>([]);
 
 const cache = new InMemoryCache();
 

@@ -1,10 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
-import { Pagination as PaginationComponent } from "@material-ui/lab";
-
-const StyledPagination = styled(PaginationComponent)`
-  margin: auto;
-`;
+import { StyledPagination } from "./Pagination.styles";
 
 type Props = {
   refetch: ({ variables: { page } }: { variables: { page: number } }) => void;
@@ -24,7 +19,7 @@ const Pagination = ({
   return (
     <StyledPagination
       count={totalPages}
-      onChange={(_, value: number) => {
+      onChange={(_evt, value: number) => {
         setPage(value);
         refetch({ variables: { page: value } });
         return (

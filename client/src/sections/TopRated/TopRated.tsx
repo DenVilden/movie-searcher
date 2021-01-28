@@ -1,14 +1,7 @@
 import { useRef } from "react";
-import styled from "styled-components";
-import ErrorMessage from "./ErrorMessage";
-import MoviesBox from "../components/MoviesBox";
-import { useGetTopRatedLazyQuery, TopRated } from "../graphql";
-import Pagination from "../components/Pagination";
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+import { MoviesBox, ErrorMessage, Pagination } from "../../components";
+import { useGetTopRatedLazyQuery, TopRated } from "../../graphql";
+import { Wrapper } from "./TopRated.styles";
 
 type Props = {
   initialData: TopRated;

@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import ErrorMessage from "../ErrorMessage";
+import ErrorMessage from "./ErrorMessage";
 
 describe("errorMessage", () => {
   it("should return server side error", () => {
