@@ -1,4 +1,4 @@
-import MoviesAPI from "../Movies";
+import MoviesAPI from "./Movies";
 import {
   mockUpcomingResponse,
   mockTopRatedResponse,
@@ -8,7 +8,7 @@ import {
   mockTopRated,
   mockMoviesSearch,
   mockMovieInfo,
-} from "../../mocks/responses";
+} from "../mocks/responses";
 
 const mocks = {
   get: jest.fn(),

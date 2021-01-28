@@ -8,8 +8,8 @@ export const StyledAutocomplete = styled((props) => (
   // eslint-disable-next-line react/jsx-props-no-spreading
   <Autocomplete {...props} />
 ))`
-  .MuiInputBase-root:before,
-  .MuiInputBase-root:after {
+  .MuiInputBase-root::before,
+  .MuiInputBase-root::after {
     display: none;
   }
 

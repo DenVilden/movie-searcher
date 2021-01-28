@@ -13,8 +13,8 @@ export const CardWrapper = styled.div`
 export const StyledCardMedia = styled("div")`
   display: none;
   height: 56px;
-  position: relative;
   margin: ${(props) => props.theme.spacing(1)}px;
+  position: relative;
   width: 50px;
 
   ${(props) => props.theme.breakpoints.up("sm")} {

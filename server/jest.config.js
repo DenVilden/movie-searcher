@@ -4,9 +4,7 @@ module.exports = {
   testEnvironment: "node",
   globals: {
     "ts-jest": {
-      diagnostics: {
-        ignoreCodes: [2532, 2722],
-      },
+      isolatedModules: true,
     },
   },
 };

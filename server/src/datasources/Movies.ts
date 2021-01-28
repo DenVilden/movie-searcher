@@ -27,9 +27,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
     request.params.set("api_key", this.context.key);
   }
 
-  private attachPoster = (path: string, size = 200) => {
-    return path ? `https://image.tmdb.org/t/p/w${size}${path}` : null;
-  };
+  private attachPoster = (path: string, size = 200) => path ? `https://image.tmdb.org/t/p/w${size}${path}` : null;
 
   private moviesUpcomingReducer = (movies: MockUpcomingResponse) => ({
     total_pages: movies.total_pages,

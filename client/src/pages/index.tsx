@@ -11,7 +11,6 @@ import { ErrorMessage, Pagination, MoviesBox } from "../components";
 import withApollo from "../lib/apollo";
 import withHeader from "../lib/withHeader";
 
-// eslint-disable-next-line import/prefer-default-export
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

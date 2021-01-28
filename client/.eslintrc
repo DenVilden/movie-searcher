@@ -6,7 +6,7 @@
     "plugin:jest/all",
     "plugin:testing-library/react",
     "plugin:import/typescript",
-    "plugin:prettier/recommended",
+    "prettier",
     "prettier/react",
     "prettier/@typescript-eslint"
   ],

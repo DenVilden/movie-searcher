@@ -29,8 +29,8 @@ const StyledCard = styled(Card)`
 
 const ImageWrapper = styled("div")`
   height: 450px;
-  width: 100%;
   position: relative;
+  width: 100%;
 
   ${(props) => props.theme.breakpoints.up("md")} {
     width: 40%;
