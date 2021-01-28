@@ -5,7 +5,7 @@ import {
   AutocompleteRenderInputParams,
 } from "@material-ui/lab";
 import { useRouter } from "next/router";
-import { Logo, Favorites } from "../../components";
+import { Logo, Favorites } from "..";
 import { useGetMoviesSearchLazyQuery } from "../../graphql";
 import {
   StyledAutocomplete,

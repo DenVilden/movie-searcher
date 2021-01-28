@@ -81,4 +81,16 @@ describe("homePage", () => {
 
     expect(mockHistoryPush).toHaveBeenCalledWith("/movie/1");
   });
+
+  it("should switch page and refetch movies", async () => {
+    const { findByText, findAllByLabelText } = renderApollo(<HomePage />, {
+      mocks,
+    });
+
+    const pageButton = await findAllByLabelText("Go to next page");
+
+    fireEvent.click(pageButton[0]);
+
+    expect(findByText("page-2")).toBeTruthy();
+  });
 });
