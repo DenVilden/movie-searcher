@@ -8,6 +8,7 @@ import {
 import { Star as StarIcon } from "@material-ui/icons";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import Image from "next/image";
 
 const StyledCard = styled(Card)`
   height: 330px;
@@ -64,11 +65,14 @@ const MovieCard = ({ movie }: Props) => {
         data-testid="card-button"
         onClick={() => router.push(`/movie/${movie.id}`)}
       >
-        <StyledCardMedia
-          image={movie.poster_path || "/no-image.jpg"}
-          src="img"
-          title={movie.title}
-        />
+        <StyledCardMedia>
+          <Image
+            height="300"
+            width="200"
+            alt={movie.title}
+            src={movie.poster_path || "/no-image.jpg"}
+          />
+        </StyledCardMedia>
         <StyledCardContent>
           <Typography variant="subtitle2">{movie.title}</Typography>
           <StyledTypography color="textSecondary">

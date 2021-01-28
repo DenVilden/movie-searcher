@@ -4,6 +4,7 @@ import {
   Autocomplete,
   AutocompleteChangeReason,
   AutocompleteInputChangeReason,
+  AutocompleteRenderInputParams,
 } from "@material-ui/lab";
 import { useRouter } from "next/router";
 import { TextField } from "@material-ui/core";
@@ -70,7 +71,7 @@ const SearchBar = () => {
       inputValue={inputValue}
       loading={loading}
       onChange={(
-        _: React.ChangeEvent<HTMLLIElement>,
+        _evt: React.ChangeEvent<HTMLLIElement>,
         value: string | null,
         reason: AutocompleteChangeReason
       ) => {
@@ -82,7 +83,7 @@ const SearchBar = () => {
         }
       }}
       onInputChange={(
-        _: React.ChangeEvent<HTMLInputElement>,
+        _evt: React.ChangeEvent<HTMLInputElement>,
         value: string,
         reason: AutocompleteInputChangeReason
       ) => {
@@ -95,8 +96,7 @@ const SearchBar = () => {
       }}
       open={!!inputValue}
       options={data?.moviesSearch.results.map((movie) => movie.title) || []}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      renderInput={(params: any) => (
+      renderInput={(params: AutocompleteRenderInputParams) => (
         <StyledSearchBar>
           <StyledSearchIcon />
           <StyledInputBase {...params} placeholder="type a movie name..." />

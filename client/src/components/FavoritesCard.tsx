@@ -6,7 +6,6 @@ import {
 } from "@material-ui/core";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import ErrorMessage from "../containers/ErrorMessage";
 import { useGetMovieInfoQuery } from "../graphql";
 
 const StyledTypography = styled(Typography)`
@@ -39,7 +38,7 @@ const FavoritesCard = ({ toggleFavoritesOpen, id }: Props) => {
 
   const router = useRouter();
 
-  if (error) return <ErrorMessage error={error} />;
+  if (error) return <StyledTypography>{error.message}</StyledTypography>;
 
   if (loading || !data?.movieInfo) return <LinearProgress />;
 

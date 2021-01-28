@@ -1,12 +1,14 @@
 {
   "extends": [
     "airbnb",
-    "react-app",
-    "react-app/jest",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/all",
+    "plugin:testing-library/react",
     "plugin:import/typescript",
     "plugin:prettier/recommended",
-    "prettier/@typescript-eslint",
-    "prettier/react"
+    "prettier/react",
+    "prettier/@typescript-eslint"
   ],
   "ignorePatterns": ["next-env.d.ts", "src/graphql/__generated__"],
   "rules": {
@@ -24,6 +26,8 @@
     ],
     "react/react-in-jsx-scope": "off",
     "camelcase": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "jest/prefer-expect-assertions": "off"
   }
 }
