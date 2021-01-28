@@ -1,19 +1,13 @@
-import { Typography, Card, CardContent, CardMedia } from "@material-ui/core";
+import { Typography, Card, CardContent } from "@material-ui/core";
 import styled from "styled-components";
 
 export const StyledCard = styled(Card)`
-  height: 330px;
   text-align: center;
   width: 130px;
 
   ${(props) => props.theme.breakpoints.up("sm")} {
     width: 170px;
   }
-`;
-
-export const StyledCardMedia = styled(CardMedia)`
-  height: 222px;
-  margin: ${(props) => props.theme.spacing(1, 1, 0, 1)};
 `;
 
 export const StyledCardContent = styled(CardContent)`

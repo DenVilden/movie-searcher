@@ -1,5 +1,6 @@
 import { CardActionArea } from "@material-ui/core";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import { MovieInfo } from "../../graphql";
 import {
   StyledTypography,
@@ -24,11 +25,13 @@ const FavoritesCard = ({ handleToggle, favorite }: Props) => {
       }}
     >
       <CardWrapper>
-        <StyledCardMedia
-          image={favorite.poster_path || "/no-image.jpg"}
-          src="img"
-          title={favorite.title}
-        />
+        <StyledCardMedia>
+          <Image
+            layout="fill"
+            alt={favorite.title}
+            src={favorite.poster_path || "/no-image.jpg"}
+          />
+        </StyledCardMedia>
         <StyledTypography>{favorite.title}</StyledTypography>
       </CardWrapper>
     </CardActionArea>

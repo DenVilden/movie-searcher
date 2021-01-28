@@ -4,7 +4,6 @@ import {
   Typography,
   CardContent,
   Card,
-  CardMedia,
   Divider,
   Button,
 } from "@material-ui/core";
@@ -12,6 +11,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import Head from "next/head";
 import { useReactiveVar } from "@apollo/client";
+import Image from "next/image";
 import { MoviesBox, ErrorMessage } from "../../components";
 import { useGetMovieInfoQuery, MovieInfo } from "../../graphql";
 import withApollo, { favoritesVar } from "../../lib/apollo";
@@ -27,9 +27,10 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const StyledCardMedia = styled(CardMedia)`
+const ImageWrapper = styled("div")`
   height: 450px;
-  margin: ${(props) => props.theme.spacing(2)}px;
+  width: 100%;
+  position: relative;
 
   ${(props) => props.theme.breakpoints.up("md")} {
     width: 40%;
@@ -85,10 +86,14 @@ export const MoviePage = withHeader(() => {
           <Head>
             <title>{data.movieInfo.title}</title>
           </Head>
-          <StyledCardMedia
-            image={data.movieInfo.backdrop_path || "no-image.jpg"}
-            src="img"
-          />
+          <ImageWrapper>
+            <Image
+              layout="fill"
+              objectFit="cover"
+              alt={data.movieInfo.title}
+              src={data.movieInfo.backdrop_path || "/no-image.jpg"}
+            />
+          </ImageWrapper>
           <StyledCardContent>
             <StyledTypography gutterBottom variant="h5">
               {data.movieInfo.title}

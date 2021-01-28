@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import {
   StyledCard,
-  StyledCardMedia,
   StyledCardContent,
   StyledTypography,
   IconWrapper,
@@ -29,14 +28,12 @@ const MovieCard = ({ movie }: Props) => {
         data-testid="card-button"
         onClick={() => router.push(`/movie/${movie.id}`)}
       >
-        <StyledCardMedia>
-          <Image
-            height="300"
-            width="200"
-            alt={movie.title}
-            src={movie.poster_path || "/no-image.jpg"}
-          />
-        </StyledCardMedia>
+        <Image
+          height="300"
+          width="200"
+          alt={movie.title}
+          src={movie.poster_path || "/no-image.jpg"}
+        />
         <StyledCardContent>
           <Typography variant="subtitle2">{movie.title}</Typography>
           <StyledTypography color="textSecondary">
