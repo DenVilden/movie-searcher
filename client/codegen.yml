@@ -1,6 +1,5 @@
 overwrite: true
-schema:
-  - http://localhost:5000
+schema: http://localhost:5000
 documents: src/graphql/**/*.graphql
 generates:
   src/graphql/__generated__/index.ts:
@@ -8,6 +7,3 @@ generates:
       - typescript
       - typescript-operations
       - typescript-react-apollo
-hooks:
-  afterAllFileWrite:
-    - prettier --write

@@ -3,6 +3,7 @@
     "airbnb",
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
+    "plugin:promise/recommended",
     "plugin:jest/all",
     "plugin:testing-library/react",
     "plugin:import/typescript",
@@ -12,17 +13,10 @@
   ],
   "ignorePatterns": ["next-env.d.ts", "src/graphql/__generated__"],
   "rules": {
-    "import/extensions": [
-      "error",
-      {
-        "extensions": [".ts", ".js"]
-      }
-    ],
+    "import/extensions": ["error", { "extensions": [".ts", ".js"] }],
     "react/jsx-filename-extension": [
       "error",
-      {
-        "extensions": [".jsx", ".tsx"]
-      }
+      { "extensions": [".jsx", ".tsx"] }
     ],
     "react/react-in-jsx-scope": "off",
     "camelcase": "off",

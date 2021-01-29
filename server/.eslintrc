@@ -2,6 +2,7 @@
   "extends": [
     "airbnb-base",
     "plugin:@typescript-eslint/recommended",
+    "plugin:promise/recommended",
     "plugin:jest/all",
     "plugin:import/typescript",
     "prettier",
