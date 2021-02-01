@@ -1,7 +1,7 @@
 import Favorites from "./Favorites";
-import { GetMovieInfoDocument, MovieInfo } from "../../graphql";
+import { GetMovieInfoDocument } from "../../graphql";
 import { renderApollo, fireEvent } from "../../setupTests";
-import { favoritesVar } from "../../lib/apollo";
+import { favoritesVar } from "../../apollo";
 
 const mockHistoryPush = jest.fn();
 
@@ -20,7 +20,6 @@ const mocks = [
     result: {
       data: {
         movieInfo: {
-          __typename: "MovieInfo",
           id: 1,
           backdrop_path: null,
           poster_path: null,
@@ -31,10 +30,8 @@ const mocks = [
           vote_average: 5,
           release_date: "2020",
           similar: {
-            __typename: "SimilarMovies",
             results: [
               {
-                __typename: "SimilarResults",
                 id: 1,
                 title: "test",
                 release_date: "2020",
@@ -49,9 +46,17 @@ const mocks = [
 ];
 
 describe("favorites", () => {
-  favoritesVar([mocks[0].result.data.movieInfo as MovieInfo]);
+  it("should take a snapshot", () => {
+    const { asFragment } = renderApollo(<Favorites />);
+
+    const element = asFragment();
+
+    expect(element).toMatchSnapshot();
+  });
 
   it("should redirect to correct url when favorites item clicked", async () => {
+    favoritesVar([mocks[0].result.data.movieInfo]);
+
     const { findByTestId } = renderApollo(<Favorites />, {
       mocks,
     });

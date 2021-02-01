@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Grid, LinearProgress } from "@material-ui/core";
 import styled from "styled-components";
 import { useRef } from "react";
@@ -7,9 +6,8 @@ import {
   useGetUpcomingLazyQuery,
   useGetTopRatedLazyQuery,
 } from "../graphql";
-import { ErrorMessage, Pagination, MoviesBox } from "../components";
-import withApollo from "../lib/apollo";
-import withHeader from "../lib/withHeader";
+import { ErrorMessage, Pagination, MoviesBox, withHeader } from "../components";
+import withApollo from "../apollo";
 
 const Wrapper = styled.div`
   display: flex;
@@ -27,8 +25,8 @@ export const HomePage = withHeader(() => {
     { data: topRatedData, error: topRatedError },
   ] = useGetTopRatedLazyQuery();
 
-  const upcomingElement = useRef<HTMLDivElement>(null!);
-  const topRatedElement = useRef<HTMLDivElement>(null!);
+  const upcomingElement = useRef<HTMLDivElement>(null);
+  const topRatedElement = useRef<HTMLDivElement>(null);
 
   if (error) return <ErrorMessage error={error} />;
 
@@ -45,7 +43,9 @@ export const HomePage = withHeader(() => {
             />
             <Pagination
               currentPage={upcomingData?.upcoming.page || data.upcoming.page}
-              refetch={upcomingRefetch}
+              refetch={(page: number) =>
+                upcomingRefetch({ variables: { page } })
+              }
               scrollToTop={upcomingElement}
               totalPages={
                 upcomingData?.upcoming.total_pages || data.upcoming.total_pages
@@ -65,7 +65,9 @@ export const HomePage = withHeader(() => {
             />
             <Pagination
               currentPage={topRatedData?.topRated.page || data.topRated.page}
-              refetch={topRatedRefetch}
+              refetch={(page: number) =>
+                topRatedRefetch({ variables: { page } })
+              }
               scrollToTop={topRatedElement}
               totalPages={
                 topRatedData?.topRated.total_pages || data.topRated.total_pages

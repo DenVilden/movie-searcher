@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { render } from "@testing-library/react";
 import ErrorMessage from "./ErrorMessage";
 
 describe("errorMessage", () => {
   it("should return server side error", () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const mockError: any = {
       graphQLErrors: [
         { extensions: { response: { status: 500, statusText: "an error" } } },
@@ -17,7 +17,6 @@ describe("errorMessage", () => {
   });
 
   it("should return client side error", () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const mockError: any = {
       networkError: {
         statusCode: 401,

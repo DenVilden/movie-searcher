@@ -12,10 +12,9 @@ import styled from "styled-components";
 import Head from "next/head";
 import { useReactiveVar } from "@apollo/client";
 import Image from "next/image";
-import { MoviesBox, ErrorMessage } from "../../components";
-import { useGetMovieInfoQuery, MovieInfo } from "../../graphql";
-import withApollo, { favoritesVar } from "../../lib/apollo";
-import withHeader from "../../lib/withHeader";
+import { MoviesBox, ErrorMessage, withHeader } from "../../components";
+import { useGetMovieInfoQuery } from "../../graphql";
+import withApollo, { favoritesVar } from "../../apollo";
 
 const StyledCard = styled(Card)`
   background-color: inherit;
@@ -63,19 +62,18 @@ export const MoviePage = withHeader(() => {
 
   if (loading || !data?.movieInfo) return <LinearProgress color="secondary" />;
 
-  const isInFavorites = Object.values(favorites).some(
+  const isInFavorites = favorites.some(
     (favorite) => favorite.id === data.movieInfo?.id
   );
 
   const addOrRemoveFromFavorites = () => {
     if (isInFavorites) {
       favoritesVar(
-        Object.values(favorites).filter(
-          (favorite) => favorite.id !== data.movieInfo?.id
-        )
+        favorites.filter((favorite) => favorite.id !== data.movieInfo?.id)
       );
     } else {
-      favoritesVar([...favorites, data.movieInfo as MovieInfo]);
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      favoritesVar([...favorites, data.movieInfo!]);
     }
   };
 

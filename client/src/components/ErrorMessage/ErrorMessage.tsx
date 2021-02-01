@@ -18,7 +18,7 @@ const ErrorMessage = ({ error }: Props) => (
     title={
       error.graphQLErrors?.length
         ? error.graphQLErrors[0].extensions!.response.statusText
-        : error.networkError!.message
+        : error.networkError?.message
     }
   />
 );

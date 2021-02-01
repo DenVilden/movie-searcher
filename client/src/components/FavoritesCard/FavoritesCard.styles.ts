@@ -10,7 +10,7 @@ export const CardWrapper = styled.div`
   min-width: 200px;
 `;
 
-export const StyledCardMedia = styled("div")`
+export const ImageWrapper = styled("div")`
   display: none;
   height: 56px;
   margin: ${(props) => props.theme.spacing(1)}px;

@@ -2,10 +2,10 @@ import { useState } from "react";
 import { StyledPagination } from "./Pagination.styles";
 
 type Props = {
-  refetch: ({ variables: { page } }: { variables: { page: number } }) => void;
+  refetch: (page: number) => void;
   totalPages: number;
   currentPage: number;
-  scrollToTop?: React.MutableRefObject<HTMLElement>;
+  scrollToTop: React.MutableRefObject<HTMLElement | null>;
 };
 
 const Pagination = ({
@@ -21,14 +21,11 @@ const Pagination = ({
       count={totalPages}
       onChange={(_evt, value: number) => {
         setPage(value);
-        refetch({ variables: { page: value } });
-        return (
-          scrollToTop &&
-          scrollToTop.current.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          })
-        );
+        refetch(value);
+        scrollToTop.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
       }}
       page={page}
     />

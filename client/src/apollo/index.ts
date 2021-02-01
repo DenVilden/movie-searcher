@@ -9,14 +9,12 @@ if (process.env.NODE_ENV === "test") {
 
 export const favoritesVar = makeVar<MovieInfo[]>([]);
 
-const cache = new InMemoryCache();
-
-export const client = new ApolloClient({
+const client = new ApolloClient({
   link: new HttpLink({
     uri: process.env.NEXT_PUBLIC_SERVER_URL,
     credentials: "same-origin",
   }),
-  cache,
+  cache: new InMemoryCache(),
 });
 
 export default withApollo(client)({ ssr: true });

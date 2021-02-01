@@ -1,4 +1,4 @@
-import Header from "./Header";
+import { Header } from "./Header";
 import { renderApollo, fireEvent } from "../../setupTests";
 import { GetMoviesSearchDocument } from "../../graphql";
 
@@ -19,10 +19,8 @@ const mocks = [
     result: {
       data: {
         moviesSearch: {
-          __typename: "MoviesSearch",
           results: [
             {
-              __typename: "MoviesSearchResults",
               id: 1,
               title: "test-title",
             },

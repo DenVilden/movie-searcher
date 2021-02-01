@@ -21,7 +21,6 @@ const mocks = [
     result: {
       data: {
         movieInfo: {
-          __typename: "MovieInfo",
           id: 1,
           backdrop_path: null,
           poster_path: null,
@@ -32,10 +31,8 @@ const mocks = [
           vote_average: 5,
           release_date: "2020",
           similar: {
-            __typename: "SimilarMovies",
             results: [
               {
-                __typename: "SimilarResults",
                 id: 1,
                 title: "test",
                 release_date: "2020",

@@ -5,7 +5,8 @@ import {
   AutocompleteRenderInputParams,
 } from "@material-ui/lab";
 import { useRouter } from "next/router";
-import { Logo, Favorites } from "..";
+import Link from "next/link";
+import { Favorites } from "..";
 import { useGetMoviesSearchLazyQuery } from "../../graphql";
 import {
   StyledAutocomplete,
@@ -14,7 +15,7 @@ import {
   StyledInputBase,
 } from "./Header.styles";
 
-const Header = () => {
+export const Header = () => {
   const [inputValue, setInputValue] = useState("");
 
   const [fetchMovies, { data, loading }] = useGetMoviesSearchLazyQuery();
@@ -24,7 +25,9 @@ const Header = () => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Logo />
+        <Link href="/">
+          <img alt="logo" src="/logo.svg" />
+        </Link>
         <StyledAutocomplete
           autoHighlight
           blurOnSelect="touch"
@@ -68,4 +71,12 @@ const Header = () => {
   );
 };
 
-export default Header;
+const withHeader = (Component: React.ComponentType) => ({ ...pageProps }) => (
+  <>
+    <Header />
+    {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+    <Component {...pageProps} />
+  </>
+);
+
+export default withHeader;

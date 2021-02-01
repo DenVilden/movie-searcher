@@ -5,8 +5,8 @@ import {
   Favorite as FavoriteIcon,
   FavoriteBorder as FavoriteBorderIcon,
 } from "@material-ui/icons";
-import { FavoritesCard } from "..";
-import { favoritesVar } from "../../lib/apollo";
+import FavoritesCard from "../FavoritesCard/FavoritesCard";
+import { favoritesVar } from "../../apollo";
 import {
   StyledIconButton,
   StyledTypography,
@@ -41,7 +41,7 @@ const Favorites = () => {
       >
         <StyledTypography variant="overline">Favorites</StyledTypography>
         <Divider />
-        {Object.values(favorites).map((favorite) => (
+        {favorites.map((favorite) => (
           <FavoritesCard
             handleToggle={handleToggle}
             key={favorite.id}

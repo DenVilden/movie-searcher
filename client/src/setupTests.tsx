@@ -13,7 +13,7 @@ type RenderApolloOptions = {
 
 export const renderApollo = (
   element: React.ReactElement,
-  { mocks, addTypeName }: RenderApolloOptions = {}
+  { mocks = [], addTypeName = false }: RenderApolloOptions = {}
 ) =>
   render(
     <MockedProvider addTypename={addTypeName} mocks={mocks}>

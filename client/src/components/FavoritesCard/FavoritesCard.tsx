@@ -5,7 +5,7 @@ import { MovieInfo } from "../../graphql";
 import {
   StyledTypography,
   CardWrapper,
-  StyledCardMedia,
+  ImageWrapper,
 } from "./FavoritesCard.styles";
 
 type Props = {
@@ -25,13 +25,13 @@ const FavoritesCard = ({ handleToggle, favorite }: Props) => {
       }}
     >
       <CardWrapper>
-        <StyledCardMedia>
+        <ImageWrapper>
           <Image
             layout="fill"
             alt={favorite.title}
             src={favorite.poster_path || "/no-image.jpg"}
           />
-        </StyledCardMedia>
+        </ImageWrapper>
         <StyledTypography>{favorite.title}</StyledTypography>
       </CardWrapper>
     </CardActionArea>

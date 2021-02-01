@@ -5,7 +5,7 @@ import { createMuiTheme, StylesProvider, CssBaseline } from "@material-ui/core";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import Head from "next/head";
 import { useReactiveVar } from "@apollo/client";
-import { favoritesVar } from "../lib/apollo";
+import { favoritesVar } from "../apollo";
 
 const GlobalStyle = createGlobalStyle`
   body {

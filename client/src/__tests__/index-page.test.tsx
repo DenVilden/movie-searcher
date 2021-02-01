@@ -18,12 +18,10 @@ const mocks = [
     result: {
       data: {
         upcoming: {
-          __typename: "Upcoming",
           total_pages: 20,
           page: 1,
           results: [
             {
-              __typename: "UpcomingResults",
               id: 1,
               title: "test",
               release_date: "2020",
@@ -32,12 +30,10 @@ const mocks = [
           ],
         },
         topRated: {
-          __typename: "TopRated",
           total_pages: 20,
           page: 1,
           results: [
             {
-              __typename: "TopRatedResults",
               id: 1,
               title: "test",
               vote_average: 5,
