@@ -58,7 +58,7 @@ export const MoviePage = WithHeader(() => {
 
   const favorites = useReactiveVar(favoritesVar);
 
-  if (error) return <ErrorMessage error={error} />;
+  if (error) return <ErrorMessage error={error.message} />;
 
   if (loading || !data?.movieInfo) return <LinearProgress color="secondary" />;
 

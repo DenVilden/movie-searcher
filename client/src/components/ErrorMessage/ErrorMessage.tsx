@@ -1,26 +1,19 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import Error from "next/error";
-import { ApolloError } from "@apollo/client";
+import { Alert, AlertTitle } from "@material-ui/lab";
+import styled from "styled-components";
+
+const StyledAlert = styled(Alert)`
+  margin: ${(props) => props.theme.spacing(2, 2, 0, 2)};
+`;
 
 type Props = {
-  error: ApolloError;
+  error: string;
 };
 
 const ErrorMessage = ({ error }: Props) => (
-  <Error
-    statusCode={
-      error.graphQLErrors?.length
-        ? error.graphQLErrors[0].extensions!.response.status
-        : // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          error.networkError!.statusCode
-    }
-    title={
-      error.graphQLErrors?.length
-        ? error.graphQLErrors[0].extensions!.response.statusText
-        : error.networkError?.message
-    }
-  />
+  <StyledAlert elevation={12} variant="filled" severity="error">
+    <AlertTitle>Error</AlertTitle>
+    {error}
+  </StyledAlert>
 );
 
 export default ErrorMessage;

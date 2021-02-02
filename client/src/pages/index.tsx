@@ -28,7 +28,7 @@ export const HomePage = WithHeader(() => {
   const upcomingElement = useRef<HTMLDivElement>(null);
   const topRatedElement = useRef<HTMLDivElement>(null);
 
-  if (error) return <ErrorMessage error={error} />;
+  if (error) return <ErrorMessage error={error.message} />;
 
   if (!data) return <LinearProgress color="secondary" />;
 
@@ -53,7 +53,7 @@ export const HomePage = WithHeader(() => {
             />
           </Wrapper>
         ) : (
-          <ErrorMessage error={upcomingError} />
+          <ErrorMessage error={upcomingError.message} />
         )}
       </Grid>
       <Grid item lg={6}>
@@ -75,7 +75,7 @@ export const HomePage = WithHeader(() => {
             />
           </Wrapper>
         ) : (
-          <ErrorMessage error={topRatedError} />
+          <ErrorMessage error={topRatedError.message} />
         )}
       </Grid>
     </Grid>

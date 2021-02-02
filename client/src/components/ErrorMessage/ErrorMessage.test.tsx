@@ -1,32 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { render } from "@testing-library/react";
+import { renderApollo } from "../../setupTests";
 import ErrorMessage from "./ErrorMessage";
 
 describe("errorMessage", () => {
-  it("should return server side error", () => {
-    const mockError: any = {
-      graphQLErrors: [
-        { extensions: { response: { status: 500, statusText: "an error" } } },
-      ],
-    };
+  it("should take a snapshot", () => {
+    const { asFragment } = renderApollo(<ErrorMessage error="error" />);
 
-    const { getByText } = render(<ErrorMessage error={mockError} />);
+    const element = asFragment();
 
-    expect(getByText(/an error/i)).toBeTruthy();
-    expect(getByText("500")).toBeTruthy();
-  });
-
-  it("should return client side error", () => {
-    const mockError: any = {
-      networkError: {
-        statusCode: 401,
-        message: "an error",
-      },
-    };
-
-    const { getByText } = render(<ErrorMessage error={mockError} />);
-
-    expect(getByText(/an error/i)).toBeTruthy();
-    expect(getByText("401")).toBeTruthy();
+    expect(element).toMatchSnapshot();
   });
 });
