@@ -71,9 +71,8 @@ export const MoviePage = WithHeader(() => {
       favoritesVar(
         favorites.filter((favorite) => favorite.id !== data.movieInfo?.id)
       );
-    } else {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      favoritesVar([...favorites, data.movieInfo!]);
+    } else if (data.movieInfo) {
+      favoritesVar([...favorites, data.movieInfo]);
     }
   };
 

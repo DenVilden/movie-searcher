@@ -14,10 +14,7 @@ import { fade } from "@material-ui/core/styles";
 import Favorites from "../Favorites/Favorites";
 import { useGetMoviesSearchLazyQuery } from "../../graphql";
 
-const StyledAutocomplete = styled((props) => (
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  <Autocomplete {...props} />
-))`
+const StyledAutocomplete = styled((props) => <Autocomplete {...props} />)`
   .MuiInputBase-root::before,
   .MuiInputBase-root::after {
     display: none;
@@ -63,20 +60,21 @@ export const Header = () => {
         </Link>
         <StyledAutocomplete
           forcePopupIcon
-          popupIcon={!inputValue && <SearchIcon />}
+          popupIcon={<SearchIcon />}
+          closeIcon={null}
           autoHighlight
           blurOnSelect="touch"
           freeSolo
           inputValue={inputValue}
           loading={loading}
-          onChange={(
-            _evt: React.ChangeEvent<HTMLLIElement>,
-            value: string | null
-          ) => {
+          onChange={(_evt: React.ChangeEvent<HTMLLIElement>, value: string) => {
             const id = data?.moviesSearch.results.find(
               (movie) => movie.title === value
             )?.id;
-            router.push(`/movie/${id}`);
+
+            if (id) {
+              router.push(`/movie/${id}`);
+            }
           }}
           onInputChange={(
             _evt: React.ChangeEvent<HTMLInputElement>,
@@ -111,7 +109,6 @@ export const Header = () => {
 const WithHeader = (Component: React.ComponentType) => ({ ...pageProps }) => (
   <>
     <Header />
-    {/* eslint-disable-next-line react/jsx-props-no-spreading */}
     <Component {...pageProps} />
   </>
 );
