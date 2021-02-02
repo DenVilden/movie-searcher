@@ -1,24 +1,57 @@
-import { AppBar, Toolbar } from "@material-ui/core";
+/* eslint-disable react/jsx-props-no-spreading */
+import { AppBar, Toolbar, TextField } from "@material-ui/core";
 import { useState } from "react";
 import {
   AutocompleteInputChangeReason,
   AutocompleteRenderInputParams,
+  Autocomplete,
 } from "@material-ui/lab";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { Favorites } from "..";
+import { Search as SearchIcon } from "@material-ui/icons";
+import styled from "styled-components";
+import { fade } from "@material-ui/core/styles";
+import Favorites from "../Favorites/Favorites";
 import { useGetMoviesSearchLazyQuery } from "../../graphql";
-import {
-  StyledAutocomplete,
-  StyledSearchBar,
-  StyledSearchIcon,
-  StyledInputBase,
-} from "./Header.styles";
+
+const StyledAutocomplete = styled((props) => (
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  <Autocomplete {...props} />
+))`
+  .MuiInputBase-root::before,
+  .MuiInputBase-root::after {
+    display: none;
+  }
+
+  input {
+    color: #fafafa;
+  }
+`;
+
+const StyledInputBase = styled(TextField)`
+  background-color: ${(props) => fade(props.theme.palette.common.white, 0.15)};
+  border-radius: ${(props) => props.theme.shape.borderRadius}px;
+  width: 300px;
+
+  ${(props) => props.theme.breakpoints.up("md")} {
+    width: 800px;
+  }
+
+  ${(props) => props.theme.breakpoints.up("sm")} {
+    margin-left: ${(props) => props.theme.spacing(4)}px;
+  }
+
+  :hover {
+    background-color: ${(props) =>
+      fade(props.theme.palette.common.white, 0.25)};
+    border: 0;
+  }
+`;
 
 export const Header = () => {
   const [inputValue, setInputValue] = useState("");
 
-  const [fetchMovies, { data, loading }] = useGetMoviesSearchLazyQuery();
+  const [fetchMovies, { data, loading, error }] = useGetMoviesSearchLazyQuery();
 
   const router = useRouter();
 
@@ -29,6 +62,8 @@ export const Header = () => {
           <img alt="logo" src="/logo.svg" />
         </Link>
         <StyledAutocomplete
+          forcePopupIcon
+          popupIcon={!inputValue && <SearchIcon />}
           autoHighlight
           blurOnSelect="touch"
           freeSolo
@@ -48,7 +83,7 @@ export const Header = () => {
             value: string,
             reason: AutocompleteInputChangeReason
           ) => {
-            if (reason === "input") {
+            if (reason === "input" && value) {
               setInputValue(value);
               fetchMovies({ variables: { query: value, pageSize: 8 } });
             } else {
@@ -58,11 +93,13 @@ export const Header = () => {
           open={!!inputValue}
           options={data?.moviesSearch.results.map((movie) => movie.title) || []}
           renderInput={(params: AutocompleteRenderInputParams) => (
-            <StyledSearchBar>
-              <StyledSearchIcon />
-              {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-              <StyledInputBase {...params} placeholder="type a movie name..." />
-            </StyledSearchBar>
+            <StyledInputBase
+              {...params}
+              error={!!error}
+              variant="outlined"
+              margin="dense"
+              placeholder="type a movie name..."
+            />
           )}
         />
         <Favorites />
@@ -71,7 +108,7 @@ export const Header = () => {
   );
 };
 
-const withHeader = (Component: React.ComponentType) => ({ ...pageProps }) => (
+const WithHeader = (Component: React.ComponentType) => ({ ...pageProps }) => (
   <>
     <Header />
     {/* eslint-disable-next-line react/jsx-props-no-spreading */}
@@ -79,4 +116,4 @@ const withHeader = (Component: React.ComponentType) => ({ ...pageProps }) => (
   </>
 );
 
-export default withHeader;
+export default WithHeader;

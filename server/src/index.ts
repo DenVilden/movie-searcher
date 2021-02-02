@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { ApolloServer } from "apollo-server";
 import { loadFiles } from "graphql-import-files";
 import resolvers from "./graphql/resolvers";
@@ -14,7 +13,7 @@ const server = new ApolloServer({
   cors: { origin: CLIENT_URL, credentials: true },
 });
 
-server
-  .listen(PORT)
-  .then(({ url }) => console.log(`Running a GraphQL API server at ${url}`))
-  .catch(() => console.log("Can't launch a server"));
+server.listen(PORT).then(({ url }) => {
+  // eslint-disable-next-line no-console
+  console.log(`Running a GraphQL API server at ${url}`);
+});

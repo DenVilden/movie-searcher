@@ -6,7 +6,7 @@ import {
   useGetUpcomingLazyQuery,
   useGetTopRatedLazyQuery,
 } from "../graphql";
-import { ErrorMessage, Pagination, MoviesBox, withHeader } from "../components";
+import { ErrorMessage, Pagination, MoviesBox, WithHeader } from "../components";
 import withApollo from "../apollo";
 
 const Wrapper = styled.div`
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-export const HomePage = withHeader(() => {
+export const HomePage = WithHeader(() => {
   const { data, error } = useGetMoviesQuery();
   const [
     upcomingRefetch,

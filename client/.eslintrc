@@ -3,7 +3,6 @@
     "airbnb",
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
-    "plugin:promise/recommended",
     "plugin:jest/all",
     "plugin:testing-library/react",
     "plugin:import/typescript",

@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { StyledPagination } from "./Pagination.styles";
+import styled from "styled-components";
+import { Pagination } from "@material-ui/lab";
+
+const StyledPagination = styled(Pagination)`
+  margin: auto;
+`;
 
 type Props = {
   refetch: (page: number) => void;
@@ -8,7 +13,7 @@ type Props = {
   scrollToTop: React.MutableRefObject<HTMLElement | null>;
 };
 
-const Pagination = ({
+const PaginationComponent = ({
   totalPages,
   refetch,
   currentPage,
@@ -32,4 +37,4 @@ const Pagination = ({
   );
 };
 
-export default Pagination;
+export default PaginationComponent;

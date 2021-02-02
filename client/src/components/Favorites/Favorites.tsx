@@ -1,17 +1,34 @@
 import { useState } from "react";
-import { Divider, Badge } from "@material-ui/core";
+import {
+  Divider,
+  Badge,
+  Typography,
+  Popover,
+  IconButton,
+} from "@material-ui/core";
 import { useReactiveVar } from "@apollo/client";
 import {
   Favorite as FavoriteIcon,
   FavoriteBorder as FavoriteBorderIcon,
 } from "@material-ui/icons";
+import styled from "styled-components";
 import FavoritesCard from "../FavoritesCard/FavoritesCard";
 import { favoritesVar } from "../../apollo";
-import {
-  StyledIconButton,
-  StyledTypography,
-  StyledPopover,
-} from "./Favorites.styles";
+
+const StyledIconButton = styled(IconButton)`
+  margin-left: auto;
+`;
+
+const StyledTypography = styled(Typography)`
+  padding: ${(props) => props.theme.spacing(2)}px;
+`;
+
+const StyledPopover = styled(Popover)`
+  .MuiPopover-paper {
+    right: 16px;
+    top: 45px;
+  }
+`;
 
 const Favorites = () => {
   const favorites = useReactiveVar(favoritesVar);

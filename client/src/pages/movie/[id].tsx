@@ -12,7 +12,7 @@ import styled from "styled-components";
 import Head from "next/head";
 import { useReactiveVar } from "@apollo/client";
 import Image from "next/image";
-import { MoviesBox, ErrorMessage, withHeader } from "../../components";
+import { MoviesBox, ErrorMessage, WithHeader } from "../../components";
 import { useGetMovieInfoQuery } from "../../graphql";
 import withApollo, { favoritesVar } from "../../apollo";
 
@@ -51,7 +51,7 @@ const StyledTypography = styled(Typography)`
   justify-content: space-between;
 `;
 
-export const MoviePage = withHeader(() => {
+export const MoviePage = WithHeader(() => {
   const { id } = useRouter().query as { id: string };
 
   const { loading, error, data } = useGetMovieInfoQuery({ variables: { id } });

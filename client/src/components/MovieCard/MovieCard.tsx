@@ -1,13 +1,43 @@
-import { CardActionArea, Typography } from "@material-ui/core";
+import {
+  CardActionArea,
+  Typography,
+  Card,
+  CardContent,
+} from "@material-ui/core";
 import { Star as StarIcon } from "@material-ui/icons";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import {
-  StyledCard,
-  StyledCardContent,
-  StyledTypography,
-  IconWrapper,
-} from "./MovieCard.styles";
+import styled from "styled-components";
+
+const StyledCard = styled(Card)`
+  text-align: center;
+  width: 130px;
+
+  ${(props) => props.theme.breakpoints.up("sm")} {
+    width: 170px;
+  }
+`;
+
+const StyledCardContent = styled(CardContent)`
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  padding: ${(props) => props.theme.spacing(2, 1, 1, 1)};
+`;
+
+const StyledTypography = styled(Typography)`
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+`;
+
+const IconWrapper = styled.span`
+  display: flex;
+
+  svg {
+    height: 0.9em;
+  }
+`;
 
 type Props = {
   movie: {

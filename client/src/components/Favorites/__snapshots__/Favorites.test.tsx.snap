@@ -3,7 +3,7 @@
 exports[`favorites should take a snapshot 1`] = `
 <DocumentFragment>
   <button
-    class="MuiButtonBase-root MuiIconButton-root Favoritesstyles__StyledIconButton-sc-16hxvtd-0 euWkBy MuiIconButton-colorInherit Mui-disabled Mui-disabled"
+    class="MuiButtonBase-root MuiIconButton-root Favorites__StyledIconButton-sc-1iz73oq-0 fEOJAH MuiIconButton-colorInherit Mui-disabled Mui-disabled"
     data-testid="icon-button"
     disabled=""
     tabindex="-1"
