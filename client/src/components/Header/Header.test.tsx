@@ -48,28 +48,13 @@ describe("header", () => {
     expect(inputElement).toHaveProperty("value", "test");
   });
 
-  it("should clear input value on click", async () => {
-    const { findByPlaceholderText, findByTitle } = renderApollo(<Header />, {
-      mocks,
-    });
-
-    const inputElement = await findByPlaceholderText("type a movie name...");
-
-    fireEvent.change(inputElement, { target: { value: "test" } });
-
-    expect(inputElement).toHaveProperty("value", "test");
-
-    const clearButton = await findByTitle("Clear");
-
-    fireEvent.click(clearButton);
-
-    expect(inputElement).toHaveProperty("value", "");
-  });
-
-  it("should redirect to correct url on click", async () => {
-    const { findByPlaceholderText, findByText } = renderApollo(<Header />, {
-      mocks,
-    });
+  it("should redirect to correct url on click and clear input value", async () => {
+    const { findByPlaceholderText, findByText, findByTitle } = renderApollo(
+      <Header />,
+      {
+        mocks,
+      }
+    );
 
     const inputElement = await findByPlaceholderText("type a movie name...");
 
@@ -80,5 +65,11 @@ describe("header", () => {
     fireEvent.click(searchResult);
 
     expect(mockHistoryPush).toHaveBeenCalledWith("/movie/1");
+
+    const clearButton = await findByTitle("Clear");
+
+    fireEvent.click(clearButton);
+
+    expect(inputElement).toHaveProperty("value", "");
   });
 });

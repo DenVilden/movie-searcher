@@ -13,7 +13,7 @@ import Head from "next/head";
 import { useReactiveVar } from "@apollo/client";
 import Image from "next/image";
 import { MoviesBox, ErrorMessage, WithHeader } from "../../components";
-import { useGetMovieInfoQuery } from "../../graphql";
+import { useGetMovieInfoQuery, MovieInfo } from "../../graphql";
 import withApollo, { favoritesVar } from "../../apollo";
 
 const StyledCard = styled(Card)`
@@ -71,8 +71,8 @@ export const MoviePage = WithHeader(() => {
       favoritesVar(
         favorites.filter((favorite) => favorite.id !== data.movieInfo?.id)
       );
-    } else if (data.movieInfo) {
-      favoritesVar([...favorites, data.movieInfo]);
+    } else {
+      favoritesVar([...favorites, data.movieInfo as MovieInfo]);
     }
   };
 

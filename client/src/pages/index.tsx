@@ -25,8 +25,8 @@ export const HomePage = WithHeader(() => {
     { data: topRatedData, error: topRatedError },
   ] = useGetTopRatedLazyQuery();
 
-  const upcomingElement = useRef<HTMLDivElement>(null);
-  const topRatedElement = useRef<HTMLDivElement>(null);
+  const upcomingElement = useRef<HTMLDivElement | null>(null);
+  const topRatedElement = useRef<HTMLDivElement | null>(null);
 
   if (error) return <ErrorMessage error={error.message} />;
 

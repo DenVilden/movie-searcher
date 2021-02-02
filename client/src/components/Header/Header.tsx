@@ -5,6 +5,7 @@ import {
   AutocompleteInputChangeReason,
   AutocompleteRenderInputParams,
   Autocomplete,
+  AutocompleteChangeReason,
 } from "@material-ui/lab";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -60,19 +61,20 @@ export const Header = () => {
         </Link>
         <StyledAutocomplete
           forcePopupIcon
-          popupIcon={<SearchIcon />}
-          closeIcon={null}
+          popupIcon={!inputValue && <SearchIcon />}
           autoHighlight
-          blurOnSelect="touch"
+          blurOnSelect
           freeSolo
-          inputValue={inputValue}
           loading={loading}
-          onChange={(_evt: React.ChangeEvent<HTMLLIElement>, value: string) => {
-            const id = data?.moviesSearch.results.find(
-              (movie) => movie.title === value
-            )?.id;
-
-            if (id) {
+          onChange={(
+            _evt: React.ChangeEvent<HTMLLIElement>,
+            value: string,
+            reason: AutocompleteChangeReason
+          ) => {
+            if (reason === "select-option") {
+              const id = data?.moviesSearch.results.find(
+                (movie) => movie.title === value
+              )?.id;
               router.push(`/movie/${id}`);
             }
           }}
@@ -96,6 +98,7 @@ export const Header = () => {
               error={!!error}
               variant="outlined"
               margin="dense"
+              value={inputValue}
               placeholder="type a movie name..."
             />
           )}
