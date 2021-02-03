@@ -96,7 +96,7 @@ export type Query = {
   upcoming: Upcoming;
   topRated: TopRated;
   moviesSearch: MoviesSearch;
-  movieInfo?: Maybe<MovieInfo>;
+  movieInfo: MovieInfo;
 };
 
 export type QueryUpcomingArgs = {
@@ -129,29 +129,27 @@ export type GetMovieInfoQueryVariables = Exact<{
 }>;
 
 export type GetMovieInfoQuery = { __typename?: "Query" } & {
-  movieInfo?: Maybe<
-    { __typename?: "MovieInfo" } & Pick<
-      MovieInfo,
-      | "id"
-      | "backdrop_path"
-      | "poster_path"
-      | "title"
-      | "overview"
-      | "budget"
-      | "revenue"
-      | "vote_average"
-      | "release_date"
-    > & {
-        similar: { __typename?: "SimilarMovies" } & {
-          results: Array<
-            { __typename?: "SimilarResults" } & Pick<
-              SimilarResults,
-              "id" | "title" | "release_date" | "poster_path"
-            >
-          >;
-        };
-      }
-  >;
+  movieInfo: { __typename?: "MovieInfo" } & Pick<
+    MovieInfo,
+    | "id"
+    | "backdrop_path"
+    | "poster_path"
+    | "title"
+    | "overview"
+    | "budget"
+    | "revenue"
+    | "vote_average"
+    | "release_date"
+  > & {
+      similar: { __typename?: "SimilarMovies" } & {
+        results: Array<
+          { __typename?: "SimilarResults" } & Pick<
+            SimilarResults,
+            "id" | "title" | "release_date" | "poster_path"
+          >
+        >;
+      };
+    };
 };
 
 export type GetMoviesQueryVariables = Exact<{ [key: string]: never }>;

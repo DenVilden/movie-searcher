@@ -3,18 +3,20 @@ import { paginateResults } from "../lib/utils";
 
 const resolvers: Resolvers = {
   Query: {
-    upcoming: (_, { page }, { dataSources }) => {
+    upcoming: async (_, { page }, { dataSources }) => {
       try {
-        return dataSources.moviesAPI.getUpcoming(page);
+        const data = await dataSources.moviesAPI.getUpcoming(page);
+        return data;
       } catch (error) {
         throw new Error(`Failed to fetch movies: ${error}`);
       }
     },
-    topRated: (_, { page }, { dataSources }) => {
+    topRated: async (_, { page }, { dataSources }) => {
       try {
-        return dataSources.moviesAPI.getTopRated(page);
+        const data = await dataSources.moviesAPI.getTopRated(page);
+        return data;
       } catch (error) {
-        throw new Error(`Failed to fetch movies ${error}`);
+        throw new Error(`Failed to fetch movies: ${error}`);
       }
     },
     moviesSearch: async (_, { query, cursor, pageSize }, { dataSources }) => {
@@ -22,7 +24,7 @@ const resolvers: Resolvers = {
         const data = await dataSources.moviesAPI.getMoviesSearch(query);
         return paginateResults(data, pageSize, cursor);
       } catch (error) {
-        throw new Error(`Failed to fetch movies ${error}`);
+        throw new Error(`Failed to fetch movies: ${error}`);
       }
     },
     movieInfo: async (_, { id, cursor, pageSize }, { dataSources }) => {
@@ -33,7 +35,7 @@ const resolvers: Resolvers = {
           similar: paginateResults(data.similar, pageSize, cursor),
         };
       } catch (error) {
-        throw new Error(`Something went wrong ${error}`);
+        throw new Error(`Something went wrong: ${error}`);
       }
     },
   },

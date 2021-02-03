@@ -98,7 +98,7 @@ export type Query = {
   upcoming: Upcoming;
   topRated: TopRated;
   moviesSearch: MoviesSearch;
-  movieInfo?: Maybe<MovieInfo>;
+  movieInfo: MovieInfo;
 };
 
 export type QueryUpcomingArgs = {
@@ -429,7 +429,7 @@ export type QueryResolvers<
     RequireFields<QueryMoviesSearchArgs, "query" | "cursor" | "pageSize">
   >;
   movieInfo?: Resolver<
-    Maybe<ResolversTypes["MovieInfo"]>,
+    ResolversTypes["MovieInfo"],
     ParentType,
     ContextType,
     RequireFields<QueryMovieInfoArgs, "id" | "cursor" | "pageSize">

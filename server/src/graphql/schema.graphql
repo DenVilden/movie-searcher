@@ -69,5 +69,5 @@ type Query {
     cursor: Int = null
     pageSize: Int = 4
   ): MoviesSearch!
-  movieInfo(id: ID!, cursor: Int = null, pageSize: Int = 4): MovieInfo
+  movieInfo(id: ID!, cursor: Int = null, pageSize: Int = 4): MovieInfo!
 }

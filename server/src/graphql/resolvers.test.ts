@@ -28,6 +28,25 @@ describe("[Query.upcoming]", () => {
 
     expect(res).toStrictEqual(mockUpcoming);
   });
+
+  it("catches upcoming error", async () => {
+    getUpcoming.mockRejectedValueOnce("error");
+
+    let errorMessage = "";
+
+    try {
+      await resolvers.Query.upcoming(
+        {} as any,
+        {} as any,
+        mockContext as any,
+        {} as any
+      );
+    } catch (error) {
+      errorMessage = error.message;
+    } finally {
+      expect(errorMessage).toStrictEqual("Failed to fetch movies: error");
+    }
+  });
 });
 
 describe("[Query.topRated]", () => {
@@ -50,6 +69,25 @@ describe("[Query.topRated]", () => {
     );
 
     expect(res).toStrictEqual(mockTopRated);
+  });
+
+  it("catches topRated error", async () => {
+    getTopRated.mockRejectedValueOnce("error");
+
+    let errorMessage = "";
+
+    try {
+      await resolvers.Query.topRated(
+        {} as any,
+        {} as any,
+        mockContext as any,
+        {} as any
+      );
+    } catch (error) {
+      errorMessage = error.message;
+    } finally {
+      expect(errorMessage).toStrictEqual("Failed to fetch movies: error");
+    }
   });
 });
 
@@ -77,6 +115,25 @@ describe("[Query.moviesSearch]", () => {
       cursor: 2,
       hasMore: false,
     });
+  });
+
+  it("catches moviesSearch error", async () => {
+    getMoviesSearch.mockRejectedValueOnce("error");
+
+    let errorMessage = "";
+
+    try {
+      await resolvers.Query.moviesSearch(
+        {} as any,
+        {} as any,
+        mockContext as any,
+        {} as any
+      );
+    } catch (error) {
+      errorMessage = error.message;
+    } finally {
+      expect(errorMessage).toStrictEqual("Failed to fetch movies: error");
+    }
   });
 });
 
@@ -107,5 +164,24 @@ describe("[Query.movieInfo]", () => {
         hasMore: true,
       },
     });
+  });
+
+  it("catches movieInfo error", async () => {
+    getMovieInfo.mockRejectedValueOnce("error");
+
+    let errorMessage = "";
+
+    try {
+      await resolvers.Query.movieInfo(
+        {} as any,
+        {} as any,
+        mockContext as any,
+        {} as any
+      );
+    } catch (error) {
+      errorMessage = error.message;
+    } finally {
+      expect(errorMessage).toStrictEqual("Something went wrong: error");
+    }
   });
 });
