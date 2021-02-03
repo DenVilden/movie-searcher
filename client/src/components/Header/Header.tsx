@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { AppBar, Toolbar, TextField } from "@material-ui/core";
+import { AppBar, Toolbar, TextField, Button } from "@material-ui/core";
 import { useState } from "react";
 import {
   AutocompleteInputChangeReason,
@@ -12,8 +12,10 @@ import Link from "next/link";
 import { Search as SearchIcon } from "@material-ui/icons";
 import styled from "styled-components";
 import { fade } from "@material-ui/core/styles";
+import { useReactiveVar } from "@apollo/client";
 import Favorites from "../Favorites/Favorites";
 import { useGetMoviesSearchLazyQuery } from "../../graphql";
+import { autocompleteVar } from "../../apollo";
 
 const StyledAutocomplete = styled((props) => <Autocomplete {...props} />)`
   .MuiInputBase-root::before,
@@ -48,6 +50,7 @@ const StyledInputBase = styled(TextField)`
 
 export const Header = () => {
   const [inputValue, setInputValue] = useState("");
+  const autocompleteValue = useReactiveVar(autocompleteVar);
 
   const [fetchMovies, { data, loading, error }] = useGetMoviesSearchLazyQuery();
 
@@ -57,7 +60,9 @@ export const Header = () => {
     <AppBar position="static">
       <Toolbar>
         <Link href="/">
-          <img alt="logo" src="/logo.svg" />
+          <Button title="logo" onClick={() => autocompleteVar("")}>
+            <img alt="logo" src="/logo.svg" />
+          </Button>
         </Link>
         <StyledAutocomplete
           forcePopupIcon
@@ -65,6 +70,7 @@ export const Header = () => {
           autoHighlight
           blurOnSelect
           freeSolo
+          value={autocompleteValue}
           loading={loading}
           onChange={(
             _evt: React.ChangeEvent<HTMLLIElement>,
@@ -75,6 +81,7 @@ export const Header = () => {
               const id = data?.moviesSearch.results.find(
                 (movie) => movie.title === value
               )?.id;
+              autocompleteVar(value);
               router.push(`/movie/${id}`);
             }
           }}

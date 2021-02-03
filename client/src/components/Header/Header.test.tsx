@@ -10,6 +10,9 @@ jest.mock("next/router", () => ({
   }),
 }));
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+jest.mock("next/link", () => ({ children }: { children: any }) => children);
+
 const mocks = [
   {
     request: {
@@ -67,6 +70,29 @@ describe("header", () => {
     expect(mockHistoryPush).toHaveBeenCalledWith("/movie/1");
 
     const clearButton = await findByTitle("Clear");
+
+    fireEvent.click(clearButton);
+
+    expect(inputElement).toHaveProperty("value", "");
+  });
+
+  it("should clear input value on logo click", async () => {
+    const { findByPlaceholderText, findByText, findByTitle } = renderApollo(
+      <Header />,
+      {
+        mocks,
+      }
+    );
+
+    const inputElement = await findByPlaceholderText("type a movie name...");
+
+    fireEvent.change(inputElement, { target: { value: "test" } });
+
+    const searchResult = await findByText("test-title");
+
+    fireEvent.click(searchResult);
+
+    const clearButton = await findByTitle("logo");
 
     fireEvent.click(clearButton);
 
