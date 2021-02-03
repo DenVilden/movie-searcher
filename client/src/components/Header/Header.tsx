@@ -9,7 +9,6 @@ import {
 } from "@material-ui/lab";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { Search as SearchIcon } from "@material-ui/icons";
 import styled from "styled-components";
 import { fade } from "@material-ui/core/styles";
 import { useReactiveVar } from "@apollo/client";
@@ -65,8 +64,6 @@ export const Header = () => {
           </Button>
         </Link>
         <StyledAutocomplete
-          forcePopupIcon
-          popupIcon={!inputValue && <SearchIcon />}
           autoHighlight
           blurOnSelect
           freeSolo
