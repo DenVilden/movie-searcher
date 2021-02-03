@@ -16,10 +16,20 @@ import Favorites from "../Favorites/Favorites";
 import { useGetMoviesSearchLazyQuery } from "../../graphql";
 import { autocompleteVar } from "../../apollo";
 
+const StyledToolbar = styled(Toolbar)`
+  padding: 0;
+
+  ${(props) => props.theme.breakpoints.up("sm")} {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+`;
+
 const StyledAutocomplete = styled((props) => <Autocomplete {...props} />)`
-  .MuiInputBase-root::before,
-  .MuiInputBase-root::after {
-    display: none;
+  width: 100%;
+
+  ${(props) => props.theme.breakpoints.up("md")} {
+    width: 70%;
   }
 
   input {
@@ -30,20 +40,14 @@ const StyledAutocomplete = styled((props) => <Autocomplete {...props} />)`
 const StyledInputBase = styled(TextField)`
   background-color: ${(props) => fade(props.theme.palette.common.white, 0.15)};
   border-radius: ${(props) => props.theme.shape.borderRadius}px;
-  width: 300px;
-
-  ${(props) => props.theme.breakpoints.up("md")} {
-    width: 800px;
-  }
 
   ${(props) => props.theme.breakpoints.up("sm")} {
-    margin-left: ${(props) => props.theme.spacing(4)}px;
+    margin-left: ${(props) => props.theme.spacing(2)}px;
   }
 
   :hover {
     background-color: ${(props) =>
       fade(props.theme.palette.common.white, 0.25)};
-    border: 0;
   }
 `;
 
@@ -57,7 +61,7 @@ export const Header = () => {
 
   return (
     <AppBar position="static">
-      <Toolbar>
+      <StyledToolbar>
         <Link href="/">
           <Button title="logo" onClick={() => autocompleteVar("")}>
             <img alt="logo" src="/logo.svg" />
@@ -104,11 +108,12 @@ export const Header = () => {
               margin="dense"
               value={inputValue}
               placeholder="type a movie name..."
+              fullWidth
             />
           )}
         />
         <Favorites />
-      </Toolbar>
+      </StyledToolbar>
     </AppBar>
   );
 };
