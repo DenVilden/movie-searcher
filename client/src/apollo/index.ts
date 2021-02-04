@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache, HttpLink, makeVar } from "@apollo/client";
 import { withApollo } from "next-apollo";
-import { MovieInfo } from "../graphql";
+import { MovieInfo } from "./__generated__";
 
 if (process.env.NODE_ENV === "test") {
   // eslint-disable-next-line global-require
@@ -10,7 +10,8 @@ if (process.env.NODE_ENV === "test") {
 export const favoritesVar = makeVar<MovieInfo[]>([]);
 export const autocompleteVar = makeVar<string>("");
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
+  ssrMode: typeof window === "undefined",
   link: new HttpLink({
     uri: process.env.NEXT_PUBLIC_SERVER_URL,
     credentials: "same-origin",
@@ -18,4 +19,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export default withApollo(client)({ ssr: true });
+export default withApollo(client);
+
+export * from "./__generated__";

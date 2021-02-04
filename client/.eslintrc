@@ -2,15 +2,15 @@
   "extends": [
     "airbnb",
     "airbnb/hooks",
+    "plugin:import/typescript",
     "plugin:@typescript-eslint/recommended",
     "plugin:jest/all",
     "plugin:testing-library/react",
-    "plugin:import/typescript",
     "prettier",
     "prettier/react",
     "prettier/@typescript-eslint"
   ],
-  "ignorePatterns": ["next-env.d.ts", "src/graphql/__generated__"],
+  "ignorePatterns": ["next-env.d.ts", "src/apollo/__generated__"],
   "rules": {
     "import/extensions": ["error", { "extensions": [".ts", ".js"] }],
     "react/jsx-filename-extension": [

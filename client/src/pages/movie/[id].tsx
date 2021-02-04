@@ -12,9 +12,8 @@ import styled from "styled-components";
 import Head from "next/head";
 import { useReactiveVar } from "@apollo/client";
 import Image from "next/image";
-import { MoviesBox, ErrorMessage, WithHeader } from "../../components";
-import { useGetMovieInfoQuery } from "../../graphql";
-import withApollo, { favoritesVar } from "../../apollo";
+import { MoviesBox, ErrorMessage } from "../../components";
+import withApollo, { useGetMovieInfoQuery, favoritesVar } from "../../apollo";
 
 const StyledCard = styled(Card)`
   background-color: inherit;
@@ -51,7 +50,7 @@ const StyledTypography = styled(Typography)`
   justify-content: space-between;
 `;
 
-export const MoviePage = WithHeader(() => {
+export const MoviePage = () => {
   const { id } = useRouter().query as { id: string };
 
   const { loading, error, data } = useGetMovieInfoQuery({ variables: { id } });
@@ -131,6 +130,6 @@ export const MoviePage = WithHeader(() => {
       </div>
     </Slide>
   );
-});
+};
 
-export default withApollo(MoviePage);
+export default withApollo({ ssr: false })(MoviePage);

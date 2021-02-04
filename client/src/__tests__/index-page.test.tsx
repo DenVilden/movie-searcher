@@ -1,5 +1,5 @@
 import { HomePage } from "../pages";
-import { GetMoviesDocument } from "../graphql";
+import { GetMoviesDocument } from "../apollo";
 import { renderApollo, fireEvent } from "../setupTests";
 
 const mockHistoryPush = jest.fn();
@@ -47,6 +47,14 @@ const mocks = [
 ];
 
 describe("homePage", () => {
+  it("should take a snapshot", () => {
+    const { asFragment } = renderApollo(<HomePage />);
+
+    const element = asFragment();
+
+    expect(element).toMatchSnapshot();
+  });
+
   it("should render error state", async () => {
     const mockError = [
       {

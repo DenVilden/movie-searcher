@@ -2,7 +2,7 @@ import { CardActionArea, Typography } from "@material-ui/core";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import styled from "styled-components";
-import { MovieInfo } from "../../graphql";
+import { MovieInfo } from "../../apollo";
 
 const StyledTypography = styled(Typography)`
   padding: ${(props) => props.theme.spacing(3, 2, 2, 2)};

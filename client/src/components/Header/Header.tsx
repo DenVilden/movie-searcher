@@ -13,8 +13,7 @@ import styled from "styled-components";
 import { fade } from "@material-ui/core/styles";
 import { useReactiveVar } from "@apollo/client";
 import Favorites from "../Favorites/Favorites";
-import { useGetMoviesSearchLazyQuery } from "../../graphql";
-import { autocompleteVar } from "../../apollo";
+import { useGetMoviesSearchLazyQuery, autocompleteVar } from "../../apollo";
 
 const StyledToolbar = styled(Toolbar)`
   padding: 0;
@@ -71,6 +70,7 @@ export const Header = () => {
           autoHighlight
           blurOnSelect
           freeSolo
+          id="autocomplete"
           value={autocompleteValue}
           loading={loading}
           onChange={(
@@ -118,11 +118,4 @@ export const Header = () => {
   );
 };
 
-const WithHeader = (Component: React.ComponentType) => ({ ...pageProps }) => (
-  <>
-    <Header />
-    <Component {...pageProps} />
-  </>
-);
-
-export default WithHeader;
+export default Header;

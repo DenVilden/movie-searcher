@@ -1,20 +1,19 @@
 import { Grid, LinearProgress } from "@material-ui/core";
 import styled from "styled-components";
 import { useRef } from "react";
-import {
+import withApollo, {
   useGetMoviesQuery,
   useGetUpcomingLazyQuery,
   useGetTopRatedLazyQuery,
-} from "../graphql";
-import { ErrorMessage, Pagination, MoviesBox, WithHeader } from "../components";
-import withApollo from "../apollo";
+} from "../apollo";
+import { ErrorMessage, Pagination, MoviesBox } from "../components";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-export const HomePage = WithHeader(() => {
+export const HomePage = () => {
   const { data, error } = useGetMoviesQuery();
   const [
     upcomingRefetch,
@@ -80,6 +79,6 @@ export const HomePage = WithHeader(() => {
       </Grid>
     </Grid>
   );
-});
+};
 
-export default withApollo(HomePage);
+export default withApollo({ ssr: true })(HomePage);

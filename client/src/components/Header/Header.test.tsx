@@ -1,6 +1,6 @@
 import { Header } from "./Header";
 import { renderApollo, fireEvent } from "../../setupTests";
-import { GetMoviesSearchDocument } from "../../graphql";
+import { GetMoviesSearchDocument } from "../../apollo";
 
 const mockHistoryPush = jest.fn();
 
@@ -35,6 +35,14 @@ const mocks = [
 ];
 
 describe("header", () => {
+  it("should take a snapshot", () => {
+    const { asFragment } = renderApollo(<Header />);
+
+    const element = asFragment();
+
+    expect(element).toMatchSnapshot();
+  });
+
   it("should update input with new value and fetch movies", async () => {
     const { findByPlaceholderText, findByText } = renderApollo(<Header />, {
       mocks,

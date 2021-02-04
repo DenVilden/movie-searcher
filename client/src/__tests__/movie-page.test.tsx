@@ -1,5 +1,5 @@
 import { MoviePage } from "../pages/movie/[id]";
-import { GetMovieInfoDocument } from "../graphql";
+import { GetMovieInfoDocument } from "../apollo";
 import { renderApollo, fireEvent } from "../setupTests";
 
 jest.mock("next/router", () => ({
@@ -47,6 +47,14 @@ const mocks = [
 ];
 
 describe("moviePage", () => {
+  it("should take a snapshot", () => {
+    const { asFragment } = renderApollo(<MoviePage />);
+
+    const element = asFragment();
+
+    expect(element).toMatchSnapshot();
+  });
+
   it("should render error state", async () => {
     const mockError = [
       {
