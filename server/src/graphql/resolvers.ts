@@ -3,7 +3,7 @@ import { paginateResults } from "../lib/utils";
 
 const resolvers: Resolvers = {
   Query: {
-    upcoming: async (_, { page }, { dataSources }) => {
+    upcoming: async (_root, { page }, { dataSources }) => {
       try {
         const data = await dataSources.moviesAPI.getUpcoming(page);
         return data;
@@ -11,7 +11,7 @@ const resolvers: Resolvers = {
         throw new Error(`Failed to fetch movies: ${error}`);
       }
     },
-    topRated: async (_, { page }, { dataSources }) => {
+    topRated: async (_root, { page }, { dataSources }) => {
       try {
         const data = await dataSources.moviesAPI.getTopRated(page);
         return data;
@@ -19,7 +19,11 @@ const resolvers: Resolvers = {
         throw new Error(`Failed to fetch movies: ${error}`);
       }
     },
-    moviesSearch: async (_, { query, cursor, pageSize }, { dataSources }) => {
+    moviesSearch: async (
+      _root,
+      { query, cursor, pageSize },
+      { dataSources }
+    ) => {
       try {
         const data = await dataSources.moviesAPI.getMoviesSearch(query);
         return paginateResults(data, pageSize, cursor);
@@ -27,7 +31,7 @@ const resolvers: Resolvers = {
         throw new Error(`Failed to fetch movies: ${error}`);
       }
     },
-    movieInfo: async (_, { id, cursor, pageSize }, { dataSources }) => {
+    movieInfo: async (_root, { id, cursor, pageSize }, { dataSources }) => {
       try {
         const data = await dataSources.moviesAPI.getMovieInfo(id);
         return {

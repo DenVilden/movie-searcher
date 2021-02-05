@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export const theme = createMuiTheme();
+export type theme = typeof theme;
 
 const NextApp = ({ Component, pageProps }: AppProps) => {
   const favorites = useReactiveVar(favoritesVar);

@@ -1,14 +1,17 @@
-import { Grid, Grow, Typography, Paper } from "@material-ui/core";
-import styled, { DefaultTheme } from "styled-components";
+import { Grid, Grow, Typography, Paper, PaperProps } from "@material-ui/core";
+import styled from "styled-components";
 import MovieCard from "../MovieCard/MovieCard";
 
-const Root = styled(Paper)`
+interface RootProps extends PaperProps {
+  padding: number;
+}
+
+// eslint-disable-next-line react/jsx-props-no-spreading
+const Root = styled((props: RootProps) => <Paper {...props} />)`
   background: none;
   background-color: inherit;
-  margin: ${(props: { padding: number; theme: DefaultTheme }) =>
-    props.padding && props.theme.spacing(3, 1, 3, 1)};
-  padding: ${(props: { padding: number; theme: DefaultTheme }) =>
-    props.padding && props.theme.spacing(2, 0, 4, 0)};
+  margin: ${(props) => props.padding && props.theme.spacing(3, 1, 3, 1)};
+  padding: ${(props) => props.padding && props.theme.spacing(2, 0, 4, 0)};
 `;
 
 const Wrapper = styled(Grid)`
@@ -19,7 +22,7 @@ const Wrapper = styled(Grid)`
   }
 `;
 
-type Props = {
+interface Props {
   movies: {
     id: number;
     title: string;
@@ -30,7 +33,7 @@ type Props = {
   title: string;
   elevation?: number;
   padding?: number;
-};
+}
 
 const MoviesBox = ({ movies, title, elevation = 10, padding = 1 }: Props) => (
   <Grow in>

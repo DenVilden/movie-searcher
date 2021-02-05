@@ -6,12 +6,12 @@ const StyledPagination = styled(Pagination)`
   margin: auto;
 `;
 
-type Props = {
+interface Props {
   refetch: (page: number) => void;
   totalPages: number;
   currentPage: number;
   scrollToTop: React.MutableRefObject<HTMLElement | null>;
-};
+}
 
 const PaginationComponent = ({
   totalPages,

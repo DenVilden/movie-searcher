@@ -5,9 +5,9 @@ const StyledAlert = styled(Alert)`
   margin: ${(props) => props.theme.spacing(2, 2, 0, 2)};
 `;
 
-type Props = {
+interface Props {
   error: string;
-};
+}
 
 const ErrorMessage = ({ error }: Props) => (
   <StyledAlert elevation={12} variant="filled" severity="error">

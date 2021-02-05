@@ -25,10 +25,10 @@ const ImageWrapper = styled("div")`
   }
 `;
 
-type Props = {
+interface Props {
   handleToggle: () => void;
   favorite: MovieInfo;
-};
+}
 
 const FavoritesCard = ({ handleToggle, favorite }: Props) => {
   const router = useRouter();

@@ -39,7 +39,7 @@ const IconWrapper = styled.span`
   }
 `;
 
-type Props = {
+interface Props {
   movie: {
     id: number;
     title: string;
@@ -47,7 +47,7 @@ type Props = {
     poster_path?: string | null;
     release_date?: string | null;
   };
-};
+}
 
 const MovieCard = ({ movie }: Props) => {
   const router = useRouter();

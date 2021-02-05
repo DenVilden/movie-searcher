@@ -1,6 +1,4 @@
-import { theme } from "./pages/_app";
-
-type CustomTheme = typeof theme;
+import type { theme as CustomTheme } from "./pages/_app";
 
 declare module "styled-components" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface

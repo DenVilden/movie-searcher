@@ -1,12 +1,6 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { AppBar, Toolbar, TextField, Button } from "@material-ui/core";
 import { useState } from "react";
-import {
-  AutocompleteInputChangeReason,
-  AutocompleteRenderInputParams,
-  Autocomplete,
-  AutocompleteChangeReason,
-} from "@material-ui/lab";
+import { Autocomplete } from "@material-ui/lab";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styled from "styled-components";
@@ -24,7 +18,7 @@ const StyledToolbar = styled(Toolbar)`
   }
 `;
 
-const StyledAutocomplete = styled((props) => <Autocomplete {...props} />)`
+const StyledAutocomplete = styled(Autocomplete)`
   width: 100%;
 
   ${(props) => props.theme.breakpoints.up("md")} {
@@ -73,24 +67,16 @@ export const Header = () => {
           id="autocomplete"
           value={autocompleteValue}
           loading={loading}
-          onChange={(
-            _evt: React.ChangeEvent<HTMLLIElement>,
-            value: string,
-            reason: AutocompleteChangeReason
-          ) => {
+          onChange={(_evt, value, reason) => {
             if (reason === "select-option") {
               const id = data?.moviesSearch.results.find(
                 (movie) => movie.title === value
               )?.id;
-              autocompleteVar(value);
+              autocompleteVar(value as string);
               router.push(`/movie/${id}`);
             }
           }}
-          onInputChange={(
-            _evt: React.ChangeEvent<HTMLInputElement>,
-            value: string,
-            reason: AutocompleteInputChangeReason
-          ) => {
+          onInputChange={(_evt, value: string, reason) => {
             if (reason === "input" && value) {
               setInputValue(value);
               fetchMovies({ variables: { query: value, pageSize: 8 } });
@@ -100,8 +86,9 @@ export const Header = () => {
           }}
           open={!!inputValue}
           options={data?.moviesSearch.results.map((movie) => movie.title) || []}
-          renderInput={(params: AutocompleteRenderInputParams) => (
+          renderInput={(params) => (
             <StyledInputBase
+              // eslint-disable-next-line react/jsx-props-no-spreading
               {...params}
               error={!!error}
               variant="outlined"
