@@ -25,7 +25,7 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const ImageWrapper = styled("div")`
+const ImageWrapper = styled.div`
   height: 450px;
   position: relative;
   width: 100%;

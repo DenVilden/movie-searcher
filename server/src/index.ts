@@ -11,6 +11,8 @@ const server = new ApolloServer({
   dataSources: () => ({ moviesAPI: new MoviesAPI() }),
   context: { key: MOVIE_API_KEY },
   cors: { origin: CLIENT_URL, credentials: true },
+  introspection: true,
+  playground: true,
 });
 
 server.listen(PORT).then(({ url }) => {
