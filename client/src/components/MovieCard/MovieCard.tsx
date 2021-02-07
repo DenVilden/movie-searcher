@@ -3,17 +3,17 @@ import {
   Typography,
   Card,
   CardContent,
-} from "@material-ui/core";
-import { Star as StarIcon } from "@material-ui/icons";
-import { useRouter } from "next/router";
-import Image from "next/image";
-import styled from "styled-components";
+} from '@material-ui/core';
+import { Star as StarIcon } from '@material-ui/icons';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
+import styled from 'styled-components';
 
 const StyledCard = styled(Card)`
   text-align: center;
   width: 130px;
 
-  ${(props) => props.theme.breakpoints.up("sm")} {
+  ${props => props.theme.breakpoints.up('sm')} {
     width: 170px;
   }
 `;
@@ -22,7 +22,7 @@ const StyledCardContent = styled(CardContent)`
   display: flex;
   flex-direction: column;
   height: 100px;
-  padding: ${(props) => props.theme.spacing(2, 1, 1, 1)};
+  padding: ${props => props.theme.spacing(2, 1, 1, 1)};
 `;
 
 const StyledTypography = styled(Typography)`
@@ -62,7 +62,7 @@ const MovieCard = ({ movie }: Props) => {
           height="300"
           width="200"
           alt={movie.title}
-          src={movie.poster_path || "/no-image.jpg"}
+          src={movie.poster_path || '/no-image.jpg'}
         />
         <StyledCardContent>
           <Typography variant="subtitle2">{movie.title}</Typography>

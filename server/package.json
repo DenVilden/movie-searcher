@@ -8,8 +8,8 @@
   "scripts": {
     "serve": "nodemon -e ts,graphql,json -r dotenv/config src/index.ts",
     "start": "node dist/index.js",
-    "lint": "eslint src --ext ts --fix && prettier --write .",
-    "test": "jest",
+    "lint": "eslint . --ext ts --fix && prettier --write .",
+    "test": "jest --watch",
     "build": "tsc",
     "codegen": "graphql-codegen"
   },

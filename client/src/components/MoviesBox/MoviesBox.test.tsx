@@ -1,20 +1,20 @@
-import { renderApollo } from "../../setupTests";
-import MoviesBox from "./MoviesBox";
+import { renderApollo } from '../../setupTests';
+import MoviesBox from './MoviesBox';
 
 const mock = [
   {
     id: 1,
     poster_path: null,
-    title: "test",
+    title: 'test',
     vote_average: 5,
-    release_date: "2020",
+    release_date: '2020',
   },
 ];
 
-describe("moviesBox", () => {
-  it("should take a snapshot", () => {
+describe('moviesBox', () => {
+  it('should take a snapshot', () => {
     const { asFragment } = renderApollo(
-      <MoviesBox movies={mock} title="new" />
+      <MoviesBox movies={mock} title="new" />,
     );
 
     const element = asFragment();

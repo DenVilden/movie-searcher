@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useEffect } from "react";
-import { AppProps } from "next/app";
-import { createMuiTheme, StylesProvider, CssBaseline } from "@material-ui/core";
-import { ThemeProvider, createGlobalStyle } from "styled-components";
-import Head from "next/head";
-import { useReactiveVar, ApolloProvider } from "@apollo/client";
-import { favoritesVar, client } from "../apollo";
-import { Header } from "../components";
+import { useEffect } from 'react';
+import { AppProps } from 'next/app';
+import { createMuiTheme, StylesProvider, CssBaseline } from '@material-ui/core';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import Head from 'next/head';
+import { useReactiveVar, ApolloProvider } from '@apollo/client';
+import { favoritesVar, client } from '../apollo';
+import { Header } from '../components';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -22,19 +22,19 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
 
   useEffect(() => {
     // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector("#jss-server-side");
+    const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles?.parentElement) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
 
-    const initialFavorites = localStorage.getItem("favorites");
+    const initialFavorites = localStorage.getItem('favorites');
     if (initialFavorites) {
       favoritesVar(JSON.parse(initialFavorites));
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
   return (

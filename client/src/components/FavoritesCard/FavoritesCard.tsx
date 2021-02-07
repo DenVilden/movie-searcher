@@ -1,11 +1,11 @@
-import { CardActionArea, Typography } from "@material-ui/core";
-import { useRouter } from "next/router";
-import Image from "next/image";
-import styled from "styled-components";
-import { MovieInfo } from "../../apollo";
+import { CardActionArea, Typography } from '@material-ui/core';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
+import styled from 'styled-components';
+import { MovieInfo } from '../../apollo';
 
 const StyledTypography = styled(Typography)`
-  padding: ${(props) => props.theme.spacing(3, 2, 2, 2)};
+  padding: ${props => props.theme.spacing(3, 2, 2, 2)};
 `;
 
 const CardWrapper = styled.div`
@@ -16,11 +16,11 @@ const CardWrapper = styled.div`
 const ImageWrapper = styled.div`
   display: none;
   height: 56px;
-  margin: ${(props) => props.theme.spacing(1)}px;
+  margin: ${props => props.theme.spacing(1)}px;
   position: relative;
   width: 50px;
 
-  ${(props) => props.theme.breakpoints.up("sm")} {
+  ${props => props.theme.breakpoints.up('sm')} {
     display: block;
   }
 `;
@@ -46,7 +46,7 @@ const FavoritesCard = ({ handleToggle, favorite }: Props) => {
           <Image
             layout="fill"
             alt={favorite.title}
-            src={favorite.poster_path || "/no-image.jpg"}
+            src={favorite.poster_path || '/no-image.jpg'}
           />
         </ImageWrapper>
         <StyledTypography>{favorite.title}</StyledTypography>

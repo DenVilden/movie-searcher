@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import Document, { DocumentContext } from "next/document";
-import { ServerStyleSheets } from "@material-ui/core/styles";
-import { ServerStyleSheet } from "styled-components";
+import Document, { DocumentContext } from 'next/document';
+import { ServerStyleSheets } from '@material-ui/core/styles';
+import { ServerStyleSheet } from 'styled-components';
 
 export default class NextDocument extends Document {
   static getInitialProps = async (ctx: DocumentContext) => {
@@ -12,9 +12,9 @@ export default class NextDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App) => (props) =>
+          enhanceApp: App => props =>
             styledComponentsSheet.collectStyles(
-              materialSheets.collect(<App {...props} />)
+              materialSheets.collect(<App {...props} />),
             ),
         });
 

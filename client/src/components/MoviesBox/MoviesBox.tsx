@@ -1,6 +1,6 @@
-import { Grid, Grow, Typography, Paper, PaperProps } from "@material-ui/core";
-import styled from "styled-components";
-import MovieCard from "../MovieCard/MovieCard";
+import { Grid, Grow, Typography, Paper, PaperProps } from '@material-ui/core';
+import styled from 'styled-components';
+import MovieCard from '../MovieCard/MovieCard';
 
 interface RootProps extends PaperProps {
   padding: number;
@@ -10,15 +10,15 @@ interface RootProps extends PaperProps {
 const Root = styled((props: RootProps) => <Paper {...props} />)`
   background: none;
   background-color: inherit;
-  margin: ${(props) => props.padding && props.theme.spacing(3, 1, 3, 1)};
-  padding: ${(props) => props.padding && props.theme.spacing(2, 0, 4, 0)};
+  margin: ${props => props.padding && props.theme.spacing(3, 1, 3, 1)};
+  padding: ${props => props.padding && props.theme.spacing(2, 0, 4, 0)};
 `;
 
 const Wrapper = styled(Grid)`
   margin-top: 10px;
 
-  ${(props) => props.theme.breakpoints.up("sm")} {
-    padding: ${(props) => props.theme.spacing(0, 2, 0, 2)};
+  ${props => props.theme.breakpoints.up('sm')} {
+    padding: ${props => props.theme.spacing(0, 2, 0, 2)};
   }
 `;
 
@@ -44,7 +44,7 @@ const MoviesBox = ({ movies, title, elevation = 10, padding = 1 }: Props) => (
         </Typography>
       )}
       <Grid container>
-        {movies.map((movie) => (
+        {movies.map(movie => (
           <Wrapper
             key={movie.id}
             container

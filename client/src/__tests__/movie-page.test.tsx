@@ -1,11 +1,11 @@
-import { MoviePage } from "../pages/movie/[id]";
-import { GetMovieInfoDocument } from "../apollo";
-import { renderApollo, fireEvent } from "../setupTests";
+import { MoviePage } from '../pages/movie/[id]';
+import { GetMovieInfoDocument } from '../apollo';
+import { renderApollo, fireEvent } from '../setupTests';
 
-jest.mock("next/router", () => ({
+jest.mock('next/router', () => ({
   useRouter: () => ({
     query: {
-      id: "1",
+      id: '1',
     },
   }),
 }));
@@ -15,7 +15,7 @@ const mocks = [
     request: {
       query: GetMovieInfoDocument,
       variables: {
-        id: "1",
+        id: '1',
       },
     },
     result: {
@@ -24,18 +24,18 @@ const mocks = [
           id: 1,
           backdrop_path: null,
           poster_path: null,
-          title: "test",
-          overview: "test data",
-          budget: "0",
-          revenue: "0",
+          title: 'test',
+          overview: 'test data',
+          budget: '0',
+          revenue: '0',
           vote_average: 5,
-          release_date: "2020",
+          release_date: '2020',
           similar: {
             results: [
               {
                 id: 1,
-                title: "test",
-                release_date: "2020",
+                title: 'test',
+                release_date: '2020',
                 poster_path: null,
               },
             ],
@@ -46,8 +46,8 @@ const mocks = [
   },
 ];
 
-describe("moviePage", () => {
-  it("should take a snapshot", () => {
+describe('moviePage', () => {
+  it('should take a snapshot', () => {
     const { asFragment } = renderApollo(<MoviePage />);
 
     const element = asFragment();
@@ -55,16 +55,16 @@ describe("moviePage", () => {
     expect(element).toMatchSnapshot();
   });
 
-  it("should render error state", async () => {
+  it('should render error state', async () => {
     const mockError = [
       {
         request: {
           query: GetMovieInfoDocument,
           variables: {
-            id: "1",
+            id: '1',
           },
         },
-        error: new Error("an error has occurred"),
+        error: new Error('an error has occurred'),
       },
     ];
 
@@ -77,24 +77,24 @@ describe("moviePage", () => {
     expect(errorElement).toBeTruthy();
   });
 
-  it("should toggle favorites", async () => {
+  it('should toggle favorites', async () => {
     const mock = [mocks[0], mocks[0], mocks[0]];
 
     const { findByTestId, findByText } = renderApollo(<MoviePage />, {
       mocks: mock,
     });
 
-    const favoritesButton = await findByTestId("favorites-button");
+    const favoritesButton = await findByTestId('favorites-button');
 
     fireEvent.click(favoritesButton);
 
-    const removeButton = await findByText("Remove from favorites");
+    const removeButton = await findByText('Remove from favorites');
 
     expect(removeButton).toBeTruthy();
 
     fireEvent.click(favoritesButton);
 
-    const addButton = await findByText("Add to favorites");
+    const addButton = await findByText('Add to favorites');
 
     expect(addButton).toBeTruthy();
   });

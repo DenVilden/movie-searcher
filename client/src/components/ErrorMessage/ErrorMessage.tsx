@@ -1,8 +1,8 @@
-import { Alert, AlertTitle } from "@material-ui/lab";
-import styled from "styled-components";
+import { Alert, AlertTitle } from '@material-ui/lab';
+import styled from 'styled-components';
 
 const StyledAlert = styled(Alert)`
-  margin: ${(props) => props.theme.spacing(2, 2, 0, 2)};
+  margin: ${props => props.theme.spacing(2, 2, 0, 2)};
 `;
 
 interface Props {

@@ -1,8 +1,8 @@
-import { renderApollo } from "../../setupTests";
-import ErrorMessage from "./ErrorMessage";
+import { renderApollo } from '../../setupTests';
+import ErrorMessage from './ErrorMessage';
 
-describe("errorMessage", () => {
-  it("should take a snapshot", () => {
+describe('errorMessage', () => {
+  it('should take a snapshot', () => {
     const { asFragment } = renderApollo(<ErrorMessage error="error" />);
 
     const element = asFragment();

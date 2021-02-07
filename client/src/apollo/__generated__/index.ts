@@ -1,5 +1,5 @@
-import { gql } from "@apollo/client";
-import * as Apollo from "@apollo/client";
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K];
@@ -20,79 +20,79 @@ export type Scalars = {
 };
 
 export type UpcomingResults = {
-  __typename?: "UpcomingResults";
-  id: Scalars["Int"];
-  title: Scalars["String"];
-  release_date: Scalars["String"];
-  poster_path?: Maybe<Scalars["String"]>;
+  __typename?: 'UpcomingResults';
+  id: Scalars['Int'];
+  title: Scalars['String'];
+  release_date: Scalars['String'];
+  poster_path?: Maybe<Scalars['String']>;
 };
 
 export type Upcoming = {
-  __typename?: "Upcoming";
-  total_pages: Scalars["Int"];
-  page: Scalars["Int"];
+  __typename?: 'Upcoming';
+  total_pages: Scalars['Int'];
+  page: Scalars['Int'];
   results: Array<UpcomingResults>;
 };
 
 export type TopRatedResults = {
-  __typename?: "TopRatedResults";
-  id: Scalars["Int"];
-  title: Scalars["String"];
-  vote_average: Scalars["Float"];
-  poster_path?: Maybe<Scalars["String"]>;
+  __typename?: 'TopRatedResults';
+  id: Scalars['Int'];
+  title: Scalars['String'];
+  vote_average: Scalars['Float'];
+  poster_path?: Maybe<Scalars['String']>;
 };
 
 export type TopRated = {
-  __typename?: "TopRated";
-  total_pages: Scalars["Int"];
-  page: Scalars["Int"];
+  __typename?: 'TopRated';
+  total_pages: Scalars['Int'];
+  page: Scalars['Int'];
   results: Array<TopRatedResults>;
 };
 
 export type MoviesSearchResults = {
-  __typename?: "MoviesSearchResults";
-  id: Scalars["Int"];
-  title: Scalars["String"];
+  __typename?: 'MoviesSearchResults';
+  id: Scalars['Int'];
+  title: Scalars['String'];
 };
 
 export type MoviesSearch = {
-  __typename?: "MoviesSearch";
-  cursor?: Maybe<Scalars["Int"]>;
-  hasMore?: Maybe<Scalars["Boolean"]>;
+  __typename?: 'MoviesSearch';
+  cursor?: Maybe<Scalars['Int']>;
+  hasMore?: Maybe<Scalars['Boolean']>;
   results: Array<MoviesSearchResults>;
 };
 
 export type SimilarResults = {
-  __typename?: "SimilarResults";
-  id: Scalars["Int"];
-  title: Scalars["String"];
-  release_date?: Maybe<Scalars["String"]>;
-  poster_path?: Maybe<Scalars["String"]>;
+  __typename?: 'SimilarResults';
+  id: Scalars['Int'];
+  title: Scalars['String'];
+  release_date?: Maybe<Scalars['String']>;
+  poster_path?: Maybe<Scalars['String']>;
 };
 
 export type SimilarMovies = {
-  __typename?: "SimilarMovies";
-  cursor?: Maybe<Scalars["Int"]>;
-  hasMore?: Maybe<Scalars["Boolean"]>;
+  __typename?: 'SimilarMovies';
+  cursor?: Maybe<Scalars['Int']>;
+  hasMore?: Maybe<Scalars['Boolean']>;
   results: Array<SimilarResults>;
 };
 
 export type MovieInfo = {
-  __typename?: "MovieInfo";
-  id: Scalars["Int"];
-  title: Scalars["String"];
-  release_date: Scalars["String"];
-  vote_average: Scalars["Float"];
-  budget: Scalars["String"];
-  revenue: Scalars["String"];
-  overview?: Maybe<Scalars["String"]>;
-  poster_path?: Maybe<Scalars["String"]>;
-  backdrop_path?: Maybe<Scalars["String"]>;
+  __typename?: 'MovieInfo';
+  id: Scalars['Int'];
+  title: Scalars['String'];
+  release_date: Scalars['String'];
+  vote_average: Scalars['Float'];
+  budget: Scalars['String'];
+  revenue: Scalars['String'];
+  overview?: Maybe<Scalars['String']>;
+  poster_path?: Maybe<Scalars['String']>;
+  backdrop_path?: Maybe<Scalars['String']>;
   similar: SimilarMovies;
 };
 
 export type Query = {
-  __typename?: "Query";
+  __typename?: 'Query';
   upcoming: Upcoming;
   topRated: TopRated;
   moviesSearch: MoviesSearch;
@@ -100,52 +100,52 @@ export type Query = {
 };
 
 export type QueryUpcomingArgs = {
-  page?: Maybe<Scalars["Int"]>;
+  page?: Maybe<Scalars['Int']>;
 };
 
 export type QueryTopRatedArgs = {
-  page?: Maybe<Scalars["Int"]>;
+  page?: Maybe<Scalars['Int']>;
 };
 
 export type QueryMoviesSearchArgs = {
-  query: Scalars["String"];
-  cursor?: Maybe<Scalars["Int"]>;
-  pageSize?: Maybe<Scalars["Int"]>;
+  query: Scalars['String'];
+  cursor?: Maybe<Scalars['Int']>;
+  pageSize?: Maybe<Scalars['Int']>;
 };
 
 export type QueryMovieInfoArgs = {
-  id: Scalars["ID"];
-  cursor?: Maybe<Scalars["Int"]>;
-  pageSize?: Maybe<Scalars["Int"]>;
+  id: Scalars['ID'];
+  cursor?: Maybe<Scalars['Int']>;
+  pageSize?: Maybe<Scalars['Int']>;
 };
 
 export enum CacheControlScope {
-  Public = "PUBLIC",
-  Private = "PRIVATE",
+  Public = 'PUBLIC',
+  Private = 'PRIVATE',
 }
 
 export type GetMovieInfoQueryVariables = Exact<{
-  id: Scalars["ID"];
+  id: Scalars['ID'];
 }>;
 
-export type GetMovieInfoQuery = { __typename?: "Query" } & {
-  movieInfo: { __typename?: "MovieInfo" } & Pick<
+export type GetMovieInfoQuery = { __typename?: 'Query' } & {
+  movieInfo: { __typename?: 'MovieInfo' } & Pick<
     MovieInfo,
-    | "id"
-    | "backdrop_path"
-    | "poster_path"
-    | "title"
-    | "overview"
-    | "budget"
-    | "revenue"
-    | "vote_average"
-    | "release_date"
+    | 'id'
+    | 'backdrop_path'
+    | 'poster_path'
+    | 'title'
+    | 'overview'
+    | 'budget'
+    | 'revenue'
+    | 'vote_average'
+    | 'release_date'
   > & {
-      similar: { __typename?: "SimilarMovies" } & {
+      similar: { __typename?: 'SimilarMovies' } & {
         results: Array<
-          { __typename?: "SimilarResults" } & Pick<
+          { __typename?: 'SimilarResults' } & Pick<
             SimilarResults,
-            "id" | "title" | "release_date" | "poster_path"
+            'id' | 'title' | 'release_date' | 'poster_path'
           >
         >;
       };
@@ -154,78 +154,78 @@ export type GetMovieInfoQuery = { __typename?: "Query" } & {
 
 export type GetMoviesQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetMoviesQuery = { __typename?: "Query" } & {
-  upcoming: { __typename?: "Upcoming" } & Pick<
+export type GetMoviesQuery = { __typename?: 'Query' } & {
+  upcoming: { __typename?: 'Upcoming' } & Pick<
     Upcoming,
-    "total_pages" | "page"
+    'total_pages' | 'page'
   > & {
       results: Array<
-        { __typename?: "UpcomingResults" } & Pick<
+        { __typename?: 'UpcomingResults' } & Pick<
           UpcomingResults,
-          "id" | "title" | "release_date" | "poster_path"
+          'id' | 'title' | 'release_date' | 'poster_path'
         >
       >;
     };
-  topRated: { __typename?: "TopRated" } & Pick<
+  topRated: { __typename?: 'TopRated' } & Pick<
     TopRated,
-    "total_pages" | "page"
+    'total_pages' | 'page'
   > & {
       results: Array<
-        { __typename?: "TopRatedResults" } & Pick<
+        { __typename?: 'TopRatedResults' } & Pick<
           TopRatedResults,
-          "id" | "title" | "vote_average" | "poster_path"
+          'id' | 'title' | 'vote_average' | 'poster_path'
         >
       >;
     };
 };
 
 export type GetUpcomingQueryVariables = Exact<{
-  page?: Maybe<Scalars["Int"]>;
+  page?: Maybe<Scalars['Int']>;
 }>;
 
-export type GetUpcomingQuery = { __typename?: "Query" } & {
-  upcoming: { __typename?: "Upcoming" } & Pick<
+export type GetUpcomingQuery = { __typename?: 'Query' } & {
+  upcoming: { __typename?: 'Upcoming' } & Pick<
     Upcoming,
-    "total_pages" | "page"
+    'total_pages' | 'page'
   > & {
       results: Array<
-        { __typename?: "UpcomingResults" } & Pick<
+        { __typename?: 'UpcomingResults' } & Pick<
           UpcomingResults,
-          "id" | "title" | "release_date" | "poster_path"
+          'id' | 'title' | 'release_date' | 'poster_path'
         >
       >;
     };
 };
 
 export type GetTopRatedQueryVariables = Exact<{
-  page?: Maybe<Scalars["Int"]>;
+  page?: Maybe<Scalars['Int']>;
 }>;
 
-export type GetTopRatedQuery = { __typename?: "Query" } & {
-  topRated: { __typename?: "TopRated" } & Pick<
+export type GetTopRatedQuery = { __typename?: 'Query' } & {
+  topRated: { __typename?: 'TopRated' } & Pick<
     TopRated,
-    "total_pages" | "page"
+    'total_pages' | 'page'
   > & {
       results: Array<
-        { __typename?: "TopRatedResults" } & Pick<
+        { __typename?: 'TopRatedResults' } & Pick<
           TopRatedResults,
-          "id" | "title" | "vote_average" | "poster_path"
+          'id' | 'title' | 'vote_average' | 'poster_path'
         >
       >;
     };
 };
 
 export type GetMoviesSearchQueryVariables = Exact<{
-  query: Scalars["String"];
-  pageSize?: Maybe<Scalars["Int"]>;
+  query: Scalars['String'];
+  pageSize?: Maybe<Scalars['Int']>;
 }>;
 
-export type GetMoviesSearchQuery = { __typename?: "Query" } & {
-  moviesSearch: { __typename?: "MoviesSearch" } & {
+export type GetMoviesSearchQuery = { __typename?: 'Query' } & {
+  moviesSearch: { __typename?: 'MoviesSearch' } & {
     results: Array<
-      { __typename?: "MoviesSearchResults" } & Pick<
+      { __typename?: 'MoviesSearchResults' } & Pick<
         MoviesSearchResults,
-        "id" | "title"
+        'id' | 'title'
       >
     >;
   };
@@ -275,22 +275,22 @@ export function useGetMovieInfoQuery(
   baseOptions: Apollo.QueryHookOptions<
     GetMovieInfoQuery,
     GetMovieInfoQueryVariables
-  >
+  >,
 ) {
   return Apollo.useQuery<GetMovieInfoQuery, GetMovieInfoQueryVariables>(
     GetMovieInfoDocument,
-    baseOptions
+    baseOptions,
   );
 }
 export function useGetMovieInfoLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     GetMovieInfoQuery,
     GetMovieInfoQueryVariables
-  >
+  >,
 ) {
   return Apollo.useLazyQuery<GetMovieInfoQuery, GetMovieInfoQueryVariables>(
     GetMovieInfoDocument,
-    baseOptions
+    baseOptions,
   );
 }
 export type GetMovieInfoQueryHookResult = ReturnType<
@@ -344,22 +344,25 @@ export const GetMoviesDocument = gql`
  * });
  */
 export function useGetMoviesQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetMoviesQuery, GetMoviesQueryVariables>
+  baseOptions?: Apollo.QueryHookOptions<
+    GetMoviesQuery,
+    GetMoviesQueryVariables
+  >,
 ) {
   return Apollo.useQuery<GetMoviesQuery, GetMoviesQueryVariables>(
     GetMoviesDocument,
-    baseOptions
+    baseOptions,
   );
 }
 export function useGetMoviesLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     GetMoviesQuery,
     GetMoviesQueryVariables
-  >
+  >,
 ) {
   return Apollo.useLazyQuery<GetMoviesQuery, GetMoviesQueryVariables>(
     GetMoviesDocument,
-    baseOptions
+    baseOptions,
   );
 }
 export type GetMoviesQueryHookResult = ReturnType<typeof useGetMoviesQuery>;
@@ -405,22 +408,22 @@ export function useGetUpcomingQuery(
   baseOptions?: Apollo.QueryHookOptions<
     GetUpcomingQuery,
     GetUpcomingQueryVariables
-  >
+  >,
 ) {
   return Apollo.useQuery<GetUpcomingQuery, GetUpcomingQueryVariables>(
     GetUpcomingDocument,
-    baseOptions
+    baseOptions,
   );
 }
 export function useGetUpcomingLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     GetUpcomingQuery,
     GetUpcomingQueryVariables
-  >
+  >,
 ) {
   return Apollo.useLazyQuery<GetUpcomingQuery, GetUpcomingQueryVariables>(
     GetUpcomingDocument,
-    baseOptions
+    baseOptions,
   );
 }
 export type GetUpcomingQueryHookResult = ReturnType<typeof useGetUpcomingQuery>;
@@ -466,22 +469,22 @@ export function useGetTopRatedQuery(
   baseOptions?: Apollo.QueryHookOptions<
     GetTopRatedQuery,
     GetTopRatedQueryVariables
-  >
+  >,
 ) {
   return Apollo.useQuery<GetTopRatedQuery, GetTopRatedQueryVariables>(
     GetTopRatedDocument,
-    baseOptions
+    baseOptions,
   );
 }
 export function useGetTopRatedLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     GetTopRatedQuery,
     GetTopRatedQueryVariables
-  >
+  >,
 ) {
   return Apollo.useLazyQuery<GetTopRatedQuery, GetTopRatedQueryVariables>(
     GetTopRatedDocument,
-    baseOptions
+    baseOptions,
   );
 }
 export type GetTopRatedQueryHookResult = ReturnType<typeof useGetTopRatedQuery>;
@@ -524,18 +527,18 @@ export function useGetMoviesSearchQuery(
   baseOptions: Apollo.QueryHookOptions<
     GetMoviesSearchQuery,
     GetMoviesSearchQueryVariables
-  >
+  >,
 ) {
   return Apollo.useQuery<GetMoviesSearchQuery, GetMoviesSearchQueryVariables>(
     GetMoviesSearchDocument,
-    baseOptions
+    baseOptions,
   );
 }
 export function useGetMoviesSearchLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
     GetMoviesSearchQuery,
     GetMoviesSearchQueryVariables
-  >
+  >,
 ) {
   return Apollo.useLazyQuery<
     GetMoviesSearchQuery,

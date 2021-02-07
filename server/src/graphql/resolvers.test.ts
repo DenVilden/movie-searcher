@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import resolvers from "./resolvers";
+import resolvers from './resolvers';
 import {
   mockUpcoming,
   mockTopRated,
   mockMoviesSearch,
   mockMovieInfo,
-} from "../mocks/responses";
+} from '../mocks/responses';
 
-describe("[Query.upcoming]", () => {
+describe('[Query.upcoming]', () => {
   const mockContext = {
     dataSources: {
       moviesAPI: { getUpcoming: jest.fn() },
@@ -16,40 +16,40 @@ describe("[Query.upcoming]", () => {
 
   const { getUpcoming } = mockContext.dataSources.moviesAPI;
 
-  it("calls upcoming", async () => {
+  it('calls upcoming', async () => {
     getUpcoming.mockReturnValueOnce(mockUpcoming);
 
     const res = await resolvers.Query.upcoming(
       {} as any,
       {} as any,
       mockContext as any,
-      {} as any
+      {} as any,
     );
 
     expect(res).toStrictEqual(mockUpcoming);
   });
 
-  it("catches upcoming error", async () => {
-    getUpcoming.mockRejectedValueOnce("error");
+  it('catches upcoming error', async () => {
+    getUpcoming.mockRejectedValueOnce('error');
 
-    let errorMessage = "";
+    let errorMessage = '';
 
     try {
       await resolvers.Query.upcoming(
         {} as any,
         {} as any,
         mockContext as any,
-        {} as any
+        {} as any,
       );
     } catch (error) {
       errorMessage = error.message;
     } finally {
-      expect(errorMessage).toStrictEqual("Failed to fetch movies: error");
+      expect(errorMessage).toStrictEqual('Failed to fetch movies: error');
     }
   });
 });
 
-describe("[Query.topRated]", () => {
+describe('[Query.topRated]', () => {
   const mockContext = {
     dataSources: {
       moviesAPI: { getTopRated: jest.fn() },
@@ -58,40 +58,40 @@ describe("[Query.topRated]", () => {
 
   const { getTopRated } = mockContext.dataSources.moviesAPI;
 
-  it("calls topRated", async () => {
+  it('calls topRated', async () => {
     getTopRated.mockReturnValueOnce(mockTopRated);
 
     const res = await resolvers.Query.topRated(
       {} as any,
       {} as any,
       mockContext as any,
-      {} as any
+      {} as any,
     );
 
     expect(res).toStrictEqual(mockTopRated);
   });
 
-  it("catches topRated error", async () => {
-    getTopRated.mockRejectedValueOnce("error");
+  it('catches topRated error', async () => {
+    getTopRated.mockRejectedValueOnce('error');
 
-    let errorMessage = "";
+    let errorMessage = '';
 
     try {
       await resolvers.Query.topRated(
         {} as any,
         {} as any,
         mockContext as any,
-        {} as any
+        {} as any,
       );
     } catch (error) {
       errorMessage = error.message;
     } finally {
-      expect(errorMessage).toStrictEqual("Failed to fetch movies: error");
+      expect(errorMessage).toStrictEqual('Failed to fetch movies: error');
     }
   });
 });
 
-describe("[Query.moviesSearch]", () => {
+describe('[Query.moviesSearch]', () => {
   const mockContext = {
     dataSources: {
       moviesAPI: { getMoviesSearch: jest.fn() },
@@ -100,14 +100,14 @@ describe("[Query.moviesSearch]", () => {
 
   const { getMoviesSearch } = mockContext.dataSources.moviesAPI;
 
-  it("calls moviesSearch and preserve cursor", async () => {
+  it('calls moviesSearch and preserve cursor', async () => {
     getMoviesSearch.mockReturnValueOnce(mockMoviesSearch);
 
     const res = await resolvers.Query.moviesSearch(
       {} as any,
       { cursor: 1, pageSize: 2 } as any,
       mockContext as any,
-      {} as any
+      {} as any,
     );
 
     expect(res).toStrictEqual({
@@ -117,27 +117,27 @@ describe("[Query.moviesSearch]", () => {
     });
   });
 
-  it("catches moviesSearch error", async () => {
-    getMoviesSearch.mockRejectedValueOnce("error");
+  it('catches moviesSearch error', async () => {
+    getMoviesSearch.mockRejectedValueOnce('error');
 
-    let errorMessage = "";
+    let errorMessage = '';
 
     try {
       await resolvers.Query.moviesSearch(
         {} as any,
         {} as any,
         mockContext as any,
-        {} as any
+        {} as any,
       );
     } catch (error) {
       errorMessage = error.message;
     } finally {
-      expect(errorMessage).toStrictEqual("Failed to fetch movies: error");
+      expect(errorMessage).toStrictEqual('Failed to fetch movies: error');
     }
   });
 });
 
-describe("[Query.movieInfo]", () => {
+describe('[Query.movieInfo]', () => {
   const mockContext = {
     dataSources: {
       moviesAPI: { getMovieInfo: jest.fn() },
@@ -146,14 +146,14 @@ describe("[Query.movieInfo]", () => {
 
   const { getMovieInfo } = mockContext.dataSources.moviesAPI;
 
-  it("calls movieInfo.similar and paginate results", async () => {
+  it('calls movieInfo.similar and paginate results', async () => {
     getMovieInfo.mockReturnValueOnce(mockMovieInfo);
 
     const res = await resolvers.Query.movieInfo(
       {} as any,
       { pageSize: 1 } as any,
       mockContext as any,
-      {} as any
+      {} as any,
     );
 
     expect(res).toStrictEqual({
@@ -166,22 +166,22 @@ describe("[Query.movieInfo]", () => {
     });
   });
 
-  it("catches movieInfo error", async () => {
-    getMovieInfo.mockRejectedValueOnce("error");
+  it('catches movieInfo error', async () => {
+    getMovieInfo.mockRejectedValueOnce('error');
 
-    let errorMessage = "";
+    let errorMessage = '';
 
     try {
       await resolvers.Query.movieInfo(
         {} as any,
         {} as any,
         mockContext as any,
-        {} as any
+        {} as any,
       );
     } catch (error) {
       errorMessage = error.message;
     } finally {
-      expect(errorMessage).toStrictEqual("Something went wrong: error");
+      expect(errorMessage).toStrictEqual('Something went wrong: error');
     }
   });
 });

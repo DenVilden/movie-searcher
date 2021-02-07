@@ -1,7 +1,7 @@
-import { render } from "@testing-library/react";
-import { MockedProvider, MockedResponse } from "@apollo/client/testing";
-import { ThemeProvider } from "styled-components";
-import { theme } from "./pages/_app";
+import { render } from '@testing-library/react';
+import { MockedProvider, MockedResponse } from '@apollo/client/testing';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './pages/_app';
 
 // eslint-disable-next-line jest/prefer-spy-on
 HTMLElement.prototype.scrollIntoView = jest.fn();
@@ -13,12 +13,12 @@ type RenderApolloOptions = {
 
 export const renderApollo = (
   element: React.ReactElement,
-  { mocks = [], addTypeName = false }: RenderApolloOptions = {}
+  { mocks = [], addTypeName = false }: RenderApolloOptions = {},
 ) =>
   render(
     <MockedProvider addTypename={addTypeName} mocks={mocks}>
       <ThemeProvider theme={theme}>{element}</ThemeProvider>
-    </MockedProvider>
+    </MockedProvider>,
   );
 
-export * from "@testing-library/react";
+export * from '@testing-library/react';

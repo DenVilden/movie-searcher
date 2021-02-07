@@ -1,10 +1,10 @@
-import Favorites from "./Favorites";
-import { GetMovieInfoDocument, favoritesVar } from "../../apollo";
-import { renderApollo, fireEvent } from "../../setupTests";
+import Favorites from './Favorites';
+import { GetMovieInfoDocument, favoritesVar } from '../../apollo';
+import { renderApollo, fireEvent } from '../../setupTests';
 
 const mockHistoryPush = jest.fn();
 
-jest.mock("next/router", () => ({
+jest.mock('next/router', () => ({
   useRouter: () => ({
     push: mockHistoryPush,
   }),
@@ -14,7 +14,7 @@ const mocks = [
   {
     request: {
       query: GetMovieInfoDocument,
-      variables: { id: "1" },
+      variables: { id: '1' },
     },
     result: {
       data: {
@@ -22,18 +22,18 @@ const mocks = [
           id: 1,
           backdrop_path: null,
           poster_path: null,
-          title: "test",
-          overview: "test data",
-          budget: "0",
-          revenue: "0",
+          title: 'test',
+          overview: 'test data',
+          budget: '0',
+          revenue: '0',
           vote_average: 5,
-          release_date: "2020",
+          release_date: '2020',
           similar: {
             results: [
               {
                 id: 1,
-                title: "test",
-                release_date: "2020",
+                title: 'test',
+                release_date: '2020',
                 poster_path: null,
               },
             ],
@@ -44,8 +44,8 @@ const mocks = [
   },
 ];
 
-describe("favorites", () => {
-  it("should take a snapshot", () => {
+describe('favorites', () => {
+  it('should take a snapshot', () => {
     const { asFragment } = renderApollo(<Favorites />);
 
     const element = asFragment();
@@ -53,21 +53,21 @@ describe("favorites", () => {
     expect(element).toMatchSnapshot();
   });
 
-  it("should redirect to correct url when favorites item clicked", async () => {
+  it('should redirect to correct url when favorites item clicked', async () => {
     favoritesVar([mocks[0].result.data.movieInfo]);
 
     const { findByTestId } = renderApollo(<Favorites />, {
       mocks,
     });
 
-    const iconButton = await findByTestId("icon-button");
+    const iconButton = await findByTestId('icon-button');
 
     fireEvent.click(iconButton);
 
-    const cardButtonElement = await findByTestId("favorites-card");
+    const cardButtonElement = await findByTestId('favorites-card');
 
     fireEvent.click(cardButtonElement);
 
-    expect(mockHistoryPush).toHaveBeenCalledWith("/movie/1");
+    expect(mockHistoryPush).toHaveBeenCalledWith('/movie/1');
   });
 });

@@ -6,8 +6,8 @@
     "serve": "next",
     "build": "next build",
     "start": "next start",
-    "test": "jest",
-    "lint": "eslint src --ext ts,tsx --fix && stylelint 'src/**/*.{ts,tsx}' --fix && prettier --write .",
+    "test": "jest --watch",
+    "lint": "eslint . --ext ts,tsx --fix && stylelint src --fix && prettier --write .",
     "codegen": "graphql-codegen"
   },
   "dependencies": {

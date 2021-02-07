@@ -1,5 +1,5 @@
-import { Resolvers } from "./__generated__";
-import { paginateResults } from "../lib/utils";
+import { Resolvers } from './__generated__';
+import { paginateResults } from '../lib/utils';
 
 const resolvers: Resolvers = {
   Query: {
@@ -22,7 +22,7 @@ const resolvers: Resolvers = {
     moviesSearch: async (
       _root,
       { query, cursor, pageSize },
-      { dataSources }
+      { dataSources },
     ) => {
       try {
         const data = await dataSources.moviesAPI.getMoviesSearch(query);

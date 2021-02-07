@@ -1,24 +1,24 @@
-import { ApolloClient, InMemoryCache, HttpLink, makeVar } from "@apollo/client";
-import { withApollo } from "next-apollo";
-import { MovieInfo } from "./__generated__";
+import { ApolloClient, InMemoryCache, HttpLink, makeVar } from '@apollo/client';
+import { withApollo } from 'next-apollo';
+import { MovieInfo } from './__generated__';
 
-if (process.env.NODE_ENV === "test") {
+if (process.env.NODE_ENV === 'test') {
   // eslint-disable-next-line global-require
-  require("cross-fetch/polyfill");
+  require('cross-fetch/polyfill');
 }
 
 export const favoritesVar = makeVar<MovieInfo[]>([]);
-export const autocompleteVar = makeVar<string>("");
+export const autocompleteVar = makeVar<string>('');
 
 export const client = new ApolloClient({
-  ssrMode: typeof window === "undefined",
+  ssrMode: typeof window === 'undefined',
   link: new HttpLink({
     uri: process.env.NEXT_PUBLIC_SERVER_URL,
-    credentials: "include",
+    credentials: 'include',
   }),
   cache: new InMemoryCache(),
 });
 
 export default withApollo(client);
 
-export * from "./__generated__";
+export * from './__generated__';

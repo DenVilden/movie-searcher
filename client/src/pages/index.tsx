@@ -1,12 +1,12 @@
-import { Grid, LinearProgress } from "@material-ui/core";
-import styled from "styled-components";
-import { useRef } from "react";
+import { Grid, LinearProgress } from '@material-ui/core';
+import styled from 'styled-components';
+import { useRef } from 'react';
 import withApollo, {
   useGetMoviesQuery,
   useGetUpcomingLazyQuery,
   useGetTopRatedLazyQuery,
-} from "../apollo";
-import { ErrorMessage, Pagination, MoviesBox } from "../components";
+} from '../apollo';
+import { ErrorMessage, Pagination, MoviesBox } from '../components';
 
 const Wrapper = styled.div`
   display: flex;

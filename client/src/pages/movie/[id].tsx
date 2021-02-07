@@ -6,21 +6,21 @@ import {
   Card,
   Divider,
   Button,
-} from "@material-ui/core";
-import { useRouter } from "next/router";
-import styled from "styled-components";
-import Head from "next/head";
-import { useReactiveVar } from "@apollo/client";
-import Image from "next/image";
-import { MoviesBox, ErrorMessage } from "../../components";
-import withApollo, { useGetMovieInfoQuery, favoritesVar } from "../../apollo";
+} from '@material-ui/core';
+import { useRouter } from 'next/router';
+import styled from 'styled-components';
+import Head from 'next/head';
+import { useReactiveVar } from '@apollo/client';
+import Image from 'next/image';
+import { MoviesBox, ErrorMessage } from '../../components';
+import withApollo, { useGetMovieInfoQuery, favoritesVar } from '../../apollo';
 
 const StyledCard = styled(Card)`
   background-color: inherit;
   display: block;
-  margin: ${(props) => props.theme.spacing(2)}px;
+  margin: ${props => props.theme.spacing(2)}px;
 
-  ${(props) => props.theme.breakpoints.up("md")} {
+  ${props => props.theme.breakpoints.up('md')} {
     display: flex;
   }
 `;
@@ -30,7 +30,7 @@ const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
 
-  ${(props) => props.theme.breakpoints.up("md")} {
+  ${props => props.theme.breakpoints.up('md')} {
     width: 40%;
   }
 `;
@@ -40,7 +40,7 @@ const StyledCardContent = styled(CardContent)`
   flex-direction: column;
   justify-content: space-between;
 
-  ${(props) => props.theme.breakpoints.up("md")} {
+  ${props => props.theme.breakpoints.up('md')} {
     width: 60%;
   }
 `;
@@ -62,13 +62,13 @@ export const MoviePage = () => {
   if (loading || !data?.movieInfo) return <LinearProgress color="secondary" />;
 
   const isInFavorites = favorites.some(
-    (favorite) => favorite.id === data.movieInfo?.id
+    favorite => favorite.id === data.movieInfo?.id,
   );
 
   const addOrRemoveFromFavorites = () => {
     if (isInFavorites) {
       favoritesVar(
-        favorites.filter((favorite) => favorite.id !== data.movieInfo?.id)
+        favorites.filter(favorite => favorite.id !== data.movieInfo?.id),
       );
     } else {
       favoritesVar([...favorites, data.movieInfo]);
@@ -87,19 +87,19 @@ export const MoviePage = () => {
               layout="fill"
               objectFit="cover"
               alt={data.movieInfo.title}
-              src={data.movieInfo.backdrop_path || "/no-image.jpg"}
+              src={data.movieInfo.backdrop_path || '/no-image.jpg'}
             />
           </ImageWrapper>
           <StyledCardContent>
             <StyledTypography gutterBottom variant="h5">
               {data.movieInfo.title}
               <Button
-                color={isInFavorites ? "secondary" : "primary"}
+                color={isInFavorites ? 'secondary' : 'primary'}
                 data-testid="favorites-button"
                 onClick={addOrRemoveFromFavorites}
                 variant="contained"
               >
-                {isInFavorites ? "Remove from favorites" : "Add to favorites"}
+                {isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
               </Button>
             </StyledTypography>
             <Typography>{data.movieInfo.overview}</Typography>

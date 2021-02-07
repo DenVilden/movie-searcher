@@ -1,23 +1,23 @@
-import { Header } from "./Header";
-import { renderApollo, fireEvent } from "../../setupTests";
-import { GetMoviesSearchDocument } from "../../apollo";
+import { Header } from './Header';
+import { renderApollo, fireEvent } from '../../setupTests';
+import { GetMoviesSearchDocument } from '../../apollo';
 
 const mockHistoryPush = jest.fn();
 
-jest.mock("next/router", () => ({
+jest.mock('next/router', () => ({
   useRouter: () => ({
     push: mockHistoryPush,
   }),
 }));
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-jest.mock("next/link", () => ({ children }: { children: any }) => children);
+jest.mock('next/link', () => ({ children }: { children: any }) => children);
 
 const mocks = [
   {
     request: {
       query: GetMoviesSearchDocument,
-      variables: { query: "test", pageSize: 8 },
+      variables: { query: 'test', pageSize: 8 },
     },
     result: {
       data: {
@@ -25,7 +25,7 @@ const mocks = [
           results: [
             {
               id: 1,
-              title: "test-title",
+              title: 'test-title',
             },
           ],
         },
@@ -34,8 +34,8 @@ const mocks = [
   },
 ];
 
-describe("header", () => {
-  it("should take a snapshot", () => {
+describe('header', () => {
+  it('should take a snapshot', () => {
     const { asFragment } = renderApollo(<Header />);
 
     const element = asFragment();
@@ -43,67 +43,67 @@ describe("header", () => {
     expect(element).toMatchSnapshot();
   });
 
-  it("should update input with new value and fetch movies", async () => {
+  it('should update input with new value and fetch movies', async () => {
     const { findByPlaceholderText, findByText } = renderApollo(<Header />, {
       mocks,
     });
 
-    const inputElement = await findByPlaceholderText("type a movie name...");
+    const inputElement = await findByPlaceholderText('type a movie name...');
 
-    fireEvent.change(inputElement, { target: { value: "test" } });
+    fireEvent.change(inputElement, { target: { value: 'test' } });
 
-    const searchResult = await findByText("test-title");
+    const searchResult = await findByText('test-title');
 
     expect(searchResult).toBeTruthy();
 
-    expect(inputElement).toHaveProperty("value", "test");
+    expect(inputElement).toHaveProperty('value', 'test');
   });
 
-  it("should redirect to correct url on click and clear input value", async () => {
+  it('should redirect to correct url on click and clear input value', async () => {
     const { findByPlaceholderText, findByText, findByTitle } = renderApollo(
       <Header />,
       {
         mocks,
-      }
+      },
     );
 
-    const inputElement = await findByPlaceholderText("type a movie name...");
+    const inputElement = await findByPlaceholderText('type a movie name...');
 
-    fireEvent.change(inputElement, { target: { value: "test" } });
+    fireEvent.change(inputElement, { target: { value: 'test' } });
 
-    const searchResult = await findByText("test-title");
+    const searchResult = await findByText('test-title');
 
     fireEvent.click(searchResult);
 
-    expect(mockHistoryPush).toHaveBeenCalledWith("/movie/1");
+    expect(mockHistoryPush).toHaveBeenCalledWith('/movie/1');
 
-    const clearButton = await findByTitle("Clear");
+    const clearButton = await findByTitle('Clear');
 
     fireEvent.click(clearButton);
 
-    expect(inputElement).toHaveProperty("value", "");
+    expect(inputElement).toHaveProperty('value', '');
   });
 
-  it("should clear input value on logo click", async () => {
+  it('should clear input value on logo click', async () => {
     const { findByPlaceholderText, findByText, findByTitle } = renderApollo(
       <Header />,
       {
         mocks,
-      }
+      },
     );
 
-    const inputElement = await findByPlaceholderText("type a movie name...");
+    const inputElement = await findByPlaceholderText('type a movie name...');
 
-    fireEvent.change(inputElement, { target: { value: "test" } });
+    fireEvent.change(inputElement, { target: { value: 'test' } });
 
-    const searchResult = await findByText("test-title");
+    const searchResult = await findByText('test-title');
 
     fireEvent.click(searchResult);
 
-    const clearButton = await findByTitle("logo");
+    const clearButton = await findByTitle('logo');
 
     fireEvent.click(clearButton);
 
-    expect(inputElement).toHaveProperty("value", "");
+    expect(inputElement).toHaveProperty('value', '');
   });
 });
