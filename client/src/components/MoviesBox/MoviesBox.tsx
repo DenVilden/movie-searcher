@@ -6,7 +6,6 @@ interface RootProps extends PaperProps {
   padding: number;
 }
 
-// eslint-disable-next-line react/jsx-props-no-spreading
 const Root = styled((props: RootProps) => <Paper {...props} />)`
   background: none;
   background-color: inherit;

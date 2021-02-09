@@ -20,6 +20,7 @@
     "camelcase": "off",
     "react/require-default-props": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "jest/prefer-expect-assertions": "off"
+    "jest/prefer-expect-assertions": "off",
+    "react/jsx-props-no-spreading": "off"
   }
 }

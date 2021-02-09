@@ -132,4 +132,4 @@ export const MoviePage = () => {
   );
 };
 
-export default withApollo({ ssr: false })(MoviePage);
+export default withApollo(MoviePage);

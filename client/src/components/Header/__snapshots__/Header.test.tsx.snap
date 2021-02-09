@@ -8,31 +8,18 @@ exports[`header should take a snapshot 1`] = `
     <div
       class="MuiToolbar-root MuiToolbar-regular Header__StyledToolbar-yxg7yx-0 BYDsa MuiToolbar-gutters"
     >
-      <button
-        class="MuiButtonBase-root MuiButton-root MuiButton-text"
-        tabindex="0"
-        title="logo"
-        type="button"
-      >
-        <span
-          class="MuiButton-label"
-        >
-          <img
-            alt="logo"
-            src="/logo.svg"
-          />
-        </span>
-        <span
-          class="MuiTouchRipple-root"
-        />
-      </button>
+      <img
+        alt="logo"
+        class="Header__StyledImg-yxg7yx-1 buFteD"
+        src="/logo.svg"
+      />
       <div
         aria-expanded="false"
-        class="MuiAutocomplete-root Header__StyledAutocomplete-yxg7yx-1 eaVZwY MuiAutocomplete-hasClearIcon"
+        class="MuiAutocomplete-root SearchBar__StyledAutocomplete-ah3ere-0 cZrUER MuiAutocomplete-hasClearIcon"
         role="combobox"
       >
         <div
-          class="MuiFormControl-root MuiTextField-root Header__StyledInputBase-yxg7yx-2 iPpYBN MuiFormControl-marginDense MuiFormControl-fullWidth"
+          class="MuiFormControl-root MuiTextField-root SearchBar__StyledInputBase-ah3ere-1 eWlnlm MuiFormControl-marginDense MuiFormControl-fullWidth"
         >
           <div
             class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd MuiInputBase-marginDense MuiOutlinedInput-marginDense"

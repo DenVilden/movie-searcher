@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import Document, { DocumentContext } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import { ServerStyleSheet } from 'styled-components';

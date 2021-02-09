@@ -45,14 +45,6 @@ const mocks = [
 ];
 
 describe('favorites', () => {
-  it('should take a snapshot', () => {
-    const { asFragment } = renderApollo(<Favorites />);
-
-    const element = asFragment();
-
-    expect(element).toMatchSnapshot();
-  });
-
   it('should redirect to correct url when favorites item clicked', async () => {
     favoritesVar([mocks[0].result.data.movieInfo]);
 

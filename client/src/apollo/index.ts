@@ -19,6 +19,6 @@ export const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export default withApollo(client);
+export default withApollo(client)({ ssr: true });
 
 export * from './__generated__';

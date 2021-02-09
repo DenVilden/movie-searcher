@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { useEffect } from 'react';
 import { AppProps } from 'next/app';
 import { createMuiTheme, StylesProvider, CssBaseline } from '@material-ui/core';
