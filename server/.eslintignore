@@ -1,2 +1,2 @@
 coverage
-src/graphql/__generated__
+graphql/__generated__

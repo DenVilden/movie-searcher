@@ -3,6 +3,7 @@
     "target": "es2020",
     "module": "commonjs",
     "moduleResolution": "node",
+    "allowJs": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
@@ -11,8 +12,8 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "noFallthroughCasesInSwitch": true,
-    "outDir": "public"
+    "noEmit": true
   },
   "exclude": ["**/*.test.ts"],
-  "include": ["src", "api"]
+  "include": ["**/*.ts"]
 }

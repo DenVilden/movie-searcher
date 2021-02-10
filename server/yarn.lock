@@ -646,32 +646,32 @@
     tslib "~2.0.1"
     upper-case "2.0.1"
 
-"@graphql-codegen/typescript-resolvers@1.18.1":
-  version "1.18.1"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-resolvers/-/typescript-resolvers-1.18.1.tgz#ee63c4b8243d002d617b3df17752f3ddacf5916a"
-  integrity sha512-McceX0PaNxVPAGJDkn0SXRDs28zAqy485O3/LBCycosvJtiJbmHCDSb9ZUkiySmfvNr3lBMHbqJftIZU7T/0mQ==
+"@graphql-codegen/typescript-resolvers@1.18.2":
+  version "1.18.2"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-resolvers/-/typescript-resolvers-1.18.2.tgz#7513b92df7c5a0d3c27342c591ada7340696cf8f"
+  integrity sha512-aWfRR5y1gXCPUNK7zaUiSbmceqidvZ38mNHIBvXmZArRigyz1QZgN26kKpXjJjtFbPvROPnlGsYcZBReybvZXA==
   dependencies:
     "@graphql-codegen/plugin-helpers" "^1.18.2"
-    "@graphql-codegen/typescript" "^1.19.0"
-    "@graphql-codegen/visitor-plugin-common" "^1.17.22"
+    "@graphql-codegen/typescript" "^1.21.0"
+    "@graphql-codegen/visitor-plugin-common" "^1.18.3"
     "@graphql-tools/utils" "^7.0.0"
-    auto-bind "~4.0.0"
-    tslib "~2.0.1"
-
-"@graphql-codegen/typescript@1.20.2", "@graphql-codegen/typescript@^1.19.0":
-  version "1.20.2"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript/-/typescript-1.20.2.tgz#223327a8aea929e772f481e264c5aa3a36707fcb"
-  integrity sha512-D/DMUz4O2UEoFucUVu2K2xoaMPAn68BwYGnCAKnSDqtFKsOEqmTjHFwcgyEnpucQ5xFeG0pKGMb1SlS2Go9J8Q==
-  dependencies:
-    "@graphql-codegen/plugin-helpers" "^1.18.2"
-    "@graphql-codegen/visitor-plugin-common" "^1.18.2"
     auto-bind "~4.0.0"
     tslib "~2.1.0"
 
-"@graphql-codegen/visitor-plugin-common@^1.17.22", "@graphql-codegen/visitor-plugin-common@^1.18.2":
-  version "1.18.2"
-  resolved "https://registry.yarnpkg.com/@graphql-codegen/visitor-plugin-common/-/visitor-plugin-common-1.18.2.tgz#1a30bd33f011b4fb976e0f8462d160126db875ea"
-  integrity sha512-A8yBJGq7A7gxaVVXK4QXwV1ZpzZ64fH7U7JTGeq86o3jA7QNV2rmCRXCY0JttS2fu+olV18NjsWRwAXuAb1g9A==
+"@graphql-codegen/typescript@1.21.0", "@graphql-codegen/typescript@^1.21.0":
+  version "1.21.0"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript/-/typescript-1.21.0.tgz#301b1851cd278bedd1f49e1b3d654f4dc0af2943"
+  integrity sha512-23YttnZ+87dA/3lbCvPKdsrpEOx142dCT9xSh6XkSeyCvn+vUtETN2MhamCYB87G7Nu2EcLDFKDZjgXH73f4fg==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "^1.18.2"
+    "@graphql-codegen/visitor-plugin-common" "^1.18.3"
+    auto-bind "~4.0.0"
+    tslib "~2.1.0"
+
+"@graphql-codegen/visitor-plugin-common@^1.18.3":
+  version "1.18.3"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/visitor-plugin-common/-/visitor-plugin-common-1.18.3.tgz#9d2c4449c3bdaffe3e782e2321fe0cb998b8a91d"
+  integrity sha512-6xJzt8hszCTKt3rTlcCURpuiAFuaiaZgStlVeRE1OrKEDiY1T3vwF3/7TonhfnEjqBWtZdMmXvNx3ArXkRUV4w==
   dependencies:
     "@graphql-codegen/plugin-helpers" "^1.18.2"
     "@graphql-tools/optimize" "^1.0.1"
@@ -1823,10 +1823,10 @@ apollo-cache-control@^0.11.6:
     apollo-server-env "^3.0.0"
     apollo-server-plugin-base "^0.10.4"
 
-apollo-datasource-rest@^0.9.7:
-  version "0.9.7"
-  resolved "https://registry.yarnpkg.com/apollo-datasource-rest/-/apollo-datasource-rest-0.9.7.tgz#e9c2c311c5286fee8dbb8c24a7307d6892cd8293"
-  integrity sha512-DR+OKpVsR/BvhpBrK9OEmytahA1FiC7KDBEHvuDIlit54nP7SJ+OpXp7/V8nuH0QUfTwUa5RZ4RH3Y5xnqJozQ==
+apollo-datasource-rest@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/apollo-datasource-rest/-/apollo-datasource-rest-0.10.0.tgz#832c035ba7dfd8e1d944de49972c1d4d58e15a31"
+  integrity sha512-mF64PZkZoD0jULWJlwQ+Him5mLbYibN7PXqHVyJg+GSko/SyN+hYc4bYl802wkDyVRBE2+iEB8kGI/Rd9Xib9w==
   dependencies:
     apollo-datasource "^0.7.3"
     apollo-server-caching "^0.5.3"
@@ -1884,10 +1884,10 @@ apollo-server-caching@^0.5.3:
   dependencies:
     lru-cache "^6.0.0"
 
-apollo-server-core@^2.19.2:
-  version "2.19.2"
-  resolved "https://registry.yarnpkg.com/apollo-server-core/-/apollo-server-core-2.19.2.tgz#9a5651be233aceab6b062e82eef4c8072f6ac230"
-  integrity sha512-liLgLhTIGWZtdQbxuxo3/Yv8j+faKQcI60kOL+uwfByGhoKLZEQp5nqi2IdMK6JXt1VuyKwKu7lTzj02a9S3jA==
+apollo-server-core@^2.20.0:
+  version "2.20.0"
+  resolved "https://registry.yarnpkg.com/apollo-server-core/-/apollo-server-core-2.20.0.tgz#cba1de38c37ab64361b1870a763be21421fd2d1b"
+  integrity sha512-tteFTl6y9c3MtuhePOs9IbCccaKVXELttLvefMzd7EfR3CPgIfIbxpy2ZEcDys8NteYXoJ+4LiM8Eh9kLgkKmQ==
   dependencies:
     "@apollographql/apollo-tools" "^0.4.3"
     "@apollographql/graphql-playground-html" "1.6.26"
@@ -1929,14 +1929,14 @@ apollo-server-errors@^2.4.2:
   resolved "https://registry.yarnpkg.com/apollo-server-errors/-/apollo-server-errors-2.4.2.tgz#1128738a1d14da989f58420896d70524784eabe5"
   integrity sha512-FeGxW3Batn6sUtX3OVVUm7o56EgjxDlmgpTLNyWcLb0j6P8mw9oLNyAm3B+deHA4KNdNHO5BmHS2g1SJYjqPCQ==
 
-apollo-server-micro@^2.19.2:
-  version "2.19.2"
-  resolved "https://registry.yarnpkg.com/apollo-server-micro/-/apollo-server-micro-2.19.2.tgz#3c47eb3199d55977d88746fa075ff248247bedf8"
-  integrity sha512-tLFdqonWtgLJLa/KCOYvST7ktOVHMhhkmPQ2PLUROxBzvLjY4rF56bwOMkQLGZCljnUagAKYGtMFw6bpgHFRhQ==
+apollo-server-micro@^2.20.0:
+  version "2.20.0"
+  resolved "https://registry.yarnpkg.com/apollo-server-micro/-/apollo-server-micro-2.20.0.tgz#055bc7a44abea7006566116b112e0a8654142e09"
+  integrity sha512-3+XEdDrw/a6J1XfUhAghfVcD6snXzxxheWwfrRuF2OI//isaUmWxZzLk1+OsdAYPOt7Dch16a+cucvoxh53Ajg==
   dependencies:
     "@apollographql/graphql-playground-html" "1.6.26"
     accept "^3.0.2"
-    apollo-server-core "^2.19.2"
+    apollo-server-core "^2.20.0"
     apollo-server-types "^0.6.3"
     micro "^9.3.2"
 
@@ -7225,10 +7225,10 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@4.1.2:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.2.tgz#6369ef22516fe5e10304aae5a5c4862db55380e9"
-  integrity sha512-thGloWsGH3SOxv1SoY7QojKi0tc+8FnOmiarEGMbd/lar7QOEd3hvlx3Fp5y6FlDUGl9L+pd4n2e+oToGMmhRQ==
+typescript@4.1.4:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.4.tgz#f058636e2f4f83f94ddaae07b20fd5e14598432f"
+  integrity sha512-+Uru0t8qIRgjuCpiSPpfGuhHecMllk5Zsazj5LZvVsEStEjmIRRBZe+jHjGQvsgS7M1wONy2PQXd67EMyV6acg==
 
 ua-parser-js@^0.7.18:
   version "0.7.23"
