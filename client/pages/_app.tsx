@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import { createMuiTheme, StylesProvider, CssBaseline } from '@material-ui/core';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import Head from 'next/head';
-import { useReactiveVar, ApolloProvider } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client';
 import { favoritesVar, client } from '../apollo';
 import { Header } from '../components';
 
@@ -17,8 +17,6 @@ export const theme = createMuiTheme();
 export type theme = typeof theme;
 
 const NextApp = ({ Component, pageProps }: AppProps) => {
-  const favorites = useReactiveVar(favoritesVar);
-
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
@@ -31,10 +29,6 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
       favoritesVar(JSON.parse(initialFavorites));
     }
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
 
   return (
     <>
@@ -50,16 +44,16 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
         <meta content="Movie searcher app" name="description" />
         <title>Movie Searcher</title>
       </Head>
-      <ApolloProvider client={client}>
-        <StylesProvider injectFirst>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <GlobalStyle />
+      <StylesProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <GlobalStyle />
+          <ApolloProvider client={client}>
             <Header />
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </StylesProvider>
-      </ApolloProvider>
+          </ApolloProvider>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </StylesProvider>
     </>
   );
 };

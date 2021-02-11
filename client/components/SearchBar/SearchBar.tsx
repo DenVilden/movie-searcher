@@ -9,9 +9,11 @@ import { useGetMoviesSearchLazyQuery, autocompleteVar } from '../../apollo';
 
 const StyledAutocomplete = styled(Autocomplete)`
   width: 100%;
+  margin-right: 10px;
+  margin-left: 5px;
 
   ${(props) => props.theme.breakpoints.up('md')} {
-    width: 70%;
+    width: 80%;
   }
 
   input {

@@ -12,6 +12,7 @@ import styled from 'styled-components';
 import Head from 'next/head';
 import { useReactiveVar } from '@apollo/client';
 import Image from 'next/image';
+import { useEffect } from 'react';
 import { MoviesBox, ErrorMessage } from '../../components';
 import withApollo, { useGetMovieInfoQuery, favoritesVar } from '../../apollo';
 
@@ -56,6 +57,10 @@ export const MoviePage = () => {
   const { loading, error, data } = useGetMovieInfoQuery({ variables: { id } });
 
   const favorites = useReactiveVar(favoritesVar);
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
 
   if (error) return <ErrorMessage error={error.message} />;
 
