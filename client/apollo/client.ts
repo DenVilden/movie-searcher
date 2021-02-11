@@ -24,7 +24,7 @@ const createApolloClient = () =>
     cache: new InMemoryCache(),
   });
 
-export const initializeApollo = (initialState: any) => {
+export const initializeApollo = (initialState: any = null) => {
   // eslint-disable-next-line no-underscore-dangle
   const _apolloClient = apolloClient ?? createApolloClient();
 
