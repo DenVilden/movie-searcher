@@ -7,8 +7,8 @@ import {
   useGetUpcomingLazyQuery,
   useGetTopRatedLazyQuery,
   GetMoviesDocument,
-} from '../__generated__';
-import { initializeApollo, addApolloState } from '../apollo';
+  initializeApollo,
+} from '../apollo';
 import { ErrorMessage, Pagination, MoviesBox } from '../components';
 
 const Wrapper = styled.div`
@@ -90,10 +90,11 @@ export const getStaticProps: GetStaticProps = async () => {
     query: GetMoviesDocument,
   });
 
-  return addApolloState(apolloClient, {
-    props: {},
-    revalidate: 1,
-  });
+  return {
+    props: {
+      initialApolloState: apolloClient.cache.extract(),
+    },
+  };
 };
 
 export default HomePage;

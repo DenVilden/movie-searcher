@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const NextApp = ({ Component, pageProps }: AppProps) => {
-  const apolloClient = useApollo(pageProps);
+  const apolloClient = useApollo(pageProps.initialApolloState);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {

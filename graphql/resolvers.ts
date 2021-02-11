@@ -1,4 +1,4 @@
-import { Resolvers } from '../__generated__';
+import { Resolvers } from './types';
 import { paginateResults } from './lib/utils';
 
 const resolvers: Resolvers = {

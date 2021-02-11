@@ -1,5 +1,5 @@
 import MoviePage from '../pages/movie/[id]';
-import { GetMovieInfoDocument } from '../__generated__';
+import { GetMovieInfoDocument } from '../apollo';
 import { renderApollo, fireEvent } from '../utils/setupTests';
 
 jest.mock('next/router', () => ({

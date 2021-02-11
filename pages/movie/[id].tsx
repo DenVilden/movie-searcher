@@ -17,8 +17,9 @@ import { MoviesBox, ErrorMessage } from '../../components';
 import {
   useGetMovieInfoQuery,
   GetMovieInfoDocument,
-} from '../../__generated__';
-import { favoritesVar, initializeApollo, addApolloState } from '../../apollo';
+  favoritesVar,
+  initializeApollo,
+} from '../../apollo';
 
 const StyledCard = styled(Card)`
   background-color: inherit;
@@ -148,9 +149,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     variables: { id: params?.id },
   });
 
-  return addApolloState(apolloClient, {
-    props: {},
-  });
+  return {
+    props: {
+      initialApolloState: apolloClient.cache.extract(),
+    },
+  };
 };
 
 export default MoviePage;
