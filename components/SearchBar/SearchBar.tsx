@@ -5,8 +5,7 @@ import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { fade } from '@material-ui/core/styles';
 import { useReactiveVar } from '@apollo/client';
-import { useGetMoviesSearchLazyQuery , autocompleteVar } from '../../apollo';
-
+import { useGetMoviesSearchLazyQuery, autocompleteVar } from '../../apollo';
 
 const StyledAutocomplete = styled(Autocomplete)`
   width: 100%;

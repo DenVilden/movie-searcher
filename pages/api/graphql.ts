@@ -3,13 +3,11 @@ import { loader } from 'graphql.macro';
 import resolvers from '../../graphql/resolvers';
 import MoviesAPI from '../../graphql/datasource';
 
-const { MOVIE_API_KEY } = process.env;
-
 const server = new ApolloServer({
   typeDefs: loader('../../graphql/schema.graphql'),
   resolvers,
   dataSources: () => ({ moviesAPI: new MoviesAPI() }),
-  context: { key: MOVIE_API_KEY },
+  context: { key: process.env.MOVIE_API_KEY },
   introspection: true,
   playground: true,
 });

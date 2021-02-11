@@ -21,7 +21,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject>;
 const createApolloClient = () =>
   new ApolloClient({
     ssrMode: typeof window === 'undefined',
-    uri: process.env.SERVER_URL,
+    uri: process.env.NEXT_PUBLIC_SERVER_URL,
     cache: new InMemoryCache(),
   });
 
