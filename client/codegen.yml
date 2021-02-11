@@ -1,9 +1,0 @@
-overwrite: true
-schema: http://localhost:3000/api/graphql
-documents: src/apollo/**/*.graphql
-generates:
-  src/apollo/__generated__/index.ts:
-    plugins:
-      - typescript
-      - typescript-operations
-      - typescript-react-apollo
