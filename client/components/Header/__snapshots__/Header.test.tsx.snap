@@ -15,7 +15,7 @@ exports[`header should take a snapshot 1`] = `
       />
       <div
         aria-expanded="false"
-        class="MuiAutocomplete-root SearchBar__StyledAutocomplete-sc-74tmoj-0 iXOdhn MuiAutocomplete-hasClearIcon"
+        class="MuiAutocomplete-root SearchBar__StyledAutocomplete-sc-74tmoj-0 gpwLcr MuiAutocomplete-hasClearIcon"
         role="combobox"
       >
         <div

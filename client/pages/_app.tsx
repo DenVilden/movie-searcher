@@ -3,8 +3,6 @@ import { AppProps } from 'next/app';
 import { createMuiTheme, StylesProvider, CssBaseline } from '@material-ui/core';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import Head from 'next/head';
-import { ApolloProvider } from '@apollo/client';
-import { favoritesVar, client } from '../apollo';
 import { Header } from '../components';
 
 const GlobalStyle = createGlobalStyle`
@@ -22,11 +20,6 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles?.parentElement) {
       jssStyles.parentElement.removeChild(jssStyles);
-    }
-
-    const initialFavorites = localStorage.getItem('favorites');
-    if (initialFavorites) {
-      favoritesVar(JSON.parse(initialFavorites));
     }
   }, []);
 
@@ -48,9 +41,7 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <GlobalStyle />
-          <ApolloProvider client={client}>
-            <Header />
-          </ApolloProvider>
+          <Header />
           <Component {...pageProps} />
         </ThemeProvider>
       </StylesProvider>
