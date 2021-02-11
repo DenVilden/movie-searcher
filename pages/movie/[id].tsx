@@ -1,6 +1,5 @@
 import {
   Slide,
-  LinearProgress,
   Typography,
   CardContent,
   Card,
@@ -13,9 +12,13 @@ import Head from 'next/head';
 import { useReactiveVar } from '@apollo/client';
 import Image from 'next/image';
 import { useEffect } from 'react';
+import { GetServerSideProps } from 'next';
 import { MoviesBox, ErrorMessage } from '../../components';
-import { useGetMovieInfoQuery } from '../../__generated__';
-import { favoritesVar } from '../../apollo';
+import {
+  useGetMovieInfoQuery,
+  GetMovieInfoDocument,
+} from '../../__generated__';
+import { favoritesVar, initializeApollo, addApolloState } from '../../apollo';
 
 const StyledCard = styled(Card)`
   background-color: inherit;
@@ -55,7 +58,7 @@ const StyledTypography = styled(Typography)`
 const MoviePage = () => {
   const { id } = useRouter().query as { id: string };
 
-  const { loading, error, data } = useGetMovieInfoQuery({ variables: { id } });
+  const { error, data } = useGetMovieInfoQuery({ variables: { id } });
 
   const favorites = useReactiveVar(favoritesVar);
 
@@ -63,9 +66,8 @@ const MoviePage = () => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  if (error) return <ErrorMessage error={error.message} />;
-
-  if (loading || !data?.movieInfo) return <LinearProgress color="secondary" />;
+  if (error || !data)
+    return <ErrorMessage error={error?.message || 'No data'} />;
 
   const isInFavorites = favorites.some(
     (favorite) => favorite.id === data.movieInfo?.id,
@@ -136,6 +138,19 @@ const MoviePage = () => {
       </div>
     </Slide>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const apolloClient = initializeApollo();
+
+  await apolloClient.query({
+    query: GetMovieInfoDocument,
+    variables: { id: params?.id },
+  });
+
+  return addApolloState(apolloClient, {
+    props: {},
+  });
 };
 
 export default MoviePage;

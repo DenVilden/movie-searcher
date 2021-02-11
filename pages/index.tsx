@@ -1,6 +1,7 @@
-import { Grid, LinearProgress } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import styled from 'styled-components';
 import { useRef } from 'react';
+import { GetStaticProps } from 'next';
 import {
   useGetMoviesQuery,
   useGetUpcomingLazyQuery,
@@ -29,9 +30,8 @@ const HomePage = () => {
   const upcomingElement = useRef<HTMLDivElement | null>(null);
   const topRatedElement = useRef<HTMLDivElement | null>(null);
 
-  if (error) return <ErrorMessage error={error.message} />;
-
-  if (!data) return <LinearProgress color="secondary" />;
+  if (error || !data)
+    return <ErrorMessage error={error?.message || 'No data'} />;
 
   return (
     <Grid container>
@@ -83,7 +83,7 @@ const HomePage = () => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo();
 
   await apolloClient.query({
@@ -92,6 +92,7 @@ export const getServerSideProps = async () => {
 
   return addApolloState(apolloClient, {
     props: {},
+    revalidate: 1,
   });
 };
 

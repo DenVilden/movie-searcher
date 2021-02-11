@@ -9,10 +9,10 @@ exports[`favoritesCard should take a snapshot 1`] = `
     type="button"
   >
     <div
-      class="FavoritesCard__CardWrapper-sc-13xt0o0-1 eUwyVa"
+      class="FavoritesCard__CardWrapper-sc-1x09hyz-1 jptjc"
     >
       <div
-        class="FavoritesCard__ImageWrapper-sc-13xt0o0-2 uhnzZ"
+        class="FavoritesCard__ImageWrapper-sc-1x09hyz-2 VLeqD"
       >
         <div
           style="display: block; overflow: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; margin: 0px;"
@@ -26,7 +26,7 @@ exports[`favoritesCard should take a snapshot 1`] = `
         </div>
       </div>
       <p
-        class="MuiTypography-root FavoritesCard__StyledTypography-sc-13xt0o0-0 ktwyNo MuiTypography-body1"
+        class="MuiTypography-root FavoritesCard__StyledTypography-sc-1x09hyz-0 hjvOoy MuiTypography-body1"
       >
         test
       </p>

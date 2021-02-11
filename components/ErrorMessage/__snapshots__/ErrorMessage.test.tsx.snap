@@ -3,7 +3,7 @@
 exports[`errorMessage should take a snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiAlert-root MuiAlert-filledError ErrorMessage__StyledAlert-jbl0t4-0 hZkmzU MuiPaper-elevation12"
+    class="MuiPaper-root MuiAlert-root MuiAlert-filledError ErrorMessage__StyledAlert-sc-1jr6wcj-0 hDeQXw MuiPaper-elevation12"
     role="alert"
   >
     <div

@@ -6,11 +6,11 @@ exports[`header should take a snapshot 1`] = `
     class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
   >
     <div
-      class="MuiToolbar-root MuiToolbar-regular Header__StyledToolbar-eihfjq-0 iemHMj MuiToolbar-gutters"
+      class="MuiToolbar-root MuiToolbar-regular Header__StyledToolbar-sc-1j8nxqe-0 cMdcLq MuiToolbar-gutters"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root Header__StyledMovieIcon-eihfjq-1 iigEtu"
+        class="MuiSvgIcon-root Header__StyledMovieIcon-sc-1j8nxqe-1 kCKuMD"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -20,11 +20,11 @@ exports[`header should take a snapshot 1`] = `
       </svg>
       <div
         aria-expanded="false"
-        class="MuiAutocomplete-root SearchBar__StyledAutocomplete-sc-74tmoj-0 gpwLcr MuiAutocomplete-hasClearIcon"
+        class="MuiAutocomplete-root SearchBar__StyledAutocomplete-gyywkg-0 jGgSbd MuiAutocomplete-hasClearIcon"
         role="combobox"
       >
         <div
-          class="MuiFormControl-root MuiTextField-root SearchBar__StyledInputBase-sc-74tmoj-1 krZYec MuiFormControl-marginDense MuiFormControl-fullWidth"
+          class="MuiFormControl-root MuiTextField-root SearchBar__StyledInputBase-gyywkg-1 hreRla MuiFormControl-marginDense MuiFormControl-fullWidth"
         >
           <div
             class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd MuiInputBase-marginDense MuiOutlinedInput-marginDense"
@@ -88,7 +88,7 @@ exports[`header should take a snapshot 1`] = `
         </div>
       </div>
       <button
-        class="MuiButtonBase-root MuiIconButton-root Favorites__StyledIconButton-sc-1fk1pz6-0 dIzCFK MuiIconButton-colorInherit Mui-disabled Mui-disabled"
+        class="MuiButtonBase-root MuiIconButton-root Favorites__StyledIconButton-w5bsin-0 fHDBVm MuiIconButton-colorInherit Mui-disabled Mui-disabled"
         data-testid="icon-button"
         disabled=""
         tabindex="-1"

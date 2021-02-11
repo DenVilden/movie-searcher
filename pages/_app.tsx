@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { AppProps } from 'next/app';
-import { StylesProvider, CssBaseline } from '@material-ui/core';
+import { StylesProvider, CssBaseline, LinearProgress } from '@material-ui/core';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import Head from 'next/head';
 import { ApolloProvider } from '@apollo/client';
+import Router from 'next/router';
 import { Header } from '../components';
 import { theme } from '../utils/theme';
 import { useApollo } from '../apollo';
@@ -16,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
 
 const NextApp = ({ Component, pageProps }: AppProps) => {
   const apolloClient = useApollo(pageProps);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -23,6 +25,23 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
     if (jssStyles?.parentElement) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
+  }, []);
+
+  useEffect(() => {
+    const start = () => {
+      setLoading(true);
+    };
+    const end = () => {
+      setLoading(false);
+    };
+    Router.events.on('routeChangeStart', start);
+    Router.events.on('routeChangeComplete', end);
+    Router.events.on('routeChangeError', end);
+    return () => {
+      Router.events.off('routeChangeStart', start);
+      Router.events.off('routeChangeComplete', end);
+      Router.events.off('routeChangeError', end);
+    };
   }, []);
 
   return (
@@ -45,7 +64,11 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
             <CssBaseline />
             <GlobalStyle />
             <Header />
-            <Component {...pageProps} />
+            {loading ? (
+              <LinearProgress color="secondary" />
+            ) : (
+              <Component {...pageProps} />
+            )}
           </ThemeProvider>
         </StylesProvider>
       </ApolloProvider>
