@@ -2,9 +2,8 @@ import { AppBar, Toolbar } from '@material-ui/core';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { useEffect } from 'react';
-import { ApolloProvider } from '@apollo/client';
 import { MovieFilter as MovieIcon } from '@material-ui/icons';
-import { favoritesVar, client } from '../../apollo';
+import { favoritesVar } from '../../apollo';
 import Favorites from '../Favorites/Favorites';
 import SearchBar from '../SearchBar/SearchBar';
 
@@ -37,9 +36,7 @@ const Header = () => {
         <Link href="/">
           <StyledMovieIcon />
         </Link>
-        <ApolloProvider client={client}>
-          <SearchBar />
-        </ApolloProvider>
+        <SearchBar />
         <Favorites />
       </StyledToolbar>
     </AppBar>

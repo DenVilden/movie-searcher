@@ -1,4 +1,4 @@
-import { renderApollo } from '../../apollo/setupTests';
+import { renderApollo } from '../../utils/setupTests';
 import ErrorMessage from './ErrorMessage';
 
 describe('errorMessage', () => {

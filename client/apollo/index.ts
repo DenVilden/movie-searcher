@@ -1,5 +1,4 @@
-import { ApolloClient, InMemoryCache, HttpLink, makeVar } from '@apollo/client';
-import { withApollo } from 'next-apollo';
+import { makeVar } from '@apollo/client';
 import { MovieInfo } from './__generated__';
 
 if (process.env.NODE_ENV === 'test') {
@@ -10,15 +9,5 @@ if (process.env.NODE_ENV === 'test') {
 export const favoritesVar = makeVar<MovieInfo[]>([]);
 export const autocompleteVar = makeVar<string>('');
 
-export const client = new ApolloClient({
-  ssrMode: typeof window === 'undefined',
-  link: new HttpLink({
-    uri: process.env.NEXT_PUBLIC_SERVER_URL,
-    credentials: 'include',
-  }),
-  cache: new InMemoryCache(),
-});
-
-export default withApollo(client)({ ssr: true });
-
 export * from './__generated__';
+export * from './client';

@@ -1,5 +1,5 @@
 import Header from './Header';
-import { renderApollo } from '../../apollo/setupTests';
+import { renderApollo } from '../../utils/setupTests';
 
 describe('header', () => {
   it('should take a snapshot', () => {

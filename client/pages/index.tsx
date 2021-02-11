@@ -1,10 +1,13 @@
 import { Grid, LinearProgress } from '@material-ui/core';
 import styled from 'styled-components';
 import { useRef } from 'react';
-import withApollo, {
+import {
   useGetMoviesQuery,
   useGetUpcomingLazyQuery,
   useGetTopRatedLazyQuery,
+  GetMoviesDocument,
+  initializeApollo,
+  addApolloState,
 } from '../apollo';
 import { ErrorMessage, Pagination, MoviesBox } from '../components';
 
@@ -13,7 +16,7 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-export const HomePage = () => {
+const HomePage = () => {
   const { data, error } = useGetMoviesQuery();
   const [
     upcomingRefetch,
@@ -81,4 +84,16 @@ export const HomePage = () => {
   );
 };
 
-export default withApollo(HomePage);
+export const getServerSideProps = async () => {
+  const apolloClient = initializeApollo();
+
+  await apolloClient.query({
+    query: GetMoviesDocument,
+  });
+
+  return addApolloState(apolloClient, {
+    props: {},
+  });
+};
+
+export default HomePage;

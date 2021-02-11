@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { MockedProvider, MockedResponse } from '@apollo/client/testing';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '../pages/_app';
+import { theme } from './theme';
 
 // eslint-disable-next-line jest/prefer-spy-on
 HTMLElement.prototype.scrollIntoView = jest.fn();

@@ -1,6 +1,6 @@
 import Favorites from './Favorites';
 import { GetMovieInfoDocument, favoritesVar } from '../../apollo';
-import { renderApollo, fireEvent } from '../../apollo/setupTests';
+import { renderApollo, fireEvent } from '../../utils/setupTests';
 
 const mockHistoryPush = jest.fn();
 

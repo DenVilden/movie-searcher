@@ -14,7 +14,7 @@ import { useReactiveVar } from '@apollo/client';
 import Image from 'next/image';
 import { useEffect } from 'react';
 import { MoviesBox, ErrorMessage } from '../../components';
-import withApollo, { useGetMovieInfoQuery, favoritesVar } from '../../apollo';
+import { useGetMovieInfoQuery, favoritesVar } from '../../apollo';
 
 const StyledCard = styled(Card)`
   background-color: inherit;
@@ -51,7 +51,7 @@ const StyledTypography = styled(Typography)`
   justify-content: space-between;
 `;
 
-export const MoviePage = () => {
+const MoviePage = () => {
   const { id } = useRouter().query as { id: string };
 
   const { loading, error, data } = useGetMovieInfoQuery({ variables: { id } });
@@ -137,4 +137,4 @@ export const MoviePage = () => {
   );
 };
 
-export default withApollo(MoviePage);
+export default MoviePage;

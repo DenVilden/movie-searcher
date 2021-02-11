@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 import { AppProps } from 'next/app';
-import { createMuiTheme, StylesProvider, CssBaseline } from '@material-ui/core';
+import { StylesProvider, CssBaseline } from '@material-ui/core';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import Head from 'next/head';
+import { ApolloProvider } from '@apollo/client';
 import { Header } from '../components';
+import { theme } from '../utils/theme';
+import { useApollo } from '../apollo';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -11,10 +14,9 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const theme = createMuiTheme();
-export type theme = typeof theme;
-
 const NextApp = ({ Component, pageProps }: AppProps) => {
+  const apolloClient = useApollo(pageProps);
+
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
@@ -37,14 +39,16 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
         <meta content="Movie searcher app" name="description" />
         <title>Movie Searcher</title>
       </Head>
-      <StylesProvider injectFirst>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <GlobalStyle />
-          <Header />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </StylesProvider>
+      <ApolloProvider client={apolloClient}>
+        <StylesProvider injectFirst>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <GlobalStyle />
+            <Header />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </StylesProvider>
+      </ApolloProvider>
     </>
   );
 };
