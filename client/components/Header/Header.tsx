@@ -3,6 +3,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { useEffect } from 'react';
 import { ApolloProvider } from '@apollo/client';
+import { MovieFilter as MovieIcon } from '@material-ui/icons';
 import { favoritesVar, client } from '../../apollo';
 import Favorites from '../Favorites/Favorites';
 import SearchBar from '../SearchBar/SearchBar';
@@ -16,8 +17,9 @@ const StyledToolbar = styled(Toolbar)`
   }
 `;
 
-const StyledImg = styled.img`
+const StyledMovieIcon = styled(MovieIcon)`
   cursor: pointer;
+  font-size: 60px;
 `;
 
 const Header = () => {
@@ -33,7 +35,7 @@ const Header = () => {
     <AppBar position="static">
       <StyledToolbar>
         <Link href="/">
-          <StyledImg alt="logo" src="/logo.svg" />
+          <StyledMovieIcon />
         </Link>
         <ApolloProvider client={client}>
           <SearchBar />

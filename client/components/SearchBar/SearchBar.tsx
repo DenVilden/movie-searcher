@@ -50,7 +50,8 @@ const SearchBar = () => {
       freeSolo
       id="autocomplete"
       value={autocompleteValue}
-      loading={loading}
+      loading={loading || !!error}
+      loadingText={loading ? 'Loading...' : error?.message}
       onChange={(_evt, value, reason) => {
         if (reason === 'select-option') {
           const id = data?.moviesSearch.results.find(
