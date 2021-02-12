@@ -4,8 +4,7 @@ import { Autocomplete } from '@material-ui/lab';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { fade } from '@material-ui/core/styles';
-import { useReactiveVar } from '@apollo/client';
-import { useGetMoviesSearchLazyQuery, autocompleteVar } from '../../apollo';
+import { useGetMoviesSearchLazyQuery } from '../../apollo';
 
 const StyledAutocomplete = styled(Autocomplete)`
   width: 100%;
@@ -37,9 +36,10 @@ const StyledInputBase = styled(TextField)`
 
 const SearchBar = () => {
   const [inputValue, setInputValue] = useState('');
-  const autocompleteValue = useReactiveVar(autocompleteVar);
 
-  const [fetchMovies, { data, loading, error }] = useGetMoviesSearchLazyQuery();
+  const [fetchMovies, { data, loading, error }] = useGetMoviesSearchLazyQuery({
+    fetchPolicy: 'cache-and-network',
+  });
 
   const router = useRouter();
 
@@ -48,8 +48,8 @@ const SearchBar = () => {
       autoHighlight
       blurOnSelect
       freeSolo
+      inputValue={inputValue}
       id="autocomplete"
-      value={autocompleteValue}
       loading={loading || !!error}
       loadingText={loading ? 'Loading...' : error?.message}
       onChange={(_evt, value, reason) => {
@@ -77,7 +77,6 @@ const SearchBar = () => {
           error={!!error}
           variant="outlined"
           margin="dense"
-          value={inputValue}
           placeholder="type a movie name..."
           fullWidth
         />

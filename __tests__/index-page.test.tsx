@@ -94,6 +94,7 @@ describe('homePage', () => {
     const pageButton = await findAllByLabelText('Go to next page');
 
     fireEvent.click(pageButton[0]);
+    fireEvent.click(pageButton[1]);
 
     expect(findByText('page-2')).toBeTruthy();
   });

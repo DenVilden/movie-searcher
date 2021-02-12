@@ -1,6 +1,6 @@
 import SearchBar from './SearchBar';
 import { renderApollo, fireEvent } from '../../utils/setupTests';
-import { GetMoviesSearchDocument } from '../../__generated__';
+import { GetMoviesSearchDocument } from '../../apollo';
 
 const mockHistoryPush = jest.fn();
 
@@ -34,7 +34,7 @@ const mocks = [
   },
 ];
 
-describe('header', () => {
+describe('searchBar', () => {
   it('should update input with new value and fetch movies', async () => {
     const { findByPlaceholderText, findByText } = renderApollo(<SearchBar />, {
       mocks,

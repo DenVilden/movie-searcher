@@ -4,6 +4,11 @@ import { Pagination } from '@material-ui/lab';
 
 const StyledPagination = styled(Pagination)`
   margin: auto;
+  margin-bottom: 10px;
+
+  ${(props) => props.theme.breakpoints.up('md')} {
+    margin-bottom: 35px;
+  }
 `;
 
 interface Props {

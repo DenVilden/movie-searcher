@@ -6,5 +6,7 @@ module.exports = {
     '!graphql/schema.ts',
     '!pages/api/*.ts',
     '!apollo/*.ts',
+    '!graphql/types.ts',
+    '!components/index.ts',
   ],
 };

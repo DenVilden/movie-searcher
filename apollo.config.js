@@ -2,8 +2,8 @@ module.exports = {
   client: {
     service: {
       name: 'movie searcher',
-      url: 'http://localhost:3000/api/graphql',
+      localSchemaFile: 'graphql/schema.graphql',
     },
-    tagName: 'graphql',
+    includes: ['apollo/**/*.graphql'],
   },
 };

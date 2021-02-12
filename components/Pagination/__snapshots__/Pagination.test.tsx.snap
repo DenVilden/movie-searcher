@@ -4,7 +4,7 @@ exports[`pagination should take a snapshot 1`] = `
 <DocumentFragment>
   <nav
     aria-label="pagination navigation"
-    class="MuiPagination-root Pagination__StyledPagination-ht8t9i-0 cVFlsy"
+    class="MuiPagination-root Pagination__StyledPagination-ht8t9i-0 cBtSkt"
   >
     <ul
       class="MuiPagination-ul"

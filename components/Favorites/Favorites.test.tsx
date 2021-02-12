@@ -1,5 +1,5 @@
 import Favorites from './Favorites';
-import { GetMovieInfoDocument , favoritesVar } from '../../apollo';
+import { GetMovieInfoDocument, favoritesVar } from '../../apollo';
 
 import { renderApollo, fireEvent } from '../../utils/setupTests';
 

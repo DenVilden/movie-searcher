@@ -14,7 +14,6 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 export const favoritesVar = makeVar<MovieInfo[]>([]);
-export const autocompleteVar = makeVar<string>('');
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
