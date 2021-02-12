@@ -1,4 +1,4 @@
 import { createMuiTheme } from '@material-ui/core';
 
 export const theme = createMuiTheme();
-export type theme = typeof theme;
+export type Theme = typeof theme;

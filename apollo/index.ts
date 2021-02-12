@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 import {
   makeVar,
   ApolloClient,
@@ -25,7 +26,6 @@ const createApolloClient = () =>
   });
 
 export const initializeApollo = (initialState: any = null) => {
-  // eslint-disable-next-line no-underscore-dangle
   const _apolloClient = apolloClient ?? createApolloClient();
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state

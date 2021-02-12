@@ -1,7 +1,7 @@
-import * as Types from '../graphql/types';
-
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
+import * as Types from '../graphql/types';
+
 export type GetMovieInfoQueryVariables = Types.Exact<{
   id: Types.Scalars['ID'];
 }>;
