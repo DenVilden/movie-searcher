@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import { useEffect } from 'react';
 import { MovieFilter as MovieIcon } from '@material-ui/icons';
 import { favoritesVar } from '../../apollo';
-import Favorites from '../Favorites/Favorites';
-import SearchBar from '../SearchBar/SearchBar';
+import { Favorites, SearchBar } from '..';
 
 const StyledToolbar = styled(Toolbar)`
   padding: 0;

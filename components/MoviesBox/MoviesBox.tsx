@@ -1,6 +1,6 @@
 import { Grid, Grow, Typography, Paper, PaperProps } from '@material-ui/core';
 import styled from 'styled-components';
-import MovieCard from '../MovieCard/MovieCard';
+import { MovieCard } from '..';
 
 interface RootProps extends PaperProps {
   padding: number;
@@ -37,7 +37,7 @@ interface Props {
 const MoviesBox = ({ movies, title, elevation = 10, padding = 1 }: Props) => (
   <Grow in>
     <Root elevation={elevation} padding={padding}>
-      {!!title && (
+      {Boolean(title) && (
         <Typography align="center" gutterBottom variant="h4">
           {title}
         </Typography>

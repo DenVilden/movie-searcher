@@ -15,14 +15,14 @@ interface Props {
   refetch: (page: number) => void;
   totalPages: number;
   currentPage: number;
-  scrollToTop: React.MutableRefObject<HTMLElement | null>;
+  element: React.MutableRefObject<HTMLElement | null>;
 }
 
 const PaginationComponent = ({
   totalPages,
   refetch,
   currentPage,
-  scrollToTop,
+  element,
 }: Props) => {
   const [page, setPage] = useState(currentPage);
 
@@ -32,7 +32,7 @@ const PaginationComponent = ({
       onChange={(_evt, value: number) => {
         setPage(value);
         refetch(value);
-        scrollToTop.current?.scrollIntoView({
+        element.current?.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
         });

@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`movieInfo should take a snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiCard-root MovieInfo__StyledCard-a3oxdg-0 inEIfx MuiPaper-elevation10 MuiPaper-rounded"
+  >
+    <div
+      class="MovieInfo__ImageWrapper-a3oxdg-1 iRSvHa"
+    >
+      <div
+        style="display: block; overflow: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; margin: 0px;"
+      >
+        <img
+          alt="test"
+          decoding="async"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          style="visibility: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"
+        />
+      </div>
+    </div>
+    <div
+      class="MuiCardContent-root MovieInfo__StyledCardContent-a3oxdg-2 dVGSdV"
+    >
+      <h5
+        class="MuiTypography-root MovieInfo__StyledTypography-a3oxdg-3 iLSPhu MuiTypography-h5 MuiTypography-gutterBottom"
+      >
+        test
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+          data-testid="favorites-button"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Add to favorites
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </h5>
+      <p
+        class="MuiTypography-root MuiTypography-body1"
+      >
+        test data
+      </p>
+      <hr
+        class="MuiDivider-root"
+      />
+      <p
+        class="MuiTypography-root MuiTypography-body1"
+      >
+        <b>
+          Budget:
+        </b>
+         0
+      </p>
+      <hr
+        class="MuiDivider-root"
+      />
+      <p
+        class="MuiTypography-root MuiTypography-body1"
+      >
+        <b>
+          Revenue:
+        </b>
+         0
+      </p>
+      <hr
+        class="MuiDivider-root"
+      />
+      <p
+        class="MuiTypography-root MuiTypography-body1"
+      >
+        <b>
+          Rating:
+        </b>
+         5
+      </p>
+      <hr
+        class="MuiDivider-root"
+      />
+      <p
+        class="MuiTypography-root MuiTypography-body1"
+      >
+        <b>
+          Release Date:
+        </b>
+         2020
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

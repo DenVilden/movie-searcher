@@ -39,6 +39,7 @@ const SearchBar = () => {
 
   const [fetchMovies, { data, loading, error }] = useGetMoviesSearchLazyQuery({
     fetchPolicy: 'cache-and-network',
+    nextFetchPolicy: 'cache-first',
   });
 
   const router = useRouter();
@@ -48,9 +49,10 @@ const SearchBar = () => {
       autoHighlight
       blurOnSelect
       freeSolo
+      clearOnBlur
       inputValue={inputValue}
       id="autocomplete"
-      loading={loading || !!error}
+      loading={loading || Boolean(error)}
       loadingText={loading ? 'Loading...' : error?.message}
       onChange={(_evt, value, reason) => {
         if (reason === 'select-option') {
@@ -69,12 +71,12 @@ const SearchBar = () => {
           setInputValue('');
         }
       }}
-      open={!!inputValue}
+      open={Boolean(inputValue)}
       options={data?.moviesSearch.results.map((movie) => movie.title) || []}
       renderInput={(params) => (
         <StyledInputBase
           {...params}
-          error={!!error}
+          error={Boolean(error)}
           variant="outlined"
           margin="dense"
           placeholder="type a movie name..."

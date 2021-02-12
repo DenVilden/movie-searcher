@@ -12,7 +12,7 @@ import {
   FavoriteBorder as FavoriteBorderIcon,
 } from '@material-ui/icons';
 import styled from 'styled-components';
-import FavoritesCard from '../FavoritesCard/FavoritesCard';
+import { FavoritesCard } from '..';
 import { favoritesVar } from '../../apollo';
 
 const StyledIconButton = styled(IconButton)`
