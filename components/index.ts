@@ -9,3 +9,4 @@ export { default as SearchBar } from './SearchBar';
 export { default as Upcoming } from './Upcoming';
 export { default as TopRated } from './TopRated';
 export { default as MovieInfo } from './MovieInfo';
+export { default as Layout } from './Layout';

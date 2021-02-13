@@ -44,7 +44,6 @@ const Favorites = () => {
         </Badge>
       </StyledIconButton>
       <Popover
-        anchorReference="anchorEl"
         anchorOrigin={{ vertical: 45, horizontal: 'right' }}
         data-testid="dropdown"
         onClose={handleToggle}

@@ -1,6 +1,7 @@
 import { Slide } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 import { MoviesBox, ErrorMessage, MovieInfo } from '../../components';
 import {
   useGetMovieInfoQuery,
@@ -17,17 +18,22 @@ const MoviePage = () => {
     return <ErrorMessage error={error?.message || 'No data'} />;
 
   return (
-    <Slide direction="up" in>
-      <div>
-        <MovieInfo data={data} />
-        {Boolean(data.movieInfo.similar.results.length) && (
-          <MoviesBox
-            movies={data.movieInfo.similar.results}
-            title="Similar Movies"
-          />
-        )}
-      </div>
-    </Slide>
+    <>
+      <Head key="title">
+        <title>{data.movieInfo.title}</title>
+      </Head>
+      <Slide direction="up" in>
+        <div>
+          <MovieInfo data={data} />
+          {Boolean(data.movieInfo.similar.results.length) && (
+            <MoviesBox
+              movies={data.movieInfo.similar.results}
+              title="Similar Movies"
+            />
+          )}
+        </div>
+      </Slide>
+    </>
   );
 };
 

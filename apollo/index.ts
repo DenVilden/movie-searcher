@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
 import {
   makeVar,
   ApolloClient,
@@ -26,19 +24,19 @@ const createApolloClient = () =>
   });
 
 export const initializeApollo = (initialState: {} | null = null) => {
-  const _apolloClient = apolloClient ?? createApolloClient();
+  const internalApolloClient = apolloClient ?? createApolloClient();
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
   // gets hydrated here
   if (initialState) {
-    _apolloClient.cache.restore(initialState);
+    internalApolloClient.cache.restore(initialState);
   }
   // For SSG and SSR always create a new Apollo Client
-  if (typeof window === 'undefined') return _apolloClient;
+  if (typeof window === 'undefined') return internalApolloClient;
   // Create the Apollo Client once in the client
-  if (!apolloClient) apolloClient = _apolloClient;
+  if (!apolloClient) apolloClient = internalApolloClient;
 
-  return _apolloClient;
+  return internalApolloClient;
 };
 
 export const useApollo = (initialState: {}) => {

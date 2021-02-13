@@ -6,7 +6,6 @@ import {
   Button,
 } from '@material-ui/core';
 import styled from 'styled-components';
-import Head from 'next/head';
 import { useReactiveVar } from '@apollo/client';
 import Image from 'next/image';
 import { useEffect } from 'react';
@@ -74,9 +73,6 @@ const MovieInfo = ({ data }: Props) => {
 
   return (
     <StyledCard elevation={10}>
-      <Head>
-        <title>{data.movieInfo.title}</title>
-      </Head>
       <ImageWrapper>
         <Image
           layout="fill"
