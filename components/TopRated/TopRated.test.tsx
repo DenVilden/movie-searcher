@@ -1,5 +1,5 @@
 import TopRated from './TopRated';
-import { renderApollo } from '../../utils/setupTests';
+import { renderApollo } from '../../lib/setupTests';
 
 const mocks = {
   topRated: {

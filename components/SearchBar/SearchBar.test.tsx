@@ -1,5 +1,5 @@
 import SearchBar from './SearchBar';
-import { renderApollo, fireEvent } from '../../utils/setupTests';
+import { renderApollo, fireEvent } from '../../lib/setupTests';
 import { GetMoviesSearchDocument } from '../../apollo';
 
 const mockHistoryPush = jest.fn();

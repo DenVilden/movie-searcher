@@ -1,6 +1,6 @@
 import HomePage from '../pages';
 import { GetMoviesDocument } from '../apollo';
-import { renderApollo, fireEvent } from '../utils/setupTests';
+import { renderApollo, fireEvent } from '../lib/setupTests';
 
 const mockHistoryPush = jest.fn();
 

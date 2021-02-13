@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "test": "jest --watchAll",
-    "lint": "eslint . --ext ts,tsx",
+    "lint": "eslint . --ext js,ts,tsx --cache",
     "codegen": "graphql-codegen"
   },
   "husky": {
@@ -16,7 +16,7 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx}": "eslint --fix",
+    "*.{js,ts,tsx}": "eslint --cache --fix",
     "*.{js,ts,tsx,json,yml}": "prettier --write"
   },
   "dependencies": {
@@ -52,7 +52,7 @@
     "@types/styled-components": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
-    "eslint": "^7.19.0",
+    "eslint": "^7.20.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^7.2.0",

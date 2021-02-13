@@ -12,7 +12,6 @@
     "project": "tsconfig.json"
   },
   "rules": {
-    "camelcase": "off",
     "jest/prefer-expect-assertions": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",

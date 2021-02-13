@@ -1,5 +1,5 @@
 import Upcoming from './Upcoming';
-import { renderApollo } from '../../utils/setupTests';
+import { renderApollo } from '../../lib/setupTests';
 
 const mocks = {
   upcoming: {

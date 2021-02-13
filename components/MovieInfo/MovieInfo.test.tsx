@@ -1,5 +1,5 @@
 import MovieInfo from './MovieInfo';
-import { renderApollo } from '../../utils/setupTests';
+import { renderApollo } from '../../lib/setupTests';
 
 const mocks = {
   movieInfo: {

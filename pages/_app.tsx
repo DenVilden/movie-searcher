@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { ApolloProvider } from '@apollo/client';
 import Router from 'next/router';
 import { Header } from '../components';
-import { theme } from '../utils/theme';
+import { theme } from '../lib/theme';
 import { useApollo } from '../apollo';
 
 const GlobalStyle = createGlobalStyle`

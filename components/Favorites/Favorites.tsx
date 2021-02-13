@@ -23,13 +23,6 @@ const StyledTypography = styled(Typography)`
   padding: ${(props) => props.theme.spacing(2)}px;
 `;
 
-const StyledPopover = styled(Popover)`
-  .MuiPopover-paper {
-    right: 16px;
-    top: 45px;
-  }
-`;
-
 const Favorites = () => {
   const favorites = useReactiveVar(favoritesVar);
   const [toggle, setToggle] = useState(false);
@@ -50,8 +43,9 @@ const Favorites = () => {
           {toggle ? <FavoriteBorderIcon /> : <FavoriteIcon />}
         </Badge>
       </StyledIconButton>
-      <StyledPopover
-        anchorReference="none"
+      <Popover
+        anchorReference="anchorEl"
+        anchorOrigin={{ vertical: 45, horizontal: 'right' }}
         data-testid="dropdown"
         onClose={handleToggle}
         open={toggle}
@@ -65,7 +59,7 @@ const Favorites = () => {
             favorite={favorite}
           />
         ))}
-      </StyledPopover>
+      </Popover>
     </>
   );
 };

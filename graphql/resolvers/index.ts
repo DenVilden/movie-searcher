@@ -1,5 +1,5 @@
-import { Resolvers } from './types';
-import { paginateResults } from './lib/utils';
+import { Resolvers } from '../types';
+import { paginateResults } from '../lib/utils';
 
 const resolvers: Resolvers = {
   Query: {

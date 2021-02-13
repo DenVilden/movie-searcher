@@ -1,5 +1,5 @@
 import Header from './Header';
-import { renderApollo } from '../../utils/setupTests';
+import { renderApollo } from '../../lib/setupTests';
 
 const mock = {
   id: 1,

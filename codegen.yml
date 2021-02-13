@@ -2,19 +2,18 @@ overwrite: true
 schema: graphql/schema.graphql
 documents: apollo/**/*.graphql
 generates:
-  graphql/types.ts:
+  graphql/types/index.ts:
     plugins:
       - typescript
       - typescript-resolvers
     config:
       useIndexSignature: true
       noSchemaStitching: true
-      contextType: ./datasource#Context
-  graphql:
+      contextType: ../datasource#Context
+  graphql/types:
     preset: near-operation-file
     presetConfig:
-      extension: .generated.ts
-      baseTypesPath: types.ts
+      baseTypesPath: index.ts
     plugins:
       - typescript-operations
       - typescript-react-apollo
