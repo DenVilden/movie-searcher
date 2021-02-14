@@ -1,9 +1,8 @@
 import { AppBar, Toolbar } from '@material-ui/core';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { useEffect } from 'react';
 import { MovieFilter as MovieIcon } from '@material-ui/icons';
-import { favoritesVar } from '../../apollo';
+import { memo } from 'react';
 import { Favorites, SearchBar } from '..';
 
 const StyledToolbar = styled(Toolbar)`
@@ -20,26 +19,15 @@ const StyledMovieIcon = styled(MovieIcon)`
   font-size: 60px;
 `;
 
-const Header = () => {
-  useEffect(() => {
-    const initialFavorites = localStorage.getItem('favorites');
-
-    if (initialFavorites) {
-      favoritesVar(JSON.parse(initialFavorites));
-    }
-  }, []);
-
-  return (
-    <AppBar position="static">
-      <StyledToolbar>
-        <Link href="/">
-          <StyledMovieIcon />
-        </Link>
-        <SearchBar />
-        <Favorites />
-      </StyledToolbar>
-    </AppBar>
-  );
-};
-
-export default Header;
+const Header = () => (
+  <AppBar position="static">
+    <StyledToolbar>
+      <Link href="/">
+        <StyledMovieIcon />
+      </Link>
+      <SearchBar />
+      <Favorites />
+    </StyledToolbar>
+  </AppBar>
+);
+export default memo(Header);
