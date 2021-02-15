@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import {
   Divider,
   Badge,
@@ -26,6 +26,7 @@ const StyledTypography = styled(Typography)`
 const Favorites = () => {
   const favorites = useReactiveVar(favoritesVar);
   const [toggle, setToggle] = useState(false);
+  const ref = useRef<HTMLButtonElement | null>(null);
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -38,13 +39,15 @@ const Favorites = () => {
         data-testid="icon-button"
         disabled={!favorites.length}
         onClick={handleToggle}
+        ref={ref}
       >
         <Badge badgeContent={favorites.length} color="secondary">
           {toggle ? <FavoriteBorderIcon /> : <FavoriteIcon />}
         </Badge>
       </StyledIconButton>
       <Popover
-        anchorOrigin={{ vertical: 45, horizontal: 'right' }}
+        anchorEl={ref.current}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         data-testid="dropdown"
         onClose={handleToggle}
         open={toggle}

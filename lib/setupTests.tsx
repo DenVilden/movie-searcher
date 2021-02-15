@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import { MockedProvider, MockedResponse } from '@apollo/client/testing';
 import { ThemeProvider } from 'styled-components';
+import '@testing-library/jest-dom';
 import { theme } from './theme';
 
 // eslint-disable-next-line jest/prefer-spy-on

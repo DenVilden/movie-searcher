@@ -57,7 +57,7 @@ const SearchBar = () => {
       onChange={(_evt, value, reason) => {
         if (reason === 'select-option') {
           const id = data?.moviesSearch.results.find(
-            (movie) => movie.title === value,
+            (movie) => movie.title === (value as string),
           )?.id;
 
           router.push(`/movie/${id}`);

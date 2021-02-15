@@ -10,10 +10,9 @@ import { ErrorMessage, Upcoming, TopRated } from '../components';
 const HomePage = () => {
   const { data, error } = useGetMoviesQuery();
 
-  if (error || !data)
-    return <ErrorMessage error={error?.message || 'No data'} />;
+  if (error) return <ErrorMessage error={error.message} />;
 
-  return (
+  return data ? (
     <Grid container>
       <Grid item lg={6}>
         <Upcoming initialData={{ upcoming: data.upcoming }} />
@@ -22,7 +21,7 @@ const HomePage = () => {
         <TopRated initialData={{ topRated: data.topRated }} />
       </Grid>
     </Grid>
-  );
+  ) : null;
 };
 
 export const getStaticProps: GetStaticProps = async () => {

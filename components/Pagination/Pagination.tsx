@@ -15,7 +15,7 @@ interface Props {
   refetch: (page: number) => void;
   totalPages: number;
   currentPage: number;
-  element: React.MutableRefObject<HTMLElement | null>;
+  element: React.MutableRefObject<HTMLDivElement | null>;
 }
 
 const PaginationComponent = ({
@@ -29,15 +29,15 @@ const PaginationComponent = ({
   return (
     <StyledPagination
       count={totalPages}
+      page={page}
       onChange={(_evt, value: number) => {
-        setPage(value);
-        refetch(value);
         element.current?.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
         });
+        refetch(value);
+        setPage(value);
       }}
-      page={page}
     />
   );
 };
