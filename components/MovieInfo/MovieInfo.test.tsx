@@ -1,5 +1,5 @@
 import MovieInfo from './MovieInfo';
-import { renderApollo } from '../../lib/setupTests';
+import { renderApollo, screen, fireEvent } from '../../lib/setupTests';
 
 const mocks = {
   movieInfo: {
@@ -32,5 +32,23 @@ describe('movieInfo', () => {
     const element = asFragment();
 
     expect(element).toMatchSnapshot();
+  });
+
+  it('should toggle favorites', () => {
+    renderApollo(<MovieInfo data={mocks} />);
+
+    const favoritesButton = screen.getByRole('button');
+
+    fireEvent.click(favoritesButton);
+
+    const removeButton = screen.getByText('Remove from favorites');
+
+    expect(removeButton).toBeInTheDocument();
+
+    fireEvent.click(favoritesButton);
+
+    const addButton = screen.getByText('Add to favorites');
+
+    expect(addButton).toBeInTheDocument();
   });
 });

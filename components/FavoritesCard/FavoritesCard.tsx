@@ -35,7 +35,6 @@ const FavoritesCard = ({ handleToggle, favorite }: Props) => {
 
   return (
     <CardActionArea
-      data-testid="favorites-card"
       onClick={() => {
         router.push(`/movie/${favorite.id}`);
         handleToggle();

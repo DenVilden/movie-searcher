@@ -1,7 +1,7 @@
 import TopRated from './TopRated';
 import { renderApollo } from '../../lib/setupTests';
 
-const mocks = {
+const mock = {
   topRated: {
     total_pages: 20,
     page: 1,
@@ -19,7 +19,7 @@ const mocks = {
 
 describe('topRated', () => {
   it('should take a snapshot', () => {
-    const { asFragment } = renderApollo(<TopRated initialData={mocks} />);
+    const { asFragment } = renderApollo(<TopRated initialData={mock} />);
 
     const element = asFragment();
 

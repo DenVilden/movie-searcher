@@ -43,7 +43,6 @@ const Favorites = () => {
     <>
       <StyledIconButton
         color="inherit"
-        data-testid="icon-button"
         disabled={!favorites.length}
         onClick={handleToggle}
         ref={ref}

@@ -28,7 +28,6 @@ exports[`movieInfo should take a snapshot 1`] = `
         test
         <button
           class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
-          data-testid="favorites-button"
           tabindex="0"
           type="button"
         >

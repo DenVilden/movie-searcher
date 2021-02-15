@@ -7,7 +7,6 @@ exports[`movieCard should take a snapshot 1`] = `
   >
     <button
       class="MuiButtonBase-root MuiCardActionArea-root"
-      data-testid="card-button"
       tabindex="0"
       type="button"
     >

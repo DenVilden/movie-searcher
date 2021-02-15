@@ -4,7 +4,6 @@ exports[`favoritesCard should take a snapshot 1`] = `
 <DocumentFragment>
   <button
     class="MuiButtonBase-root MuiCardActionArea-root"
-    data-testid="favorites-card"
     tabindex="0"
     type="button"
   >

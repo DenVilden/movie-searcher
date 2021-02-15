@@ -1,6 +1,6 @@
 import MoviePage from '../pages/movie/[id]';
 import { GetMovieInfoDocument } from '../apollo';
-import { renderApollo, fireEvent } from '../lib/setupTests';
+import { renderApollo, screen } from '../lib/setupTests';
 
 jest.mock('next/router', () => ({
   useRouter: () => ({
@@ -18,84 +18,16 @@ const mocks = [
         id: '1',
       },
     },
-    result: {
-      data: {
-        movieInfo: {
-          id: 1,
-          backdrop_path: null,
-          poster_path: null,
-          title: 'test',
-          overview: 'test data',
-          budget: '0',
-          revenue: '0',
-          vote_average: 5,
-          release_date: '2020',
-          similar: {
-            results: [
-              {
-                id: 1,
-                title: 'test',
-                release_date: '2020',
-                poster_path: null,
-              },
-            ],
-          },
-        },
-      },
-    },
+    error: new Error('an error has occurred'),
   },
 ];
 
 describe('moviePage', () => {
-  it('should take a snapshot', () => {
-    const { asFragment } = renderApollo(<MoviePage />);
-
-    const element = asFragment();
-
-    expect(element).toMatchSnapshot();
-  });
-
   it('should render error state', async () => {
-    const mockError = [
-      {
-        request: {
-          query: GetMovieInfoDocument,
-          variables: {
-            id: '1',
-          },
-        },
-        error: new Error('an error has occurred'),
-      },
-    ];
+    renderApollo(<MoviePage />, { mocks });
 
-    const { findByText } = renderApollo(<MoviePage />, {
-      mocks: mockError,
-    });
+    const errorElement = await screen.findByText(/an error has occurred/i);
 
-    const errorElement = await findByText(/an error has occurred/i);
-
-    expect(errorElement).toBeTruthy();
-  });
-
-  it('should toggle favorites', async () => {
-    const mock = [mocks[0], mocks[0], mocks[0]];
-
-    const { findByTestId, findByText } = renderApollo(<MoviePage />, {
-      mocks: mock,
-    });
-
-    const favoritesButton = await findByTestId('favorites-button');
-
-    fireEvent.click(favoritesButton);
-
-    const removeButton = await findByText('Remove from favorites');
-
-    expect(removeButton).toBeTruthy();
-
-    fireEvent.click(favoritesButton);
-
-    const addButton = await findByText('Add to favorites');
-
-    expect(addButton).toBeTruthy();
+    expect(errorElement).toBeInTheDocument();
   });
 });

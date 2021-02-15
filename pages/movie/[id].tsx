@@ -12,12 +12,11 @@ import {
 const MoviePage = () => {
   const { id } = useRouter().query as { id: string };
 
-  const { error, data } = useGetMovieInfoQuery({ variables: { id } });
+  const { data, error } = useGetMovieInfoQuery({ variables: { id } });
 
-  if (error || !data)
-    return <ErrorMessage error={error?.message || 'No data'} />;
+  if (error) return <ErrorMessage error={error.message} />;
 
-  return (
+  return data ? (
     <>
       <Head key="title">
         <title>{data.movieInfo.title}</title>
@@ -34,7 +33,7 @@ const MoviePage = () => {
         </div>
       </Slide>
     </>
-  );
+  ) : null;
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {

@@ -89,7 +89,6 @@ exports[`layout should take a snapshot 1`] = `
       </div>
       <button
         class="MuiButtonBase-root MuiIconButton-root Favorites__StyledIconButton-w5bsin-0 fHDBVm MuiIconButton-colorInherit Mui-disabled Mui-disabled"
-        data-testid="icon-button"
         disabled=""
         tabindex="-1"
         type="button"

@@ -55,7 +55,6 @@ const MovieCard = ({ movie }: Props) => {
   return (
     <StyledCard elevation={10}>
       <CardActionArea
-        data-testid="card-button"
         onClick={() => {
           router.push(`/movie/${movie.id}`);
         }}

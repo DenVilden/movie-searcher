@@ -1,5 +1,13 @@
-import { renderApollo } from '../../lib/setupTests';
+import { renderApollo, fireEvent, screen } from '../../lib/setupTests';
 import MovieCard from './MovieCard';
+
+const mockHistoryPush = jest.fn();
+
+jest.mock('next/router', () => ({
+  useRouter: () => ({
+    push: mockHistoryPush,
+  }),
+}));
 
 const mock = {
   id: 1,
@@ -16,5 +24,15 @@ describe('movieCard', () => {
     const element = asFragment();
 
     expect(element).toMatchSnapshot();
+  });
+
+  it('should redirect to correct url when movie card is clicked', () => {
+    renderApollo(<MovieCard movie={mock} />);
+
+    const cardButtonElement = screen.getByRole('button');
+
+    fireEvent.click(cardButtonElement);
+
+    expect(mockHistoryPush).toHaveBeenCalledWith('/movie/1');
   });
 });

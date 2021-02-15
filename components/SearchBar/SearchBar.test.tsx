@@ -1,5 +1,5 @@
 import SearchBar from './SearchBar';
-import { renderApollo, fireEvent } from '../../lib/setupTests';
+import { renderApollo, fireEvent, screen } from '../../lib/setupTests';
 import { GetMoviesSearchDocument } from '../../apollo';
 
 const mockHistoryPush = jest.fn();
@@ -9,9 +9,6 @@ jest.mock('next/router', () => ({
     push: mockHistoryPush,
   }),
 }));
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-jest.mock('next/link', () => ({ children }: { children: any }) => children);
 
 const mocks = [
   {
@@ -35,41 +32,24 @@ const mocks = [
 ];
 
 describe('searchBar', () => {
-  it('should update input with new value and fetch movies', async () => {
-    const { findByPlaceholderText, findByText } = renderApollo(<SearchBar />, {
-      mocks,
-    });
+  it('should fetch movies, redirect to correct url and clear input value', async () => {
+    renderApollo(<SearchBar />, { mocks });
 
-    const inputElement = await findByPlaceholderText('type a movie name...');
+    const inputElement = screen.getByPlaceholderText('type a movie name...');
 
     fireEvent.change(inputElement, { target: { value: 'test' } });
 
-    const searchResult = await findByText('test-title');
+    const searchResult = await screen.findByText('test-title');
 
-    expect(searchResult).toBeTruthy();
+    expect(searchResult).toBeInTheDocument();
 
     expect(inputElement).toHaveProperty('value', 'test');
-  });
-
-  it('should redirect to correct url on click and clear input value', async () => {
-    const { findByPlaceholderText, findByText, findByTitle } = renderApollo(
-      <SearchBar />,
-      {
-        mocks,
-      },
-    );
-
-    const inputElement = await findByPlaceholderText('type a movie name...');
-
-    fireEvent.change(inputElement, { target: { value: 'test' } });
-
-    const searchResult = await findByText('test-title');
 
     fireEvent.click(searchResult);
 
     expect(mockHistoryPush).toHaveBeenCalledWith('/movie/1');
 
-    const clearButton = await findByTitle('Clear');
+    const clearButton = await screen.findByTitle('Clear');
 
     fireEvent.click(clearButton);
 

@@ -1,14 +1,10 @@
 import HomePage from '../pages';
-import { GetMoviesDocument } from '../apollo';
-import { renderApollo, fireEvent } from '../lib/setupTests';
-
-const mockHistoryPush = jest.fn();
-
-jest.mock('next/router', () => ({
-  useRouter: () => ({
-    push: mockHistoryPush,
-  }),
-}));
+import {
+  GetMoviesDocument,
+  GetTopRatedDocument,
+  GetUpcomingDocument,
+} from '../apollo';
+import { renderApollo, screen, fireEvent } from '../lib/setupTests';
 
 const mocks = [
   {
@@ -23,7 +19,7 @@ const mocks = [
           results: [
             {
               id: 1,
-              title: 'test',
+              title: 'title',
               release_date: '2020',
               poster_path: null,
             },
@@ -35,7 +31,7 @@ const mocks = [
           results: [
             {
               id: 1,
-              title: 'test',
+              title: 'title',
               vote_average: 5,
               poster_path: null,
             },
@@ -44,19 +40,69 @@ const mocks = [
       },
     },
   },
+  {
+    request: {
+      query: GetTopRatedDocument,
+      variables: { page: 2 },
+    },
+    result: {
+      data: {
+        topRated: {
+          total_pages: 20,
+          page: 2,
+          results: [
+            {
+              id: 2,
+              title: 'toprated page 2',
+              vote_average: 5,
+              poster_path: null,
+            },
+          ],
+        },
+      },
+    },
+  },
+  {
+    request: {
+      query: GetUpcomingDocument,
+      variables: { page: 2 },
+    },
+    result: {
+      data: {
+        upcoming: {
+          total_pages: 20,
+          page: 2,
+          results: [
+            {
+              id: 2,
+              title: 'upcoming page 2',
+              release_date: '2002',
+              poster_path: null,
+            },
+          ],
+        },
+      },
+    },
+  },
+  {
+    request: {
+      query: GetTopRatedDocument,
+      variables: { page: 3 },
+    },
+    error: new Error('an error has occurred'),
+  },
+  {
+    request: {
+      query: GetUpcomingDocument,
+      variables: { page: 3 },
+    },
+    error: new Error('an error has occurred'),
+  },
 ];
 
 describe('homePage', () => {
-  it('should take a snapshot', () => {
-    const { asFragment } = renderApollo(<HomePage />);
-
-    const element = asFragment();
-
-    expect(element).toMatchSnapshot();
-  });
-
   it('should render error state', async () => {
-    const mockError = [
+    const mock = [
       {
         request: {
           query: GetMoviesDocument,
@@ -65,37 +111,35 @@ describe('homePage', () => {
       },
     ];
 
-    const { findByText } = renderApollo(<HomePage />, {
-      mocks: mockError,
-    });
+    renderApollo(<HomePage />, { mocks: mock });
 
-    const errorElement = await findByText(/an error has occurred/i);
+    const errorElement = await screen.findByText(/an error has occurred/i);
 
-    expect(errorElement).toBeTruthy();
-  });
-
-  it('should redirect to correct url when movie card is clicked', async () => {
-    const { findAllByTestId } = renderApollo(<HomePage />, {
-      mocks,
-    });
-
-    const cardButtonElement = await findAllByTestId('card-button');
-
-    fireEvent.click(cardButtonElement[0]);
-
-    expect(mockHistoryPush).toHaveBeenCalledWith('/movie/1');
+    expect(errorElement).toBeInTheDocument();
   });
 
   it('should switch page and refetch movies', async () => {
-    const { findByText, findAllByLabelText } = renderApollo(<HomePage />, {
-      mocks,
-    });
+    renderApollo(<HomePage />, { mocks });
 
-    const pageButton = await findAllByLabelText('Go to next page');
+    const pageButton = await screen.findAllByLabelText('Go to next page');
 
     fireEvent.click(pageButton[0]);
     fireEvent.click(pageButton[1]);
 
-    expect(findByText('page-2')).toBeTruthy();
+    expect(await screen.findByText('toprated page 2')).toBeInTheDocument();
+    expect(await screen.findByText('upcoming page 2')).toBeInTheDocument();
+  });
+
+  it('should should render error state when switching pages', async () => {
+    renderApollo(<HomePage />, { mocks });
+
+    const pageButton = await screen.findAllByLabelText(/page 3/i);
+
+    fireEvent.click(pageButton[0]);
+    fireEvent.click(pageButton[1]);
+
+    const errorElement = await screen.findByText(/an error has occurred/i);
+
+    expect(errorElement).toBeInTheDocument();
   });
 });

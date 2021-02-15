@@ -1,6 +1,5 @@
 import Favorites from './Favorites';
-import { GetMovieInfoDocument, favoritesVar } from '../../apollo';
-import { renderApollo, fireEvent } from '../../lib/setupTests';
+import { renderApollo, fireEvent, screen } from '../../lib/setupTests';
 
 const mockHistoryPush = jest.fn();
 
@@ -12,51 +11,39 @@ jest.mock('next/router', () => ({
 
 const mocks = [
   {
-    request: {
-      query: GetMovieInfoDocument,
-      variables: { id: '1' },
-    },
-    result: {
-      data: {
-        movieInfo: {
+    id: 1,
+    backdrop_path: null,
+    poster_path: null,
+    title: 'test',
+    overview: 'test data',
+    budget: '0',
+    revenue: '0',
+    vote_average: 5,
+    release_date: '2020',
+    similar: {
+      results: [
+        {
           id: 1,
-          backdrop_path: null,
-          poster_path: null,
           title: 'test',
-          overview: 'test data',
-          budget: '0',
-          revenue: '0',
-          vote_average: 5,
           release_date: '2020',
-          similar: {
-            results: [
-              {
-                id: 1,
-                title: 'test',
-                release_date: '2020',
-                poster_path: null,
-              },
-            ],
-          },
+          poster_path: null,
         },
-      },
+      ],
     },
   },
 ];
 
 describe('favorites', () => {
-  it('should redirect to correct url when favorites item clicked', async () => {
-    favoritesVar([mocks[0].result.data.movieInfo]);
+  it('should redirect to correct url when favorites item clicked', () => {
+    localStorage.setItem('favorites', JSON.stringify(mocks));
 
-    const { findByTestId } = renderApollo(<Favorites />, {
-      mocks,
-    });
+    renderApollo(<Favorites />);
 
-    const iconButton = await findByTestId('icon-button');
+    const iconButton = screen.getByRole('button');
 
     fireEvent.click(iconButton);
 
-    const cardButtonElement = await findByTestId('favorites-card');
+    const cardButtonElement = screen.getByRole('button');
 
     fireEvent.click(cardButtonElement);
 

@@ -8,7 +8,7 @@ import {
 import styled from 'styled-components';
 import { useReactiveVar } from '@apollo/client';
 import Image from 'next/image';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { favoritesVar, GetMovieInfoQuery } from '../../apollo';
 
 const StyledCard = styled(Card)`
@@ -57,8 +57,9 @@ const MovieInfo = ({ data }: Props) => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  const isInFavorites = favorites.some(
-    (favorite) => favorite.id === data.movieInfo.id,
+  const isInFavorites = useMemo(
+    () => favorites.some((favorite) => favorite.id === data.movieInfo.id),
+    [data.movieInfo.id, favorites],
   );
 
   const addOrRemoveFromFavorites = () => {
@@ -86,7 +87,6 @@ const MovieInfo = ({ data }: Props) => {
           {data.movieInfo.title}
           <Button
             color={isInFavorites ? 'secondary' : 'primary'}
-            data-testid="favorites-button"
             onClick={addOrRemoveFromFavorites}
             variant="contained"
           >
