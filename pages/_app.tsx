@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import { ApolloProvider } from '@apollo/client';
 import Router from 'next/router';
 import { LinearProgress } from '@material-ui/core';
-import { useApollo, favoritesVar } from '../apollo';
+import { useApollo } from '../apollo';
 import { Layout } from '../components';
 
 const NextApp = ({ Component, pageProps }: AppProps) => {
@@ -15,11 +15,6 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles?.parentElement) {
       jssStyles.parentElement.removeChild(jssStyles);
-    }
-
-    const initialFavorites = localStorage.getItem('favorites');
-    if (initialFavorites) {
-      favoritesVar(JSON.parse(initialFavorites));
     }
 
     const start = () => {

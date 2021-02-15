@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import {
   Divider,
   Badge,
@@ -27,6 +27,13 @@ const Favorites = () => {
   const favorites = useReactiveVar(favoritesVar);
   const [toggle, setToggle] = useState(false);
   const ref = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    const initialFavorites = localStorage.getItem('favorites');
+    if (initialFavorites) {
+      favoritesVar(JSON.parse(initialFavorites));
+    }
+  }, []);
 
   const handleToggle = () => {
     setToggle(!toggle);
