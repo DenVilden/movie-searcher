@@ -37,17 +37,13 @@ describe('movieInfo', () => {
   it('should toggle favorites', () => {
     renderApollo(<MovieInfo data={mocks} />);
 
-    const favoritesButton = screen.getByRole('button');
-
-    fireEvent.click(favoritesButton);
-
-    const removeButton = screen.getByText('Remove from favorites');
-
-    expect(removeButton).toBeInTheDocument();
-
-    fireEvent.click(favoritesButton);
-
     const addButton = screen.getByText('Add to favorites');
+
+    fireEvent.click(addButton);
+
+    expect(screen.getByText('Remove from favorites')).toBeInTheDocument();
+
+    fireEvent.click(addButton);
 
     expect(addButton).toBeInTheDocument();
   });

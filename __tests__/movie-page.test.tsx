@@ -26,8 +26,8 @@ describe('moviePage', () => {
   it('should render error state', async () => {
     renderApollo(<MoviePage />, { mocks });
 
-    const errorElement = await screen.findByText(/an error has occurred/i);
-
-    expect(errorElement).toBeInTheDocument();
+    expect(
+      await screen.findByText(/an error has occurred/i),
+    ).toBeInTheDocument();
   });
 });

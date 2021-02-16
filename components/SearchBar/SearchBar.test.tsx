@@ -42,17 +42,13 @@ describe('searchBar', () => {
     const searchResult = await screen.findByText('test-title');
 
     expect(searchResult).toBeInTheDocument();
-
     expect(inputElement).toHaveProperty('value', 'test');
 
     fireEvent.click(searchResult);
-
     expect(mockHistoryPush).toHaveBeenCalledWith('/movie/1');
 
-    const clearButton = await screen.findByTitle('Clear');
-
+    const clearButton = screen.getByTitle('Clear');
     fireEvent.click(clearButton);
-
     expect(inputElement).toHaveProperty('value', '');
   });
 });

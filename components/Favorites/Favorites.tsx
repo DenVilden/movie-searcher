@@ -54,7 +54,6 @@ const Favorites = () => {
       <Popover
         anchorEl={ref.current}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-        data-testid="dropdown"
         onClose={handleToggle}
         open={toggle}
       >
