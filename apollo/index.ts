@@ -23,7 +23,7 @@ const createApolloClient = () =>
     cache: new InMemoryCache(),
   });
 
-export const initializeApollo = (initialState: {} | null = null) => {
+export const initializeApollo = (initialState: any = null) => {
   const internalApolloClient = apolloClient ?? createApolloClient();
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
@@ -39,7 +39,7 @@ export const initializeApollo = (initialState: {} | null = null) => {
   return internalApolloClient;
 };
 
-export const useApollo = (initialState: {}) => {
+export const useApollo = (initialState: any) => {
   const store = useMemo(() => initializeApollo(initialState), [initialState]);
   return store;
 };

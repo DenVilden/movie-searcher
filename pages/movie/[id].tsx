@@ -39,10 +39,18 @@ const MoviePage = () => {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const apolloClient = initializeApollo();
 
-  await apolloClient.query({
-    query: GetMovieInfoDocument,
-    variables: { id: params?.id },
-  });
+  try {
+    await apolloClient.query({
+      query: GetMovieInfoDocument,
+      variables: { id: params?.id },
+    });
+  } catch (error) {
+    if (error.message === 'Error: 404: Not Found') {
+      return {
+        notFound: true,
+      };
+    }
+  }
 
   return {
     props: {

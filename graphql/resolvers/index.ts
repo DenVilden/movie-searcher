@@ -8,7 +8,7 @@ const resolvers: Resolvers = {
         const data = await dataSources.moviesAPI.getUpcoming(page);
         return data;
       } catch (error) {
-        throw new Error(`Failed to fetch movies: ${error}`);
+        throw new Error(error);
       }
     },
     topRated: async (_root, { page }, { dataSources }) => {
@@ -16,7 +16,7 @@ const resolvers: Resolvers = {
         const data = await dataSources.moviesAPI.getTopRated(page);
         return data;
       } catch (error) {
-        throw new Error(`Failed to fetch movies: ${error}`);
+        throw new Error(error);
       }
     },
     moviesSearch: async (
@@ -28,7 +28,7 @@ const resolvers: Resolvers = {
         const data = await dataSources.moviesAPI.getMoviesSearch(query);
         return paginateResults(data, pageSize, cursor);
       } catch (error) {
-        throw new Error(`Failed to fetch movies: ${error}`);
+        throw new Error(error);
       }
     },
     movieInfo: async (_root, { id, cursor, pageSize }, { dataSources }) => {
@@ -39,7 +39,7 @@ const resolvers: Resolvers = {
           similar: paginateResults(data.similar, pageSize, cursor),
         };
       } catch (error) {
-        throw new Error(`Something went wrong: ${error}`);
+        throw new Error(error);
       }
     },
   },

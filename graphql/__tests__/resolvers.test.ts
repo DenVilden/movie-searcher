@@ -19,7 +19,7 @@ describe('[Query.upcoming]', () => {
   it('calls upcoming', async () => {
     getUpcoming.mockReturnValueOnce(mockUpcoming);
 
-    const res = await resolvers.Query.upcoming(
+    const res = await resolvers.Query!.upcoming!(
       {} as any,
       {} as any,
       mockContext as any,
@@ -35,7 +35,7 @@ describe('[Query.upcoming]', () => {
     let errorMessage = '';
 
     try {
-      await resolvers.Query.upcoming(
+      await resolvers.Query!.upcoming!(
         {} as any,
         {} as any,
         mockContext as any,
@@ -44,7 +44,7 @@ describe('[Query.upcoming]', () => {
     } catch (error) {
       errorMessage = error.message;
     } finally {
-      expect(errorMessage).toStrictEqual('Failed to fetch movies: error');
+      expect(errorMessage).toStrictEqual('error');
     }
   });
 });
@@ -61,7 +61,7 @@ describe('[Query.topRated]', () => {
   it('calls topRated', async () => {
     getTopRated.mockReturnValueOnce(mockTopRated);
 
-    const res = await resolvers.Query.topRated(
+    const res = await resolvers.Query!.topRated!(
       {} as any,
       {} as any,
       mockContext as any,
@@ -77,7 +77,7 @@ describe('[Query.topRated]', () => {
     let errorMessage = '';
 
     try {
-      await resolvers.Query.topRated(
+      await resolvers.Query!.topRated!(
         {} as any,
         {} as any,
         mockContext as any,
@@ -86,7 +86,7 @@ describe('[Query.topRated]', () => {
     } catch (error) {
       errorMessage = error.message;
     } finally {
-      expect(errorMessage).toStrictEqual('Failed to fetch movies: error');
+      expect(errorMessage).toStrictEqual('error');
     }
   });
 });
@@ -103,7 +103,7 @@ describe('[Query.moviesSearch]', () => {
   it('calls moviesSearch and preserve cursor', async () => {
     getMoviesSearch.mockReturnValueOnce(mockMoviesSearch);
 
-    const res = await resolvers.Query.moviesSearch(
+    const res = await resolvers.Query!.moviesSearch!(
       {} as any,
       { cursor: 1, pageSize: 2 } as any,
       mockContext as any,
@@ -123,7 +123,7 @@ describe('[Query.moviesSearch]', () => {
     let errorMessage = '';
 
     try {
-      await resolvers.Query.moviesSearch(
+      await resolvers.Query!.moviesSearch!(
         {} as any,
         {} as any,
         mockContext as any,
@@ -132,7 +132,7 @@ describe('[Query.moviesSearch]', () => {
     } catch (error) {
       errorMessage = error.message;
     } finally {
-      expect(errorMessage).toStrictEqual('Failed to fetch movies: error');
+      expect(errorMessage).toStrictEqual('error');
     }
   });
 });
@@ -149,7 +149,7 @@ describe('[Query.movieInfo]', () => {
   it('calls movieInfo.similar and paginate results', async () => {
     getMovieInfo.mockReturnValueOnce(mockMovieInfo);
 
-    const res = await resolvers.Query.movieInfo(
+    const res = await resolvers.Query!.movieInfo!(
       {} as any,
       { pageSize: 1 } as any,
       mockContext as any,
@@ -172,7 +172,7 @@ describe('[Query.movieInfo]', () => {
     let errorMessage = '';
 
     try {
-      await resolvers.Query.movieInfo(
+      await resolvers.Query!.movieInfo!(
         {} as any,
         {} as any,
         mockContext as any,
@@ -181,7 +181,7 @@ describe('[Query.movieInfo]', () => {
     } catch (error) {
       errorMessage = error.message;
     } finally {
-      expect(errorMessage).toStrictEqual('Something went wrong: error');
+      expect(errorMessage).toStrictEqual('error');
     }
   });
 });
