@@ -4,29 +4,29 @@ import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { MoviesBox, ErrorMessage, MovieInfo } from '../../components';
 import {
-  useGetMovieInfoQuery,
-  GetMovieInfoDocument,
+  useGetTvShowInfoQuery,
+  GetTvShowInfoDocument,
 } from '../../__generated__';
 import { initializeApollo } from '../../apollo';
 
-export default function MoviePage() {
+export default function TvPage() {
   const { id } = useRouter().query as { id: string };
 
-  const { data, error } = useGetMovieInfoQuery({ variables: { id } });
+  const { data, error } = useGetTvShowInfoQuery({ variables: { id } });
 
   if (error) return <ErrorMessage error={error.message} />;
 
   return data ? (
     <>
       <Head key="title">
-        <title>{data.movieInfo.title}</title>
+        <title>{data.tvShowInfo.title}</title>
       </Head>
       <Slide direction="up" in>
         <div>
-          <MovieInfo data={data.movieInfo} />
-          {Boolean(data.movieInfo.similar.results.length) && (
+          <MovieInfo data={data.tvShowInfo} />
+          {Boolean(data.tvShowInfo.similar.results.length) && (
             <MoviesBox
-              movies={data.movieInfo.similar.results}
+              movies={data.tvShowInfo.similar.results}
               title="Similar Movies"
             />
           )}
@@ -41,7 +41,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
   try {
     await apolloClient.query({
-      query: GetMovieInfoDocument,
+      query: GetTvShowInfoDocument,
       variables: { id: params?.id },
     });
   } catch (error) {

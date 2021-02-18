@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import resolvers from '../resolvers';
 import {
   mockUpcoming,
   mockTopRated,
   mockMoviesSearch,
   mockMovieInfo,
-} from '../mocks/responses';
+  mockTvShowInfo,
+} from '../mocks/graphql-responses';
 
 describe('[Query.upcoming]', () => {
   const mockContext = {
@@ -161,7 +161,7 @@ describe('[Query.movieInfo]', () => {
       similar: {
         results: [mockMovieInfo.similar.results[0]],
         cursor: 1,
-        hasMore: true,
+        hasMore: false,
       },
     });
   });
@@ -173,6 +173,55 @@ describe('[Query.movieInfo]', () => {
 
     try {
       await resolvers.Query!.movieInfo!(
+        {} as any,
+        {} as any,
+        mockContext as any,
+        {} as any,
+      );
+    } catch (error) {
+      errorMessage = error.message;
+    } finally {
+      expect(errorMessage).toStrictEqual('error');
+    }
+  });
+});
+
+describe('[Query.tvShowInfo]', () => {
+  const mockContext = {
+    dataSources: {
+      moviesAPI: { getTvShowInfo: jest.fn() },
+    },
+  };
+
+  const { getTvShowInfo } = mockContext.dataSources.moviesAPI;
+
+  it('calls tvShowInfo.similar and paginate results', async () => {
+    getTvShowInfo.mockReturnValueOnce(mockTvShowInfo);
+
+    const res = await resolvers.Query!.tvShowInfo!(
+      {} as any,
+      { pageSize: 1 } as any,
+      mockContext as any,
+      {} as any,
+    );
+
+    expect(res).toStrictEqual({
+      ...mockTvShowInfo,
+      similar: {
+        results: [mockTvShowInfo.similar.results[0]],
+        cursor: 1,
+        hasMore: false,
+      },
+    });
+  });
+
+  it('catches tvShowInfo error', async () => {
+    getTvShowInfo.mockRejectedValueOnce('error');
+
+    let errorMessage = '';
+
+    try {
+      await resolvers.Query!.tvShowInfo!(
         {} as any,
         {} as any,
         mockContext as any,

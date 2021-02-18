@@ -9,12 +9,38 @@ query GetMovieInfo($id: ID!) {
     revenue
     vote_average
     release_date
+    media_type
     similar {
       results {
         id
         title
         release_date
         poster_path
+        media_type
+      }
+    }
+  }
+}
+
+query GetTvShowInfo($id: ID!) {
+  tvShowInfo(id: $id) {
+    id
+    backdrop_path
+    poster_path
+    title
+    overview
+    number_of_episodes
+    number_of_seasons
+    vote_average
+    release_date
+    media_type
+    similar {
+      results {
+        id
+        title
+        release_date
+        poster_path
+        media_type
       }
     }
   }
@@ -29,6 +55,7 @@ query GetMovies {
       title
       release_date
       poster_path
+      media_type
     }
   }
   topRated {
@@ -39,6 +66,7 @@ query GetMovies {
       title
       vote_average
       poster_path
+      media_type
     }
   }
 }
@@ -52,6 +80,7 @@ query GetUpcoming($page: Int) {
       title
       release_date
       poster_path
+      media_type
     }
   }
 }
@@ -65,6 +94,7 @@ query GetTopRated($page: Int) {
       title
       vote_average
       poster_path
+      media_type
     }
   }
 }
@@ -74,6 +104,7 @@ query GetMoviesSearch($query: String!, $pageSize: Int) {
     results {
       id
       title
+      media_type
     }
   }
 }

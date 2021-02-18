@@ -15,6 +15,7 @@ const mock = {
   title: 'test',
   vote_average: 5,
   release_date: '2020',
+  media_type: 'movie',
 };
 
 describe('movieCard', () => {

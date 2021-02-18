@@ -4,7 +4,7 @@ import { Autocomplete } from '@material-ui/lab';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { fade } from '@material-ui/core/styles';
-import { useGetMoviesSearchLazyQuery } from '../../apollo';
+import { useGetMoviesSearchLazyQuery } from '../../__generated__';
 
 const StyledAutocomplete = styled(Autocomplete)`
   width: 100%;
@@ -56,11 +56,11 @@ export default function SearchBar() {
       loadingText={loading ? 'Loading...' : error?.message}
       onChange={(_evt, value, reason) => {
         if (reason === 'select-option') {
-          const id = data?.moviesSearch.results.find(
+          const foundMovie = data?.moviesSearch.results.find(
             (movie) => movie.title === (value as string),
-          )?.id;
+          );
 
-          router.push(`/movie/${id}`);
+          router.push(`/${foundMovie?.media_type}/${foundMovie?.id}`);
         }
       }}
       onInputChange={(_evt, value: string, reason) => {

@@ -39,15 +39,16 @@ const IconWrapper = styled.span`
   }
 `;
 
-interface Props {
+type Props = {
   movie: {
     id: number;
     title: string;
     vote_average?: number;
     poster_path?: string | null;
     release_date?: string | null;
+    media_type: string;
   };
-}
+};
 
 export default function MovieCard({ movie }: Props) {
   const router = useRouter();
@@ -56,7 +57,7 @@ export default function MovieCard({ movie }: Props) {
     <StyledCard elevation={10}>
       <CardActionArea
         onClick={() => {
-          router.push(`/movie/${movie.id}`);
+          router.push(`/${movie.media_type}/${movie.id}`);
         }}
       >
         <Image

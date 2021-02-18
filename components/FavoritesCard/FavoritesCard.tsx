@@ -2,7 +2,7 @@ import { CardActionArea, Typography } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { MovieInfo } from '../../graphql/types';
+import { Favorites } from '../../apollo';
 
 const StyledTypography = styled(Typography)`
   padding: ${(props) => props.theme.spacing(3, 2, 2, 2)};
@@ -27,16 +27,19 @@ const ImageWrapper = styled.div`
 
 interface Props {
   handleToggle: () => void;
-  favorite: MovieInfo;
+  favorite: Favorites;
 }
 
-export default function FavoritesCard({ handleToggle, favorite }: Props) {
+export default function FavoritesCard({
+  handleToggle,
+  favorite: { id, media_type, title, poster_path },
+}: Props) {
   const router = useRouter();
 
   return (
     <CardActionArea
       onClick={() => {
-        router.push(`/movie/${favorite.id}`);
+        router.push(`/${media_type}/${id}`);
         handleToggle();
       }}
     >
@@ -44,11 +47,11 @@ export default function FavoritesCard({ handleToggle, favorite }: Props) {
         <ImageWrapper>
           <Image
             layout="fill"
-            alt={favorite.title}
-            src={favorite.poster_path || '/no-image.jpg'}
+            alt={title}
+            src={poster_path || '/no-image.jpg'}
           />
         </ImageWrapper>
-        <StyledTypography>{favorite.title}</StyledTypography>
+        <StyledTypography>{title}</StyledTypography>
       </CardWrapper>
     </CardActionArea>
   );

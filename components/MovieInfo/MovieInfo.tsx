@@ -8,8 +8,9 @@ import {
 import styled from 'styled-components';
 import { useReactiveVar } from '@apollo/client';
 import Image from 'next/image';
-import { useEffect, useMemo } from 'react';
-import { favoritesVar, GetMovieInfoQuery } from '../../apollo';
+import { useEffect } from 'react';
+import { favoritesVar } from '../../apollo';
+import type { Favorites } from '../../apollo';
 
 const StyledCard = styled(Card)`
   background-color: inherit;
@@ -47,28 +48,23 @@ const StyledTypography = styled(Typography)`
 `;
 
 interface Props {
-  data: GetMovieInfoQuery;
+  data: Favorites;
 }
 
-export default function MovieInfo({ data }: Props) {
+export default function MovieInfoComponent({ data }: Props) {
   const favorites = useReactiveVar(favoritesVar);
 
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  const isInFavorites = useMemo(
-    () => favorites.some((favorite) => favorite.id === data.movieInfo.id),
-    [data.movieInfo.id, favorites],
-  );
+  const isInFavorites = favorites.some((favorite) => favorite.id === data.id);
 
   const addOrRemoveFromFavorites = () => {
     if (isInFavorites) {
-      favoritesVar(
-        favorites.filter((favorite) => favorite.id !== data.movieInfo.id),
-      );
+      favoritesVar(favorites.filter((favorite) => favorite.id !== data.id));
     } else {
-      favoritesVar([...favorites, data.movieInfo]);
+      favoritesVar([...favorites, data]);
     }
   };
 
@@ -78,13 +74,13 @@ export default function MovieInfo({ data }: Props) {
         <Image
           layout="fill"
           objectFit="cover"
-          alt={data.movieInfo.title}
-          src={data.movieInfo.backdrop_path || '/no-image.jpg'}
+          alt={data.title}
+          src={data.backdrop_path || '/no-image.jpg'}
         />
       </ImageWrapper>
       <StyledCardContent>
         <StyledTypography gutterBottom variant="h5">
-          {data.movieInfo.title}
+          {data.title}
           <Button
             color={isInFavorites ? 'secondary' : 'primary'}
             onClick={addOrRemoveFromFavorites}
@@ -93,22 +89,24 @@ export default function MovieInfo({ data }: Props) {
             {isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
           </Button>
         </StyledTypography>
-        <Typography>{data.movieInfo.overview}</Typography>
+        <Typography>{data.overview}</Typography>
         <Divider />
         <Typography>
-          <b>Budget:</b> {data.movieInfo.budget}
+          {data.media_type === 'movie' ? <b>Budget:</b> : <b>Seasons:</b>}{' '}
+          {data.budget || data.number_of_seasons}
         </Typography>
         <Divider />
         <Typography>
-          <b>Revenue:</b> {data.movieInfo.revenue}
+          {data.media_type === 'movie' ? <b>Revenue:</b> : <b>Episodes:</b>}{' '}
+          {data.revenue || data.number_of_episodes}
         </Typography>
         <Divider />
         <Typography>
-          <b>Rating:</b> {data.movieInfo.vote_average}
+          <b>Rating:</b> {data.vote_average}
         </Typography>
         <Divider />
         <Typography>
-          <b>Release Date:</b> {data.movieInfo.release_date}
+          <b>Release Date:</b> {data.release_date}
         </Typography>
       </StyledCardContent>
     </StyledCard>

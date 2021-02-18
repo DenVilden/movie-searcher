@@ -20,6 +20,7 @@ const mocks = [
     revenue: '0',
     vote_average: 5,
     release_date: '2020',
+    media_type: 'movie',
     similar: {
       results: [
         {

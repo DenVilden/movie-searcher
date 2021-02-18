@@ -1,5 +1,5 @@
-import MoviePage from '../pages/movie/[id]';
-import { GetMovieInfoDocument } from '../__generated__';
+import TvPage from '../pages/tv/[id]';
+import { GetTvShowInfoDocument } from '../__generated__';
 import { renderApollo, screen } from '../lib/setupTests';
 
 jest.mock('next/router', () => ({
@@ -13,7 +13,7 @@ jest.mock('next/router', () => ({
 const mocks = [
   {
     request: {
-      query: GetMovieInfoDocument,
+      query: GetTvShowInfoDocument,
       variables: {
         id: '1',
       },
@@ -22,9 +22,9 @@ const mocks = [
   },
 ];
 
-describe('moviePage', () => {
+describe('tvPage', () => {
   it('should render error state', async () => {
-    renderApollo(<MoviePage />, { mocks });
+    renderApollo(<TvPage />, { mocks });
 
     expect(
       await screen.findByText(/an error has occurred/i),

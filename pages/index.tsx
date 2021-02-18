@@ -1,10 +1,7 @@
 import { Grid } from '@material-ui/core';
 import { GetStaticProps } from 'next';
-import {
-  useGetMoviesQuery,
-  GetMoviesDocument,
-  initializeApollo,
-} from '../apollo';
+import { useGetMoviesQuery, GetMoviesDocument } from '../__generated__';
+import { initializeApollo } from '../apollo';
 import { ErrorMessage, Upcoming, TopRated } from '../components';
 
 export default function HomePage() {

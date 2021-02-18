@@ -1,7 +1,14 @@
-import { Resolvers } from '../types';
+import { Resolvers } from '../../__generated__';
 import { paginateResults } from '../lib/utils';
+import MoviesAPI from '../datasource';
 
-export default {
+interface Context {
+  dataSources: {
+    moviesAPI: MoviesAPI;
+  };
+}
+
+const resolvers: Resolvers<Context> = {
   Query: {
     async upcoming(_root, { page }, { dataSources }) {
       try {
@@ -38,5 +45,18 @@ export default {
         throw new Error(error);
       }
     },
+    async tvShowInfo(_root, { id, cursor, pageSize }, { dataSources }) {
+      try {
+        const data = await dataSources.moviesAPI.getTvShowInfo(id);
+        return {
+          ...data,
+          similar: paginateResults(data.similar, pageSize, cursor),
+        };
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
   },
-} as Resolvers;
+};
+
+export default resolvers;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useRef } from 'react';
 import { LinearProgress } from '@material-ui/core';
-import { useGetUpcomingLazyQuery, GetUpcomingQuery } from '../../apollo';
+import { useGetUpcomingLazyQuery, GetUpcomingQuery } from '../../__generated__';
 import { ErrorMessage, Pagination, MoviesBox } from '..';
 
 const Wrapper = styled.div`

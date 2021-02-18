@@ -1,14 +1,18 @@
 import MoviesAPI from '../datasource';
 import {
-  mockUpcomingResponse,
-  mockTopRatedResponse,
-  mockMoviesSearchResponse,
-  mockMovieInfoResponse,
   mockUpcoming,
   mockTopRated,
   mockMoviesSearch,
   mockMovieInfo,
-} from '../mocks/responses';
+  mockTvShowInfo,
+} from '../mocks/graphql-responses';
+import {
+  mockUpcomingResponse,
+  mockTopRatedResponse,
+  mockMoviesSearchResponse,
+  mockMovieInfoResponse,
+  mockTvShowInfoResponse,
+} from '../mocks/raw-responses';
 
 const mocks = {
   get: jest.fn(),
@@ -69,7 +73,7 @@ describe('getMoviesSearch', () => {
     const res = await api.getMoviesSearch(query);
 
     expect(res).toStrictEqual(mockMoviesSearch);
-    expect(mocks.get).toHaveBeenCalledWith('/search/movie', { query });
+    expect(mocks.get).toHaveBeenCalledWith('/search/multi', { query });
   });
 });
 
@@ -82,6 +86,20 @@ describe('getMovieInfo', () => {
 
     expect(res).toStrictEqual(mockMovieInfo);
     expect(mocks.get).toHaveBeenCalledWith(`/movie/${id}`, {
+      append_to_response: 'similar',
+    });
+  });
+});
+
+describe('getTvShowInfo', () => {
+  it('should get and transform tv show info', async () => {
+    mocks.get.mockReturnValueOnce(mockTvShowInfoResponse);
+
+    const id = '888';
+    const res = await api.getTvShowInfo(id);
+
+    expect(res).toStrictEqual(mockTvShowInfo);
+    expect(mocks.get).toHaveBeenCalledWith(`/tv/${id}`, {
       append_to_response: 'similar',
     });
   });

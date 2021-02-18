@@ -4,8 +4,9 @@ module.exports = {
     '!pages/_*.tsx',
     '!**/*.d.ts',
     '!pages/api/*.ts',
-    '!apollo/*.ts',
-    '!graphql/types/*.ts',
+    '!apollo/index.ts',
+    '!graphql/schema.ts',
     '!components/**/index.ts',
+    '!__generated__/index.ts',
   ],
 };

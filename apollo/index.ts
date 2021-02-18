@@ -5,9 +5,25 @@ import {
   NormalizedCacheObject,
 } from '@apollo/client';
 import { useMemo } from 'react';
-import { MovieInfo } from '../graphql/types';
+import { SimilarMovies } from '../__generated__';
 
-export const favoritesVar = makeVar<MovieInfo[]>([]);
+export type Favorites = {
+  id: number;
+  title: string;
+  release_date: string;
+  vote_average: number;
+  budget?: string;
+  revenue?: string;
+  overview?: string | null;
+  poster_path?: string | null;
+  backdrop_path?: string | null;
+  number_of_seasons?: number;
+  number_of_episodes?: number;
+  media_type: string;
+  similar: SimilarMovies;
+};
+
+export const favoritesVar = makeVar<Favorites[]>([]);
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
@@ -39,5 +55,3 @@ export function useApollo(initialState: any) {
   const store = useMemo(() => initializeApollo(initialState), [initialState]);
   return store;
 }
-
-export * from './queries.generated';

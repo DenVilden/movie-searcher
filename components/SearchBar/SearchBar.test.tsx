@@ -1,6 +1,6 @@
 import SearchBar from './SearchBar';
 import { renderApollo, fireEvent, screen } from '../../lib/setupTests';
-import { GetMoviesSearchDocument } from '../../apollo';
+import { GetMoviesSearchDocument } from '../../__generated__';
 
 const mockHistoryPush = jest.fn();
 
@@ -23,6 +23,7 @@ const mocks = [
             {
               id: 1,
               title: 'test-title',
+              media_type: 'movie',
             },
           ],
         },
