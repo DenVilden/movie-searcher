@@ -54,13 +54,9 @@ export default function SearchBar() {
       id="autocomplete"
       loading={loading || Boolean(error)}
       loadingText={loading ? 'Loading...' : error?.message}
-      onChange={(_evt, value, reason) => {
+      onChange={(_evt, { id, media_type }: any, reason) => {
         if (reason === 'select-option') {
-          const foundMovie = data?.moviesSearch.results.find(
-            (movie) => movie.title === (value as string),
-          );
-
-          router.push(`/${foundMovie?.media_type}/${foundMovie?.id}`);
+          router.push(`/${media_type}/${id}`);
         }
       }}
       onInputChange={(_evt, value: string, reason) => {
@@ -72,7 +68,8 @@ export default function SearchBar() {
         }
       }}
       open={Boolean(inputValue)}
-      options={data?.moviesSearch.results.map((movie) => movie.title) || []}
+      options={data?.moviesSearch.results || []}
+      getOptionLabel={(option: any) => option.title}
       renderInput={(params) => (
         <StyledInputBase
           {...params}
