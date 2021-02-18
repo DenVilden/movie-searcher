@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line import/prefer-default-export
-export const paginateResults = (data: any, size = 4, cursor: number | null) => {
+export function paginateResults(data: any, size = 4, cursor: number | null) {
   let results = [];
 
   if (!cursor) {
@@ -15,4 +14,4 @@ export const paginateResults = (data: any, size = 4, cursor: number | null) => {
     cursor: results.length,
     hasMore: results.length !== data.results.length,
   };
-};
+}

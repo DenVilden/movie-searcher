@@ -19,15 +19,18 @@ const StyledMovieIcon = styled(MovieIcon)`
   font-size: 60px;
 `;
 
-const Header = () => (
-  <AppBar position="static">
-    <StyledToolbar>
-      <Link href="/">
-        <StyledMovieIcon />
-      </Link>
-      <SearchBar />
-      <Favorites />
-    </StyledToolbar>
-  </AppBar>
-);
+function Header() {
+  return (
+    <AppBar position="static">
+      <StyledToolbar>
+        <Link href="/">
+          <StyledMovieIcon />
+        </Link>
+        <SearchBar />
+        <Favorites />
+      </StyledToolbar>
+    </AppBar>
+  );
+}
+
 export default memo(Header);

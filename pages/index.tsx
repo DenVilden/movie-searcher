@@ -7,7 +7,7 @@ import {
 } from '../apollo';
 import { ErrorMessage, Upcoming, TopRated } from '../components';
 
-const HomePage = () => {
+export default function HomePage() {
   const { data, error } = useGetMoviesQuery();
 
   if (error) return <ErrorMessage error={error.message} />;
@@ -22,7 +22,7 @@ const HomePage = () => {
       </Grid>
     </Grid>
   ) : null;
-};
+}
 
 export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo();
@@ -38,5 +38,3 @@ export const getStaticProps: GetStaticProps = async () => {
     revalidate: 1,
   };
 };
-
-export default HomePage;

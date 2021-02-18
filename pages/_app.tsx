@@ -6,7 +6,7 @@ import { LinearProgress } from '@material-ui/core';
 import { useApollo } from '../apollo';
 import { Layout } from '../components';
 
-const NextApp = ({ Component, pageProps }: AppProps) => {
+export default function NextApp({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState);
   const [loading, setLoading] = useState(false);
 
@@ -44,6 +44,4 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
       </Layout>
     </ApolloProvider>
   );
-};
-
-export default NextApp;
+}

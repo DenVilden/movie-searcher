@@ -13,7 +13,7 @@ interface Props {
   initialData: GetTopRatedQuery;
 }
 
-const TopRated = ({ initialData }: Props) => {
+export default function TopRated({ initialData }: Props) {
   const [fetchTopRated, { data, error, loading }] = useGetTopRatedLazyQuery({
     fetchPolicy: 'cache-and-network',
     nextFetchPolicy: 'cache-first',
@@ -40,6 +40,4 @@ const TopRated = ({ initialData }: Props) => {
       />
     </Wrapper>
   );
-};
-
-export default TopRated;
+}

@@ -18,12 +18,12 @@ interface Props {
   element: React.MutableRefObject<HTMLDivElement | null>;
 }
 
-const PaginationComponent = ({
+export default function PaginationComponent({
   totalPages,
   refetch,
   currentPage,
   element,
-}: Props) => {
+}: Props) {
   const [page, setPage] = useState(currentPage);
 
   return (
@@ -40,6 +40,4 @@ const PaginationComponent = ({
       }}
     />
   );
-};
-
-export default PaginationComponent;
+}

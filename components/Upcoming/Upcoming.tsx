@@ -13,7 +13,7 @@ interface Props {
   initialData: GetUpcomingQuery;
 }
 
-const Upcoming = ({ initialData }: Props) => {
+export default function Upcoming({ initialData }: Props) {
   const [fetchUpcoming, { data, error, loading }] = useGetUpcomingLazyQuery({
     fetchPolicy: 'cache-and-network',
     nextFetchPolicy: 'cache-first',
@@ -40,6 +40,4 @@ const Upcoming = ({ initialData }: Props) => {
       />
     </Wrapper>
   );
-};
-
-export default Upcoming;
+}

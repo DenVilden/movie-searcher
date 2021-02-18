@@ -30,7 +30,7 @@ interface Props {
   favorite: MovieInfo;
 }
 
-const FavoritesCard = ({ handleToggle, favorite }: Props) => {
+export default function FavoritesCard({ handleToggle, favorite }: Props) {
   const router = useRouter();
 
   return (
@@ -52,6 +52,4 @@ const FavoritesCard = ({ handleToggle, favorite }: Props) => {
       </CardWrapper>
     </CardActionArea>
   );
-};
-
-export default FavoritesCard;
+}

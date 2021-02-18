@@ -9,11 +9,11 @@ interface Props {
   error: string;
 }
 
-const ErrorMessage = ({ error }: Props) => (
-  <StyledAlert elevation={12} variant="filled" severity="error">
-    <AlertTitle>Error</AlertTitle>
-    {error}
-  </StyledAlert>
-);
-
-export default ErrorMessage;
+export default function ErrorMessage({ error }: Props) {
+  return (
+    <StyledAlert elevation={12} variant="filled" severity="error">
+      <AlertTitle>Error</AlertTitle>
+      {error}
+    </StyledAlert>
+  );
+}

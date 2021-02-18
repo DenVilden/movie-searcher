@@ -36,37 +36,42 @@ interface Props {
   children: React.ReactElement;
 }
 
-const Layout = ({ children }: Props) => (
-  <>
-    <Head>
-      <link
-        rel="preload"
-        href="/Roboto-Regular.woff2"
-        as="font"
-        crossOrigin=""
-      />
-      <link
-        rel="preload"
-        href="/Roboto-Medium.woff2"
-        as="font"
-        crossOrigin=""
-      />
-      <link rel="preload" href="/Roboto-Bold.woff2" as="font" crossOrigin="" />
-      <link href="/favicon.ico" rel="shortcut icon" />
-      <meta charSet="utf-8" />
-      <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <meta content="Movie searcher app" name="description" />
-      <title key="title">Movie Searcher</title>
-    </Head>
-    <StylesProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <GlobalStyle />
-        <Header />
-        {children}
-      </ThemeProvider>
-    </StylesProvider>
-  </>
-);
-
-export default Layout;
+export default function Layout({ children }: Props) {
+  return (
+    <>
+      <Head>
+        <link
+          rel="preload"
+          href="/Roboto-Regular.woff2"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/Roboto-Medium.woff2"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="/Roboto-Bold.woff2"
+          as="font"
+          crossOrigin=""
+        />
+        <link href="/favicon.ico" rel="shortcut icon" />
+        <meta charSet="utf-8" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="Movie searcher app" name="description" />
+        <title key="title">Movie Searcher</title>
+      </Head>
+      <StylesProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <GlobalStyle />
+          <Header />
+          {children}
+        </ThemeProvider>
+      </StylesProvider>
+    </>
+  );
+}

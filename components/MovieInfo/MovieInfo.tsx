@@ -50,7 +50,7 @@ interface Props {
   data: GetMovieInfoQuery;
 }
 
-const MovieInfo = ({ data }: Props) => {
+export default function MovieInfo({ data }: Props) {
   const favorites = useReactiveVar(favoritesVar);
 
   useEffect(() => {
@@ -113,6 +113,4 @@ const MovieInfo = ({ data }: Props) => {
       </StyledCardContent>
     </StyledCard>
   );
-};
-
-export default MovieInfo;
+}

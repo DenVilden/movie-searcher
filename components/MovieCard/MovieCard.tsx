@@ -49,7 +49,7 @@ interface Props {
   };
 }
 
-const MovieCard = ({ movie }: Props) => {
+export default function MovieCard({ movie }: Props) {
   const router = useRouter();
 
   return (
@@ -80,6 +80,4 @@ const MovieCard = ({ movie }: Props) => {
       </CardActionArea>
     </StyledCard>
   );
-};
-
-export default MovieCard;
+}

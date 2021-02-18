@@ -7,23 +7,19 @@ import {
 import { useMemo } from 'react';
 import { MovieInfo } from '../graphql/types';
 
-if (process.env.NODE_ENV === 'test') {
-  // eslint-disable-next-line global-require
-  require('cross-fetch/polyfill');
-}
-
 export const favoritesVar = makeVar<MovieInfo[]>([]);
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
-const createApolloClient = () =>
-  new ApolloClient({
+function createApolloClient() {
+  return new ApolloClient({
     ssrMode: typeof window === 'undefined',
     uri: process.env.NEXT_PUBLIC_SERVER_URL,
     cache: new InMemoryCache(),
   });
+}
 
-export const initializeApollo = (initialState: any = null) => {
+export function initializeApollo(initialState: any = null) {
   const internalApolloClient = apolloClient ?? createApolloClient();
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
@@ -37,11 +33,11 @@ export const initializeApollo = (initialState: any = null) => {
   if (!apolloClient) apolloClient = internalApolloClient;
 
   return internalApolloClient;
-};
+}
 
-export const useApollo = (initialState: any) => {
+export function useApollo(initialState: any) {
   const store = useMemo(() => initializeApollo(initialState), [initialState]);
   return store;
-};
+}
 
 export * from './queries.generated';

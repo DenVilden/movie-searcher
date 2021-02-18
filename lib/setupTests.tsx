@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { render } from '@testing-library/react';
 import { MockedProvider, MockedResponse } from '@apollo/client/testing';
 import { ThemeProvider } from 'styled-components';
@@ -12,14 +13,15 @@ type RenderApolloOptions = {
   addTypeName?: boolean;
 };
 
-export const renderApollo = (
+export function renderApollo(
   element: React.ReactElement,
   { mocks = [], addTypeName = false }: RenderApolloOptions = {},
-) =>
-  render(
+) {
+  return render(
     <MockedProvider addTypename={addTypeName} mocks={mocks}>
       <ThemeProvider theme={theme}>{element}</ThemeProvider>
     </MockedProvider>,
   );
+}
 
 export * from '@testing-library/react';

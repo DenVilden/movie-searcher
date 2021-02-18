@@ -1,9 +1,9 @@
 import { Resolvers } from '../types';
 import { paginateResults } from '../lib/utils';
 
-const resolvers: Resolvers = {
+export default {
   Query: {
-    upcoming: async (_root, { page }, { dataSources }) => {
+    async upcoming(_root, { page }, { dataSources }) {
       try {
         const data = await dataSources.moviesAPI.getUpcoming(page);
         return data;
@@ -11,7 +11,7 @@ const resolvers: Resolvers = {
         throw new Error(error);
       }
     },
-    topRated: async (_root, { page }, { dataSources }) => {
+    async topRated(_root, { page }, { dataSources }) {
       try {
         const data = await dataSources.moviesAPI.getTopRated(page);
         return data;
@@ -19,11 +19,7 @@ const resolvers: Resolvers = {
         throw new Error(error);
       }
     },
-    moviesSearch: async (
-      _root,
-      { query, cursor, pageSize },
-      { dataSources },
-    ) => {
+    async moviesSearch(_root, { query, cursor, pageSize }, { dataSources }) {
       try {
         const data = await dataSources.moviesAPI.getMoviesSearch(query);
         return paginateResults(data, pageSize, cursor);
@@ -31,7 +27,7 @@ const resolvers: Resolvers = {
         throw new Error(error);
       }
     },
-    movieInfo: async (_root, { id, cursor, pageSize }, { dataSources }) => {
+    async movieInfo(_root, { id, cursor, pageSize }, { dataSources }) {
       try {
         const data = await dataSources.moviesAPI.getMovieInfo(id);
         return {
@@ -43,6 +39,4 @@ const resolvers: Resolvers = {
       }
     },
   },
-};
-
-export default resolvers;
+} as Resolvers;

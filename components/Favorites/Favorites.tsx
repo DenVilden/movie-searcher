@@ -23,7 +23,7 @@ const StyledTypography = styled(Typography)`
   padding: ${(props) => props.theme.spacing(2)}px;
 `;
 
-const Favorites = () => {
+export default function Favorites() {
   const favorites = useReactiveVar(favoritesVar);
   const [toggle, setToggle] = useState(false);
   const ref = useRef<HTMLButtonElement | null>(null);
@@ -69,6 +69,4 @@ const Favorites = () => {
       </Popover>
     </>
   );
-};
-
-export default Favorites;
+}

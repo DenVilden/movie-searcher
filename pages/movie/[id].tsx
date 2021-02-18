@@ -9,7 +9,7 @@ import {
   initializeApollo,
 } from '../../apollo';
 
-const MoviePage = () => {
+export default function MoviePage() {
   const { id } = useRouter().query as { id: string };
 
   const { data, error } = useGetMovieInfoQuery({ variables: { id } });
@@ -34,7 +34,7 @@ const MoviePage = () => {
       </Slide>
     </>
   ) : null;
-};
+}
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const apolloClient = initializeApollo();
@@ -58,5 +58,3 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     },
   };
 };
-
-export default MoviePage;

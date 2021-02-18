@@ -34,7 +34,7 @@ const StyledInputBase = styled(TextField)`
   }
 `;
 
-const SearchBar = () => {
+export default function SearchBar() {
   const [inputValue, setInputValue] = useState('');
 
   const [fetchMovies, { data, loading, error }] = useGetMoviesSearchLazyQuery({
@@ -85,6 +85,4 @@ const SearchBar = () => {
       )}
     />
   );
-};
-
-export default SearchBar;
+}
