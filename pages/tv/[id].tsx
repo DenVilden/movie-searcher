@@ -27,7 +27,7 @@ export default function TvPage() {
           {Boolean(data.tvShowInfo.similar.results.length) && (
             <MoviesBox
               movies={data.tvShowInfo.similar.results}
-              title="Similar Movies"
+              title="Similar TV Shows"
             />
           )}
         </div>

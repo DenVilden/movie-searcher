@@ -31,6 +31,7 @@
     "apollo-server-micro": "^2.21.0",
     "dayjs": "^1.10.4",
     "graphql": "^15.5.0",
+    "graphql.macro": "^1.4.2",
     "next": "^10.0.7",
     "numeral": "^2.0.6",
     "react": "^17.0.1",

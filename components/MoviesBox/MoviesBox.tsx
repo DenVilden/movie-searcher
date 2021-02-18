@@ -28,6 +28,7 @@ interface Props {
     vote_average?: number;
     poster_path?: string | null;
     release_date?: string | null;
+    media_type: string;
   }[];
   title: string;
   elevation?: number;
@@ -53,7 +54,6 @@ export default function MoviesBox({
             <Wrapper
               key={movie.id}
               container
-              data-testid="search-result"
               item
               justify="center"
               md={3}
