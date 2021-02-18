@@ -29,7 +29,6 @@ export type UpcomingResults = {
   title: Scalars['String'];
   release_date: Scalars['String'];
   poster_path?: Maybe<Scalars['String']>;
-  media_type: Scalars['String'];
 };
 
 export type Upcoming = {
@@ -45,7 +44,6 @@ export type TopRatedResults = {
   title: Scalars['String'];
   vote_average: Scalars['Float'];
   poster_path?: Maybe<Scalars['String']>;
-  media_type: Scalars['String'];
 };
 
 export type TopRated = {
@@ -105,9 +103,9 @@ export type TvShowInfo = {
   id: Scalars['Int'];
   title: Scalars['String'];
   release_date: Scalars['String'];
+  poster_path?: Maybe<Scalars['String']>;
   overview?: Maybe<Scalars['String']>;
   vote_average: Scalars['Float'];
-  poster_path?: Maybe<Scalars['String']>;
   number_of_seasons: Scalars['Int'];
   number_of_episodes: Scalars['Int'];
   backdrop_path?: Maybe<Scalars['String']>;
@@ -310,7 +308,6 @@ export type UpcomingResultsResolvers<
     ParentType,
     ContextType
   >;
-  media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
@@ -340,7 +337,6 @@ export type TopRatedResultsResolvers<
     ParentType,
     ContextType
   >;
-  media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
@@ -449,13 +445,13 @@ export type TvShowInfoResolvers<
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  overview?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   poster_path?: Resolver<
     Maybe<ResolversTypes['String']>,
     ParentType,
     ContextType
   >;
+  overview?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   number_of_seasons?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   number_of_episodes?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   backdrop_path?: Resolver<
@@ -592,7 +588,7 @@ export type GetMoviesQuery = { __typename?: 'Query' } & {
       results: Array<
         { __typename?: 'UpcomingResults' } & Pick<
           UpcomingResults,
-          'id' | 'title' | 'release_date' | 'poster_path' | 'media_type'
+          'id' | 'title' | 'release_date' | 'poster_path'
         >
       >;
     };
@@ -603,7 +599,7 @@ export type GetMoviesQuery = { __typename?: 'Query' } & {
       results: Array<
         { __typename?: 'TopRatedResults' } & Pick<
           TopRatedResults,
-          'id' | 'title' | 'vote_average' | 'poster_path' | 'media_type'
+          'id' | 'title' | 'vote_average' | 'poster_path'
         >
       >;
     };
@@ -621,7 +617,7 @@ export type GetUpcomingQuery = { __typename?: 'Query' } & {
       results: Array<
         { __typename?: 'UpcomingResults' } & Pick<
           UpcomingResults,
-          'id' | 'title' | 'release_date' | 'poster_path' | 'media_type'
+          'id' | 'title' | 'release_date' | 'poster_path'
         >
       >;
     };
@@ -639,7 +635,7 @@ export type GetTopRatedQuery = { __typename?: 'Query' } & {
       results: Array<
         { __typename?: 'TopRatedResults' } & Pick<
           TopRatedResults,
-          'id' | 'title' | 'vote_average' | 'poster_path' | 'media_type'
+          'id' | 'title' | 'vote_average' | 'poster_path'
         >
       >;
     };
@@ -819,7 +815,6 @@ export const GetMoviesDocument = gql`
         title
         release_date
         poster_path
-        media_type
       }
     }
     topRated {
@@ -830,7 +825,6 @@ export const GetMoviesDocument = gql`
         title
         vote_average
         poster_path
-        media_type
       }
     }
   }
@@ -891,7 +885,6 @@ export const GetUpcomingDocument = gql`
         title
         release_date
         poster_path
-        media_type
       }
     }
   }
@@ -953,7 +946,6 @@ export const GetTopRatedDocument = gql`
         title
         vote_average
         poster_path
-        media_type
       }
     }
   }

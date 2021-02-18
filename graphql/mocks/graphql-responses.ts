@@ -8,14 +8,12 @@ export const mockUpcoming = {
       poster_path:
         'https://image.tmdb.org/t/p/w200/c7VlGCCgM9GZivKSzBgzuOVxQn7.jpg',
       release_date: '28.01.2021',
-      media_type: 'movie',
     },
     {
       id: 560144,
       title: 'Skylines',
       poster_path: null,
       release_date: '25.10.2020',
-      media_type: 'movie',
     },
   ],
 };
@@ -30,7 +28,6 @@ export const mockTopRated = {
       vote_average: 8.9,
       poster_path:
         'https://image.tmdb.org/t/p/w200/fYtHxTxlhzD4QWfEbrC1rypysSD.jpg',
-      media_type: 'movie',
     },
   ],
 };

@@ -32,7 +32,7 @@ interface Props {
 
 export default function FavoritesCard({
   handleToggle,
-  favorite: { id, media_type, title, poster_path },
+  favorite: { media_type, id, title, poster_path },
 }: Props) {
   const router = useRouter();
 

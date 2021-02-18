@@ -16,28 +16,24 @@ const mocks = [
         upcoming: {
           total_pages: 20,
           page: 1,
-          media_type: 'movie',
           results: [
             {
               id: 1,
               title: 'title',
               release_date: '2020',
               poster_path: null,
-              media_type: 'movie',
             },
           ],
         },
         topRated: {
           total_pages: 20,
           page: 1,
-
           results: [
             {
               id: 1,
               title: 'title',
               vote_average: 5,
               poster_path: null,
-              media_type: 'movie',
             },
           ],
         },
@@ -60,7 +56,6 @@ const mocks = [
               title: 'toprated page 2',
               vote_average: 5,
               poster_path: null,
-              media_type: 'movie',
             },
           ],
         },
@@ -83,7 +78,6 @@ const mocks = [
               title: 'upcoming page 2',
               release_date: '2002',
               poster_path: null,
-              media_type: 'movie',
             },
           ],
         },

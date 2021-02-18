@@ -55,7 +55,6 @@ query GetMovies {
       title
       release_date
       poster_path
-      media_type
     }
   }
   topRated {
@@ -66,7 +65,6 @@ query GetMovies {
       title
       vote_average
       poster_path
-      media_type
     }
   }
 }
@@ -80,7 +78,6 @@ query GetUpcoming($page: Int) {
       title
       release_date
       poster_path
-      media_type
     }
   }
 }
@@ -94,7 +91,6 @@ query GetTopRated($page: Int) {
       title
       vote_average
       poster_path
-      media_type
     }
   }
 }

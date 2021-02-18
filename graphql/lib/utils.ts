@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export function paginateResults(data: any, size = 4, cursor: number | null) {
   let results = [];
 
@@ -14,4 +13,8 @@ export function paginateResults(data: any, size = 4, cursor: number | null) {
     cursor: results.length,
     hasMore: results.length !== data.results.length,
   };
+}
+
+export function attachPoster(path: string, size = 200) {
+  return path ? `https://image.tmdb.org/t/p/w${size}${path}` : null;
 }

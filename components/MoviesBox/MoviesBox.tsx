@@ -28,7 +28,7 @@ interface Props {
     vote_average?: number;
     poster_path?: string | null;
     release_date?: string | null;
-    media_type: string;
+    media_type?: string;
   }[];
   title: string;
   elevation?: number;

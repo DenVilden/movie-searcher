@@ -9,6 +9,7 @@ import type {
   MockMovieInfoResponse,
   MockTvShowInfoResponse,
 } from '../mocks/raw-responses';
+import { attachPoster } from '../lib/utils';
 
 export default class MoviesAPI extends RESTDataSource {
   constructor() {
@@ -17,11 +18,7 @@ export default class MoviesAPI extends RESTDataSource {
   }
 
   protected willSendRequest(request: RequestOptions) {
-    request.params.set('api_key', this.context.key);
-  }
-
-  attachPoster(path: string, size = 200) {
-    return path ? `https://image.tmdb.org/t/p/w${size}${path}` : null;
+    request.params.set('api_key', process.env.MOVIE_API_KEY as string);
   }
 
   private moviesUpcomingReducer(movies: MockUpcomingResponse) {
@@ -35,8 +32,7 @@ export default class MoviesAPI extends RESTDataSource {
             release_date:
               movie.release_date &&
               dayjs(movie.release_date).format('DD.MM.YYYY'),
-            poster_path: this.attachPoster(movie.poster_path),
-            media_type: 'movie',
+            poster_path: attachPoster(movie.poster_path),
           }))
         : [],
     };
@@ -51,8 +47,7 @@ export default class MoviesAPI extends RESTDataSource {
             id: movie.id,
             title: movie.title,
             vote_average: movie.vote_average,
-            poster_path: this.attachPoster(movie.poster_path),
-            media_type: 'movie',
+            poster_path: attachPoster(movie.poster_path),
           }))
         : [],
     };
@@ -82,8 +77,8 @@ export default class MoviesAPI extends RESTDataSource {
       budget: numeral(movie.budget).format('$0,00'),
       revenue: numeral(movie.revenue).format('$0,00'),
       overview: movie.overview,
-      backdrop_path: this.attachPoster(movie.backdrop_path, 500),
-      poster_path: this.attachPoster(movie.poster_path),
+      backdrop_path: attachPoster(movie.backdrop_path, 500),
+      poster_path: attachPoster(movie.poster_path),
       media_type: 'movie',
       similar: {
         results: Array.isArray(movie.similar.results)
@@ -93,7 +88,7 @@ export default class MoviesAPI extends RESTDataSource {
               release_date:
                 similarMovie.release_date &&
                 dayjs(similarMovie.release_date).format('YYYY'),
-              poster_path: this.attachPoster(similarMovie.poster_path),
+              poster_path: attachPoster(similarMovie.poster_path),
               media_type: 'movie',
             }))
           : [],
@@ -110,8 +105,8 @@ export default class MoviesAPI extends RESTDataSource {
         dayjs(movie.first_air_date).format('DD MMMM YYYY'),
       vote_average: movie.vote_average,
       overview: movie.overview,
-      backdrop_path: this.attachPoster(movie.backdrop_path, 500),
-      poster_path: this.attachPoster(movie.poster_path),
+      backdrop_path: attachPoster(movie.backdrop_path, 500),
+      poster_path: attachPoster(movie.poster_path),
       number_of_episodes: movie.number_of_episodes,
       number_of_seasons: movie.number_of_seasons,
       media_type: 'tv',
@@ -123,7 +118,7 @@ export default class MoviesAPI extends RESTDataSource {
               release_date:
                 similarMovie.first_air_date &&
                 dayjs(similarMovie.first_air_date).format('YYYY'),
-              poster_path: this.attachPoster(similarMovie.poster_path),
+              poster_path: attachPoster(similarMovie.poster_path),
               media_type: 'tv',
             }))
           : [],

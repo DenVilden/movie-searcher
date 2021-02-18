@@ -46,35 +46,44 @@ type Props = {
     vote_average?: number;
     poster_path?: string | null;
     release_date?: string | null;
-    media_type: string;
+    media_type?: string;
   };
 };
 
-export default function MovieCard({ movie }: Props) {
+export default function MovieCard({
+  movie: {
+    media_type = 'movie',
+    id,
+    title,
+    vote_average,
+    poster_path,
+    release_date,
+  },
+}: Props) {
   const router = useRouter();
 
   return (
     <StyledCard elevation={10}>
       <CardActionArea
         onClick={() => {
-          router.push(`/${movie.media_type}/${movie.id}`);
+          router.push(`/${media_type}/${id}`);
         }}
       >
         <Image
           height="300"
           width="200"
-          alt={movie.title}
-          src={movie.poster_path || '/no-image.jpg'}
+          alt={title}
+          src={poster_path || '/no-image.jpg'}
         />
         <StyledCardContent>
-          <Typography variant="subtitle2">{movie.title}</Typography>
+          <Typography variant="subtitle2">{title}</Typography>
           <StyledTypography color="textSecondary">
-            {movie.vote_average ? (
+            {vote_average ? (
               <IconWrapper>
-                <StarIcon /> {movie.vote_average}
+                <StarIcon /> {vote_average}
               </IconWrapper>
             ) : (
-              movie.release_date
+              release_date
             )}
           </StyledTypography>
         </StyledCardContent>

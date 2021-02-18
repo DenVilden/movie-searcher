@@ -1,5 +1,5 @@
 overwrite: true
-schema: graphql/schema.ts
+schema: graphql/schema.gql
 documents: apollo/**/*.gql
 generates:
   __generated__/index.ts:

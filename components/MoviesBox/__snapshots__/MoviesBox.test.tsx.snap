@@ -17,7 +17,6 @@ exports[`moviesBox should take a snapshot 1`] = `
     >
       <div
         class="MuiGrid-root MoviesBox__Wrapper-elk2wj-1 bmgJbm MuiGrid-container MuiGrid-item MuiGrid-justify-xs-center MuiGrid-grid-xs-6 MuiGrid-grid-md-3"
-        data-testid="search-result"
       >
         <div
           class="MuiPaper-root MuiCard-root MovieCard__StyledCard-sc-5grlib-0 fQwzBi MuiPaper-elevation10 MuiPaper-rounded"
