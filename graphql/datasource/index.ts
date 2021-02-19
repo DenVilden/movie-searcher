@@ -126,14 +126,14 @@ export default class MoviesAPI extends RESTDataSource {
     };
   }
 
-  async getUpcoming(page: number) {
+  async getUpcoming(page: string) {
     const data: MockUpcomingResponse = await this.get('/movie/upcoming', {
       page,
     });
     return this.moviesUpcomingReducer(data);
   }
 
-  async getTopRated(page: number) {
+  async getTopRated(page: string) {
     const data: MockTopRatedResponse = await this.get('/movie/top_rated', {
       page,
     });

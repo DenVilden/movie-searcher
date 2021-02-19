@@ -7,7 +7,7 @@ import { initializeApollo } from '../apollo';
 import { ErrorMessage } from '../components';
 
 export default function HomePage() {
-  const { data, error } = useGetMoviesQuery({ variables: { page: 1 } });
+  const { data, error } = useGetMoviesQuery();
 
   if (error) return <ErrorMessage error={error.message} />;
 
@@ -28,7 +28,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   await apolloClient.query({
     query: GetMoviesDocument,
-    variables: { page: 1 },
   });
 
   return {

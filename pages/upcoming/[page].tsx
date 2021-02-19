@@ -21,7 +21,7 @@ interface Props {
 export default function Upcoming({ initialData }: Props) {
   const { page } = useRouter().query as { page: string };
   const { data, error, refetch } = useGetUpcomingQuery({
-    variables: { page: +page },
+    variables: { page },
     skip: Boolean(initialData),
   });
 
@@ -36,7 +36,7 @@ export default function Upcoming({ initialData }: Props) {
       <Pagination
         path="upcoming"
         currentPage={data?.upcoming.page || initialData.upcoming.page}
-        refetch={(newPage: number) => refetch({ page: newPage })}
+        refetch={(newPage: string) => refetch({ page: newPage })}
         totalPages={
           data?.upcoming.total_pages || initialData.upcoming.total_pages
         }
@@ -61,10 +61,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     await apolloClient.query({
       query: GetUpcomingDocument,
-      variables: { page: +params?.page! },
+      variables: { page: params?.page },
     });
   } catch (error) {
-    if (error.message.includes('400')) {
+    if (error.message.includes('404')) {
       return {
         notFound: true,
       };

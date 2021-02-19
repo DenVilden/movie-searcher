@@ -46,8 +46,8 @@ query GetTvShowInfo($id: ID!) {
   }
 }
 
-query GetMovies($page: Int!) {
-  upcoming(page: $page) {
+query GetMovies {
+  upcoming {
     total_pages
     page
     results {
@@ -57,7 +57,7 @@ query GetMovies($page: Int!) {
       poster_path
     }
   }
-  topRated(page: $page) {
+  topRated {
     total_pages
     page
     results {
@@ -69,7 +69,7 @@ query GetMovies($page: Int!) {
   }
 }
 
-query GetUpcoming($page: Int!) {
+query GetUpcoming($page: String) {
   upcoming(page: $page) {
     total_pages
     page
@@ -82,7 +82,7 @@ query GetUpcoming($page: Int!) {
   }
 }
 
-query GetTopRated($page: Int!) {
+query GetTopRated($page: String) {
   topRated(page: $page) {
     total_pages
     page

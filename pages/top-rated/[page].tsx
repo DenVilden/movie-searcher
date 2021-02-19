@@ -21,7 +21,7 @@ interface Props {
 export default function TopRated({ initialData }: Props) {
   const { page } = useRouter().query as { page: string };
   const { data, error, refetch } = useGetTopRatedQuery({
-    variables: { page: +page },
+    variables: { page },
     skip: Boolean(initialData),
   });
 
@@ -36,7 +36,7 @@ export default function TopRated({ initialData }: Props) {
       <Pagination
         path="top-rated"
         currentPage={data?.topRated.page || initialData.topRated.page}
-        refetch={(newPage: number) => refetch({ page: newPage })}
+        refetch={(newPage: string) => refetch({ page: newPage })}
         totalPages={
           data?.topRated.total_pages || initialData.topRated.total_pages
         }
@@ -61,10 +61,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     await apolloClient.query({
       query: GetTopRatedDocument,
-      variables: { page: +params?.page! },
+      variables: { page: params?.page },
     });
   } catch (error) {
-    if (error.message.includes('400')) {
+    if (error.message.includes('404')) {
       return {
         notFound: true,
       };

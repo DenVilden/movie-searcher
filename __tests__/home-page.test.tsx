@@ -8,7 +8,6 @@ describe('homePage', () => {
       {
         request: {
           query: GetMoviesDocument,
-          variables: { page: 1 },
         },
         error: new Error('an error has occurred'),
       },

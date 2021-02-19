@@ -79,8 +79,8 @@ type TvShowInfo {
 }
 
 type Query {
-  upcoming(page: Int!): Upcoming!
-  topRated(page: Int!): TopRated!
+  upcoming(page: String = "1"): Upcoming!
+  topRated(page: String = "1"): TopRated!
   moviesSearch(
     query: String!
     cursor: Int = null

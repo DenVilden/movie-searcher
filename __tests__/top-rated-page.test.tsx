@@ -7,7 +7,7 @@ jest.mock('next/router', () => ({
   useRouter: () => ({
     push: mockHistoryPush,
     query: {
-      page: 1,
+      page: '1',
     },
   }),
 }));

@@ -123,11 +123,11 @@ export type Query = {
 };
 
 export type QueryUpcomingArgs = {
-  page: Scalars['Int'];
+  page?: Maybe<Scalars['String']>;
 };
 
 export type QueryTopRatedArgs = {
-  page: Scalars['Int'];
+  page?: Maybe<Scalars['String']>;
 };
 
 export type QueryMoviesSearchArgs = {
@@ -578,9 +578,7 @@ export type GetTvShowInfoQuery = { __typename?: 'Query' } & {
     };
 };
 
-export type GetMoviesQueryVariables = Exact<{
-  page: Scalars['Int'];
-}>;
+export type GetMoviesQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetMoviesQuery = { __typename?: 'Query' } & {
   upcoming: { __typename?: 'Upcoming' } & Pick<
@@ -608,7 +606,7 @@ export type GetMoviesQuery = { __typename?: 'Query' } & {
 };
 
 export type GetUpcomingQueryVariables = Exact<{
-  page: Scalars['Int'];
+  page?: Maybe<Scalars['String']>;
 }>;
 
 export type GetUpcomingQuery = { __typename?: 'Query' } & {
@@ -626,7 +624,7 @@ export type GetUpcomingQuery = { __typename?: 'Query' } & {
 };
 
 export type GetTopRatedQueryVariables = Exact<{
-  page: Scalars['Int'];
+  page?: Maybe<Scalars['String']>;
 }>;
 
 export type GetTopRatedQuery = { __typename?: 'Query' } & {
@@ -808,8 +806,8 @@ export type GetTvShowInfoQueryResult = Apollo.QueryResult<
   GetTvShowInfoQueryVariables
 >;
 export const GetMoviesDocument = gql`
-  query GetMovies($page: Int!) {
-    upcoming(page: $page) {
+  query GetMovies {
+    upcoming {
       total_pages
       page
       results {
@@ -819,7 +817,7 @@ export const GetMoviesDocument = gql`
         poster_path
       }
     }
-    topRated(page: $page) {
+    topRated {
       total_pages
       page
       results {
@@ -844,12 +842,14 @@ export const GetMoviesDocument = gql`
  * @example
  * const { data, loading, error } = useGetMoviesQuery({
  *   variables: {
- *      page: // value for 'page'
  *   },
  * });
  */
 export function useGetMoviesQuery(
-  baseOptions: Apollo.QueryHookOptions<GetMoviesQuery, GetMoviesQueryVariables>,
+  baseOptions?: Apollo.QueryHookOptions<
+    GetMoviesQuery,
+    GetMoviesQueryVariables
+  >,
 ) {
   return Apollo.useQuery<GetMoviesQuery, GetMoviesQueryVariables>(
     GetMoviesDocument,
@@ -876,7 +876,7 @@ export type GetMoviesQueryResult = Apollo.QueryResult<
   GetMoviesQueryVariables
 >;
 export const GetUpcomingDocument = gql`
-  query GetUpcoming($page: Int!) {
+  query GetUpcoming($page: String) {
     upcoming(page: $page) {
       total_pages
       page
@@ -907,7 +907,7 @@ export const GetUpcomingDocument = gql`
  * });
  */
 export function useGetUpcomingQuery(
-  baseOptions: Apollo.QueryHookOptions<
+  baseOptions?: Apollo.QueryHookOptions<
     GetUpcomingQuery,
     GetUpcomingQueryVariables
   >,
@@ -937,7 +937,7 @@ export type GetUpcomingQueryResult = Apollo.QueryResult<
   GetUpcomingQueryVariables
 >;
 export const GetTopRatedDocument = gql`
-  query GetTopRated($page: Int!) {
+  query GetTopRated($page: String) {
     topRated(page: $page) {
       total_pages
       page
@@ -968,7 +968,7 @@ export const GetTopRatedDocument = gql`
  * });
  */
 export function useGetTopRatedQuery(
-  baseOptions: Apollo.QueryHookOptions<
+  baseOptions?: Apollo.QueryHookOptions<
     GetTopRatedQuery,
     GetTopRatedQueryVariables
   >,

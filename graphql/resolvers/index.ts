@@ -13,6 +13,10 @@ const resolvers: Resolvers<Context> = {
     async upcoming(_root, { page }, { dataSources }) {
       try {
         const data = await dataSources.moviesAPI.getUpcoming(page);
+
+        if (!data.results.length || data.page !== +page) {
+          throw new Error('404 Not found');
+        }
         return data;
       } catch (error) {
         throw new Error(error);
@@ -21,6 +25,10 @@ const resolvers: Resolvers<Context> = {
     async topRated(_root, { page }, { dataSources }) {
       try {
         const data = await dataSources.moviesAPI.getTopRated(page);
+
+        if (!data.results.length || data.page !== +page) {
+          throw new Error('404 Not found');
+        }
         return data;
       } catch (error) {
         throw new Error(error);
