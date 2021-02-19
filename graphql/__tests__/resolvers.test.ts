@@ -21,12 +21,31 @@ describe('[Query.upcoming]', () => {
 
     const res = await resolvers.Query!.upcoming!(
       {} as any,
-      {} as any,
+      { page: '1' } as any,
       mockContext as any,
       {} as any,
     );
 
     expect(res).toStrictEqual(mockUpcoming);
+  });
+
+  it('catches 404 error', async () => {
+    getUpcoming.mockReturnValueOnce(mockUpcoming);
+
+    let errorMessage = '';
+
+    try {
+      await resolvers.Query!.upcoming!(
+        {} as any,
+        {} as any,
+        mockContext as any,
+        {} as any,
+      );
+    } catch (error) {
+      errorMessage = error.message;
+    } finally {
+      expect(errorMessage).toStrictEqual('Error: 404 Not found');
+    }
   });
 
   it('catches upcoming error', async () => {
@@ -63,12 +82,31 @@ describe('[Query.topRated]', () => {
 
     const res = await resolvers.Query!.topRated!(
       {} as any,
-      {} as any,
+      { page: '1' } as any,
       mockContext as any,
       {} as any,
     );
 
     expect(res).toStrictEqual(mockTopRated);
+  });
+
+  it('catches 404 error', async () => {
+    getTopRated.mockReturnValueOnce(mockTopRated);
+
+    let errorMessage = '';
+
+    try {
+      await resolvers.Query!.topRated!(
+        {} as any,
+        {} as any,
+        mockContext as any,
+        {} as any,
+      );
+    } catch (error) {
+      errorMessage = error.message;
+    } finally {
+      expect(errorMessage).toStrictEqual('Error: 404 Not found');
+    }
   });
 
   it('catches topRated error', async () => {
