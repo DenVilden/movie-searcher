@@ -578,6 +578,35 @@ export type GetTvShowInfoQuery = { __typename?: 'Query' } & {
     };
 };
 
+export type GetMoviesQueryVariables = Exact<{
+  page: Scalars['Int'];
+}>;
+
+export type GetMoviesQuery = { __typename?: 'Query' } & {
+  upcoming: { __typename?: 'Upcoming' } & Pick<
+    Upcoming,
+    'total_pages' | 'page'
+  > & {
+      results: Array<
+        { __typename?: 'UpcomingResults' } & Pick<
+          UpcomingResults,
+          'id' | 'title' | 'release_date' | 'poster_path'
+        >
+      >;
+    };
+  topRated: { __typename?: 'TopRated' } & Pick<
+    TopRated,
+    'total_pages' | 'page'
+  > & {
+      results: Array<
+        { __typename?: 'TopRatedResults' } & Pick<
+          TopRatedResults,
+          'id' | 'title' | 'vote_average' | 'poster_path'
+        >
+      >;
+    };
+};
+
 export type GetUpcomingQueryVariables = Exact<{
   page: Scalars['Int'];
 }>;
@@ -777,6 +806,74 @@ export type GetTvShowInfoLazyQueryHookResult = ReturnType<
 export type GetTvShowInfoQueryResult = Apollo.QueryResult<
   GetTvShowInfoQuery,
   GetTvShowInfoQueryVariables
+>;
+export const GetMoviesDocument = gql`
+  query GetMovies($page: Int!) {
+    upcoming(page: $page) {
+      total_pages
+      page
+      results {
+        id
+        title
+        release_date
+        poster_path
+      }
+    }
+    topRated(page: $page) {
+      total_pages
+      page
+      results {
+        id
+        title
+        vote_average
+        poster_path
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetMoviesQuery__
+ *
+ * To run a query within a React component, call `useGetMoviesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetMoviesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetMoviesQuery({
+ *   variables: {
+ *      page: // value for 'page'
+ *   },
+ * });
+ */
+export function useGetMoviesQuery(
+  baseOptions: Apollo.QueryHookOptions<GetMoviesQuery, GetMoviesQueryVariables>,
+) {
+  return Apollo.useQuery<GetMoviesQuery, GetMoviesQueryVariables>(
+    GetMoviesDocument,
+    baseOptions,
+  );
+}
+export function useGetMoviesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetMoviesQuery,
+    GetMoviesQueryVariables
+  >,
+) {
+  return Apollo.useLazyQuery<GetMoviesQuery, GetMoviesQueryVariables>(
+    GetMoviesDocument,
+    baseOptions,
+  );
+}
+export type GetMoviesQueryHookResult = ReturnType<typeof useGetMoviesQuery>;
+export type GetMoviesLazyQueryHookResult = ReturnType<
+  typeof useGetMoviesLazyQuery
+>;
+export type GetMoviesQueryResult = Apollo.QueryResult<
+  GetMoviesQuery,
+  GetMoviesQueryVariables
 >;
 export const GetUpcomingDocument = gql`
   query GetUpcoming($page: Int!) {

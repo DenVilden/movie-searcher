@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
-import { useGetUpcomingQuery, GetUpcomingDocument } from '../../__generated__';
+import {
+  useGetUpcomingQuery,
+  GetUpcomingDocument,
+  GetUpcomingQuery,
+} from '../../__generated__';
 import { ErrorMessage, Pagination, MoviesBox } from '../../components';
 import { initializeApollo } from '../../apollo';
 
@@ -10,23 +14,32 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-export default function Upcoming() {
+interface Props {
+  initialData: GetUpcomingQuery;
+}
+
+export default function Upcoming({ initialData }: Props) {
   const { page } = useRouter().query as { page: string };
   const { data, error, refetch } = useGetUpcomingQuery({
-    variables: { page: +page || 1 },
-    fetchPolicy: 'network-only',
+    variables: { page: +page },
+    skip: Boolean(initialData),
   });
 
   if (error) return <ErrorMessage error={error.message} />;
 
-  return data ? (
+  return data || initialData ? (
     <Wrapper>
-      <MoviesBox movies={data.upcoming.results} title="Upcoming" />
+      <MoviesBox
+        movies={data?.upcoming.results || initialData.upcoming.results}
+        title="Upcoming"
+      />
       <Pagination
         path="upcoming"
-        currentPage={data.upcoming.page}
+        currentPage={data?.upcoming.page || initialData.upcoming.page}
         refetch={(newPage: number) => refetch({ page: newPage })}
-        totalPages={data.upcoming.total_pages}
+        totalPages={
+          data?.upcoming.total_pages || initialData.upcoming.total_pages
+        }
       />
     </Wrapper>
   ) : null;
@@ -34,7 +47,6 @@ export default function Upcoming() {
 
 export const getStaticPaths: GetStaticPaths = async () => ({
   paths: [
-    { params: { page: '1' } },
     { params: { page: '2' } },
     { params: { page: '3' } },
     { params: { page: '4' } },
