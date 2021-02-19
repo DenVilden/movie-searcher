@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { useRef } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
 import { useGetUpcomingQuery, GetUpcomingDocument } from '../../__generated__';
@@ -18,17 +17,14 @@ export default function Upcoming() {
     fetchPolicy: 'network-only',
   });
 
-  const upcomingElement = useRef<HTMLDivElement | null>(null);
-
   if (error) return <ErrorMessage error={error.message} />;
 
   return data ? (
-    <Wrapper ref={upcomingElement}>
+    <Wrapper>
       <MoviesBox movies={data.upcoming.results} title="Upcoming" />
       <Pagination
         path="upcoming"
         currentPage={data.upcoming.page}
-        element={upcomingElement}
         refetch={(newPage: number) => refetch({ page: newPage })}
         totalPages={data.upcoming.total_pages}
       />

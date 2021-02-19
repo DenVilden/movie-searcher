@@ -16,7 +16,6 @@ interface Props {
   refetch: (page: number) => void;
   totalPages: number;
   currentPage: number;
-  element: React.MutableRefObject<HTMLDivElement | null>;
   path: string;
 }
 
@@ -24,7 +23,6 @@ export default function PaginationComponent({
   totalPages,
   refetch,
   currentPage,
-  element,
   path,
 }: Props) {
   const [page, setPage] = useState(currentPage);
@@ -35,10 +33,6 @@ export default function PaginationComponent({
       count={totalPages}
       page={page}
       onChange={(_evt, pageNumber: number) => {
-        element.current?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
         setPage(pageNumber);
         refetch(pageNumber);
         router.push(`/${path}/${pageNumber}`);

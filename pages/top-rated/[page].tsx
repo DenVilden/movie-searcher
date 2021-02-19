@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { useRef } from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
 import { useGetTopRatedQuery, GetTopRatedDocument } from '../../__generated__';
@@ -17,18 +16,16 @@ export default function TopRated() {
     variables: { page: +page || 1 },
     fetchPolicy: 'network-only',
   });
-  const topRatedElement = useRef<HTMLDivElement | null>(null);
 
   if (error) return <ErrorMessage error={error.message} />;
 
   return data ? (
-    <Wrapper ref={topRatedElement}>
+    <Wrapper>
       <MoviesBox movies={data.topRated.results} title="TopRated" />
       <Pagination
         path="top-rated"
         currentPage={data.topRated.page}
         refetch={(newPage: number) => refetch({ page: newPage })}
-        element={topRatedElement}
         totalPages={data.topRated.total_pages}
       />
     </Wrapper>
