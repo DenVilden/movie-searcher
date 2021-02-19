@@ -42,7 +42,7 @@ export default function MoviesBox({
   padding = 1,
 }: Props) {
   return (
-    <Grow in>
+    <Grow timeout="auto" in>
       <Root elevation={elevation} padding={padding}>
         {Boolean(title) && (
           <Typography align="center" gutterBottom variant="h4">

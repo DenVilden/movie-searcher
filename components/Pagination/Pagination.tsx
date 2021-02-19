@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { Pagination } from '@material-ui/lab';
+import { useRouter } from 'next/router';
 
 const StyledPagination = styled(Pagination)`
   margin: auto;
@@ -16,6 +17,7 @@ interface Props {
   totalPages: number;
   currentPage: number;
   element: React.MutableRefObject<HTMLDivElement | null>;
+  path: string;
 }
 
 export default function PaginationComponent({
@@ -23,20 +25,23 @@ export default function PaginationComponent({
   refetch,
   currentPage,
   element,
+  path,
 }: Props) {
   const [page, setPage] = useState(currentPage);
+  const router = useRouter();
 
   return (
     <StyledPagination
       count={totalPages}
       page={page}
-      onChange={(_evt, value: number) => {
+      onChange={(_evt, pageNumber: number) => {
         element.current?.scrollIntoView({
           behavior: 'smooth',
           block: 'start',
         });
-        refetch(value);
-        setPage(value);
+        setPage(pageNumber);
+        refetch(pageNumber);
+        router.push(`/${path}/${pageNumber}`);
       }}
     />
   );

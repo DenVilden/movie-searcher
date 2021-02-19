@@ -46,30 +46,7 @@ query GetTvShowInfo($id: ID!) {
   }
 }
 
-query GetMovies {
-  upcoming {
-    total_pages
-    page
-    results {
-      id
-      title
-      release_date
-      poster_path
-    }
-  }
-  topRated {
-    total_pages
-    page
-    results {
-      id
-      title
-      vote_average
-      poster_path
-    }
-  }
-}
-
-query GetUpcoming($page: Int) {
+query GetUpcoming($page: Int!) {
   upcoming(page: $page) {
     total_pages
     page
@@ -82,7 +59,7 @@ query GetUpcoming($page: Int) {
   }
 }
 
-query GetTopRated($page: Int) {
+query GetTopRated($page: Int!) {
   topRated(page: $page) {
     total_pages
     page

@@ -123,11 +123,11 @@ export type Query = {
 };
 
 export type QueryUpcomingArgs = {
-  page?: Maybe<Scalars['Int']>;
+  page: Scalars['Int'];
 };
 
 export type QueryTopRatedArgs = {
-  page?: Maybe<Scalars['Int']>;
+  page: Scalars['Int'];
 };
 
 export type QueryMoviesSearchArgs = {
@@ -578,35 +578,8 @@ export type GetTvShowInfoQuery = { __typename?: 'Query' } & {
     };
 };
 
-export type GetMoviesQueryVariables = Exact<{ [key: string]: never }>;
-
-export type GetMoviesQuery = { __typename?: 'Query' } & {
-  upcoming: { __typename?: 'Upcoming' } & Pick<
-    Upcoming,
-    'total_pages' | 'page'
-  > & {
-      results: Array<
-        { __typename?: 'UpcomingResults' } & Pick<
-          UpcomingResults,
-          'id' | 'title' | 'release_date' | 'poster_path'
-        >
-      >;
-    };
-  topRated: { __typename?: 'TopRated' } & Pick<
-    TopRated,
-    'total_pages' | 'page'
-  > & {
-      results: Array<
-        { __typename?: 'TopRatedResults' } & Pick<
-          TopRatedResults,
-          'id' | 'title' | 'vote_average' | 'poster_path'
-        >
-      >;
-    };
-};
-
 export type GetUpcomingQueryVariables = Exact<{
-  page?: Maybe<Scalars['Int']>;
+  page: Scalars['Int'];
 }>;
 
 export type GetUpcomingQuery = { __typename?: 'Query' } & {
@@ -624,7 +597,7 @@ export type GetUpcomingQuery = { __typename?: 'Query' } & {
 };
 
 export type GetTopRatedQueryVariables = Exact<{
-  page?: Maybe<Scalars['Int']>;
+  page: Scalars['Int'];
 }>;
 
 export type GetTopRatedQuery = { __typename?: 'Query' } & {
@@ -805,78 +778,8 @@ export type GetTvShowInfoQueryResult = Apollo.QueryResult<
   GetTvShowInfoQuery,
   GetTvShowInfoQueryVariables
 >;
-export const GetMoviesDocument = gql`
-  query GetMovies {
-    upcoming {
-      total_pages
-      page
-      results {
-        id
-        title
-        release_date
-        poster_path
-      }
-    }
-    topRated {
-      total_pages
-      page
-      results {
-        id
-        title
-        vote_average
-        poster_path
-      }
-    }
-  }
-`;
-
-/**
- * __useGetMoviesQuery__
- *
- * To run a query within a React component, call `useGetMoviesQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetMoviesQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGetMoviesQuery({
- *   variables: {
- *   },
- * });
- */
-export function useGetMoviesQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    GetMoviesQuery,
-    GetMoviesQueryVariables
-  >,
-) {
-  return Apollo.useQuery<GetMoviesQuery, GetMoviesQueryVariables>(
-    GetMoviesDocument,
-    baseOptions,
-  );
-}
-export function useGetMoviesLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    GetMoviesQuery,
-    GetMoviesQueryVariables
-  >,
-) {
-  return Apollo.useLazyQuery<GetMoviesQuery, GetMoviesQueryVariables>(
-    GetMoviesDocument,
-    baseOptions,
-  );
-}
-export type GetMoviesQueryHookResult = ReturnType<typeof useGetMoviesQuery>;
-export type GetMoviesLazyQueryHookResult = ReturnType<
-  typeof useGetMoviesLazyQuery
->;
-export type GetMoviesQueryResult = Apollo.QueryResult<
-  GetMoviesQuery,
-  GetMoviesQueryVariables
->;
 export const GetUpcomingDocument = gql`
-  query GetUpcoming($page: Int) {
+  query GetUpcoming($page: Int!) {
     upcoming(page: $page) {
       total_pages
       page
@@ -907,7 +810,7 @@ export const GetUpcomingDocument = gql`
  * });
  */
 export function useGetUpcomingQuery(
-  baseOptions?: Apollo.QueryHookOptions<
+  baseOptions: Apollo.QueryHookOptions<
     GetUpcomingQuery,
     GetUpcomingQueryVariables
   >,
@@ -937,7 +840,7 @@ export type GetUpcomingQueryResult = Apollo.QueryResult<
   GetUpcomingQueryVariables
 >;
 export const GetTopRatedDocument = gql`
-  query GetTopRated($page: Int) {
+  query GetTopRated($page: Int!) {
     topRated(page: $page) {
       total_pages
       page
@@ -968,7 +871,7 @@ export const GetTopRatedDocument = gql`
  * });
  */
 export function useGetTopRatedQuery(
-  baseOptions?: Apollo.QueryHookOptions<
+  baseOptions: Apollo.QueryHookOptions<
     GetTopRatedQuery,
     GetTopRatedQueryVariables
   >,

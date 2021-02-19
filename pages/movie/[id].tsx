@@ -45,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       variables: { id: params?.id },
     });
   } catch (error) {
-    if (error.message === 'Error: 404: Not Found') {
+    if (error.message.includes('404')) {
       return {
         notFound: true,
       };

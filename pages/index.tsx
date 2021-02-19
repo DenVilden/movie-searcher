@@ -1,37 +1,16 @@
 import { Grid } from '@material-ui/core';
-import { GetStaticProps } from 'next';
-import { useGetMoviesQuery, GetMoviesDocument } from '../__generated__';
-import { initializeApollo } from '../apollo';
-import { ErrorMessage, Upcoming, TopRated } from '../components';
+import Upcoming from './upcoming/[page]';
+import TopRated from './top-rated/[page]';
 
 export default function HomePage() {
-  const { data, error } = useGetMoviesQuery();
-
-  if (error) return <ErrorMessage error={error.message} />;
-
-  return data ? (
+  return (
     <Grid container>
       <Grid item lg={6}>
-        <Upcoming initialData={{ upcoming: data.upcoming }} />
+        <Upcoming />
       </Grid>
       <Grid item lg={6}>
-        <TopRated initialData={{ topRated: data.topRated }} />
+        <TopRated />
       </Grid>
     </Grid>
-  ) : null;
+  );
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-  const apolloClient = initializeApollo();
-
-  await apolloClient.query({
-    query: GetMoviesDocument,
-  });
-
-  return {
-    props: {
-      initialApolloState: apolloClient.cache.extract(),
-    },
-    revalidate: 1,
-  };
-};

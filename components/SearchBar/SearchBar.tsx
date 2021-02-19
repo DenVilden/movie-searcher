@@ -38,8 +38,7 @@ export default function SearchBar() {
   const [inputValue, setInputValue] = useState('');
 
   const [fetchMovies, { data, loading, error }] = useGetMoviesSearchLazyQuery({
-    fetchPolicy: 'cache-and-network',
-    nextFetchPolicy: 'cache-first',
+    fetchPolicy: 'network-only',
   });
 
   const router = useRouter();
@@ -54,9 +53,9 @@ export default function SearchBar() {
       id="autocomplete"
       loading={loading || Boolean(error)}
       loadingText={loading ? 'Loading...' : error?.message}
-      onChange={(_evt, { id, media_type }: any, reason) => {
+      onChange={(_evt, movie: any, reason) => {
         if (reason === 'select-option') {
-          router.push(`/${media_type}/${id}`);
+          router.push(`/${movie.media_type}/${movie.id}`);
         }
       }}
       onInputChange={(_evt, value: string, reason) => {
@@ -76,7 +75,7 @@ export default function SearchBar() {
           error={Boolean(error)}
           variant="outlined"
           margin="dense"
-          placeholder="type a movie name..."
+          placeholder="search for movies and tv shows"
           fullWidth
         />
       )}
