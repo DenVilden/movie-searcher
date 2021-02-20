@@ -18,16 +18,16 @@ export const mockUpcoming = {
   ],
 };
 
-export const mockTopRated = {
+export const mockNowPlaying = {
   page: 1,
-  total_pages: 421,
+  total_pages: 39,
   results: [
     {
-      id: 761053,
-      title: "Gabriel's Inferno Part III",
-      vote_average: 8.9,
+      id: 464052,
+      title: 'Wonder Woman 1984',
+      vote_average: 6.9,
       poster_path:
-        'https://image.tmdb.org/t/p/w200/fYtHxTxlhzD4QWfEbrC1rypysSD.jpg',
+        'https://image.tmdb.org/t/p/w200/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg',
     },
   ],
 };

@@ -1,6 +1,6 @@
 import { Resolvers } from '../../__generated__';
 import { paginateResults } from '../lib/utils';
-import MoviesAPI from '../datasource';
+import MoviesAPI from '../datasource/movies';
 
 interface Context {
   dataSources: {
@@ -22,9 +22,9 @@ const resolvers: Resolvers<Context> = {
         throw new Error(error);
       }
     },
-    async topRated(_root, { page }, { dataSources }) {
+    async nowPlaying(_root, { page }, { dataSources }) {
       try {
-        const data = await dataSources.moviesAPI.getTopRated(page);
+        const data = await dataSources.moviesAPI.getNowPlaying(page);
 
         if (!data.results.length || data.page !== +page) {
           throw new Error('404 Not found');

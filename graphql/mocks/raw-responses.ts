@@ -46,32 +46,36 @@ export const mockUpcomingResponse = {
 
 export type MockUpcomingResponse = typeof mockUpcomingResponse;
 
-export const mockTopRatedResponse = {
+export const mockNowPlayingResponse = {
+  dates: {
+    maximum: '2021-02-25',
+    minimum: '2021-01-08',
+  },
   page: 1,
   results: [
     {
       adult: false,
-      backdrop_path: '/fQq1FWp1rC89xDrRMuyFJdFUdMd.jpg',
-      genre_ids: [10749, 35],
-      id: 761053,
+      backdrop_path: '/srYya1ZlI97Au4jUYAktDe3avyA.jpg',
+      genre_ids: [14, 28, 12],
+      id: 464052,
       original_language: 'en',
-      original_title: "Gabriel's Inferno Part III",
+      original_title: 'Wonder Woman 1984',
       overview:
-        "The final part of the film adaption of the erotic romance novel Gabriel's Inferno written by an anonymous Canadian author under the pen name Sylvain Reynard.",
-      popularity: 37.656,
-      poster_path: '/fYtHxTxlhzD4QWfEbrC1rypysSD.jpg',
-      release_date: '2020-11-19',
-      title: "Gabriel's Inferno Part III",
+        'Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah.',
+      popularity: 1955.44,
+      poster_path: '/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg',
+      release_date: '2020-12-16',
+      title: 'Wonder Woman 1984',
       video: false,
-      vote_average: 8.9,
-      vote_count: 702,
+      vote_average: 6.9,
+      vote_count: 3718,
     },
   ],
-  total_pages: 421,
-  total_results: 8405,
+  total_pages: 39,
+  total_results: 774,
 };
 
-export type MockTopRatedResponse = typeof mockTopRatedResponse;
+export type MockNowPlayingResponse = typeof mockNowPlayingResponse;
 
 export const mockMoviesSearchResponse = {
   page: 1,

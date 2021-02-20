@@ -1,4 +1,4 @@
-import TopRatedPage from '../pages/top-rated/[page]';
+import NowPlayingPage from '../pages/now_playing/[page]';
 import { renderApollo, screen, fireEvent } from '../lib/setupTests';
 
 const mockHistoryPush = jest.fn();
@@ -13,13 +13,13 @@ jest.mock('next/router', () => ({
 }));
 
 const mocks = {
-  topRated: {
+  nowPlaying: {
     total_pages: 20,
     page: 1,
     results: [
       {
         id: 1,
-        title: 'top-rated page 1',
+        title: 'now playing page 1',
         vote_average: 5,
         poster_path: null,
       },
@@ -27,14 +27,14 @@ const mocks = {
   },
 };
 
-describe('topRatedPage', () => {
+describe('nowPlayingPage', () => {
   it('should switch page and refetch movies', async () => {
-    renderApollo(<TopRatedPage initialData={mocks} />);
+    renderApollo(<NowPlayingPage initialData={mocks} />);
 
     const pageButton = await screen.findByLabelText('Go to page 2');
 
     fireEvent.click(pageButton);
 
-    expect(mockHistoryPush).toHaveBeenCalledWith('/top-rated/2');
+    expect(mockHistoryPush).toHaveBeenCalledWith('/now_playing/2');
   });
 });

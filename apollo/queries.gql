@@ -57,7 +57,7 @@ query GetMovies {
       poster_path
     }
   }
-  topRated {
+  nowPlaying {
     total_pages
     page
     results {
@@ -82,8 +82,8 @@ query GetUpcoming($page: String) {
   }
 }
 
-query GetTopRated($page: String) {
-  topRated(page: $page) {
+query GetNowPlaying($page: String) {
+  nowPlaying(page: $page) {
     total_pages
     page
     results {

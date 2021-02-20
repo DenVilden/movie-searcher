@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
 import {
-  useGetTopRatedQuery,
-  GetTopRatedDocument,
-  GetTopRatedQuery,
+  useGetNowPlayingQuery,
+  GetNowPlayingDocument,
+  GetNowPlayingQuery,
 } from '../../__generated__';
 import { ErrorMessage, Pagination, MoviesBox } from '../../components';
 import { initializeApollo } from '../../apollo';
@@ -15,12 +15,12 @@ const Wrapper = styled.div`
 `;
 
 interface Props {
-  initialData: GetTopRatedQuery;
+  initialData: GetNowPlayingQuery;
 }
 
 export default function TopRated({ initialData }: Props) {
   const { page } = useRouter().query as { page: string };
-  const { data, error, refetch } = useGetTopRatedQuery({
+  const { data, error, refetch } = useGetNowPlayingQuery({
     variables: { page },
     skip: Boolean(initialData),
   });
@@ -30,15 +30,15 @@ export default function TopRated({ initialData }: Props) {
   return data || initialData ? (
     <Wrapper>
       <MoviesBox
-        movies={data?.topRated.results || initialData.topRated.results}
-        title="TopRated"
+        movies={data?.nowPlaying.results || initialData.nowPlaying.results}
+        title="Now Playing"
       />
       <Pagination
-        path="top-rated"
-        currentPage={data?.topRated.page || initialData.topRated.page}
+        path="now_playing"
+        currentPage={data?.nowPlaying.page || initialData.nowPlaying.page}
         refetch={(newPage: string) => refetch({ page: newPage })}
         totalPages={
-          data?.topRated.total_pages || initialData.topRated.total_pages
+          data?.nowPlaying.total_pages || initialData.nowPlaying.total_pages
         }
       />
     </Wrapper>
@@ -60,7 +60,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   try {
     await apolloClient.query({
-      query: GetTopRatedDocument,
+      query: GetNowPlayingDocument,
       variables: { page: params?.page },
     });
   } catch (error) {

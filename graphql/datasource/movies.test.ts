@@ -1,14 +1,14 @@
-import MoviesAPI from '../datasource';
+import MoviesAPI from './movies';
 import {
   mockUpcoming,
-  mockTopRated,
+  mockNowPlaying,
   mockMoviesSearch,
   mockMovieInfo,
   mockTvShowInfo,
 } from '../mocks/graphql-responses';
 import {
   mockUpcomingResponse,
-  mockTopRatedResponse,
+  mockNowPlayingResponse,
   mockMoviesSearchResponse,
   mockMovieInfoResponse,
   mockTvShowInfoResponse,
@@ -27,41 +27,23 @@ describe('getUpcomingMovies', () => {
   it('should get upcoming', async () => {
     mocks.get.mockReturnValueOnce(mockUpcomingResponse);
 
-    const page = 1;
+    const page = '1';
     const res = await api.getUpcoming(page);
 
     expect(res).toStrictEqual(mockUpcoming);
     expect(mocks.get).toHaveBeenCalledWith('/movie/upcoming', { page });
   });
-
-  it('should get 1st page if no page specified', async () => {
-    mocks.get.mockReturnValueOnce(mockUpcomingResponse);
-
-    const res = await api.getUpcoming();
-
-    expect(res).toStrictEqual(mockUpcoming);
-    expect(mocks.get).toHaveBeenCalledWith('/movie/upcoming', { page: 1 });
-  });
 });
 
 describe('getTopRatedMovies', () => {
-  it('should get and transform top rated movies', async () => {
-    mocks.get.mockReturnValueOnce(mockTopRatedResponse);
+  it('should get and transform top now playing movies', async () => {
+    mocks.get.mockReturnValueOnce(mockNowPlayingResponse);
 
-    const page = 1;
-    const res = await api.getTopRated(page);
+    const page = '1';
+    const res = await api.getNowPlaying(page);
 
-    expect(res).toStrictEqual(mockTopRated);
-    expect(mocks.get).toHaveBeenCalledWith('/movie/top_rated', { page });
-  });
-
-  it('should get 1st page if no page specified', async () => {
-    mocks.get.mockReturnValueOnce(mockTopRatedResponse);
-
-    const res = await api.getTopRated();
-
-    expect(res).toStrictEqual(mockTopRated);
-    expect(mocks.get).toHaveBeenCalledWith('/movie/top_rated', { page: 1 });
+    expect(res).toStrictEqual(mockNowPlaying);
+    expect(mocks.get).toHaveBeenCalledWith('/movie/now_playing', { page });
   });
 });
 

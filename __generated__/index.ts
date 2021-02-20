@@ -38,19 +38,19 @@ export type Upcoming = {
   results: Array<UpcomingResults>;
 };
 
-export type TopRatedResults = {
-  __typename?: 'TopRatedResults';
+export type NowPlayingResults = {
+  __typename?: 'NowPlayingResults';
   id: Scalars['Int'];
   title: Scalars['String'];
   vote_average: Scalars['Float'];
   poster_path?: Maybe<Scalars['String']>;
 };
 
-export type TopRated = {
-  __typename?: 'TopRated';
+export type NowPlaying = {
+  __typename?: 'NowPlaying';
   total_pages: Scalars['Int'];
   page: Scalars['Int'];
-  results: Array<TopRatedResults>;
+  results: Array<NowPlayingResults>;
 };
 
 export type MoviesSearchResults = {
@@ -71,7 +71,7 @@ export type SimilarResults = {
   __typename?: 'SimilarResults';
   id: Scalars['Int'];
   title: Scalars['String'];
-  release_date?: Maybe<Scalars['String']>;
+  release_date: Scalars['String'];
   poster_path?: Maybe<Scalars['String']>;
   media_type: Scalars['String'];
 };
@@ -116,7 +116,7 @@ export type TvShowInfo = {
 export type Query = {
   __typename?: 'Query';
   upcoming: Upcoming;
-  topRated: TopRated;
+  nowPlaying: NowPlaying;
   moviesSearch: MoviesSearch;
   movieInfo: MovieInfo;
   tvShowInfo: TvShowInfo;
@@ -126,7 +126,7 @@ export type QueryUpcomingArgs = {
   page?: Maybe<Scalars['String']>;
 };
 
-export type QueryTopRatedArgs = {
+export type QueryNowPlayingArgs = {
   page?: Maybe<Scalars['String']>;
 };
 
@@ -262,9 +262,9 @@ export type ResolversTypes = ResolversObject<{
   Int: ResolverTypeWrapper<Scalars['Int']>;
   String: ResolverTypeWrapper<Scalars['String']>;
   Upcoming: ResolverTypeWrapper<Upcoming>;
-  TopRatedResults: ResolverTypeWrapper<TopRatedResults>;
+  NowPlayingResults: ResolverTypeWrapper<NowPlayingResults>;
   Float: ResolverTypeWrapper<Scalars['Float']>;
-  TopRated: ResolverTypeWrapper<TopRated>;
+  NowPlaying: ResolverTypeWrapper<NowPlaying>;
   MoviesSearchResults: ResolverTypeWrapper<MoviesSearchResults>;
   MoviesSearch: ResolverTypeWrapper<MoviesSearch>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
@@ -282,9 +282,9 @@ export type ResolversParentTypes = ResolversObject<{
   Int: Scalars['Int'];
   String: Scalars['String'];
   Upcoming: Upcoming;
-  TopRatedResults: TopRatedResults;
+  NowPlayingResults: NowPlayingResults;
   Float: Scalars['Float'];
-  TopRated: TopRated;
+  NowPlaying: NowPlaying;
   MoviesSearchResults: MoviesSearchResults;
   MoviesSearch: MoviesSearch;
   Boolean: Scalars['Boolean'];
@@ -325,9 +325,9 @@ export type UpcomingResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
-export type TopRatedResultsResolvers<
+export type NowPlayingResultsResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['TopRatedResults'] = ResolversParentTypes['TopRatedResults']
+  ParentType extends ResolversParentTypes['NowPlayingResults'] = ResolversParentTypes['NowPlayingResults']
 > = ResolversObject<{
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -340,14 +340,14 @@ export type TopRatedResultsResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
-export type TopRatedResolvers<
+export type NowPlayingResolvers<
   ContextType = any,
-  ParentType extends ResolversParentTypes['TopRated'] = ResolversParentTypes['TopRated']
+  ParentType extends ResolversParentTypes['NowPlaying'] = ResolversParentTypes['NowPlaying']
 > = ResolversObject<{
   total_pages?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   page?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   results?: Resolver<
-    Array<ResolversTypes['TopRatedResults']>,
+    Array<ResolversTypes['NowPlayingResults']>,
     ParentType,
     ContextType
   >;
@@ -384,11 +384,7 @@ export type SimilarResultsResolvers<
 > = ResolversObject<{
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  release_date?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
+  release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   poster_path?: Resolver<
     Maybe<ResolversTypes['String']>,
     ParentType,
@@ -474,11 +470,11 @@ export type QueryResolvers<
     ContextType,
     RequireFields<QueryUpcomingArgs, 'page'>
   >;
-  topRated?: Resolver<
-    ResolversTypes['TopRated'],
+  nowPlaying?: Resolver<
+    ResolversTypes['NowPlaying'],
     ParentType,
     ContextType,
-    RequireFields<QueryTopRatedArgs, 'page'>
+    RequireFields<QueryNowPlayingArgs, 'page'>
   >;
   moviesSearch?: Resolver<
     ResolversTypes['MoviesSearch'],
@@ -503,8 +499,8 @@ export type QueryResolvers<
 export type Resolvers<ContextType = any> = ResolversObject<{
   UpcomingResults?: UpcomingResultsResolvers<ContextType>;
   Upcoming?: UpcomingResolvers<ContextType>;
-  TopRatedResults?: TopRatedResultsResolvers<ContextType>;
-  TopRated?: TopRatedResolvers<ContextType>;
+  NowPlayingResults?: NowPlayingResultsResolvers<ContextType>;
+  NowPlaying?: NowPlayingResolvers<ContextType>;
   MoviesSearchResults?: MoviesSearchResultsResolvers<ContextType>;
   MoviesSearch?: MoviesSearchResolvers<ContextType>;
   SimilarResults?: SimilarResultsResolvers<ContextType>;
@@ -592,13 +588,13 @@ export type GetMoviesQuery = { __typename?: 'Query' } & {
         >
       >;
     };
-  topRated: { __typename?: 'TopRated' } & Pick<
-    TopRated,
+  nowPlaying: { __typename?: 'NowPlaying' } & Pick<
+    NowPlaying,
     'total_pages' | 'page'
   > & {
       results: Array<
-        { __typename?: 'TopRatedResults' } & Pick<
-          TopRatedResults,
+        { __typename?: 'NowPlayingResults' } & Pick<
+          NowPlayingResults,
           'id' | 'title' | 'vote_average' | 'poster_path'
         >
       >;
@@ -623,18 +619,18 @@ export type GetUpcomingQuery = { __typename?: 'Query' } & {
     };
 };
 
-export type GetTopRatedQueryVariables = Exact<{
+export type GetNowPlayingQueryVariables = Exact<{
   page?: Maybe<Scalars['String']>;
 }>;
 
-export type GetTopRatedQuery = { __typename?: 'Query' } & {
-  topRated: { __typename?: 'TopRated' } & Pick<
-    TopRated,
+export type GetNowPlayingQuery = { __typename?: 'Query' } & {
+  nowPlaying: { __typename?: 'NowPlaying' } & Pick<
+    NowPlaying,
     'total_pages' | 'page'
   > & {
       results: Array<
-        { __typename?: 'TopRatedResults' } & Pick<
-          TopRatedResults,
+        { __typename?: 'NowPlayingResults' } & Pick<
+          NowPlayingResults,
           'id' | 'title' | 'vote_average' | 'poster_path'
         >
       >;
@@ -817,7 +813,7 @@ export const GetMoviesDocument = gql`
         poster_path
       }
     }
-    topRated {
+    nowPlaying {
       total_pages
       page
       results {
@@ -936,9 +932,9 @@ export type GetUpcomingQueryResult = Apollo.QueryResult<
   GetUpcomingQuery,
   GetUpcomingQueryVariables
 >;
-export const GetTopRatedDocument = gql`
-  query GetTopRated($page: String) {
-    topRated(page: $page) {
+export const GetNowPlayingDocument = gql`
+  query GetNowPlaying($page: String) {
+    nowPlaying(page: $page) {
       total_pages
       page
       results {
@@ -952,50 +948,52 @@ export const GetTopRatedDocument = gql`
 `;
 
 /**
- * __useGetTopRatedQuery__
+ * __useGetNowPlayingQuery__
  *
- * To run a query within a React component, call `useGetTopRatedQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetTopRatedQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetNowPlayingQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetNowPlayingQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetTopRatedQuery({
+ * const { data, loading, error } = useGetNowPlayingQuery({
  *   variables: {
  *      page: // value for 'page'
  *   },
  * });
  */
-export function useGetTopRatedQuery(
+export function useGetNowPlayingQuery(
   baseOptions?: Apollo.QueryHookOptions<
-    GetTopRatedQuery,
-    GetTopRatedQueryVariables
+    GetNowPlayingQuery,
+    GetNowPlayingQueryVariables
   >,
 ) {
-  return Apollo.useQuery<GetTopRatedQuery, GetTopRatedQueryVariables>(
-    GetTopRatedDocument,
+  return Apollo.useQuery<GetNowPlayingQuery, GetNowPlayingQueryVariables>(
+    GetNowPlayingDocument,
     baseOptions,
   );
 }
-export function useGetTopRatedLazyQuery(
+export function useGetNowPlayingLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
-    GetTopRatedQuery,
-    GetTopRatedQueryVariables
+    GetNowPlayingQuery,
+    GetNowPlayingQueryVariables
   >,
 ) {
-  return Apollo.useLazyQuery<GetTopRatedQuery, GetTopRatedQueryVariables>(
-    GetTopRatedDocument,
+  return Apollo.useLazyQuery<GetNowPlayingQuery, GetNowPlayingQueryVariables>(
+    GetNowPlayingDocument,
     baseOptions,
   );
 }
-export type GetTopRatedQueryHookResult = ReturnType<typeof useGetTopRatedQuery>;
-export type GetTopRatedLazyQueryHookResult = ReturnType<
-  typeof useGetTopRatedLazyQuery
+export type GetNowPlayingQueryHookResult = ReturnType<
+  typeof useGetNowPlayingQuery
 >;
-export type GetTopRatedQueryResult = Apollo.QueryResult<
-  GetTopRatedQuery,
-  GetTopRatedQueryVariables
+export type GetNowPlayingLazyQueryHookResult = ReturnType<
+  typeof useGetNowPlayingLazyQuery
+>;
+export type GetNowPlayingQueryResult = Apollo.QueryResult<
+  GetNowPlayingQuery,
+  GetNowPlayingQueryVariables
 >;
 export const GetMoviesSearchDocument = gql`
   query GetMoviesSearch($query: String!, $pageSize: Int) {

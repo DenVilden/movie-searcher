@@ -1,7 +1,7 @@
 import { Grid } from '@material-ui/core';
 import { GetStaticProps } from 'next';
 import Upcoming from './upcoming/[page]';
-import TopRated from './top-rated/[page]';
+import NowPlaying from './now_playing/[page]';
 import { useGetMoviesQuery, GetMoviesDocument } from '../__generated__';
 import { initializeApollo } from '../apollo';
 import { ErrorMessage } from '../components';
@@ -14,10 +14,10 @@ export default function HomePage() {
   return data ? (
     <Grid container>
       <Grid item lg={6}>
-        <Upcoming initialData={{ upcoming: data.upcoming }} />
+        <NowPlaying initialData={{ nowPlaying: data.nowPlaying }} />
       </Grid>
       <Grid item lg={6}>
-        <TopRated initialData={{ topRated: data.topRated }} />
+        <Upcoming initialData={{ upcoming: data.upcoming }} />
       </Grid>
     </Grid>
   ) : null;

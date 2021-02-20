@@ -1,7 +1,7 @@
-import resolvers from '../resolvers';
+import resolvers from './resolvers';
 import {
   mockUpcoming,
-  mockTopRated,
+  mockNowPlaying,
   mockMoviesSearch,
   mockMovieInfo,
   mockTvShowInfo,
@@ -19,7 +19,7 @@ describe('[Query.upcoming]', () => {
   it('calls upcoming', async () => {
     getUpcoming.mockReturnValueOnce(mockUpcoming);
 
-    const res = await resolvers.Query!.upcoming!(
+    const res = await resolvers.Query?.upcoming!(
       {} as any,
       { page: '1' } as any,
       mockContext as any,
@@ -35,7 +35,7 @@ describe('[Query.upcoming]', () => {
     let errorMessage = '';
 
     try {
-      await resolvers.Query!.upcoming!(
+      await resolvers.Query?.upcoming!(
         {} as any,
         {} as any,
         mockContext as any,
@@ -54,7 +54,7 @@ describe('[Query.upcoming]', () => {
     let errorMessage = '';
 
     try {
-      await resolvers.Query!.upcoming!(
+      await resolvers.Query?.upcoming!(
         {} as any,
         {} as any,
         mockContext as any,
@@ -68,35 +68,35 @@ describe('[Query.upcoming]', () => {
   });
 });
 
-describe('[Query.topRated]', () => {
+describe('[Query.nowPlaying]', () => {
   const mockContext = {
     dataSources: {
-      moviesAPI: { getTopRated: jest.fn() },
+      moviesAPI: { getNowPlaying: jest.fn() },
     },
   };
 
-  const { getTopRated } = mockContext.dataSources.moviesAPI;
+  const { getNowPlaying } = mockContext.dataSources.moviesAPI;
 
-  it('calls topRated', async () => {
-    getTopRated.mockReturnValueOnce(mockTopRated);
+  it('calls nowPlaying', async () => {
+    getNowPlaying.mockReturnValueOnce(mockNowPlaying);
 
-    const res = await resolvers.Query!.topRated!(
+    const res = await resolvers.Query?.nowPlaying!(
       {} as any,
       { page: '1' } as any,
       mockContext as any,
       {} as any,
     );
 
-    expect(res).toStrictEqual(mockTopRated);
+    expect(res).toStrictEqual(mockNowPlaying);
   });
 
   it('catches 404 error', async () => {
-    getTopRated.mockReturnValueOnce(mockTopRated);
+    getNowPlaying.mockReturnValueOnce(mockNowPlaying);
 
     let errorMessage = '';
 
     try {
-      await resolvers.Query!.topRated!(
+      await resolvers.Query?.nowPlaying!(
         {} as any,
         {} as any,
         mockContext as any,
@@ -109,13 +109,13 @@ describe('[Query.topRated]', () => {
     }
   });
 
-  it('catches topRated error', async () => {
-    getTopRated.mockRejectedValueOnce('error');
+  it('catches nowPlaying error', async () => {
+    getNowPlaying.mockRejectedValueOnce('error');
 
     let errorMessage = '';
 
     try {
-      await resolvers.Query!.topRated!(
+      await resolvers.Query?.nowPlaying!(
         {} as any,
         {} as any,
         mockContext as any,
@@ -141,7 +141,7 @@ describe('[Query.moviesSearch]', () => {
   it('calls moviesSearch and preserve cursor', async () => {
     getMoviesSearch.mockReturnValueOnce(mockMoviesSearch);
 
-    const res = await resolvers.Query!.moviesSearch!(
+    const res = await resolvers.Query?.moviesSearch!(
       {} as any,
       { cursor: 1, pageSize: 2 } as any,
       mockContext as any,
@@ -161,7 +161,7 @@ describe('[Query.moviesSearch]', () => {
     let errorMessage = '';
 
     try {
-      await resolvers.Query!.moviesSearch!(
+      await resolvers.Query?.moviesSearch!(
         {} as any,
         {} as any,
         mockContext as any,
@@ -187,7 +187,7 @@ describe('[Query.movieInfo]', () => {
   it('calls movieInfo.similar and paginate results', async () => {
     getMovieInfo.mockReturnValueOnce(mockMovieInfo);
 
-    const res = await resolvers.Query!.movieInfo!(
+    const res = await resolvers.Query?.movieInfo!(
       {} as any,
       { pageSize: 1 } as any,
       mockContext as any,
@@ -210,7 +210,7 @@ describe('[Query.movieInfo]', () => {
     let errorMessage = '';
 
     try {
-      await resolvers.Query!.movieInfo!(
+      await resolvers.Query?.movieInfo!(
         {} as any,
         {} as any,
         mockContext as any,
@@ -236,7 +236,7 @@ describe('[Query.tvShowInfo]', () => {
   it('calls tvShowInfo.similar and paginate results', async () => {
     getTvShowInfo.mockReturnValueOnce(mockTvShowInfo);
 
-    const res = await resolvers.Query!.tvShowInfo!(
+    const res = await resolvers.Query?.tvShowInfo!(
       {} as any,
       { pageSize: 1 } as any,
       mockContext as any,
@@ -259,7 +259,7 @@ describe('[Query.tvShowInfo]', () => {
     let errorMessage = '';
 
     try {
-      await resolvers.Query!.tvShowInfo!(
+      await resolvers.Query?.tvShowInfo!(
         {} as any,
         {} as any,
         mockContext as any,

@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import numeral from 'numeral';
 import type {
   MockUpcomingResponse,
-  MockTopRatedResponse,
+  MockNowPlayingResponse,
   MockMoviesSearchResponse,
   MockMovieInfoResponse,
   MockTvShowInfoResponse,
@@ -38,7 +38,7 @@ export default class MoviesAPI extends RESTDataSource {
     };
   }
 
-  private moviesTopRatedReducer(movies: MockTopRatedResponse) {
+  private moviesNowPlayingReducer(movies: MockNowPlayingResponse) {
     return {
       total_pages: movies.total_pages,
       page: movies.page,
@@ -96,29 +96,28 @@ export default class MoviesAPI extends RESTDataSource {
     };
   }
 
-  private tvShowInfoReducer(movie: MockTvShowInfoResponse) {
+  private tvShowInfoReducer(tv: MockTvShowInfoResponse) {
     return {
-      id: movie.id,
-      title: movie.name,
+      id: tv.id,
+      title: tv.name,
       release_date:
-        movie.first_air_date &&
-        dayjs(movie.first_air_date).format('DD MMMM YYYY'),
-      vote_average: movie.vote_average,
-      overview: movie.overview,
-      backdrop_path: attachPoster(movie.backdrop_path, 500),
-      poster_path: attachPoster(movie.poster_path),
-      number_of_episodes: movie.number_of_episodes,
-      number_of_seasons: movie.number_of_seasons,
+        tv.first_air_date && dayjs(tv.first_air_date).format('DD MMMM YYYY'),
+      vote_average: tv.vote_average,
+      overview: tv.overview,
+      backdrop_path: attachPoster(tv.backdrop_path, 500),
+      poster_path: attachPoster(tv.poster_path),
+      number_of_episodes: tv.number_of_episodes,
+      number_of_seasons: tv.number_of_seasons,
       media_type: 'tv',
       similar: {
-        results: Array.isArray(movie.similar.results)
-          ? movie.similar.results.map((similarMovie) => ({
-              id: similarMovie.id,
-              title: similarMovie.name,
+        results: Array.isArray(tv.similar.results)
+          ? tv.similar.results.map((similarTvShow) => ({
+              id: similarTvShow.id,
+              title: similarTvShow.name,
               release_date:
-                similarMovie.first_air_date &&
-                dayjs(similarMovie.first_air_date).format('YYYY'),
-              poster_path: attachPoster(similarMovie.poster_path),
+                similarTvShow.first_air_date &&
+                dayjs(similarTvShow.first_air_date).format('YYYY'),
+              poster_path: attachPoster(similarTvShow.poster_path),
               media_type: 'tv',
             }))
           : [],
@@ -133,11 +132,11 @@ export default class MoviesAPI extends RESTDataSource {
     return this.moviesUpcomingReducer(data);
   }
 
-  async getTopRated(page: string) {
-    const data: MockTopRatedResponse = await this.get('/movie/top_rated', {
+  async getNowPlaying(page: string) {
+    const data: MockNowPlayingResponse = await this.get('/movie/now_playing', {
       page,
     });
-    return this.moviesTopRatedReducer(data);
+    return this.moviesNowPlayingReducer(data);
   }
 
   async getMoviesSearch(query: string) {

@@ -11,17 +11,17 @@ type Upcoming {
   results: [UpcomingResults!]!
 }
 
-type TopRatedResults {
+type NowPlayingResults {
   id: Int!
   title: String!
   vote_average: Float!
   poster_path: String
 }
 
-type TopRated {
+type NowPlaying {
   total_pages: Int!
   page: Int!
-  results: [TopRatedResults!]!
+  results: [NowPlayingResults!]!
 }
 
 type MoviesSearchResults {
@@ -39,7 +39,7 @@ type MoviesSearch {
 type SimilarResults {
   id: Int!
   title: String!
-  release_date: String
+  release_date: String!
   poster_path: String
   media_type: String!
 }
@@ -80,7 +80,7 @@ type TvShowInfo {
 
 type Query {
   upcoming(page: String = "1"): Upcoming!
-  topRated(page: String = "1"): TopRated!
+  nowPlaying(page: String = "1"): NowPlaying!
   moviesSearch(
     query: String!
     cursor: Int = null
