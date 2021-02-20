@@ -5,30 +5,41 @@ import { Header } from '..';
 import { theme } from '../../lib/theme';
 
 const GlobalStyle = createGlobalStyle`
-  body {
-    min-width: 320px;
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('/fonts/roboto-v20-latin-300.woff2') format('woff2'),
+      url('/fonts/roboto-v20-latin-300.woff') format('woff');
   }
-
   @font-face {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('/fonts/Roboto-Regular.woff2');
+    src: url('/fonts/roboto-v20-latin-regular.woff2') format('woff2'),
+      url('/fonts/roboto-v20-latin-regular.woff') format('woff');
   }
   @font-face {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url('/fonts/Roboto-Medium.woff2');
+    src: url('/fonts/roboto-v20-latin-500.woff2') format('woff2'),
+      url('/fonts/roboto-v20-latin-500.woff') format('woff');
   }
   @font-face {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('/fonts/Roboto-Bold.woff2');
+    src: url('/fonts/roboto-v20-latin-700.woff2') format('woff2'),
+      url('/fonts/roboto-v20-latin-700.woff') format('woff');
+  }
+
+  body {
+    min-width: 320px;
   }
 `;
 
@@ -42,21 +53,27 @@ export default function Layout({ children }: Props) {
       <Head>
         <link
           rel="preload"
-          href="/fonts/Roboto-Regular.woff2"
+          href="/fonts/roboto-v20-latin-300.woff2"
           as="font"
-          crossOrigin=""
+          crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="/fonts/Roboto-Medium.woff2"
+          href="/fonts/roboto-v20-latin-regular.woff2"
           as="font"
-          crossOrigin=""
+          crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="/fonts/Roboto-Bold.woff2"
+          href="/fonts/roboto-v20-latin-500.woff2"
           as="font"
-          crossOrigin=""
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/roboto-v20-latin-700.woff2"
+          as="font"
+          crossOrigin="anonymous"
         />
         <link href="/favicon.ico" rel="shortcut icon" />
         <meta charSet="utf-8" />
