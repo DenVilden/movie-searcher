@@ -8,7 +8,7 @@ describe('pagination', () => {
         refetch={jest.fn()}
         totalPages={10}
         currentPage={1}
-        element={{} as React.MutableRefObject<null>}
+        path="path"
       />,
     );
 

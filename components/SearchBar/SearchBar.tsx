@@ -4,6 +4,7 @@ import { Autocomplete } from '@material-ui/lab';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { fade } from '@material-ui/core/styles';
+import { Search as SearchIcon } from '@material-ui/icons';
 import { useGetMoviesSearchLazyQuery } from '../../__generated__';
 
 const StyledAutocomplete = styled(Autocomplete)`
@@ -20,7 +21,7 @@ const StyledAutocomplete = styled(Autocomplete)`
   }
 `;
 
-const StyledInputBase = styled(TextField)`
+const StyledTextField = styled(TextField)`
   background-color: ${(props) => fade(props.theme.palette.common.white, 0.15)};
   border-radius: ${(props) => props.theme.shape.borderRadius}px;
 
@@ -31,6 +32,25 @@ const StyledInputBase = styled(TextField)`
   :hover {
     background-color: ${(props) =>
       fade(props.theme.palette.common.white, 0.25)};
+  }
+
+  input {
+    margin-left: ${(props) => props.theme.spacing(5)}px;
+  }
+`;
+
+const StyledSearchIcon = styled(SearchIcon)`
+  position: absolute;
+  font-size: 25px;
+  color: rgba(0, 0, 0, 0.87);
+  top: 0;
+  height: 100%;
+  user-select: none;
+  margin-left: ${(props) => props.theme.spacing(2)}px;
+  margin-top: 2px;
+
+  ${(props) => props.theme.breakpoints.up('sm')} {
+    margin-left: ${(props) => props.theme.spacing(4)}px;
   }
 `;
 
@@ -70,14 +90,17 @@ export default function SearchBar() {
       options={data?.moviesSearch.results || []}
       getOptionLabel={(option: any) => option.title}
       renderInput={(params) => (
-        <StyledInputBase
-          {...params}
-          error={Boolean(error)}
-          variant="outlined"
-          margin="dense"
-          placeholder="search for movies and tv shows"
-          fullWidth
-        />
+        <>
+          <StyledSearchIcon />
+          <StyledTextField
+            {...params}
+            error={Boolean(error)}
+            variant="outlined"
+            margin="dense"
+            placeholder="Search..."
+            fullWidth
+          />
+        </>
       )}
     />
   );

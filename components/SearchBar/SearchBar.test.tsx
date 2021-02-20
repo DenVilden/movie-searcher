@@ -36,9 +36,7 @@ describe('searchBar', () => {
   it('should fetch movies, redirect to correct url and clear input value', async () => {
     renderApollo(<SearchBar />, { mocks });
 
-    const inputElement = screen.getByPlaceholderText(
-      'search for movies and tv shows',
-    );
+    const inputElement = screen.getByPlaceholderText('Search...');
 
     fireEvent.change(inputElement, { target: { value: 'test' } });
 

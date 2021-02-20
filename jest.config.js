@@ -6,6 +6,6 @@ module.exports = {
     '!pages/api/*.ts',
     '!apollo/index.ts',
     '!components/**/index.ts',
-    '!__generated__/index.ts',
+    '!__generated__/*.ts',
   ],
 };
