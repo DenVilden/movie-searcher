@@ -52,9 +52,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
     query: GetNowPlayingDocument,
   });
 
-  const paths = Array(data.nowPlaying.total_pages).map((_, page) => ({
-    params: { page: (page + 1).toString() },
-  }));
+  const paths = Array.from(
+    { length: data.nowPlaying.total_pages },
+    (_, page) => ({
+      params: { page: (page + 1).toString() },
+    }),
+  );
 
   return {
     paths,
