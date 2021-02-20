@@ -9,7 +9,7 @@ import {
 } from '../../__generated__';
 import { initializeApollo } from '../../apollo';
 
-export default function TvPage() {
+export default function Tv() {
   const { id } = useRouter().query as { id: string };
 
   const { data, error } = useGetTvShowInfoQuery({ variables: { id } });
@@ -45,7 +45,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       variables: { id: params?.id },
     });
   } catch (error) {
-    console.log(error);
     if (error.message.includes('404')) {
       return {
         notFound: true,

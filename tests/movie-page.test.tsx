@@ -1,4 +1,4 @@
-import MoviePage from '../pages/movie/[id]';
+import Movie from '../pages/movie/[id]';
 import { GetMovieInfoDocument } from '../__generated__';
 import { renderApollo, screen } from '../lib/setupTests';
 
@@ -22,9 +22,9 @@ const mocks = [
   },
 ];
 
-describe('moviePage', () => {
+describe('movie', () => {
   it('should render error state', async () => {
-    renderApollo(<MoviePage />, { mocks });
+    renderApollo(<Movie />, { mocks });
 
     expect(
       await screen.findByText(/an error has occurred/i),

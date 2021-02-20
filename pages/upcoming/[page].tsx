@@ -47,6 +47,7 @@ export default function Upcoming({ initialData }: Props) {
 
 export const getStaticPaths: GetStaticPaths = async () => ({
   paths: [
+    { params: { page: '1' } },
     { params: { page: '2' } },
     { params: { page: '3' } },
     { params: { page: '4' } },

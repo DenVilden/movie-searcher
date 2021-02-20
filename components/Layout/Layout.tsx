@@ -14,21 +14,21 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('/Roboto-Regular.woff2');
+    src: url('/fonts/Roboto-Regular.woff2');
   }
   @font-face {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url('/Roboto-Medium.woff2');
+    src: url('/fonts/Roboto-Medium.woff2');
   }
   @font-face {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url('/Roboto-Bold.woff2');
+    src: url('/fonts/Roboto-Bold.woff2');
   }
 `;
 
@@ -42,19 +42,19 @@ export default function Layout({ children }: Props) {
       <Head>
         <link
           rel="preload"
-          href="/Roboto-Regular.woff2"
+          href="/fonts/Roboto-Regular.woff2"
           as="font"
           crossOrigin=""
         />
         <link
           rel="preload"
-          href="/Roboto-Medium.woff2"
+          href="/fonts/Roboto-Medium.woff2"
           as="font"
           crossOrigin=""
         />
         <link
           rel="preload"
-          href="/Roboto-Bold.woff2"
+          href="/fonts/Roboto-Bold.woff2"
           as="font"
           crossOrigin=""
         />

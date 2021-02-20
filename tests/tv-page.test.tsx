@@ -1,4 +1,4 @@
-import TvPage from '../pages/tv/[id]';
+import Tv from '../pages/tv/[id]';
 import { GetTvShowInfoDocument } from '../__generated__';
 import { renderApollo, screen } from '../lib/setupTests';
 
@@ -22,9 +22,9 @@ const mocks = [
   },
 ];
 
-describe('tvPage', () => {
+describe('tv', () => {
   it('should render error state', async () => {
-    renderApollo(<TvPage />, { mocks });
+    renderApollo(<Tv />, { mocks });
 
     expect(
       await screen.findByText(/an error has occurred/i),

@@ -1,8 +1,8 @@
-import HomePage from '../pages';
+import Home from '../pages';
 import { GetMoviesDocument } from '../__generated__';
 import { renderApollo, screen } from '../lib/setupTests';
 
-describe('homePage', () => {
+describe('home', () => {
   it('should render error state', async () => {
     const mock = [
       {
@@ -13,7 +13,7 @@ describe('homePage', () => {
       },
     ];
 
-    renderApollo(<HomePage />, { mocks: mock });
+    renderApollo(<Home />, { mocks: mock });
 
     expect(
       await screen.findByText(/an error has occurred/i),

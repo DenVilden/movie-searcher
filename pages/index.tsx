@@ -6,7 +6,7 @@ import { useGetMoviesQuery, GetMoviesDocument } from '../__generated__';
 import { initializeApollo } from '../apollo';
 import { ErrorMessage } from '../components';
 
-export default function HomePage() {
+export default function Home() {
   const { data, error } = useGetMoviesQuery();
 
   if (error) return <ErrorMessage error={error.message} />;

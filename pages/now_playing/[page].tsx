@@ -18,7 +18,7 @@ interface Props {
   initialData: GetNowPlayingQuery;
 }
 
-export default function TopRated({ initialData }: Props) {
+export default function NowPlaying({ initialData }: Props) {
   const { page } = useRouter().query as { page: string };
   const { data, error, refetch } = useGetNowPlayingQuery({
     variables: { page },
@@ -47,6 +47,7 @@ export default function TopRated({ initialData }: Props) {
 
 export const getStaticPaths: GetStaticPaths = async () => ({
   paths: [
+    { params: { page: '1' } },
     { params: { page: '2' } },
     { params: { page: '3' } },
     { params: { page: '4' } },

@@ -1,4 +1,4 @@
-import NowPlayingPage from '../pages/now_playing/[page]';
+import NowPlaying from '../pages/now_playing/[page]';
 import { renderApollo, screen, fireEvent } from '../lib/setupTests';
 
 const mockHistoryPush = jest.fn();
@@ -27,9 +27,9 @@ const mocks = {
   },
 };
 
-describe('nowPlayingPage', () => {
+describe('nowPlaying', () => {
   it('should switch page and refetch movies', async () => {
-    renderApollo(<NowPlayingPage initialData={mocks} />);
+    renderApollo(<NowPlaying initialData={mocks} />);
 
     const pageButton = await screen.findByLabelText('Go to page 2');
 

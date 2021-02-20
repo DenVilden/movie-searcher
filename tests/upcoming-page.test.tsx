@@ -1,4 +1,4 @@
-import UpcomingPage from '../pages/upcoming/[page]';
+import Upcoming from '../pages/upcoming/[page]';
 import { renderApollo, screen, fireEvent } from '../lib/setupTests';
 
 const mockHistoryPush = jest.fn();
@@ -27,9 +27,9 @@ const mocks = {
   },
 };
 
-describe('upcomingPage', () => {
+describe('upcoming', () => {
   it('should switch page and refetch movies', async () => {
-    renderApollo(<UpcomingPage initialData={mocks} />);
+    renderApollo(<Upcoming initialData={mocks} />);
 
     const pageButton = await screen.findByLabelText('Go to page 2');
 
