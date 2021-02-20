@@ -45,32 +45,30 @@ export default function NowPlaying({ initialData }: Props) {
   ) : null;
 }
 
-export const getStaticPaths: GetStaticPaths = async () => ({
-  paths: [
-    { params: { page: '1' } },
-    { params: { page: '2' } },
-    { params: { page: '3' } },
-    { params: { page: '4' } },
-    { params: { page: '5' } },
-  ],
-  fallback: true,
-});
+export const getStaticPaths: GetStaticPaths = async () => {
+  const apolloClient = initializeApollo();
+
+  const { data }: { data: GetNowPlayingQuery } = await apolloClient.query({
+    query: GetNowPlayingDocument,
+  });
+
+  const paths = Array(data.nowPlaying.total_pages).map((_, page) => ({
+    params: { page: (page + 1).toString() },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const apolloClient = initializeApollo();
 
-  try {
-    await apolloClient.query({
-      query: GetNowPlayingDocument,
-      variables: { page: params?.page },
-    });
-  } catch (error) {
-    if (error.message.includes('404')) {
-      return {
-        notFound: true,
-      };
-    }
-  }
+  await apolloClient.query({
+    query: GetNowPlayingDocument,
+    variables: { page: params?.page },
+  });
 
   return {
     props: {

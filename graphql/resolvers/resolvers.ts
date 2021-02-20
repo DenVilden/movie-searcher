@@ -12,24 +12,14 @@ const resolvers: Resolvers<Context> = {
   Query: {
     async upcoming(_root, { page }, { dataSources }) {
       try {
-        const data = await dataSources.moviesAPI.getUpcoming(page);
-
-        if (!data.results.length || data.page !== +page) {
-          throw new Error('404 Not found');
-        }
-        return data;
+        return await dataSources.moviesAPI.getUpcoming(page);
       } catch (error) {
         throw new Error(error);
       }
     },
     async nowPlaying(_root, { page }, { dataSources }) {
       try {
-        const data = await dataSources.moviesAPI.getNowPlaying(page);
-
-        if (!data.results.length || data.page !== +page) {
-          throw new Error('404 Not found');
-        }
-        return data;
+        return await dataSources.moviesAPI.getNowPlaying(page);
       } catch (error) {
         throw new Error(error);
       }
