@@ -4,9 +4,7 @@
     "airbnb/hooks",
     "plugin:jest/all",
     "plugin:testing-library/react",
-    "prettier",
-    "prettier/react",
-    "prettier/@typescript-eslint"
+    "prettier"
   ],
   "parserOptions": {
     "project": "tsconfig.json"
