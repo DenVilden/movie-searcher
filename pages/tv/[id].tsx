@@ -24,7 +24,7 @@ export default function Tv() {
       <Slide direction="up" in>
         <div>
           <MovieInfo data={data.tvShowInfo} />
-          {Boolean(data.tvShowInfo.similar.results.length) && (
+          {!!data.tvShowInfo.similar.results.length && (
             <MoviesBox
               movies={data.tvShowInfo.similar.results}
               title="Similar TV Shows"

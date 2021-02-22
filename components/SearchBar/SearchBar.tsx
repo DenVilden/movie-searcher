@@ -71,8 +71,8 @@ export default function SearchBar() {
       clearOnBlur
       inputValue={inputValue}
       id="autocomplete"
-      loading={loading || Boolean(error)}
-      loadingText={loading ? 'Loading...' : error?.message}
+      loading={loading || !!error || !data?.moviesSearch.results.length}
+      loadingText={loading ? 'Loading...' : error?.message || 'No results'}
       onChange={(_evt, movie: any, reason) => {
         if (reason === 'select-option') {
           router.push(`/${movie.media_type}/${movie.id}`);
@@ -86,7 +86,7 @@ export default function SearchBar() {
           setInputValue('');
         }
       }}
-      open={Boolean(inputValue)}
+      open={!!inputValue}
       options={data?.moviesSearch.results || []}
       getOptionLabel={(option: any) => option.title}
       renderInput={(params) => (
@@ -94,7 +94,7 @@ export default function SearchBar() {
           <StyledSearchIcon />
           <StyledTextField
             {...params}
-            error={Boolean(error)}
+            error={!!error}
             variant="outlined"
             margin="dense"
             placeholder="Search..."

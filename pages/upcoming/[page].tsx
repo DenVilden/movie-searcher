@@ -22,7 +22,7 @@ export default function Upcoming({ initialData }: Props) {
   const { page } = useRouter().query as { page: string };
   const { data, error, refetch } = useGetUpcomingQuery({
     variables: { page },
-    skip: Boolean(initialData),
+    skip: !!initialData,
   });
 
   if (error) return <ErrorMessage error={error.message} />;

@@ -44,7 +44,7 @@ export default function MoviesBox({
   return (
     <Grow timeout="auto" in>
       <Root elevation={elevation} padding={padding}>
-        {Boolean(title) && (
+        {!!title && (
           <Typography align="center" gutterBottom variant="h4">
             {title}
           </Typography>

@@ -24,7 +24,7 @@ export default function Movie() {
       <Slide direction="up" in>
         <div>
           <MovieInfo data={data.movieInfo} />
-          {Boolean(data.movieInfo.similar.results.length) && (
+          {!!data.movieInfo.similar.results.length && (
             <MoviesBox
               movies={data.movieInfo.similar.results}
               title="Similar Movies"

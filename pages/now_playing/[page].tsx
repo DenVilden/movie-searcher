@@ -22,7 +22,7 @@ export default function NowPlaying({ initialData }: Props) {
   const { page } = useRouter().query as { page: string };
   const { data, error, refetch } = useGetNowPlayingQuery({
     variables: { page },
-    skip: Boolean(initialData),
+    skip: !!initialData,
   });
 
   if (error) return <ErrorMessage error={error.message} />;
