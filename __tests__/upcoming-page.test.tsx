@@ -1,5 +1,6 @@
 import Upcoming from '../pages/upcoming/[page]';
 import { renderApollo, screen, fireEvent } from '../lib/setupTests';
+import { GetUpcomingDocument } from '../__generated__';
 
 const mockHistoryPush = jest.fn();
 
@@ -36,5 +37,25 @@ describe('upcoming', () => {
     fireEvent.click(pageButton);
 
     expect(mockHistoryPush).toHaveBeenCalledWith('/upcoming/2');
+  });
+
+  it('should render error state', async () => {
+    const mock = [
+      {
+        request: {
+          query: GetUpcomingDocument,
+          variables: {
+            page: '1',
+          },
+        },
+        error: new Error('an error has occurred'),
+      },
+    ];
+
+    renderApollo(<Upcoming initialData={null as any} />, { mocks: mock });
+
+    expect(
+      await screen.findByText(/an error has occurred/i),
+    ).toBeInTheDocument();
   });
 });

@@ -1,5 +1,6 @@
 import NowPlaying from '../pages/now_playing/[page]';
 import { renderApollo, screen, fireEvent } from '../lib/setupTests';
+import { GetNowPlayingDocument } from '../__generated__';
 
 const mockHistoryPush = jest.fn();
 
@@ -36,5 +37,25 @@ describe('nowPlaying', () => {
     fireEvent.click(pageButton);
 
     expect(mockHistoryPush).toHaveBeenCalledWith('/now_playing/2');
+  });
+
+  it('should render error state', async () => {
+    const mock = [
+      {
+        request: {
+          query: GetNowPlayingDocument,
+          variables: {
+            page: '1',
+          },
+        },
+        error: new Error('an error has occurred'),
+      },
+    ];
+
+    renderApollo(<NowPlaying initialData={null as any} />, { mocks: mock });
+
+    expect(
+      await screen.findByText(/an error has occurred/i),
+    ).toBeInTheDocument();
   });
 });
