@@ -25,16 +25,13 @@ export default class MoviesAPI extends RESTDataSource {
     return {
       total_pages: movies.total_pages,
       page: movies.page,
-      results: Array.isArray(movies.results)
-        ? movies.results.map((movie) => ({
-            id: movie.id,
-            title: movie.title,
-            release_date:
-              movie.release_date &&
-              dayjs(movie.release_date).format('DD.MM.YYYY'),
-            poster_path: attachPoster(movie.poster_path),
-          }))
-        : [],
+      results: movies.results.map((movie) => ({
+        id: movie.id,
+        title: movie.title,
+        release_date:
+          movie.release_date && dayjs(movie.release_date).format('DD.MM.YYYY'),
+        poster_path: attachPoster(movie.poster_path),
+      })),
     };
   }
 
@@ -42,28 +39,24 @@ export default class MoviesAPI extends RESTDataSource {
     return {
       total_pages: movies.total_pages,
       page: movies.page,
-      results: Array.isArray(movies.results)
-        ? movies.results.map((movie) => ({
-            id: movie.id,
-            title: movie.title,
-            vote_average: movie.vote_average,
-            poster_path: attachPoster(movie.poster_path),
-          }))
-        : [],
+      results: movies.results.map((movie) => ({
+        id: movie.id,
+        title: movie.title,
+        vote_average: movie.vote_average,
+        poster_path: attachPoster(movie.poster_path),
+      })),
     };
   }
 
   private moviesSearchReducer(movies: MockMoviesSearchResponse) {
     return {
-      results: Array.isArray(movies.results)
-        ? movies.results
-            .map((movie) => ({
-              id: movie.id,
-              title: movie?.title || movie.name,
-              media_type: movie.media_type,
-            }))
-            .filter((movie) => movie.media_type !== 'person')
-        : [],
+      results: movies.results
+        .map((movie) => ({
+          id: movie.id,
+          title: movie?.title || movie.name,
+          media_type: movie.media_type,
+        }))
+        .filter((movie) => movie.media_type !== 'person'),
     };
   }
 
@@ -81,17 +74,15 @@ export default class MoviesAPI extends RESTDataSource {
       poster_path: attachPoster(movie.poster_path),
       media_type: 'movie',
       similar: {
-        results: Array.isArray(movie.similar.results)
-          ? movie.similar.results.map((similarMovie) => ({
-              id: similarMovie.id,
-              title: similarMovie.title,
-              release_date:
-                similarMovie.release_date &&
-                dayjs(similarMovie.release_date).format('YYYY'),
-              poster_path: attachPoster(similarMovie.poster_path),
-              media_type: 'movie',
-            }))
-          : [],
+        results: movie.similar.results.map((similarMovie) => ({
+          id: similarMovie.id,
+          title: similarMovie.title,
+          release_date:
+            similarMovie.release_date &&
+            dayjs(similarMovie.release_date).format('YYYY'),
+          poster_path: attachPoster(similarMovie.poster_path),
+          media_type: 'movie',
+        })),
       },
     };
   }
@@ -110,17 +101,15 @@ export default class MoviesAPI extends RESTDataSource {
       number_of_seasons: tv.number_of_seasons,
       media_type: 'tv',
       similar: {
-        results: Array.isArray(tv.similar.results)
-          ? tv.similar.results.map((similarTvShow) => ({
-              id: similarTvShow.id,
-              title: similarTvShow.name,
-              release_date:
-                similarTvShow.first_air_date &&
-                dayjs(similarTvShow.first_air_date).format('YYYY'),
-              poster_path: attachPoster(similarTvShow.poster_path),
-              media_type: 'tv',
-            }))
-          : [],
+        results: tv.similar.results.map((similarTvShow) => ({
+          id: similarTvShow.id,
+          title: similarTvShow.name,
+          release_date:
+            similarTvShow.first_air_date &&
+            dayjs(similarTvShow.first_air_date).format('YYYY'),
+          poster_path: attachPoster(similarTvShow.poster_path),
+          media_type: 'tv',
+        })),
       },
     };
   }
