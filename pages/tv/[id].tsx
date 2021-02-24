@@ -9,7 +9,7 @@ import {
 } from '../../__generated__';
 import { initializeApollo } from '../../apollo';
 
-export default function Tv() {
+export default function TvPage() {
   const { id } = useRouter().query as { id: string };
 
   const { data, error } = useGetTvShowInfoQuery({ variables: { id } });

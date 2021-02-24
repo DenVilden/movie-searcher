@@ -9,7 +9,7 @@ import {
 } from '../../__generated__';
 import { initializeApollo } from '../../apollo';
 
-export default function Movie() {
+export default function MoviePage() {
   const { id } = useRouter().query as { id: string };
 
   const { data, error } = useGetMovieInfoQuery({ variables: { id } });

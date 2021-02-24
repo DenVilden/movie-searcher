@@ -13,7 +13,6 @@ const StyledPagination = styled(Pagination)`
 `;
 
 interface Props {
-  refetch: (page: string) => void;
   totalPages: number;
   currentPage: number;
   path: string;
@@ -21,7 +20,6 @@ interface Props {
 
 export default function PaginationComponent({
   totalPages,
-  refetch,
   currentPage,
   path,
 }: Props) {
@@ -34,7 +32,6 @@ export default function PaginationComponent({
       page={page}
       onChange={(_evt, pageNumber: number) => {
         setPage(pageNumber);
-        refetch(pageNumber.toString());
         router.push(`/${path}/${pageNumber}`);
       }}
     />

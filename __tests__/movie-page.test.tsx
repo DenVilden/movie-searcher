@@ -1,4 +1,4 @@
-import Movie from '../pages/movie/[id]';
+import MoviePage from '../pages/movie/[id]';
 import { GetMovieInfoDocument } from '../__generated__';
 import { renderApollo, screen } from '../lib/setupTests';
 
@@ -48,9 +48,9 @@ const mocks = [
   },
 ];
 
-describe('movie', () => {
+describe('movie page', () => {
   it('should fetch movie by id', async () => {
-    renderApollo(<Movie />, { mocks });
+    renderApollo(<MoviePage />, { mocks });
 
     expect(await screen.findByText('rendered movie')).toBeInTheDocument();
     expect(await screen.findByText('rendered similar')).toBeInTheDocument();
@@ -69,7 +69,7 @@ describe('movie', () => {
       },
     ];
 
-    renderApollo(<Movie />, { mocks: mock });
+    renderApollo(<MoviePage />, { mocks: mock });
 
     expect(
       await screen.findByText(/an error has occurred/i),

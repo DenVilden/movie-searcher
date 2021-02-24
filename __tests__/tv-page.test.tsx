@@ -1,4 +1,4 @@
-import Tv from '../pages/tv/[id]';
+import TvPage from '../pages/tv/[id]';
 import { GetTvShowInfoDocument } from '../__generated__';
 import { renderApollo, screen } from '../lib/setupTests';
 
@@ -48,9 +48,9 @@ const mocks = [
   },
 ];
 
-describe('tv', () => {
+describe('tv page', () => {
   it('should fetch tv by id', async () => {
-    renderApollo(<Tv />, { mocks });
+    renderApollo(<TvPage />, { mocks });
 
     expect(await screen.findByText('rendered tv')).toBeInTheDocument();
     expect(await screen.findByText('rendered similar')).toBeInTheDocument();
@@ -69,7 +69,7 @@ describe('tv', () => {
       },
     ];
 
-    renderApollo(<Tv />, { mocks: mock });
+    renderApollo(<TvPage />, { mocks: mock });
 
     expect(
       await screen.findByText(/an error has occurred/i),

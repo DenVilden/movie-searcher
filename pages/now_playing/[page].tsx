@@ -18,9 +18,9 @@ interface Props {
   initialData: GetNowPlayingQuery;
 }
 
-export default function NowPlaying({ initialData }: Props) {
+export default function NowPlayingPage({ initialData }: Props) {
   const { page } = useRouter().query as { page: string };
-  const { data, error, refetch } = useGetNowPlayingQuery({
+  const { data, error } = useGetNowPlayingQuery({
     variables: { page },
     skip: !!initialData,
   });
@@ -36,7 +36,6 @@ export default function NowPlaying({ initialData }: Props) {
       <Pagination
         path="now_playing"
         currentPage={data?.nowPlaying.page || initialData.nowPlaying.page}
-        refetch={(newPage: string) => refetch({ page: newPage })}
         totalPages={
           data?.nowPlaying.total_pages || initialData.nowPlaying.total_pages
         }

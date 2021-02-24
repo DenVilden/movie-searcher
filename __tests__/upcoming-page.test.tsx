@@ -1,4 +1,4 @@
-import Upcoming from '../pages/upcoming/[page]';
+import UpcomingPage from '../pages/upcoming/[page]';
 import { renderApollo, screen, fireEvent } from '../lib/setupTests';
 import { GetUpcomingDocument } from '../__generated__';
 
@@ -28,9 +28,9 @@ const mocks = {
   },
 };
 
-describe('upcoming', () => {
+describe('upcoming page', () => {
   it('should switch page and refetch movies', async () => {
-    renderApollo(<Upcoming initialData={mocks} />);
+    renderApollo(<UpcomingPage initialData={mocks} />);
 
     const pageButton = await screen.findByLabelText('Go to page 2');
 
@@ -52,7 +52,7 @@ describe('upcoming', () => {
       },
     ];
 
-    renderApollo(<Upcoming initialData={null as any} />, { mocks: mock });
+    renderApollo(<UpcomingPage initialData={null as any} />, { mocks: mock });
 
     expect(
       await screen.findByText(/an error has occurred/i),

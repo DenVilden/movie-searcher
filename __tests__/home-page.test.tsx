@@ -1,4 +1,4 @@
-import Home from '../pages';
+import HomePage from '../pages';
 import { GetMoviesDocument } from '../__generated__';
 import { renderApollo, screen } from '../lib/setupTests';
 
@@ -46,9 +46,9 @@ const mocks = [
   },
 ];
 
-describe('home', () => {
+describe('home page', () => {
   it('should fetch initial movies', async () => {
-    renderApollo(<Home />, { mocks });
+    renderApollo(<HomePage />, { mocks });
 
     expect(await screen.findByText('upcoming rendered')).toBeInTheDocument();
     expect(await screen.findByText('now playing rendered')).toBeInTheDocument();
@@ -64,7 +64,7 @@ describe('home', () => {
       },
     ];
 
-    renderApollo(<Home />, { mocks: mock });
+    renderApollo(<HomePage />, { mocks: mock });
 
     expect(
       await screen.findByText(/an error has occurred/i),

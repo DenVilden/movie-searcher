@@ -18,9 +18,9 @@ interface Props {
   initialData: GetUpcomingQuery;
 }
 
-export default function Upcoming({ initialData }: Props) {
+export default function UpcomingPage({ initialData }: Props) {
   const { page } = useRouter().query as { page: string };
-  const { data, error, refetch } = useGetUpcomingQuery({
+  const { data, error } = useGetUpcomingQuery({
     variables: { page },
     skip: !!initialData,
   });
@@ -36,7 +36,6 @@ export default function Upcoming({ initialData }: Props) {
       <Pagination
         path="upcoming"
         currentPage={data?.upcoming.page || initialData.upcoming.page}
-        refetch={(newPage: string) => refetch({ page: newPage })}
         totalPages={
           data?.upcoming.total_pages || initialData.upcoming.total_pages
         }

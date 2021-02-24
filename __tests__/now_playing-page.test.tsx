@@ -1,4 +1,4 @@
-import NowPlaying from '../pages/now_playing/[page]';
+import NowPlayingPage from '../pages/now_playing/[page]';
 import { renderApollo, screen, fireEvent } from '../lib/setupTests';
 import { GetNowPlayingDocument } from '../__generated__';
 
@@ -28,9 +28,9 @@ const mocks = {
   },
 };
 
-describe('nowPlaying', () => {
+describe('now playing page', () => {
   it('should switch page and refetch movies', async () => {
-    renderApollo(<NowPlaying initialData={mocks} />);
+    renderApollo(<NowPlayingPage initialData={mocks} />);
 
     const pageButton = await screen.findByLabelText('Go to page 2');
 
@@ -52,7 +52,7 @@ describe('nowPlaying', () => {
       },
     ];
 
-    renderApollo(<NowPlaying initialData={null as any} />, { mocks: mock });
+    renderApollo(<NowPlayingPage initialData={null as any} />, { mocks: mock });
 
     expect(
       await screen.findByText(/an error has occurred/i),
