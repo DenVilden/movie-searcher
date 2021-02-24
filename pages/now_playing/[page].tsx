@@ -61,17 +61,24 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const apolloClient = initializeApollo();
-
-  await apolloClient.query({
-    query: GetNowPlayingDocument,
-    variables: { page: params?.page },
-  });
+  try {
+    await apolloClient.query({
+      query: GetNowPlayingDocument,
+      variables: { page: params?.page },
+    });
+  } catch ({ message }) {
+    if (message.includes('404') || message.includes('422')) {
+      return {
+        notFound: true,
+      };
+    }
+  }
 
   return {
     props: {

@@ -1,6 +1,6 @@
 import { Slide } from '@material-ui/core';
 import { useRouter } from 'next/router';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
 import { MoviesBox, ErrorMessage, MovieInfo } from '../../components';
 import {
@@ -36,7 +36,12 @@ export default function Movie() {
   ) : null;
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: [],
+  fallback: true,
+});
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const apolloClient = initializeApollo();
 
   try {

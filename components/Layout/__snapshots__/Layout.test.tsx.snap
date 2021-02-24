@@ -20,12 +20,12 @@ exports[`layout should take a snapshot 1`] = `
       </svg>
       <div
         aria-expanded="false"
-        class="MuiAutocomplete-root SearchBar__StyledAutocomplete-gyywkg-0 jGgSbd MuiAutocomplete-hasClearIcon"
+        class="MuiAutocomplete-root SearchBar__StyledAutocomplete-gyywkg-0 ljxfgp MuiAutocomplete-hasClearIcon"
         role="combobox"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root SearchBar__StyledSearchIcon-gyywkg-2 llOvSt"
+          class="MuiSvgIcon-root SearchBar__StyledSearchIcon-gyywkg-2 dkEaLp"
           focusable="false"
           viewBox="0 0 24 24"
         >

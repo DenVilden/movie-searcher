@@ -21,12 +21,31 @@ describe('[Query.upcoming]', () => {
 
     const res = await resolvers.Query?.upcoming!(
       {} as any,
-      {} as any,
+      { page: '1' } as any,
       mockContext as any,
       {} as any,
     );
 
     expect(res).toStrictEqual(mockUpcoming);
+  });
+
+  it('catches upcoming 404', async () => {
+    getUpcoming.mockReturnValueOnce(mockUpcoming);
+
+    let errorMessage = '';
+
+    try {
+      await resolvers.Query?.upcoming!(
+        {} as any,
+        { page: '100' } as any,
+        mockContext as any,
+        {} as any,
+      );
+    } catch (error) {
+      errorMessage = error.message;
+    } finally {
+      expect(errorMessage).toStrictEqual('Error: 404 Not found');
+    }
   });
 
   it('catches upcoming error', async () => {
@@ -63,12 +82,31 @@ describe('[Query.nowPlaying]', () => {
 
     const res = await resolvers.Query?.nowPlaying!(
       {} as any,
-      {} as any,
+      { page: '1' } as any,
       mockContext as any,
       {} as any,
     );
 
     expect(res).toStrictEqual(mockNowPlaying);
+  });
+
+  it('catches nowPlaying 404', async () => {
+    getNowPlaying.mockReturnValueOnce(mockNowPlaying);
+
+    let errorMessage = '';
+
+    try {
+      await resolvers.Query?.nowPlaying!(
+        {} as any,
+        { page: '100' } as any,
+        mockContext as any,
+        {} as any,
+      );
+    } catch (error) {
+      errorMessage = error.message;
+    } finally {
+      expect(errorMessage).toStrictEqual('Error: 404 Not found');
+    }
   });
 
   it('catches nowPlaying error', async () => {

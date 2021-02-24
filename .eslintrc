@@ -6,10 +6,12 @@
     "plugin:testing-library/react",
     "prettier"
   ],
+  "plugins": ["better-styled-components"],
   "parserOptions": {
     "project": "tsconfig.json"
   },
   "rules": {
+    "better-styled-components/sort-declarations-alphabetically": "warn",
     "jest/prefer-expect-assertions": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",

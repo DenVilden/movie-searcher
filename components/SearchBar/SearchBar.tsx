@@ -8,9 +8,9 @@ import { Search as SearchIcon } from '@material-ui/icons';
 import { useGetMoviesSearchLazyQuery } from '../../__generated__';
 
 const StyledAutocomplete = styled(Autocomplete)`
-  width: 100%;
-  margin-right: 10px;
   margin-left: 5px;
+  margin-right: 10px;
+  width: 100%;
 
   ${(props) => props.theme.breakpoints.up('md')} {
     width: 80%;
@@ -40,14 +40,14 @@ const StyledTextField = styled(TextField)`
 `;
 
 const StyledSearchIcon = styled(SearchIcon)`
-  position: absolute;
-  font-size: 25px;
   color: rgba(0, 0, 0, 0.87);
-  top: 0;
+  font-size: 25px;
   height: 100%;
-  user-select: none;
   margin-left: ${(props) => props.theme.spacing(2)}px;
   margin-top: 2px;
+  position: absolute;
+  top: 0;
+  user-select: none;
 
   ${(props) => props.theme.breakpoints.up('sm')} {
     margin-left: ${(props) => props.theme.spacing(4)}px;
