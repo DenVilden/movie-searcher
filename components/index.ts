@@ -7,4 +7,3 @@ export { default as FavoritesCard } from './FavoritesCard';
 export { default as MovieCard } from './MovieCard';
 export { default as SearchBar } from './SearchBar';
 export { default as MovieInfo } from './MovieInfo';
-export { default as Layout } from './Layout';
