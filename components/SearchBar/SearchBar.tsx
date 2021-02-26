@@ -78,8 +78,9 @@ export default function SearchBar() {
           router.push(`/${movie.media_type}/${movie.id}`);
         }
       }}
+      filterOptions={(option) => option}
       onInputChange={(_evt, value: string, reason) => {
-        if (reason === 'input' && value) {
+        if (reason === 'input' && value.trim()) {
           setInputValue(value);
           fetchMovies({ variables: { query: value, pageSize: 8 } });
         } else {
@@ -88,7 +89,7 @@ export default function SearchBar() {
       }}
       open={!!inputValue}
       options={data?.moviesSearch.results || []}
-      getOptionLabel={(option: any) => option.title}
+      getOptionLabel={(movie: any) => movie.title}
       renderInput={(params) => (
         <>
           <StyledSearchIcon />
