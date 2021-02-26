@@ -33,11 +33,12 @@ const mocks = [
 ];
 
 describe('searchBar', () => {
-  it('should fetch movies, redirect to correct url and clear input value', async () => {
+  it('should check all cases', async () => {
     renderApollo(<SearchBar />, { mocks });
 
     const inputElement = screen.getByPlaceholderText('Search...');
 
+    fireEvent.change(inputElement, { target: { value: '   ' } });
     fireEvent.change(inputElement, { target: { value: 'test' } });
 
     const searchResult = await screen.findByText('test-title');

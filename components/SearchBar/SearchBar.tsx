@@ -65,7 +65,6 @@ export default function SearchBar() {
 
   return (
     <StyledAutocomplete
-      autoHighlight
       blurOnSelect
       freeSolo
       inputValue={inputValue}
@@ -73,26 +72,19 @@ export default function SearchBar() {
       loading={
         loading ||
         !!error ||
-        (!data?.moviesSearch.results.length && !!inputValue)
+        (!data?.moviesSearch.results.length && !!inputValue.trim())
       }
       loadingText={loading ? 'Loading...' : error?.message || 'No results'}
       onChange={(_evt, movie: any, reason) => {
         if (reason === 'select-option') {
-          setInputValue(movie.title);
           router.push(`/${movie.media_type}/${movie.id}`);
-        }
-      }}
-      filterOptions={(options) => options}
-      onInputChange={(_evt, value: string, reason) => {
-        if (reason === 'input' && value.trim()) {
-          setInputValue(value);
-          fetchMovies({ variables: { query: value, pageSize: 8 } });
         } else {
           setInputValue('');
         }
       }}
+      filterOptions={(options) => options}
       openOnFocus
-      options={data && inputValue ? data.moviesSearch.results : []}
+      options={data && inputValue.trim() ? data.moviesSearch.results : []}
       getOptionLabel={(movie: any) => movie.title}
       renderInput={(params) => (
         <>
@@ -102,6 +94,15 @@ export default function SearchBar() {
             error={!!error}
             variant="outlined"
             margin="dense"
+            onChange={(evt) => {
+              setInputValue(evt.target.value);
+
+              const newValue = evt.target.value.trim();
+
+              if (newValue && newValue !== inputValue.trim()) {
+                fetchMovies({ variables: { query: newValue, pageSize: 8 } });
+              }
+            }}
             placeholder="Search..."
             fullWidth
           />
