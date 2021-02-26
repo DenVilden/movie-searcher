@@ -68,17 +68,21 @@ export default function SearchBar() {
       autoHighlight
       blurOnSelect
       freeSolo
-      clearOnBlur
       inputValue={inputValue}
       id="autocomplete"
-      loading={loading || !!error || !data?.moviesSearch.results.length}
+      loading={
+        loading ||
+        !!error ||
+        (!data?.moviesSearch.results.length && !!inputValue)
+      }
       loadingText={loading ? 'Loading...' : error?.message || 'No results'}
       onChange={(_evt, movie: any, reason) => {
         if (reason === 'select-option') {
+          setInputValue(movie.title);
           router.push(`/${movie.media_type}/${movie.id}`);
         }
       }}
-      filterOptions={(option) => option}
+      filterOptions={(options) => options}
       onInputChange={(_evt, value: string, reason) => {
         if (reason === 'input' && value.trim()) {
           setInputValue(value);
@@ -87,8 +91,8 @@ export default function SearchBar() {
           setInputValue('');
         }
       }}
-      open={!!inputValue}
-      options={data?.moviesSearch.results || []}
+      openOnFocus
+      options={data && inputValue ? data.moviesSearch.results : []}
       getOptionLabel={(movie: any) => movie.title}
       renderInput={(params) => (
         <>
