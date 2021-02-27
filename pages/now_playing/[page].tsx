@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
+import { Grow } from '@material-ui/core';
 import {
   useGetNowPlayingQuery,
   GetNowPlayingDocument,
@@ -28,19 +29,21 @@ export default function NowPlayingPage({ initialData }: Props) {
   if (error) return <ErrorMessage error={error.message} />;
 
   return data || initialData ? (
-    <Wrapper>
-      <MoviesBox
-        movies={data?.nowPlaying.results || initialData.nowPlaying.results}
-        title="Now Playing"
-      />
-      <Pagination
-        path="now_playing"
-        currentPage={data?.nowPlaying.page || initialData.nowPlaying.page}
-        totalPages={
-          data?.nowPlaying.total_pages || initialData.nowPlaying.total_pages
-        }
-      />
-    </Wrapper>
+    <Grow in>
+      <Wrapper>
+        <MoviesBox
+          movies={data?.nowPlaying.results || initialData.nowPlaying.results}
+          title="Now Playing"
+        />
+        <Pagination
+          path="now_playing"
+          currentPage={data?.nowPlaying.page || initialData.nowPlaying.page}
+          totalPages={
+            data?.nowPlaying.total_pages || initialData.nowPlaying.total_pages
+          }
+        />
+      </Wrapper>
+    </Grow>
   ) : null;
 }
 

@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { render } from '@testing-library/react';
 import { MockedProvider, MockedResponse } from '@apollo/client/testing';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from '@material-ui/core';
 import '@testing-library/jest-dom';
 import { theme } from './theme';
 

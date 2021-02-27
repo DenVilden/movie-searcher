@@ -1,6 +1,6 @@
 import { AppBar, Toolbar } from '@material-ui/core';
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { MovieFilter as MovieIcon } from '@material-ui/icons';
 import { memo } from 'react';
 import { Favorites, SearchBar } from '..';

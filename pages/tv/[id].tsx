@@ -1,8 +1,6 @@
-import { Slide } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Head from 'next/head';
-import { MoviesBox, ErrorMessage, MovieInfo } from '../../components';
+import { ErrorMessage, MovieInfo } from '../../components';
 import {
   useGetTvShowInfoQuery,
   GetTvShowInfoDocument,
@@ -16,24 +14,7 @@ export default function TvPage() {
 
   if (error) return <ErrorMessage error={error.message} />;
 
-  return data ? (
-    <>
-      <Head key="title">
-        <title>{data.tvShowInfo.title}</title>
-      </Head>
-      <Slide direction="up" in>
-        <div>
-          <MovieInfo data={data.tvShowInfo} />
-          {!!data.tvShowInfo.similar.results.length && (
-            <MoviesBox
-              movies={data.tvShowInfo.similar.results}
-              title="Similar TV Shows"
-            />
-          )}
-        </div>
-      </Slide>
-    </>
-  ) : null;
+  return data ? <MovieInfo data={data.tvShowInfo} /> : null;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => ({

@@ -1,5 +1,5 @@
-import { Alert, AlertTitle } from '@material-ui/lab';
-import styled from 'styled-components';
+import { Alert, AlertTitle } from '@material-ui/core';
+import styled from '@emotion/styled';
 
 const StyledAlert = styled(Alert)`
   margin: ${(props) => props.theme.spacing(2, 2, 0, 2)};

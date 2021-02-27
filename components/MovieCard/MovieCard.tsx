@@ -7,7 +7,7 @@ import {
 import { Star as StarIcon } from '@material-ui/icons';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const StyledCard = styled(Card)`
   text-align: center;

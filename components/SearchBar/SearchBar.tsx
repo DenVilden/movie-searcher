@@ -1,9 +1,8 @@
-import { TextField } from '@material-ui/core';
+import { TextField, Autocomplete } from '@material-ui/core';
 import { useState } from 'react';
-import { Autocomplete } from '@material-ui/lab';
 import { useRouter } from 'next/router';
-import styled from 'styled-components';
-import { fade } from '@material-ui/core/styles';
+import styled from '@emotion/styled';
+import { alpha } from '@material-ui/core/styles';
 import { Search as SearchIcon } from '@material-ui/icons';
 import { useGetMoviesSearchLazyQuery } from '../../__generated__';
 
@@ -22,20 +21,20 @@ const StyledAutocomplete = styled(Autocomplete)`
 `;
 
 const StyledTextField = styled(TextField)`
-  background-color: ${(props) => fade(props.theme.palette.common.white, 0.15)};
+  background-color: ${(props) => alpha(props.theme.palette.common.white, 0.15)};
   border-radius: ${(props) => props.theme.shape.borderRadius}px;
 
   ${(props) => props.theme.breakpoints.up('sm')} {
-    margin-left: ${(props) => props.theme.spacing(2)}px;
+    margin-left: ${(props) => props.theme.spacing(2)};
   }
 
   :hover {
     background-color: ${(props) =>
-      fade(props.theme.palette.common.white, 0.25)};
+      alpha(props.theme.palette.common.white, 0.25)};
   }
 
   input {
-    margin-left: ${(props) => props.theme.spacing(5)}px;
+    margin-left: ${(props) => props.theme.spacing(5)};
   }
 `;
 
@@ -43,14 +42,13 @@ const StyledSearchIcon = styled(SearchIcon)`
   color: rgba(0, 0, 0, 0.87);
   font-size: 25px;
   height: 100%;
-  margin-left: ${(props) => props.theme.spacing(2)}px;
-  margin-top: 2px;
+  margin-left: ${(props) => props.theme.spacing(2)};
   position: absolute;
   top: 0;
   user-select: none;
 
   ${(props) => props.theme.breakpoints.up('sm')} {
-    margin-left: ${(props) => props.theme.spacing(4)}px;
+    margin-left: ${(props) => props.theme.spacing(4)};
   }
 `;
 
@@ -93,11 +91,11 @@ export default function SearchBar() {
             {...params}
             error={!!error}
             variant="outlined"
-            margin="dense"
-            onChange={(evt) => {
-              setInputValue(evt.target.value);
+            size="small"
+            onChange={({ target: { value } }) => {
+              setInputValue(value);
 
-              const newValue = evt.target.value.trim();
+              const newValue = value.trim();
 
               if (newValue && newValue !== inputValue.trim()) {
                 fetchMovies({ variables: { query: newValue, pageSize: 8 } });

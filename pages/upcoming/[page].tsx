@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
+import { Grow } from '@material-ui/core';
 import {
   useGetUpcomingQuery,
   GetUpcomingDocument,
@@ -28,19 +29,21 @@ export default function UpcomingPage({ initialData }: Props) {
   if (error) return <ErrorMessage error={error.message} />;
 
   return data || initialData ? (
-    <Wrapper>
-      <MoviesBox
-        movies={data?.upcoming.results || initialData.upcoming.results}
-        title="Upcoming"
-      />
-      <Pagination
-        path="upcoming"
-        currentPage={data?.upcoming.page || initialData.upcoming.page}
-        totalPages={
-          data?.upcoming.total_pages || initialData.upcoming.total_pages
-        }
-      />
-    </Wrapper>
+    <Grow in>
+      <Wrapper>
+        <MoviesBox
+          movies={data?.upcoming.results || initialData.upcoming.results}
+          title="Upcoming"
+        />
+        <Pagination
+          path="upcoming"
+          currentPage={data?.upcoming.page || initialData.upcoming.page}
+          totalPages={
+            data?.upcoming.total_pages || initialData.upcoming.total_pages
+          }
+        />
+      </Wrapper>
+    </Grow>
   ) : null;
 }
 

@@ -3,15 +3,15 @@
 exports[`favoritesCard should take a snapshot 1`] = `
 <DocumentFragment>
   <button
-    class="MuiButtonBase-root MuiCardActionArea-root"
+    class="MuiButtonBase-root MuiCardActionArea-root css-b6lsxj-MuiButtonBase-root-MuiCardActionArea-root"
     tabindex="0"
     type="button"
   >
     <div
-      class="FavoritesCard__CardWrapper-sc-1x09hyz-1 jptjc"
+      class="css-1pv4rva"
     >
       <div
-        class="FavoritesCard__ImageWrapper-sc-1x09hyz-2 VLeqD"
+        class="css-1yespfp"
       >
         <div
           style="display: block; overflow: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; margin: 0px;"
@@ -25,16 +25,16 @@ exports[`favoritesCard should take a snapshot 1`] = `
         </div>
       </div>
       <p
-        class="MuiTypography-root FavoritesCard__StyledTypography-sc-1x09hyz-0 hjvOoy MuiTypography-body1"
+        class="MuiTypography-root MuiTypography-body1 css-1x3e7xf-MuiTypography-root"
       >
         test
       </p>
     </div>
     <span
-      class="MuiCardActionArea-focusHighlight"
+      class="MuiCardActionArea-focusHighlight css-1v2exvi-MuiCardActionArea-focusHighlight"
     />
     <span
-      class="MuiTouchRipple-root"
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
     />
   </button>
 </DocumentFragment>

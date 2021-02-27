@@ -3,14 +3,15 @@
 exports[`header should take a snapshot 1`] = `
 <DocumentFragment>
   <header
-    class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-1y9n3ry-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      class="MuiToolbar-root MuiToolbar-regular Header__StyledToolbar-sc-1j8nxqe-0 cMdcLq MuiToolbar-gutters"
+      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-tao4pc-MuiToolbar-root"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root Header__StyledMovieIcon-sc-1j8nxqe-1 kCKuMD"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1p9831u-MuiSvgIcon-root"
+        data-testid="MovieFilterIcon"
         focusable="false"
         viewBox="0 0 24 24"
       >
@@ -20,12 +21,13 @@ exports[`header should take a snapshot 1`] = `
       </svg>
       <div
         aria-expanded="false"
-        class="MuiAutocomplete-root SearchBar__StyledAutocomplete-gyywkg-0 ljxfgp MuiAutocomplete-hasClearIcon"
+        class="MuiAutocomplete-root css-n18ua7"
         role="combobox"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root SearchBar__StyledSearchIcon-gyywkg-2 dkEaLp"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1bpzt7r-MuiSvgIcon-root"
+          data-testid="SearchIcon"
           focusable="false"
           viewBox="0 0 24 24"
         >
@@ -34,17 +36,17 @@ exports[`header should take a snapshot 1`] = `
           />
         </svg>
         <div
-          class="MuiFormControl-root MuiTextField-root SearchBar__StyledTextField-gyywkg-1 bQOVrc MuiFormControl-marginDense MuiFormControl-fullWidth"
+          class="MuiFormControl-root MuiFormControl-marginNone MuiFormControl-fullWidth MuiTextField-root css-2ztzun-MuiFormControl-root"
         >
           <div
-            class="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd MuiInputBase-marginDense MuiOutlinedInput-marginDense"
+            class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiOutlinedInput-sizeSmall MuiInputBase-sizeSmall MuiOutlinedInput-adornedEnd MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-luel6v-MuiInputBase-root"
           >
             <input
               aria-autocomplete="list"
               aria-invalid="false"
               autocapitalize="none"
               autocomplete="off"
-              class="MuiInputBase-input MuiOutlinedInput-input MuiAutocomplete-input MuiAutocomplete-inputFocused MuiInputBase-inputAdornedEnd MuiOutlinedInput-inputAdornedEnd MuiInputBase-inputMarginDense MuiOutlinedInput-inputMarginDense"
+              class="MuiOutlinedInput-input MuiInputBase-input MuiOutlinedInput-inputSizeSmall MuiInputBase-inputSizeSmall MuiOutlinedInput-inputAdornedEnd MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused MuiAutocomplete-input MuiAutocomplete-inputFocused css-18v2vd5-MuiInputBase-input"
               id="autocomplete"
               placeholder="Search..."
               spellcheck="false"
@@ -53,33 +55,7 @@ exports[`header should take a snapshot 1`] = `
             />
             <div
               class="MuiAutocomplete-endAdornment"
-            >
-              <button
-                aria-label="Clear"
-                class="MuiButtonBase-root MuiIconButton-root MuiAutocomplete-clearIndicator"
-                tabindex="-1"
-                title="Clear"
-                type="button"
-              >
-                <span
-                  class="MuiIconButton-label"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                    />
-                  </svg>
-                </span>
-                <span
-                  class="MuiTouchRipple-root"
-                />
-              </button>
-            </div>
+            />
             <fieldset
               aria-hidden="true"
               class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
@@ -89,7 +65,9 @@ exports[`header should take a snapshot 1`] = `
                 class="PrivateNotchedOutline-legend-2"
                 style="width: 0.01px;"
               >
-                <span>
+                <span
+                  class="notranslate"
+                >
                   ​
                 </span>
               </legend>
@@ -98,20 +76,22 @@ exports[`header should take a snapshot 1`] = `
         </div>
       </div>
       <button
-        class="MuiButtonBase-root MuiIconButton-root Favorites__StyledIconButton-w5bsin-0 fHDBVm MuiIconButton-colorInherit Mui-disabled Mui-disabled"
+        aria-label="open favorites"
+        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-colorInherit MuiIconButton-sizeMedium css-11ypewv-MuiButtonBase-root-MuiIconButton-root"
         disabled=""
         tabindex="-1"
         type="button"
       >
         <span
-          class="MuiIconButton-label"
+          class="MuiIconButton-label css-4jkopv-MuiIconButton-label"
         >
           <span
-            class="MuiBadge-root"
+            class="MuiBadge-root css-1c32n2y-MuiBadge-root"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="FavoriteIcon"
               focusable="false"
               viewBox="0 0 24 24"
             >
@@ -120,10 +100,8 @@ exports[`header should take a snapshot 1`] = `
               />
             </svg>
             <span
-              class="MuiBadge-badge MuiBadge-anchorOriginTopRightRectangle MuiBadge-colorSecondary MuiBadge-invisible"
-            >
-              0
-            </span>
+              class="MuiBadge-colorSecondary MuiBadge-badge MuiBadge-standard MuiBadge-anchorOriginTopRightRectangular MuiBadge-invisible css-13j2lht-MuiBadge-badge"
+            />
           </span>
         </span>
       </button>

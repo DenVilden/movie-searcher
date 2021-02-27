@@ -1,5 +1,5 @@
-import { Grid, Grow, Typography, Paper, PaperProps } from '@material-ui/core';
-import styled from 'styled-components';
+import { Grid, Typography, Paper, PaperProps } from '@material-ui/core';
+import styled from '@emotion/styled';
 import { MovieCard } from '..';
 
 interface RootProps extends PaperProps {
@@ -42,28 +42,26 @@ export default function MoviesBox({
   padding = 1,
 }: Props) {
   return (
-    <Grow timeout="auto" in>
-      <Root elevation={elevation} padding={padding}>
-        {!!title && (
-          <Typography align="center" gutterBottom variant="h4">
-            {title}
-          </Typography>
-        )}
-        <Grid container>
-          {movies.map((movie) => (
-            <Wrapper
-              key={movie.id}
-              container
-              item
-              justify="center"
-              md={3}
-              xs={6}
-            >
-              <MovieCard movie={movie} />
-            </Wrapper>
-          ))}
-        </Grid>
-      </Root>
-    </Grow>
+    <Root elevation={elevation} padding={padding}>
+      {!!title && (
+        <Typography align="center" gutterBottom variant="h4">
+          {title}
+        </Typography>
+      )}
+      <Grid container>
+        {movies.map((movie) => (
+          <Wrapper
+            key={movie.id}
+            container
+            item
+            justifyContent="center"
+            md={3}
+            xs={6}
+          >
+            <MovieCard movie={movie} />
+          </Wrapper>
+        ))}
+      </Grid>
+    </Root>
   );
 }

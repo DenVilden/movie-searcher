@@ -4,18 +4,21 @@ import {
   Card,
   Divider,
   Button,
+  Slide,
 } from '@material-ui/core';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { useReactiveVar } from '@apollo/client';
 import Image from 'next/image';
 import { useEffect } from 'react';
+import Head from 'next/head';
 import { favoritesVar } from '../../apollo';
 import type { Favorites } from '../../apollo';
+import { MoviesBox } from '..';
 
 const StyledCard = styled(Card)`
   background-color: inherit;
   display: block;
-  margin: ${(props) => props.theme.spacing(2)}px;
+  margin: ${(props) => props.theme.spacing(2)};
 
   ${(props) => props.theme.breakpoints.up('md')} {
     display: flex;
@@ -69,46 +72,56 @@ export default function MovieInfoComponent({ data }: Props) {
   };
 
   return (
-    <StyledCard elevation={10}>
-      <ImageWrapper>
-        <Image
-          layout="fill"
-          objectFit="cover"
-          alt={data.title}
-          src={data.backdrop_path || '/no-image.jpg'}
-        />
-      </ImageWrapper>
-      <StyledCardContent>
-        <StyledTypography gutterBottom variant="h5">
-          {data.title}
-          <Button
-            color={isInFavorites ? 'secondary' : 'primary'}
-            onClick={addOrRemoveFromFavorites}
-            variant="contained"
-          >
-            {isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
-          </Button>
-        </StyledTypography>
-        <Typography>{data.overview}</Typography>
-        <Divider />
-        <Typography>
-          {data.media_type === 'movie' ? <b>Budget:</b> : <b>Seasons:</b>}{' '}
-          {data.budget || data.number_of_seasons}
-        </Typography>
-        <Divider />
-        <Typography>
-          {data.media_type === 'movie' ? <b>Revenue:</b> : <b>Episodes:</b>}{' '}
-          {data.revenue || data.number_of_episodes}
-        </Typography>
-        <Divider />
-        <Typography>
-          <b>Rating:</b> {data.vote_average}
-        </Typography>
-        <Divider />
-        <Typography>
-          <b>Release Date:</b> {data.release_date}
-        </Typography>
-      </StyledCardContent>
-    </StyledCard>
+    <Slide direction="up" in>
+      <div>
+        <Head key="title">
+          <title>{data.title}</title>
+        </Head>
+        <StyledCard elevation={10}>
+          <ImageWrapper>
+            <Image
+              layout="fill"
+              objectFit="cover"
+              alt={data.title}
+              src={data.backdrop_path || '/no-image.jpg'}
+            />
+          </ImageWrapper>
+          <StyledCardContent>
+            <StyledTypography gutterBottom variant="h5">
+              {data.title}
+              <Button
+                color={isInFavorites ? 'secondary' : 'primary'}
+                onClick={addOrRemoveFromFavorites}
+                variant="contained"
+              >
+                {isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
+              </Button>
+            </StyledTypography>
+            <Typography>{data.overview}</Typography>
+            <Divider />
+            <Typography>
+              {data.media_type === 'movie' ? <b>Budget:</b> : <b>Seasons:</b>}{' '}
+              {data.budget || data.number_of_seasons}
+            </Typography>
+            <Divider />
+            <Typography>
+              {data.media_type === 'movie' ? <b>Revenue:</b> : <b>Episodes:</b>}{' '}
+              {data.revenue || data.number_of_episodes}
+            </Typography>
+            <Divider />
+            <Typography>
+              <b>Rating:</b> {data.vote_average}
+            </Typography>
+            <Divider />
+            <Typography>
+              <b>Release Date:</b> {data.release_date}
+            </Typography>
+          </StyledCardContent>
+        </StyledCard>
+        {!!data.similar.results.length && (
+          <MoviesBox movies={data.similar.results} title="Similar Movies" />
+        )}
+      </div>
+    </Slide>
   );
 }

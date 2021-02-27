@@ -1,7 +1,7 @@
 import { CardActionArea, Typography } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Favorites } from '../../apollo';
 
 const StyledTypography = styled(Typography)`
@@ -16,7 +16,7 @@ const CardWrapper = styled.div`
 const ImageWrapper = styled.div`
   display: none;
   height: 56px;
-  margin: ${(props) => props.theme.spacing(1)}px;
+  margin: ${(props) => props.theme.spacing(1)};
   position: relative;
   width: 50px;
 

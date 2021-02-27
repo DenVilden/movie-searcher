@@ -2,18 +2,13 @@ import { useEffect, useState } from 'react';
 import { AppProps } from 'next/app';
 import { ApolloProvider } from '@apollo/client';
 import Router from 'next/router';
-import { LinearProgress, StylesProvider, CssBaseline } from '@material-ui/core';
-import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { LinearProgress, CssBaseline } from '@material-ui/core';
 import Head from 'next/head';
+import { CacheProvider } from '@emotion/react';
+import { ThemeProvider } from '@material-ui/core/styles';
 import { useApollo } from '../apollo';
 import { Header } from '../components';
-import { theme } from '../lib/theme';
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    min-width: 320px;
-  }
-`;
+import { theme, cache } from '../lib/theme';
 
 export default function NextApp({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState);
@@ -46,14 +41,14 @@ export default function NextApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <link href="/favicon.ico" rel="shortcut icon" />
+        <meta content="Movie searcher app" name="description" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <title key="title">Movie Searcher</title>
       </Head>
       <ApolloProvider client={apolloClient}>
-        <StylesProvider injectFirst>
+        <CacheProvider value={cache}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <GlobalStyle />
             <Header />
             {loading ? (
               <LinearProgress color="secondary" />
@@ -61,7 +56,7 @@ export default function NextApp({ Component, pageProps }: AppProps) {
               <Component {...pageProps} />
             )}
           </ThemeProvider>
-        </StylesProvider>
+        </CacheProvider>
       </ApolloProvider>
     </>
   );

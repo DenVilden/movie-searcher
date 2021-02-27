@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import styled from 'styled-components';
-import { Pagination } from '@material-ui/lab';
+import styled from '@emotion/styled';
+import { Pagination } from '@material-ui/core';
 import { useRouter } from 'next/router';
 
 const StyledPagination = styled(Pagination)`

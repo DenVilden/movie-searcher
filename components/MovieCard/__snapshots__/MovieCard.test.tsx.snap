@@ -3,10 +3,10 @@
 exports[`movieCard should take a snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiCard-root MovieCard__StyledCard-sc-5grlib-0 fQwzBi MuiPaper-elevation10 MuiPaper-rounded"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root css-1jin0gs-MuiPaper-root-MuiCard-root"
   >
     <button
-      class="MuiButtonBase-root MuiCardActionArea-root"
+      class="MuiButtonBase-root MuiCardActionArea-root css-b6lsxj-MuiButtonBase-root-MuiCardActionArea-root"
       tabindex="0"
       type="button"
     >
@@ -32,22 +32,23 @@ exports[`movieCard should take a snapshot 1`] = `
         />
       </div>
       <div
-        class="MuiCardContent-root MovieCard__StyledCardContent-sc-5grlib-1 bcACtj"
+        class="MuiCardContent-root css-2zy926-MuiCardContent-root"
       >
         <h6
-          class="MuiTypography-root MuiTypography-subtitle2"
+          class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
         >
           test
         </h6>
         <p
-          class="MuiTypography-root MovieCard__StyledTypography-sc-5grlib-2 fIsZBD MuiTypography-body1 MuiTypography-colorTextSecondary"
+          class="MuiTypography-root MuiTypography-body1 css-fiu236-MuiTypography-root"
         >
           <span
-            class="MovieCard__IconWrapper-sc-5grlib-3 hWHmux"
+            class="css-1rbcxmo"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="StarIcon"
               focusable="false"
               viewBox="0 0 24 24"
             >
@@ -60,10 +61,10 @@ exports[`movieCard should take a snapshot 1`] = `
         </p>
       </div>
       <span
-        class="MuiCardActionArea-focusHighlight"
+        class="MuiCardActionArea-focusHighlight css-1v2exvi-MuiCardActionArea-focusHighlight"
       />
       <span
-        class="MuiTouchRipple-root"
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
   </div>
