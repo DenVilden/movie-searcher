@@ -1,4 +1,4 @@
-import type { Theme as MaterialTheme } from './theme';
+import type { MaterialTheme } from './setupTests';
 
 declare module '@emotion/react' {
   export interface Theme extends MaterialTheme {}

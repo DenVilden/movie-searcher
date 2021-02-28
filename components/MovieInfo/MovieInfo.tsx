@@ -9,11 +9,10 @@ import {
 import styled from '@emotion/styled';
 import { useReactiveVar } from '@apollo/client';
 import Image from 'next/image';
-import { useEffect } from 'react';
 import Head from 'next/head';
-import { favoritesVar } from '../../apollo';
-import type { Favorites } from '../../apollo';
+import { favoritesVar, Favorite } from '../../apollo';
 import { MoviesBox } from '..';
+import { SimilarMovies } from '../../__generated__';
 
 const StyledCard = styled(Card)`
   background-color: inherit;
@@ -51,24 +50,48 @@ const StyledTypography = styled(Typography)`
 `;
 
 interface Props {
-  data: Favorites;
+  data: {
+    id: number;
+    title: string;
+    release_date: string;
+    vote_average: number;
+    budget?: string;
+    revenue?: string;
+    overview?: string | null;
+    poster_path?: string | null;
+    backdrop_path?: string | null;
+    number_of_seasons?: number;
+    number_of_episodes?: number;
+    media_type: string;
+    similar: SimilarMovies;
+  };
 }
 
 export default function MovieInfoComponent({ data }: Props) {
   const favorites = useReactiveVar(favoritesVar);
 
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }, [favorites]);
-
   const isInFavorites = favorites.some((favorite) => favorite.id === data.id);
 
   const addOrRemoveFromFavorites = () => {
+    let newFavorites: Favorite[];
+
     if (isInFavorites) {
-      favoritesVar(favorites.filter((favorite) => favorite.id !== data.id));
+      newFavorites = favorites.filter((favorite) => favorite.id !== data.id);
+      favoritesVar(newFavorites);
     } else {
-      favoritesVar([...favorites, data]);
+      newFavorites = [
+        ...favorites,
+        {
+          id: data.id,
+          title: data.title,
+          poster_path: data.poster_path,
+          media_type: data.media_type,
+        },
+      ];
+      favoritesVar(newFavorites);
     }
+
+    localStorage.setItem('favorites', JSON.stringify(newFavorites));
   };
 
   return (

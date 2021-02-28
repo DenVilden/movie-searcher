@@ -15,10 +15,6 @@ import styled from '@emotion/styled';
 import { FavoritesCard } from '..';
 import { favoritesVar } from '../../apollo';
 
-const StyledIconButton = styled(IconButton)`
-  margin-left: auto;
-`;
-
 const StyledTypography = styled(Typography)`
   padding: ${(props) => props.theme.spacing(2)};
 `;
@@ -41,7 +37,7 @@ export default function Favorites() {
 
   return (
     <>
-      <StyledIconButton
+      <IconButton
         color="inherit"
         disabled={!favorites.length}
         onClick={handleToggle}
@@ -51,7 +47,7 @@ export default function Favorites() {
         <Badge badgeContent={favorites.length} color="secondary">
           {toggle ? <FavoriteBorderIcon /> : <FavoriteIcon />}
         </Badge>
-      </StyledIconButton>
+      </IconButton>
       <Popover
         anchorEl={iconButtonRef.current}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}

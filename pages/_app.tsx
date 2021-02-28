@@ -1,18 +1,42 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { AppProps } from 'next/app';
-import { ApolloProvider } from '@apollo/client';
+import { ApolloProvider, useReactiveVar } from '@apollo/client';
 import Router from 'next/router';
-import { LinearProgress, CssBaseline } from '@material-ui/core';
+import {
+  LinearProgress,
+  CssBaseline,
+  createMuiTheme,
+  useMediaQuery,
+} from '@material-ui/core';
 import Head from 'next/head';
-import { CacheProvider } from '@emotion/react';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { useApollo } from '../apollo';
+import { useApollo, prefersDarkModeVar } from '../apollo';
 import { Header } from '../components';
-import { theme, cache } from '../lib/theme';
 
 export default function NextApp({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState);
   const [loading, setLoading] = useState(false);
+  const prefersDarkMode = useReactiveVar(prefersDarkModeVar);
+  const systemColorScheme = useMediaQuery('(prefers-color-scheme: dark)');
+
+  useEffect(() => {
+    const darkMode = localStorage.getItem('darkMode');
+    if (darkMode) {
+      prefersDarkModeVar(JSON.parse(darkMode));
+    } else {
+      prefersDarkModeVar(systemColorScheme);
+    }
+  }, [systemColorScheme]);
+
+  const theme = useMemo(
+    () =>
+      createMuiTheme({
+        palette: {
+          mode: prefersDarkMode ? 'dark' : 'light',
+        },
+      }),
+    [prefersDarkMode],
+  );
 
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -38,26 +62,20 @@ export default function NextApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <>
+    <ApolloProvider client={apolloClient}>
       <Head>
-        <link href="/favicon.ico" rel="shortcut icon" />
-        <meta content="Movie searcher app" name="description" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <title key="title">Movie Searcher</title>
       </Head>
-      <ApolloProvider client={apolloClient}>
-        <CacheProvider value={cache}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Header />
-            {loading ? (
-              <LinearProgress color="secondary" />
-            ) : (
-              <Component {...pageProps} />
-            )}
-          </ThemeProvider>
-        </CacheProvider>
-      </ApolloProvider>
-    </>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Header />
+        {loading ? (
+          <LinearProgress color="secondary" />
+        ) : (
+          <Component {...pageProps} />
+        )}
+      </ThemeProvider>
+    </ApolloProvider>
   );
 }

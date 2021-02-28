@@ -9,7 +9,6 @@ import { initializeApollo } from '../../apollo';
 
 export default function MoviePage() {
   const { id } = useRouter().query as { id: string };
-
   const { data, error } = useGetMovieInfoQuery({ variables: { id } });
 
   if (error) return <ErrorMessage error={error.message} />;

@@ -5,25 +5,16 @@ import {
   NormalizedCacheObject,
 } from '@apollo/client';
 import { useMemo } from 'react';
-import { SimilarMovies } from '../__generated__';
 
-export type Favorites = {
+export interface Favorite {
   id: number;
   title: string;
-  release_date: string;
-  vote_average: number;
-  budget?: string;
-  revenue?: string;
-  overview?: string | null;
   poster_path?: string | null;
-  backdrop_path?: string | null;
-  number_of_seasons?: number;
-  number_of_episodes?: number;
   media_type: string;
-  similar: SimilarMovies;
-};
+}
 
-export const favoritesVar = makeVar<Favorites[]>([]);
+export const favoritesVar = makeVar<Favorite[]>([]);
+export const prefersDarkModeVar = makeVar(false);
 
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 

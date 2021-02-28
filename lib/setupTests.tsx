@@ -1,9 +1,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { render } from '@testing-library/react';
 import { MockedProvider, MockedResponse } from '@apollo/client/testing';
-import { ThemeProvider } from '@material-ui/core';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 import '@testing-library/jest-dom';
-import { theme } from './theme';
+
+export const theme = createMuiTheme();
+export type MaterialTheme = typeof theme;
 
 type RenderApolloOptions = {
   mocks?: MockedResponse[];

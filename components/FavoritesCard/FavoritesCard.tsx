@@ -2,7 +2,7 @@ import { CardActionArea, Typography } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from '@emotion/styled';
-import { Favorites } from '../../apollo';
+import { Favorite } from '../../apollo';
 
 const StyledTypography = styled(Typography)`
   padding: ${(props) => props.theme.spacing(3, 2, 2, 2)};
@@ -27,7 +27,7 @@ const ImageWrapper = styled.div`
 
 interface Props {
   handleToggle: () => void;
-  favorite: Favorites;
+  favorite: Favorite;
 }
 
 export default function FavoritesCard({

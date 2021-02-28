@@ -54,11 +54,9 @@ const StyledSearchIcon = styled(SearchIcon)`
 
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState('');
-
   const [fetchMovies, { data, loading, error }] = useGetMoviesSearchLazyQuery({
     fetchPolicy: 'network-only',
   });
-
   const router = useRouter();
 
   return (
@@ -90,8 +88,8 @@ export default function SearchBar() {
           <StyledTextField
             {...params}
             error={!!error}
-            variant="outlined"
             size="small"
+            id="search field"
             onChange={({ target: { value } }) => {
               setInputValue(value);
 
