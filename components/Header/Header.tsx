@@ -11,21 +11,12 @@ import Link from 'next/link';
 import { Favorites, SearchBar } from '..';
 import { prefersDarkModeVar } from '../../apollo';
 
-const StyledToolbar = styled(Toolbar)`
-  padding-left: 8px;
-  padding-right: 8px;
-`;
-
 const StyledIconButton = styled(IconButton)`
   margin-left: auto;
 `;
 
 const StyledDarkIcon = styled(DarkIcon)`
   color: white;
-`;
-
-const StyledA = styled.a`
-  -webkit-tap-highlight-color: transparent;
 `;
 
 const StyledImage = styled(Image)`
@@ -43,23 +34,23 @@ function Header() {
 
   return (
     <AppBar position="static" color={prefersDarkMode ? 'inherit' : 'primary'}>
-      <StyledToolbar>
+      <Toolbar disableGutters>
         <Link href="/">
-          <StyledA href="/">
+          <IconButton>
             <StyledImage
               src="/logo.svg"
-              width="50"
-              height="50"
+              width="45"
+              height="45"
               aria-label="logo"
             />
-          </StyledA>
+          </IconButton>
         </Link>
         <SearchBar />
         <StyledIconButton aria-label="theme switch" onClick={toggleTheme}>
           {prefersDarkMode ? <LightIcon /> : <StyledDarkIcon />}
         </StyledIconButton>
         <Favorites />
-      </StyledToolbar>
+      </Toolbar>
     </AppBar>
   );
 }

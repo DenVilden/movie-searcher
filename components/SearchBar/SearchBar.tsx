@@ -9,11 +9,7 @@ import { useGetMoviesSearchLazyQuery } from '../../__generated__';
 const StyledAutocomplete = styled(Autocomplete)`
   margin-left: 5px;
   margin-right: 10px;
-  width: 100%;
-
-  ${(props) => props.theme.breakpoints.up('md')} {
-    width: 80%;
-  }
+  width: 70%;
 
   input {
     color: #fafafa;
@@ -71,9 +67,10 @@ export default function SearchBar() {
       onChange={(_evt, movie: any, reason) => {
         if (reason === 'select-option') {
           router.push(`/${movie.media_type}/${movie.id}`);
-        } else {
-          setInputValue('');
         }
+      }}
+      onInputChange={() => {
+        setInputValue('');
       }}
       filterOptions={(options) => options}
       openOnFocus

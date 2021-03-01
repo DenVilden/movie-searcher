@@ -6,38 +6,46 @@ exports[`header should take a snapshot 1`] = `
     class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-1y9n3ry-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-huc3bv-MuiToolbar-root"
+      class="MuiToolbar-root MuiToolbar-regular css-1cndkqf-MuiToolbar-root"
     >
-      <a
-        class="css-1rdp2dl"
-        href="/"
+      <button
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1uaxfgw-MuiButtonBase-root-MuiIconButton-root"
+        tabindex="0"
+        type="button"
       >
-        <div
-          style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+        <span
+          class="MuiIconButton-label css-4jkopv-MuiIconButton-label"
         >
           <div
-            style="box-sizing: border-box; display: block; max-width: 100%;"
+            style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
           >
+            <div
+              style="box-sizing: border-box; display: block; max-width: 100%;"
+            >
+              <img
+                alt=""
+                aria-hidden="true"
+                role="presentation"
+                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
+                style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+              />
+            </div>
             <img
-              alt=""
-              aria-hidden="true"
-              role="presentation"
-              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
-              style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+              aria-label="logo"
+              class="css-1wtzhac"
+              decoding="async"
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              style="visibility: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
             />
           </div>
-          <img
-            aria-label="logo"
-            class="css-1wtzhac"
-            decoding="async"
-            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-            style="visibility: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-          />
-        </div>
-      </a>
+        </span>
+        <span
+          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+        />
+      </button>
       <div
         aria-expanded="false"
-        class="MuiAutocomplete-root css-8mx41k-MuiAutocomplete-root"
+        class="MuiAutocomplete-root css-z2si3t-MuiAutocomplete-root"
         role="combobox"
       >
         <svg
