@@ -16,12 +16,20 @@ const StyledToolbar = styled(Toolbar)`
   padding-right: 8px;
 `;
 
-const StyledImage = styled(Image)`
-  cursor: pointer;
-`;
-
 const StyledIconButton = styled(IconButton)`
   margin-left: auto;
+`;
+
+const StyledDarkIcon = styled(DarkIcon)`
+  color: white;
+`;
+
+const StyledA = styled.a`
+  -webkit-tap-highlight-color: transparent;
+`;
+
+const StyledImage = styled(Image)`
+  -webkit-user-drag: none;
 `;
 
 function Header() {
@@ -37,22 +45,18 @@ function Header() {
     <AppBar position="static" color={prefersDarkMode ? 'inherit' : 'primary'}>
       <StyledToolbar>
         <Link href="/">
-          <a href="/">
+          <StyledA href="/">
             <StyledImage
               src="/logo.svg"
               width="50"
               height="50"
               aria-label="logo"
             />
-          </a>
+          </StyledA>
         </Link>
         <SearchBar />
         <StyledIconButton aria-label="theme switch" onClick={toggleTheme}>
-          {prefersDarkMode ? (
-            <LightIcon style={{ color: 'white' }} />
-          ) : (
-            <DarkIcon />
-          )}
+          {prefersDarkMode ? <LightIcon /> : <StyledDarkIcon />}
         </StyledIconButton>
         <Favorites />
       </StyledToolbar>
