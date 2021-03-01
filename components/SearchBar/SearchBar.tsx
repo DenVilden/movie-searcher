@@ -69,8 +69,10 @@ export default function SearchBar() {
           router.push(`/${movie.media_type}/${movie.id}`);
         }
       }}
-      onInputChange={() => {
-        setInputValue('');
+      onInputChange={(_evt, _value, reason) => {
+        if (reason === 'clear') {
+          setInputValue('');
+        }
       }}
       filterOptions={(options) => options}
       openOnFocus
