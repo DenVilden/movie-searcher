@@ -7,6 +7,31 @@ export default class NextDocument extends Document {
       <Html lang="en">
         <Head>
           <meta content="Movie searcher app" name="description" />
+          <meta name="theme-color" content="#303030" />
+          <meta name="msapplication-TileColor" content="#303030" />
+          <link
+            rel="mask-icon"
+            href="/icons/safari-pinned-tab.svg"
+            color="#303030"
+          />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/icons/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/icons/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/icons/favicon-16x16.png"
+          />
+          <link rel="manifest" href="/manifest.json" />
           <link
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"

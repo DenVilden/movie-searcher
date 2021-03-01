@@ -17,6 +17,7 @@ const StyledAutocomplete = styled(Autocomplete)`
 
   input {
     color: #fafafa;
+    margin-left: ${(props) => props.theme.spacing(5)};
   }
 `;
 
@@ -31,10 +32,6 @@ const StyledTextField = styled(TextField)`
   :hover {
     background-color: ${(props) =>
       alpha(props.theme.palette.common.white, 0.25)};
-  }
-
-  input {
-    margin-left: ${(props) => props.theme.spacing(5)};
   }
 `;
 
