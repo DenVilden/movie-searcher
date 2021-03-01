@@ -6,7 +6,7 @@ exports[`header should take a snapshot 1`] = `
     class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-1y9n3ry-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      class="MuiToolbar-root MuiToolbar-regular css-1cndkqf-MuiToolbar-root"
+      class="MuiToolbar-root MuiToolbar-regular css-1oql1ep-MuiToolbar-root"
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1uaxfgw-MuiButtonBase-root-MuiIconButton-root"
@@ -50,7 +50,7 @@ exports[`header should take a snapshot 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1bpzt7r-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-856tw0-MuiSvgIcon-root"
           data-testid="SearchIcon"
           focusable="false"
           viewBox="0 0 24 24"
@@ -60,7 +60,7 @@ exports[`header should take a snapshot 1`] = `
           />
         </svg>
         <div
-          class="MuiFormControl-root MuiFormControl-marginNone MuiFormControl-fullWidth MuiTextField-root css-pkdp3u-MuiFormControl-root"
+          class="MuiFormControl-root MuiFormControl-marginNone MuiFormControl-fullWidth MuiTextField-root css-ox084m-MuiFormControl-root"
         >
           <div
             class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-4a33cb-MuiInputBase-root-MuiOutlinedInput-root"

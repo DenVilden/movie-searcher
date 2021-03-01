@@ -11,6 +11,13 @@ import Link from 'next/link';
 import { Favorites, SearchBar } from '..';
 import { prefersDarkModeVar } from '../../apollo';
 
+const StyledToolbar = styled(Toolbar)`
+  ${(props) => props.theme.breakpoints.up('md')} {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+`;
+
 const StyledIconButton = styled(IconButton)`
   margin-left: auto;
 `;
@@ -34,7 +41,7 @@ function Header() {
 
   return (
     <AppBar position="static" color={prefersDarkMode ? 'inherit' : 'primary'}>
-      <Toolbar disableGutters>
+      <StyledToolbar disableGutters>
         <Link href="/">
           <IconButton>
             <StyledImage
@@ -50,7 +57,7 @@ function Header() {
           {prefersDarkMode ? <LightIcon /> : <StyledDarkIcon />}
         </StyledIconButton>
         <Favorites />
-      </Toolbar>
+      </StyledToolbar>
     </AppBar>
   );
 }

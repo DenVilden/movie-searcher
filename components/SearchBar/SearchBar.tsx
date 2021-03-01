@@ -22,7 +22,7 @@ const StyledTextField = styled(TextField)`
   border-radius: ${(props) => props.theme.shape.borderRadius}px;
 
   ${(props) => props.theme.breakpoints.up('sm')} {
-    margin-left: ${(props) => props.theme.spacing(2)};
+    margin-left: ${(props) => props.theme.spacing(1)};
   }
 
   :hover {
@@ -41,7 +41,7 @@ const StyledSearchIcon = styled(SearchIcon)`
   user-select: none;
 
   ${(props) => props.theme.breakpoints.up('sm')} {
-    margin-left: ${(props) => props.theme.spacing(4)};
+    margin-left: ${(props) => props.theme.spacing(3)};
   }
 `;
 
