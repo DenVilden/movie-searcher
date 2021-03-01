@@ -4,8 +4,7 @@ import { MockedProvider, MockedResponse } from '@apollo/client/testing';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 import '@testing-library/jest-dom';
 
-export const theme = createMuiTheme();
-export type MaterialTheme = typeof theme;
+const theme = createMuiTheme();
 
 type RenderApolloOptions = {
   mocks?: MockedResponse[];

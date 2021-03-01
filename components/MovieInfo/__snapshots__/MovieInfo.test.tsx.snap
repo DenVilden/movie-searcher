@@ -6,7 +6,7 @@ exports[`movieInfo should take a snapshot 1`] = `
     style="webkit-transform: none; transform: none; webkit-transition: -webkit-transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;"
   >
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root css-1fyckxy-MuiPaper-root-MuiCard-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root css-fydquq-MuiPaper-root-MuiCard-root"
     >
       <div
         class="css-zei4e4"
