@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { ErrorMessage, MovieInfo } from '../../components';
+import ErrorMessage from '../../components/ErrorMessage';
+import MovieInfo from '../../components/MovieInfo';
 import {
   useGetTvShowInfoQuery,
   GetTvShowInfoDocument,

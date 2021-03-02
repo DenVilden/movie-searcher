@@ -11,7 +11,7 @@ import {
 import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { useApollo, prefersDarkModeVar } from '../apollo';
-import { Header } from '../components';
+import Header from '../components/Header';
 
 export default function NextApp({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState);
