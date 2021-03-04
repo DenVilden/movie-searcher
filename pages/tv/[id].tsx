@@ -19,8 +19,8 @@ export default function TvPage() {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => ({
-  paths: [],
   fallback: true,
+  paths: [],
 });
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {

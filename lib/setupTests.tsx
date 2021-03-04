@@ -7,8 +7,8 @@ import '@testing-library/jest-dom';
 const theme = createMuiTheme();
 
 type RenderApolloOptions = {
-  mocks?: MockedResponse[];
   addTypeName?: boolean;
+  mocks?: MockedResponse[];
 };
 
 export function renderApollo(

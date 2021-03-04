@@ -16,48 +16,48 @@ export type RequireFields<T, K extends keyof T> = {
   { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
   Boolean: boolean;
-  Int: number;
   Float: number;
+  ID: string;
+  Int: number;
+  String: string;
 };
 
 export type UpcomingResults = {
   __typename?: 'UpcomingResults';
   id: Scalars['Int'];
-  title: Scalars['String'];
-  release_date: Scalars['String'];
   poster_path?: Maybe<Scalars['String']>;
+  release_date: Scalars['String'];
+  title: Scalars['String'];
 };
 
 export type Upcoming = {
   __typename?: 'Upcoming';
-  total_pages: Scalars['Int'];
   page: Scalars['Int'];
   results: Array<UpcomingResults>;
+  total_pages: Scalars['Int'];
 };
 
 export type NowPlayingResults = {
   __typename?: 'NowPlayingResults';
   id: Scalars['Int'];
+  poster_path?: Maybe<Scalars['String']>;
   title: Scalars['String'];
   vote_average: Scalars['Float'];
-  poster_path?: Maybe<Scalars['String']>;
 };
 
 export type NowPlaying = {
   __typename?: 'NowPlaying';
-  total_pages: Scalars['Int'];
   page: Scalars['Int'];
   results: Array<NowPlayingResults>;
+  total_pages: Scalars['Int'];
 };
 
 export type MoviesSearchResults = {
   __typename?: 'MoviesSearchResults';
   id: Scalars['Int'];
-  title: Scalars['String'];
   media_type: Scalars['String'];
+  title: Scalars['String'];
 };
 
 export type MoviesSearch = {
@@ -70,10 +70,10 @@ export type MoviesSearch = {
 export type SimilarResults = {
   __typename?: 'SimilarResults';
   id: Scalars['Int'];
-  title: Scalars['String'];
-  release_date: Scalars['String'];
-  poster_path?: Maybe<Scalars['String']>;
   media_type: Scalars['String'];
+  poster_path?: Maybe<Scalars['String']>;
+  release_date: Scalars['String'];
+  title: Scalars['String'];
 };
 
 export type SimilarMovies = {
@@ -85,67 +85,67 @@ export type SimilarMovies = {
 
 export type MovieInfo = {
   __typename?: 'MovieInfo';
-  id: Scalars['Int'];
-  title: Scalars['String'];
-  release_date: Scalars['String'];
-  vote_average: Scalars['Float'];
+  backdrop_path?: Maybe<Scalars['String']>;
   budget: Scalars['String'];
-  revenue: Scalars['String'];
+  id: Scalars['Int'];
+  media_type: Scalars['String'];
   overview?: Maybe<Scalars['String']>;
   poster_path?: Maybe<Scalars['String']>;
-  backdrop_path?: Maybe<Scalars['String']>;
-  media_type: Scalars['String'];
+  release_date: Scalars['String'];
+  revenue: Scalars['String'];
   similar: SimilarMovies;
+  title: Scalars['String'];
+  vote_average: Scalars['Float'];
 };
 
 export type TvShowInfo = {
   __typename?: 'TvShowInfo';
-  id: Scalars['Int'];
-  title: Scalars['String'];
-  release_date: Scalars['String'];
-  poster_path?: Maybe<Scalars['String']>;
-  overview?: Maybe<Scalars['String']>;
-  vote_average: Scalars['Float'];
-  number_of_seasons: Scalars['Int'];
-  number_of_episodes: Scalars['Int'];
   backdrop_path?: Maybe<Scalars['String']>;
+  id: Scalars['Int'];
   media_type: Scalars['String'];
+  number_of_episodes: Scalars['Int'];
+  number_of_seasons: Scalars['Int'];
+  overview?: Maybe<Scalars['String']>;
+  poster_path?: Maybe<Scalars['String']>;
+  release_date: Scalars['String'];
   similar: SimilarMovies;
+  title: Scalars['String'];
+  vote_average: Scalars['Float'];
 };
 
 export type Query = {
   __typename?: 'Query';
-  upcoming: Upcoming;
-  nowPlaying: NowPlaying;
-  moviesSearch: MoviesSearch;
   movieInfo: MovieInfo;
+  moviesSearch: MoviesSearch;
+  nowPlaying: NowPlaying;
   tvShowInfo: TvShowInfo;
-};
-
-export type QueryUpcomingArgs = {
-  page?: Maybe<Scalars['String']>;
+  upcoming: Upcoming;
 };
 
 export type QueryNowPlayingArgs = {
   page?: Maybe<Scalars['String']>;
 };
 
-export type QueryMoviesSearchArgs = {
-  query: Scalars['String'];
+export type QueryMovieInfoArgs = {
   cursor?: Maybe<Scalars['Int']>;
+  id: Scalars['ID'];
   pageSize?: Maybe<Scalars['Int']>;
 };
 
-export type QueryMovieInfoArgs = {
-  id: Scalars['ID'];
+export type QueryMoviesSearchArgs = {
   cursor?: Maybe<Scalars['Int']>;
   pageSize?: Maybe<Scalars['Int']>;
+  query: Scalars['String'];
 };
 
 export type QueryTvShowInfoArgs = {
-  id: Scalars['ID'];
   cursor?: Maybe<Scalars['Int']>;
+  id: Scalars['ID'];
   pageSize?: Maybe<Scalars['Int']>;
+};
+
+export type QueryUpcomingArgs = {
+  page?: Maybe<Scalars['String']>;
 };
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
@@ -188,23 +188,23 @@ export interface SubscriptionSubscriberObject<
   TContext,
   TArgs
 > {
-  subscribe: SubscriptionSubscribeFn<
-    { [key in TKey]: TResult },
-    TParent,
-    TContext,
-    TArgs
-  >;
   resolve?: SubscriptionResolveFn<
     TResult,
     { [key in TKey]: TResult },
     TContext,
     TArgs
   >;
+  subscribe: SubscriptionSubscribeFn<
+    { [key in TKey]: TResult },
+    TParent,
+    TContext,
+    TArgs
+  >;
 }
 
 export interface SubscriptionResolverObject<TResult, TParent, TContext, TArgs> {
-  subscribe: SubscriptionSubscribeFn<any, TParent, TContext, TArgs>;
   resolve: SubscriptionResolveFn<TResult, any, TContext, TArgs>;
+  subscribe: SubscriptionSubscribeFn<any, TParent, TContext, TArgs>;
 }
 
 export type SubscriptionObject<
@@ -258,116 +258,117 @@ export type DirectiveResolverFn<
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = ResolversObject<{
-  UpcomingResults: ResolverTypeWrapper<UpcomingResults>;
-  Int: ResolverTypeWrapper<Scalars['Int']>;
-  String: ResolverTypeWrapper<Scalars['String']>;
-  Upcoming: ResolverTypeWrapper<Upcoming>;
-  NowPlayingResults: ResolverTypeWrapper<NowPlayingResults>;
-  Float: ResolverTypeWrapper<Scalars['Float']>;
-  NowPlaying: ResolverTypeWrapper<NowPlaying>;
-  MoviesSearchResults: ResolverTypeWrapper<MoviesSearchResults>;
-  MoviesSearch: ResolverTypeWrapper<MoviesSearch>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
-  SimilarResults: ResolverTypeWrapper<SimilarResults>;
-  SimilarMovies: ResolverTypeWrapper<SimilarMovies>;
-  MovieInfo: ResolverTypeWrapper<MovieInfo>;
-  TvShowInfo: ResolverTypeWrapper<TvShowInfo>;
-  Query: ResolverTypeWrapper<{}>;
+  Float: ResolverTypeWrapper<Scalars['Float']>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
+  Int: ResolverTypeWrapper<Scalars['Int']>;
+  MovieInfo: ResolverTypeWrapper<MovieInfo>;
+  MoviesSearch: ResolverTypeWrapper<MoviesSearch>;
+  MoviesSearchResults: ResolverTypeWrapper<MoviesSearchResults>;
+  NowPlaying: ResolverTypeWrapper<NowPlaying>;
+  NowPlayingResults: ResolverTypeWrapper<NowPlayingResults>;
+  Query: ResolverTypeWrapper<{}>;
+  SimilarMovies: ResolverTypeWrapper<SimilarMovies>;
+  SimilarResults: ResolverTypeWrapper<SimilarResults>;
+  String: ResolverTypeWrapper<Scalars['String']>;
+  TvShowInfo: ResolverTypeWrapper<TvShowInfo>;
+  Upcoming: ResolverTypeWrapper<Upcoming>;
+  UpcomingResults: ResolverTypeWrapper<UpcomingResults>;
 }>;
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = ResolversObject<{
-  UpcomingResults: UpcomingResults;
-  Int: Scalars['Int'];
-  String: Scalars['String'];
-  Upcoming: Upcoming;
-  NowPlayingResults: NowPlayingResults;
-  Float: Scalars['Float'];
-  NowPlaying: NowPlaying;
-  MoviesSearchResults: MoviesSearchResults;
-  MoviesSearch: MoviesSearch;
   Boolean: Scalars['Boolean'];
-  SimilarResults: SimilarResults;
-  SimilarMovies: SimilarMovies;
-  MovieInfo: MovieInfo;
-  TvShowInfo: TvShowInfo;
-  Query: {};
+  Float: Scalars['Float'];
   ID: Scalars['ID'];
+  Int: Scalars['Int'];
+  MovieInfo: MovieInfo;
+  MoviesSearch: MoviesSearch;
+  MoviesSearchResults: MoviesSearchResults;
+  NowPlaying: NowPlaying;
+  NowPlayingResults: NowPlayingResults;
+  Query: {};
+  SimilarMovies: SimilarMovies;
+  SimilarResults: SimilarResults;
+  String: Scalars['String'];
+  TvShowInfo: TvShowInfo;
+  Upcoming: Upcoming;
+  UpcomingResults: UpcomingResults;
 }>;
 
 export type UpcomingResultsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['UpcomingResults'] = ResolversParentTypes['UpcomingResults']
 > = ResolversObject<{
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   poster_path?: Resolver<
     Maybe<ResolversTypes['String']>,
     ParentType,
     ContextType
   >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+  release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 }>;
 
 export type UpcomingResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['Upcoming'] = ResolversParentTypes['Upcoming']
 > = ResolversObject<{
-  total_pages?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
   page?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   results?: Resolver<
     Array<ResolversTypes['UpcomingResults']>,
     ParentType,
     ContextType
   >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+  total_pages?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 }>;
 
 export type NowPlayingResultsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['NowPlayingResults'] = ResolversParentTypes['NowPlayingResults']
 > = ResolversObject<{
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   poster_path?: Resolver<
     Maybe<ResolversTypes['String']>,
     ParentType,
     ContextType
   >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
 }>;
 
 export type NowPlayingResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['NowPlaying'] = ResolversParentTypes['NowPlaying']
 > = ResolversObject<{
-  total_pages?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
   page?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   results?: Resolver<
     Array<ResolversTypes['NowPlayingResults']>,
     ParentType,
     ContextType
   >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+  total_pages?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 }>;
 
 export type MoviesSearchResultsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['MoviesSearchResults'] = ResolversParentTypes['MoviesSearchResults']
 > = ResolversObject<{
-  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 }>;
 
 export type MoviesSearchResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['MoviesSearch'] = ResolversParentTypes['MoviesSearch']
 > = ResolversObject<{
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
   cursor?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   hasMore?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   results?: Resolver<
@@ -375,29 +376,29 @@ export type MoviesSearchResolvers<
     ParentType,
     ContextType
   >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
 export type SimilarResultsResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['SimilarResults'] = ResolversParentTypes['SimilarResults']
 > = ResolversObject<{
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   poster_path?: Resolver<
     Maybe<ResolversTypes['String']>,
     ParentType,
     ContextType
   >;
-  media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+  release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 }>;
 
 export type SimilarMoviesResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['SimilarMovies'] = ResolversParentTypes['SimilarMovies']
 > = ResolversObject<{
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
   cursor?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   hasMore?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   results?: Resolver<
@@ -405,76 +406,69 @@ export type SimilarMoviesResolvers<
     ParentType,
     ContextType
   >;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
 export type MovieInfoResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['MovieInfo'] = ResolversParentTypes['MovieInfo']
 > = ResolversObject<{
-  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+  backdrop_path?: Resolver<
+    Maybe<ResolversTypes['String']>,
+    ParentType,
+    ContextType
+  >;
   budget?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  revenue?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   overview?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   poster_path?: Resolver<
     Maybe<ResolversTypes['String']>,
     ParentType,
     ContextType
   >;
-  backdrop_path?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
-  media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  revenue?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   similar?: Resolver<ResolversTypes['SimilarMovies'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
 }>;
 
 export type TvShowInfoResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['TvShowInfo'] = ResolversParentTypes['TvShowInfo']
 > = ResolversObject<{
-  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  poster_path?: Resolver<
-    Maybe<ResolversTypes['String']>,
-    ParentType,
-    ContextType
-  >;
-  overview?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
-  number_of_seasons?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  number_of_episodes?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
   backdrop_path?: Resolver<
     Maybe<ResolversTypes['String']>,
     ParentType,
     ContextType
   >;
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  number_of_episodes?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  number_of_seasons?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  overview?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  poster_path?: Resolver<
+    Maybe<ResolversTypes['String']>,
+    ParentType,
+    ContextType
+  >;
+  release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   similar?: Resolver<ResolversTypes['SimilarMovies'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
 }>;
 
 export type QueryResolvers<
   ContextType = any,
   ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
 > = ResolversObject<{
-  upcoming?: Resolver<
-    ResolversTypes['Upcoming'],
+  movieInfo?: Resolver<
+    ResolversTypes['MovieInfo'],
     ParentType,
     ContextType,
-    RequireFields<QueryUpcomingArgs, 'page'>
-  >;
-  nowPlaying?: Resolver<
-    ResolversTypes['NowPlaying'],
-    ParentType,
-    ContextType,
-    RequireFields<QueryNowPlayingArgs, 'page'>
+    RequireFields<QueryMovieInfoArgs, 'id' | 'cursor' | 'pageSize'>
   >;
   moviesSearch?: Resolver<
     ResolversTypes['MoviesSearch'],
@@ -482,11 +476,11 @@ export type QueryResolvers<
     ContextType,
     RequireFields<QueryMoviesSearchArgs, 'query' | 'cursor' | 'pageSize'>
   >;
-  movieInfo?: Resolver<
-    ResolversTypes['MovieInfo'],
+  nowPlaying?: Resolver<
+    ResolversTypes['NowPlaying'],
     ParentType,
     ContextType,
-    RequireFields<QueryMovieInfoArgs, 'id' | 'cursor' | 'pageSize'>
+    RequireFields<QueryNowPlayingArgs, 'page'>
   >;
   tvShowInfo?: Resolver<
     ResolversTypes['TvShowInfo'],
@@ -494,20 +488,26 @@ export type QueryResolvers<
     ContextType,
     RequireFields<QueryTvShowInfoArgs, 'id' | 'cursor' | 'pageSize'>
   >;
+  upcoming?: Resolver<
+    ResolversTypes['Upcoming'],
+    ParentType,
+    ContextType,
+    RequireFields<QueryUpcomingArgs, 'page'>
+  >;
 }>;
 
 export type Resolvers<ContextType = any> = ResolversObject<{
-  UpcomingResults?: UpcomingResultsResolvers<ContextType>;
-  Upcoming?: UpcomingResolvers<ContextType>;
-  NowPlayingResults?: NowPlayingResultsResolvers<ContextType>;
-  NowPlaying?: NowPlayingResolvers<ContextType>;
-  MoviesSearchResults?: MoviesSearchResultsResolvers<ContextType>;
-  MoviesSearch?: MoviesSearchResolvers<ContextType>;
-  SimilarResults?: SimilarResultsResolvers<ContextType>;
-  SimilarMovies?: SimilarMoviesResolvers<ContextType>;
   MovieInfo?: MovieInfoResolvers<ContextType>;
-  TvShowInfo?: TvShowInfoResolvers<ContextType>;
+  MoviesSearch?: MoviesSearchResolvers<ContextType>;
+  MoviesSearchResults?: MoviesSearchResultsResolvers<ContextType>;
+  NowPlaying?: NowPlayingResolvers<ContextType>;
+  NowPlayingResults?: NowPlayingResultsResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  SimilarMovies?: SimilarMoviesResolvers<ContextType>;
+  SimilarResults?: SimilarResultsResolvers<ContextType>;
+  TvShowInfo?: TvShowInfoResolvers<ContextType>;
+  Upcoming?: UpcomingResolvers<ContextType>;
+  UpcomingResults?: UpcomingResultsResolvers<ContextType>;
 }>;
 
 /**
@@ -523,22 +523,22 @@ export type GetMovieInfoQueryVariables = Exact<{
 export type GetMovieInfoQuery = { __typename?: 'Query' } & {
   movieInfo: { __typename?: 'MovieInfo' } & Pick<
     MovieInfo,
-    | 'id'
     | 'backdrop_path'
-    | 'poster_path'
-    | 'title'
-    | 'overview'
     | 'budget'
-    | 'revenue'
-    | 'vote_average'
-    | 'release_date'
+    | 'id'
     | 'media_type'
+    | 'overview'
+    | 'poster_path'
+    | 'release_date'
+    | 'revenue'
+    | 'title'
+    | 'vote_average'
   > & {
       similar: { __typename?: 'SimilarMovies' } & {
         results: Array<
           { __typename?: 'SimilarResults' } & Pick<
             SimilarResults,
-            'id' | 'title' | 'release_date' | 'poster_path' | 'media_type'
+            'id' | 'media_type' | 'poster_path' | 'release_date' | 'title'
           >
         >;
       };
@@ -552,22 +552,22 @@ export type GetTvShowInfoQueryVariables = Exact<{
 export type GetTvShowInfoQuery = { __typename?: 'Query' } & {
   tvShowInfo: { __typename?: 'TvShowInfo' } & Pick<
     TvShowInfo,
-    | 'id'
     | 'backdrop_path'
-    | 'poster_path'
-    | 'title'
-    | 'overview'
+    | 'id'
+    | 'media_type'
     | 'number_of_episodes'
     | 'number_of_seasons'
-    | 'vote_average'
+    | 'overview'
+    | 'poster_path'
     | 'release_date'
-    | 'media_type'
+    | 'title'
+    | 'vote_average'
   > & {
       similar: { __typename?: 'SimilarMovies' } & {
         results: Array<
           { __typename?: 'SimilarResults' } & Pick<
             SimilarResults,
-            'id' | 'title' | 'release_date' | 'poster_path' | 'media_type'
+            'id' | 'media_type' | 'poster_path' | 'release_date' | 'title'
           >
         >;
       };
@@ -577,25 +577,25 @@ export type GetTvShowInfoQuery = { __typename?: 'Query' } & {
 export type GetMoviesQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetMoviesQuery = { __typename?: 'Query' } & {
-  upcoming: { __typename?: 'Upcoming' } & Pick<
-    Upcoming,
-    'total_pages' | 'page'
-  > & {
-      results: Array<
-        { __typename?: 'UpcomingResults' } & Pick<
-          UpcomingResults,
-          'id' | 'title' | 'release_date' | 'poster_path'
-        >
-      >;
-    };
   nowPlaying: { __typename?: 'NowPlaying' } & Pick<
     NowPlaying,
-    'total_pages' | 'page'
+    'page' | 'total_pages'
   > & {
       results: Array<
         { __typename?: 'NowPlayingResults' } & Pick<
           NowPlayingResults,
           'id' | 'title' | 'vote_average' | 'poster_path'
+        >
+      >;
+    };
+  upcoming: { __typename?: 'Upcoming' } & Pick<
+    Upcoming,
+    'page' | 'total_pages'
+  > & {
+      results: Array<
+        { __typename?: 'UpcomingResults' } & Pick<
+          UpcomingResults,
+          'id' | 'title' | 'release_date' | 'poster_path'
         >
       >;
     };
@@ -608,7 +608,7 @@ export type GetUpcomingQueryVariables = Exact<{
 export type GetUpcomingQuery = { __typename?: 'Query' } & {
   upcoming: { __typename?: 'Upcoming' } & Pick<
     Upcoming,
-    'total_pages' | 'page'
+    'page' | 'total_pages'
   > & {
       results: Array<
         { __typename?: 'UpcomingResults' } & Pick<
@@ -626,7 +626,7 @@ export type GetNowPlayingQueryVariables = Exact<{
 export type GetNowPlayingQuery = { __typename?: 'Query' } & {
   nowPlaying: { __typename?: 'NowPlaying' } & Pick<
     NowPlaying,
-    'total_pages' | 'page'
+    'page' | 'total_pages'
   > & {
       results: Array<
         { __typename?: 'NowPlayingResults' } & Pick<
@@ -638,8 +638,8 @@ export type GetNowPlayingQuery = { __typename?: 'Query' } & {
 };
 
 export type GetMoviesSearchQueryVariables = Exact<{
-  query: Scalars['String'];
   pageSize?: Maybe<Scalars['Int']>;
+  query: Scalars['String'];
 }>;
 
 export type GetMoviesSearchQuery = { __typename?: 'Query' } & {
@@ -647,7 +647,7 @@ export type GetMoviesSearchQuery = { __typename?: 'Query' } & {
     results: Array<
       { __typename?: 'MoviesSearchResults' } & Pick<
         MoviesSearchResults,
-        'id' | 'title' | 'media_type'
+        'id' | 'media_type' | 'title'
       >
     >;
   };
@@ -656,25 +656,25 @@ export type GetMoviesSearchQuery = { __typename?: 'Query' } & {
 export const GetMovieInfoDocument = gql`
   query GetMovieInfo($id: ID!) {
     movieInfo(id: $id) {
-      id
       backdrop_path
-      poster_path
-      title
-      overview
       budget
-      revenue
-      vote_average
-      release_date
+      id
       media_type
+      overview
+      poster_path
+      release_date
+      revenue
       similar {
         results {
           id
-          title
-          release_date
-          poster_path
           media_type
+          poster_path
+          release_date
+          title
         }
       }
+      title
+      vote_average
     }
   }
 `;
@@ -730,25 +730,25 @@ export type GetMovieInfoQueryResult = Apollo.QueryResult<
 export const GetTvShowInfoDocument = gql`
   query GetTvShowInfo($id: ID!) {
     tvShowInfo(id: $id) {
-      id
       backdrop_path
-      poster_path
-      title
-      overview
+      id
+      media_type
       number_of_episodes
       number_of_seasons
-      vote_average
+      overview
+      poster_path
       release_date
-      media_type
       similar {
         results {
           id
-          title
-          release_date
-          poster_path
           media_type
+          poster_path
+          release_date
+          title
         }
       }
+      title
+      vote_average
     }
   }
 `;
@@ -803,18 +803,7 @@ export type GetTvShowInfoQueryResult = Apollo.QueryResult<
 >;
 export const GetMoviesDocument = gql`
   query GetMovies {
-    upcoming {
-      total_pages
-      page
-      results {
-        id
-        title
-        release_date
-        poster_path
-      }
-    }
     nowPlaying {
-      total_pages
       page
       results {
         id
@@ -822,6 +811,17 @@ export const GetMoviesDocument = gql`
         vote_average
         poster_path
       }
+      total_pages
+    }
+    upcoming {
+      page
+      results {
+        id
+        title
+        release_date
+        poster_path
+      }
+      total_pages
     }
   }
 `;
@@ -874,7 +874,6 @@ export type GetMoviesQueryResult = Apollo.QueryResult<
 export const GetUpcomingDocument = gql`
   query GetUpcoming($page: String) {
     upcoming(page: $page) {
-      total_pages
       page
       results {
         id
@@ -882,6 +881,7 @@ export const GetUpcomingDocument = gql`
         release_date
         poster_path
       }
+      total_pages
     }
   }
 `;
@@ -935,7 +935,6 @@ export type GetUpcomingQueryResult = Apollo.QueryResult<
 export const GetNowPlayingDocument = gql`
   query GetNowPlaying($page: String) {
     nowPlaying(page: $page) {
-      total_pages
       page
       results {
         id
@@ -943,6 +942,7 @@ export const GetNowPlayingDocument = gql`
         vote_average
         poster_path
       }
+      total_pages
     }
   }
 `;
@@ -1000,8 +1000,8 @@ export const GetMoviesSearchDocument = gql`
     moviesSearch(query: $query, pageSize: $pageSize) {
       results {
         id
-        title
         media_type
+        title
       }
     }
   }

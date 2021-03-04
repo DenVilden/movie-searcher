@@ -26,8 +26,8 @@ const ImageWrapper = styled.div`
 `;
 
 interface Props {
-  handleToggle: () => void;
   favorite: Favorite;
+  handleToggle: () => void;
 }
 
 export default function FavoritesCard({
@@ -46,8 +46,8 @@ export default function FavoritesCard({
       <CardWrapper>
         <ImageWrapper>
           <Image
-            layout="fill"
             alt={title}
+            layout="fill"
             src={poster_path || '/no-image.jpg'}
           />
         </ImageWrapper>

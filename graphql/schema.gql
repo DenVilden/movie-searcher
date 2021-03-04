@@ -1,33 +1,33 @@
 type UpcomingResults {
   id: Int!
-  title: String!
-  release_date: String!
   poster_path: String
+  release_date: String!
+  title: String!
 }
 
 type Upcoming {
-  total_pages: Int!
   page: Int!
   results: [UpcomingResults!]!
+  total_pages: Int!
 }
 
 type NowPlayingResults {
   id: Int!
+  poster_path: String
   title: String!
   vote_average: Float!
-  poster_path: String
 }
 
 type NowPlaying {
-  total_pages: Int!
   page: Int!
   results: [NowPlayingResults!]!
+  total_pages: Int!
 }
 
 type MoviesSearchResults {
   id: Int!
-  title: String!
   media_type: String!
+  title: String!
 }
 
 type MoviesSearch {
@@ -38,10 +38,10 @@ type MoviesSearch {
 
 type SimilarResults {
   id: Int!
-  title: String!
-  release_date: String!
-  poster_path: String
   media_type: String!
+  poster_path: String
+  release_date: String!
+  title: String!
 }
 
 type SimilarMovies {
@@ -51,41 +51,41 @@ type SimilarMovies {
 }
 
 type MovieInfo {
-  id: Int!
-  title: String!
-  release_date: String!
-  vote_average: Float!
+  backdrop_path: String
   budget: String!
-  revenue: String!
+  id: Int!
+  media_type: String!
   overview: String
   poster_path: String
-  backdrop_path: String
-  media_type: String!
+  release_date: String!
+  revenue: String!
   similar: SimilarMovies!
+  title: String!
+  vote_average: Float!
 }
 
 type TvShowInfo {
-  id: Int!
-  title: String!
-  release_date: String!
-  poster_path: String
-  overview: String
-  vote_average: Float!
-  number_of_seasons: Int!
-  number_of_episodes: Int!
   backdrop_path: String
+  id: Int!
   media_type: String!
+  number_of_episodes: Int!
+  number_of_seasons: Int!
+  overview: String
+  poster_path: String
+  release_date: String!
   similar: SimilarMovies!
+  title: String!
+  vote_average: Float!
 }
 
 type Query {
-  upcoming(page: String = "1"): Upcoming!
   nowPlaying(page: String = "1"): NowPlaying!
+  movieInfo(id: ID!, cursor: Int = null, pageSize: Int = 4): MovieInfo!
   moviesSearch(
     query: String!
     cursor: Int = null
     pageSize: Int = 4
   ): MoviesSearch!
-  movieInfo(id: ID!, cursor: Int = null, pageSize: Int = 4): MovieInfo!
   tvShowInfo(id: ID!, cursor: Int = null, pageSize: Int = 4): TvShowInfo!
+  upcoming(page: String = "1"): Upcoming!
 }

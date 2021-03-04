@@ -23,28 +23,28 @@ export default class MoviesAPI extends RESTDataSource {
 
   private moviesUpcomingReducer(movies: MockUpcomingResponse) {
     return {
-      total_pages: movies.total_pages,
       page: movies.page,
       results: movies.results.map(movie => ({
         id: movie.id,
-        title: movie.title,
+        poster_path: attachPoster(movie.poster_path),
         release_date:
           movie.release_date && dayjs(movie.release_date).format('DD.MM.YYYY'),
-        poster_path: attachPoster(movie.poster_path),
+        title: movie.title,
       })),
+      total_pages: movies.total_pages,
     };
   }
 
   private moviesNowPlayingReducer(movies: MockNowPlayingResponse) {
     return {
-      total_pages: movies.total_pages,
       page: movies.page,
       results: movies.results.map(movie => ({
         id: movie.id,
+        poster_path: attachPoster(movie.poster_path),
         title: movie.title,
         vote_average: movie.vote_average,
-        poster_path: attachPoster(movie.poster_path),
       })),
+      total_pages: movies.total_pages,
     };
   }
 
@@ -53,8 +53,8 @@ export default class MoviesAPI extends RESTDataSource {
       results: movies.results
         .map(movie => ({
           id: movie.id,
-          title: movie?.title || movie.name,
           media_type: movie.media_type,
+          title: movie?.title || movie.name,
         }))
         .filter(movie => movie.media_type !== 'person'),
     };
@@ -62,55 +62,55 @@ export default class MoviesAPI extends RESTDataSource {
 
   private movieInfoReducer(movie: MockMovieInfoResponse) {
     return {
+      backdrop_path: attachPoster(movie.backdrop_path, 500),
+      budget: numeral(movie.budget).format('$0,00'),
       id: movie.id,
-      title: movie.title,
+      media_type: 'movie',
+      overview: movie.overview,
+      poster_path: attachPoster(movie.poster_path),
       release_date:
         movie.release_date && dayjs(movie.release_date).format('DD MMMM YYYY'),
-      vote_average: movie.vote_average,
-      budget: numeral(movie.budget).format('$0,00'),
       revenue: numeral(movie.revenue).format('$0,00'),
-      overview: movie.overview,
-      backdrop_path: attachPoster(movie.backdrop_path, 500),
-      poster_path: attachPoster(movie.poster_path),
-      media_type: 'movie',
       similar: {
         results: movie.similar.results.map(similarMovie => ({
           id: similarMovie.id,
-          title: similarMovie.title,
+          media_type: 'movie',
+          poster_path: attachPoster(similarMovie.poster_path),
           release_date:
             similarMovie.release_date &&
             dayjs(similarMovie.release_date).format('YYYY'),
-          poster_path: attachPoster(similarMovie.poster_path),
-          media_type: 'movie',
+          title: similarMovie.title,
         })),
       },
+      title: movie.title,
+      vote_average: movie.vote_average,
     };
   }
 
   private tvShowInfoReducer(tv: MockTvShowInfoResponse) {
     return {
-      id: tv.id,
-      title: tv.name,
-      release_date:
-        tv.first_air_date && dayjs(tv.first_air_date).format('DD MMMM YYYY'),
-      vote_average: tv.vote_average,
-      overview: tv.overview,
       backdrop_path: attachPoster(tv.backdrop_path, 500),
-      poster_path: attachPoster(tv.poster_path),
+      id: tv.id,
+      media_type: 'tv',
       number_of_episodes: tv.number_of_episodes,
       number_of_seasons: tv.number_of_seasons,
-      media_type: 'tv',
+      overview: tv.overview,
+      poster_path: attachPoster(tv.poster_path),
+      release_date:
+        tv.first_air_date && dayjs(tv.first_air_date).format('DD MMMM YYYY'),
       similar: {
         results: tv.similar.results.map(similarTvShow => ({
           id: similarTvShow.id,
-          title: similarTvShow.name,
+          media_type: 'tv',
+          poster_path: attachPoster(similarTvShow.poster_path),
           release_date:
             similarTvShow.first_air_date &&
             dayjs(similarTvShow.first_air_date).format('YYYY'),
-          poster_path: attachPoster(similarTvShow.poster_path),
-          media_type: 'tv',
+          title: similarTvShow.name,
         })),
       },
+      title: tv.name,
+      vote_average: tv.vote_average,
     };
   }
 

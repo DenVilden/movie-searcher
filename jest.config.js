@@ -3,8 +3,7 @@ module.exports = {
     '**/*.{ts,tsx}',
     '!**/*.d.ts',
     '!pages/api/*.ts',
-    '!apollo/index.ts',
-    '!components/**/index.ts',
+    '!apollo/*.ts',
     '!__generated__/*.ts',
   ],
 };

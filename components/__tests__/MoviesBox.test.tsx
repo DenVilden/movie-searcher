@@ -5,9 +5,9 @@ const mock = [
   {
     id: 1,
     poster_path: null,
+    release_date: '2020',
     title: 'test',
     vote_average: 5,
-    release_date: '2020',
   },
 ];
 

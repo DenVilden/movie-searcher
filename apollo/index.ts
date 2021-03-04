@@ -8,9 +8,9 @@ import { useMemo } from 'react';
 
 export interface Favorite {
   id: number;
-  title: string;
-  poster_path?: string | null;
   media_type: string;
+  poster_path?: string | null;
+  title: string;
 }
 
 export const favoritesVar = makeVar<Favorite[]>([]);
@@ -20,9 +20,9 @@ let apolloClient: ApolloClient<NormalizedCacheObject>;
 
 function createApolloClient() {
   return new ApolloClient({
+    cache: new InMemoryCache(),
     ssrMode: typeof window === 'undefined',
     uri: process.env.NEXT_PUBLIC_SERVER_URL,
-    cache: new InMemoryCache(),
   });
 }
 

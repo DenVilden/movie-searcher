@@ -197,9 +197,9 @@ describe('[Query.movieInfo]', () => {
     expect(res).toStrictEqual({
       ...mockMovieInfo,
       similar: {
-        results: [mockMovieInfo.similar.results[0]],
         cursor: 1,
         hasMore: false,
+        results: [mockMovieInfo.similar.results[0]],
       },
     });
   });
@@ -246,9 +246,9 @@ describe('[Query.tvShowInfo]', () => {
     expect(res).toStrictEqual({
       ...mockTvShowInfo,
       similar: {
-        results: [mockTvShowInfo.similar.results[0]],
         cursor: 1,
         hasMore: false,
+        results: [mockTvShowInfo.similar.results[0]],
       },
     });
   });

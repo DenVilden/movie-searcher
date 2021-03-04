@@ -9,9 +9,9 @@ export function paginateResults(data: any, size = 4, cursor: number | null) {
 
   return {
     ...data,
-    results,
     cursor: results.length,
     hasMore: results.length !== data.results.length,
+    results,
   };
 }
 

@@ -21,27 +21,27 @@ const mocks = [
     result: {
       data: {
         tvShowInfo: {
-          id: 1,
           backdrop_path: null,
-          poster_path: null,
-          title: 'rendered tv',
-          overview: 'overview',
+          id: 1,
+          media_type: 'tv',
           number_of_episodes: 30,
           number_of_seasons: 5,
-          vote_average: 10,
+          overview: 'overview',
+          poster_path: null,
           release_date: '2002',
-          media_type: 'tv',
           similar: {
             results: [
               {
                 id: 2,
-                title: 'rendered similar',
-                release_date: '2002',
-                poster_path: null,
                 media_type: 'tv',
+                poster_path: null,
+                release_date: '2002',
+                title: 'rendered similar',
               },
             ],
           },
+          title: 'rendered tv',
+          vote_average: 10,
         },
       },
     },
@@ -59,13 +59,13 @@ describe('tv page', () => {
   it('should render error state', async () => {
     const mock = [
       {
+        error: new Error('an error has occurred'),
         request: {
           query: GetTvShowInfoDocument,
           variables: {
             id: '1',
           },
         },
-        error: new Error('an error has occurred'),
       },
     ];
 

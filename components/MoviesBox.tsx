@@ -28,17 +28,17 @@ const Wrapper = styled(Grid)`
 `;
 
 interface Props {
+  elevation?: number;
   movies: {
     id: number;
-    title: string;
-    vote_average?: number;
+    media_type?: string;
     poster_path?: string | null;
     release_date?: string | null;
-    media_type?: string;
+    title: string;
+    vote_average?: number;
   }[];
-  title: string;
-  elevation?: number;
   padding?: boolean;
+  title: string;
 }
 
 export default function MoviesBox({

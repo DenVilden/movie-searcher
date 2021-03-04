@@ -18,28 +18,28 @@ const mocks = [
     result: {
       data: {
         nowPlaying: {
-          total_pages: 20,
           page: 1,
           results: [
             {
               id: 1,
+              poster_path: null,
               title: 'now playing rendered',
               vote_average: 5,
-              poster_path: null,
             },
           ],
+          total_pages: 20,
         },
         upcoming: {
-          total_pages: 20,
           page: 1,
           results: [
             {
               id: 1,
-              title: 'upcoming rendered',
-              release_date: '2002',
               poster_path: null,
+              release_date: '2002',
+              title: 'upcoming rendered',
             },
           ],
+          total_pages: 20,
         },
       },
     },
@@ -57,10 +57,10 @@ describe('home page', () => {
   it('should render error state', async () => {
     const mock = [
       {
+        error: new Error('an error has occurred'),
         request: {
           query: GetMoviesDocument,
         },
-        error: new Error('an error has occurred'),
       },
     ];
 

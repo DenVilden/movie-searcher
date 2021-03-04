@@ -65,8 +65,8 @@ export default function NextApp({ Component, pageProps }: AppProps) {
     <ApolloProvider client={apolloClient}>
       <Head>
         <meta
-          name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
+          name="viewport"
         />
         <title key="title">Movie Searcher</title>
       </Head>

@@ -2,33 +2,33 @@ import { renderApollo } from '../../lib/setupTests';
 import FavoritesCard from '../FavoritesCard';
 
 const mock = {
-  id: 1,
   backdrop_path: null,
-  poster_path: null,
-  title: 'test',
-  overview: 'test data',
   budget: '0',
-  revenue: '0',
-  vote_average: 5,
-  release_date: '2020',
+  id: 1,
   media_type: 'movie',
+  overview: 'test data',
+  poster_path: null,
+  release_date: '2020',
+  revenue: '0',
   similar: {
     results: [
       {
         id: 1,
-        title: 'test',
-        release_date: '2020',
-        poster_path: null,
         media_type: 'movie',
+        poster_path: null,
+        release_date: '2020',
+        title: 'test',
       },
     ],
   },
+  title: 'test',
+  vote_average: 5,
 };
 
 describe('favoritesCard', () => {
   it('should take a snapshot', () => {
     const { asFragment } = renderApollo(
-      <FavoritesCard handleToggle={jest.fn()} favorite={mock} />,
+      <FavoritesCard favorite={mock} handleToggle={jest.fn()} />,
     );
 
     const element = asFragment();

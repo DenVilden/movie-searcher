@@ -13,9 +13,9 @@ const StyledPagination = styled(Pagination)`
 `;
 
 interface Props {
-  totalPages: number;
   currentPage: number;
   path: string;
+  totalPages: number;
 }
 
 export default function PaginationComponent({
@@ -29,11 +29,11 @@ export default function PaginationComponent({
   return (
     <StyledPagination
       count={totalPages}
-      page={page}
       onChange={(_evt, pageNumber: number) => {
         setPage(pageNumber);
         router.push(`/${path}/${pageNumber}`);
       }}
+      page={page}
     />
   );
 }

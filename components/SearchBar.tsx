@@ -54,9 +54,11 @@ export default function SearchBar() {
   return (
     <StyledAutocomplete
       blurOnSelect
+      filterOptions={options => options}
       freeSolo
-      inputValue={inputValue}
+      getOptionLabel={(movie: any) => movie.title}
       id="autocomplete"
+      inputValue={inputValue}
       loading={
         loading ||
         !!error ||
@@ -73,17 +75,15 @@ export default function SearchBar() {
           setInputValue('');
         }
       }}
-      filterOptions={options => options}
       openOnFocus
-      options={data && inputValue.trim() ? data.moviesSearch.results : []}
-      getOptionLabel={(movie: any) => movie.title}
+      options={(inputValue.trim() && data?.moviesSearch.results) || []}
       renderInput={params => (
         <>
           <StyledSearchIcon />
           <StyledTextField
             {...params}
             error={!!error}
-            size="small"
+            fullWidth
             id="search field"
             onChange={({ target: { value } }) => {
               setInputValue(value);
@@ -91,11 +91,11 @@ export default function SearchBar() {
               const newValue = value.trim();
 
               if (newValue && newValue !== inputValue.trim()) {
-                fetchMovies({ variables: { query: newValue, pageSize: 8 } });
+                fetchMovies({ variables: { pageSize: 8, query: newValue } });
               }
             }}
             placeholder="Search..."
-            fullWidth
+            size="small"
           />
         </>
       )}

@@ -246,6 +246,30 @@ export const mockMovieInfoResponse = {
   release_date: '2020-02-13',
   revenue: 25155355,
   runtime: 125,
+  similar: {
+    page: 1,
+    results: [
+      {
+        adult: false,
+        backdrop_path: '/wztoDoglCOuiEfzl1FS6mglBioF.jpg',
+        genre_ids: [18],
+        id: 410117,
+        original_language: 'en',
+        original_title: 'Lady Macbeth',
+        overview:
+          "Rural England, 1865. Katherine, suffocated by her loveless marriage to a bitter man and restrained by his father's tyranny, unleashes an irresistible force within her, so powerful that she will stop at nothing to get what she wants.",
+        popularity: 16.25,
+        poster_path: '/xWTJbhTwSTJmhLlX5xAOxPhdnXc.jpg',
+        release_date: '2016-12-12',
+        title: 'Lady Macbeth',
+        video: false,
+        vote_average: 6.5,
+        vote_count: 465,
+      },
+    ],
+    total_pages: 32,
+    total_results: 629,
+  },
   spoken_languages: [
     {
       english_name: 'English',
@@ -259,30 +283,6 @@ export const mockMovieInfoResponse = {
   video: false,
   vote_average: 7.1,
   vote_count: 720,
-  similar: {
-    page: 1,
-    results: [
-      {
-        adult: false,
-        backdrop_path: '/wztoDoglCOuiEfzl1FS6mglBioF.jpg',
-        genre_ids: [18],
-        id: 410117,
-        original_language: 'en',
-        original_title: 'Lady Macbeth',
-        overview:
-          "Rural England, 1865. Katherine, suffocated by her loveless marriage to a bitter man and restrained by his father's tyranny, unleashes an irresistible force within her, so powerful that she will stop at nothing to get what she wants.",
-        poster_path: '/xWTJbhTwSTJmhLlX5xAOxPhdnXc.jpg',
-        release_date: '2016-12-12',
-        title: 'Lady Macbeth',
-        video: false,
-        vote_average: 6.5,
-        vote_count: 465,
-        popularity: 16.25,
-      },
-    ],
-    total_pages: 32,
-    total_results: 629,
-  },
 };
 
 export type MockMovieInfoResponse = typeof mockMovieInfoResponse;
@@ -291,17 +291,17 @@ export const mockTvShowInfoResponse = {
   backdrop_path: '/df4V825ahcsw4qKuFTEefippoCG.jpg',
   created_by: [
     {
-      id: 7624,
       credit_id: '60291018a6725400426a5e99',
-      name: 'Stan Lee',
       gender: 2,
+      id: 7624,
+      name: 'Stan Lee',
       profile_path: '/nGjBAc25C3LT23NqeOfY1pCcax8.jpg',
     },
     {
-      id: 7625,
       credit_id: '6029102f92e55b003f5d5b36',
-      name: 'Steve Ditko',
       gender: 2,
+      id: 7625,
+      name: 'Steve Ditko',
       profile_path: '/dfdSdCN8Zb9MD5qSkpMseze4n8H.jpg',
     },
   ],
@@ -336,21 +336,21 @@ export const mockTvShowInfoResponse = {
     vote_count: 2,
   },
   name: 'Spider-Man',
-  next_episode_to_air: null,
   networks: [
     {
-      name: 'FOX',
       id: 19,
       logo_path: '/1DSpHrWyOORkL9N2QHX7Adt31mQ.png',
+      name: 'FOX',
       origin_country: 'US',
     },
     {
-      name: 'Fox Kids',
       id: 2686,
       logo_path: '/rUb71E91POVCxpXGJ49pf6m8Ukk.png',
+      name: 'Fox Kids',
       origin_country: 'US',
     },
   ],
+  next_episode_to_air: null,
   number_of_episodes: 65,
   number_of_seasons: 5,
   origin_country: ['US'],
@@ -449,18 +449,6 @@ export const mockTvShowInfoResponse = {
       season_number: 5,
     },
   ],
-  spoken_languages: [
-    {
-      english_name: 'English',
-      iso_639_1: 'en',
-      name: 'English',
-    },
-  ],
-  status: 'Ended',
-  tagline: '',
-  type: 'Scripted',
-  vote_average: 8.2,
-  vote_count: 478,
   similar: {
     page: 1,
     results: [
@@ -475,15 +463,27 @@ export const mockTvShowInfoResponse = {
         original_name: 'Batman: The Animated Series',
         overview:
           'Vowing to avenge the murder of his parents, Bruce Wayne devotes his life to wiping out crime in Gotham City as the masked vigilante "Batman".',
+        popularity: 103.611,
         poster_path: '/7ZsnVtDtkMiuMirKSZdaLaU4wMR.jpg',
         vote_average: 8.3,
         vote_count: 844,
-        popularity: 103.611,
       },
     ],
     total_pages: 19,
     total_results: 373,
   },
+  spoken_languages: [
+    {
+      english_name: 'English',
+      iso_639_1: 'en',
+      name: 'English',
+    },
+  ],
+  status: 'Ended',
+  tagline: '',
+  type: 'Scripted',
+  vote_average: 8.2,
+  vote_count: 478,
 };
 
 export type MockTvShowInfoResponse = typeof mockTvShowInfoResponse;

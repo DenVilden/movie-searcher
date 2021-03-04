@@ -14,7 +14,7 @@ const mocks = [
   {
     request: {
       query: GetMoviesSearchDocument,
-      variables: { query: 'test', pageSize: 8 },
+      variables: { pageSize: 8, query: 'test' },
     },
     result: {
       data: {
@@ -22,8 +22,8 @@ const mocks = [
           results: [
             {
               id: 1,
-              title: 'test-title',
               media_type: 'movie',
+              title: 'test-title',
             },
           ],
         },

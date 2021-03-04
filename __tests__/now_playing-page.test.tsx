@@ -15,16 +15,16 @@ jest.mock('next/router', () => ({
 
 const mocks = {
   nowPlaying: {
-    total_pages: 20,
     page: 1,
     results: [
       {
         id: 1,
+        poster_path: null,
         title: 'now playing page 1',
         vote_average: 5,
-        poster_path: null,
       },
     ],
+    total_pages: 20,
   },
 };
 
@@ -42,13 +42,13 @@ describe('now playing page', () => {
   it('should render error state', async () => {
     const mock = [
       {
+        error: new Error('an error has occurred'),
         request: {
           query: GetNowPlayingDocument,
           variables: {
             page: '1',
           },
         },
-        error: new Error('an error has occurred'),
       },
     ];
 

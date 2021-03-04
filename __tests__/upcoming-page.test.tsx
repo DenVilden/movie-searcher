@@ -15,16 +15,16 @@ jest.mock('next/router', () => ({
 
 const mocks = {
   upcoming: {
-    total_pages: 20,
     page: 1,
     results: [
       {
         id: 1,
-        title: 'upcoming page 1',
-        release_date: '2002',
         poster_path: null,
+        release_date: '2002',
+        title: 'upcoming page 1',
       },
     ],
+    total_pages: 20,
   },
 };
 
@@ -42,13 +42,13 @@ describe('upcoming page', () => {
   it('should render error state', async () => {
     const mock = [
       {
+        error: new Error('an error has occurred'),
         request: {
           query: GetUpcomingDocument,
           variables: {
             page: '1',
           },
         },
-        error: new Error('an error has occurred'),
       },
     ];
 

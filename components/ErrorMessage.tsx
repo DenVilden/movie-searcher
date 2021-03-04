@@ -11,7 +11,7 @@ interface Props {
 
 export default function ErrorMessage({ error }: Props) {
   return (
-    <StyledAlert elevation={12} variant="filled" severity="error">
+    <StyledAlert elevation={12} severity="error" variant="filled">
       <AlertTitle>Error</AlertTitle>
       {error}
     </StyledAlert>

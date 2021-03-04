@@ -4,11 +4,11 @@ import resolvers from '../../graphql/resolvers';
 import MoviesAPI from '../../graphql/datasource';
 
 const server = new ApolloServer({
-  typeDefs: loader('../../graphql/schema.gql'),
-  resolvers,
   dataSources: () => ({ moviesAPI: new MoviesAPI() }),
   introspection: true,
   playground: true,
+  resolvers,
+  typeDefs: loader('../../graphql/schema.gql'),
 });
 
 export const config = {

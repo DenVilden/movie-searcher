@@ -24,8 +24,8 @@ interface Props {
 export default function NowPlayingPage({ initialData }: Props) {
   const { page } = useRouter().query as { page: string };
   const { data, error } = useGetNowPlayingQuery({
-    variables: { page },
     skip: !!initialData,
+    variables: { page },
   });
 
   if (error) return <ErrorMessage error={error.message} />;
@@ -38,8 +38,8 @@ export default function NowPlayingPage({ initialData }: Props) {
           title="Now Playing"
         />
         <Pagination
-          path="now_playing"
           currentPage={data?.nowPlaying.page || initialData.nowPlaying.page}
+          path="now_playing"
           totalPages={
             data?.nowPlaying.total_pages || initialData.nowPlaying.total_pages
           }
@@ -64,8 +64,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   );
 
   return {
-    paths,
     fallback: true,
+    paths,
   };
 };
 

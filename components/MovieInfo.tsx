@@ -51,19 +51,19 @@ const StyledTypography = styled(Typography)`
 
 interface Props {
   data: {
-    id: number;
-    title: string;
-    release_date: string;
-    vote_average: number;
+    backdrop_path?: string | null;
     budget?: string;
-    revenue?: string;
+    id: number;
+    media_type: string;
+    number_of_episodes?: number;
+    number_of_seasons?: number;
     overview?: string | null;
     poster_path?: string | null;
-    backdrop_path?: string | null;
-    number_of_seasons?: number;
-    number_of_episodes?: number;
-    media_type: string;
+    release_date: string;
+    revenue?: string;
     similar: SimilarMovies;
+    title: string;
+    vote_average: number;
   };
 }
 
@@ -83,9 +83,9 @@ export default function MovieInfoComponent({ data }: Props) {
         ...favorites,
         {
           id: data.id,
-          title: data.title,
-          poster_path: data.poster_path,
           media_type: data.media_type,
+          poster_path: data.poster_path,
+          title: data.title,
         },
       ];
       favoritesVar(newFavorites);
@@ -103,9 +103,9 @@ export default function MovieInfoComponent({ data }: Props) {
         <StyledCard elevation={10}>
           <ImageWrapper>
             <Image
+              alt={data.title}
               layout="fill"
               objectFit="cover"
-              alt={data.title}
               src={data.backdrop_path || '/no-image.jpg'}
             />
           </ImageWrapper>

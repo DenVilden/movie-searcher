@@ -6,11 +6,19 @@
     "plugin:testing-library/react",
     "prettier"
   ],
-  "plugins": ["better-styled-components"],
+  "plugins": [
+    "better-styled-components",
+    "typescript-sort-keys",
+    "sort-keys-fix"
+  ],
   "parserOptions": {
     "project": "tsconfig.json"
   },
   "rules": {
+    "typescript-sort-keys/interface": "warn",
+    "typescript-sort-keys/string-enum": "warn",
+    "sort-keys-fix/sort-keys-fix": "warn",
+    "react/jsx-sort-props": "warn",
     "better-styled-components/sort-declarations-alphabetically": "warn",
     "jest/prefer-expect-assertions": "off",
     "react/react-in-jsx-scope": "off",

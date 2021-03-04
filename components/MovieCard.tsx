@@ -42,11 +42,11 @@ const IconWrapper = styled.span`
 type Props = {
   movie: {
     id: number;
-    title: string;
-    vote_average?: number;
+    media_type?: string;
     poster_path?: string | null;
     release_date?: string | null;
-    media_type?: string;
+    title: string;
+    vote_average?: number;
   };
 };
 
@@ -70,10 +70,10 @@ export default function MovieCard({
         }}
       >
         <Image
-          height="300"
-          width="200"
           alt={title}
+          height="300"
           src={poster_path || '/no-image.jpg'}
+          width="200"
         />
         <StyledCardContent>
           <Typography variant="subtitle2">{title}</Typography>

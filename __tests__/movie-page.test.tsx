@@ -21,27 +21,27 @@ const mocks = [
     result: {
       data: {
         movieInfo: {
-          id: 1,
           backdrop_path: null,
-          poster_path: null,
-          title: 'rendered movie',
-          overview: 'overview',
           budget: '200',
-          revenue: '300',
-          vote_average: 10,
-          release_date: '2002',
+          id: 1,
           media_type: 'movie',
+          overview: 'overview',
+          poster_path: null,
+          release_date: '2002',
+          revenue: '300',
           similar: {
             results: [
               {
                 id: 2,
-                title: 'rendered similar',
-                release_date: '2002',
-                poster_path: null,
                 media_type: 'movie',
+                poster_path: null,
+                release_date: '2002',
+                title: 'rendered similar',
               },
             ],
           },
+          title: 'rendered movie',
+          vote_average: 10,
         },
       },
     },
@@ -59,13 +59,13 @@ describe('movie page', () => {
   it('should render error state', async () => {
     const mock = [
       {
+        error: new Error('an error has occurred'),
         request: {
           query: GetMovieInfoDocument,
           variables: {
             id: '1',
           },
         },
-        error: new Error('an error has occurred'),
       },
     ];
 

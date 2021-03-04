@@ -38,11 +38,11 @@ export default function Favorites() {
   return (
     <>
       <IconButton
+        ref={iconButtonRef}
+        aria-label="open favorites"
         color="inherit"
         disabled={!favorites.length}
         onClick={handleToggle}
-        ref={iconButtonRef}
-        aria-label="open favorites"
       >
         <Badge badgeContent={favorites.length} color="secondary">
           {toggle ? <FavoriteBorderIcon /> : <FavoriteIcon />}
@@ -50,7 +50,7 @@ export default function Favorites() {
       </IconButton>
       <Popover
         anchorEl={iconButtonRef.current}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
         onClose={handleToggle}
         open={toggle}
       >
@@ -58,9 +58,9 @@ export default function Favorites() {
         <Divider />
         {favorites.map(favorite => (
           <FavoritesCard
-            handleToggle={handleToggle}
             key={favorite.id}
             favorite={favorite}
+            handleToggle={handleToggle}
           />
         ))}
       </Popover>

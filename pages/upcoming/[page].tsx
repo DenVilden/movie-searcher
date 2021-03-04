@@ -24,8 +24,8 @@ interface Props {
 export default function UpcomingPage({ initialData }: Props) {
   const { page } = useRouter().query as { page: string };
   const { data, error } = useGetUpcomingQuery({
-    variables: { page },
     skip: !!initialData,
+    variables: { page },
   });
 
   if (error) return <ErrorMessage error={error.message} />;
@@ -38,8 +38,8 @@ export default function UpcomingPage({ initialData }: Props) {
           title="Upcoming"
         />
         <Pagination
-          path="upcoming"
           currentPage={data?.upcoming.page || initialData.upcoming.page}
+          path="upcoming"
           totalPages={
             data?.upcoming.total_pages || initialData.upcoming.total_pages
           }
@@ -64,8 +64,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   );
 
   return {
-    paths,
     fallback: true,
+    paths,
   };
 };
 

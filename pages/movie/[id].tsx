@@ -18,8 +18,8 @@ export default function MoviePage() {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => ({
-  paths: [],
   fallback: true,
+  paths: [],
 });
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {

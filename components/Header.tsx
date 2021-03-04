@@ -41,15 +41,15 @@ function Header() {
   };
 
   return (
-    <AppBar position="static" color={prefersDarkMode ? 'inherit' : 'primary'}>
+    <AppBar color={prefersDarkMode ? 'inherit' : 'primary'} position="static">
       <StyledToolbar disableGutters>
         <Link href="/">
           <IconButton>
             <StyledImage
+              aria-label="logo"
+              height="45"
               src="/logo.svg"
               width="45"
-              height="45"
-              aria-label="logo"
             />
           </IconButton>
         </Link>
