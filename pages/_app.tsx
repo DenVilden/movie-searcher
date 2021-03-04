@@ -10,8 +10,13 @@ import {
 } from '@material-ui/core';
 import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
+import styled from '@emotion/styled';
 import { useApollo, prefersDarkModeVar } from '../apollo';
 import Header from '../components/Header';
+
+const StyledLinearProgress = styled(LinearProgress)`
+  margin-top: 70px;
+`;
 
 export default function NextApp({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState);
@@ -45,6 +50,10 @@ export default function NextApp({ Component, pageProps }: AppProps) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
 
+    if (window.history.scrollRestoration) {
+      window.history.scrollRestoration = 'manual';
+    }
+
     const start = () => {
       setLoading(true);
     };
@@ -74,7 +83,7 @@ export default function NextApp({ Component, pageProps }: AppProps) {
         <CssBaseline />
         <Header />
         {loading ? (
-          <LinearProgress color="secondary" />
+          <StyledLinearProgress color="secondary" />
         ) : (
           <Component {...pageProps} />
         )}

@@ -3,18 +3,14 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import MovieCard from './MovieCard';
 
-interface RootProps {
-  padding: number;
-}
-
-const Root = styled(Paper)<RootProps>`
+const Root = styled(Paper)<{ padding: number }>`
   background: none;
   background-color: inherit;
 
   ${({ theme, padding }) =>
     padding &&
     css`
-      margin: ${theme.spacing(3, 1, 3, 1)};
+      margin: ${theme.spacing(11, 1, 3, 1)};
       padding: ${theme.spacing(2, 0, 4, 0)};
     `};
 `;

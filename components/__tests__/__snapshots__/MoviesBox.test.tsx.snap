@@ -3,7 +3,7 @@
 exports[`moviesBox should take a snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 css-exwu77-MuiPaper-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 css-zeoj9y-MuiPaper-root"
     padding="1"
   >
     <h4

@@ -13,9 +13,10 @@ import SearchBar from './SearchBar';
 import { prefersDarkModeVar } from '../apollo';
 
 const StyledToolbar = styled(Toolbar)`
+  padding-right: 4px;
+
   ${({ theme }) => theme.breakpoints.up('md')} {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: ${({ theme }) => theme.spacing(0, 2, 0, 2)};
   }
 `;
 
@@ -41,7 +42,7 @@ function Header() {
   };
 
   return (
-    <AppBar color={prefersDarkMode ? 'inherit' : 'primary'} position="static">
+    <AppBar color={prefersDarkMode ? 'inherit' : 'primary'} position="fixed">
       <StyledToolbar disableGutters>
         <Link href="/">
           <IconButton>

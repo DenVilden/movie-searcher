@@ -17,7 +17,7 @@ import { SimilarMovies } from '../__generated__';
 const StyledCard = styled(Card)`
   background-color: inherit;
   display: block;
-  margin: ${({ theme }) => theme.spacing(3)};
+  margin: ${({ theme }) => theme.spacing(11, 1, -8, 1)};
 
   ${({ theme }) => theme.breakpoints.up('md')} {
     display: flex;
