@@ -6,10 +6,10 @@ exports[`movieInfo should take a snapshot 1`] = `
     style="webkit-transform: none; transform: none; webkit-transition: -webkit-transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;"
   >
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root css-1w41nmq-MuiPaper-root-MuiCard-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root eeexpct3 css-1holodr-MuiPaper-root-MuiCard-root-StyledCard"
     >
       <div
-        class="css-zei4e4"
+        class="css-s416j3-ImageWrapper eeexpct2"
       >
         <div
           style="display: block; overflow: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; margin: 0px;"
@@ -23,10 +23,10 @@ exports[`movieInfo should take a snapshot 1`] = `
         </div>
       </div>
       <div
-        class="MuiCardContent-root css-1mogibk-MuiCardContent-root"
+        class="MuiCardContent-root eeexpct1 css-u5tic9-MuiCardContent-root-StyledCardContent"
       >
         <h5
-          class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-5tslz2-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom eeexpct0 css-f7r6x9-MuiTypography-root-StyledTypography"
         >
           test
           <button
@@ -95,7 +95,7 @@ exports[`movieInfo should take a snapshot 1`] = `
       </div>
     </div>
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 css-zeoj9y-MuiPaper-root"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 efhkdvm1 css-1yrhzzy-MuiPaper-root-Root-Root"
       padding="1"
     >
       <h4
@@ -107,10 +107,10 @@ exports[`movieInfo should take a snapshot 1`] = `
         class="MuiGrid-root MuiGrid-container css-15fev7r-MuiGrid-root"
       >
         <div
-          class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-md-3 css-nks5yq-MuiGrid-root"
+          class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-md-3 efhkdvm0 css-1un961w-MuiGrid-root-Wrapper"
         >
           <div
-            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root css-1jin0gs-MuiPaper-root-MuiCard-root"
+            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root ejzktm53 css-13cg5qu-MuiPaper-root-MuiCard-root-StyledCard"
           >
             <button
               class="MuiButtonBase-root MuiCardActionArea-root css-b6lsxj-MuiButtonBase-root-MuiCardActionArea-root"
@@ -139,7 +139,7 @@ exports[`movieInfo should take a snapshot 1`] = `
                 />
               </div>
               <div
-                class="MuiCardContent-root css-2zy926-MuiCardContent-root"
+                class="MuiCardContent-root ejzktm52 css-1efco5i-MuiCardContent-root-StyledCardContent"
               >
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
@@ -147,7 +147,7 @@ exports[`movieInfo should take a snapshot 1`] = `
                   test
                 </h6>
                 <p
-                  class="MuiTypography-root MuiTypography-body1 css-i0o70y-MuiTypography-root"
+                  class="MuiTypography-root MuiTypography-body1 ejzktm51 css-eywcq2-MuiTypography-root-StyledTypography"
                 >
                   2020
                 </p>

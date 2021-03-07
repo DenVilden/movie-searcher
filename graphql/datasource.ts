@@ -51,12 +51,12 @@ export default class MoviesAPI extends RESTDataSource {
   private moviesSearchReducer(movies: MockMoviesSearchResponse) {
     return {
       results: movies.results
+        .filter(movie => movie.media_type !== 'person')
         .map(movie => ({
           id: movie.id,
           media_type: movie.media_type,
           title: movie?.title || movie.name,
-        }))
-        .filter(movie => movie.media_type !== 'person'),
+        })),
     };
   }
 

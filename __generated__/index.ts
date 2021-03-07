@@ -430,8 +430,8 @@ export type MovieInfoResolvers<
   release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   revenue?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   similar?: Resolver<ResolversTypes['SimilarMovies'], ParentType, ContextType>;
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 }>;
 
 export type TvShowInfoResolvers<
@@ -456,8 +456,8 @@ export type TvShowInfoResolvers<
   >;
   release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   similar?: Resolver<ResolversTypes['SimilarMovies'], ParentType, ContextType>;
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 }>;
 
 export type QueryResolvers<

@@ -6,7 +6,7 @@ exports[`header should take a snapshot 1`] = `
     class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-opo76f-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      class="MuiToolbar-root MuiToolbar-regular css-1rdrqzw-MuiToolbar-root"
+      class="MuiToolbar-root MuiToolbar-regular e1aqnoh83 css-15abvuf-MuiToolbar-root-StyledToolbar"
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1uaxfgw-MuiButtonBase-root-MuiIconButton-root"
@@ -32,7 +32,7 @@ exports[`header should take a snapshot 1`] = `
             </div>
             <img
               aria-label="logo"
-              class="css-1wtzhac"
+              class="css-95d38l-StyledImage e1aqnoh80"
               decoding="async"
               src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
               style="visibility: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
@@ -45,12 +45,12 @@ exports[`header should take a snapshot 1`] = `
       </button>
       <div
         aria-expanded="false"
-        class="MuiAutocomplete-root css-z2si3t-MuiAutocomplete-root"
+        class="MuiAutocomplete-root ep0uteb2 css-1mukid1-MuiAutocomplete-root-StyledAutocomplete"
         role="combobox"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-856tw0-MuiSvgIcon-root"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium ep0uteb0 css-1t4n2px-MuiSvgIcon-root-StyledSearchIcon"
           data-testid="SearchIcon"
           focusable="false"
           viewBox="0 0 24 24"
@@ -60,7 +60,7 @@ exports[`header should take a snapshot 1`] = `
           />
         </svg>
         <div
-          class="MuiFormControl-root MuiFormControl-marginNone MuiFormControl-fullWidth MuiTextField-root css-ox084m-MuiFormControl-root"
+          class="MuiFormControl-root MuiFormControl-marginNone MuiFormControl-fullWidth MuiTextField-root ep0uteb1 css-18kvcvx-MuiFormControl-root-StyledTextField"
         >
           <div
             class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-4a33cb-MuiInputBase-root-MuiOutlinedInput-root"
@@ -101,7 +101,7 @@ exports[`header should take a snapshot 1`] = `
       </div>
       <button
         aria-label="theme switch"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-14dhwkx-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium e1aqnoh82 css-17n4xwh-MuiButtonBase-root-MuiIconButton-root-StyledIconButton"
         tabindex="0"
         type="button"
       >
@@ -110,7 +110,7 @@ exports[`header should take a snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-199uyvf-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium e1aqnoh81 css-1ckavdu-MuiSvgIcon-root-StyledDarkIcon"
             data-testid="Brightness4Icon"
             focusable="false"
             viewBox="0 0 24 24"
