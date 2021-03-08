@@ -1,6 +1,8 @@
-import NowPlayingPage from '../pages/now_playing/[page]';
-import { renderApollo, screen, fireEvent } from '../lib/setupTests';
-import { GetNowPlayingDocument } from '../__generated__';
+import { fireEvent, screen } from '@testing-library/react';
+
+import NowPlayingPage from 'pages/now_playing/[page]';
+import renderApollo from 'lib/setupTests';
+import { GetNowPlayingDocument } from '__generated__';
 
 const mockHistoryPush = jest.fn();
 

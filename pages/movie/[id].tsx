@@ -1,12 +1,10 @@
 import { useRouter } from 'next/router';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import ErrorMessage from '../../components/ErrorMessage';
-import MovieInfo from '../../components/MovieInfo';
-import {
-  useGetMovieInfoQuery,
-  GetMovieInfoDocument,
-} from '../../__generated__';
-import { initializeApollo } from '../../apollo';
+
+import ErrorMessage from 'components/ErrorMessage';
+import MovieInfo from 'components/MovieInfo';
+import { useGetMovieInfoQuery, GetMovieInfoDocument } from '__generated__';
+import { initializeApollo } from 'apollo';
 
 export default function MoviePage() {
   const { id } = useRouter().query as { id: string };

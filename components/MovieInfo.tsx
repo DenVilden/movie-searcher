@@ -9,9 +9,9 @@ import { useReactiveVar } from '@apollo/client';
 import Image from 'next/image';
 import Head from 'next/head';
 
-import { favoritesVar, Favorite } from '../apollo';
+import { favoritesVar, Favorite } from 'apollo';
+import { SimilarMovies } from '__generated__';
 import MoviesBox from './MoviesBox';
-import { SimilarMovies } from '../__generated__';
 
 const StyledCard = styled(Card)`
   background-color: inherit;

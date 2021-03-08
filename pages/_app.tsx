@@ -9,8 +9,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Head from 'next/head';
 import styled from '@emotion/styled';
 
-import { useApollo, prefersDarkModeVar } from '../apollo';
-import Header from '../components/Header';
+import Header from 'components/Header';
+import { useApollo, prefersDarkModeVar } from 'apollo';
 
 const StyledLinearProgress = styled(LinearProgress)`
   margin-top: 70px;

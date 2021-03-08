@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { render } from '@testing-library/react';
 import { MockedProvider, MockedResponse } from '@apollo/client/testing';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import '@testing-library/jest-dom';
 
 const theme = createMuiTheme();
@@ -11,7 +11,7 @@ type RenderApolloOptions = {
   mocks?: MockedResponse[];
 };
 
-export function renderApollo(
+export default function renderApollo(
   element: React.ReactElement,
   { mocks = [], addTypeName = false }: RenderApolloOptions = {},
 ) {
@@ -21,5 +21,3 @@ export function renderApollo(
     </MockedProvider>,
   );
 }
-
-export * from '@testing-library/react';

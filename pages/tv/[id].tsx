@@ -1,12 +1,10 @@
 import { useRouter } from 'next/router';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import ErrorMessage from '../../components/ErrorMessage';
-import MovieInfo from '../../components/MovieInfo';
-import {
-  useGetTvShowInfoQuery,
-  GetTvShowInfoDocument,
-} from '../../__generated__';
-import { initializeApollo } from '../../apollo';
+
+import ErrorMessage from 'components/ErrorMessage';
+import MovieInfo from 'components/MovieInfo';
+import { useGetTvShowInfoQuery, GetTvShowInfoDocument } from '__generated__';
+import { initializeApollo } from 'apollo';
 
 export default function TvPage() {
   const { id } = useRouter().query as { id: string };

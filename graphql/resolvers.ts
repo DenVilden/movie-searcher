@@ -1,4 +1,4 @@
-import { Resolvers } from '../__generated__';
+import { Resolvers } from '__generated__';
 import { paginateResults } from './utils';
 import MoviesAPI from './datasource';
 

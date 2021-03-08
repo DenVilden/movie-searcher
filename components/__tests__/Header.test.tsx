@@ -1,5 +1,7 @@
+import { fireEvent, screen } from '@testing-library/react';
+
+import renderApollo from 'lib/setupTests';
 import Header from '../Header';
-import { renderApollo, screen, fireEvent } from '../../lib/setupTests';
 
 describe('header', () => {
   it('should take a snapshot', () => {

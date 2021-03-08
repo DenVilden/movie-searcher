@@ -1,4 +1,5 @@
 module.exports = {
+  modulePaths: ['.'],
   collectCoverageFrom: [
     '**/*.{ts,tsx}',
     '!**/*.d.ts',

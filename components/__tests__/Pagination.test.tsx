@@ -1,4 +1,4 @@
-import { renderApollo } from '../../lib/setupTests';
+import renderApollo from 'lib/setupTests';
 import Pagination from '../Pagination';
 
 describe('pagination', () => {

@@ -7,11 +7,11 @@ import {
   useGetNowPlayingQuery,
   GetNowPlayingDocument,
   GetNowPlayingQuery,
-} from '../../__generated__';
-import ErrorMessage from '../../components/ErrorMessage';
-import Pagination from '../../components/Pagination';
-import MoviesBox from '../../components/MoviesBox';
-import { initializeApollo } from '../../apollo';
+} from '__generated__';
+import ErrorMessage from 'components/ErrorMessage';
+import Pagination from 'components/Pagination';
+import MoviesBox from 'components/MoviesBox';
+import { initializeApollo } from 'apollo';
 
 const Wrapper = styled.div`
   display: flex;

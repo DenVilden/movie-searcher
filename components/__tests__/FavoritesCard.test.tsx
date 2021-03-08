@@ -1,4 +1,4 @@
-import { renderApollo } from '../../lib/setupTests';
+import renderApollo from 'lib/setupTests';
 import FavoritesCard from '../FavoritesCard';
 
 const mock = {

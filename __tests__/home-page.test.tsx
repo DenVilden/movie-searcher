@@ -1,6 +1,8 @@
-import HomePage from '../pages';
-import { GetMoviesDocument } from '../__generated__';
-import { renderApollo, screen } from '../lib/setupTests';
+import { screen } from '@testing-library/react';
+
+import renderApollo from 'lib/setupTests';
+import HomePage from 'pages';
+import { GetMoviesDocument } from '__generated__';
 
 jest.mock('next/router', () => ({
   useRouter: () => ({

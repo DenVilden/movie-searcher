@@ -1,10 +1,11 @@
-import { Grid } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 import { GetStaticProps } from 'next';
+
+import ErrorMessage from 'components/ErrorMessage';
+import { initializeApollo } from 'apollo';
+import { useGetMoviesQuery, GetMoviesDocument } from '__generated__';
 import Upcoming from './upcoming/[page]';
 import NowPlaying from './now_playing/[page]';
-import { useGetMoviesQuery, GetMoviesDocument } from '../__generated__';
-import { initializeApollo } from '../apollo';
-import ErrorMessage from '../components/ErrorMessage';
 
 export default function HomePage() {
   const { data, error } = useGetMoviesQuery();

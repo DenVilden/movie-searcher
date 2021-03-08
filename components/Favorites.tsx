@@ -9,8 +9,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import styled from '@emotion/styled';
 
+import { favoritesVar } from 'apollo';
 import FavoritesCard from './FavoritesCard';
-import { favoritesVar } from '../apollo';
 
 const StyledTypography = styled(Typography)`
   padding: ${({ theme }) => theme.spacing(2)};

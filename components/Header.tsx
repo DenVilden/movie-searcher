@@ -9,9 +9,9 @@ import { useReactiveVar } from '@apollo/client';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { prefersDarkModeVar } from 'apollo';
 import Favorites from './Favorites';
 import SearchBar from './SearchBar';
-import { prefersDarkModeVar } from '../apollo';
 
 const StyledToolbar = styled(Toolbar)`
   padding-right: 4px;

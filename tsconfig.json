@@ -13,8 +13,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noFallthroughCasesInSwitch": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": "."
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "lib/emotion.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts", "emotion.d.ts", "**/*.ts", "**/*.tsx"]
 }

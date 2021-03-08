@@ -1,6 +1,8 @@
-import MoviePage from '../pages/movie/[id]';
-import { GetMovieInfoDocument } from '../__generated__';
-import { renderApollo, screen } from '../lib/setupTests';
+import { screen } from '@testing-library/react';
+
+import MoviePage from 'pages/movie/[id]';
+import { GetMovieInfoDocument } from '__generated__';
+import renderApollo from 'lib/setupTests';
 
 jest.mock('next/router', () => ({
   useRouter: () => ({

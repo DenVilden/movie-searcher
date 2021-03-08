@@ -1,14 +1,14 @@
 import { ApolloServer } from 'apollo-server-micro';
 import { loader } from 'graphql.macro';
-import resolvers from '../../graphql/resolvers';
-import MoviesAPI from '../../graphql/datasource';
+import resolvers from 'graphql/resolvers';
+import MoviesAPI from 'graphql/datasource';
 
 const server = new ApolloServer({
   dataSources: () => ({ moviesAPI: new MoviesAPI() }),
   introspection: true,
   playground: true,
   resolvers,
-  typeDefs: loader('../../graphql/schema.gql'),
+  typeDefs: loader('graphql/schema.gql'),
 });
 
 export const config = {

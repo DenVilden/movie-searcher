@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 
-import { Favorite } from '../apollo';
+import { Favorite } from 'apollo';
 
 const StyledTypography = styled(Typography)`
   padding: ${({ theme }) => theme.spacing(3, 2, 2, 2)};
