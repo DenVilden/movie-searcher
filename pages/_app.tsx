@@ -2,15 +2,13 @@ import { useEffect, useState, useMemo } from 'react';
 import { AppProps } from 'next/app';
 import { ApolloProvider, useReactiveVar } from '@apollo/client';
 import Router from 'next/router';
-import {
-  LinearProgress,
-  CssBaseline,
-  createMuiTheme,
-  useMediaQuery,
-} from '@material-ui/core';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Head from 'next/head';
-import { ThemeProvider } from '@material-ui/core/styles';
 import styled from '@emotion/styled';
+
 import { useApollo, prefersDarkModeVar } from '../apollo';
 import Header from '../components/Header';
 

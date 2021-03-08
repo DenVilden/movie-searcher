@@ -1,7 +1,9 @@
-import { CardActionArea, Typography } from '@material-ui/core';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import Typography from '@material-ui/core/Typography';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from '@emotion/styled';
+
 import { Favorite } from '../apollo';
 
 const StyledTypography = styled(Typography)`

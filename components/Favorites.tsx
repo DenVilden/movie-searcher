@@ -1,17 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
-import {
-  Divider,
-  Badge,
-  Typography,
-  Popover,
-  IconButton,
-} from '@material-ui/core';
+import Divider from '@material-ui/core/Divider';
+import Badge from '@material-ui/core/Badge';
+import Typography from '@material-ui/core/Typography';
+import Popover from '@material-ui/core/Popover';
+import IconButton from '@material-ui/core/IconButton';
 import { useReactiveVar } from '@apollo/client';
-import {
-  Favorite as FavoriteIcon,
-  FavoriteBorder as FavoriteBorderIcon,
-} from '@material-ui/icons';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import styled from '@emotion/styled';
+
 import FavoritesCard from './FavoritesCard';
 import { favoritesVar } from '../apollo';
 

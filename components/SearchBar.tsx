@@ -1,9 +1,11 @@
-import { TextField, Autocomplete } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/core/Autocomplete';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 import { alpha } from '@material-ui/core/styles';
-import { Search as SearchIcon } from '@material-ui/icons';
+import SearchIcon from '@material-ui/icons/Search';
+
 import { useGetMoviesSearchLazyQuery } from '../__generated__';
 
 const StyledAutocomplete = styled(Autocomplete)`

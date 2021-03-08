@@ -1,13 +1,14 @@
-import { AppBar, Toolbar, IconButton } from '@material-ui/core';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
 import styled from '@emotion/styled';
-import {
-  Brightness7 as LightIcon,
-  Brightness4 as DarkIcon,
-} from '@material-ui/icons';
+import DarkIcon from '@material-ui/icons/Brightness4';
+import LightIcon from '@material-ui/icons/Brightness7';
 import { memo } from 'react';
 import { useReactiveVar } from '@apollo/client';
 import Image from 'next/image';
 import Link from 'next/link';
+
 import Favorites from './Favorites';
 import SearchBar from './SearchBar';
 import { prefersDarkModeVar } from '../apollo';

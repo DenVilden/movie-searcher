@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
-import { Grow } from '@material-ui/core';
+import Grow from '@material-ui/core/Grow';
+
 import {
   useGetNowPlayingQuery,
   GetNowPlayingDocument,

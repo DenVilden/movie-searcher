@@ -1,4 +1,5 @@
-import { Alert, AlertTitle } from '@material-ui/core';
+import Alert from '@material-ui/core/Alert';
+import AlertTitle from '@material-ui/core/AlertTitle';
 import styled from '@emotion/styled';
 
 const StyledAlert = styled(Alert)`

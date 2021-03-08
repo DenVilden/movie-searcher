@@ -1,15 +1,14 @@
-import {
-  Typography,
-  CardContent,
-  Card,
-  Divider,
-  Button,
-  Slide,
-} from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import CardContent from '@material-ui/core/CardContent';
+import Card from '@material-ui/core/Card';
+import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
+import Slide from '@material-ui/core/Slide';
 import styled from '@emotion/styled';
 import { useReactiveVar } from '@apollo/client';
 import Image from 'next/image';
 import Head from 'next/head';
+
 import { favoritesVar, Favorite } from '../apollo';
 import MoviesBox from './MoviesBox';
 import { SimilarMovies } from '../__generated__';

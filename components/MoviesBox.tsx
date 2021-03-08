@@ -1,6 +1,9 @@
-import { Grid, Typography, Paper } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+
 import MovieCard from './MovieCard';
 
 const Root = styled(Paper)<{ padding: number }>`

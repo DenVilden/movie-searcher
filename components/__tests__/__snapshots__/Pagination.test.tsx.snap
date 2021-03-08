@@ -4,22 +4,22 @@ exports[`pagination should take a snapshot 1`] = `
 <DocumentFragment>
   <nav
     aria-label="pagination navigation"
-    class="MuiPagination-root MuiPagination-text css-hhphb0"
+    class="MuiPagination-root MuiPagination-text e10om17h0 css-1ojt9qm-MuiPagination-root-StyledPagination"
   >
     <ul
-      class="MuiPagination-ul"
+      class="MuiPagination-ul css-wjh20t-MuiPagination-ul"
     >
       <li>
         <button
           aria-label="Go to previous page"
-          class="MuiButtonBase-root Mui-disabled MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-text Mui-disabled css-10d1a0h-MuiButtonBase-root"
+          class="MuiButtonBase-root Mui-disabled MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular Mui-disabled MuiPaginationItem-page css-12h979j-MuiButtonBase-root-MuiPaginationItem-root"
           disabled=""
           tabindex="-1"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiPaginationItem-icon css-i4bv87-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiPaginationItem-icon css-g2z002-MuiSvgIcon-root-MuiPaginationItem-icon"
             data-testid="NavigateBeforeIcon"
             focusable="false"
             viewBox="0 0 24 24"
@@ -34,7 +34,7 @@ exports[`pagination should take a snapshot 1`] = `
         <button
           aria-current="true"
           aria-label="page 1"
-          class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-text Mui-selected css-10d1a0h-MuiButtonBase-root"
+          class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular Mui-selected MuiPaginationItem-page css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root"
           tabindex="0"
           type="button"
         >
@@ -47,7 +47,7 @@ exports[`pagination should take a snapshot 1`] = `
       <li>
         <button
           aria-label="Go to page 2"
-          class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-text css-10d1a0h-MuiButtonBase-root"
+          class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular MuiPaginationItem-page css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root"
           tabindex="0"
           type="button"
         >
@@ -60,7 +60,7 @@ exports[`pagination should take a snapshot 1`] = `
       <li>
         <button
           aria-label="Go to page 3"
-          class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-text css-10d1a0h-MuiButtonBase-root"
+          class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular MuiPaginationItem-page css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root"
           tabindex="0"
           type="button"
         >
@@ -73,7 +73,7 @@ exports[`pagination should take a snapshot 1`] = `
       <li>
         <button
           aria-label="Go to page 4"
-          class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-text css-10d1a0h-MuiButtonBase-root"
+          class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular MuiPaginationItem-page css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root"
           tabindex="0"
           type="button"
         >
@@ -86,7 +86,7 @@ exports[`pagination should take a snapshot 1`] = `
       <li>
         <button
           aria-label="Go to page 5"
-          class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-text css-10d1a0h-MuiButtonBase-root"
+          class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular MuiPaginationItem-page css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root"
           tabindex="0"
           type="button"
         >
@@ -98,7 +98,8 @@ exports[`pagination should take a snapshot 1`] = `
       </li>
       <li>
         <div
-          class="MuiPaginationItem-root MuiPaginationItem-ellipsis"
+          aria-label="Go to end-ellipsis page"
+          class="MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular MuiPaginationItem-ellipsis css-1v2lvtn-MuiPaginationItem-root"
         >
           …
         </div>
@@ -106,7 +107,7 @@ exports[`pagination should take a snapshot 1`] = `
       <li>
         <button
           aria-label="Go to page 10"
-          class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-text css-10d1a0h-MuiButtonBase-root"
+          class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular MuiPaginationItem-page css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root"
           tabindex="0"
           type="button"
         >
@@ -119,13 +120,13 @@ exports[`pagination should take a snapshot 1`] = `
       <li>
         <button
           aria-label="Go to next page"
-          class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-page MuiPaginationItem-text css-10d1a0h-MuiButtonBase-root"
+          class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular MuiPaginationItem-page css-12h979j-MuiButtonBase-root-MuiPaginationItem-root"
           tabindex="0"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiPaginationItem-icon css-i4bv87-MuiSvgIcon-root"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiPaginationItem-icon css-g2z002-MuiSvgIcon-root-MuiPaginationItem-icon"
             data-testid="NavigateNextIcon"
             focusable="false"
             viewBox="0 0 24 24"

@@ -14,6 +14,7 @@ export type RequireFields<T, K extends keyof T> = {
   [X in Exclude<keyof T, K>]?: T[X];
 } &
   { [P in K]-?: NonNullable<T[P]> };
+const defaultOptions = {};
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   Boolean: boolean;
@@ -430,8 +431,8 @@ export type MovieInfoResolvers<
   release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   revenue?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   similar?: Resolver<ResolversTypes['SimilarMovies'], ParentType, ContextType>;
-  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
 }>;
 
 export type TvShowInfoResolvers<
@@ -456,8 +457,8 @@ export type TvShowInfoResolvers<
   >;
   release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   similar?: Resolver<ResolversTypes['SimilarMovies'], ParentType, ContextType>;
-  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
 }>;
 
 export type QueryResolvers<
@@ -701,9 +702,10 @@ export function useGetMovieInfoQuery(
     GetMovieInfoQueryVariables
   >,
 ) {
+  const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<GetMovieInfoQuery, GetMovieInfoQueryVariables>(
     GetMovieInfoDocument,
-    baseOptions,
+    options,
   );
 }
 export function useGetMovieInfoLazyQuery(
@@ -712,9 +714,10 @@ export function useGetMovieInfoLazyQuery(
     GetMovieInfoQueryVariables
   >,
 ) {
+  const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<GetMovieInfoQuery, GetMovieInfoQueryVariables>(
     GetMovieInfoDocument,
-    baseOptions,
+    options,
   );
 }
 export type GetMovieInfoQueryHookResult = ReturnType<
@@ -775,9 +778,10 @@ export function useGetTvShowInfoQuery(
     GetTvShowInfoQueryVariables
   >,
 ) {
+  const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<GetTvShowInfoQuery, GetTvShowInfoQueryVariables>(
     GetTvShowInfoDocument,
-    baseOptions,
+    options,
   );
 }
 export function useGetTvShowInfoLazyQuery(
@@ -786,9 +790,10 @@ export function useGetTvShowInfoLazyQuery(
     GetTvShowInfoQueryVariables
   >,
 ) {
+  const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<GetTvShowInfoQuery, GetTvShowInfoQueryVariables>(
     GetTvShowInfoDocument,
-    baseOptions,
+    options,
   );
 }
 export type GetTvShowInfoQueryHookResult = ReturnType<
@@ -847,9 +852,10 @@ export function useGetMoviesQuery(
     GetMoviesQueryVariables
   >,
 ) {
+  const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<GetMoviesQuery, GetMoviesQueryVariables>(
     GetMoviesDocument,
-    baseOptions,
+    options,
   );
 }
 export function useGetMoviesLazyQuery(
@@ -858,9 +864,10 @@ export function useGetMoviesLazyQuery(
     GetMoviesQueryVariables
   >,
 ) {
+  const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<GetMoviesQuery, GetMoviesQueryVariables>(
     GetMoviesDocument,
-    baseOptions,
+    options,
   );
 }
 export type GetMoviesQueryHookResult = ReturnType<typeof useGetMoviesQuery>;
@@ -908,9 +915,10 @@ export function useGetUpcomingQuery(
     GetUpcomingQueryVariables
   >,
 ) {
+  const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<GetUpcomingQuery, GetUpcomingQueryVariables>(
     GetUpcomingDocument,
-    baseOptions,
+    options,
   );
 }
 export function useGetUpcomingLazyQuery(
@@ -919,9 +927,10 @@ export function useGetUpcomingLazyQuery(
     GetUpcomingQueryVariables
   >,
 ) {
+  const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<GetUpcomingQuery, GetUpcomingQueryVariables>(
     GetUpcomingDocument,
-    baseOptions,
+    options,
   );
 }
 export type GetUpcomingQueryHookResult = ReturnType<typeof useGetUpcomingQuery>;
@@ -969,9 +978,10 @@ export function useGetNowPlayingQuery(
     GetNowPlayingQueryVariables
   >,
 ) {
+  const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<GetNowPlayingQuery, GetNowPlayingQueryVariables>(
     GetNowPlayingDocument,
-    baseOptions,
+    options,
   );
 }
 export function useGetNowPlayingLazyQuery(
@@ -980,9 +990,10 @@ export function useGetNowPlayingLazyQuery(
     GetNowPlayingQueryVariables
   >,
 ) {
+  const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<GetNowPlayingQuery, GetNowPlayingQueryVariables>(
     GetNowPlayingDocument,
-    baseOptions,
+    options,
   );
 }
 export type GetNowPlayingQueryHookResult = ReturnType<
@@ -1030,9 +1041,10 @@ export function useGetMoviesSearchQuery(
     GetMoviesSearchQueryVariables
   >,
 ) {
+  const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<GetMoviesSearchQuery, GetMoviesSearchQueryVariables>(
     GetMoviesSearchDocument,
-    baseOptions,
+    options,
   );
 }
 export function useGetMoviesSearchLazyQuery(
@@ -1041,10 +1053,11 @@ export function useGetMoviesSearchLazyQuery(
     GetMoviesSearchQueryVariables
   >,
 ) {
+  const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<
     GetMoviesSearchQuery,
     GetMoviesSearchQueryVariables
-  >(GetMoviesSearchDocument, baseOptions);
+  >(GetMoviesSearchDocument, options);
 }
 export type GetMoviesSearchQueryHookResult = ReturnType<
   typeof useGetMoviesSearchQuery

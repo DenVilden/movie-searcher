@@ -3,7 +3,7 @@
 exports[`movieCard should take a snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root css-1jin0gs-MuiPaper-root-MuiCard-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root ejzktm53 css-13cg5qu-MuiPaper-root-MuiCard-root-StyledCard"
   >
     <button
       class="MuiButtonBase-root MuiCardActionArea-root css-b6lsxj-MuiButtonBase-root-MuiCardActionArea-root"
@@ -32,7 +32,7 @@ exports[`movieCard should take a snapshot 1`] = `
         />
       </div>
       <div
-        class="MuiCardContent-root css-2zy926-MuiCardContent-root"
+        class="MuiCardContent-root ejzktm52 css-1efco5i-MuiCardContent-root-StyledCardContent"
       >
         <h6
           class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
@@ -40,10 +40,10 @@ exports[`movieCard should take a snapshot 1`] = `
           test
         </h6>
         <p
-          class="MuiTypography-root MuiTypography-body1 css-i0o70y-MuiTypography-root"
+          class="MuiTypography-root MuiTypography-body1 ejzktm51 css-eywcq2-MuiTypography-root-StyledTypography"
         >
           <span
-            class="css-1rbcxmo"
+            class="css-17s8jfr-IconWrapper ejzktm50"
           >
             <svg
               aria-hidden="true"
