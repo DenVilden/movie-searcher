@@ -6,7 +6,7 @@ exports[`header should take a snapshot 1`] = `
     class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-opo76f-MuiPaper-root-MuiAppBar-root"
   >
     <div
-      class="MuiToolbar-root MuiToolbar-regular e1aqnoh83 css-15abvuf-MuiToolbar-root-StyledToolbar"
+      class="MuiToolbar-root MuiToolbar-regular e1aqnoh80 css-15abvuf-MuiToolbar-root-StyledToolbar"
     >
       <button
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1uaxfgw-MuiButtonBase-root-MuiIconButton-root"
@@ -32,7 +32,7 @@ exports[`header should take a snapshot 1`] = `
             </div>
             <img
               aria-label="logo"
-              class="css-95d38l-StyledImage e1aqnoh80"
+              class="css-452g7n-Header"
               decoding="async"
               src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
               style="visibility: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
@@ -101,7 +101,7 @@ exports[`header should take a snapshot 1`] = `
       </div>
       <button
         aria-label="theme switch"
-        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium e1aqnoh82 css-17n4xwh-MuiButtonBase-root-MuiIconButton-root-StyledIconButton"
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-o0ycpe-MuiButtonBase-root-MuiIconButton-root-Header"
         tabindex="0"
         type="button"
       >
@@ -110,7 +110,7 @@ exports[`header should take a snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium e1aqnoh81 css-1ckavdu-MuiSvgIcon-root-StyledDarkIcon"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1mur9o5-MuiSvgIcon-root-Header"
             data-testid="Brightness4Icon"
             focusable="false"
             viewBox="0 0 24 24"

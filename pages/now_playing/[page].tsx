@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
 import Grow from '@material-ui/core/Grow';
@@ -12,11 +12,6 @@ import ErrorMessage from 'components/ErrorMessage';
 import Pagination from 'components/Pagination';
 import MoviesBox from 'components/MoviesBox';
 import { initializeApollo } from 'apollo';
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 interface Props {
   initialData: GetNowPlayingQuery;
@@ -33,7 +28,12 @@ export default function NowPlayingPage({ initialData }: Props) {
 
   return data || initialData ? (
     <Grow in>
-      <Wrapper>
+      <div
+        css={css`
+          display: flex;
+          flex-direction: column;
+        `}
+      >
         <MoviesBox
           movies={data?.nowPlaying.results || initialData.nowPlaying.results}
           title="Now Playing"
@@ -45,7 +45,7 @@ export default function NowPlayingPage({ initialData }: Props) {
             data?.nowPlaying.total_pages || initialData.nowPlaying.total_pages
           }
         />
-      </Wrapper>
+      </div>
     </Grow>
   ) : null;
 }

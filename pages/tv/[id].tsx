@@ -8,7 +8,6 @@ import { initializeApollo } from 'apollo';
 
 export default function TvPage() {
   const { id } = useRouter().query as { id: string };
-
   const { data, error } = useGetTvShowInfoQuery({ variables: { id } });
 
   if (error) return <ErrorMessage error={error.message} />;

@@ -2,6 +2,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import DarkIcon from '@material-ui/icons/Brightness4';
 import LightIcon from '@material-ui/icons/Brightness7';
 import { memo } from 'react';
@@ -21,18 +22,6 @@ const StyledToolbar = styled(Toolbar)`
   }
 `;
 
-const StyledIconButton = styled(IconButton)`
-  margin-left: auto;
-`;
-
-const StyledDarkIcon = styled(DarkIcon)`
-  color: white;
-`;
-
-const StyledImage = styled(Image)`
-  -webkit-user-drag: none;
-`;
-
 function Header() {
   const prefersDarkMode = useReactiveVar(prefersDarkModeVar);
 
@@ -47,8 +36,11 @@ function Header() {
       <StyledToolbar disableGutters>
         <Link href="/">
           <IconButton>
-            <StyledImage
+            <Image
               aria-label="logo"
+              css={css`
+                -webkit-user-drag: none;
+              `}
               height="45"
               src="/logo.svg"
               width="45"
@@ -56,9 +48,23 @@ function Header() {
           </IconButton>
         </Link>
         <SearchBar />
-        <StyledIconButton aria-label="theme switch" onClick={toggleTheme}>
-          {prefersDarkMode ? <LightIcon /> : <StyledDarkIcon />}
-        </StyledIconButton>
+        <IconButton
+          aria-label="theme switch"
+          css={css`
+            margin-left: auto;
+          `}
+          onClick={toggleTheme}
+        >
+          {prefersDarkMode ? (
+            <LightIcon />
+          ) : (
+            <DarkIcon
+              css={css`
+                color: white;
+              `}
+            />
+          )}
+        </IconButton>
         <Favorites />
       </StyledToolbar>
     </AppBar>

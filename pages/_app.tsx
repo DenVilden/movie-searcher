@@ -7,14 +7,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Head from 'next/head';
-import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 
 import Header from 'components/Header';
 import { useApollo, prefersDarkModeVar } from 'apollo';
-
-const StyledLinearProgress = styled(LinearProgress)`
-  margin-top: 70px;
-`;
 
 export default function NextApp({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState);
@@ -81,7 +77,12 @@ export default function NextApp({ Component, pageProps }: AppProps) {
         <CssBaseline />
         <Header />
         {loading ? (
-          <StyledLinearProgress color="secondary" />
+          <LinearProgress
+            color="secondary"
+            css={css`
+              margin-top: 69px;
+            `}
+          />
         ) : (
           <Component {...pageProps} />
         )}
