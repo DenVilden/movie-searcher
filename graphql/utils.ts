@@ -1,4 +1,4 @@
-export function paginateResults(data: any, size = 4, cursor: number | null) {
+export function paginateResults(data: any, size = 2, cursor: number | null) {
   let results = [];
 
   if (!cursor) {

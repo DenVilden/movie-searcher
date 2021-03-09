@@ -1,12 +1,12 @@
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
+import { AppBar, Toolbar, IconButton } from '@material-ui/core';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import DarkIcon from '@material-ui/icons/Brightness4';
-import LightIcon from '@material-ui/icons/Brightness7';
+import {
+  Brightness4 as DarkIcon,
+  Brightness7 as LightIcon,
+} from '@material-ui/icons';
 import { memo } from 'react';
-import { useReactiveVar } from '@apollo/client';
+import { useReactiveVar } from '@apollo/client/react';
 import Image from 'next/image';
 import Link from 'next/link';
 

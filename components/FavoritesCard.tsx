@@ -1,5 +1,4 @@
-import CardActionArea from '@material-ui/core/CardActionArea';
-import Typography from '@material-ui/core/Typography';
+import { CardActionArea, Typography } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from '@emotion/styled';

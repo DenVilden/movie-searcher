@@ -1,11 +1,9 @@
 import { useEffect, useState, useMemo } from 'react';
 import { AppProps } from 'next/app';
-import { ApolloProvider, useReactiveVar } from '@apollo/client';
+import { ApolloProvider, useReactiveVar } from '@apollo/client/react';
 import Router from 'next/router';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { LinearProgress, CssBaseline, useMediaQuery } from '@material-ui/core';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Head from 'next/head';
 import { css } from '@emotion/react';
 

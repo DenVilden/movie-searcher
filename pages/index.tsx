@@ -1,4 +1,4 @@
-import Grid from '@material-ui/core/Grid';
+import { Grid } from '@material-ui/core';
 import { GetStaticProps } from 'next';
 
 import ErrorMessage from 'components/ErrorMessage';
@@ -35,6 +35,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       initialApolloState: apolloClient.cache.extract(),
     },
-    revalidate: 1,
+    revalidate: 10,
   };
 };

@@ -1,5 +1,6 @@
 import { GraphQLResolveInfo } from 'graphql';
-import { gql } from '@apollo/client';
+import { Context } from 'pages/api/graphql';
+import { gql } from '@apollo/client/core';
 import * as Apollo from '@apollo/client';
 
 export type Maybe<T> = T | null;
@@ -298,7 +299,7 @@ export type ResolversParentTypes = ResolversObject<{
 }>;
 
 export type UpcomingResultsResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType extends ResolversParentTypes['UpcomingResults'] = ResolversParentTypes['UpcomingResults']
 > = ResolversObject<{
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -313,7 +314,7 @@ export type UpcomingResultsResolvers<
 }>;
 
 export type UpcomingResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType extends ResolversParentTypes['Upcoming'] = ResolversParentTypes['Upcoming']
 > = ResolversObject<{
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -327,7 +328,7 @@ export type UpcomingResolvers<
 }>;
 
 export type NowPlayingResultsResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType extends ResolversParentTypes['NowPlayingResults'] = ResolversParentTypes['NowPlayingResults']
 > = ResolversObject<{
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -342,7 +343,7 @@ export type NowPlayingResultsResolvers<
 }>;
 
 export type NowPlayingResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType extends ResolversParentTypes['NowPlaying'] = ResolversParentTypes['NowPlaying']
 > = ResolversObject<{
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -356,7 +357,7 @@ export type NowPlayingResolvers<
 }>;
 
 export type MoviesSearchResultsResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType extends ResolversParentTypes['MoviesSearchResults'] = ResolversParentTypes['MoviesSearchResults']
 > = ResolversObject<{
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -366,7 +367,7 @@ export type MoviesSearchResultsResolvers<
 }>;
 
 export type MoviesSearchResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType extends ResolversParentTypes['MoviesSearch'] = ResolversParentTypes['MoviesSearch']
 > = ResolversObject<{
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -380,7 +381,7 @@ export type MoviesSearchResolvers<
 }>;
 
 export type SimilarResultsResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType extends ResolversParentTypes['SimilarResults'] = ResolversParentTypes['SimilarResults']
 > = ResolversObject<{
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -396,7 +397,7 @@ export type SimilarResultsResolvers<
 }>;
 
 export type SimilarMoviesResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType extends ResolversParentTypes['SimilarMovies'] = ResolversParentTypes['SimilarMovies']
 > = ResolversObject<{
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -410,7 +411,7 @@ export type SimilarMoviesResolvers<
 }>;
 
 export type MovieInfoResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType extends ResolversParentTypes['MovieInfo'] = ResolversParentTypes['MovieInfo']
 > = ResolversObject<{
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -436,7 +437,7 @@ export type MovieInfoResolvers<
 }>;
 
 export type TvShowInfoResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType extends ResolversParentTypes['TvShowInfo'] = ResolversParentTypes['TvShowInfo']
 > = ResolversObject<{
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -462,7 +463,7 @@ export type TvShowInfoResolvers<
 }>;
 
 export type QueryResolvers<
-  ContextType = any,
+  ContextType = Context,
   ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
 > = ResolversObject<{
   movieInfo?: Resolver<
@@ -497,7 +498,7 @@ export type QueryResolvers<
   >;
 }>;
 
-export type Resolvers<ContextType = any> = ResolversObject<{
+export type Resolvers<ContextType = Context> = ResolversObject<{
   MovieInfo?: MovieInfoResolvers<ContextType>;
   MoviesSearch?: MoviesSearchResolvers<ContextType>;
   MoviesSearchResults?: MoviesSearchResultsResolvers<ContextType>;
@@ -515,7 +516,7 @@ export type Resolvers<ContextType = any> = ResolversObject<{
  * @deprecated
  * Use "Resolvers" root object instead. If you wish to get "IResolvers", add "typesPrefix: I" to your config.
  */
-export type IResolvers<ContextType = any> = Resolvers<ContextType>;
+export type IResolvers<ContextType = Context> = Resolvers<ContextType>;
 
 export type GetMovieInfoQueryVariables = Exact<{
   id: Scalars['ID'];

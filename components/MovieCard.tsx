@@ -1,8 +1,10 @@
-import CardActionArea from '@material-ui/core/CardActionArea';
-import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import StarIcon from '@material-ui/icons/Star';
+import {
+  Card,
+  CardContent,
+  Typography,
+  CardActionArea,
+} from '@material-ui/core';
+import { Star as StarIcon } from '@material-ui/icons';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from '@emotion/styled';

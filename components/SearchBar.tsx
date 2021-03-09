@@ -1,9 +1,9 @@
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/core/Autocomplete';
+import { TextField, Autocomplete } from '@material-ui/core';
+import { alpha } from '@material-ui/core/styles';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
-import { alpha } from '@material-ui/core/styles';
+import { css } from '@emotion/react';
 import SearchIcon from '@material-ui/icons/Search';
 
 import { useGetMoviesSearchLazyQuery } from '__generated__';
@@ -58,7 +58,7 @@ export default function SearchBar() {
       blurOnSelect
       filterOptions={options => options}
       freeSolo
-      getOptionLabel={(movie: any) => movie.title}
+      getOptionLabel={(movie: any) => movie.id.toString()}
       id="autocomplete"
       inputValue={inputValue}
       loading={
@@ -100,6 +100,19 @@ export default function SearchBar() {
             size="small"
           />
         </>
+      )}
+      renderOption={(props, movie: any) => (
+        <li {...props}>
+          {movie.title}
+          <span
+            css={css`
+              color: grey;
+              margin-left: 5px;
+            `}
+          >
+            ({movie.media_type})
+          </span>
+        </li>
       )}
     />
   );

@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
-import Grow from '@material-ui/core/Grow';
 
 import {
   useGetUpcomingQuery,
@@ -27,26 +26,24 @@ export default function UpcomingPage({ initialData }: Props) {
   if (error) return <ErrorMessage error={error.message} />;
 
   return data || initialData ? (
-    <Grow in>
-      <div
-        css={css`
-          display: flex;
-          flex-direction: column;
-        `}
-      >
-        <MoviesBox
-          movies={data?.upcoming.results || initialData.upcoming.results}
-          title="Upcoming"
-        />
-        <Pagination
-          currentPage={data?.upcoming.page || initialData.upcoming.page}
-          path="upcoming"
-          totalPages={
-            data?.upcoming.total_pages || initialData.upcoming.total_pages
-          }
-        />
-      </div>
-    </Grow>
+    <div
+      css={css`
+        display: flex;
+        flex-direction: column;
+      `}
+    >
+      <MoviesBox
+        movies={data?.upcoming.results || initialData.upcoming.results}
+        title="Upcoming"
+      />
+      <Pagination
+        currentPage={data?.upcoming.page || initialData.upcoming.page}
+        path="upcoming"
+        totalPages={
+          data?.upcoming.total_pages || initialData.upcoming.total_pages
+        }
+      />
+    </div>
   ) : null;
 }
 
@@ -90,6 +87,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       initialApolloState: apolloClient.cache.extract(),
     },
-    revalidate: 1,
+    revalidate: 10,
   };
 };

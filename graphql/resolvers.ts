@@ -1,14 +1,7 @@
 import { Resolvers } from '__generated__';
 import { paginateResults } from './utils';
-import MoviesAPI from './datasource';
 
-interface Context {
-  dataSources: {
-    moviesAPI: MoviesAPI;
-  };
-}
-
-const resolvers: Resolvers<Context> = {
+const resolvers: Resolvers = {
   Query: {
     async movieInfo(_root, { id, cursor, pageSize }, { dataSources }) {
       try {

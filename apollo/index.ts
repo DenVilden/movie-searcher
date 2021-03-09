@@ -1,17 +1,13 @@
-import {
-  makeVar,
-  ApolloClient,
-  InMemoryCache,
-  NormalizedCacheObject,
-} from '@apollo/client';
+import { InMemoryCache, NormalizedCacheObject } from '@apollo/client/cache';
+import { ApolloClient, makeVar } from '@apollo/client/core';
 import { useMemo } from 'react';
 
-export interface Favorite {
+export type Favorite = {
   id: number;
   media_type: string;
   poster_path?: string | null;
   title: string;
-}
+};
 
 export const favoritesVar = makeVar<Favorite[]>([]);
 export const prefersDarkModeVar = makeVar(false);

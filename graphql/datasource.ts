@@ -2,7 +2,7 @@
 import { RESTDataSource, RequestOptions } from 'apollo-datasource-rest';
 import dayjs from 'dayjs';
 import numeral from 'numeral';
-import type {
+import {
   MockUpcomingResponse,
   MockNowPlayingResponse,
   MockMoviesSearchResponse,

@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
-import Grow from '@material-ui/core/Grow';
 
 import {
   useGetNowPlayingQuery,
@@ -27,26 +26,24 @@ export default function NowPlayingPage({ initialData }: Props) {
   if (error) return <ErrorMessage error={error.message} />;
 
   return data || initialData ? (
-    <Grow in>
-      <div
-        css={css`
-          display: flex;
-          flex-direction: column;
-        `}
-      >
-        <MoviesBox
-          movies={data?.nowPlaying.results || initialData.nowPlaying.results}
-          title="Now Playing"
-        />
-        <Pagination
-          currentPage={data?.nowPlaying.page || initialData.nowPlaying.page}
-          path="now_playing"
-          totalPages={
-            data?.nowPlaying.total_pages || initialData.nowPlaying.total_pages
-          }
-        />
-      </div>
-    </Grow>
+    <div
+      css={css`
+        display: flex;
+        flex-direction: column;
+      `}
+    >
+      <MoviesBox
+        movies={data?.nowPlaying.results || initialData.nowPlaying.results}
+        title="Now Playing"
+      />
+      <Pagination
+        currentPage={data?.nowPlaying.page || initialData.nowPlaying.page}
+        path="now_playing"
+        totalPages={
+          data?.nowPlaying.total_pages || initialData.nowPlaying.total_pages
+        }
+      />
+    </div>
   ) : null;
 }
 
@@ -89,6 +86,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       initialApolloState: apolloClient.cache.extract(),
     },
-    revalidate: 1,
+    revalidate: 10,
   };
 };
