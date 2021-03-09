@@ -2,14 +2,6 @@ import { renderApollo, fireEvent, screen } from 'lib/setupTests';
 import { GetMoviesSearchDocument } from 'apollo/__generated__';
 import SearchBar from 'components/SearchBar';
 
-const mockHistoryPush = jest.fn();
-
-jest.mock('next/router', () => ({
-  useRouter: () => ({
-    push: mockHistoryPush,
-  }),
-}));
-
 const mocks = [
   {
     request: {
@@ -45,9 +37,6 @@ describe('searchBar', () => {
 
     expect(searchResult).toBeInTheDocument();
     expect(inputElement).toHaveProperty('value', 'test');
-
-    fireEvent.click(searchResult);
-    expect(mockHistoryPush).toHaveBeenCalledWith('/movie/1');
 
     const clearButton = screen.getByTitle('Clear');
     fireEvent.click(clearButton);

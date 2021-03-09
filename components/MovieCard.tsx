@@ -5,9 +5,9 @@ import {
   CardActionArea,
 } from '@material-ui/core';
 import { Star as StarIcon } from '@material-ui/icons';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styled from '@emotion/styled';
+import Link from 'next/link';
 
 const StyledCard = styled(Card)`
   text-align: center;
@@ -60,34 +60,30 @@ export default function MovieCard({
     release_date,
   },
 }: Props) {
-  const router = useRouter();
-
   return (
     <StyledCard elevation={10}>
-      <CardActionArea
-        onClick={() => {
-          router.push(`/${media_type}/${id}`);
-        }}
-      >
-        <Image
-          alt={title}
-          height="300"
-          src={poster_path || '/no-image.jpg'}
-          width="200"
-        />
-        <StyledCardContent>
-          <Typography variant="subtitle2">{title}</Typography>
-          <StyledTypography color="textSecondary">
-            {vote_average ? (
-              <IconWrapper>
-                <StarIcon /> {vote_average}
-              </IconWrapper>
-            ) : (
-              release_date
-            )}
-          </StyledTypography>
-        </StyledCardContent>
-      </CardActionArea>
+      <Link href={`/${media_type}/${id}`}>
+        <CardActionArea>
+          <Image
+            alt={title}
+            height="300"
+            src={poster_path || '/no-image.jpg'}
+            width="200"
+          />
+          <StyledCardContent>
+            <Typography variant="subtitle2">{title}</Typography>
+            <StyledTypography color="textSecondary">
+              {vote_average ? (
+                <IconWrapper>
+                  <StarIcon /> {vote_average}
+                </IconWrapper>
+              ) : (
+                release_date
+              )}
+            </StyledTypography>
+          </StyledCardContent>
+        </CardActionArea>
+      </Link>
     </StyledCard>
   );
 }

@@ -16,11 +16,6 @@ export default function MoviePage({ id }: { id: string }) {
   return data ? <MovieInfo data={data.movieInfo} /> : null;
 }
 
-export const getStaticPaths: GetStaticPaths = async () => ({
-  fallback: true,
-  paths: [],
-});
-
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const apolloClient = initializeApollo();
 
@@ -45,3 +40,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   });
 };
+
+export const getStaticPaths: GetStaticPaths = async () => ({
+  fallback: true,
+  paths: [],
+});

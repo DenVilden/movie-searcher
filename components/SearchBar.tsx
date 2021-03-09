@@ -1,10 +1,10 @@
 import { TextField, Autocomplete } from '@material-ui/core';
 import { alpha } from '@material-ui/core/styles';
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import SearchIcon from '@material-ui/icons/Search';
+import Link from 'next/link';
 
 import { useGetMoviesSearchLazyQuery } from 'apollo/__generated__';
 
@@ -51,14 +51,13 @@ export default function SearchBar() {
   const [fetchMovies, { data, loading, error }] = useGetMoviesSearchLazyQuery({
     fetchPolicy: 'network-only',
   });
-  const router = useRouter();
 
   return (
     <StyledAutocomplete
       blurOnSelect
       filterOptions={options => options}
       freeSolo
-      getOptionLabel={(movie: any) => movie.id.toString()}
+      getOptionLabel={(movie: any) => movie.title}
       id="autocomplete"
       inputValue={inputValue}
       loading={
@@ -67,11 +66,6 @@ export default function SearchBar() {
         (!data?.moviesSearch.results.length && !!inputValue.trim())
       }
       loadingText={loading ? 'Loading...' : error?.message || 'No results'}
-      onChange={(_evt, movie: any, reason) => {
-        if (reason === 'select-option') {
-          router.push(`/${movie.media_type}/${movie.id}`);
-        }
-      }}
       onInputChange={(_evt, _value, reason) => {
         if (reason === 'clear') {
           setInputValue('');
@@ -102,17 +96,19 @@ export default function SearchBar() {
         </>
       )}
       renderOption={(props, movie: any) => (
-        <li {...props}>
-          {movie.title}
-          <span
-            css={css`
-              color: grey;
-              margin-left: 5px;
-            `}
-          >
-            ({movie.media_type})
-          </span>
-        </li>
+        <Link key={movie.id} href={`/${movie.media_type}/${movie.id}`}>
+          <li {...props}>
+            {movie.title}
+            <span
+              css={css`
+                color: grey;
+                margin-left: 5px;
+              `}
+            >
+              ({movie.media_type})
+            </span>
+          </li>
+        </Link>
       )}
     />
   );

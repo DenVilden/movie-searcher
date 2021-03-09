@@ -78,7 +78,7 @@ export default function NextApp({ Component, pageProps }: AppProps) {
           <LinearProgress
             color="secondary"
             css={css`
-              height: 2px;
+              height: 3px;
               z-index: 9999;
             `}
           />
