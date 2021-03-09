@@ -8,7 +8,7 @@ import {
   MockMoviesSearchResponse,
   MockMovieInfoResponse,
   MockTvShowInfoResponse,
-} from './mocks/raw-responses';
+} from './__responses__/raw-responses';
 
 export default class MoviesAPI extends RESTDataSource {
   constructor() {

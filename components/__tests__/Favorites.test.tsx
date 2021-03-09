@@ -1,13 +1,9 @@
-import { renderApollo, fireEvent, screen } from 'lib/setupTests';
-import Favorites from 'components/Favorites';
+import { renderApollo, fireEvent, screen } from 'utils/setupTests';
+import Favorites from '../Favorites';
 
-const mockHistoryPush = jest.fn();
-
-jest.mock('next/router', () => ({
-  useRouter: () => ({
-    push: mockHistoryPush,
-  }),
-}));
+jest.mock('next/link', () => ({ children }: { children: React.ReactElement }) =>
+  children,
+);
 
 const mocks = [
   {
@@ -29,13 +25,21 @@ const mocks = [
         },
       ],
     },
-    title: 'test',
+    title: 'clicked data',
     vote_average: 5,
   },
 ];
 
 describe('favorites', () => {
-  it('should redirect to correct url when favorites item clicked', () => {
+  it('should take a snapshot', () => {
+    const { asFragment } = renderApollo(<Favorites />);
+
+    const element = asFragment();
+
+    expect(element).toMatchSnapshot();
+  });
+
+  it('should open favorites and register click', async () => {
     localStorage.setItem('favorites', JSON.stringify(mocks));
 
     renderApollo(<Favorites />);
@@ -44,10 +48,10 @@ describe('favorites', () => {
 
     fireEvent.click(iconButton);
 
-    const cardButtonElement = screen.getByRole('button');
+    const cardButtonElement = await screen.findByText('clicked data');
 
     fireEvent.click(cardButtonElement);
 
-    expect(mockHistoryPush).toHaveBeenCalledWith('/movie/1');
+    expect(await screen.findByLabelText(/open favorites/i)).toBeInTheDocument();
   });
 });

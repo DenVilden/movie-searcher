@@ -5,6 +5,6 @@ module.exports = {
     '!**/*.d.ts',
     '!pages/api/*.ts',
     '!apollo/__generated__/*.ts',
-    '!lib/types.ts',
+    '!utils/types.ts',
   ],
 };

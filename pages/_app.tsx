@@ -42,10 +42,6 @@ export default function NextApp({ Component, pageProps }: AppProps) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
 
-    if (window.history.scrollRestoration) {
-      window.history.scrollRestoration = 'manual';
-    }
-
     const start = () => {
       setLoading(true);
     };

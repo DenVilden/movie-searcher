@@ -9,8 +9,6 @@ import Link from 'next/link';
 import { useGetMoviesSearchLazyQuery } from 'apollo/__generated__';
 
 const StyledAutocomplete = styled(Autocomplete)`
-  margin-left: 5px;
-  margin-right: 10px;
   width: 70%;
 
   input {
@@ -48,9 +46,7 @@ const StyledSearchIcon = styled(SearchIcon)`
 
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState('');
-  const [fetchMovies, { data, loading, error }] = useGetMoviesSearchLazyQuery({
-    fetchPolicy: 'network-only',
-  });
+  const [fetchMovies, { data, loading, error }] = useGetMoviesSearchLazyQuery();
 
   return (
     <StyledAutocomplete

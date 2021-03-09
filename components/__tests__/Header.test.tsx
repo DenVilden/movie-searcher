@@ -1,5 +1,5 @@
-import { renderApollo, fireEvent, screen } from 'lib/setupTests';
-import Header from 'components/Header';
+import { renderApollo, fireEvent, screen } from 'utils/setupTests';
+import Header from '../Header';
 
 describe('header', () => {
   it('should take a snapshot', () => {

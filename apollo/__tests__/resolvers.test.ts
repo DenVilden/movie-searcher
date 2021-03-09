@@ -5,7 +5,7 @@ import {
   mockMoviesSearch,
   mockMovieInfo,
   mockTvShowInfo,
-} from 'apollo/mocks/graphql-responses';
+} from 'apollo/__responses__/graphql-responses';
 
 describe('[Query.upcoming]', () => {
   const mockContext = {

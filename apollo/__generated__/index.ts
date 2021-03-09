@@ -1,5 +1,5 @@
 import { GraphQLResolveInfo } from 'graphql';
-import { Context } from 'lib/types';
+import { Context } from 'utils/types';
 import { gql } from '@apollo/client/core';
 import * as Apollo from '@apollo/client';
 

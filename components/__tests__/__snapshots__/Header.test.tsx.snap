@@ -45,7 +45,7 @@ exports[`header should take a snapshot 1`] = `
       </button>
       <div
         aria-expanded="false"
-        class="MuiAutocomplete-root ep0uteb2 css-1mukid1-MuiAutocomplete-root-StyledAutocomplete"
+        class="MuiAutocomplete-root ep0uteb2 css-l4apye-MuiAutocomplete-root-StyledAutocomplete"
         role="combobox"
       >
         <svg

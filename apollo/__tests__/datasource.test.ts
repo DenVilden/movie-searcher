@@ -1,18 +1,18 @@
-import MoviesAPI from 'apollo/datasource';
+import MoviesAPI from '../datasource';
 import {
   mockUpcoming,
   mockNowPlaying,
   mockMoviesSearch,
   mockMovieInfo,
   mockTvShowInfo,
-} from 'apollo/mocks/graphql-responses';
+} from '../__responses__/graphql-responses';
 import {
   mockUpcomingResponse,
   mockNowPlayingResponse,
   mockMoviesSearchResponse,
   mockMovieInfoResponse,
   mockTvShowInfoResponse,
-} from 'apollo/mocks/raw-responses';
+} from '../__responses__/raw-responses';
 
 const mocks = {
   get: jest.fn(),

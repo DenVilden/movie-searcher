@@ -55,9 +55,9 @@ exports[`movieInfo should take a snapshot 1`] = `
           class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
         >
           <b>
-            Seasons:
+            Budget:
           </b>
-           1
+           0
         </p>
         <hr
           class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
@@ -66,9 +66,9 @@ exports[`movieInfo should take a snapshot 1`] = `
           class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
         >
           <b>
-            Episodes:
+            Revenue:
           </b>
-           5
+           0
         </p>
         <hr
           class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"

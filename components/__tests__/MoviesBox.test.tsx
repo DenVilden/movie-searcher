@@ -1,5 +1,5 @@
-import { renderApollo } from 'lib/setupTests';
-import MoviesBox from 'components/MoviesBox';
+import { renderApollo } from 'utils/setupTests';
+import MoviesBox from '../MoviesBox';
 
 const mock = [
   {

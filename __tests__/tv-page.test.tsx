@@ -1,4 +1,4 @@
-import { renderApollo, screen } from 'lib/setupTests';
+import { renderApollo, screen } from 'utils/setupTests';
 import TvPage from 'pages/tv/[id]';
 import { GetTvShowInfoDocument } from 'apollo/__generated__';
 

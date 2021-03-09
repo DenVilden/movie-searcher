@@ -1,4 +1,4 @@
-import { renderApollo, screen } from 'lib/setupTests';
+import { renderApollo, screen } from 'utils/setupTests';
 import HomePage from 'pages';
 import { GetMoviesDocument } from 'apollo/__generated__';
 
