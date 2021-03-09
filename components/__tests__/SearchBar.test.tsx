@@ -1,6 +1,4 @@
-import { fireEvent, screen } from '@testing-library/react';
-
-import renderApollo from 'lib/setupTests';
+import { renderApollo, fireEvent, screen } from 'lib/setupTests';
 import { GetMoviesSearchDocument } from '__generated__';
 import SearchBar from '../SearchBar';
 

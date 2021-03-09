@@ -1,6 +1,4 @@
-import { screen } from '@testing-library/react';
-
-import renderApollo from 'lib/setupTests';
+import { renderApollo, screen } from 'lib/setupTests';
 import HomePage from 'pages';
 import { GetMoviesDocument } from '__generated__';
 

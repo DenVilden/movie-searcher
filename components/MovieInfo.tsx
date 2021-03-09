@@ -11,7 +11,8 @@ import { useReactiveVar } from '@apollo/client/react';
 import Image from 'next/image';
 import Head from 'next/head';
 
-import { favoritesVar, Favorite } from 'apollo';
+import { favoritesVar } from 'apollo';
+import { Favorite } from 'lib/types';
 import { SimilarMovies } from '__generated__';
 import MoviesBox from './MoviesBox';
 

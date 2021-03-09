@@ -1,6 +1,4 @@
-import { screen } from '@testing-library/react';
-
-import renderApollo from 'lib/setupTests';
+import { renderApollo, screen } from 'lib/setupTests';
 import TvPage from 'pages/tv/[id]';
 import { GetTvShowInfoDocument } from '__generated__';
 

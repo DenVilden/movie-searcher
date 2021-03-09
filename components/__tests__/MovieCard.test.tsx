@@ -1,6 +1,4 @@
-import { fireEvent, screen } from '@testing-library/react';
-
-import renderApollo from 'lib/setupTests';
+import { renderApollo, fireEvent, screen } from 'lib/setupTests';
 import MovieCard from '../MovieCard';
 
 const mockHistoryPush = jest.fn();

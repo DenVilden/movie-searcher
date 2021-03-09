@@ -1,5 +1,21 @@
 import { Resolvers } from '__generated__';
-import { paginateResults } from './utils';
+
+function paginateResults(data: any, size = 2, cursor: number | null) {
+  let results = [];
+
+  if (!cursor) {
+    results = data.results.slice(0, size);
+  } else {
+    results = data.results.slice(0, cursor + size);
+  }
+
+  return {
+    ...data,
+    cursor: results.length,
+    hasMore: results.length !== data.results.length,
+    results,
+  };
+}
 
 const resolvers: Resolvers = {
   Query: {

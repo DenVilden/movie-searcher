@@ -1,11 +1,7 @@
 import { Alert, AlertTitle } from '@material-ui/core';
 import { css, useTheme } from '@emotion/react';
 
-interface Props {
-  error: string;
-}
-
-export default function ErrorMessage({ error }: Props) {
+export default function ErrorMessage({ error }: { error: string }) {
   const theme = useTheme();
 
   return (

@@ -1,7 +1,5 @@
-import { screen, fireEvent } from '@testing-library/react';
-
+import { renderApollo, screen, fireEvent } from 'lib/setupTests';
 import UpcomingPage from 'pages/upcoming/[page]';
-import renderApollo from 'lib/setupTests';
 import { GetUpcomingDocument } from '__generated__';
 
 const mockHistoryPush = jest.fn();
