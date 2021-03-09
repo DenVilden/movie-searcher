@@ -155,6 +155,31 @@ describe('[Query.moviesSearch]', () => {
     });
   });
 
+  it('should refetch if there is no results and total pages more than 1', async () => {
+    const mock = {
+      page: 1,
+      results: [],
+      total_pages: 5,
+    };
+
+    getMoviesSearch
+      .mockReturnValueOnce(mock)
+      .mockReturnValueOnce(mockMoviesSearch);
+
+    const res = await resolvers.Query?.moviesSearch!(
+      {} as any,
+      {} as any,
+      mockContext as any,
+      {} as any,
+    );
+
+    expect(res).toStrictEqual({
+      cursor: 2,
+      hasMore: false,
+      ...mockMoviesSearch,
+    });
+  });
+
   it('catches moviesSearch error', async () => {
     getMoviesSearch.mockRejectedValueOnce('error');
 

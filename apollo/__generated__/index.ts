@@ -66,7 +66,9 @@ export type MoviesSearch = {
   __typename?: 'MoviesSearch';
   cursor?: Maybe<Scalars['Int']>;
   hasMore?: Maybe<Scalars['Boolean']>;
+  page: Scalars['Int'];
   results: Array<MoviesSearchResults>;
+  total_pages: Scalars['Int'];
 };
 
 export type SimilarResults = {
@@ -373,11 +375,13 @@ export type MoviesSearchResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
   cursor?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   hasMore?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  page?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   results?: Resolver<
     Array<ResolversTypes['MoviesSearchResults']>,
     ParentType,
     ContextType
   >;
+  total_pages?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 }>;
 
 export type SimilarResultsResolvers<
@@ -432,8 +436,8 @@ export type MovieInfoResolvers<
   release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   revenue?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   similar?: Resolver<ResolversTypes['SimilarMovies'], ParentType, ContextType>;
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 }>;
 
 export type TvShowInfoResolvers<
@@ -458,8 +462,8 @@ export type TvShowInfoResolvers<
   >;
   release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   similar?: Resolver<ResolversTypes['SimilarMovies'], ParentType, ContextType>;
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
+  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 }>;
 
 export type QueryResolvers<

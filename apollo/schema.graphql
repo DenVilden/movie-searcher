@@ -33,7 +33,9 @@ type MoviesSearchResults {
 type MoviesSearch {
   cursor: Int
   hasMore: Boolean
+  page: Int!
   results: [MoviesSearchResults!]!
+  total_pages: Int!
 }
 
 type SimilarResults {

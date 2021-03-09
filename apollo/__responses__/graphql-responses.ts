@@ -33,6 +33,7 @@ export const mockNowPlaying = {
 };
 
 export const mockMoviesSearch = {
+  page: 1,
   results: [
     {
       id: 516151,
@@ -45,6 +46,7 @@ export const mockMoviesSearch = {
       title: 'Doctors',
     },
   ],
+  total_pages: 186,
 };
 
 export const mockMovieInfo = {

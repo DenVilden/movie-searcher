@@ -177,7 +177,7 @@ export const mockMoviesSearchResponse = {
       profile_path: '/ajNaPmXVVMJFg9GWmu6MJzTaXdV.jpg',
     },
   ],
-  total_pages: 184,
+  total_pages: 186,
   total_results: 3669,
 };
 

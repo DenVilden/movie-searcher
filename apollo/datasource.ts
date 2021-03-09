@@ -9,6 +9,13 @@ import {
   MockMovieInfoResponse,
   MockTvShowInfoResponse,
 } from './__responses__/raw-responses';
+import {
+  Upcoming,
+  TvShowInfo,
+  NowPlaying,
+  MoviesSearch,
+  MovieInfo,
+} from './__generated__';
 
 export default class MoviesAPI extends RESTDataSource {
   constructor() {
@@ -24,22 +31,20 @@ export default class MoviesAPI extends RESTDataSource {
     return path ? `https://image.tmdb.org/t/p/w${size}${path}` : null;
   }
 
-  private moviesUpcomingReducer(movies: MockUpcomingResponse) {
+  private moviesUpcomingReducer(movies: MockUpcomingResponse): Upcoming {
     return {
       page: movies.page,
       results: movies.results.map(movie => ({
         id: movie.id,
         poster_path: this.attachPoster(movie.poster_path),
-        release_date: movie.release_date
-          ? dayjs(movie.release_date).format('DD.MM.YYYY')
-          : '',
+        release_date: dayjs(movie.release_date).format('DD.MM.YYYY'),
         title: movie.title,
       })),
       total_pages: movies.total_pages,
     };
   }
 
-  private moviesNowPlayingReducer(movies: MockNowPlayingResponse) {
+  private moviesNowPlayingReducer(movies: MockNowPlayingResponse): NowPlaying {
     return {
       page: movies.page,
       results: movies.results.map(movie => ({
@@ -52,19 +57,21 @@ export default class MoviesAPI extends RESTDataSource {
     };
   }
 
-  private moviesSearchReducer(movies: MockMoviesSearchResponse) {
+  private moviesSearchReducer(movies: MockMoviesSearchResponse): MoviesSearch {
     return {
+      page: movies.page,
       results: movies.results
         .filter(movie => movie.media_type !== 'person')
         .map(movie => ({
           id: movie.id,
           media_type: movie.media_type,
-          title: movie?.title || movie.name,
+          title: movie?.title || movie?.name || 'No data',
         })),
+      total_pages: movies.total_pages,
     };
   }
 
-  private movieInfoReducer(movie: MockMovieInfoResponse) {
+  private movieInfoReducer(movie: MockMovieInfoResponse): MovieInfo {
     return {
       backdrop_path: this.attachPoster(movie.backdrop_path, 500),
       budget: numeral(movie.budget).format('$0,00'),
@@ -74,7 +81,7 @@ export default class MoviesAPI extends RESTDataSource {
       poster_path: this.attachPoster(movie.poster_path),
       release_date: movie.release_date
         ? dayjs(movie.release_date).format('DD MMMM YYYY')
-        : '',
+        : 'No data',
       revenue: numeral(movie.revenue).format('$0,00'),
       similar: {
         results: movie.similar.results.map(similarMovie => ({
@@ -92,7 +99,7 @@ export default class MoviesAPI extends RESTDataSource {
     };
   }
 
-  private tvShowInfoReducer(tv: MockTvShowInfoResponse) {
+  private tvShowInfoReducer(tv: MockTvShowInfoResponse): TvShowInfo {
     return {
       backdrop_path: this.attachPoster(tv.backdrop_path, 500),
       id: tv.id,
@@ -103,7 +110,7 @@ export default class MoviesAPI extends RESTDataSource {
       poster_path: this.attachPoster(tv.poster_path),
       release_date: tv.first_air_date
         ? dayjs(tv.first_air_date).format('DD MMMM YYYY')
-        : '',
+        : 'No data',
       similar: {
         results: tv.similar.results.map(similarTvShow => ({
           id: similarTvShow.id,
@@ -134,8 +141,9 @@ export default class MoviesAPI extends RESTDataSource {
     return this.moviesNowPlayingReducer(data);
   }
 
-  async getMoviesSearch(query: string) {
+  async getMoviesSearch(query: string, page?: number) {
     const data: MockMoviesSearchResponse = await this.get('/search/multi', {
+      page,
       query,
     });
     return this.moviesSearchReducer(data);
