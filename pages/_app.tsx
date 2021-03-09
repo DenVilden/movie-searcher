@@ -8,10 +8,10 @@ import Head from 'next/head';
 import { css } from '@emotion/react';
 
 import Header from 'components/Header';
-import { useApollo, prefersDarkModeVar } from 'apollo';
+import { useApollo, prefersDarkModeVar } from 'apollo/client';
 
 export default function NextApp({ Component, pageProps }: AppProps) {
-  const apolloClient = useApollo(pageProps.initialApolloState);
+  const apolloClient = useApollo(pageProps);
   const [loading, setLoading] = useState(false);
   const prefersDarkMode = useReactiveVar(prefersDarkModeVar);
   const systemColorScheme = useMediaQuery('(prefers-color-scheme: dark)');

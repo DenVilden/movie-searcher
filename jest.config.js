@@ -4,7 +4,7 @@ module.exports = {
     '**/*.{ts,tsx}',
     '!**/*.d.ts',
     '!pages/api/*.ts',
-    '!apollo/*.ts',
-    '!__generated__/*.ts',
+    '!apollo/__generated__/*.ts',
+    '!lib/types.ts',
   ],
 };

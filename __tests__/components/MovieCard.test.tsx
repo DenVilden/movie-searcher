@@ -1,5 +1,5 @@
 import { renderApollo, fireEvent, screen } from 'lib/setupTests';
-import MovieCard from '../MovieCard';
+import MovieCard from 'components/MovieCard';
 
 const mockHistoryPush = jest.fn();
 

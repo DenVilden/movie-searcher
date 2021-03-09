@@ -10,7 +10,7 @@ import { useReactiveVar } from '@apollo/client/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { prefersDarkModeVar } from 'apollo';
+import { prefersDarkModeVar } from 'apollo/client';
 import Favorites from './Favorites';
 import SearchBar from './SearchBar';
 

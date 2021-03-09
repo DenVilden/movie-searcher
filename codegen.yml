@@ -1,8 +1,8 @@
 overwrite: true
-schema: graphql/schema.gql
-documents: apollo/**/*.gql
+schema: apollo/schema.graphql
+documents: apollo/**/*.graphql
 generates:
-  __generated__/index.ts:
+  apollo/__generated__/index.ts:
     plugins:
       - typescript
       - typescript-resolvers

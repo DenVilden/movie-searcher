@@ -1,25 +1,24 @@
 import { css } from '@emotion/react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { useRouter } from 'next/router';
 
 import {
   useGetUpcomingQuery,
   GetUpcomingDocument,
   GetUpcomingQuery,
-} from '__generated__';
+} from 'apollo/__generated__';
 import ErrorMessage from 'components/ErrorMessage';
 import Pagination from 'components/Pagination';
 import MoviesBox from 'components/MoviesBox';
-import { initializeApollo } from 'apollo';
+import { initializeApollo, addApolloState } from 'apollo/client';
 
 interface Props {
   initialData: GetUpcomingQuery;
+  page?: string;
 }
 
-export default function UpcomingPage({ initialData }: Props) {
-  const { page } = useRouter().query as { page: string };
+export default function UpcomingPage({ initialData, page }: Props) {
   const { data, error } = useGetUpcomingQuery({
-    skip: !!initialData,
+    skip: !page,
     variables: { page },
   });
 
@@ -50,7 +49,7 @@ export default function UpcomingPage({ initialData }: Props) {
 export const getStaticPaths: GetStaticPaths = async () => {
   const apolloClient = initializeApollo();
 
-  const { data }: { data: GetUpcomingQuery } = await apolloClient.query({
+  const { data } = await apolloClient.query<GetUpcomingQuery>({
     query: GetUpcomingDocument,
   });
 
@@ -70,10 +69,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const apolloClient = initializeApollo();
 
+  const { page } = params as { page: string };
+
   try {
-    await apolloClient.query({
+    await apolloClient.query<GetUpcomingQuery>({
       query: GetUpcomingDocument,
-      variables: { page: params?.page },
+      variables: { page },
     });
   } catch ({ message }) {
     if (message.includes('404') || message.includes('422')) {
@@ -83,10 +84,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
   }
 
-  return {
+  return addApolloState(apolloClient, {
     props: {
-      initialApolloState: apolloClient.cache.extract(),
+      page,
     },
     revalidate: 10,
-  };
+  });
 };

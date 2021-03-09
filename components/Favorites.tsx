@@ -13,7 +13,7 @@ import {
 } from '@material-ui/icons';
 import { css, useTheme } from '@emotion/react';
 
-import { favoritesVar } from 'apollo';
+import { favoritesVar } from 'apollo/client';
 import FavoritesCard from './FavoritesCard';
 
 export default function Favorites() {

@@ -22,4 +22,4 @@ export function renderApollo(
   );
 }
 
-export * from '@testing-library/react';
+export { screen, fireEvent } from '@testing-library/react';

@@ -2,8 +2,12 @@ import { Grid } from '@material-ui/core';
 import { GetStaticProps } from 'next';
 
 import ErrorMessage from 'components/ErrorMessage';
-import { initializeApollo } from 'apollo';
-import { useGetMoviesQuery, GetMoviesDocument } from '__generated__';
+import { initializeApollo, addApolloState } from 'apollo/client';
+import {
+  useGetMoviesQuery,
+  GetMoviesDocument,
+  GetMoviesQuery,
+} from 'apollo/__generated__';
 import Upcoming from './upcoming/[page]';
 import NowPlaying from './now_playing/[page]';
 
@@ -27,14 +31,12 @@ export default function HomePage() {
 export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo();
 
-  await apolloClient.query({
+  await apolloClient.query<GetMoviesQuery>({
     query: GetMoviesDocument,
   });
 
-  return {
-    props: {
-      initialApolloState: apolloClient.cache.extract(),
-    },
+  return addApolloState(apolloClient, {
+    props: {},
     revalidate: 10,
-  };
+  });
 };

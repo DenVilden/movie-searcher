@@ -1,5 +1,5 @@
 import { renderApollo } from 'lib/setupTests';
-import Pagination from '../Pagination';
+import Pagination from 'components/Pagination';
 
 describe('pagination', () => {
   it('should take a snapshot', () => {

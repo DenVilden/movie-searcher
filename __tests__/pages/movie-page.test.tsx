@@ -1,14 +1,6 @@
 import { renderApollo, screen } from 'lib/setupTests';
 import MoviePage from 'pages/movie/[id]';
-import { GetMovieInfoDocument } from '__generated__';
-
-jest.mock('next/router', () => ({
-  useRouter: () => ({
-    query: {
-      id: '1',
-    },
-  }),
-}));
+import { GetMovieInfoDocument } from 'apollo/__generated__';
 
 const mocks = [
   {
@@ -50,7 +42,7 @@ const mocks = [
 
 describe('movie page', () => {
   it('should fetch movie by id', async () => {
-    renderApollo(<MoviePage />, { mocks });
+    renderApollo(<MoviePage id="1" />, { mocks });
 
     expect(await screen.findByText('rendered movie')).toBeInTheDocument();
     expect(await screen.findByText('rendered similar')).toBeInTheDocument();
@@ -69,7 +61,7 @@ describe('movie page', () => {
       },
     ];
 
-    renderApollo(<MoviePage />, { mocks: mock });
+    renderApollo(<MoviePage id="1" />, { mocks: mock });
 
     expect(
       await screen.findByText(/an error has occurred/i),

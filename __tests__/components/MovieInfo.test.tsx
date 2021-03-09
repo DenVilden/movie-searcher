@@ -1,5 +1,5 @@
 import { renderApollo, fireEvent, screen } from 'lib/setupTests';
-import MovieInfo from '../MovieInfo';
+import MovieInfo from 'components/MovieInfo';
 
 const mocks = [
   {

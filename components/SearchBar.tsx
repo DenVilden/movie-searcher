@@ -6,7 +6,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import SearchIcon from '@material-ui/icons/Search';
 
-import { useGetMoviesSearchLazyQuery } from '__generated__';
+import { useGetMoviesSearchLazyQuery } from 'apollo/__generated__';
 
 const StyledAutocomplete = styled(Autocomplete)`
   margin-left: 5px;

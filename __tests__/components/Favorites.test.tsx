@@ -1,5 +1,5 @@
 import { renderApollo, fireEvent, screen } from 'lib/setupTests';
-import Favorites from '../Favorites';
+import Favorites from 'components/Favorites';
 
 const mockHistoryPush = jest.fn();
 

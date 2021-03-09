@@ -1,5 +1,5 @@
 import { renderApollo } from 'lib/setupTests';
-import FavoritesCard from '../FavoritesCard';
+import FavoritesCard from 'components/FavoritesCard';
 
 const mock = {
   backdrop_path: null,

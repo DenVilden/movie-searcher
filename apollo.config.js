@@ -2,8 +2,8 @@ module.exports = {
   client: {
     service: {
       name: 'movie searcher',
-      localSchemaFile: 'graphql/schema.gql',
+      localSchemaFile: 'apollo/schema.graphql',
     },
-    includes: ['apollo/**/*.gql'],
+    includes: ['apollo/queries.graphql'],
   },
 };

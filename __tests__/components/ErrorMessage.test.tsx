@@ -1,5 +1,5 @@
 import { renderApollo } from 'lib/setupTests';
-import ErrorMessage from '../ErrorMessage';
+import ErrorMessage from 'components/ErrorMessage';
 
 describe('errorMessage', () => {
   it('should take a snapshot', () => {

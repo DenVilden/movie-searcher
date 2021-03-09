@@ -1,14 +1,6 @@
 import { renderApollo, screen } from 'lib/setupTests';
 import HomePage from 'pages';
-import { GetMoviesDocument } from '__generated__';
-
-jest.mock('next/router', () => ({
-  useRouter: () => ({
-    query: {
-      id: '1',
-    },
-  }),
-}));
+import { GetMoviesDocument } from 'apollo/__generated__';
 
 const mocks = [
   {

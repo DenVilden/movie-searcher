@@ -1,6 +1,6 @@
 import { renderApollo, fireEvent, screen } from 'lib/setupTests';
-import { GetMoviesSearchDocument } from '__generated__';
-import SearchBar from '../SearchBar';
+import { GetMoviesSearchDocument } from 'apollo/__generated__';
+import SearchBar from 'components/SearchBar';
 
 const mockHistoryPush = jest.fn();
 

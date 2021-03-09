@@ -1,14 +1,6 @@
 import { renderApollo, screen } from 'lib/setupTests';
 import TvPage from 'pages/tv/[id]';
-import { GetTvShowInfoDocument } from '__generated__';
-
-jest.mock('next/router', () => ({
-  useRouter: () => ({
-    query: {
-      id: '1',
-    },
-  }),
-}));
+import { GetTvShowInfoDocument } from 'apollo/__generated__';
 
 const mocks = [
   {
@@ -50,7 +42,7 @@ const mocks = [
 
 describe('tv page', () => {
   it('should fetch tv by id', async () => {
-    renderApollo(<TvPage />, { mocks });
+    renderApollo(<TvPage id="1" />, { mocks });
 
     expect(await screen.findByText('rendered tv')).toBeInTheDocument();
     expect(await screen.findByText('rendered similar')).toBeInTheDocument();
@@ -69,7 +61,7 @@ describe('tv page', () => {
       },
     ];
 
-    renderApollo(<TvPage />, { mocks: mock });
+    renderApollo(<TvPage id="1" />, { mocks: mock });
 
     expect(
       await screen.findByText(/an error has occurred/i),

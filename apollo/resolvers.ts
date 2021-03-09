@@ -1,4 +1,4 @@
-import { Resolvers } from '__generated__';
+import { Resolvers } from 'apollo/__generated__';
 
 function paginateResults(data: any, size = 2, cursor: number | null) {
   let results = [];
