@@ -11,19 +11,16 @@ import {
   Favorite as FavoriteIcon,
   FavoriteBorder as FavoriteBorderIcon,
 } from '@material-ui/icons';
-import styled from '@emotion/styled';
+import { css, useTheme } from '@emotion/react';
 
 import { favoritesVar } from 'apollo';
 import FavoritesCard from './FavoritesCard';
-
-const StyledTypography = styled(Typography)`
-  padding: ${({ theme }) => theme.spacing(2)};
-`;
 
 export default function Favorites() {
   const favorites = useReactiveVar(favoritesVar);
   const [toggle, setToggle] = useState(false);
   const iconButtonRef = useRef<HTMLButtonElement | null>(null);
+  const theme = useTheme();
 
   useEffect(() => {
     const initialFavorites = localStorage.getItem('favorites');
@@ -55,7 +52,14 @@ export default function Favorites() {
         onClose={handleToggle}
         open={toggle}
       >
-        <StyledTypography variant="overline">Favorites</StyledTypography>
+        <Typography
+          css={css`
+            padding: ${theme.spacing(2)};
+          `}
+          variant="overline"
+        >
+          Favorites
+        </Typography>
         <Divider />
         {favorites.map(favorite => (
           <FavoritesCard
