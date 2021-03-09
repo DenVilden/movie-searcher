@@ -7,9 +7,9 @@ export default function ErrorMessage({ error }: { error: string }) {
   return (
     <Alert
       css={() => css`
-        margin: ${theme.spacing(2, 2, 0, 2)};
+        margin: ${theme.spacing(10, 2, 0, 2)};
       `}
-      elevation={12}
+      elevation={10}
       severity="error"
       variant="filled"
     >

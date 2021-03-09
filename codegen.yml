@@ -11,5 +11,5 @@ generates:
     config:
       useIndexSignature: true
       noSchemaStitching: true
-      contextType: pages/api/graphql#Context
+      contextType: lib/types#Context
       gqlImport: '@apollo/client/core#gql'
