@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { GetStaticProps, GetStaticPaths } from 'next';
+import { Grow } from '@material-ui/core';
 
 import {
   useGetUpcomingQuery,
@@ -25,24 +26,26 @@ export default function UpcomingPage({ initialData, page }: Props) {
   if (error) return <ErrorMessage error={error.message} />;
 
   return data || initialData ? (
-    <div
-      css={css`
-        display: flex;
-        flex-direction: column;
-      `}
-    >
-      <MoviesBox
-        movies={data?.upcoming.results || initialData.upcoming.results}
-        title="Upcoming"
-      />
-      <Pagination
-        currentPage={data?.upcoming.page || initialData.upcoming.page}
-        path="upcoming"
-        totalPages={
-          data?.upcoming.total_pages || initialData.upcoming.total_pages
-        }
-      />
-    </div>
+    <Grow in>
+      <div
+        css={css`
+          display: flex;
+          flex-direction: column;
+        `}
+      >
+        <MoviesBox
+          movies={data?.upcoming.results || initialData.upcoming.results}
+          title="Upcoming"
+        />
+        <Pagination
+          currentPage={data?.upcoming.page || initialData.upcoming.page}
+          path="upcoming"
+          totalPages={
+            data?.upcoming.total_pages || initialData.upcoming.total_pages
+          }
+        />
+      </div>
+    </Grow>
   ) : null;
 }
 

@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import styled from '@emotion/styled';
-import { Pagination } from '@material-ui/core';
-import { useRouter } from 'next/router';
+import { Pagination, PaginationItem } from '@material-ui/core';
+import Link from 'next/link';
 
 const StyledPagination = styled(Pagination)`
   margin: auto;
@@ -23,17 +22,14 @@ export default function PaginationComponent({
   currentPage,
   path,
 }: Props) {
-  const [page, setPage] = useState(currentPage);
-  const router = useRouter();
-
   return (
     <StyledPagination
       count={totalPages}
-      onChange={(_evt, pageNumber: number) => {
-        setPage(pageNumber);
-        router.push(`/${path}/${pageNumber}`);
+      page={currentPage}
+      renderItem={({ page, ...otherProps }) => {
+        const item = <PaginationItem {...otherProps} page={page} />;
+        return page ? <Link href={`/${path}/${page}`}>{item}</Link> : item;
       }}
-      page={page}
     />
   );
 }

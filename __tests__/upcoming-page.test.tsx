@@ -1,14 +1,6 @@
-import { renderApollo, screen, fireEvent } from 'lib/setupTests';
+import { renderApollo, screen } from 'lib/setupTests';
 import UpcomingPage from 'pages/upcoming/[page]';
 import { GetUpcomingDocument } from 'apollo/__generated__';
-
-const mockHistoryPush = jest.fn();
-
-jest.mock('next/router', () => ({
-  useRouter: () => ({
-    push: mockHistoryPush,
-  }),
-}));
 
 const mocks = {
   upcoming: {
@@ -34,16 +26,6 @@ describe('upcoming page', () => {
     const element = asFragment();
 
     expect(element).toMatchSnapshot();
-  });
-
-  it('should switch page and refetch movies', async () => {
-    renderApollo(<UpcomingPage initialData={mocks} page="1" />);
-
-    const pageButton = await screen.findByLabelText('Go to page 2');
-
-    fireEvent.click(pageButton);
-
-    expect(mockHistoryPush).toHaveBeenCalledWith('/upcoming/2');
   });
 
   it('should render error state', async () => {
