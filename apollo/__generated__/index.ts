@@ -1,5 +1,5 @@
 import { GraphQLResolveInfo } from 'graphql';
-import { Context } from 'utils/types';
+import { Context } from 'apollo/datasource';
 import { gql } from '@apollo/client/core';
 import * as Apollo from '@apollo/client';
 
@@ -436,8 +436,8 @@ export type MovieInfoResolvers<
   release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   revenue?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   similar?: Resolver<ResolversTypes['SimilarMovies'], ParentType, ContextType>;
-  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
 }>;
 
 export type TvShowInfoResolvers<
@@ -462,8 +462,8 @@ export type TvShowInfoResolvers<
   >;
   release_date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   similar?: Resolver<ResolversTypes['SimilarMovies'], ParentType, ContextType>;
-  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  vote_average?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
 }>;
 
 export type QueryResolvers<

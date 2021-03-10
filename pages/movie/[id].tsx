@@ -5,6 +5,7 @@ import MovieInfo from 'components/MovieInfo';
 import {
   useGetMovieInfoQuery,
   GetMovieInfoDocument,
+  GetMovieInfoQuery,
 } from 'apollo/__generated__';
 import { initializeApollo, addApolloState } from 'apollo/client';
 
@@ -22,7 +23,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { id } = params as { id: string };
 
   try {
-    await apolloClient.query({
+    await apolloClient.query<GetMovieInfoQuery>({
       query: GetMovieInfoDocument,
       variables: { id },
     });

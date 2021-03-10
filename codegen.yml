@@ -1,6 +1,6 @@
 overwrite: true
 schema: apollo/schema.graphql
-documents: apollo/**/*.graphql
+documents: apollo/queries.graphql
 generates:
   apollo/__generated__/index.ts:
     plugins:
@@ -11,5 +11,9 @@ generates:
     config:
       useIndexSignature: true
       noSchemaStitching: true
-      contextType: utils/types#Context
+      contextType: apollo/datasource#Context
       gqlImport: '@apollo/client/core#gql'
+hooks:
+  afterOneFileWrite:
+    - eslint --fix
+    - prettier --write

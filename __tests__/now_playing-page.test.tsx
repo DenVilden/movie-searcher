@@ -1,4 +1,4 @@
-import { renderApollo, fireEvent, screen } from 'utils/setupTests';
+import { renderApollo, fireEvent, screen } from 'lib/setupTests';
 import NowPlayingPage from 'pages/now_playing/[page]';
 import { GetNowPlayingDocument } from 'apollo/__generated__';
 
@@ -26,6 +26,16 @@ const mocks = {
 };
 
 describe('now playing page', () => {
+  it('should take a snapshot', () => {
+    const { asFragment } = renderApollo(
+      <NowPlayingPage initialData={mocks} page="1" />,
+    );
+
+    const element = asFragment();
+
+    expect(element).toMatchSnapshot();
+  });
+
   it('should switch page and refetch movies', async () => {
     renderApollo(<NowPlayingPage initialData={mocks} page="1" />);
 

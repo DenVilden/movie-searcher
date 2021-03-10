@@ -3,7 +3,7 @@ import { alpha } from '@material-ui/core/styles';
 import { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import SearchIcon from '@material-ui/icons/Search';
+import { Search as SearchIcon } from '@material-ui/icons';
 import Link from 'next/link';
 
 import { useGetMoviesSearchLazyQuery } from 'apollo/__generated__';

@@ -4,7 +4,12 @@ import { useMemo } from 'react';
 import merge from 'deepmerge';
 import isEqual from 'lodash.isequal';
 
-import { Favorite } from 'utils/types';
+export type Favorite = {
+  id: number;
+  media_type: string;
+  poster_path?: string | null;
+  title: string;
+};
 
 export const favoritesVar = makeVar<Favorite[]>([]);
 export const prefersDarkModeVar = makeVar(false);

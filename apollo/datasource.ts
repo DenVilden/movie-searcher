@@ -17,7 +17,13 @@ import {
   MovieInfo,
 } from './__generated__';
 
-export default class MoviesAPI extends RESTDataSource {
+export type Context = {
+  dataSources: {
+    moviesAPI: MoviesAPI;
+  };
+};
+
+export default class MoviesAPI extends RESTDataSource<Context> {
   constructor() {
     super();
     this.baseURL = 'https://api.themoviedb.org/3';

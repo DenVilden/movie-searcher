@@ -1,4 +1,4 @@
-import { renderApollo, screen } from 'utils/setupTests';
+import { renderApollo, screen } from 'lib/setupTests';
 import MoviePage from 'pages/movie/[id]';
 import { GetMovieInfoDocument } from 'apollo/__generated__';
 
@@ -41,6 +41,14 @@ const mocks = [
 ];
 
 describe('movie page', () => {
+  it('should take a snapshot', () => {
+    const { asFragment } = renderApollo(<MoviePage id="1" />, { mocks });
+
+    const element = asFragment();
+
+    expect(element).toMatchSnapshot();
+  });
+
   it('should fetch movie by id', async () => {
     renderApollo(<MoviePage id="1" />, { mocks });
 

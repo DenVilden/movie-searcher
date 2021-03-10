@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 
-import { Favorite } from 'utils/types';
+import { Favorite } from 'apollo/client';
 
 const StyledTypography = styled(Typography)`
   padding: ${({ theme }) => theme.spacing(3, 2, 2, 2)};

@@ -1,4 +1,4 @@
-import { renderApollo, screen } from 'utils/setupTests';
+import { renderApollo, screen } from 'lib/setupTests';
 import HomePage from 'pages';
 import { GetMoviesDocument } from 'apollo/__generated__';
 
@@ -39,6 +39,14 @@ const mocks = [
 ];
 
 describe('home page', () => {
+  it('should take a snapshot', () => {
+    const { asFragment } = renderApollo(<HomePage />, { mocks });
+
+    const element = asFragment();
+
+    expect(element).toMatchSnapshot();
+  });
+
   it('should fetch initial movies', async () => {
     renderApollo(<HomePage />, { mocks });
 

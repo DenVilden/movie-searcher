@@ -1,4 +1,4 @@
-import { renderApollo, screen, fireEvent } from 'utils/setupTests';
+import { renderApollo, screen, fireEvent } from 'lib/setupTests';
 import UpcomingPage from 'pages/upcoming/[page]';
 import { GetUpcomingDocument } from 'apollo/__generated__';
 
@@ -26,6 +26,16 @@ const mocks = {
 };
 
 describe('upcoming page', () => {
+  it('should take a snapshot', () => {
+    const { asFragment } = renderApollo(
+      <UpcomingPage initialData={mocks} page="1" />,
+    );
+
+    const element = asFragment();
+
+    expect(element).toMatchSnapshot();
+  });
+
   it('should switch page and refetch movies', async () => {
     renderApollo(<UpcomingPage initialData={mocks} page="1" />);
 

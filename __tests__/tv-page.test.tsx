@@ -1,4 +1,4 @@
-import { renderApollo, screen } from 'utils/setupTests';
+import { renderApollo, screen } from 'lib/setupTests';
 import TvPage from 'pages/tv/[id]';
 import { GetTvShowInfoDocument } from 'apollo/__generated__';
 
@@ -41,6 +41,14 @@ const mocks = [
 ];
 
 describe('tv page', () => {
+  it('should take a snapshot', () => {
+    const { asFragment } = renderApollo(<TvPage id="1" />, { mocks });
+
+    const element = asFragment();
+
+    expect(element).toMatchSnapshot();
+  });
+
   it('should fetch tv by id', async () => {
     renderApollo(<TvPage id="1" />, { mocks });
 

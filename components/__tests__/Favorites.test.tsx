@@ -1,4 +1,4 @@
-import { renderApollo, fireEvent, screen } from 'utils/setupTests';
+import { renderApollo, fireEvent, screen } from 'lib/setupTests';
 import Favorites from '../Favorites';
 
 jest.mock('next/link', () => ({ children }: { children: React.ReactElement }) =>
@@ -31,14 +31,6 @@ const mocks = [
 ];
 
 describe('favorites', () => {
-  it('should take a snapshot', () => {
-    const { asFragment } = renderApollo(<Favorites />);
-
-    const element = asFragment();
-
-    expect(element).toMatchSnapshot();
-  });
-
   it('should open favorites and register click', async () => {
     localStorage.setItem('favorites', JSON.stringify(mocks));
 
