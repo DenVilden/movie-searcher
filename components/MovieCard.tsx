@@ -17,14 +17,14 @@ const CardContainer = styled(Card)`
   }
 
   ${({ theme }) => theme.breakpoints.up('lg')} {
-    width: 200px;
+    width: 190px;
   }
 `;
 
 const StyledCardContent = styled(CardContent)`
   display: flex;
   flex-direction: column;
-  height: 100px;
+  height: 110px;
   justify-content: space-between;
   padding: ${({ theme }) => theme.spacing(1)};
   text-align: center;
