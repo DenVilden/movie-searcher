@@ -10,7 +10,15 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 
 const CardContainer = styled(Card)`
-  width: 170px;
+  width: 150px;
+
+  ${({ theme }) => theme.breakpoints.up('sm')} {
+    width: 170px;
+  }
+
+  ${({ theme }) => theme.breakpoints.up('lg')} {
+    width: 200px;
+  }
 `;
 
 const StyledCardContent = styled(CardContent)`
@@ -57,7 +65,7 @@ export default function MovieCard({
             alt={title}
             height="300"
             src={poster_path || '/no-image.jpg'}
-            width="170"
+            width="200"
           />
           <StyledCardContent>
             <Typography variant="subtitle2">{title}</Typography>

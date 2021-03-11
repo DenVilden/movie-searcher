@@ -20,7 +20,7 @@ exports[`upcoming page should take a snapshot 1`] = `
           class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-md-3 efhkdvm0 css-1un961w-MuiGrid-root-Wrapper"
         >
           <div
-            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root ejzktm52 css-2rfubm-MuiPaper-root-MuiCard-root-CardContainer"
+            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root ejzktm52 css-1qk231a-MuiPaper-root-MuiCard-root-CardContainer"
           >
             <button
               class="MuiButtonBase-root MuiCardActionArea-root css-b6lsxj-MuiButtonBase-root-MuiCardActionArea-root"
@@ -37,7 +37,7 @@ exports[`upcoming page should take a snapshot 1`] = `
                     alt=""
                     aria-hidden="true"
                     role="presentation"
-                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTcwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                    src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
                     style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
                   />
                 </div>
