@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/preact';
 import { MockedProvider, MockedResponse } from '@apollo/client/testing';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import '@testing-library/jest-dom/extend-expect';
@@ -22,4 +22,4 @@ export function renderApollo(
   );
 }
 
-export { screen, fireEvent } from '@testing-library/react';
+export { screen, fireEvent } from '@testing-library/preact';

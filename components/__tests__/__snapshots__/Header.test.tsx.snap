@@ -75,7 +75,6 @@ exports[`header should take a snapshot 1`] = `
               placeholder="Search..."
               spellcheck="false"
               type="text"
-              value=""
             />
             <div
               class="MuiAutocomplete-endAdornment css-1q60rmi-MuiAutocomplete-endAdornment"

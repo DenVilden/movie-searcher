@@ -30,8 +30,8 @@ describe('searchBar', () => {
 
     const inputElement = screen.getByPlaceholderText('Search...');
 
-    fireEvent.change(inputElement, { target: { value: '   ' } });
-    fireEvent.change(inputElement, { target: { value: 'test' } });
+    fireEvent.input(inputElement, { target: { value: '   ' } });
+    fireEvent.input(inputElement, { target: { value: 'test' } });
 
     const searchResult = await screen.findByText('test-title');
 

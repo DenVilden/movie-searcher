@@ -3,7 +3,11 @@ import { alpha } from '@material-ui/core/styles';
 import { useState } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { Search as SearchIcon } from '@material-ui/icons';
+import {
+  Tv as TvIcon,
+  Movie as MovieIcon,
+  Search as SearchIcon,
+} from '@material-ui/icons';
 import Link from 'next/link';
 
 import { useGetMoviesSearchLazyQuery } from 'apollo/__generated__';
@@ -97,11 +101,14 @@ export default function SearchBar() {
             {movie.title}
             <span
               css={css`
-                color: grey;
                 margin-left: 5px;
+                svg {
+                  font-size: inherit;
+                  margin-top: 5px;
+                }
               `}
             >
-              ({movie.media_type})
+              {movie.media_type === 'tv' ? <TvIcon /> : <MovieIcon />}
             </span>
           </li>
         </Link>

@@ -1,6 +1,8 @@
 const withPWA = require('next-pwa');
+const withPreact = require('next-plugin-preact');
+const withPlugins = require('next-compose-plugins');
 
-module.exports = withPWA({
+module.exports = withPlugins([withPreact, withPWA], {
   pwa: {
     dest: 'public',
     disable: process.env.NODE_ENV === 'development',

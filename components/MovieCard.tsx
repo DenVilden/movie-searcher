@@ -11,18 +11,14 @@ import Link from 'next/link';
 
 const StyledCard = styled(Card)`
   text-align: center;
-  width: 130px;
-
-  ${({ theme }) => theme.breakpoints.up('sm')} {
-    width: 170px;
-  }
+  width: 170px;
 `;
 
 const StyledCardContent = styled(CardContent)`
   display: flex;
   flex-direction: column;
   height: 100px;
-  padding: ${({ theme }) => theme.spacing(2, 1, 1, 1)};
+  padding: ${({ theme }) => theme.spacing(1)};
 `;
 
 const StyledTypography = styled(Typography)`
@@ -68,7 +64,7 @@ export default function MovieCard({
             alt={title}
             height="300"
             src={poster_path || '/no-image.jpg'}
-            width="200"
+            width="170"
           />
           <StyledCardContent>
             <Typography variant="subtitle2">{title}</Typography>
