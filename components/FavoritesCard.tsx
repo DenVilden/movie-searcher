@@ -8,12 +8,13 @@ import { Favorite } from 'apollo/client';
 const CardWrapper = styled.div`
   align-items: center;
   display: flex;
-  min-width: 200px;
   padding: ${({ theme }) => theme.spacing(1)};
+  width: 300px;
 `;
 
 const StyledTypography = styled(Typography)`
   margin-left: 15px;
+  width: 100%;
 `;
 
 interface Props {
