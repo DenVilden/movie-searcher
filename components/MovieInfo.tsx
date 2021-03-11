@@ -7,6 +7,7 @@ import {
   Slide,
 } from '@material-ui/core';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { useReactiveVar } from '@apollo/client/react';
 import Image from 'next/image';
 import Head from 'next/head';
@@ -46,8 +47,7 @@ const StyledCardContent = styled(CardContent)`
 `;
 
 const StyledTypography = styled(Typography)`
-  display: flex;
-  justify-content: space-between;
+  padding: ${({ theme }) => theme.spacing(1, 0)};
 `;
 
 interface Props {
@@ -111,7 +111,14 @@ export default function MovieInfoComponent({ data }: Props) {
             />
           </ImageWrapper>
           <StyledCardContent>
-            <StyledTypography gutterBottom variant="h5">
+            <Typography
+              css={css`
+                display: flex;
+                justify-content: space-between;
+              `}
+              gutterBottom
+              variant="h5"
+            >
               {data.title}
               <Button
                 color={isInFavorites ? 'secondary' : 'primary'}
@@ -120,26 +127,26 @@ export default function MovieInfoComponent({ data }: Props) {
               >
                 {isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
               </Button>
-            </StyledTypography>
-            <Typography>{data.overview}</Typography>
+            </Typography>
+            <Typography paragraph>{data.overview}</Typography>
             <Divider />
-            <Typography>
+            <StyledTypography>
               {data.media_type === 'movie' ? <b>Budget:</b> : <b>Seasons:</b>}{' '}
               {data.budget || data.number_of_seasons}
-            </Typography>
+            </StyledTypography>
             <Divider />
-            <Typography>
+            <StyledTypography>
               {data.media_type === 'movie' ? <b>Revenue:</b> : <b>Episodes:</b>}{' '}
               {data.revenue || data.number_of_episodes}
-            </Typography>
+            </StyledTypography>
             <Divider />
-            <Typography>
+            <StyledTypography>
               <b>Rating:</b> {data.vote_average}
-            </Typography>
+            </StyledTypography>
             <Divider />
-            <Typography>
+            <StyledTypography>
               <b>Release Date:</b> {data.release_date}
-            </Typography>
+            </StyledTypography>
           </StyledCardContent>
         </StyledCard>
         {!!data.similar.results.length && (

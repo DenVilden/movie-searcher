@@ -1,5 +1,4 @@
 import { AppBar, Toolbar, IconButton } from '@material-ui/core';
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import {
   Brightness4 as DarkIcon,
@@ -14,14 +13,6 @@ import { prefersDarkModeVar } from 'apollo/client';
 import Favorites from './Favorites';
 import SearchBar from './SearchBar';
 
-const StyledToolbar = styled(Toolbar)`
-  padding-right: 4px;
-
-  ${({ theme }) => theme.breakpoints.up('md')} {
-    padding: ${({ theme }) => theme.spacing(0, 2, 0, 2)};
-  }
-`;
-
 function Header() {
   const prefersDarkMode = useReactiveVar(prefersDarkModeVar);
 
@@ -33,7 +24,11 @@ function Header() {
 
   return (
     <AppBar color={prefersDarkMode ? 'inherit' : 'primary'} position="fixed">
-      <StyledToolbar disableGutters>
+      <Toolbar
+        css={css`
+          padding: 0 4px;
+        `}
+      >
         <Link href="/">
           <IconButton>
             <Image
@@ -66,7 +61,7 @@ function Header() {
           )}
         </IconButton>
         <Favorites />
-      </StyledToolbar>
+      </Toolbar>
     </AppBar>
   );
 }

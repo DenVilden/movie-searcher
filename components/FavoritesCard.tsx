@@ -1,29 +1,16 @@
 import { CardActionArea, Typography } from '@material-ui/core';
 import Image from 'next/image';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 
 import { Favorite } from 'apollo/client';
 
-const StyledTypography = styled(Typography)`
-  padding: ${({ theme }) => theme.spacing(3, 2, 2, 2)};
-`;
-
 const CardWrapper = styled.div`
+  align-items: center;
   display: flex;
   min-width: 200px;
-`;
-
-const ImageWrapper = styled.div`
-  display: none;
-  height: 56px;
-  margin: ${({ theme }) => theme.spacing(1)};
-  position: relative;
-  width: 50px;
-
-  ${({ theme }) => theme.breakpoints.up('sm')} {
-    display: block;
-  }
+  padding: ${({ theme }) => theme.spacing(1)};
 `;
 
 interface Props {
@@ -39,14 +26,19 @@ export default function FavoritesCard({
     <Link href={`/${media_type}/${id}`}>
       <CardActionArea onClick={handleToggle}>
         <CardWrapper>
-          <ImageWrapper>
-            <Image
-              alt={title}
-              layout="fill"
-              src={poster_path || '/no-image.jpg'}
-            />
-          </ImageWrapper>
-          <StyledTypography>{title}</StyledTypography>
+          <Image
+            alt={title}
+            height="50"
+            src={poster_path || '/no-image.jpg'}
+            width="50"
+          />
+          <Typography
+            css={css`
+              margin-left: 15px;
+            `}
+          >
+            {title}
+          </Typography>
         </CardWrapper>
       </CardActionArea>
     </Link>
