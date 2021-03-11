@@ -71,7 +71,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
         .map(movie => ({
           id: movie.id,
           media_type: movie.media_type,
-          title: movie?.title || movie?.name || 'No data',
+          title: movie?.title || movie?.name || '',
         })),
       total_pages: movies.total_pages,
     };
@@ -87,7 +87,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
       poster_path: this.attachPoster(movie.poster_path),
       release_date: movie.release_date
         ? dayjs(movie.release_date).format('DD MMMM YYYY')
-        : 'No data',
+        : '',
       revenue: numeral(movie.revenue).format('$0,00'),
       similar: {
         results: movie.similar.results.map(similarMovie => ({
@@ -116,7 +116,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
       poster_path: this.attachPoster(tv.poster_path),
       release_date: tv.first_air_date
         ? dayjs(tv.first_air_date).format('DD MMMM YYYY')
-        : 'No data',
+        : '',
       similar: {
         results: tv.similar.results.map(similarTvShow => ({
           id: similarTvShow.id,

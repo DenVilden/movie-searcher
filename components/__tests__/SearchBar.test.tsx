@@ -6,7 +6,7 @@ const mocks = [
   {
     request: {
       query: GetMoviesSearchDocument,
-      variables: { pageSize: 8, query: 'test' },
+      variables: { query: 'test' },
     },
     result: {
       data: {

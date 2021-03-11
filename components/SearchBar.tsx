@@ -83,7 +83,7 @@ export default function SearchBar() {
               const newValue = value.trim();
 
               if (newValue && newValue !== inputValue.trim()) {
-                fetchMovies({ variables: { pageSize: 8, query: newValue } });
+                fetchMovies({ variables: { query: newValue } });
               }
             }}
             placeholder="Search..."

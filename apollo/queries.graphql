@@ -1,5 +1,5 @@
-query GetMovieInfo($id: ID!) {
-  movieInfo(id: $id) {
+query GetMovieInfo($id: ID!, $pageSize: Int) {
+  movieInfo(id: $id, pageSize: $pageSize) {
     backdrop_path
     budget
     id
@@ -22,8 +22,8 @@ query GetMovieInfo($id: ID!) {
   }
 }
 
-query GetTvShowInfo($id: ID!) {
-  tvShowInfo(id: $id) {
+query GetTvShowInfo($id: ID!, $pageSize: Int) {
+  tvShowInfo(id: $id, pageSize: $pageSize) {
     backdrop_path
     id
     media_type

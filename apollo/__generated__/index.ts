@@ -474,13 +474,13 @@ export type QueryResolvers<
     ResolversTypes['MovieInfo'],
     ParentType,
     ContextType,
-    RequireFields<QueryMovieInfoArgs, 'id' | 'cursor' | 'pageSize'>
+    RequireFields<QueryMovieInfoArgs, 'id' | 'pageSize'>
   >;
   moviesSearch?: Resolver<
     ResolversTypes['MoviesSearch'],
     ParentType,
     ContextType,
-    RequireFields<QueryMoviesSearchArgs, 'query' | 'cursor' | 'pageSize'>
+    RequireFields<QueryMoviesSearchArgs, 'query' | 'pageSize'>
   >;
   nowPlaying?: Resolver<
     ResolversTypes['NowPlaying'],
@@ -492,7 +492,7 @@ export type QueryResolvers<
     ResolversTypes['TvShowInfo'],
     ParentType,
     ContextType,
-    RequireFields<QueryTvShowInfoArgs, 'id' | 'cursor' | 'pageSize'>
+    RequireFields<QueryTvShowInfoArgs, 'id' | 'pageSize'>
   >;
   upcoming?: Resolver<
     ResolversTypes['Upcoming'],
@@ -524,6 +524,7 @@ export type IResolvers<ContextType = Context> = Resolvers<ContextType>;
 
 export type GetMovieInfoQueryVariables = Exact<{
   id: Scalars['ID'];
+  pageSize?: Maybe<Scalars['Int']>;
 }>;
 
 export type GetMovieInfoQuery = { __typename?: 'Query' } & {
@@ -553,6 +554,7 @@ export type GetMovieInfoQuery = { __typename?: 'Query' } & {
 
 export type GetTvShowInfoQueryVariables = Exact<{
   id: Scalars['ID'];
+  pageSize?: Maybe<Scalars['Int']>;
 }>;
 
 export type GetTvShowInfoQuery = { __typename?: 'Query' } & {
@@ -660,8 +662,8 @@ export type GetMoviesSearchQuery = { __typename?: 'Query' } & {
 };
 
 export const GetMovieInfoDocument = gql`
-  query GetMovieInfo($id: ID!) {
-    movieInfo(id: $id) {
+  query GetMovieInfo($id: ID!, $pageSize: Int) {
+    movieInfo(id: $id, pageSize: $pageSize) {
       backdrop_path
       budget
       id
@@ -698,6 +700,7 @@ export const GetMovieInfoDocument = gql`
  * const { data, loading, error } = useGetMovieInfoQuery({
  *   variables: {
  *      id: // value for 'id'
+ *      pageSize: // value for 'pageSize'
  *   },
  * });
  */
@@ -736,8 +739,8 @@ export type GetMovieInfoQueryResult = Apollo.QueryResult<
   GetMovieInfoQueryVariables
 >;
 export const GetTvShowInfoDocument = gql`
-  query GetTvShowInfo($id: ID!) {
-    tvShowInfo(id: $id) {
+  query GetTvShowInfo($id: ID!, $pageSize: Int) {
+    tvShowInfo(id: $id, pageSize: $pageSize) {
       backdrop_path
       id
       media_type
@@ -774,6 +777,7 @@ export const GetTvShowInfoDocument = gql`
  * const { data, loading, error } = useGetTvShowInfoQuery({
  *   variables: {
  *      id: // value for 'id'
+ *      pageSize: // value for 'pageSize'
  *   },
  * });
  */

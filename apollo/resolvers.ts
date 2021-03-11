@@ -1,6 +1,6 @@
 import { Resolvers, MoviesSearch } from 'apollo/__generated__';
 
-function paginateResults(data: any, size = 2, cursor: number | null) {
+function paginateResults(data: any, size: number, cursor?: number | null) {
   let results = [];
 
   if (!cursor) {
