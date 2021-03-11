@@ -1,19 +1,13 @@
 import { Grid, Typography, Paper } from '@material-ui/core';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 
 import MovieCard from './MovieCard';
 
-const Root = styled(Paper)<{ padding: number }>`
+const Root = styled(Paper)`
   background: none;
   background-color: inherit;
-
-  ${({ theme, padding }) =>
-    padding &&
-    css`
-      margin: ${theme.spacing(11, 1, 3, 1)};
-      padding: ${theme.spacing(2, 0, 4, 0)};
-    `};
+  margin: ${({ theme }) => theme.spacing(11, 1, 3, 1)};
+  padding: ${({ theme }) => theme.spacing(2, 0, 4, 0)};
 `;
 
 const Wrapper = styled(Grid)`
@@ -34,18 +28,12 @@ interface Props {
     title: string;
     vote_average?: number;
   }[];
-  padding?: boolean;
   title: string;
 }
 
-export default function MoviesBox({
-  movies,
-  title,
-  elevation = 10,
-  padding = true,
-}: Props) {
+export default function MoviesBox({ movies, title, elevation = 10 }: Props) {
   return (
-    <Root elevation={elevation} padding={+padding}>
+    <Root elevation={elevation}>
       {!!title && (
         <Typography align="center" gutterBottom variant="h4">
           {title}

@@ -6,8 +6,7 @@ exports[`now playing page should take a snapshot 1`] = `
     class="css-lqtrc7-NowPlayingPage"
   >
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 efhkdvm1 css-1yrhzzy-MuiPaper-root-Root-Root"
-      padding="1"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 efhkdvm1 css-1s46o7j-MuiPaper-root-Root"
     >
       <h4
         class="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter MuiTypography-gutterBottom css-1trk376-MuiTypography-root"
@@ -21,7 +20,7 @@ exports[`now playing page should take a snapshot 1`] = `
           class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-md-3 efhkdvm0 css-1un961w-MuiGrid-root-Wrapper"
         >
           <div
-            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root ejzktm53 css-hgb8uj-MuiPaper-root-MuiCard-root-StyledCard"
+            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root css-3o67hy-MuiPaper-root-MuiCard-root"
           >
             <button
               class="MuiButtonBase-root MuiCardActionArea-root css-b6lsxj-MuiButtonBase-root-MuiCardActionArea-root"
@@ -50,7 +49,7 @@ exports[`now playing page should take a snapshot 1`] = `
                 />
               </div>
               <div
-                class="MuiCardContent-root ejzktm52 css-1h5y1fk-MuiCardContent-root-StyledCardContent"
+                class="MuiCardContent-root ejzktm51 css-5vurur-MuiCardContent-root-StyledCardContent"
               >
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
@@ -58,24 +57,20 @@ exports[`now playing page should take a snapshot 1`] = `
                   now playing page 1
                 </h6>
                 <p
-                  class="MuiTypography-root MuiTypography-body1 ejzktm51 css-eywcq2-MuiTypography-root-StyledTypography"
+                  class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
                 >
-                  <span
-                    class="css-17s8jfr-IconWrapper ejzktm50"
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium ejzktm50 css-1uoctnc-MuiSvgIcon-root-StyledStarIcon"
+                    data-testid="StarIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                      data-testid="StarIcon"
-                      focusable="false"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-                      />
-                    </svg>
-                     5
-                  </span>
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                    />
+                  </svg>
+                  5
                 </p>
               </div>
               <span

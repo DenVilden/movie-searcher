@@ -2,7 +2,6 @@ import { TextField, Autocomplete } from '@material-ui/core';
 import { alpha } from '@material-ui/core/styles';
 import { useState } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import {
   Tv as TvIcon,
   Movie as MovieIcon,
@@ -45,6 +44,14 @@ const StyledSearchIcon = styled(SearchIcon)`
 
   ${({ theme }) => theme.breakpoints.up('sm')} {
     margin-left: ${({ theme }) => theme.spacing(3)};
+  }
+`;
+
+const IconWrapper = styled.span`
+  margin-left: 5px;
+  svg {
+    font-size: inherit;
+    margin-top: 5px;
   }
 `;
 
@@ -99,17 +106,9 @@ export default function SearchBar() {
         <Link key={movie.id} href={`/${movie.media_type}/${movie.id}`}>
           <li {...props}>
             {movie.title}
-            <span
-              css={css`
-                margin-left: 5px;
-                svg {
-                  font-size: inherit;
-                  margin-top: 5px;
-                }
-              `}
-            >
+            <IconWrapper>
               {movie.media_type === 'tv' ? <TvIcon /> : <MovieIcon />}
-            </span>
+            </IconWrapper>
           </li>
         </Link>
       )}

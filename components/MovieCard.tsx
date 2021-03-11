@@ -9,30 +9,20 @@ import Image from 'next/image';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 
-const StyledCard = styled(Card)`
-  text-align: center;
-  width: 170px;
-`;
-
 const StyledCardContent = styled(CardContent)`
   display: flex;
   flex-direction: column;
   height: 100px;
+  justify-content: space-between;
   padding: ${({ theme }) => theme.spacing(1)};
+  text-align: center;
+  width: 170px;
 `;
 
-const StyledTypography = styled(Typography)`
-  display: flex;
-  justify-content: center;
-  margin-top: auto;
-`;
-
-const IconWrapper = styled.span`
-  display: flex;
-
-  svg {
-    height: 0.9em;
-  }
+const StyledStarIcon = styled(StarIcon)`
+  font-size: 20px;
+  margin-right: 3px;
+  vertical-align: top;
 `;
 
 type Props = {
@@ -57,7 +47,7 @@ export default function MovieCard({
   },
 }: Props) {
   return (
-    <StyledCard elevation={10}>
+    <Card elevation={10}>
       <Link href={`/${media_type}/${id}`}>
         <CardActionArea>
           <Image
@@ -68,18 +58,19 @@ export default function MovieCard({
           />
           <StyledCardContent>
             <Typography variant="subtitle2">{title}</Typography>
-            <StyledTypography color="textSecondary">
+            <Typography color="textSecondary">
               {vote_average ? (
-                <IconWrapper>
-                  <StarIcon /> {vote_average}
-                </IconWrapper>
+                <>
+                  <StyledStarIcon />
+                  {vote_average}
+                </>
               ) : (
                 release_date
               )}
-            </StyledTypography>
+            </Typography>
           </StyledCardContent>
         </CardActionArea>
       </Link>
-    </StyledCard>
+    </Card>
   );
 }

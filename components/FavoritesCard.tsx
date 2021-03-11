@@ -1,6 +1,5 @@
 import { CardActionArea, Typography } from '@material-ui/core';
 import Image from 'next/image';
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 
@@ -11,6 +10,10 @@ const CardWrapper = styled.div`
   display: flex;
   min-width: 200px;
   padding: ${({ theme }) => theme.spacing(1)};
+`;
+
+const StyledTypography = styled(Typography)`
+  margin-left: 15px;
 `;
 
 interface Props {
@@ -32,13 +35,7 @@ export default function FavoritesCard({
             src={poster_path || '/no-image.jpg'}
             width="50"
           />
-          <Typography
-            css={css`
-              margin-left: 15px;
-            `}
-          >
-            {title}
-          </Typography>
+          <StyledTypography>{title}</StyledTypography>
         </CardWrapper>
       </CardActionArea>
     </Link>

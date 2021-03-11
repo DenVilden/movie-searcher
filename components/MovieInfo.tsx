@@ -7,7 +7,6 @@ import {
   Slide,
 } from '@material-ui/core';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import { useReactiveVar } from '@apollo/client/react';
 import Image from 'next/image';
 import Head from 'next/head';
@@ -48,6 +47,11 @@ const StyledCardContent = styled(CardContent)`
 
 const StyledTypography = styled(Typography)`
   padding: ${({ theme }) => theme.spacing(1, 0)};
+`;
+
+const Title = styled(Typography)`
+  display: flex;
+  justify-content: space-between;
 `;
 
 interface Props {
@@ -111,14 +115,7 @@ export default function MovieInfoComponent({ data }: Props) {
             />
           </ImageWrapper>
           <StyledCardContent>
-            <Typography
-              css={css`
-                display: flex;
-                justify-content: space-between;
-              `}
-              gutterBottom
-              variant="h5"
-            >
+            <Title gutterBottom variant="h5">
               {data.title}
               <Button
                 color={isInFavorites ? 'secondary' : 'primary'}
@@ -127,7 +124,7 @@ export default function MovieInfoComponent({ data }: Props) {
               >
                 {isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
               </Button>
-            </Typography>
+            </Title>
             <Typography paragraph>{data.overview}</Typography>
             <Divider />
             <StyledTypography>

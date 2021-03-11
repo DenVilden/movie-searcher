@@ -45,12 +45,12 @@ exports[`header should take a snapshot 1`] = `
       </button>
       <div
         aria-expanded="false"
-        class="MuiAutocomplete-root ep0uteb2 css-l4apye-MuiAutocomplete-root-StyledAutocomplete"
+        class="MuiAutocomplete-root ep0uteb3 css-l4apye-MuiAutocomplete-root-StyledAutocomplete"
         role="combobox"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium ep0uteb0 css-1t4n2px-MuiSvgIcon-root-StyledSearchIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium ep0uteb1 css-1t4n2px-MuiSvgIcon-root-StyledSearchIcon"
           data-testid="SearchIcon"
           focusable="false"
           viewBox="0 0 24 24"
@@ -60,7 +60,7 @@ exports[`header should take a snapshot 1`] = `
           />
         </svg>
         <div
-          class="MuiFormControl-root MuiFormControl-marginNone MuiFormControl-fullWidth MuiTextField-root ep0uteb1 css-18kvcvx-MuiFormControl-root-StyledTextField"
+          class="MuiFormControl-root MuiFormControl-marginNone MuiFormControl-fullWidth MuiTextField-root ep0uteb2 css-18kvcvx-MuiFormControl-root-StyledTextField"
         >
           <div
             class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-4a33cb-MuiInputBase-root-MuiOutlinedInput-root"

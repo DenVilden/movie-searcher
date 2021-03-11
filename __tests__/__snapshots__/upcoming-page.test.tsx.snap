@@ -6,8 +6,7 @@ exports[`upcoming page should take a snapshot 1`] = `
     class="css-q2smw1-UpcomingPage"
   >
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 efhkdvm1 css-1yrhzzy-MuiPaper-root-Root-Root"
-      padding="1"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 efhkdvm1 css-1s46o7j-MuiPaper-root-Root"
     >
       <h4
         class="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter MuiTypography-gutterBottom css-1trk376-MuiTypography-root"
@@ -21,7 +20,7 @@ exports[`upcoming page should take a snapshot 1`] = `
           class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-md-3 efhkdvm0 css-1un961w-MuiGrid-root-Wrapper"
         >
           <div
-            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root ejzktm53 css-hgb8uj-MuiPaper-root-MuiCard-root-StyledCard"
+            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root css-3o67hy-MuiPaper-root-MuiCard-root"
           >
             <button
               class="MuiButtonBase-root MuiCardActionArea-root css-b6lsxj-MuiButtonBase-root-MuiCardActionArea-root"
@@ -50,7 +49,7 @@ exports[`upcoming page should take a snapshot 1`] = `
                 />
               </div>
               <div
-                class="MuiCardContent-root ejzktm52 css-1h5y1fk-MuiCardContent-root-StyledCardContent"
+                class="MuiCardContent-root ejzktm51 css-5vurur-MuiCardContent-root-StyledCardContent"
               >
                 <h6
                   class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
@@ -58,7 +57,7 @@ exports[`upcoming page should take a snapshot 1`] = `
                   upcoming page 1
                 </h6>
                 <p
-                  class="MuiTypography-root MuiTypography-body1 ejzktm51 css-eywcq2-MuiTypography-root-StyledTypography"
+                  class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
                 >
                   2002
                 </p>
