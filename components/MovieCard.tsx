@@ -9,6 +9,10 @@ import Image from 'next/image';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 
+const CardContainer = styled(Card)`
+  width: 170px;
+`;
+
 const StyledCardContent = styled(CardContent)`
   display: flex;
   flex-direction: column;
@@ -16,7 +20,6 @@ const StyledCardContent = styled(CardContent)`
   justify-content: space-between;
   padding: ${({ theme }) => theme.spacing(1)};
   text-align: center;
-  width: 170px;
 `;
 
 const StyledStarIcon = styled(StarIcon)`
@@ -47,7 +50,7 @@ export default function MovieCard({
   },
 }: Props) {
   return (
-    <Card elevation={10}>
+    <CardContainer elevation={10}>
       <Link href={`/${media_type}/${id}`}>
         <CardActionArea>
           <Image
@@ -71,6 +74,6 @@ export default function MovieCard({
           </StyledCardContent>
         </CardActionArea>
       </Link>
-    </Card>
+    </CardContainer>
   );
 }
