@@ -1,4 +1,3 @@
-import { css } from '@emotion/react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 
 import {
@@ -7,9 +6,8 @@ import {
   GetUpcomingQuery,
 } from 'apollo/__generated__';
 import ErrorMessage from 'components/ErrorMessage';
-import Pagination from 'components/Pagination';
-import MoviesBox from 'components/MoviesBox';
 import { initializeApollo, addApolloState } from 'apollo/client';
+import MoviesLayout from 'components/MoviesLayout';
 
 interface Props {
   initialData: GetUpcomingQuery;
@@ -25,24 +23,11 @@ export default function UpcomingPage({ initialData, page }: Props) {
   if (error) return <ErrorMessage error={error.message} />;
 
   return data || initialData ? (
-    <div
-      css={css`
-        display: flex;
-        flex-direction: column;
-      `}
-    >
-      <MoviesBox
-        movies={data?.upcoming.results || initialData.upcoming.results}
-        title="Upcoming"
-      />
-      <Pagination
-        currentPage={data?.upcoming.page || initialData.upcoming.page}
-        path="upcoming"
-        totalPages={
-          data?.upcoming.total_pages || initialData.upcoming.total_pages
-        }
-      />
-    </div>
+    <MoviesLayout
+      data={data?.upcoming || initialData.upcoming}
+      path="upcoming"
+      title="Upcoming"
+    />
   ) : null;
 }
 

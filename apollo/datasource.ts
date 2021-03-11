@@ -147,7 +147,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
     return this.moviesNowPlayingReducer(data);
   }
 
-  async getMoviesSearch(query: string, page?: number) {
+  async getMoviesSearch(query: string, page: number) {
     const data: MockMoviesSearchResponse = await this.get('/search/multi', {
       page,
       query,
