@@ -4,14 +4,14 @@ import {
   Brightness4 as DarkIcon,
   Brightness7 as LightIcon,
 } from '@material-ui/icons';
-import { memo } from 'react';
+import { memo } from 'preact/compat';
 import { useReactiveVar } from '@apollo/client/react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { prefersDarkModeVar } from 'apollo/client';
 import Favorites from './Favorites';
 import SearchBar from './SearchBar';
+import Logo from './Logo';
 
 function Header() {
   const prefersDarkMode = useReactiveVar(prefersDarkModeVar);
@@ -31,15 +31,7 @@ function Header() {
       >
         <Link href="/">
           <IconButton>
-            <Image
-              aria-label="logo"
-              css={css`
-                -webkit-user-drag: none;
-              `}
-              height="45"
-              src="/logo.svg"
-              width="45"
-            />
+            <Logo />
           </IconButton>
         </Link>
         <SearchBar />
@@ -50,15 +42,7 @@ function Header() {
           `}
           onClick={toggleTheme}
         >
-          {prefersDarkMode ? (
-            <LightIcon />
-          ) : (
-            <DarkIcon
-              css={css`
-                color: white;
-              `}
-            />
-          )}
+          {prefersDarkMode ? <LightIcon /> : <DarkIcon htmlColor="white" />}
         </IconButton>
         <Favorites />
       </Toolbar>

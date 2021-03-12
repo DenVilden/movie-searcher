@@ -16,28 +16,22 @@ exports[`header should take a snapshot 1`] = `
         <span
           class="MuiIconButton-label css-4jkopv-MuiIconButton-label"
         >
-          <div
-            style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+          <svg
+            height="45"
+            viewBox="0 0 65 65"
+            width="45"
           >
-            <div
-              style="box-sizing: border-box; display: block; max-width: 100%;"
+            <g
+              fill="#fff"
             >
-              <img
-                alt=""
-                aria-hidden="true"
-                role="presentation"
-                src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDUiIGhlaWdodD0iNDUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
-                style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+              <path
+                d="m31 5c14.888 0 27 12.112 27 27s-12.112 27-27 27-27-12.112-27-27 12.112-27 27-27m0-3c-16.567 0-30 13.432-30 30s13.433 30 30 30 30-13.432 30-30-13.433-30-30-30z"
               />
-            </div>
-            <img
-              aria-label="logo"
-              class="css-452g7n-Header"
-              decoding="async"
-              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-              style="visibility: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-            />
-          </div>
+              <path
+                d="m43.987 29.745-15.974-10.513c-2.757-1.814-5.013-.597-5.013 2.703v22.125c0 3.3 2.259 4.521 5.021 2.714l15.959-10.444c2.761-1.809 2.764-4.771.007-6.585zm-2.129 4.379-14.185 9.283c-.92.603-1.673.196-1.673-.904v-19.012c0-1.1.752-1.505 1.671-.9l14.19 9.338c.919.604.918 1.592-.003 2.195z"
+              />
+            </g>
+          </svg>
         </span>
         <span
           class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
@@ -109,7 +103,8 @@ exports[`header should take a snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1mur9o5-MuiSvgIcon-root-Header"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            color="white"
             data-testid="Brightness4Icon"
             focusable="false"
             viewBox="0 0 24 24"

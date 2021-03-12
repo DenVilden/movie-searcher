@@ -13,6 +13,7 @@ generates:
       noSchemaStitching: true
       contextType: apollo/datasource#Context
       gqlImport: '@apollo/client/core#gql'
+      apolloReactHooksImportFrom: '@apollo/client/react'
 hooks:
   afterOneFileWrite:
     - eslint --fix

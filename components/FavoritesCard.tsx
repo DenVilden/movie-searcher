@@ -21,12 +21,6 @@ const StyledTypography = styled(Typography)`
   width: 100%;
 `;
 
-const ImageWrapper = styled.div`
-  height: 50px;
-  position: relative;
-  width: 50px;
-`;
-
 interface Props {
   favorite: Favorite;
   handleToggle: () => void;
@@ -40,14 +34,14 @@ export default function FavoritesCard({
     <Link href={`/${media_type}/${id}`}>
       <CardActionArea onClick={handleToggle}>
         <CardWrapper>
-          <ImageWrapper>
-            <Image
-              alt={title}
-              layout="fill"
-              objectFit="cover"
-              src={poster_path || '/no-image.jpg'}
-            />
-          </ImageWrapper>
+          <Image
+            alt={title}
+            height={50}
+            layout="fixed"
+            objectFit="cover"
+            src={poster_path || '/no-image.jpg'}
+            width={50}
+          />
           <StyledTypography>{title}</StyledTypography>
         </CardWrapper>
       </CardActionArea>

@@ -63,9 +63,9 @@ export default function MovieCard({
         <CardActionArea>
           <Image
             alt={title}
-            height="300"
+            height={300}
             src={poster_path || '/no-image.jpg'}
-            width="200"
+            width={200}
           />
           <StyledCardContent>
             <Typography variant="subtitle2">{title}</Typography>

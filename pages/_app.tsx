@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'preact/hooks';
 import { AppProps } from 'next/app';
 import { ApolloProvider, useReactiveVar } from '@apollo/client/react';
 import Router from 'next/router';

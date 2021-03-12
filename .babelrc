@@ -12,17 +12,40 @@
   ],
   "plugins": [
     [
-      "transform-imports",
+      "import",
       {
-        "@material-ui/core": {
-          "transform": "@material-ui/core/${member}",
-          "preventFullImport": true
-        },
-        "@material-ui/icons": {
-          "transform": "@material-ui/icons/${member}",
-          "preventFullImport": true
-        }
-      }
+        "libraryName": "@material-ui/core",
+        "libraryDirectory": "",
+        "camel2DashComponentName": false
+      },
+      "core"
+    ],
+    [
+      "import",
+      {
+        "libraryName": "@material-ui/icons",
+        "libraryDirectory": "",
+        "camel2DashComponentName": false
+      },
+      "icons"
+    ],
+    [
+      "import",
+      {
+        "libraryName": "@apollo/client",
+        "libraryDirectory": "",
+        "camel2DashComponentName": false
+      },
+      "client"
+    ],
+    [
+      "import",
+      {
+        "libraryName": "react",
+        "libraryDirectory": "",
+        "camel2DashComponentName": false
+      },
+      "react"
     ],
     "@emotion",
     "macros"
