@@ -50,15 +50,9 @@ const StyledTypography = styled(Typography)`
   padding: ${({ theme }) => theme.spacing(1, 0)};
 `;
 
-const Title = styled(Typography)`
-  display: flex;
-  justify-content: space-between;
-`;
-
 const StyledButton = styled(Button)`
-  height: 36px;
-  min-width: 212px;
-  padding: 0;
+  margin-bottom: 8px;
+  margin-left: auto;
 `;
 
 interface Props {
@@ -108,16 +102,14 @@ export default function MovieInfoComponent({ data }: Props) {
             />
           </ImageWrapper>
           <StyledCardContent>
-            <Title gutterBottom variant="h5">
-              {data.title}
-              <StyledButton
-                color={isInFavorites ? 'secondary' : 'primary'}
-                onClick={addOrRemoveFromFavorites}
-                variant="contained"
-              >
-                {isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
-              </StyledButton>
-            </Title>
+            <Typography variant="h5">{data.title}</Typography>
+            <StyledButton
+              color={isInFavorites ? 'secondary' : 'primary'}
+              onClick={addOrRemoveFromFavorites}
+              variant="contained"
+            >
+              {isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
+            </StyledButton>
             <Typography paragraph>{data.overview}</Typography>
             <Divider />
             <StyledTypography>

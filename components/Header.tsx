@@ -30,7 +30,7 @@ function Header() {
         `}
       >
         <Link href="/">
-          <IconButton>
+          <IconButton area-label="go to home page">
             <Logo />
           </IconButton>
         </Link>
