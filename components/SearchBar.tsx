@@ -1,15 +1,15 @@
-import { TextField, Autocomplete } from '@material-ui/core';
-import { alpha } from '@material-ui/core/styles';
-import { useState } from 'preact/hooks';
-import styled from '@emotion/styled';
+import { TextField, Autocomplete } from '@material-ui/core'
+import { alpha } from '@material-ui/core/styles'
+import { useState } from 'preact/hooks'
+import styled from '@emotion/styled'
 import {
   Tv as TvIcon,
   Movie as MovieIcon,
   Search as SearchIcon,
-} from '@material-ui/icons';
-import Link from 'next/link';
+} from '@material-ui/icons'
+import Link from 'next/link'
 
-import { useGetMoviesSearchLazyQuery } from 'apollo/__generated__';
+import { useGetMoviesSearchLazyQuery } from 'apollo/__generated__'
 
 const StyledAutocomplete = styled(Autocomplete)`
   width: 70%;
@@ -18,7 +18,7 @@ const StyledAutocomplete = styled(Autocomplete)`
     color: #fafafa;
     margin-left: ${({ theme }) => theme.spacing(5)};
   }
-`;
+`
 
 const StyledTextField = styled(TextField)`
   background-color: ${({ theme }) => alpha(theme.palette.common.white, 0.15)};
@@ -31,7 +31,7 @@ const StyledTextField = styled(TextField)`
   :hover {
     background-color: ${({ theme }) => alpha(theme.palette.common.white, 0.25)};
   }
-`;
+`
 
 const StyledSearchIcon = styled(SearchIcon)`
   color: rgba(0, 0, 0, 0.87);
@@ -45,7 +45,7 @@ const StyledSearchIcon = styled(SearchIcon)`
   ${({ theme }) => theme.breakpoints.up('sm')} {
     margin-left: ${({ theme }) => theme.spacing(3)};
   }
-`;
+`
 
 const IconWrapper = styled.span`
   margin-left: 5px;
@@ -53,11 +53,11 @@ const IconWrapper = styled.span`
     font-size: inherit;
     margin-top: 5px;
   }
-`;
+`
 
 export default function SearchBar() {
-  const [inputValue, setInputValue] = useState('');
-  const [fetchMovies, { data, loading, error }] = useGetMoviesSearchLazyQuery();
+  const [inputValue, setInputValue] = useState('')
+  const [fetchMovies, { data, loading, error }] = useGetMoviesSearchLazyQuery()
 
   return (
     <StyledAutocomplete
@@ -75,7 +75,7 @@ export default function SearchBar() {
       loadingText={loading ? 'Loading...' : error?.message || 'No results'}
       onInputChange={(_evt, _value, reason) => {
         if (reason === 'clear') {
-          setInputValue('');
+          setInputValue('')
         }
       }}
       openOnFocus
@@ -89,12 +89,12 @@ export default function SearchBar() {
             fullWidth
             id="search field"
             onChange={({ target: { value } }) => {
-              setInputValue(value);
+              setInputValue(value)
 
-              const newValue = value.trim();
+              const newValue = value.trim()
 
               if (newValue && newValue !== inputValue.trim()) {
-                fetchMovies({ variables: { query: newValue } });
+                fetchMovies({ variables: { query: newValue } })
               }
             }}
             placeholder="Search..."
@@ -113,5 +113,5 @@ export default function SearchBar() {
         </Link>
       )}
     />
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import { renderApollo, screen } from 'lib/setupTests';
-import UpcomingPage from 'pages/upcoming/[page]';
-import { GetUpcomingDocument } from 'apollo/__generated__';
+import { renderApollo, screen } from 'lib/setupTests'
+import UpcomingPage from 'pages/upcoming/[page]'
+import { GetUpcomingDocument } from 'apollo/__generated__'
 
 const mocks = {
   upcoming: {
@@ -17,21 +17,21 @@ const mocks = {
     ],
     total_pages: 20,
   },
-};
+}
 
 describe('upcoming page', () => {
   it('should take a snapshot', () => {
     const { asFragment } = renderApollo(
-      <UpcomingPage initialData={mocks} page="1" />,
+      <UpcomingPage initialData={mocks} page={1} />,
       {
         addTypeName: true,
       },
-    );
+    )
 
-    const element = asFragment();
+    const element = asFragment()
 
-    expect(element).toMatchSnapshot();
-  });
+    expect(element).toMatchSnapshot()
+  })
 
   it('should render error state', async () => {
     const mock = [
@@ -40,18 +40,18 @@ describe('upcoming page', () => {
         request: {
           query: GetUpcomingDocument,
           variables: {
-            page: '1',
+            page: 1,
           },
         },
       },
-    ];
+    ]
 
-    renderApollo(<UpcomingPage initialData={mocks} page="1" />, {
+    renderApollo(<UpcomingPage initialData={mocks} page={1} />, {
       mocks: mock,
-    });
+    })
 
     expect(
       await screen.findByText(/an error has occurred/i),
-    ).toBeInTheDocument();
-  });
-});
+    ).toBeInTheDocument()
+  })
+})

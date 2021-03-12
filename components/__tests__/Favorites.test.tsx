@@ -1,9 +1,9 @@
-import { renderApollo, fireEvent, screen } from 'lib/setupTests';
-import Favorites from '../Favorites';
+import { renderApollo, fireEvent, screen } from 'lib/setupTests'
+import Favorites from '../Favorites'
 
 jest.mock('next/link', () => ({ children }: { children: React.ReactElement }) =>
   children,
-);
+)
 
 const mocks = [
   {
@@ -28,22 +28,22 @@ const mocks = [
     title: 'clicked data',
     vote_average: 5,
   },
-];
+]
 
 describe('favorites', () => {
   it('should open favorites and register click', async () => {
-    localStorage.setItem('favorites', JSON.stringify(mocks));
+    localStorage.setItem('favorites', JSON.stringify(mocks))
 
-    renderApollo(<Favorites />);
+    renderApollo(<Favorites />)
 
-    const iconButton = screen.getByRole('button');
+    const iconButton = screen.getByRole('button')
 
-    fireEvent.click(iconButton);
+    fireEvent.click(iconButton)
 
-    const cardButtonElement = await screen.findByText('clicked data');
+    const cardButtonElement = await screen.findByText('clicked data')
 
-    fireEvent.click(cardButtonElement);
+    fireEvent.click(cardButtonElement)
 
-    expect(await screen.findByLabelText(/open favorites/i)).toBeInTheDocument();
-  });
-});
+    expect(await screen.findByLabelText(/open favorites/i)).toBeInTheDocument()
+  })
+})

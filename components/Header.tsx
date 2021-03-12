@@ -1,25 +1,25 @@
-import { AppBar, Toolbar, IconButton } from '@material-ui/core';
-import { css } from '@emotion/react';
+import { AppBar, Toolbar, IconButton } from '@material-ui/core'
+import { css } from '@emotion/react'
 import {
   Brightness4 as DarkIcon,
   Brightness7 as LightIcon,
-} from '@material-ui/icons';
-import { useReactiveVar } from '@apollo/client/react';
-import Link from 'next/link';
+} from '@material-ui/icons'
+import { useReactiveVar } from '@apollo/client/react'
+import Link from 'next/link'
 
-import { prefersDarkModeVar } from 'apollo/client';
-import Favorites from './Favorites';
-import SearchBar from './SearchBar';
-import Logo from './Logo';
+import { prefersDarkModeVar } from 'apollo/client'
+import Favorites from './Favorites'
+import SearchBar from './SearchBar'
+import Logo from './Logo'
 
 export default function Header() {
-  const prefersDarkMode = useReactiveVar(prefersDarkModeVar);
+  const prefersDarkMode = useReactiveVar(prefersDarkModeVar)
 
   const toggleTheme = () => {
-    const toggle = !prefersDarkMode;
-    prefersDarkModeVar(toggle);
-    localStorage.setItem('darkMode', JSON.stringify(toggle));
-  };
+    const toggle = !prefersDarkMode
+    prefersDarkModeVar(toggle)
+    localStorage.setItem('darkMode', JSON.stringify(toggle))
+  }
 
   return (
     <AppBar color={prefersDarkMode ? 'inherit' : 'primary'} position="fixed">
@@ -46,5 +46,5 @@ export default function Header() {
         <Favorites />
       </Toolbar>
     </AppBar>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import { renderApollo, fireEvent, screen } from 'lib/setupTests';
-import MovieInfo from '../MovieInfo';
+import { renderApollo, fireEvent, screen } from 'lib/setupTests'
+import MovieInfo from '../MovieInfo'
 
 const mock = {
   backdrop_path: null,
@@ -23,20 +23,20 @@ const mock = {
   },
   title: 'test',
   vote_average: 5,
-};
+}
 
 describe('movieInfo', () => {
   it('should toggle favorites', () => {
-    renderApollo(<MovieInfo data={mock} />);
+    renderApollo(<MovieInfo data={mock} />)
 
-    const addButton = screen.getByText('Add to favorites');
+    const addButton = screen.getByText('Add to favorites')
 
-    fireEvent.click(addButton);
+    fireEvent.click(addButton)
 
-    expect(screen.getByText('Remove from favorites')).toBeInTheDocument();
+    expect(screen.getByText('Remove from favorites')).toBeInTheDocument()
 
-    fireEvent.click(addButton);
+    fireEvent.click(addButton)
 
-    expect(addButton).toBeInTheDocument();
-  });
-});
+    expect(addButton).toBeInTheDocument()
+  })
+})

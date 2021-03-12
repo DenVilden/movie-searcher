@@ -1,8 +1,8 @@
-import { Alert, AlertTitle } from '@material-ui/core';
-import { css, useTheme } from '@emotion/react';
+import { Alert, AlertTitle } from '@material-ui/core'
+import { css, useTheme } from '@emotion/react'
 
 export default function ErrorMessage({ error }: { error: string }) {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <Alert
@@ -16,5 +16,5 @@ export default function ErrorMessage({ error }: { error: string }) {
       <AlertTitle>Error</AlertTitle>
       {error}
     </Alert>
-  );
+  )
 }

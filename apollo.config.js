@@ -6,4 +6,4 @@ module.exports = {
     },
     includes: ['apollo/queries.graphql'],
   },
-};
+}

@@ -7,4 +7,4 @@ module.exports = {
     '!apollo/__generated__/*.ts',
     '!utils/types.ts',
   ],
-};
+}

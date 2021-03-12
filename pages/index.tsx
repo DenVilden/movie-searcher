@@ -1,21 +1,21 @@
-import { Grid } from '@material-ui/core';
-import { GetStaticProps } from 'next';
+import { Grid } from '@material-ui/core'
+import { GetStaticProps } from 'next'
 
-import ErrorMessage from 'components/ErrorMessage';
-import { initializeApollo, addApolloState } from 'apollo/client';
+import ErrorMessage from 'components/ErrorMessage'
+import { initializeApollo, addApolloState } from 'apollo/client'
 import {
   useGetMoviesQuery,
   GetMoviesDocument,
   GetMoviesQuery,
-} from 'apollo/__generated__';
-import Upcoming from './upcoming/[page]';
-import NowPlaying from './now_playing/[page]';
+} from 'apollo/__generated__'
+import Upcoming from './upcoming/[page]'
+import NowPlaying from './now_playing/[page]'
 
 export default function HomePage() {
-  const { data, error } = useGetMoviesQuery();
+  const { data, error } = useGetMoviesQuery()
 
   if (error || !data)
-    return <ErrorMessage error={error?.message || 'No data'} />;
+    return <ErrorMessage error={error?.message || 'No data'} />
 
   return (
     <Grid container>
@@ -26,18 +26,18 @@ export default function HomePage() {
         <Upcoming initialData={{ upcoming: data.upcoming }} />
       </Grid>
     </Grid>
-  );
+  )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const apolloClient = initializeApollo();
+  const apolloClient = initializeApollo()
 
   await apolloClient.query<GetMoviesQuery>({
     query: GetMoviesDocument,
-  });
+  })
 
   return addApolloState(apolloClient, {
     props: {},
     revalidate: 10,
-  });
-};
+  })
+}

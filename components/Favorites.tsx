@@ -1,36 +1,36 @@
-import { useState, useRef, useEffect } from 'preact/hooks';
+import { useState, useRef, useEffect } from 'preact/hooks'
 import {
   Divider,
   Badge,
   Typography,
   Popover,
   IconButton,
-} from '@material-ui/core';
-import { useReactiveVar } from '@apollo/client/react';
+} from '@material-ui/core'
+import { useReactiveVar } from '@apollo/client/react'
 import {
   Favorite as FavoriteIcon,
   FavoriteBorder as FavoriteBorderIcon,
-} from '@material-ui/icons';
-import { css } from '@emotion/react';
+} from '@material-ui/icons'
+import { css } from '@emotion/react'
 
-import { favoritesVar } from 'apollo/client';
-import FavoritesCard from './FavoritesCard';
+import { favoritesVar } from 'apollo/client'
+import FavoritesCard from './FavoritesCard'
 
 export default function Favorites() {
-  const favorites = useReactiveVar(favoritesVar);
-  const [toggle, setToggle] = useState(false);
-  const iconButtonRef = useRef<HTMLButtonElement | null>(null);
+  const favorites = useReactiveVar(favoritesVar)
+  const [toggle, setToggle] = useState(false)
+  const iconButtonRef = useRef<HTMLButtonElement | null>(null)
 
   useEffect(() => {
-    const initialFavorites = localStorage.getItem('favorites');
+    const initialFavorites = localStorage.getItem('favorites')
     if (initialFavorites) {
-      favoritesVar(JSON.parse(initialFavorites));
+      favoritesVar(JSON.parse(initialFavorites))
     }
-  }, []);
+  }, [])
 
   const handleToggle = () => {
-    setToggle(!toggle);
-  };
+    setToggle(!toggle)
+  }
 
   return (
     <>
@@ -68,5 +68,5 @@ export default function Favorites() {
         ))}
       </Popover>
     </>
-  );
+  )
 }

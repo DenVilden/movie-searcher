@@ -1,40 +1,40 @@
 /* eslint-disable class-methods-use-this */
-import { RESTDataSource, RequestOptions } from 'apollo-datasource-rest';
-import dayjs from 'dayjs';
-import numeral from 'numeral';
+import { RESTDataSource, RequestOptions } from 'apollo-datasource-rest'
+import dayjs from 'dayjs'
+import numeral from 'numeral'
 import {
   MockUpcomingResponse,
   MockNowPlayingResponse,
   MockMoviesSearchResponse,
   MockMovieInfoResponse,
   MockTvShowInfoResponse,
-} from './__responses__/raw-responses';
+} from './__responses__/raw-responses'
 import {
   Upcoming,
   TvShowInfo,
   NowPlaying,
   MoviesSearch,
   MovieInfo,
-} from './__generated__';
+} from './__generated__'
 
 export type Context = {
   dataSources: {
-    moviesAPI: MoviesAPI;
-  };
-};
+    moviesAPI: MoviesAPI
+  }
+}
 
 export default class MoviesAPI extends RESTDataSource<Context> {
   constructor() {
-    super();
-    this.baseURL = 'https://api.themoviedb.org/3';
+    super()
+    this.baseURL = 'https://api.themoviedb.org/3'
   }
 
   protected willSendRequest(request: RequestOptions) {
-    request.params.set('api_key', process.env.MOVIE_API_KEY as string);
+    request.params.set('api_key', process.env.MOVIE_API_KEY as string)
   }
 
   private attachPoster(path: string, size = 200) {
-    return path ? `https://image.tmdb.org/t/p/w${size}${path}` : null;
+    return path ? `https://image.tmdb.org/t/p/w${size}${path}` : null
   }
 
   private moviesUpcomingReducer(movies: MockUpcomingResponse): Upcoming {
@@ -48,7 +48,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
         title: movie.title,
       })),
       total_pages: movies.total_pages,
-    };
+    }
   }
 
   private moviesNowPlayingReducer(movies: MockNowPlayingResponse): NowPlaying {
@@ -62,7 +62,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
         vote_average: movie.vote_average,
       })),
       total_pages: movies.total_pages,
-    };
+    }
   }
 
   private moviesSearchReducer(movies: MockMoviesSearchResponse): MoviesSearch {
@@ -76,7 +76,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
           title: movie?.title || movie?.name || '',
         })),
       total_pages: movies.total_pages,
-    };
+    }
   }
 
   private movieInfoReducer(movie: MockMovieInfoResponse): MovieInfo {
@@ -104,7 +104,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
       },
       title: movie.title,
       vote_average: movie.vote_average,
-    };
+    }
   }
 
   private tvShowInfoReducer(tv: MockTvShowInfoResponse): TvShowInfo {
@@ -132,42 +132,42 @@ export default class MoviesAPI extends RESTDataSource<Context> {
       },
       title: tv.name,
       vote_average: tv.vote_average,
-    };
+    }
   }
 
   async getUpcoming(page: number) {
     const data: MockUpcomingResponse = await this.get('/movie/upcoming', {
       page,
-    });
-    return this.moviesUpcomingReducer(data);
+    })
+    return this.moviesUpcomingReducer(data)
   }
 
   async getNowPlaying(page: number) {
     const data: MockNowPlayingResponse = await this.get('/movie/now_playing', {
       page,
-    });
-    return this.moviesNowPlayingReducer(data);
+    })
+    return this.moviesNowPlayingReducer(data)
   }
 
   async getMoviesSearch(query: string, page: number) {
     const data: MockMoviesSearchResponse = await this.get('/search/multi', {
       page,
       query,
-    });
-    return this.moviesSearchReducer(data);
+    })
+    return this.moviesSearchReducer(data)
   }
 
   async getMovieInfo(id: string) {
     const data: MockMovieInfoResponse = await this.get(`/movie/${id}`, {
       append_to_response: 'similar',
-    });
-    return this.movieInfoReducer(data);
+    })
+    return this.movieInfoReducer(data)
   }
 
   async getTvShowInfo(id: string) {
     const data: MockTvShowInfoResponse = await this.get(`/tv/${id}`, {
       append_to_response: 'similar',
-    });
-    return this.tvShowInfoReducer(data);
+    })
+    return this.tvShowInfoReducer(data)
   }
 }

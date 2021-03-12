@@ -1,9 +1,9 @@
-import { CardActionArea, Typography } from '@material-ui/core';
-import Image from 'next/image';
-import styled from '@emotion/styled';
-import Link from 'next/link';
+import { CardActionArea, Typography } from '@material-ui/core'
+import Image from 'next/image'
+import styled from '@emotion/styled'
+import Link from 'next/link'
 
-import { Favorite } from 'apollo/client';
+import { Favorite } from 'apollo/client'
 
 const CardWrapper = styled.div`
   align-items: center;
@@ -14,16 +14,16 @@ const CardWrapper = styled.div`
   ${({ theme }) => theme.breakpoints.up('md')} {
     width: 300px;
   }
-`;
+`
 
 const StyledTypography = styled(Typography)`
   margin-left: 15px;
   width: 100%;
-`;
+`
 
 interface Props {
-  favorite: Favorite;
-  handleToggle: () => void;
+  favorite: Favorite
+  handleToggle: () => void
 }
 
 export default function FavoritesCard({
@@ -46,5 +46,5 @@ export default function FavoritesCard({
         </CardWrapper>
       </CardActionArea>
     </Link>
-  );
+  )
 }

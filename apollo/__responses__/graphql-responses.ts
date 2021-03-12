@@ -18,7 +18,7 @@ export const mockUpcoming = {
     },
   ],
   total_pages: 12,
-};
+}
 
 export const mockNowPlaying = {
   page: 1,
@@ -33,7 +33,7 @@ export const mockNowPlaying = {
     },
   ],
   total_pages: 39,
-};
+}
 
 export const mockMoviesSearch = {
   page: 1,
@@ -50,7 +50,7 @@ export const mockMoviesSearch = {
     },
   ],
   total_pages: 186,
-};
+}
 
 export const mockMovieInfo = {
   backdrop_path:
@@ -78,7 +78,7 @@ export const mockMovieInfo = {
   },
   title: 'Emma.',
   vote_average: 7.1,
-};
+}
 
 export const mockTvShowInfo = {
   backdrop_path:
@@ -106,4 +106,4 @@ export const mockTvShowInfo = {
   },
   title: 'Spider-Man',
   vote_average: 8.2,
-};
+}

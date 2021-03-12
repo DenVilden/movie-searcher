@@ -6,15 +6,15 @@ import {
   Divider,
   Button,
   Slide,
-} from '@material-ui/core';
-import styled from '@emotion/styled';
-import { useReactiveVar } from '@apollo/client/react';
-import Image from 'next/image';
-import Head from 'next/head';
+} from '@material-ui/core'
+import styled from '@emotion/styled'
+import { useReactiveVar } from '@apollo/client/react'
+import Image from 'next/image'
+import Head from 'next/head'
 
-import { favoritesVar, Favorite } from 'apollo/client';
-import { TvShowInfo, MovieInfo } from 'apollo/__generated__';
-import MoviesBox from './MoviesBox';
+import { favoritesVar, Favorite } from 'apollo/client'
+import { TvShowInfo, MovieInfo } from 'apollo/__generated__'
+import MoviesBox from './MoviesBox'
 
 const StyledCard = styled(Card)`
   background-color: inherit;
@@ -24,7 +24,7 @@ const StyledCard = styled(Card)`
   ${({ theme }) => theme.breakpoints.up('md')} {
     display: flex;
   }
-`;
+`
 
 const ImageWrapper = styled.div`
   height: 450px;
@@ -34,7 +34,7 @@ const ImageWrapper = styled.div`
   ${({ theme }) => theme.breakpoints.up('md')} {
     width: 40%;
   }
-`;
+`
 
 const StyledCardContent = styled(CardContent)`
   display: flex;
@@ -44,32 +44,38 @@ const StyledCardContent = styled(CardContent)`
   ${({ theme }) => theme.breakpoints.up('md')} {
     width: 60%;
   }
-`;
+`
 
 const StyledTypography = styled(Typography)`
   padding: ${({ theme }) => theme.spacing(1, 0)};
-`;
+`
 
 const StyledButton = styled(Button)`
-  margin-bottom: 8px;
-  margin-left: auto;
-`;
+  align-self: center;
+  height: 36px;
+  min-width: 188px;
+`
+
+const TitleWrapper = styled(Typography)`
+  display: flex;
+  justify-content: space-between;
+`
 
 interface Props {
-  data: TvShowInfo | MovieInfo;
+  data: TvShowInfo | MovieInfo
 }
 
 export default function MovieInfoComponent({ data }: Props) {
-  const favorites = useReactiveVar(favoritesVar);
+  const favorites = useReactiveVar(favoritesVar)
 
-  const isInFavorites = favorites.some(favorite => favorite.id === data.id);
+  const isInFavorites = favorites.some(favorite => favorite.id === data.id)
 
   const addOrRemoveFromFavorites = () => {
-    let newFavorites: Favorite[];
+    let newFavorites: Favorite[]
 
     if (isInFavorites) {
-      newFavorites = favorites.filter(favorite => favorite.id !== data.id);
-      favoritesVar(newFavorites);
+      newFavorites = favorites.filter(favorite => favorite.id !== data.id)
+      favoritesVar(newFavorites)
     } else {
       newFavorites = [
         ...favorites,
@@ -79,12 +85,12 @@ export default function MovieInfoComponent({ data }: Props) {
           poster_path: data.poster_path,
           title: data.title,
         },
-      ];
-      favoritesVar(newFavorites);
+      ]
+      favoritesVar(newFavorites)
     }
 
-    localStorage.setItem('favorites', JSON.stringify(newFavorites));
-  };
+    localStorage.setItem('favorites', JSON.stringify(newFavorites))
+  }
 
   return (
     <Slide direction="up" in>
@@ -102,14 +108,17 @@ export default function MovieInfoComponent({ data }: Props) {
             />
           </ImageWrapper>
           <StyledCardContent>
-            <Typography variant="h5">{data.title}</Typography>
-            <StyledButton
-              color={isInFavorites ? 'secondary' : 'primary'}
-              onClick={addOrRemoveFromFavorites}
-              variant="contained"
-            >
-              {isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
-            </StyledButton>
+            <TitleWrapper gutterBottom variant="h5">
+              {data.title}
+              <StyledButton
+                color={isInFavorites ? 'secondary' : 'primary'}
+                onClick={addOrRemoveFromFavorites}
+                size="small"
+                variant="contained"
+              >
+                {isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
+              </StyledButton>
+            </TitleWrapper>
             <Typography paragraph>{data.overview}</Typography>
             <Divider />
             <StyledTypography>
@@ -154,5 +163,5 @@ export default function MovieInfoComponent({ data }: Props) {
         )}
       </div>
     </Slide>
-  );
+  )
 }

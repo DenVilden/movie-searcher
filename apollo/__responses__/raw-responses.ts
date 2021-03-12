@@ -42,9 +42,9 @@ export const mockUpcomingResponse = {
   ],
   total_pages: 12,
   total_results: 234,
-};
+}
 
-export type MockUpcomingResponse = typeof mockUpcomingResponse;
+export type MockUpcomingResponse = typeof mockUpcomingResponse
 
 export const mockNowPlayingResponse = {
   dates: {
@@ -73,9 +73,9 @@ export const mockNowPlayingResponse = {
   ],
   total_pages: 39,
   total_results: 774,
-};
+}
 
-export type MockNowPlayingResponse = typeof mockNowPlayingResponse;
+export type MockNowPlayingResponse = typeof mockNowPlayingResponse
 
 export const mockMoviesSearchResponse = {
   page: 1,
@@ -179,9 +179,9 @@ export const mockMoviesSearchResponse = {
   ],
   total_pages: 186,
   total_results: 3669,
-};
+}
 
-export type MockMoviesSearchResponse = typeof mockMoviesSearchResponse;
+export type MockMoviesSearchResponse = typeof mockMoviesSearchResponse
 
 export const mockMovieInfoResponse = {
   adult: false,
@@ -283,9 +283,9 @@ export const mockMovieInfoResponse = {
   video: false,
   vote_average: 7.1,
   vote_count: 720,
-};
+}
 
-export type MockMovieInfoResponse = typeof mockMovieInfoResponse;
+export type MockMovieInfoResponse = typeof mockMovieInfoResponse
 
 export const mockTvShowInfoResponse = {
   backdrop_path: '/df4V825ahcsw4qKuFTEefippoCG.jpg',
@@ -484,6 +484,6 @@ export const mockTvShowInfoResponse = {
   type: 'Scripted',
   vote_average: 8.2,
   vote_count: 478,
-};
+}
 
-export type MockTvShowInfoResponse = typeof mockTvShowInfoResponse;
+export type MockTvShowInfoResponse = typeof mockTvShowInfoResponse

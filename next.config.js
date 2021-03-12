@@ -1,6 +1,6 @@
-const withPWA = require('next-pwa');
-const withPreact = require('next-plugin-preact');
-const withPlugins = require('next-compose-plugins');
+const withPWA = require('next-pwa')
+const withPreact = require('next-plugin-preact')
+const withPlugins = require('next-compose-plugins')
 
 module.exports = withPlugins([withPreact, withPWA], {
   pwa: {
@@ -14,4 +14,4 @@ module.exports = withPlugins([withPreact, withPWA], {
     optimizeFonts: true,
   },
   reactStrictMode: true,
-});
+})

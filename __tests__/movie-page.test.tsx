@@ -1,6 +1,6 @@
-import { renderApollo, screen } from 'lib/setupTests';
-import MoviePage from 'pages/movie/[id]';
-import { GetMovieInfoDocument } from 'apollo/__generated__';
+import { renderApollo, screen } from 'lib/setupTests'
+import MoviePage from 'pages/movie/[id]'
+import { GetMovieInfoDocument } from 'apollo/__generated__'
 
 const mocks = [
   {
@@ -39,25 +39,25 @@ const mocks = [
       },
     },
   },
-];
+]
 
 describe('movie page', () => {
   it('should take a snapshot', () => {
     const { asFragment } = renderApollo(<MoviePage id="1" />, {
       mocks,
-    });
+    })
 
-    const element = asFragment();
+    const element = asFragment()
 
-    expect(element).toMatchSnapshot();
-  });
+    expect(element).toMatchSnapshot()
+  })
 
   it('should fetch movie by id', async () => {
-    renderApollo(<MoviePage id="1" />, { addTypeName: true, mocks });
+    renderApollo(<MoviePage id="1" />, { addTypeName: true, mocks })
 
-    expect(await screen.findByText('rendered movie')).toBeInTheDocument();
-    expect(await screen.findByText('rendered similar')).toBeInTheDocument();
-  });
+    expect(await screen.findByText('rendered movie')).toBeInTheDocument()
+    expect(await screen.findByText('rendered similar')).toBeInTheDocument()
+  })
 
   it('should render error state', async () => {
     const mock = [
@@ -70,12 +70,12 @@ describe('movie page', () => {
           },
         },
       },
-    ];
+    ]
 
-    renderApollo(<MoviePage id="1" />, { mocks: mock });
+    renderApollo(<MoviePage id="1" />, { mocks: mock })
 
     expect(
       await screen.findByText(/an error has occurred/i),
-    ).toBeInTheDocument();
-  });
-});
+    ).toBeInTheDocument()
+  })
+})

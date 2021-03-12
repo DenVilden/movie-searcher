@@ -1,6 +1,6 @@
-import { renderApollo, screen } from 'lib/setupTests';
-import HomePage from 'pages';
-import { GetMoviesDocument } from 'apollo/__generated__';
+import { renderApollo, screen } from 'lib/setupTests'
+import HomePage from 'pages'
+import { GetMoviesDocument } from 'apollo/__generated__'
 
 const mocks = [
   {
@@ -38,23 +38,23 @@ const mocks = [
       },
     },
   },
-];
+]
 
 describe('home page', () => {
   it('should take a snapshot', () => {
-    const { asFragment } = renderApollo(<HomePage />, { mocks });
+    const { asFragment } = renderApollo(<HomePage />, { mocks })
 
-    const element = asFragment();
+    const element = asFragment()
 
-    expect(element).toMatchSnapshot();
-  });
+    expect(element).toMatchSnapshot()
+  })
 
   it('should fetch initial movies', async () => {
-    renderApollo(<HomePage />, { mocks });
+    renderApollo(<HomePage />, { mocks })
 
-    expect(await screen.findByText('upcoming rendered')).toBeInTheDocument();
-    expect(await screen.findByText('now playing rendered')).toBeInTheDocument();
-  });
+    expect(await screen.findByText('upcoming rendered')).toBeInTheDocument()
+    expect(await screen.findByText('now playing rendered')).toBeInTheDocument()
+  })
 
   it('should render error state', async () => {
     const mock = [
@@ -64,12 +64,12 @@ describe('home page', () => {
           query: GetMoviesDocument,
         },
       },
-    ];
+    ]
 
-    renderApollo(<HomePage />, { mocks: mock });
+    renderApollo(<HomePage />, { mocks: mock })
 
     expect(
       await screen.findByText(/an error has occurred/i),
-    ).toBeInTheDocument();
-  });
-});
+    ).toBeInTheDocument()
+  })
+})

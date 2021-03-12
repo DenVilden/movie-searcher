@@ -4,17 +4,17 @@ import {
   CardContent,
   Typography,
   CardActionArea,
-} from '@material-ui/core';
-import { Star as StarIcon } from '@material-ui/icons';
-import Image from 'next/image';
-import styled from '@emotion/styled';
-import Link from 'next/link';
+} from '@material-ui/core'
+import { Star as StarIcon } from '@material-ui/icons'
+import Image from 'next/image'
+import styled from '@emotion/styled'
+import Link from 'next/link'
 
 import {
   UpcomingResults,
   NowPlayingResults,
   SimilarResults,
-} from 'apollo/__generated__';
+} from 'apollo/__generated__'
 
 const CardContainer = styled(Card)`
   width: 150px;
@@ -26,7 +26,7 @@ const CardContainer = styled(Card)`
   ${({ theme }) => theme.breakpoints.up('lg')} {
     width: 190px;
   }
-`;
+`
 
 const StyledCardContent = styled(CardContent)`
   display: flex;
@@ -35,16 +35,16 @@ const StyledCardContent = styled(CardContent)`
   justify-content: space-between;
   padding: ${({ theme }) => theme.spacing(1)};
   text-align: center;
-`;
+`
 
 const StyledStarIcon = styled(StarIcon)`
   font-size: 20px;
   margin-right: 3px;
   vertical-align: top;
-`;
+`
 
 interface Props {
-  movie: UpcomingResults | NowPlayingResults | SimilarResults;
+  movie: UpcomingResults | NowPlayingResults | SimilarResults
 }
 
 export default function MovieCard({ movie }: Props) {
@@ -74,5 +74,5 @@ export default function MovieCard({ movie }: Props) {
         </CardActionArea>
       </Link>
     </CardContainer>
-  );
+  )
 }

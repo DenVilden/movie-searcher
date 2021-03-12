@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
-import { Pagination, PaginationItem } from '@material-ui/core';
-import Link from 'next/link';
+import styled from '@emotion/styled'
+import { Pagination, PaginationItem } from '@material-ui/core'
+import Link from 'next/link'
 
 const StyledPagination = styled(Pagination)`
   margin: auto;
@@ -9,12 +9,12 @@ const StyledPagination = styled(Pagination)`
   ${({ theme }) => theme.breakpoints.up('md')} {
     margin-bottom: 35px;
   }
-`;
+`
 
 interface Props {
-  currentPage: number;
-  path: string;
-  totalPages: number;
+  currentPage: number
+  path: string
+  totalPages: number
 }
 
 export default function PaginationComponent({
@@ -27,9 +27,9 @@ export default function PaginationComponent({
       count={totalPages}
       page={currentPage}
       renderItem={({ page, ...otherProps }) => {
-        const item = <PaginationItem {...otherProps} page={page} />;
-        return page ? <Link href={`/${path}/${page}`}>{item}</Link> : item;
+        const item = <PaginationItem {...otherProps} page={page} />
+        return page ? <Link href={`/${path}/${page}`}>{item}</Link> : item
       }}
     />
-  );
+  )
 }
