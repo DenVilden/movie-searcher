@@ -4,7 +4,6 @@ import {
   Brightness4 as DarkIcon,
   Brightness7 as LightIcon,
 } from '@material-ui/icons';
-import { memo } from 'preact/compat';
 import { useReactiveVar } from '@apollo/client/react';
 import Link from 'next/link';
 
@@ -13,7 +12,7 @@ import Favorites from './Favorites';
 import SearchBar from './SearchBar';
 import Logo from './Logo';
 
-function Header() {
+export default function Header() {
   const prefersDarkMode = useReactiveVar(prefersDarkModeVar);
 
   const toggleTheme = () => {
@@ -30,7 +29,7 @@ function Header() {
         `}
       >
         <Link href="/">
-          <IconButton area-label="go to home page">
+          <IconButton aria-label="go to home page">
             <Logo />
           </IconButton>
         </Link>
@@ -49,5 +48,3 @@ function Header() {
     </AppBar>
   );
 }
-
-export default memo(Header);

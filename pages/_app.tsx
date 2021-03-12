@@ -16,15 +16,6 @@ export default function NextApp({ Component, pageProps }: AppProps) {
   const prefersDarkMode = useReactiveVar(prefersDarkModeVar);
   const systemColorScheme = useMediaQuery('(prefers-color-scheme: dark)');
 
-  useEffect(() => {
-    const darkMode = localStorage.getItem('darkMode');
-    if (darkMode) {
-      prefersDarkModeVar(JSON.parse(darkMode));
-    } else {
-      prefersDarkModeVar(systemColorScheme);
-    }
-  }, [systemColorScheme]);
-
   const theme = useMemo(
     () =>
       createMuiTheme({
@@ -36,10 +27,11 @@ export default function NextApp({ Component, pageProps }: AppProps) {
   );
 
   useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector('#jss-server-side');
-    if (jssStyles?.parentElement) {
-      jssStyles.parentElement.removeChild(jssStyles);
+    const darkMode = localStorage.getItem('darkMode');
+    if (darkMode) {
+      prefersDarkModeVar(JSON.parse(darkMode));
+    } else {
+      prefersDarkModeVar(systemColorScheme);
     }
 
     const start = () => {
@@ -56,7 +48,7 @@ export default function NextApp({ Component, pageProps }: AppProps) {
       Router.events.off('routeChangeComplete', end);
       Router.events.off('routeChangeError', end);
     };
-  }, []);
+  }, [systemColorScheme]);
 
   return (
     <ApolloProvider client={apolloClient}>

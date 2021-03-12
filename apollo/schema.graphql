@@ -83,9 +83,9 @@ type TvShowInfo {
 }
 
 type Query {
-  nowPlaying(page: String = "1"): NowPlaying!
+  nowPlaying(page: Int = 1): NowPlaying!
   movieInfo(id: ID!, cursor: Int, pageSize: Int = 4): MovieInfo!
   moviesSearch(query: String!, cursor: Int, pageSize: Int = 8): MoviesSearch!
   tvShowInfo(id: ID!, cursor: Int, pageSize: Int = 4): TvShowInfo!
-  upcoming(page: String = "1"): Upcoming!
+  upcoming(page: Int = 1): Upcoming!
 }

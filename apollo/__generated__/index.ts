@@ -130,7 +130,7 @@ export type Query = {
 };
 
 export type QueryNowPlayingArgs = {
-  page?: Maybe<Scalars['String']>;
+  page?: Maybe<Scalars['Int']>;
 };
 
 export type QueryMovieInfoArgs = {
@@ -152,7 +152,7 @@ export type QueryTvShowInfoArgs = {
 };
 
 export type QueryUpcomingArgs = {
-  page?: Maybe<Scalars['String']>;
+  page?: Maybe<Scalars['Int']>;
 };
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
@@ -615,7 +615,7 @@ export type GetMoviesQuery = { __typename?: 'Query' } & {
 };
 
 export type GetUpcomingQueryVariables = Exact<{
-  page?: Maybe<Scalars['String']>;
+  page?: Maybe<Scalars['Int']>;
 }>;
 
 export type GetUpcomingQuery = { __typename?: 'Query' } & {
@@ -633,7 +633,7 @@ export type GetUpcomingQuery = { __typename?: 'Query' } & {
 };
 
 export type GetNowPlayingQueryVariables = Exact<{
-  page?: Maybe<Scalars['String']>;
+  page?: Maybe<Scalars['Int']>;
 }>;
 
 export type GetNowPlayingQuery = { __typename?: 'Query' } & {
@@ -895,7 +895,7 @@ export type GetMoviesQueryResult = Apollo.QueryResult<
   GetMoviesQueryVariables
 >;
 export const GetUpcomingDocument = gql`
-  query GetUpcoming($page: String) {
+  query GetUpcoming($page: Int) {
     upcoming(page: $page) {
       page
       results {
@@ -959,7 +959,7 @@ export type GetUpcomingQueryResult = Apollo.QueryResult<
   GetUpcomingQueryVariables
 >;
 export const GetNowPlayingDocument = gql`
-  query GetNowPlaying($page: String) {
+  query GetNowPlaying($page: Int) {
     nowPlaying(page: $page) {
       page
       results {

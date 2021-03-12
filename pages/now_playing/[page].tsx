@@ -11,7 +11,7 @@ import MoviesLayout from 'components/MoviesLayout';
 
 interface Props {
   initialData: GetNowPlayingQuery;
-  page?: string;
+  page?: number;
 }
 
 export default function NowPlayingPage({ initialData, page }: Props) {
@@ -20,15 +20,16 @@ export default function NowPlayingPage({ initialData, page }: Props) {
     variables: { page },
   });
 
-  if (error) return <ErrorMessage error={error.message} />;
+  if (error || (!data && !initialData))
+    return <ErrorMessage error={error?.message || 'No data'} />;
 
-  return data || initialData ? (
+  return (
     <MoviesLayout
       data={data?.nowPlaying || initialData.nowPlaying}
       path="now_playing"
       title="Now Playing"
     />
-  ) : null;
+  );
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -39,7 +40,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     await apolloClient.query<GetNowPlayingQuery>({
       query: GetNowPlayingDocument,
-      variables: { page },
+      variables: { page: +page },
     });
   } catch ({ message }) {
     if (message.includes('404') || message.includes('422')) {
@@ -51,7 +52,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return addApolloState(apolloClient, {
     props: {
-      page,
+      page: +page,
     },
     revalidate: 10,
   });

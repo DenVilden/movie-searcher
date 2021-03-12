@@ -14,9 +14,10 @@ import NowPlaying from './now_playing/[page]';
 export default function HomePage() {
   const { data, error } = useGetMoviesQuery();
 
-  if (error) return <ErrorMessage error={error.message} />;
+  if (error || !data)
+    return <ErrorMessage error={error?.message || 'No data'} />;
 
-  return data ? (
+  return (
     <Grid container>
       <Grid item lg={6}>
         <NowPlaying initialData={{ nowPlaying: data.nowPlaying }} />
@@ -25,7 +26,7 @@ export default function HomePage() {
         <Upcoming initialData={{ upcoming: data.upcoming }} />
       </Grid>
     </Grid>
-  ) : null;
+  );
 }
 
 export const getStaticProps: GetStaticProps = async () => {

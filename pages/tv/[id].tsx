@@ -12,9 +12,10 @@ import { initializeApollo, addApolloState } from 'apollo/client';
 export default function TvPage({ id }: { id: string }) {
   const { data, error } = useGetTvShowInfoQuery({ variables: { id } });
 
-  if (error) return <ErrorMessage error={error.message} />;
+  if (error || !data)
+    return <ErrorMessage error={error?.message || 'No data'} />;
 
-  return data ? <MovieInfo data={data.tvShowInfo} /> : null;
+  return <MovieInfo data={data.tvShowInfo} />;
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {

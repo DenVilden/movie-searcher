@@ -4,6 +4,7 @@ import {
   useGetUpcomingQuery,
   GetUpcomingDocument,
   GetUpcomingQuery,
+  QueryUpcomingArgs,
 } from 'apollo/__generated__';
 import ErrorMessage from 'components/ErrorMessage';
 import { initializeApollo, addApolloState } from 'apollo/client';
@@ -11,7 +12,7 @@ import MoviesLayout from 'components/MoviesLayout';
 
 interface Props {
   initialData: GetUpcomingQuery;
-  page?: string;
+  page?: number;
 }
 
 export default function UpcomingPage({ initialData, page }: Props) {
@@ -20,15 +21,16 @@ export default function UpcomingPage({ initialData, page }: Props) {
     variables: { page },
   });
 
-  if (error) return <ErrorMessage error={error.message} />;
+  if (error || (!data && !initialData))
+    return <ErrorMessage error={error?.message || 'No data'} />;
 
-  return data || initialData ? (
+  return (
     <MoviesLayout
       data={data?.upcoming || initialData.upcoming}
       path="upcoming"
       title="Upcoming"
     />
-  ) : null;
+  );
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -37,9 +39,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { page } = params as { page: string };
 
   try {
-    await apolloClient.query<GetUpcomingQuery>({
+    await apolloClient.query<GetUpcomingQuery, QueryUpcomingArgs>({
       query: GetUpcomingDocument,
-      variables: { page },
+      variables: { page: +page },
     });
   } catch ({ message }) {
     if (message.includes('404') || message.includes('422')) {
@@ -51,7 +53,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return addApolloState(apolloClient, {
     props: {
-      page,
+      page: +page,
     },
     revalidate: 10,
   });
@@ -60,7 +62,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const apolloClient = initializeApollo();
 
-  const { data } = await apolloClient.query<GetUpcomingQuery>({
+  const { data } = await apolloClient.query<
+    GetUpcomingQuery,
+    QueryUpcomingArgs
+  >({
     query: GetUpcomingDocument,
   });
 
