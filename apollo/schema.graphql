@@ -1,5 +1,6 @@
 type UpcomingResults {
   id: Int!
+  media_type: String!
   poster_path: String
   release_date: String!
   title: String!
@@ -13,6 +14,7 @@ type Upcoming {
 
 type NowPlayingResults {
   id: Int!
+  media_type: String!
   poster_path: String
   title: String!
   vote_average: Float!

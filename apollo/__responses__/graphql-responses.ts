@@ -3,6 +3,7 @@ export const mockUpcoming = {
   results: [
     {
       id: 602269,
+      media_type: 'movie',
       poster_path:
         'https://image.tmdb.org/t/p/w200/c7VlGCCgM9GZivKSzBgzuOVxQn7.jpg',
       release_date: '28.01.2021',
@@ -10,6 +11,7 @@ export const mockUpcoming = {
     },
     {
       id: 560144,
+      media_type: 'movie',
       poster_path: null,
       release_date: '25.10.2020',
       title: 'Skylines',
@@ -23,6 +25,7 @@ export const mockNowPlaying = {
   results: [
     {
       id: 464052,
+      media_type: 'movie',
       poster_path:
         'https://image.tmdb.org/t/p/w200/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg',
       title: 'Wonder Woman 1984',

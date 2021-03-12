@@ -14,6 +14,7 @@ const mocks = [
           results: [
             {
               id: 1,
+              media_type: 'movie',
               poster_path: null,
               title: 'now playing rendered',
               vote_average: 5,
@@ -26,6 +27,7 @@ const mocks = [
           results: [
             {
               id: 1,
+              media_type: 'movie',
               poster_path: null,
               release_date: '2002',
               title: 'upcoming rendered',

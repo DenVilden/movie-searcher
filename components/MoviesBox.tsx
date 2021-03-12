@@ -1,6 +1,11 @@
 import { Grid, Typography, Paper } from '@material-ui/core';
 import styled from '@emotion/styled';
 
+import {
+  UpcomingResults,
+  NowPlayingResults,
+  SimilarResults,
+} from 'apollo/__generated__';
 import MovieCard from './MovieCard';
 
 const Root = styled(Paper)`
@@ -20,14 +25,7 @@ const Wrapper = styled(Grid)`
 
 interface Props {
   elevation?: number;
-  movies: {
-    id: number;
-    media_type?: string;
-    poster_path?: string | null;
-    release_date?: string | null;
-    title: string;
-    vote_average?: number;
-  }[];
+  movies: UpcomingResults[] | NowPlayingResults[] | SimilarResults[];
   title: string;
 }
 
@@ -40,18 +38,20 @@ export default function MoviesBox({ movies, title, elevation = 10 }: Props) {
         </Typography>
       )}
       <Grid container>
-        {movies.map(movie => (
-          <Wrapper
-            key={movie.id}
-            container
-            item
-            justifyContent="center"
-            md={3}
-            xs={6}
-          >
-            <MovieCard movie={movie} />
-          </Wrapper>
-        ))}
+        {movies.map(
+          (movie: UpcomingResults | NowPlayingResults | SimilarResults) => (
+            <Wrapper
+              key={movie.id}
+              container
+              item
+              justifyContent="center"
+              md={3}
+              xs={6}
+            >
+              <MovieCard movie={movie} />
+            </Wrapper>
+          ),
+        )}
       </Grid>
     </Root>
   );

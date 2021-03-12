@@ -7,7 +7,9 @@ const mocks = {
     page: 1,
     results: [
       {
+        __typename: 'UpcomingResults' as any,
         id: 1,
+        media_type: 'movie',
         poster_path: null,
         release_date: '2002',
         title: 'upcoming page 1',
@@ -21,6 +23,9 @@ describe('upcoming page', () => {
   it('should take a snapshot', () => {
     const { asFragment } = renderApollo(
       <UpcomingPage initialData={mocks} page="1" />,
+      {
+        addTypeName: true,
+      },
     );
 
     const element = asFragment();

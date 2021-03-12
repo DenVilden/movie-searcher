@@ -51,9 +51,10 @@ query GetMovies {
     page
     results {
       id
+      media_type
+      poster_path
       title
       vote_average
-      poster_path
     }
     total_pages
   }
@@ -61,9 +62,10 @@ query GetMovies {
     page
     results {
       id
-      title
-      release_date
+      media_type
       poster_path
+      release_date
+      title
     }
     total_pages
   }
@@ -74,9 +76,10 @@ query GetUpcoming($page: String) {
     page
     results {
       id
-      title
-      release_date
+      media_type
       poster_path
+      release_date
+      title
     }
     total_pages
   }
@@ -86,10 +89,11 @@ query GetNowPlaying($page: String) {
   nowPlaying(page: $page) {
     page
     results {
+      media_type
       id
+      poster_path
       title
       vote_average
-      poster_path
     }
     total_pages
   }

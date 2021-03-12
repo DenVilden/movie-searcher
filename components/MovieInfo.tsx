@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import {
   Typography,
   CardContent,
@@ -12,7 +13,7 @@ import Image from 'next/image';
 import Head from 'next/head';
 
 import { favoritesVar, Favorite } from 'apollo/client';
-import { SimilarMovies } from 'apollo/__generated__';
+import { TvShowInfo, MovieInfo } from 'apollo/__generated__';
 import MoviesBox from './MoviesBox';
 
 const StyledCard = styled(Card)`
@@ -54,22 +55,14 @@ const Title = styled(Typography)`
   justify-content: space-between;
 `;
 
+const StyledButton = styled(Button)`
+  height: 36px;
+  min-width: 212px;
+  padding: 0;
+`;
+
 interface Props {
-  data: {
-    backdrop_path?: string | null;
-    budget?: string;
-    id: number;
-    media_type: string;
-    number_of_episodes?: number;
-    number_of_seasons?: number;
-    overview?: string | null;
-    poster_path?: string | null;
-    release_date: string;
-    revenue?: string;
-    similar: SimilarMovies;
-    title: string;
-    vote_average: number;
-  };
+  data: TvShowInfo | MovieInfo;
 }
 
 export default function MovieInfoComponent({ data }: Props) {
@@ -117,24 +110,42 @@ export default function MovieInfoComponent({ data }: Props) {
           <StyledCardContent>
             <Title gutterBottom variant="h5">
               {data.title}
-              <Button
+              <StyledButton
                 color={isInFavorites ? 'secondary' : 'primary'}
                 onClick={addOrRemoveFromFavorites}
                 variant="contained"
               >
                 {isInFavorites ? 'Remove from favorites' : 'Add to favorites'}
-              </Button>
+              </StyledButton>
             </Title>
             <Typography paragraph>{data.overview}</Typography>
             <Divider />
             <StyledTypography>
-              {data.media_type === 'movie' ? <b>Budget:</b> : <b>Seasons:</b>}{' '}
-              {data.budget || data.number_of_seasons}
+              {data.__typename === 'MovieInfo' ? (
+                <>
+                  <b>Budget:</b> {data.budget}
+                </>
+              ) : (
+                data.__typename === 'TvShowInfo' && (
+                  <>
+                    <b>Seasons:</b> {data.number_of_seasons}
+                  </>
+                )
+              )}
             </StyledTypography>
             <Divider />
             <StyledTypography>
-              {data.media_type === 'movie' ? <b>Revenue:</b> : <b>Episodes:</b>}{' '}
-              {data.revenue || data.number_of_episodes}
+              {data.__typename === 'MovieInfo' ? (
+                <>
+                  <b>Revenue:</b> {data.revenue}
+                </>
+              ) : (
+                data.__typename === 'TvShowInfo' && (
+                  <>
+                    <b>Episodes:</b> {data.number_of_episodes}
+                  </>
+                )
+              )}
             </StyledTypography>
             <Divider />
             <StyledTypography>

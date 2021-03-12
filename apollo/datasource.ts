@@ -42,6 +42,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
       page: movies.page,
       results: movies.results.map(movie => ({
         id: movie.id,
+        media_type: 'movie',
         poster_path: this.attachPoster(movie.poster_path),
         release_date: dayjs(movie.release_date).format('DD.MM.YYYY'),
         title: movie.title,
@@ -55,6 +56,7 @@ export default class MoviesAPI extends RESTDataSource<Context> {
       page: movies.page,
       results: movies.results.map(movie => ({
         id: movie.id,
+        media_type: 'movie',
         poster_path: this.attachPoster(movie.poster_path),
         title: movie.title,
         vote_average: movie.vote_average,

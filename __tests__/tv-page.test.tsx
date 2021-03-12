@@ -13,6 +13,7 @@ const mocks = [
     result: {
       data: {
         tvShowInfo: {
+          __typename: 'TvShowInfo',
           backdrop_path: null,
           id: 1,
           media_type: 'tv',
@@ -42,7 +43,9 @@ const mocks = [
 
 describe('tv page', () => {
   it('should take a snapshot', () => {
-    const { asFragment } = renderApollo(<TvPage id="1" />, { mocks });
+    const { asFragment } = renderApollo(<TvPage id="1" />, {
+      mocks,
+    });
 
     const element = asFragment();
 
@@ -50,7 +53,7 @@ describe('tv page', () => {
   });
 
   it('should fetch tv by id', async () => {
-    renderApollo(<TvPage id="1" />, { mocks });
+    renderApollo(<TvPage id="1" />, { addTypeName: true, mocks });
 
     expect(await screen.findByText('rendered tv')).toBeInTheDocument();
     expect(await screen.findByText('rendered similar')).toBeInTheDocument();

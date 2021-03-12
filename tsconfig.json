@@ -15,6 +15,7 @@
     "noFallthroughCasesInSwitch": true,
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
+    "jsxFactory": "jsx",
     "baseUrl": "."
   },
   "exclude": ["node_modules"],

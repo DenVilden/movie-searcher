@@ -29,6 +29,7 @@ export type Scalars = {
 export type UpcomingResults = {
   __typename?: 'UpcomingResults';
   id: Scalars['Int'];
+  media_type: Scalars['String'];
   poster_path?: Maybe<Scalars['String']>;
   release_date: Scalars['String'];
   title: Scalars['String'];
@@ -44,6 +45,7 @@ export type Upcoming = {
 export type NowPlayingResults = {
   __typename?: 'NowPlayingResults';
   id: Scalars['Int'];
+  media_type: Scalars['String'];
   poster_path?: Maybe<Scalars['String']>;
   title: Scalars['String'];
   vote_average: Scalars['Float'];
@@ -307,6 +309,7 @@ export type UpcomingResultsResolvers<
 > = ResolversObject<{
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   poster_path?: Resolver<
     Maybe<ResolversTypes['String']>,
     ParentType,
@@ -336,6 +339,7 @@ export type NowPlayingResultsResolvers<
 > = ResolversObject<{
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   poster_path?: Resolver<
     Maybe<ResolversTypes['String']>,
     ParentType,
@@ -593,7 +597,7 @@ export type GetMoviesQuery = { __typename?: 'Query' } & {
       results: Array<
         { __typename?: 'NowPlayingResults' } & Pick<
           NowPlayingResults,
-          'id' | 'title' | 'vote_average' | 'poster_path'
+          'id' | 'media_type' | 'poster_path' | 'title' | 'vote_average'
         >
       >;
     };
@@ -604,7 +608,7 @@ export type GetMoviesQuery = { __typename?: 'Query' } & {
       results: Array<
         { __typename?: 'UpcomingResults' } & Pick<
           UpcomingResults,
-          'id' | 'title' | 'release_date' | 'poster_path'
+          'id' | 'media_type' | 'poster_path' | 'release_date' | 'title'
         >
       >;
     };
@@ -622,7 +626,7 @@ export type GetUpcomingQuery = { __typename?: 'Query' } & {
       results: Array<
         { __typename?: 'UpcomingResults' } & Pick<
           UpcomingResults,
-          'id' | 'title' | 'release_date' | 'poster_path'
+          'id' | 'media_type' | 'poster_path' | 'release_date' | 'title'
         >
       >;
     };
@@ -640,7 +644,7 @@ export type GetNowPlayingQuery = { __typename?: 'Query' } & {
       results: Array<
         { __typename?: 'NowPlayingResults' } & Pick<
           NowPlayingResults,
-          'id' | 'title' | 'vote_average' | 'poster_path'
+          'media_type' | 'id' | 'poster_path' | 'title' | 'vote_average'
         >
       >;
     };
@@ -822,9 +826,10 @@ export const GetMoviesDocument = gql`
       page
       results {
         id
+        media_type
+        poster_path
         title
         vote_average
-        poster_path
       }
       total_pages
     }
@@ -832,9 +837,10 @@ export const GetMoviesDocument = gql`
       page
       results {
         id
-        title
-        release_date
+        media_type
         poster_path
+        release_date
+        title
       }
       total_pages
     }
@@ -894,9 +900,10 @@ export const GetUpcomingDocument = gql`
       page
       results {
         id
-        title
-        release_date
+        media_type
         poster_path
+        release_date
+        title
       }
       total_pages
     }
@@ -956,10 +963,11 @@ export const GetNowPlayingDocument = gql`
     nowPlaying(page: $page) {
       page
       results {
+        media_type
         id
+        poster_path
         title
         vote_average
-        poster_path
       }
       total_pages
     }

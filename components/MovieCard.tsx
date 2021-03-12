@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import {
   Card,
   CardContent,
@@ -8,6 +9,12 @@ import { Star as StarIcon } from '@material-ui/icons';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 import Link from 'next/link';
+
+import {
+  UpcomingResults,
+  NowPlayingResults,
+  SimilarResults,
+} from 'apollo/__generated__';
 
 const CardContainer = styled(Card)`
   width: 150px;
@@ -36,48 +43,32 @@ const StyledStarIcon = styled(StarIcon)`
   vertical-align: top;
 `;
 
-type Props = {
-  movie: {
-    id: number;
-    media_type?: string;
-    poster_path?: string | null;
-    release_date?: string | null;
-    title: string;
-    vote_average?: number;
-  };
-};
+interface Props {
+  movie: UpcomingResults | NowPlayingResults | SimilarResults;
+}
 
-export default function MovieCard({
-  movie: {
-    media_type = 'movie',
-    id,
-    title,
-    vote_average,
-    poster_path,
-    release_date,
-  },
-}: Props) {
+export default function MovieCard({ movie }: Props) {
   return (
     <CardContainer elevation={10}>
-      <Link href={`/${media_type}/${id}`}>
+      <Link href={`/${movie.media_type}/${movie.id}`}>
         <CardActionArea>
           <Image
-            alt={title}
+            alt={movie.title}
             height={300}
-            src={poster_path || '/no-image.jpg'}
+            src={movie.poster_path || '/no-image.jpg'}
             width={200}
           />
           <StyledCardContent>
-            <Typography variant="subtitle2">{title}</Typography>
+            <Typography variant="subtitle2">{movie.title}</Typography>
             <Typography color="textSecondary">
-              {vote_average ? (
-                <>
-                  <StyledStarIcon />
-                  {vote_average}
-                </>
-              ) : (
-                release_date
-              )}
+              {movie.__typename === 'SimilarResults' ||
+              movie.__typename === 'UpcomingResults'
+                ? movie.release_date
+                : movie.__typename === 'NowPlayingResults' && (
+                    <>
+                      <StyledStarIcon /> {movie.vote_average}
+                    </>
+                  )}
             </Typography>
           </StyledCardContent>
         </CardActionArea>

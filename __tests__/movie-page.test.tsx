@@ -13,6 +13,7 @@ const mocks = [
     result: {
       data: {
         movieInfo: {
+          __typename: 'MovieInfo',
           backdrop_path: null,
           budget: '200',
           id: 1,
@@ -42,7 +43,9 @@ const mocks = [
 
 describe('movie page', () => {
   it('should take a snapshot', () => {
-    const { asFragment } = renderApollo(<MoviePage id="1" />, { mocks });
+    const { asFragment } = renderApollo(<MoviePage id="1" />, {
+      mocks,
+    });
 
     const element = asFragment();
 
@@ -50,7 +53,7 @@ describe('movie page', () => {
   });
 
   it('should fetch movie by id', async () => {
-    renderApollo(<MoviePage id="1" />, { mocks });
+    renderApollo(<MoviePage id="1" />, { addTypeName: true, mocks });
 
     expect(await screen.findByText('rendered movie')).toBeInTheDocument();
     expect(await screen.findByText('rendered similar')).toBeInTheDocument();

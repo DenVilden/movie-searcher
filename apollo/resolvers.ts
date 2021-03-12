@@ -1,7 +1,11 @@
-import { Resolvers, MoviesSearch } from 'apollo/__generated__';
+import { Resolvers, MoviesSearch, SimilarMovies } from 'apollo/__generated__';
 
-function paginateResults(data: any, size: number, cursor?: number | null) {
-  let results = [];
+function paginateResults<T extends { results: { [key: string]: any } }>(
+  data: T,
+  size: number,
+  cursor?: number | null,
+) {
+  let results: [];
 
   if (!cursor) {
     results = data.results.slice(0, size);
@@ -24,7 +28,11 @@ const resolvers: Resolvers = {
         const data = await dataSources.moviesAPI.getMovieInfo(id);
         return {
           ...data,
-          similar: paginateResults(data.similar, pageSize, cursor),
+          similar: paginateResults<SimilarMovies>(
+            data.similar,
+            pageSize,
+            cursor,
+          ),
         };
       } catch (error) {
         throw new Error(error);
@@ -43,7 +51,7 @@ const resolvers: Resolvers = {
 
       try {
         const data = await fetchMovies();
-        return paginateResults(data, pageSize, cursor);
+        return paginateResults<MoviesSearch>(data, pageSize, cursor);
       } catch (error) {
         throw new Error(error);
       }
@@ -66,7 +74,11 @@ const resolvers: Resolvers = {
         const data = await dataSources.moviesAPI.getTvShowInfo(id);
         return {
           ...data,
-          similar: paginateResults(data.similar, pageSize, cursor),
+          similar: paginateResults<SimilarMovies>(
+            data.similar,
+            pageSize,
+            cursor,
+          ),
         };
       } catch (error) {
         throw new Error(error);

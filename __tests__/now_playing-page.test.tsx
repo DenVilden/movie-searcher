@@ -7,7 +7,9 @@ const mocks = {
     page: 1,
     results: [
       {
+        __typename: 'NowPlayingResults' as any,
         id: 1,
+        media_type: 'movie',
         poster_path: null,
         title: 'now playing page 1',
         vote_average: 5,
@@ -21,6 +23,9 @@ describe('now playing page', () => {
   it('should take a snapshot', () => {
     const { asFragment } = renderApollo(
       <NowPlayingPage initialData={mocks} page="1" />,
+      {
+        addTypeName: true,
+      },
     );
 
     const element = asFragment();
