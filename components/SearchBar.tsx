@@ -93,16 +93,18 @@ export default function SearchBar() {
         return (
           <Link key={movie.id} href={`/${movie.media_type}/${movie.id}`}>
             <li {...props}>
-              {parts.map(part => (
-                <span
-                  css={css`
-                    font-weight: ${part.highlight ? 700 : 400};
-                    white-space: pre-wrap;
-                  `}
-                >
-                  {part.text}
-                </span>
-              ))}
+              <span>
+                {parts.map(part => (
+                  <span
+                    css={css`
+                      font-weight: ${part.highlight ? 700 : 400};
+                      white-space: pre-wrap;
+                    `}
+                  >
+                    {part.text}
+                  </span>
+                ))}
+              </span>
             </li>
           </Link>
         )
