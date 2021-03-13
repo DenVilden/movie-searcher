@@ -44,10 +44,14 @@ const mocks = [
 
 describe('tv page', () => {
   it('should fetch tv by id', async () => {
-    renderApollo(<TvPage id="1" />, { addTypeName: true, mocks })
+    const { baseElement } = renderApollo(<TvPage id="1" />, {
+      addTypeName: true,
+      mocks,
+    })
 
     expect(await screen.findByText('rendered tv')).toBeInTheDocument()
     expect(await screen.findByText('rendered similar')).toBeInTheDocument()
+    expect(baseElement).toMatchSnapshot()
   })
 
   it('should render error state', async () => {

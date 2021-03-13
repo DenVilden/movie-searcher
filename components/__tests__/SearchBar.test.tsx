@@ -26,7 +26,7 @@ const mocks = [
 
 describe('searchBar', () => {
   it('should check all cases', async () => {
-    renderApollo(<SearchBar />, { mocks })
+    const { baseElement } = renderApollo(<SearchBar />, { mocks })
 
     const inputElement = screen.getByPlaceholderText('Search...')
 
@@ -42,6 +42,7 @@ describe('searchBar', () => {
     const movieSearchResult = await screen.findByText('title')
     expect(movieSearchResult).toBeInTheDocument()
     expect(movieSearchResultHighlight).toBeInTheDocument()
+    expect(baseElement).toMatchSnapshot()
 
     // clear input on click
     const clearButton = screen.getByTitle('Clear')

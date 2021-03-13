@@ -26,15 +26,7 @@ const mock = {
 }
 
 describe('movieInfo', () => {
-  it('should take a snapshot', () => {
-    const { asFragment } = renderApollo(<MovieInfo data={mock} />)
-
-    const element = asFragment()
-
-    expect(element).toMatchSnapshot()
-  })
-
-  it('should toggle favorites', () => {
+  it('should add and remove from favorites', () => {
     renderApollo(<MovieInfo data={mock} />)
 
     const addButton = screen.getByText('Add to favorites')

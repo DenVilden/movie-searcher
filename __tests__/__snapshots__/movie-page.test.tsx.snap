@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`movie page should fetch movie by id 1`] = `
+<body>
+  <div>
+    <div
+      style="webkit-transform: none; transform: none; webkit-transition: -webkit-transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;"
+    >
+      <div
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root eeexpct5 css-1holodr-MuiPaper-root-MuiCard-root-StyledCard"
+      >
+        <div
+          class="css-s416j3-ImageWrapper eeexpct4"
+        >
+          <div
+            style="display: block; overflow: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; margin: 0px;"
+          >
+            <img
+              alt="rendered movie"
+              decoding="async"
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              style="visibility: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"
+            />
+          </div>
+        </div>
+        <div
+          class="MuiCardContent-root eeexpct3 css-u5tic9-MuiCardContent-root-StyledCardContent"
+        >
+          <h5
+            class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom eeexpct0 css-a5qfzq-MuiTypography-root-TitleWrapper"
+          >
+            rendered movie
+            <button
+              class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButtonBase-root eeexpct1 css-bz20jt-MuiButtonBase-root-MuiButton-root-StyledButton"
+              tabindex="0"
+            >
+              <span
+                class="MuiButton-label css-8xplcm-MuiButton-label"
+              >
+                Add to favorites
+              </span>
+            </button>
+          </h5>
+          <p
+            class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph css-z2eky3-MuiTypography-root"
+          >
+            overview
+          </p>
+          <hr
+            class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+          />
+          <p
+            class="MuiTypography-root MuiTypography-body1 eeexpct2 css-lj0jjw-MuiTypography-root-StyledTypography"
+          >
+            <b>
+              Budget:
+            </b>
+             
+            200
+          </p>
+          <hr
+            class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+          />
+          <p
+            class="MuiTypography-root MuiTypography-body1 eeexpct2 css-lj0jjw-MuiTypography-root-StyledTypography"
+          >
+            <b>
+              Revenue:
+            </b>
+             
+            300
+          </p>
+          <hr
+            class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+          />
+          <p
+            class="MuiTypography-root MuiTypography-body1 eeexpct2 css-lj0jjw-MuiTypography-root-StyledTypography"
+          >
+            <b>
+              Rating:
+            </b>
+             
+            10
+          </p>
+          <hr
+            class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+          />
+          <p
+            class="MuiTypography-root MuiTypography-body1 eeexpct2 css-lj0jjw-MuiTypography-root-StyledTypography"
+          >
+            <b>
+              Release Date:
+            </b>
+             
+            2002
+          </p>
+        </div>
+      </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 efhkdvm1 css-1s46o7j-MuiPaper-root-Root"
+      >
+        <h4
+          class="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter MuiTypography-gutterBottom css-1trk376-MuiTypography-root"
+        >
+          Similar Movies
+        </h4>
+        <div
+          class="MuiGrid-root MuiGrid-container css-15fev7r-MuiGrid-root"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-md-3 efhkdvm0 css-1un961w-MuiGrid-root-Wrapper"
+          >
+            <div
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root ejzktm52 css-9sxnwq-MuiPaper-root-MuiCard-root-CardContainer"
+            >
+              <button
+                class="MuiButtonBase-root MuiCardActionArea-root css-b6lsxj-MuiButtonBase-root-MuiCardActionArea-root"
+                tabindex="0"
+                type="button"
+              >
+                <div
+                  style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+                >
+                  <div
+                    style="box-sizing: border-box; display: block; max-width: 100%;"
+                  >
+                    <img
+                      alt=""
+                      aria-hidden="true"
+                      role="presentation"
+                      src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+                      style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+                    />
+                  </div>
+                  <img
+                    alt="rendered similar"
+                    decoding="async"
+                    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                    style="visibility: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                  />
+                </div>
+                <div
+                  class="MuiCardContent-root ejzktm51 css-dzh1mx-MuiCardContent-root-StyledCardContent"
+                >
+                  <h6
+                    class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                  >
+                    rendered similar
+                  </h6>
+                  <p
+                    class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
+                  >
+                    2002
+                  </p>
+                </div>
+                <span
+                  class="MuiCardActionArea-focusHighlight css-1v2exvi-MuiCardActionArea-focusHighlight"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

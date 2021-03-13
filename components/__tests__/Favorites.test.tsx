@@ -34,16 +34,12 @@ describe('favorites', () => {
   it('should open favorites and register click', async () => {
     localStorage.setItem('favorites', JSON.stringify(mocks))
 
-    renderApollo(<Favorites />)
+    const { baseElement } = renderApollo(<Favorites />)
 
     const iconButton = screen.getByRole('button')
 
     fireEvent.click(iconButton)
 
-    const cardButtonElement = await screen.findByText('clicked data')
-
-    fireEvent.click(cardButtonElement)
-
-    expect(await screen.findByLabelText(/open favorites/i)).toBeInTheDocument()
+    expect(baseElement).toMatchSnapshot()
   })
 })

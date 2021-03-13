@@ -44,10 +44,14 @@ const mocks = [
 
 describe('home page', () => {
   it('should fetch initial movies', async () => {
-    renderApollo(<HomePage />, { addTypeName: true, mocks })
+    const { baseElement } = renderApollo(<HomePage />, {
+      addTypeName: true,
+      mocks,
+    })
 
     expect(await screen.findByText('upcoming rendered')).toBeInTheDocument()
     expect(await screen.findByText('now playing rendered')).toBeInTheDocument()
+    expect(baseElement).toMatchSnapshot()
   })
 
   it('should render error state', async () => {
