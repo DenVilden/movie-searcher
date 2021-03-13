@@ -47,6 +47,7 @@ export default function SearchBar() {
     <StyledAutocomplete
       blurOnSelect
       disablePortal
+      filterOptions={options => options}
       freeSolo
       getOptionLabel={(movie: any) => movie.title}
       id="autocomplete"
