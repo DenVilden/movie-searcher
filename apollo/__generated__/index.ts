@@ -1,8 +1,7 @@
 import { GraphQLResolveInfo } from 'graphql'
-import { Context } from 'apollo/datasource'
-import { gql } from '@apollo/client/core'
+import { Context } from 'apollo/context'
+import { gql } from '@apollo/client'
 import * as Apollo from '@apollo/client'
-import * as ApolloReactHooks from '@apollo/client/react'
 
 export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -710,28 +709,28 @@ export const GetMovieInfoDocument = gql`
  * });
  */
 export function useGetMovieInfoQuery(
-  baseOptions: ApolloReactHooks.QueryHookOptions<
+  baseOptions: Apollo.QueryHookOptions<
     GetMovieInfoQuery,
     GetMovieInfoQueryVariables
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return ApolloReactHooks.useQuery<
-    GetMovieInfoQuery,
-    GetMovieInfoQueryVariables
-  >(GetMovieInfoDocument, options)
+  return Apollo.useQuery<GetMovieInfoQuery, GetMovieInfoQueryVariables>(
+    GetMovieInfoDocument,
+    options,
+  )
 }
 export function useGetMovieInfoLazyQuery(
-  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+  baseOptions?: Apollo.LazyQueryHookOptions<
     GetMovieInfoQuery,
     GetMovieInfoQueryVariables
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return ApolloReactHooks.useLazyQuery<
-    GetMovieInfoQuery,
-    GetMovieInfoQueryVariables
-  >(GetMovieInfoDocument, options)
+  return Apollo.useLazyQuery<GetMovieInfoQuery, GetMovieInfoQueryVariables>(
+    GetMovieInfoDocument,
+    options,
+  )
 }
 export type GetMovieInfoQueryHookResult = ReturnType<
   typeof useGetMovieInfoQuery
@@ -787,28 +786,28 @@ export const GetTvShowInfoDocument = gql`
  * });
  */
 export function useGetTvShowInfoQuery(
-  baseOptions: ApolloReactHooks.QueryHookOptions<
+  baseOptions: Apollo.QueryHookOptions<
     GetTvShowInfoQuery,
     GetTvShowInfoQueryVariables
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return ApolloReactHooks.useQuery<
-    GetTvShowInfoQuery,
-    GetTvShowInfoQueryVariables
-  >(GetTvShowInfoDocument, options)
+  return Apollo.useQuery<GetTvShowInfoQuery, GetTvShowInfoQueryVariables>(
+    GetTvShowInfoDocument,
+    options,
+  )
 }
 export function useGetTvShowInfoLazyQuery(
-  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+  baseOptions?: Apollo.LazyQueryHookOptions<
     GetTvShowInfoQuery,
     GetTvShowInfoQueryVariables
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return ApolloReactHooks.useLazyQuery<
-    GetTvShowInfoQuery,
-    GetTvShowInfoQueryVariables
-  >(GetTvShowInfoDocument, options)
+  return Apollo.useLazyQuery<GetTvShowInfoQuery, GetTvShowInfoQueryVariables>(
+    GetTvShowInfoDocument,
+    options,
+  )
 }
 export type GetTvShowInfoQueryHookResult = ReturnType<
   typeof useGetTvShowInfoQuery
@@ -863,25 +862,25 @@ export const GetMoviesDocument = gql`
  * });
  */
 export function useGetMoviesQuery(
-  baseOptions?: ApolloReactHooks.QueryHookOptions<
+  baseOptions?: Apollo.QueryHookOptions<
     GetMoviesQuery,
     GetMoviesQueryVariables
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return ApolloReactHooks.useQuery<GetMoviesQuery, GetMoviesQueryVariables>(
+  return Apollo.useQuery<GetMoviesQuery, GetMoviesQueryVariables>(
     GetMoviesDocument,
     options,
   )
 }
 export function useGetMoviesLazyQuery(
-  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+  baseOptions?: Apollo.LazyQueryHookOptions<
     GetMoviesQuery,
     GetMoviesQueryVariables
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return ApolloReactHooks.useLazyQuery<GetMoviesQuery, GetMoviesQueryVariables>(
+  return Apollo.useLazyQuery<GetMoviesQuery, GetMoviesQueryVariables>(
     GetMoviesDocument,
     options,
   )
@@ -927,28 +926,28 @@ export const GetUpcomingDocument = gql`
  * });
  */
 export function useGetUpcomingQuery(
-  baseOptions?: ApolloReactHooks.QueryHookOptions<
+  baseOptions?: Apollo.QueryHookOptions<
     GetUpcomingQuery,
     GetUpcomingQueryVariables
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return ApolloReactHooks.useQuery<GetUpcomingQuery, GetUpcomingQueryVariables>(
+  return Apollo.useQuery<GetUpcomingQuery, GetUpcomingQueryVariables>(
     GetUpcomingDocument,
     options,
   )
 }
 export function useGetUpcomingLazyQuery(
-  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+  baseOptions?: Apollo.LazyQueryHookOptions<
     GetUpcomingQuery,
     GetUpcomingQueryVariables
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return ApolloReactHooks.useLazyQuery<
-    GetUpcomingQuery,
-    GetUpcomingQueryVariables
-  >(GetUpcomingDocument, options)
+  return Apollo.useLazyQuery<GetUpcomingQuery, GetUpcomingQueryVariables>(
+    GetUpcomingDocument,
+    options,
+  )
 }
 export type GetUpcomingQueryHookResult = ReturnType<typeof useGetUpcomingQuery>
 export type GetUpcomingLazyQueryHookResult = ReturnType<
@@ -991,28 +990,28 @@ export const GetNowPlayingDocument = gql`
  * });
  */
 export function useGetNowPlayingQuery(
-  baseOptions?: ApolloReactHooks.QueryHookOptions<
+  baseOptions?: Apollo.QueryHookOptions<
     GetNowPlayingQuery,
     GetNowPlayingQueryVariables
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return ApolloReactHooks.useQuery<
-    GetNowPlayingQuery,
-    GetNowPlayingQueryVariables
-  >(GetNowPlayingDocument, options)
+  return Apollo.useQuery<GetNowPlayingQuery, GetNowPlayingQueryVariables>(
+    GetNowPlayingDocument,
+    options,
+  )
 }
 export function useGetNowPlayingLazyQuery(
-  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+  baseOptions?: Apollo.LazyQueryHookOptions<
     GetNowPlayingQuery,
     GetNowPlayingQueryVariables
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return ApolloReactHooks.useLazyQuery<
-    GetNowPlayingQuery,
-    GetNowPlayingQueryVariables
-  >(GetNowPlayingDocument, options)
+  return Apollo.useLazyQuery<GetNowPlayingQuery, GetNowPlayingQueryVariables>(
+    GetNowPlayingDocument,
+    options,
+  )
 }
 export type GetNowPlayingQueryHookResult = ReturnType<
   typeof useGetNowPlayingQuery
@@ -1054,25 +1053,25 @@ export const GetMoviesSearchDocument = gql`
  * });
  */
 export function useGetMoviesSearchQuery(
-  baseOptions: ApolloReactHooks.QueryHookOptions<
+  baseOptions: Apollo.QueryHookOptions<
     GetMoviesSearchQuery,
     GetMoviesSearchQueryVariables
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return ApolloReactHooks.useQuery<
-    GetMoviesSearchQuery,
-    GetMoviesSearchQueryVariables
-  >(GetMoviesSearchDocument, options)
+  return Apollo.useQuery<GetMoviesSearchQuery, GetMoviesSearchQueryVariables>(
+    GetMoviesSearchDocument,
+    options,
+  )
 }
 export function useGetMoviesSearchLazyQuery(
-  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+  baseOptions?: Apollo.LazyQueryHookOptions<
     GetMoviesSearchQuery,
     GetMoviesSearchQueryVariables
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions }
-  return ApolloReactHooks.useLazyQuery<
+  return Apollo.useLazyQuery<
     GetMoviesSearchQuery,
     GetMoviesSearchQueryVariables
   >(GetMoviesSearchDocument, options)

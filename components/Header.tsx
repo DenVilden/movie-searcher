@@ -4,9 +4,8 @@ import {
   Brightness4 as DarkIcon,
   Brightness7 as LightIcon,
 } from '@material-ui/icons'
-import { useReactiveVar } from '@apollo/client/react'
+import { useReactiveVar } from '@apollo/client'
 import Link from 'next/link'
-
 import { prefersDarkModeVar } from 'apollo/client'
 import Favorites from './Favorites'
 import SearchBar from './SearchBar'
@@ -22,7 +21,7 @@ export default function Header() {
   }
 
   return (
-    <AppBar color={prefersDarkMode ? 'inherit' : 'primary'} position="fixed">
+    <AppBar color="inherit" position="fixed">
       <Toolbar
         css={css`
           padding: 0 4px;
@@ -30,7 +29,7 @@ export default function Header() {
       >
         <Link href="/">
           <IconButton aria-label="go to home page">
-            <Logo />
+            <Logo prefersDarkMode={prefersDarkMode} />
           </IconButton>
         </Link>
         <SearchBar />
@@ -41,7 +40,7 @@ export default function Header() {
           `}
           onClick={toggleTheme}
         >
-          {prefersDarkMode ? <LightIcon /> : <DarkIcon htmlColor="white" />}
+          {prefersDarkMode ? <LightIcon /> : <DarkIcon />}
         </IconButton>
         <Favorites />
       </Toolbar>

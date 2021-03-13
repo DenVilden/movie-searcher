@@ -1,5 +1,4 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
-
 import {
   useGetNowPlayingQuery,
   GetNowPlayingDocument,
@@ -8,27 +7,27 @@ import {
 import ErrorMessage from 'components/ErrorMessage'
 import { initializeApollo, addApolloState } from 'apollo/client'
 import MoviesLayout from 'components/MoviesLayout'
+import Head from 'next/head'
 
 interface Props {
-  initialData: GetNowPlayingQuery
-  page?: number
+  page: number
 }
 
-export default function NowPlayingPage({ initialData, page }: Props) {
+export default function NowPlayingPage({ page }: Props) {
   const { data, error } = useGetNowPlayingQuery({
-    skip: !page,
     variables: { page },
   })
 
-  if (error || (!data && !initialData))
+  if (error || !data)
     return <ErrorMessage error={error?.message || 'No data'} />
 
   return (
-    <MoviesLayout
-      data={data?.nowPlaying || initialData.nowPlaying}
-      path="now_playing"
-      title="Now Playing"
-    />
+    <>
+      <Head key="title">
+        <title>Now Playing</title>
+      </Head>
+      <MoviesLayout data={data.nowPlaying} path="now_playing" />
+    </>
   )
 }
 

@@ -1,5 +1,4 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
-
 import {
   useGetUpcomingQuery,
   GetUpcomingDocument,
@@ -9,27 +8,27 @@ import {
 import ErrorMessage from 'components/ErrorMessage'
 import { initializeApollo, addApolloState } from 'apollo/client'
 import MoviesLayout from 'components/MoviesLayout'
+import Head from 'next/head'
 
 interface Props {
-  initialData: GetUpcomingQuery
-  page?: number
+  page: number
 }
 
-export default function UpcomingPage({ initialData, page }: Props) {
+export default function UpcomingPage({ page }: Props) {
   const { data, error } = useGetUpcomingQuery({
-    skip: !page,
     variables: { page },
   })
 
-  if (error || (!data && !initialData))
+  if (error || !data)
     return <ErrorMessage error={error?.message || 'No data'} />
 
   return (
-    <MoviesLayout
-      data={data?.upcoming || initialData.upcoming}
-      path="upcoming"
-      title="Upcoming"
-    />
+    <>
+      <Head key="title">
+        <title>Upcoming</title>
+      </Head>
+      <MoviesLayout data={data.upcoming} path="upcoming" />
+    </>
   )
 }
 

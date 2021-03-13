@@ -3,7 +3,7 @@
 exports[`header should take a snapshot 1`] = `
 <DocumentFragment>
   <header
-    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-opo76f-MuiPaper-root-MuiAppBar-root"
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorInherit MuiAppBar-positionFixed mui-fixed css-1vlwt05-MuiPaper-root-MuiAppBar-root"
   >
     <div
       class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1xaijy9-MuiToolbar-root-Header"
@@ -23,7 +23,7 @@ exports[`header should take a snapshot 1`] = `
             width="45"
           >
             <g
-              fill="#fff"
+              fill="#000"
             >
               <path
                 d="m31 5c14.888 0 27 12.112 27 27s-12.112 27-27 27-27-12.112-27-27 12.112-27 27-27m0-3c-16.567 0-30 13.432-30 30s13.433 30 30 30 30-13.432 30-30-13.433-30-30-30z"
@@ -40,12 +40,12 @@ exports[`header should take a snapshot 1`] = `
       </button>
       <div
         aria-expanded="false"
-        class="MuiAutocomplete-root ep0uteb3 css-l4apye-MuiAutocomplete-root-StyledAutocomplete"
+        class="MuiAutocomplete-root ep0uteb2 css-78p48u-MuiAutocomplete-root-StyledAutocomplete"
         role="combobox"
       >
         <svg
           aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium ep0uteb1 css-1t4n2px-MuiSvgIcon-root-StyledSearchIcon"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium ep0uteb0 css-rtscnx-MuiSvgIcon-root-StyledSearchIcon"
           data-testid="SearchIcon"
           focusable="false"
           viewBox="0 0 24 24"
@@ -55,7 +55,7 @@ exports[`header should take a snapshot 1`] = `
           />
         </svg>
         <div
-          class="MuiFormControl-root MuiFormControl-marginNone MuiFormControl-fullWidth MuiTextField-root ep0uteb2 css-18kvcvx-MuiFormControl-root-StyledTextField"
+          class="MuiFormControl-root MuiFormControl-marginNone MuiFormControl-fullWidth MuiTextField-root ep0uteb1 css-1oyzkgj-MuiFormControl-root-StyledTextField"
         >
           <div
             class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-4a33cb-MuiInputBase-root-MuiOutlinedInput-root"
@@ -67,7 +67,7 @@ exports[`header should take a snapshot 1`] = `
               autocomplete="off"
               class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused MuiAutocomplete-input MuiAutocomplete-inputFocused css-b55ri7-MuiInputBase-input-MuiOutlinedInput-input"
               id="autocomplete"
-              placeholder="Search..."
+              placeholder="search for movies or tv shows"
               spellcheck="false"
               type="text"
             />
@@ -105,7 +105,6 @@ exports[`header should take a snapshot 1`] = `
           <svg
             aria-hidden="true"
             class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-            color="white"
             data-testid="Brightness4Icon"
             focusable="false"
             viewBox="0 0 24 24"
@@ -121,7 +120,7 @@ exports[`header should take a snapshot 1`] = `
       </button>
       <button
         aria-label="open favorites"
-        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-colorInherit MuiIconButton-sizeMedium css-1drqkcs-MuiButtonBase-root-MuiIconButton-root"
+        class="MuiButtonBase-root Mui-disabled MuiIconButton-root Mui-disabled MuiIconButton-sizeMedium css-1uaxfgw-MuiButtonBase-root-MuiIconButton-root"
         disabled=""
         tabindex="-1"
         type="button"

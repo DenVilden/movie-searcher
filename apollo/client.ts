@@ -1,6 +1,10 @@
-import { InMemoryCache, NormalizedCacheObject } from '@apollo/client/cache'
-import { ApolloClient, makeVar } from '@apollo/client/core'
-import { useMemo } from 'preact/hooks'
+import {
+  InMemoryCache,
+  NormalizedCacheObject,
+  ApolloClient,
+  makeVar,
+} from '@apollo/client'
+import { useMemo } from 'react'
 import merge from 'deepmerge'
 import isEqual from 'lodash.isequal'
 

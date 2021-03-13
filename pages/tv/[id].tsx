@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-
 import ErrorMessage from 'components/ErrorMessage'
 import MovieInfo from 'components/MovieInfo'
 import {

@@ -27,7 +27,7 @@ describe('getUpcomingMovies', () => {
   it('should get upcoming', async () => {
     mocks.get.mockReturnValueOnce(mockUpcomingResponse)
 
-    const page = '1'
+    const page = 1
     const res = await api.getUpcoming(page)
 
     expect(res).toStrictEqual(mockUpcoming)
@@ -39,7 +39,7 @@ describe('getTopRatedMovies', () => {
   it('should get and transform top now playing movies', async () => {
     mocks.get.mockReturnValueOnce(mockNowPlayingResponse)
 
-    const page = '1'
+    const page = 1
     const res = await api.getNowPlaying(page)
 
     expect(res).toStrictEqual(mockNowPlaying)
@@ -52,10 +52,10 @@ describe('getMoviesSearch', () => {
     mocks.get.mockReturnValueOnce(mockMoviesSearchResponse)
 
     const query = 'spider'
-    const res = await api.getMoviesSearch(query)
+    const res = await api.getMoviesSearch(query, 1)
 
     expect(res).toStrictEqual(mockMoviesSearch)
-    expect(mocks.get).toHaveBeenCalledWith('/search/multi', { query })
+    expect(mocks.get).toHaveBeenCalledWith('/search/multi', { page: 1, query })
   })
 })
 

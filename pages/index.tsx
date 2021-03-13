@@ -1,6 +1,5 @@
 import { Grid } from '@material-ui/core'
 import { GetStaticProps } from 'next'
-
 import ErrorMessage from 'components/ErrorMessage'
 import { initializeApollo, addApolloState } from 'apollo/client'
 import {
@@ -8,8 +7,7 @@ import {
   GetMoviesDocument,
   GetMoviesQuery,
 } from 'apollo/__generated__'
-import Upcoming from './upcoming/[page]'
-import NowPlaying from './now_playing/[page]'
+import MoviesLayout from 'components/MoviesLayout'
 
 export default function HomePage() {
   const { data, error } = useGetMoviesQuery()
@@ -20,10 +18,14 @@ export default function HomePage() {
   return (
     <Grid container>
       <Grid item lg={6}>
-        <NowPlaying initialData={{ nowPlaying: data.nowPlaying }} />
+        <MoviesLayout
+          data={data.nowPlaying}
+          path="now_playing"
+          title="Now Playing"
+        />
       </Grid>
       <Grid item lg={6}>
-        <Upcoming initialData={{ upcoming: data.upcoming }} />
+        <MoviesLayout data={data.upcoming} path="upcoming" title="Upcoming" />
       </Grid>
     </Grid>
   )

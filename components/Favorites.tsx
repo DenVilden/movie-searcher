@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'preact/hooks'
+import { useState, useRef, useEffect } from 'react'
 import {
   Divider,
   Badge,
@@ -6,7 +6,7 @@ import {
   Popover,
   IconButton,
 } from '@material-ui/core'
-import { useReactiveVar } from '@apollo/client/react'
+import { useReactiveVar } from '@apollo/client'
 import {
   Favorite as FavoriteIcon,
   FavoriteBorder as FavoriteBorderIcon,
@@ -37,7 +37,6 @@ export default function Favorites() {
       <IconButton
         ref={iconButtonRef}
         aria-label="open favorites"
-        color="inherit"
         disabled={!favorites.length}
         onClick={handleToggle}
       >

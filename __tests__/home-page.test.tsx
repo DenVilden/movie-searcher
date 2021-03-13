@@ -13,6 +13,7 @@ const mocks = [
           page: 1,
           results: [
             {
+              __typename: 'NowPlayingResults',
               id: 1,
               media_type: 'movie',
               poster_path: null,
@@ -26,6 +27,7 @@ const mocks = [
           page: 1,
           results: [
             {
+              __typename: 'UpcomingResults',
               id: 1,
               media_type: 'movie',
               poster_path: null,
@@ -41,16 +43,8 @@ const mocks = [
 ]
 
 describe('home page', () => {
-  it('should take a snapshot', () => {
-    const { asFragment } = renderApollo(<HomePage />, { mocks })
-
-    const element = asFragment()
-
-    expect(element).toMatchSnapshot()
-  })
-
   it('should fetch initial movies', async () => {
-    renderApollo(<HomePage />, { mocks })
+    renderApollo(<HomePage />, { addTypeName: true, mocks })
 
     expect(await screen.findByText('upcoming rendered')).toBeInTheDocument()
     expect(await screen.findByText('now playing rendered')).toBeInTheDocument()

@@ -1,6 +1,5 @@
 import { Grid, Typography, Paper } from '@material-ui/core'
 import styled from '@emotion/styled'
-
 import {
   UpcomingResults,
   NowPlayingResults,
@@ -26,7 +25,7 @@ const Wrapper = styled(Grid)`
 interface Props {
   elevation?: number
   movies: UpcomingResults[] | NowPlayingResults[] | SimilarResults[]
-  title: string
+  title?: string
 }
 
 export default function MoviesBox({ movies, title, elevation = 10 }: Props) {

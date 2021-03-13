@@ -15,26 +15,7 @@ const mocks = [
             {
               id: 1,
               media_type: 'movie',
-              title: 'test-movie',
-            },
-          ],
-        },
-      },
-    },
-  },
-  {
-    request: {
-      query: GetMoviesSearchDocument,
-      variables: { query: 'test-tv' },
-    },
-    result: {
-      data: {
-        moviesSearch: {
-          results: [
-            {
-              id: 1,
-              media_type: 'tv',
-              title: 'test-tv',
+              title: 'test-movie title',
             },
           ],
         },
@@ -47,22 +28,22 @@ describe('searchBar', () => {
   it('should check all cases', async () => {
     renderApollo(<SearchBar />, { mocks })
 
-    const inputElement = screen.getByPlaceholderText('Search...')
+    const inputElement = screen.getByPlaceholderText(
+      'search for movies or tv shows',
+    )
+
+    // open popup
+    fireEvent.focus(inputElement)
 
     // check if empty value doesn't trigger request
     fireEvent.input(inputElement, { target: { value: '   ' } })
 
-    // fetch movie and render related icon
+    // fetch movie
     fireEvent.input(inputElement, { target: { value: 'test-movie' } })
-    const movieSearchResult = await screen.findByText('test-movie')
+    const movieSearchResultHighlight = await screen.findByText('test-movie')
+    const movieSearchResult = await screen.findByText('title')
     expect(movieSearchResult).toBeInTheDocument()
-    expect(inputElement).toHaveProperty('value', 'test-movie')
-
-    // fetch tv and render related icon
-    fireEvent.input(inputElement, { target: { value: 'test-tv' } })
-    const tvSearchResults = await screen.findByText('test-tv')
-    expect(tvSearchResults).toBeInTheDocument()
-    expect(inputElement).toHaveProperty('value', 'test-tv')
+    expect(movieSearchResultHighlight).toBeInTheDocument()
 
     // clear input on click
     const clearButton = screen.getByTitle('Clear')

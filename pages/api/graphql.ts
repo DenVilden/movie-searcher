@@ -1,6 +1,5 @@
 import { ApolloServer } from 'apollo-server-micro'
 import { loader } from 'graphql.macro'
-
 import resolvers from 'apollo/resolvers'
 import MoviesAPI from 'apollo/datasource'
 

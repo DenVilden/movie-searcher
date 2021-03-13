@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-
 import { NowPlaying, Upcoming } from 'apollo/__generated__'
 import Pagination from 'components/Pagination'
 import MoviesBox from 'components/MoviesBox'
@@ -12,7 +11,7 @@ const Container = styled.div`
 interface Props {
   data: NowPlaying | Upcoming
   path: string
-  title: string
+  title?: string
 }
 
 export default function MoviesLayout({ data, title, path }: Props) {

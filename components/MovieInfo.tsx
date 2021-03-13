@@ -8,10 +8,9 @@ import {
   Slide,
 } from '@material-ui/core'
 import styled from '@emotion/styled'
-import { useReactiveVar } from '@apollo/client/react'
+import { useReactiveVar } from '@apollo/client'
 import Image from 'next/image'
 import Head from 'next/head'
-
 import { favoritesVar, Favorite } from 'apollo/client'
 import { TvShowInfo, MovieInfo } from 'apollo/__generated__'
 import MoviesBox from './MoviesBox'

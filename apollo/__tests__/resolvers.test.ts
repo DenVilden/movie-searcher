@@ -21,7 +21,7 @@ describe('[Query.upcoming]', () => {
 
     const res = await resolvers.Query?.upcoming!(
       {} as any,
-      { page: '1' } as any,
+      { page: 1 } as any,
       mockContext as any,
       {} as any,
     )
@@ -37,7 +37,7 @@ describe('[Query.upcoming]', () => {
     try {
       await resolvers.Query?.upcoming!(
         {} as any,
-        { page: '100' } as any,
+        { page: 100 } as any,
         mockContext as any,
         {} as any,
       )
@@ -82,7 +82,7 @@ describe('[Query.nowPlaying]', () => {
 
     const res = await resolvers.Query?.nowPlaying!(
       {} as any,
-      { page: '1' } as any,
+      { page: 1 } as any,
       mockContext as any,
       {} as any,
     )
@@ -98,7 +98,7 @@ describe('[Query.nowPlaying]', () => {
     try {
       await resolvers.Query?.nowPlaying!(
         {} as any,
-        { page: '100' } as any,
+        { page: 100 } as any,
         mockContext as any,
         {} as any,
       )

@@ -9,7 +9,6 @@ import { Star as StarIcon } from '@material-ui/icons'
 import Image from 'next/image'
 import styled from '@emotion/styled'
 import Link from 'next/link'
-
 import {
   UpcomingResults,
   NowPlayingResults,
@@ -62,13 +61,15 @@ export default function MovieCard({ movie }: Props) {
             <Typography variant="subtitle2">{movie.title}</Typography>
             <Typography color="textSecondary">
               {movie.__typename === 'SimilarResults' ||
-              movie.__typename === 'UpcomingResults'
-                ? movie.release_date
-                : movie.__typename === 'NowPlayingResults' && (
-                    <>
-                      <StyledStarIcon /> {movie.vote_average}
-                    </>
-                  )}
+              movie.__typename === 'UpcomingResults' ? (
+                movie.release_date
+              ) : (
+                <>
+                  <StyledStarIcon />
+                  {movie.__typename === 'NowPlayingResults' &&
+                    movie.vote_average}
+                </>
+              )}
             </Typography>
           </StyledCardContent>
         </CardActionArea>

@@ -25,6 +25,7 @@ const mocks = [
           similar: {
             results: [
               {
+                __typename: 'SimilarResults',
                 id: 2,
                 media_type: 'tv',
                 poster_path: null,
@@ -42,16 +43,6 @@ const mocks = [
 ]
 
 describe('tv page', () => {
-  it('should take a snapshot', () => {
-    const { asFragment } = renderApollo(<TvPage id="1" />, {
-      mocks,
-    })
-
-    const element = asFragment()
-
-    expect(element).toMatchSnapshot()
-  })
-
   it('should fetch tv by id', async () => {
     renderApollo(<TvPage id="1" />, { addTypeName: true, mocks })
 
