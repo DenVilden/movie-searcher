@@ -26,6 +26,14 @@ const mock = {
 }
 
 describe('movieInfo', () => {
+  it('should take a snapshot', () => {
+    const { asFragment } = renderApollo(<MovieInfo data={mock} />)
+
+    const element = asFragment()
+
+    expect(element).toMatchSnapshot()
+  })
+
   it('should toggle favorites', () => {
     renderApollo(<MovieInfo data={mock} />)
 

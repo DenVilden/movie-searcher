@@ -81,7 +81,7 @@ export default function SearchBar() {
             error={!!error}
             fullWidth
             id="search field"
-            placeholder="search for movies or tv shows"
+            placeholder="Search..."
             size="small"
           />
         </>
@@ -97,7 +97,10 @@ export default function SearchBar() {
                 {parts.map(part => (
                   <span
                     css={css`
-                      font-weight: ${part.highlight ? 700 : 400};
+                      ${part.highlight &&
+                      css`
+                        font-weight: 700;
+                      `};
                       white-space: pre-wrap;
                     `}
                   >

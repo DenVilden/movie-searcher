@@ -67,7 +67,7 @@ exports[`header should take a snapshot 1`] = `
               autocomplete="off"
               class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused MuiAutocomplete-input MuiAutocomplete-inputFocused css-b55ri7-MuiInputBase-input-MuiOutlinedInput-input"
               id="autocomplete"
-              placeholder="search for movies or tv shows"
+              placeholder="Search..."
               spellcheck="false"
               type="text"
             />

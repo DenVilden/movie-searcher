@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`favoritesCard should take a snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="MuiButtonBase-root MuiCardActionArea-root css-b6lsxj-MuiButtonBase-root-MuiCardActionArea-root"
+    tabindex="0"
+    type="button"
+  >
+    <div
+      class="css-17b90ar-CardWrapper ev7japj1"
+    >
+      <div
+        style="overflow: hidden; box-sizing: border-box; display: inline-block; position: relative; width: 50px; height: 50px;"
+      >
+        <img
+          alt="title"
+          decoding="async"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          style="visibility: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"
+        />
+      </div>
+      <p
+        class="MuiTypography-root MuiTypography-body1 ev7japj0 css-oyktpt-MuiTypography-root-StyledTypography"
+      >
+        title
+      </p>
+    </div>
+    <span
+      class="MuiCardActionArea-focusHighlight css-1v2exvi-MuiCardActionArea-focusHighlight"
+    />
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+</DocumentFragment>
+`;

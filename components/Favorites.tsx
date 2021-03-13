@@ -48,6 +48,10 @@ export default function Favorites() {
         anchorEl={iconButtonRef.current}
         onClose={handleToggle}
         open={toggle}
+        transformOrigin={{
+          horizontal: 'right',
+          vertical: 'top',
+        }}
       >
         <Typography
           css={css`

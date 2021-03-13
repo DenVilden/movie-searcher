@@ -28,11 +28,9 @@ describe('searchBar', () => {
   it('should check all cases', async () => {
     renderApollo(<SearchBar />, { mocks })
 
-    const inputElement = screen.getByPlaceholderText(
-      'search for movies or tv shows',
-    )
+    const inputElement = screen.getByPlaceholderText('Search...')
 
-    // open popup
+    // open dropdown
     fireEvent.focus(inputElement)
 
     // check if empty value doesn't trigger request
