@@ -67,7 +67,7 @@ export default class MoviesAPI extends RESTDataSource {
         .filter(movie => movie.media_type !== 'person')
         .map(movie => ({
           id: movie.id,
-          media_type: movie.media_type === 'movie' ? Media.Movie : Media.Tv,
+          media_type: movie.media_type as Media,
           title: movie?.title || movie?.name || '',
         })),
       total_pages: movies.total_pages,

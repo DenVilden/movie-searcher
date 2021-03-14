@@ -24,7 +24,11 @@ export default function Favorites() {
   useEffect(() => {
     const initialFavorites = localStorage.getItem('favorites')
     if (initialFavorites) {
-      favoritesVar(JSON.parse(initialFavorites))
+      try {
+        favoritesVar(JSON.parse(initialFavorites))
+      } catch (error) {
+        favoritesVar([])
+      }
     }
   }, [])
 

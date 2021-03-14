@@ -23,7 +23,7 @@ export default function NowPlayingPage({ page }: Props) {
 
   return (
     <>
-      <Head key="title">
+      <Head>
         <title>Now Playing</title>
       </Head>
       <MoviesLayout data={data.nowPlaying} path="now_playing" />

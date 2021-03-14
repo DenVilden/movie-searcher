@@ -28,7 +28,11 @@ export default function NextApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const darkMode = localStorage.getItem('darkMode')
     if (darkMode) {
-      prefersDarkModeVar(JSON.parse(darkMode))
+      try {
+        prefersDarkModeVar(JSON.parse(darkMode))
+      } catch (error) {
+        prefersDarkModeVar(systemColorScheme)
+      }
     } else {
       prefersDarkModeVar(systemColorScheme)
     }
@@ -52,7 +56,7 @@ export default function NextApp({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={apolloClient}>
       <Head>
-        <title key="title">Movie Searcher</title>
+        <title>Movie Searcher</title>
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />

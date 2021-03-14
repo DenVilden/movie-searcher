@@ -24,7 +24,7 @@ export default function UpcomingPage({ page }: Props) {
 
   return (
     <>
-      <Head key="title">
+      <Head>
         <title>Upcoming</title>
       </Head>
       <MoviesLayout data={data.upcoming} path="upcoming" />

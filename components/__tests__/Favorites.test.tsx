@@ -31,7 +31,7 @@ const mocks = [
 ]
 
 describe('favorites', () => {
-  it('should open favorites and register click', async () => {
+  it('should open favorites and register click', () => {
     localStorage.setItem('favorites', JSON.stringify(mocks))
 
     const { baseElement } = renderApollo(<Favorites />)
@@ -41,5 +41,19 @@ describe('favorites', () => {
     fireEvent.click(iconButton)
 
     expect(baseElement).toMatchSnapshot()
+  })
+
+  it('should reset state if local storage value is unsupported', () => {
+    localStorage.setItem('favorites', 'wrong value')
+
+    renderApollo(<Favorites />)
+
+    const iconButton = screen.getByRole('button')
+
+    fireEvent.click(iconButton)
+
+    expect(screen.getByLabelText('open favorites').textContent).toStrictEqual(
+      '0',
+    )
   })
 })

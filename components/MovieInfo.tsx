@@ -94,7 +94,7 @@ export default function MovieInfoComponent({ data }: Props) {
   return (
     <Slide direction="up" in>
       <div>
-        <Head key="title">
+        <Head>
           <title>{data.title}</title>
         </Head>
         <StyledCard elevation={10}>

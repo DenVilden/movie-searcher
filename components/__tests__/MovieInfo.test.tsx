@@ -5,21 +5,13 @@ const mock = {
   backdrop_path: null,
   budget: '0',
   id: 1,
-  media_type: 'movie',
+  media_type: 'movie' as any,
   overview: 'test data',
   poster_path: null,
   release_date: '2020',
   revenue: '0',
   similar: {
-    results: [
-      {
-        id: 1,
-        media_type: 'movie',
-        poster_path: null,
-        release_date: '2020',
-        title: 'test',
-      },
-    ],
+    results: [],
   },
   title: 'test',
   vote_average: 5,
@@ -29,14 +21,12 @@ describe('movieInfo', () => {
   it('should add and remove from favorites', () => {
     renderApollo(<MovieInfo data={mock} />)
 
-    const addButton = screen.getByText('Add to favorites')
+    const button = screen.getByRole('button')
 
-    fireEvent.click(addButton)
+    fireEvent.click(button)
+    expect(button.textContent).toStrictEqual('Remove from favorites')
 
-    expect(screen.getByText('Remove from favorites')).toBeInTheDocument()
-
-    fireEvent.click(addButton)
-
-    expect(addButton).toBeInTheDocument()
+    fireEvent.click(button)
+    expect(button.textContent).toStrictEqual('Add to favorites')
   })
 })
