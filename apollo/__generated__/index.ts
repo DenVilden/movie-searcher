@@ -25,10 +25,15 @@ export type Scalars = {
   String: string
 }
 
+export enum Media {
+  Movie = 'movie',
+  Tv = 'tv',
+}
+
 export type UpcomingResults = {
   __typename?: 'UpcomingResults'
   id: Scalars['Int']
-  media_type: Scalars['String']
+  media_type: Media
   poster_path?: Maybe<Scalars['String']>
   release_date: Scalars['String']
   title: Scalars['String']
@@ -44,7 +49,7 @@ export type Upcoming = {
 export type NowPlayingResults = {
   __typename?: 'NowPlayingResults'
   id: Scalars['Int']
-  media_type: Scalars['String']
+  media_type: Media
   poster_path?: Maybe<Scalars['String']>
   title: Scalars['String']
   vote_average: Scalars['Float']
@@ -60,7 +65,7 @@ export type NowPlaying = {
 export type MoviesSearchResults = {
   __typename?: 'MoviesSearchResults'
   id: Scalars['Int']
-  media_type: Scalars['String']
+  media_type: Media
   title: Scalars['String']
 }
 
@@ -76,7 +81,7 @@ export type MoviesSearch = {
 export type SimilarResults = {
   __typename?: 'SimilarResults'
   id: Scalars['Int']
-  media_type: Scalars['String']
+  media_type: Media
   poster_path?: Maybe<Scalars['String']>
   release_date: Scalars['String']
   title: Scalars['String']
@@ -94,7 +99,7 @@ export type MovieInfo = {
   backdrop_path?: Maybe<Scalars['String']>
   budget: Scalars['String']
   id: Scalars['Int']
-  media_type: Scalars['String']
+  media_type: Media
   overview?: Maybe<Scalars['String']>
   poster_path?: Maybe<Scalars['String']>
   release_date: Scalars['String']
@@ -108,7 +113,7 @@ export type TvShowInfo = {
   __typename?: 'TvShowInfo'
   backdrop_path?: Maybe<Scalars['String']>
   id: Scalars['Int']
-  media_type: Scalars['String']
+  media_type: Media
   number_of_episodes: Scalars['Int']
   number_of_seasons: Scalars['Int']
   overview?: Maybe<Scalars['String']>
@@ -268,6 +273,7 @@ export type ResolversTypes = ResolversObject<{
   Float: ResolverTypeWrapper<Scalars['Float']>
   ID: ResolverTypeWrapper<Scalars['ID']>
   Int: ResolverTypeWrapper<Scalars['Int']>
+  Media: Media
   MovieInfo: ResolverTypeWrapper<MovieInfo>
   MoviesSearch: ResolverTypeWrapper<MoviesSearch>
   MoviesSearchResults: ResolverTypeWrapper<MoviesSearchResults>
@@ -308,7 +314,7 @@ export type UpcomingResultsResolvers<
 > = ResolversObject<{
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>
-  media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>
+  media_type?: Resolver<ResolversTypes['Media'], ParentType, ContextType>
   poster_path?: Resolver<
     Maybe<ResolversTypes['String']>,
     ParentType,
@@ -338,7 +344,7 @@ export type NowPlayingResultsResolvers<
 > = ResolversObject<{
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>
-  media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>
+  media_type?: Resolver<ResolversTypes['Media'], ParentType, ContextType>
   poster_path?: Resolver<
     Maybe<ResolversTypes['String']>,
     ParentType,
@@ -368,7 +374,7 @@ export type MoviesSearchResultsResolvers<
 > = ResolversObject<{
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>
-  media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>
+  media_type?: Resolver<ResolversTypes['Media'], ParentType, ContextType>
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>
 }>
 
@@ -394,7 +400,7 @@ export type SimilarResultsResolvers<
 > = ResolversObject<{
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>
-  media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>
+  media_type?: Resolver<ResolversTypes['Media'], ParentType, ContextType>
   poster_path?: Resolver<
     Maybe<ResolversTypes['String']>,
     ParentType,
@@ -430,7 +436,7 @@ export type MovieInfoResolvers<
   >
   budget?: Resolver<ResolversTypes['String'], ParentType, ContextType>
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>
-  media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>
+  media_type?: Resolver<ResolversTypes['Media'], ParentType, ContextType>
   overview?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>
   poster_path?: Resolver<
     Maybe<ResolversTypes['String']>,
@@ -455,7 +461,7 @@ export type TvShowInfoResolvers<
     ContextType
   >
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>
-  media_type?: Resolver<ResolversTypes['String'], ParentType, ContextType>
+  media_type?: Resolver<ResolversTypes['Media'], ParentType, ContextType>
   number_of_episodes?: Resolver<ResolversTypes['Int'], ParentType, ContextType>
   number_of_seasons?: Resolver<ResolversTypes['Int'], ParentType, ContextType>
   overview?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>

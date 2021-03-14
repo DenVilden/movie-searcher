@@ -7,7 +7,10 @@ import { Search as SearchIcon } from '@material-ui/icons'
 import Link from 'next/link'
 import parse from 'autosuggest-highlight/parse'
 import match from 'autosuggest-highlight/match'
-import { useGetMoviesSearchLazyQuery } from 'apollo/__generated__'
+import {
+  useGetMoviesSearchLazyQuery,
+  MoviesSearchResults,
+} from 'apollo/__generated__'
 
 const StyledAutocomplete = styled(Autocomplete)`
   width: 70%;
@@ -87,12 +90,13 @@ export default function SearchBar() {
           />
         </>
       )}
-      renderOption={(props, movie: any, { inputValue: value }) => {
+      renderOption={(props, option: any, { inputValue: value }) => {
+        const movie: MoviesSearchResults = option
         const matches = match(movie.title, value)
         const parts = parse(movie.title, matches)
 
         return (
-          <Link key={movie.id} href={`/${movie.media_type}/${movie.id}`}>
+          <Link href={`/${movie.media_type}/${movie.id}`}>
             <li {...props}>
               <span>
                 {parts.map(part => (

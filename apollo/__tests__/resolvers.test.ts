@@ -21,7 +21,7 @@ describe('[Query.upcoming]', () => {
 
     const res = await resolvers.Query?.upcoming!(
       {} as any,
-      { page: 1 } as any,
+      { page: 1 },
       mockContext as any,
       {} as any,
     )
@@ -37,7 +37,7 @@ describe('[Query.upcoming]', () => {
     try {
       await resolvers.Query?.upcoming!(
         {} as any,
-        { page: 100 } as any,
+        { page: 100 },
         mockContext as any,
         {} as any,
       )
@@ -56,7 +56,7 @@ describe('[Query.upcoming]', () => {
     try {
       await resolvers.Query?.upcoming!(
         {} as any,
-        {} as any,
+        { page: 1 },
         mockContext as any,
         {} as any,
       )
@@ -82,7 +82,7 @@ describe('[Query.nowPlaying]', () => {
 
     const res = await resolvers.Query?.nowPlaying!(
       {} as any,
-      { page: 1 } as any,
+      { page: 1 },
       mockContext as any,
       {} as any,
     )
@@ -98,7 +98,7 @@ describe('[Query.nowPlaying]', () => {
     try {
       await resolvers.Query?.nowPlaying!(
         {} as any,
-        { page: 100 } as any,
+        { page: 100 },
         mockContext as any,
         {} as any,
       )
@@ -117,7 +117,7 @@ describe('[Query.nowPlaying]', () => {
     try {
       await resolvers.Query?.nowPlaying!(
         {} as any,
-        {} as any,
+        { page: 1 },
         mockContext as any,
         {} as any,
       )
@@ -143,7 +143,7 @@ describe('[Query.moviesSearch]', () => {
 
     const res = await resolvers.Query?.moviesSearch!(
       {} as any,
-      { cursor: 2, pageSize: 2 } as any,
+      { cursor: 2, pageSize: 2, query: 'spider' },
       mockContext as any,
       {} as any,
     )
@@ -168,7 +168,7 @@ describe('[Query.moviesSearch]', () => {
 
     const res = await resolvers.Query?.moviesSearch!(
       {} as any,
-      {} as any,
+      { cursor: 2, pageSize: 2, query: 'spider' },
       mockContext as any,
       {} as any,
     )
@@ -188,7 +188,7 @@ describe('[Query.moviesSearch]', () => {
     try {
       await resolvers.Query?.moviesSearch!(
         {} as any,
-        {} as any,
+        { cursor: 2, pageSize: 2, query: 'spider' },
         mockContext as any,
         {} as any,
       )
@@ -214,7 +214,7 @@ describe('[Query.movieInfo]', () => {
 
     const res = await resolvers.Query?.movieInfo!(
       {} as any,
-      { pageSize: 1 } as any,
+      { id: '556678', pageSize: 1 },
       mockContext as any,
       {} as any,
     )
@@ -237,7 +237,7 @@ describe('[Query.movieInfo]', () => {
     try {
       await resolvers.Query?.movieInfo!(
         {} as any,
-        {} as any,
+        { id: '556678', pageSize: 1 },
         mockContext as any,
         {} as any,
       )
@@ -263,7 +263,7 @@ describe('[Query.tvShowInfo]', () => {
 
     const res = await resolvers.Query?.tvShowInfo!(
       {} as any,
-      { pageSize: 1 } as any,
+      { id: '888', pageSize: 1 },
       mockContext as any,
       {} as any,
     )
@@ -286,7 +286,7 @@ describe('[Query.tvShowInfo]', () => {
     try {
       await resolvers.Query?.tvShowInfo!(
         {} as any,
-        {} as any,
+        { id: '888', pageSize: 1 },
         mockContext as any,
         {} as any,
       )

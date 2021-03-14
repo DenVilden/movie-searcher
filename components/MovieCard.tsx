@@ -21,10 +21,6 @@ const CardContainer = styled(Card)`
   ${({ theme }) => theme.breakpoints.up('sm')} {
     width: 170px;
   }
-
-  ${({ theme }) => theme.breakpoints.up('lg')} {
-    width: 190px;
-  }
 `
 
 const StyledCardContent = styled(CardContent)`

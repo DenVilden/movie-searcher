@@ -1,6 +1,11 @@
+enum Media {
+  movie
+  tv
+}
+
 type UpcomingResults {
   id: Int!
-  media_type: String!
+  media_type: Media!
   poster_path: String
   release_date: String!
   title: String!
@@ -14,7 +19,7 @@ type Upcoming {
 
 type NowPlayingResults {
   id: Int!
-  media_type: String!
+  media_type: Media!
   poster_path: String
   title: String!
   vote_average: Float!
@@ -28,7 +33,7 @@ type NowPlaying {
 
 type MoviesSearchResults {
   id: Int!
-  media_type: String!
+  media_type: Media!
   title: String!
 }
 
@@ -42,7 +47,7 @@ type MoviesSearch {
 
 type SimilarResults {
   id: Int!
-  media_type: String!
+  media_type: Media!
   poster_path: String
   release_date: String!
   title: String!
@@ -58,7 +63,7 @@ type MovieInfo {
   backdrop_path: String
   budget: String!
   id: Int!
-  media_type: String!
+  media_type: Media!
   overview: String
   poster_path: String
   release_date: String!
@@ -71,7 +76,7 @@ type MovieInfo {
 type TvShowInfo {
   backdrop_path: String
   id: Int!
-  media_type: String!
+  media_type: Media!
   number_of_episodes: Int!
   number_of_seasons: Int!
   overview: String

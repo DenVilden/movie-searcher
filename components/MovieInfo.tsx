@@ -17,7 +17,6 @@ import MoviesBox from './MoviesBox'
 
 const StyledCard = styled(Card)`
   background-color: inherit;
-  display: block;
   margin: ${({ theme }) => theme.spacing(11, 1, -8, 1)};
 
   ${({ theme }) => theme.breakpoints.up('md')} {
@@ -26,11 +25,12 @@ const StyledCard = styled(Card)`
 `
 
 const ImageWrapper = styled.div`
-  height: 450px;
+  height: 400px;
   position: relative;
   width: 100%;
 
   ${({ theme }) => theme.breakpoints.up('md')} {
+    height: 500px;
     width: 40%;
   }
 `
@@ -126,11 +126,10 @@ export default function MovieInfoComponent({ data }: Props) {
                   <b>Budget:</b> {data.budget}
                 </>
               ) : (
-                data.__typename === 'TvShowInfo' && (
-                  <>
-                    <b>Seasons:</b> {data.number_of_seasons}
-                  </>
-                )
+                <>
+                  <b>Seasons:</b>{' '}
+                  {data.__typename === 'TvShowInfo' && data.number_of_seasons}
+                </>
               )}
             </StyledTypography>
             <Divider />
@@ -140,11 +139,10 @@ export default function MovieInfoComponent({ data }: Props) {
                   <b>Revenue:</b> {data.revenue}
                 </>
               ) : (
-                data.__typename === 'TvShowInfo' && (
-                  <>
-                    <b>Episodes:</b> {data.number_of_episodes}
-                  </>
-                )
+                <>
+                  <b>Episodes:</b>{' '}
+                  {data.__typename === 'TvShowInfo' && data.number_of_episodes}
+                </>
               )}
             </StyledTypography>
             <Divider />

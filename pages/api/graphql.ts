@@ -5,8 +5,6 @@ import MoviesAPI from 'apollo/datasource'
 
 const server = new ApolloServer({
   dataSources: () => ({ moviesAPI: new MoviesAPI() }),
-  introspection: true,
-  playground: true,
   resolvers,
   typeDefs: loader('apollo/schema.graphql'),
 })

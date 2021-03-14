@@ -39,7 +39,7 @@ const resolvers: Resolvers = {
       }
     },
     async moviesSearch(_root, { query, cursor, pageSize }, { dataSources }) {
-      const fetchMovies = async (page: number = 1): Promise<MoviesSearch> => {
+      const fetchMovies = async (page = 1): Promise<MoviesSearch> => {
         const data = await dataSources.moviesAPI.getMoviesSearch(query, page)
 
         if (!data.results.length && data.total_pages > 1) {

@@ -15,6 +15,7 @@ import {
   NowPlaying,
   MoviesSearch,
   MovieInfo,
+  Media,
 } from './__generated__'
 
 export default class MoviesAPI extends RESTDataSource {
@@ -36,7 +37,7 @@ export default class MoviesAPI extends RESTDataSource {
       page: movies.page,
       results: movies.results.map(movie => ({
         id: movie.id,
-        media_type: 'movie',
+        media_type: Media.Movie,
         poster_path: this.attachPoster(movie.poster_path),
         release_date: dayjs(movie.release_date).format('DD.MM.YYYY'),
         title: movie.title,
@@ -50,7 +51,7 @@ export default class MoviesAPI extends RESTDataSource {
       page: movies.page,
       results: movies.results.map(movie => ({
         id: movie.id,
-        media_type: 'movie',
+        media_type: Media.Movie,
         poster_path: this.attachPoster(movie.poster_path),
         title: movie.title,
         vote_average: movie.vote_average,
@@ -66,7 +67,7 @@ export default class MoviesAPI extends RESTDataSource {
         .filter(movie => movie.media_type !== 'person')
         .map(movie => ({
           id: movie.id,
-          media_type: movie.media_type,
+          media_type: movie.media_type === 'movie' ? Media.Movie : Media.Tv,
           title: movie?.title || movie?.name || '',
         })),
       total_pages: movies.total_pages,
@@ -78,7 +79,7 @@ export default class MoviesAPI extends RESTDataSource {
       backdrop_path: this.attachPoster(movie.backdrop_path, 500),
       budget: numeral(movie.budget).format('$0,00'),
       id: movie.id,
-      media_type: 'movie',
+      media_type: Media.Movie,
       overview: movie.overview,
       poster_path: this.attachPoster(movie.poster_path),
       release_date: movie.release_date
@@ -88,7 +89,7 @@ export default class MoviesAPI extends RESTDataSource {
       similar: {
         results: movie.similar.results.map(similarMovie => ({
           id: similarMovie.id,
-          media_type: 'movie',
+          media_type: Media.Movie,
           poster_path: this.attachPoster(similarMovie.poster_path),
           release_date: similarMovie.release_date
             ? dayjs(similarMovie.release_date).format('YYYY')
@@ -105,7 +106,7 @@ export default class MoviesAPI extends RESTDataSource {
     return {
       backdrop_path: this.attachPoster(tv.backdrop_path, 500),
       id: tv.id,
-      media_type: 'tv',
+      media_type: Media.Tv,
       number_of_episodes: tv.number_of_episodes,
       number_of_seasons: tv.number_of_seasons,
       overview: tv.overview,
@@ -116,7 +117,7 @@ export default class MoviesAPI extends RESTDataSource {
       similar: {
         results: tv.similar.results.map(similarTvShow => ({
           id: similarTvShow.id,
-          media_type: 'tv',
+          media_type: Media.Tv,
           poster_path: this.attachPoster(similarTvShow.poster_path),
           release_date: similarTvShow.first_air_date
             ? dayjs(similarTvShow.first_air_date).format('YYYY')
