@@ -26,8 +26,8 @@ interface Props {
 }
 
 export default function FavoritesCard({
+  favorite: { id, media_type, poster_path, title },
   handleToggle,
-  favorite: { media_type, id, title, poster_path },
 }: Props) {
   return (
     <Link href={`/${media_type}/${id}`}>

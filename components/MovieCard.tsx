@@ -1,4 +1,5 @@
 /* eslint-disable no-underscore-dangle */
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import {
   Card,
@@ -54,7 +55,14 @@ export default function MovieCard({ movie }: Props) {
             width={200}
           />
           <StyledCardContent>
-            <Typography variant="subtitle2">{movie.title}</Typography>
+            <Typography
+              css={css`
+                overflow: auto;
+              `}
+              variant="subtitle2"
+            >
+              {movie.title}
+            </Typography>
             <Typography color="textSecondary">
               {movie.__typename === 'SimilarResults' ||
               movie.__typename === 'UpcomingResults' ? (

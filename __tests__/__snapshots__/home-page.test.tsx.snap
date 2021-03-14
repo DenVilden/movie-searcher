@@ -59,7 +59,7 @@ exports[`home page should fetch initial movies 1`] = `
                       class="MuiCardContent-root ejzktm51 css-dzh1mx-MuiCardContent-root-StyledCardContent"
                     >
                       <h6
-                        class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-subtitle2 css-1730sir-MuiTypography-root-MovieCard"
                       >
                         now playing rendered
                       </h6>
@@ -262,7 +262,7 @@ exports[`home page should fetch initial movies 1`] = `
                       class="MuiCardContent-root ejzktm51 css-dzh1mx-MuiCardContent-root-StyledCardContent"
                     >
                       <h6
-                        class="MuiTypography-root MuiTypography-subtitle2 css-ati914-MuiTypography-root"
+                        class="MuiTypography-root MuiTypography-subtitle2 css-1730sir-MuiTypography-root-MovieCard"
                       >
                         upcoming rendered
                       </h6>

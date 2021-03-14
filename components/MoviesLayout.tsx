@@ -14,7 +14,7 @@ interface Props {
   title?: string
 }
 
-export default function MoviesLayout({ data, title, path }: Props) {
+export default function MoviesLayout({ data, path, title }: Props) {
   return (
     <Container>
       <MoviesBox movies={data.results} title={title} />

@@ -18,9 +18,9 @@ interface Props {
 }
 
 export default function PaginationComponent({
-  totalPages,
   currentPage,
   path,
+  totalPages,
 }: Props) {
   return (
     <StyledPagination

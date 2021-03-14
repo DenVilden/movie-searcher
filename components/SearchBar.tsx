@@ -44,7 +44,7 @@ const StyledSearchIcon = styled(SearchIcon)`
 
 export default function SearchBar() {
   const [inputValue, setInputValue] = useState('')
-  const [fetchMovies, { data, loading, error }] = useGetMoviesSearchLazyQuery()
+  const [fetchMovies, { data, error, loading }] = useGetMoviesSearchLazyQuery()
 
   return (
     <StyledAutocomplete

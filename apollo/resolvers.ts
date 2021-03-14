@@ -23,7 +23,7 @@ function paginateResults<T extends { results: { [key: string]: any } }>(
 
 const resolvers: Resolvers = {
   Query: {
-    async movieInfo(_root, { id, cursor, pageSize }, { dataSources }) {
+    async movieInfo(_root, { cursor, id, pageSize }, { dataSources }) {
       try {
         const data = await dataSources.moviesAPI.getMovieInfo(id)
         return {
@@ -38,7 +38,7 @@ const resolvers: Resolvers = {
         throw new Error(error)
       }
     },
-    async moviesSearch(_root, { query, cursor, pageSize }, { dataSources }) {
+    async moviesSearch(_root, { cursor, pageSize, query }, { dataSources }) {
       const fetchMovies = async (page = 1): Promise<MoviesSearch> => {
         const data = await dataSources.moviesAPI.getMoviesSearch(query, page)
 
@@ -69,7 +69,7 @@ const resolvers: Resolvers = {
         throw new Error(error)
       }
     },
-    async tvShowInfo(_root, { id, cursor, pageSize }, { dataSources }) {
+    async tvShowInfo(_root, { cursor, id, pageSize }, { dataSources }) {
       try {
         const data = await dataSources.moviesAPI.getTvShowInfo(id)
         return {

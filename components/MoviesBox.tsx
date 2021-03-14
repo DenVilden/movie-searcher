@@ -28,7 +28,7 @@ interface Props {
   title?: string
 }
 
-export default function MoviesBox({ movies, title, elevation = 10 }: Props) {
+export default function MoviesBox({ elevation = 10, movies, title }: Props) {
   return (
     <Root elevation={elevation}>
       {!!title && (

@@ -9,7 +9,8 @@
   "plugins": [
     "better-styled-components",
     "typescript-sort-keys",
-    "sort-keys-fix"
+    "sort-keys-fix",
+    "sort-destructure-keys"
   ],
   "parserOptions": {
     "project": "tsconfig.json"
@@ -19,6 +20,7 @@
     "typescript-sort-keys/string-enum": "warn",
     "sort-keys-fix/sort-keys-fix": "warn",
     "react/jsx-sort-props": "warn",
+    "sort-destructure-keys/sort-destructure-keys": "warn",
     "better-styled-components/sort-declarations-alphabetically": "warn",
     "jest/prefer-expect-assertions": "off",
     "react/react-in-jsx-scope": "off",
