@@ -50,7 +50,7 @@ export default function MovieCard({ movie }: Props) {
           <Image
             alt={movie.title}
             height={300}
-            src={movie.poster_path || '/no-image.jpg'}
+            src={movie.poster_path || '/no-image.png'}
             width={200}
           />
           <StyledCardContent>

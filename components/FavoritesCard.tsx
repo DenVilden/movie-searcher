@@ -16,7 +16,7 @@ const CardWrapper = styled.div`
 `
 
 const StyledTypography = styled(Typography)`
-  margin-left: 15px;
+  padding-left: 15px;
   width: 100%;
 `
 
@@ -38,7 +38,7 @@ export default function FavoritesCard({
             height={50}
             layout="fixed"
             objectFit="cover"
-            src={poster_path || '/no-image.jpg'}
+            src={poster_path || '/no-image.png'}
             width={50}
           />
           <StyledTypography>{title}</StyledTypography>

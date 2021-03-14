@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tv page should take a snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="css-atxh6f-Container e1aqwr1w3"
+    >
+      <div>
+        <h1
+          class="css-fqnkfq-Code e1aqwr1w2"
+        >
+          404
+        </h1>
+        <div
+          class="css-q8cjcr-TextWrapper e1aqwr1w1"
+        >
+          <h2
+            class="css-mm3euk-Text e1aqwr1w0"
+          >
+            This page could not be found.
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

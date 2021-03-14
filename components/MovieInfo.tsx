@@ -103,7 +103,7 @@ export default function MovieInfoComponent({ data }: Props) {
               alt={data.title}
               layout="fill"
               objectFit="cover"
-              src={data.backdrop_path || '/no-image.jpg'}
+              src={data.backdrop_path || '/no-image.png'}
             />
           </ImageWrapper>
           <StyledCardContent>

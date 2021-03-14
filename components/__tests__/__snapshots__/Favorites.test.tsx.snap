@@ -87,7 +87,7 @@ exports[`favorites should open favorites and register click 1`] = `
             />
           </div>
           <p
-            class="MuiTypography-root MuiTypography-body1 ev7japj0 css-oyktpt-MuiTypography-root-StyledTypography"
+            class="MuiTypography-root MuiTypography-body1 ev7japj0 css-1971vq0-MuiTypography-root-StyledTypography"
           >
             clicked data
           </p>
