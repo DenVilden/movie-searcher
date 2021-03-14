@@ -1,16 +1,16 @@
-import { TextField, Autocomplete } from '@material-ui/core'
-import { alpha } from '@material-ui/core/styles'
-import { useState } from 'react'
-import styled from '@emotion/styled'
 import { css } from '@emotion/react'
+import styled from '@emotion/styled'
+import { Autocomplete, TextField } from '@material-ui/core'
+import { alpha } from '@material-ui/core/styles'
 import { Search as SearchIcon } from '@material-ui/icons'
-import Link from 'next/link'
-import parse from 'autosuggest-highlight/parse'
 import match from 'autosuggest-highlight/match'
+import parse from 'autosuggest-highlight/parse'
+import Link from 'next/link'
+import { useState } from 'react'
 import {
-  useGetMoviesSearchLazyQuery,
   MoviesSearchResults,
-} from 'apollo/__generated__'
+  useGetMoviesSearchLazyQuery,
+} from '~/apollo/__generated__'
 
 const StyledAutocomplete = styled(Autocomplete)`
   width: 70%;

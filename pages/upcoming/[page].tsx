@@ -1,14 +1,14 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import Head from 'next/head'
+import { addApolloState, initializeApollo } from '~/apollo/client'
 import {
-  useGetUpcomingQuery,
   GetUpcomingDocument,
   GetUpcomingQuery,
   QueryUpcomingArgs,
-} from 'apollo/__generated__'
-import ErrorMessage from 'components/ErrorMessage'
-import { initializeApollo, addApolloState } from 'apollo/client'
-import MoviesLayout from 'components/MoviesLayout'
-import Head from 'next/head'
+  useGetUpcomingQuery,
+} from '~/apollo/__generated__'
+import ErrorMessage from '~/components/ErrorMessage'
+import MoviesLayout from '~/components/MoviesLayout'
 
 interface Props {
   page: number

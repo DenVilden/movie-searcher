@@ -1,15 +1,15 @@
-import { AppBar, Toolbar, IconButton } from '@material-ui/core'
+import { useReactiveVar } from '@apollo/client'
 import { css } from '@emotion/react'
+import { AppBar, IconButton, Toolbar } from '@material-ui/core'
 import {
   Brightness4 as DarkIcon,
   Brightness7 as LightIcon,
 } from '@material-ui/icons'
-import { useReactiveVar } from '@apollo/client'
 import Link from 'next/link'
-import { prefersDarkModeVar } from 'apollo/client'
+import { prefersDarkModeVar } from '~/apollo/client'
 import Favorites from './Favorites'
-import SearchBar from './SearchBar'
 import Logo from './Logo'
+import SearchBar from './SearchBar'
 
 export default function Header() {
   const prefersDarkMode = useReactiveVar(prefersDarkModeVar)

@@ -1,22 +1,22 @@
 /* eslint-disable class-methods-use-this */
-import { RESTDataSource, RequestOptions } from 'apollo-datasource-rest'
+import { RequestOptions, RESTDataSource } from 'apollo-datasource-rest'
 import dayjs from 'dayjs'
 import numeral from 'numeral'
 import {
-  MockUpcomingResponse,
-  MockNowPlayingResponse,
-  MockMoviesSearchResponse,
-  MockMovieInfoResponse,
-  MockTvShowInfoResponse,
-} from './__responses__/raw-responses'
-import {
-  Upcoming,
-  TvShowInfo,
-  NowPlaying,
-  MoviesSearch,
-  MovieInfo,
   Media,
+  MovieInfo,
+  MoviesSearch,
+  NowPlaying,
+  TvShowInfo,
+  Upcoming,
 } from './__generated__'
+import {
+  MockMovieInfoResponse,
+  MockMoviesSearchResponse,
+  MockNowPlayingResponse,
+  MockTvShowInfoResponse,
+  MockUpcomingResponse,
+} from './__responses__/raw-responses'
 
 export default class MoviesAPI extends RESTDataSource {
   constructor() {

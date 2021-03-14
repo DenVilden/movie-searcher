@@ -1,11 +1,11 @@
-import resolvers from 'apollo/resolvers'
+import resolvers from '~/apollo/resolvers'
 import {
-  mockUpcoming,
-  mockNowPlaying,
-  mockMoviesSearch,
   mockMovieInfo,
+  mockMoviesSearch,
+  mockNowPlaying,
   mockTvShowInfo,
-} from 'apollo/__responses__/graphql-responses'
+  mockUpcoming,
+} from '~/apollo/__responses__/graphql-responses'
 
 describe('[Query.upcoming]', () => {
   const mockContext = {

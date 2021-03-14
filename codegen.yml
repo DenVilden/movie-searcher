@@ -11,7 +11,7 @@ generates:
     config:
       useIndexSignature: true
       noSchemaStitching: true
-      contextType: apollo/context#Context
+      contextType: ~/apollo/context#Context
 hooks:
   afterOneFileWrite:
     - eslint --fix

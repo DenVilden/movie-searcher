@@ -1,6 +1,6 @@
-import { renderApollo, screen } from 'lib/setupTests'
-import UpcomingPage from 'pages/upcoming/[page]'
-import { GetUpcomingDocument } from 'apollo/__generated__'
+import { GetUpcomingDocument } from '~/apollo/__generated__'
+import { renderApollo, screen } from '~/lib/setupTests'
+import UpcomingPage from '~/pages/upcoming/[page]'
 
 describe('upcoming page', () => {
   it('should render error state', async () => {

@@ -1,6 +1,6 @@
-import { renderApollo, screen } from 'lib/setupTests'
-import TvPage from 'pages/tv/[id]'
-import { GetTvShowInfoDocument } from 'apollo/__generated__'
+import { GetTvShowInfoDocument } from '~/apollo/__generated__'
+import { renderApollo, screen } from '~/lib/setupTests'
+import TvPage from '~/pages/tv/[id]'
 
 const mocks = [
   {

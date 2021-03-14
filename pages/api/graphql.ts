@@ -1,7 +1,7 @@
 import { ApolloServer } from 'apollo-server-micro'
 import { loader } from 'graphql.macro'
-import resolvers from 'apollo/resolvers'
-import MoviesAPI from 'apollo/datasource'
+import MoviesAPI from '~/apollo/datasource'
+import resolvers from '~/apollo/resolvers'
 
 const server = new ApolloServer({
   dataSources: () => ({ moviesAPI: new MoviesAPI() }),

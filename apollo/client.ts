@@ -1,12 +1,12 @@
 import {
-  InMemoryCache,
-  NormalizedCacheObject,
   ApolloClient,
+  InMemoryCache,
   makeVar,
+  NormalizedCacheObject,
 } from '@apollo/client'
-import { useMemo } from 'react'
 import merge from 'deepmerge'
 import isEqual from 'lodash.isequal'
+import { useMemo } from 'react'
 
 export type Favorite = {
   id: number

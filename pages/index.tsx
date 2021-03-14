@@ -1,13 +1,13 @@
 import { Grid } from '@material-ui/core'
 import { GetStaticProps } from 'next'
-import ErrorMessage from 'components/ErrorMessage'
-import { initializeApollo, addApolloState } from 'apollo/client'
+import { addApolloState, initializeApollo } from '~/apollo/client'
 import {
-  useGetMoviesQuery,
   GetMoviesDocument,
   GetMoviesQuery,
-} from 'apollo/__generated__'
-import MoviesLayout from 'components/MoviesLayout'
+  useGetMoviesQuery,
+} from '~/apollo/__generated__'
+import ErrorMessage from '~/components/ErrorMessage'
+import MoviesLayout from '~/components/MoviesLayout'
 
 export default function HomePage() {
   const { data, error } = useGetMoviesQuery()

@@ -1,8 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { render } from '@testing-library/preact'
 import { MockedProvider, MockedResponse } from '@apollo/client/testing'
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import '@testing-library/jest-dom/extend-expect'
+import { render } from '@testing-library/preact'
 
 const theme = createMuiTheme()
 
@@ -22,4 +22,4 @@ export function renderApollo(
   )
 }
 
-export { screen, fireEvent } from '@testing-library/preact'
+export { fireEvent, screen } from '@testing-library/preact'

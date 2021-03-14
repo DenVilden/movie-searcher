@@ -1,19 +1,18 @@
-import { useState, useRef, useEffect } from 'react'
-import {
-  Divider,
-  Badge,
-  Typography,
-  Popover,
-  IconButton,
-} from '@material-ui/core'
 import { useReactiveVar } from '@apollo/client'
+import { css } from '@emotion/react'
+import {
+  Badge,
+  Divider,
+  IconButton,
+  Popover,
+  Typography,
+} from '@material-ui/core'
 import {
   Favorite as FavoriteIcon,
   FavoriteBorder as FavoriteBorderIcon,
 } from '@material-ui/icons'
-import { css } from '@emotion/react'
-
-import { favoritesVar } from 'apollo/client'
+import { useEffect, useRef, useState } from 'react'
+import { favoritesVar } from '~/apollo/client'
 import FavoritesCard from './FavoritesCard'
 
 export default function Favorites() {

@@ -1,4 +1,4 @@
-import { Resolvers, MoviesSearch, SimilarMovies } from 'apollo/__generated__'
+import { MoviesSearch, Resolvers, SimilarMovies } from './__generated__'
 
 function paginateResults<T extends { results: { [key: string]: any } }>(
   data: T,

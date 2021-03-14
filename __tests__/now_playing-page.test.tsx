@@ -1,6 +1,6 @@
-import { renderApollo, screen } from 'lib/setupTests'
-import NowPlayingPage from 'pages/now_playing/[page]'
-import { GetNowPlayingDocument } from 'apollo/__generated__'
+import { GetNowPlayingDocument } from '~/apollo/__generated__'
+import { renderApollo, screen } from '~/lib/setupTests'
+import NowPlayingPage from '~/pages/now_playing/[page]'
 
 describe('now playing page', () => {
   it('should render error state', async () => {

@@ -1,19 +1,19 @@
 /* eslint-disable no-underscore-dangle */
+import styled from '@emotion/styled'
 import {
   Card,
+  CardActionArea,
   CardContent,
   Typography,
-  CardActionArea,
 } from '@material-ui/core'
 import { Star as StarIcon } from '@material-ui/icons'
 import Image from 'next/image'
-import styled from '@emotion/styled'
 import Link from 'next/link'
 import {
-  UpcomingResults,
   NowPlayingResults,
   SimilarResults,
-} from 'apollo/__generated__'
+  UpcomingResults,
+} from '~/apollo/__generated__'
 
 const CardContainer = styled(Card)`
   width: 150px;

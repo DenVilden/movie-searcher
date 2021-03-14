@@ -1,13 +1,13 @@
-import { useEffect, useState, useMemo } from 'react'
-import { AppProps } from 'next/app'
 import { ApolloProvider, useReactiveVar } from '@apollo/client'
-import Router from 'next/router'
-import { LinearProgress, CssBaseline, useMediaQuery } from '@material-ui/core'
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import Head from 'next/head'
 import { css } from '@emotion/react'
-import Header from 'components/Header'
-import { useApollo, prefersDarkModeVar } from 'apollo/client'
+import { CssBaseline, LinearProgress, useMediaQuery } from '@material-ui/core'
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import { AppProps } from 'next/app'
+import Head from 'next/head'
+import Router from 'next/router'
+import { useEffect, useMemo, useState } from 'react'
+import { prefersDarkModeVar, useApollo } from '~/apollo/client'
+import Header from '~/components/Header'
 
 export default function NextApp({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps)

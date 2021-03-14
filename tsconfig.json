@@ -15,7 +15,11 @@
     "noFallthroughCasesInSwitch": true,
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["*"],
+      "*": ["__INVALID__/*"]
+    }
   },
   "exclude": ["node_modules"],
   "include": ["**/*.d.ts", "**/*.ts", "**/*.tsx"]

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
-import { NowPlaying, Upcoming } from 'apollo/__generated__'
-import Pagination from 'components/Pagination'
-import MoviesBox from 'components/MoviesBox'
+import { NowPlaying, Upcoming } from '~/apollo/__generated__'
+import MoviesBox from '~/components/MoviesBox'
+import Pagination from '~/components/Pagination'
 
 const Container = styled.div`
   display: flex;

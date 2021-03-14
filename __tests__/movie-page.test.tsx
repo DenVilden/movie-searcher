@@ -1,6 +1,6 @@
-import { renderApollo, screen } from 'lib/setupTests'
-import MoviePage from 'pages/movie/[id]'
-import { GetMovieInfoDocument } from 'apollo/__generated__'
+import { GetMovieInfoDocument } from '~/apollo/__generated__'
+import { renderApollo, screen } from '~/lib/setupTests'
+import MoviePage from '~/pages/movie/[id]'
 
 const mocks = [
   {

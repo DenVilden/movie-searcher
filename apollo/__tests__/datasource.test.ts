@@ -1,17 +1,17 @@
 import MoviesAPI from '../datasource'
 import {
-  mockUpcoming,
-  mockNowPlaying,
-  mockMoviesSearch,
   mockMovieInfo,
+  mockMoviesSearch,
+  mockNowPlaying,
   mockTvShowInfo,
+  mockUpcoming,
 } from '../__responses__/graphql-responses'
 import {
-  mockUpcomingResponse,
-  mockNowPlayingResponse,
-  mockMoviesSearchResponse,
   mockMovieInfoResponse,
+  mockMoviesSearchResponse,
+  mockNowPlayingResponse,
   mockTvShowInfoResponse,
+  mockUpcomingResponse,
 } from '../__responses__/raw-responses'
 
 const mocks = {

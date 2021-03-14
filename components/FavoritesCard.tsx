@@ -1,8 +1,8 @@
+import styled from '@emotion/styled'
 import { CardActionArea, Typography } from '@material-ui/core'
 import Image from 'next/image'
-import styled from '@emotion/styled'
 import Link from 'next/link'
-import { Favorite } from 'apollo/client'
+import { Favorite } from '~/apollo/client'
 
 const CardWrapper = styled.div`
   align-items: center;

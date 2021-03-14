@@ -1,18 +1,18 @@
 /* eslint-disable no-underscore-dangle */
-import {
-  Typography,
-  CardContent,
-  Card,
-  Divider,
-  Button,
-  Slide,
-} from '@material-ui/core'
-import styled from '@emotion/styled'
 import { useReactiveVar } from '@apollo/client'
-import Image from 'next/image'
+import styled from '@emotion/styled'
+import {
+  Button,
+  Card,
+  CardContent,
+  Divider,
+  Slide,
+  Typography,
+} from '@material-ui/core'
 import Head from 'next/head'
-import { favoritesVar, Favorite } from 'apollo/client'
-import { TvShowInfo, MovieInfo } from 'apollo/__generated__'
+import Image from 'next/image'
+import { Favorite, favoritesVar } from '~/apollo/client'
+import { MovieInfo, TvShowInfo } from '~/apollo/__generated__'
 import MoviesBox from './MoviesBox'
 
 const StyledCard = styled(Card)`

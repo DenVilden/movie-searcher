@@ -1,7 +1,7 @@
-import { GraphQLResolveInfo } from 'graphql'
-import { Context } from 'apollo/context'
-import { gql } from '@apollo/client'
 import * as Apollo from '@apollo/client'
+import { gql } from '@apollo/client'
+import { GraphQLResolveInfo } from 'graphql'
+import { Context } from '~/apollo/context'
 
 export type Maybe<T> = T | null
 export type Exact<T extends { [key: string]: unknown }> = {

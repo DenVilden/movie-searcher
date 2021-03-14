@@ -1,10 +1,10 @@
-import { Grid, Typography, Paper } from '@material-ui/core'
 import styled from '@emotion/styled'
+import { Grid, Paper, Typography } from '@material-ui/core'
 import {
-  UpcomingResults,
   NowPlayingResults,
   SimilarResults,
-} from 'apollo/__generated__'
+  UpcomingResults,
+} from '~/apollo/__generated__'
 import MovieCard from './MovieCard'
 
 const Root = styled(Paper)`
