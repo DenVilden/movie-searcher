@@ -6,8 +6,9 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import Router from 'next/router'
 import { useEffect, useMemo, useState } from 'react'
-import { prefersDarkModeVar, useApollo } from '~/apollo/client'
-import Header from '~/components/Header'
+
+import { prefersDarkModeVar, useApollo } from '@/apollo/client'
+import Header from '@/components/Header'
 
 export default function NextApp({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps)
@@ -31,7 +32,7 @@ export default function NextApp({ Component, pageProps }: AppProps) {
       try {
         prefersDarkModeVar(JSON.parse(darkMode))
       } catch (error) {
-        prefersDarkModeVar(systemColorScheme)
+        prefersDarkModeVar(false)
       }
     } else {
       prefersDarkModeVar(systemColorScheme)

@@ -7,10 +7,11 @@ import match from 'autosuggest-highlight/match'
 import parse from 'autosuggest-highlight/parse'
 import Link from 'next/link'
 import { useState } from 'react'
+
 import {
   MoviesSearchResults,
   useGetMoviesSearchLazyQuery,
-} from '~/apollo/__generated__'
+} from '@/apollo/__generated__'
 
 const StyledAutocomplete = styled(Autocomplete)`
   width: 70%;

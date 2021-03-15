@@ -10,7 +10,8 @@
     "better-styled-components",
     "typescript-sort-keys",
     "sort-keys-fix",
-    "sort-destructure-keys"
+    "sort-destructure-keys",
+    "simple-import-sort"
   ],
   "parserOptions": {
     "project": "tsconfig.json"
@@ -22,10 +23,12 @@
     "react/jsx-sort-props": "warn",
     "sort-destructure-keys/sort-destructure-keys": "warn",
     "better-styled-components/sort-declarations-alphabetically": "warn",
+    "simple-import-sort/imports": "warn",
+    "simple-import-sort/exports": "warn",
     "jest/prefer-expect-assertions": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
-    "import/extensions": "off"
+    "import/order": "off"
   }
 }

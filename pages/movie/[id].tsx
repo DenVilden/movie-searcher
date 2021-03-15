@@ -1,12 +1,13 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { addApolloState, initializeApollo } from '~/apollo/client'
+
 import {
   GetMovieInfoDocument,
   GetMovieInfoQuery,
   useGetMovieInfoQuery,
-} from '~/apollo/__generated__'
-import ErrorMessage from '~/components/ErrorMessage'
-import MovieInfo from '~/components/MovieInfo'
+} from '@/apollo/__generated__'
+import { addApolloState, initializeApollo } from '@/apollo/client'
+import ErrorMessage from '@/components/ErrorMessage'
+import MovieInfo from '@/components/MovieInfo'
 
 export default function MoviePage({ id }: { id: string }) {
   const { data, error } = useGetMovieInfoQuery({ variables: { id } })

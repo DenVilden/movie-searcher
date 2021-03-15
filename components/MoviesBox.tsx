@@ -1,13 +1,15 @@
 import styled from '@emotion/styled'
 import { Grid, Paper, Typography } from '@material-ui/core'
+
 import {
   NowPlayingResults,
   SimilarResults,
   UpcomingResults,
-} from '~/apollo/__generated__'
+} from '@/apollo/__generated__'
+
 import MovieCard from './MovieCard'
 
-const Root = styled(Paper)`
+const Container = styled(Paper)`
   background: none;
   background-color: inherit;
   margin: ${({ theme }) => theme.spacing(11, 1, 3, 1)};
@@ -30,7 +32,7 @@ interface Props {
 
 export default function MoviesBox({ elevation = 10, movies, title }: Props) {
   return (
-    <Root elevation={elevation}>
+    <Container elevation={elevation}>
       {!!title && (
         <Typography align="center" gutterBottom variant="h4">
           {title}
@@ -52,6 +54,6 @@ export default function MoviesBox({ elevation = 10, movies, title }: Props) {
           ),
         )}
       </Grid>
-    </Root>
+    </Container>
   )
 }

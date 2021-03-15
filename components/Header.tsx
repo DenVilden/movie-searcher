@@ -6,7 +6,9 @@ import {
   Brightness7 as LightIcon,
 } from '@material-ui/icons'
 import Link from 'next/link'
-import { prefersDarkModeVar } from '~/apollo/client'
+
+import { prefersDarkModeVar } from '@/apollo/client'
+
 import Favorites from './Favorites'
 import Logo from './Logo'
 import SearchBar from './SearchBar'

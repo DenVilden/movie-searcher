@@ -1,5 +1,5 @@
-import { renderApollo } from '~/lib/setupTests'
-import Error404 from '~/pages/404'
+import { renderApollo } from '@/lib/setupTests'
+import Error404 from '@/pages/404'
 
 describe('tv page', () => {
   it('should take a snapshot', () => {

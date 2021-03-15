@@ -1,4 +1,5 @@
-import { fireEvent, renderApollo, screen } from '~/lib/setupTests'
+import { fireEvent, renderApollo, screen } from '@/lib/setupTests'
+
 import Favorites from '../Favorites'
 
 jest.mock('next/link', () => ({ children }: { children: React.ReactElement }) =>

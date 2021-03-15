@@ -1,5 +1,6 @@
-import { GetMoviesSearchDocument } from '~/apollo/__generated__'
-import { fireEvent, renderApollo, screen } from '~/lib/setupTests'
+import { GetMoviesSearchDocument } from '@/apollo/__generated__'
+import { fireEvent, renderApollo, screen } from '@/lib/setupTests'
+
 import SearchBar from '../SearchBar'
 
 const mocks = [

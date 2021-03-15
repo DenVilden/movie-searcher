@@ -10,11 +10,12 @@ import {
 import { Star as StarIcon } from '@material-ui/icons'
 import Image from 'next/image'
 import Link from 'next/link'
+
 import {
   NowPlayingResults,
   SimilarResults,
   UpcomingResults,
-} from '~/apollo/__generated__'
+} from '@/apollo/__generated__'
 
 const CardContainer = styled(Card)`
   width: 150px;

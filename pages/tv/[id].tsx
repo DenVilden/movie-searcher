@@ -1,12 +1,13 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { addApolloState, initializeApollo } from '~/apollo/client'
+
 import {
   GetTvShowInfoDocument,
   GetTvShowInfoQuery,
   useGetTvShowInfoQuery,
-} from '~/apollo/__generated__'
-import ErrorMessage from '~/components/ErrorMessage'
-import MovieInfo from '~/components/MovieInfo'
+} from '@/apollo/__generated__'
+import { addApolloState, initializeApollo } from '@/apollo/client'
+import ErrorMessage from '@/components/ErrorMessage'
+import MovieInfo from '@/components/MovieInfo'
 
 export default function TvPage({ id }: { id: string }) {
   const { data, error } = useGetTvShowInfoQuery({ variables: { id } })

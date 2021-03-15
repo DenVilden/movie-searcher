@@ -1,4 +1,3 @@
-import MoviesAPI from '../datasource'
 import {
   mockMovieInfo,
   mockMoviesSearch,
@@ -13,6 +12,7 @@ import {
   mockTvShowInfoResponse,
   mockUpcomingResponse,
 } from '../__responses__/raw-responses'
+import MoviesAPI from '../datasource'
 
 const mocks = {
   get: jest.fn(),

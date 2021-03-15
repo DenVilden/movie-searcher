@@ -97,7 +97,7 @@ exports[`tv page should fetch tv by id 1`] = `
         </div>
       </div>
       <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 efhkdvm1 css-1s46o7j-MuiPaper-root-Root"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 efhkdvm1 css-103l67h-MuiPaper-root-Container"
       >
         <h4
           class="MuiTypography-root MuiTypography-h4 MuiTypography-alignCenter MuiTypography-gutterBottom css-1trk376-MuiTypography-root"

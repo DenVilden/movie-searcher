@@ -2,6 +2,7 @@
 import { RequestOptions, RESTDataSource } from 'apollo-datasource-rest'
 import dayjs from 'dayjs'
 import numeral from 'numeral'
+
 import {
   Media,
   MovieInfo,

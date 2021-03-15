@@ -1,12 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
+import '@testing-library/jest-dom/extend-expect'
+
 import { MockedProvider, MockedResponse } from '@apollo/client/testing'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
-import '@testing-library/jest-dom/extend-expect'
 import { render } from '@testing-library/preact'
 
 const theme = createMuiTheme()
 
-type RenderApolloOptions = {
+interface RenderApolloOptions {
   addTypeName?: boolean
   mocks?: MockedResponse[]
 }

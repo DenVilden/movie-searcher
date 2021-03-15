@@ -12,7 +12,9 @@ import {
   FavoriteBorder as FavoriteBorderIcon,
 } from '@material-ui/icons'
 import { useEffect, useRef, useState } from 'react'
-import { favoritesVar } from '~/apollo/client'
+
+import { favoritesVar } from '@/apollo/client'
+
 import FavoritesCard from './FavoritesCard'
 
 export default function Favorites() {

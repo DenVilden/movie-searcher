@@ -1,4 +1,5 @@
-import { fireEvent, renderApollo, screen } from '~/lib/setupTests'
+import { fireEvent, renderApollo, screen } from '@/lib/setupTests'
+
 import Header from '../Header'
 
 describe('header', () => {

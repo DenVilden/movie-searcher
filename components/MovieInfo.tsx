@@ -11,8 +11,10 @@ import {
 } from '@material-ui/core'
 import Head from 'next/head'
 import Image from 'next/image'
-import { Favorite, favoritesVar } from '~/apollo/client'
-import { MovieInfo, TvShowInfo } from '~/apollo/__generated__'
+
+import { MovieInfo, TvShowInfo } from '@/apollo/__generated__'
+import { Favorite, favoritesVar } from '@/apollo/client'
+
 import MoviesBox from './MoviesBox'
 
 const StyledCard = styled(Card)`
