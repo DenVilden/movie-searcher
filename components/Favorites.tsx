@@ -1,10 +1,11 @@
 import { useReactiveVar } from '@apollo/client'
-import { css } from '@emotion/react'
+import styled from '@emotion/styled'
 import {
   Badge,
   ClickAwayListener,
   Divider,
   IconButton,
+  MenuList,
   Paper,
   Popper,
   Typography,
@@ -18,6 +19,18 @@ import { useEffect, useRef, useState } from 'react'
 import { favoritesVar } from '@/apollo/client'
 
 import FavoritesCard from './FavoritesCard'
+
+const StyledMenuList = styled(MenuList)`
+  width: 250px;
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    width: 300px;
+  }
+`
+
+const StyledTypography = styled(Typography)`
+  padding-left: 10px;
+`
 
 export default function Favorites() {
   const favorites = useReactiveVar(favoritesVar)
@@ -59,22 +72,17 @@ export default function Favorites() {
       >
         <ClickAwayListener onClickAway={handleToggle} touchEvent={false}>
           <Paper elevation={10}>
-            <Typography
-              css={css`
-                padding-left: 10px;
-              `}
-              variant="overline"
-            >
-              Favorites
-            </Typography>
+            <StyledTypography variant="overline">Favorites</StyledTypography>
             <Divider />
-            {favorites.map(favorite => (
-              <FavoritesCard
-                key={favorite.id}
-                favorite={favorite}
-                handleToggle={handleToggle}
-              />
-            ))}
+            <StyledMenuList>
+              {favorites.map(favorite => (
+                <FavoritesCard
+                  key={favorite.id}
+                  favorite={favorite}
+                  handleToggle={handleToggle}
+                />
+              ))}
+            </StyledMenuList>
           </Paper>
         </ClickAwayListener>
       </Popper>

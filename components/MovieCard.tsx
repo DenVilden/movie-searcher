@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import {
   Card,
@@ -40,6 +39,10 @@ const StyledStarIcon = styled(StarIcon)`
   vertical-align: top;
 `
 
+const StyledTypography = styled(Typography)`
+  overflow: auto;
+`
+
 interface Props {
   movie: UpcomingResults | NowPlayingResults | SimilarResults
 }
@@ -56,14 +59,7 @@ export default function MovieCard({ movie }: Props) {
             width={200}
           />
           <StyledCardContent>
-            <Typography
-              css={css`
-                overflow: auto;
-              `}
-              variant="inherit"
-            >
-              {movie.title}
-            </Typography>
+            <StyledTypography variant="inherit">{movie.title}</StyledTypography>
             <Typography color="textSecondary">
               {movie.__typename === 'SimilarResults' ||
               movie.__typename === 'UpcomingResults' ? (

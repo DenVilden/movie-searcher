@@ -27,7 +27,7 @@ exports[`home page should fetch initial movies 1`] = `
                 class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-md-3 efhkdvm0 css-1un961w-MuiGrid-root-Wrapper"
               >
                 <div
-                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root ejzktm52 css-18ogkrw-MuiPaper-root-MuiCard-root-CardContainer"
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root ejzktm53 css-18ogkrw-MuiPaper-root-MuiCard-root-CardContainer"
                 >
                   <button
                     class="MuiButtonBase-root MuiCardActionArea-root css-b6lsxj-MuiButtonBase-root-MuiCardActionArea-root"
@@ -56,10 +56,10 @@ exports[`home page should fetch initial movies 1`] = `
                       />
                     </div>
                     <div
-                      class="MuiCardContent-root ejzktm51 css-dzh1mx-MuiCardContent-root-StyledCardContent"
+                      class="MuiCardContent-root ejzktm52 css-dzh1mx-MuiCardContent-root-StyledCardContent"
                     >
                       <p
-                        class="MuiTypography-root MuiTypography-inherit css-1mpkpqg-MuiTypography-root-MovieCard"
+                        class="MuiTypography-root MuiTypography-inherit ejzktm50 css-eh8d4t-MuiTypography-root-StyledTypography"
                       >
                         now playing rendered
                       </p>
@@ -68,7 +68,7 @@ exports[`home page should fetch initial movies 1`] = `
                       >
                         <svg
                           aria-hidden="true"
-                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium ejzktm50 css-1uoctnc-MuiSvgIcon-root-StyledStarIcon"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium ejzktm51 css-1uoctnc-MuiSvgIcon-root-StyledStarIcon"
                           data-testid="StarIcon"
                           focusable="false"
                           viewBox="0 0 24 24"
@@ -230,7 +230,7 @@ exports[`home page should fetch initial movies 1`] = `
                 class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-md-3 efhkdvm0 css-1un961w-MuiGrid-root-Wrapper"
               >
                 <div
-                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root ejzktm52 css-18ogkrw-MuiPaper-root-MuiCard-root-CardContainer"
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root ejzktm53 css-18ogkrw-MuiPaper-root-MuiCard-root-CardContainer"
                 >
                   <button
                     class="MuiButtonBase-root MuiCardActionArea-root css-b6lsxj-MuiButtonBase-root-MuiCardActionArea-root"
@@ -259,10 +259,10 @@ exports[`home page should fetch initial movies 1`] = `
                       />
                     </div>
                     <div
-                      class="MuiCardContent-root ejzktm51 css-dzh1mx-MuiCardContent-root-StyledCardContent"
+                      class="MuiCardContent-root ejzktm52 css-dzh1mx-MuiCardContent-root-StyledCardContent"
                     >
                       <p
-                        class="MuiTypography-root MuiTypography-inherit css-1mpkpqg-MuiTypography-root-MovieCard"
+                        class="MuiTypography-root MuiTypography-inherit ejzktm50 css-eh8d4t-MuiTypography-root-StyledTypography"
                       >
                         upcoming rendered
                       </p>
