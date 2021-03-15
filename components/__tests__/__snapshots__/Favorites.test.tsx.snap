@@ -1,12 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`favorites should open favorites and register click 1`] = `
-<body
-  style="padding-right: 0px; overflow: hidden;"
->
-  <div
-    aria-hidden="true"
-  >
+<body>
+  <div>
     <button
       aria-label="open favorites"
       class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1uaxfgw-MuiButtonBase-root-MuiIconButton-root"
@@ -41,43 +37,32 @@ exports[`favorites should open favorites and register click 1`] = `
         class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
     </button>
-  </div>
-  <div
-    class="MuiModal-root MuiPopover-root css-79ws1d-MuiModal-root"
-    role="presentation"
-  >
     <div
-      aria-hidden="true"
-      class="MuiBackdrop-root MuiBackdrop-invisible css-re7u0o-MuiBackdrop-root"
-      style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
-    />
-    <div
-      data-test="sentinelStart"
-      tabindex="0"
-    />
-    <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation8 MuiPopover-paper css-1qz17ui-MuiPaper-root"
-      style="opacity: 1; transform: scale(1, 1); transition: opacity 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 0ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; top: 16px; left: 16px; transform-origin: -16px -16px;"
-      tabindex="-1"
+      data-popper-escaped=""
+      data-popper-placement="bottom-end"
+      data-popper-reference-hidden=""
+      role="tooltip"
+      style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
     >
-      <span
-        class="MuiTypography-root MuiTypography-overline css-zo24nf-MuiTypography-root-Favorites"
+      <div
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 css-14epxft-MuiPaper-root"
       >
-        Favorites
-      </span>
-      <hr
-        class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
-      />
-      <button
-        class="MuiButtonBase-root MuiCardActionArea-root css-b6lsxj-MuiButtonBase-root-MuiCardActionArea-root"
-        tabindex="0"
-        type="button"
-      >
-        <div
-          class="css-17b90ar-CardWrapper ev7japj1"
+        <span
+          class="MuiTypography-root MuiTypography-overline css-zo24nf-MuiTypography-root-Favorites"
+        >
+          Favorites
+        </span>
+        <hr
+          class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+        />
+        <li
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button MuiMenuItem-root css-1rt2j9y-MuiButtonBase-root-MuiListItem-root-MuiMenuItem-root-FavoritesCard"
+          role="menuitem"
+          tabindex="-1"
         >
           <div
-            style="overflow: hidden; box-sizing: border-box; display: inline-block; position: relative; width: 50px; height: 50px;"
+            style="overflow: hidden; box-sizing: border-box; display: inline-block; position: relative; width: 40px; height: 40px;"
           >
             <img
               alt="clicked data"
@@ -87,23 +72,16 @@ exports[`favorites should open favorites and register click 1`] = `
             />
           </div>
           <p
-            class="MuiTypography-root MuiTypography-body1 ev7japj0 css-1971vq0-MuiTypography-root-StyledTypography"
+            class="MuiTypography-root MuiTypography-body1 css-1e8apa5-MuiTypography-root-FavoritesCard"
           >
             clicked data
           </p>
-        </div>
-        <span
-          class="MuiCardActionArea-focusHighlight css-1v2exvi-MuiCardActionArea-focusHighlight"
-        />
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
-      </button>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </li>
+      </div>
     </div>
-    <div
-      data-test="sentinelEnd"
-      tabindex="0"
-    />
   </div>
 </body>
 `;

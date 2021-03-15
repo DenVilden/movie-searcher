@@ -111,7 +111,7 @@ exports[`tv page should fetch tv by id 1`] = `
             class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-md-3 efhkdvm0 css-1un961w-MuiGrid-root-Wrapper"
           >
             <div
-              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 MuiCard-root ejzktm52 css-dpi3xc-MuiPaper-root-MuiCard-root-CardContainer"
+              class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root ejzktm52 css-18ogkrw-MuiPaper-root-MuiCard-root-CardContainer"
             >
               <button
                 class="MuiButtonBase-root MuiCardActionArea-root css-b6lsxj-MuiButtonBase-root-MuiCardActionArea-root"
@@ -142,11 +142,11 @@ exports[`tv page should fetch tv by id 1`] = `
                 <div
                   class="MuiCardContent-root ejzktm51 css-dzh1mx-MuiCardContent-root-StyledCardContent"
                 >
-                  <h6
-                    class="MuiTypography-root MuiTypography-subtitle2 css-1730sir-MuiTypography-root-MovieCard"
+                  <p
+                    class="MuiTypography-root MuiTypography-inherit css-1mpkpqg-MuiTypography-root-MovieCard"
                   >
                     rendered similar
-                  </h6>
+                  </p>
                   <p
                     class="MuiTypography-root MuiTypography-body1 css-1pnmrwp-MuiTypography-root"
                   >

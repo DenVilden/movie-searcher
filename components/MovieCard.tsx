@@ -46,7 +46,7 @@ interface Props {
 
 export default function MovieCard({ movie }: Props) {
   return (
-    <CardContainer elevation={10}>
+    <CardContainer>
       <Link href={`/${movie.media_type}/${movie.id}`}>
         <CardActionArea>
           <Image
@@ -60,7 +60,7 @@ export default function MovieCard({ movie }: Props) {
               css={css`
                 overflow: auto;
               `}
-              variant="subtitle2"
+              variant="inherit"
             >
               {movie.title}
             </Typography>

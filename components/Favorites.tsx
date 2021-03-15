@@ -2,9 +2,11 @@ import { useReactiveVar } from '@apollo/client'
 import { css } from '@emotion/react'
 import {
   Badge,
+  ClickAwayListener,
   Divider,
   IconButton,
-  Popover,
+  Paper,
+  Popper,
   Typography,
 } from '@material-ui/core'
 import {
@@ -34,7 +36,7 @@ export default function Favorites() {
   }, [])
 
   const handleToggle = () => {
-    setToggle(!toggle)
+    setToggle(prevToggle => !prevToggle)
   }
 
   return (
@@ -49,32 +51,33 @@ export default function Favorites() {
           {toggle ? <FavoriteBorderIcon /> : <FavoriteIcon />}
         </Badge>
       </IconButton>
-      <Popover
+      <Popper
         anchorEl={iconButtonRef.current}
-        onClose={handleToggle}
+        disablePortal
         open={toggle}
-        transformOrigin={{
-          horizontal: 'right',
-          vertical: 'top',
-        }}
+        placement="bottom-end"
       >
-        <Typography
-          css={css`
-            padding-left: 10px;
-          `}
-          variant="overline"
-        >
-          Favorites
-        </Typography>
-        <Divider />
-        {favorites.map(favorite => (
-          <FavoritesCard
-            key={favorite.id}
-            favorite={favorite}
-            handleToggle={handleToggle}
-          />
-        ))}
-      </Popover>
+        <ClickAwayListener onClickAway={handleToggle} touchEvent={false}>
+          <Paper elevation={10}>
+            <Typography
+              css={css`
+                padding-left: 10px;
+              `}
+              variant="overline"
+            >
+              Favorites
+            </Typography>
+            <Divider />
+            {favorites.map(favorite => (
+              <FavoritesCard
+                key={favorite.id}
+                favorite={favorite}
+                handleToggle={handleToggle}
+              />
+            ))}
+          </Paper>
+        </ClickAwayListener>
+      </Popper>
     </>
   )
 }
