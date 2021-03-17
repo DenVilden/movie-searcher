@@ -25,9 +25,15 @@ describe('movieInfo', () => {
     const button = screen.getByRole('button')
 
     fireEvent.click(button)
-    expect(button.textContent).toStrictEqual('Remove from favorites')
+    expect(
+      JSON.parse(localStorage.getItem('favorites') as string),
+    ).toStrictEqual([
+      { id: 1, media_type: 'movie', poster_path: null, title: 'test' },
+    ])
 
     fireEvent.click(button)
-    expect(button.textContent).toStrictEqual('Add to favorites')
+    expect(
+      JSON.parse(localStorage.getItem('favorites') as string),
+    ).toStrictEqual([])
   })
 })

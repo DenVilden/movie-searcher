@@ -43,7 +43,7 @@ export default function Favorites() {
       try {
         favoritesVar(JSON.parse(initialFavorites))
       } catch (error) {
-        favoritesVar([])
+        localStorage.removeItem('favorites')
       }
     }
   }, [])

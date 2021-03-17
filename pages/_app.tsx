@@ -32,7 +32,7 @@ export default function NextApp({ Component, pageProps }: AppProps) {
       try {
         prefersDarkModeVar(JSON.parse(darkMode))
       } catch (error) {
-        prefersDarkModeVar(false)
+        localStorage.removeItem('darkMode')
       }
     } else {
       prefersDarkModeVar(systemColorScheme)

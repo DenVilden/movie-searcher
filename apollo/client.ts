@@ -59,7 +59,10 @@ export function initializeApollo(initialState: {} | null = null) {
 
 const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__'
 
-export function addApolloState(client: typeof apolloClient, pageProps: any) {
+export function addApolloState(
+  client: ApolloClient<NormalizedCacheObject>,
+  pageProps: any,
+) {
   if (pageProps?.props) {
     // eslint-disable-next-line no-param-reassign
     pageProps.props[APOLLO_STATE_PROP_NAME] = client.cache.extract()

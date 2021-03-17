@@ -44,7 +44,7 @@ describe('favorites', () => {
     expect(baseElement).toMatchSnapshot()
   })
 
-  it('should reset state if local storage value is unsupported', () => {
+  it('should clear local storage if value is unsupported', () => {
     localStorage.setItem('favorites', 'wrong value')
 
     renderApollo(<Favorites />)
@@ -53,8 +53,6 @@ describe('favorites', () => {
 
     fireEvent.click(iconButton)
 
-    expect(screen.getByLabelText('open favorites').textContent).toStrictEqual(
-      '0',
-    )
+    expect(localStorage.getItem('favorites')).toBeNull()
   })
 })
