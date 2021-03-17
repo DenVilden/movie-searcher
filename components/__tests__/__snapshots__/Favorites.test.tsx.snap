@@ -45,10 +45,10 @@ exports[`favorites should open favorites and register click 1`] = `
       style="position: absolute; top: 0px; left: 0px; margin: 0px; transform: translate(0px, 0px);"
     >
       <div
-        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 css-14epxft-MuiPaper-root"
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation10 ellzw2p0 css-1lhbrf1-MuiPaper-root-StyledPaper"
       >
         <span
-          class="MuiTypography-root MuiTypography-overline ellzw2p0 css-1677dp8-MuiTypography-root-StyledTypography"
+          class="MuiTypography-root MuiTypography-overline ellzw2p1 css-1677dp8-MuiTypography-root-StyledTypography"
         >
           Favorites
         </span>
@@ -56,7 +56,7 @@ exports[`favorites should open favorites and register click 1`] = `
           class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
         />
         <ul
-          class="MuiList-root MuiList-padding ellzw2p1 css-1qfgk2v-MuiList-root-StyledMenuList"
+          class="MuiList-root MuiList-padding ellzw2p2 css-1qfgk2v-MuiList-root-StyledMenuList"
           role="menu"
           tabindex="-1"
         >

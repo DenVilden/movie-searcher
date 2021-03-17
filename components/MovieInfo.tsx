@@ -52,14 +52,21 @@ const StyledTypography = styled(Typography)`
 `
 
 const StyledButton = styled(Button)`
-  align-self: center;
-  height: 36px;
-  min-width: 188px;
+  margin-bottom: 8px;
+  width: 100%;
+
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    align-self: center;
+    height: 36px;
+    width: 188px;
+  }
 `
 
-const TitleWrapper = styled(Typography)`
-  display: flex;
-  justify-content: space-between;
+const TitleWrapper = styled.div`
+  ${({ theme }) => theme.breakpoints.up('md')} {
+    display: flex;
+    justify-content: space-between;
+  }
 `
 
 interface Props {
@@ -109,8 +116,10 @@ export default function MovieInfoComponent({ data }: Props) {
             />
           </ImageWrapper>
           <StyledCardContent>
-            <TitleWrapper gutterBottom variant="h5">
-              {data.title}
+            <TitleWrapper>
+              <Typography gutterBottom variant="h5">
+                {data.title}
+              </Typography>
               <StyledButton
                 color={isInFavorites ? 'secondary' : 'primary'}
                 onClick={addOrRemoveFromFavorites}

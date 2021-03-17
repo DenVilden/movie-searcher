@@ -26,12 +26,16 @@ exports[`tv page should fetch tv by id 1`] = `
         <div
           class="MuiCardContent-root eeexpct3 css-u5tic9-MuiCardContent-root-StyledCardContent"
         >
-          <h5
-            class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom eeexpct0 css-a5qfzq-MuiTypography-root-TitleWrapper"
+          <div
+            class="css-bgyst3-TitleWrapper eeexpct0"
           >
-            rendered tv
+            <h5
+              class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom css-h93ljk-MuiTypography-root"
+            >
+              rendered tv
+            </h5>
             <button
-              class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButtonBase-root eeexpct1 css-bz20jt-MuiButtonBase-root-MuiButton-root-StyledButton"
+              class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButtonBase-root eeexpct1 css-s706il-MuiButtonBase-root-MuiButton-root-StyledButton"
               tabindex="0"
             >
               <span
@@ -40,7 +44,7 @@ exports[`tv page should fetch tv by id 1`] = `
                 Add to favorites
               </span>
             </button>
-          </h5>
+          </div>
           <p
             class="MuiTypography-root MuiTypography-body1 MuiTypography-paragraph css-z2eky3-MuiTypography-root"
           >

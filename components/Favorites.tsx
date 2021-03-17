@@ -32,6 +32,11 @@ const StyledTypography = styled(Typography)`
   padding-left: 10px;
 `
 
+const StyledPaper = styled(Paper)`
+  max-height: 60vh;
+  overflow: auto;
+`
+
 export default function Favorites() {
   const favorites = useReactiveVar(favoritesVar)
   const [toggle, setToggle] = useState(false)
@@ -71,7 +76,7 @@ export default function Favorites() {
         placement="bottom-end"
       >
         <ClickAwayListener onClickAway={handleToggle} touchEvent={false}>
-          <Paper elevation={10}>
+          <StyledPaper elevation={10}>
             <StyledTypography variant="overline">Favorites</StyledTypography>
             <Divider />
             <StyledMenuList>
@@ -83,7 +88,7 @@ export default function Favorites() {
                 />
               ))}
             </StyledMenuList>
-          </Paper>
+          </StyledPaper>
         </ClickAwayListener>
       </Popper>
     </>
