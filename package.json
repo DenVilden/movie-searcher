@@ -57,7 +57,7 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/preact": "^2.0.1",
     "@types/autosuggest-highlight": "^3.1.1",
-    "@types/jest": "^26.0.20",
+    "@types/jest": "^26.0.21",
     "@types/lodash.isequal": "^4.5.5",
     "@types/node": "^14.14.35",
     "@types/numeral": "^2.0.1",

@@ -15,9 +15,8 @@ const Container = styled(Paper)`
   margin: ${({ theme }) => theme.spacing(11, 1, 3, 1)};
   padding: ${({ theme }) => theme.spacing(2, 0, 4, 0)};
 `
-
 const Wrapper = styled(Grid)`
-  margin-top: 10px;
+  margin-top: ${({ theme }) => theme.spacing(1)};
 
   ${({ theme }) => theme.breakpoints.up('sm')} {
     padding: ${({ theme }) => theme.spacing(0, 2, 0, 2)};

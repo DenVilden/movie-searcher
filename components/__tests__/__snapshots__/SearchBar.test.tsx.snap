@@ -6,12 +6,12 @@ exports[`searchBar should check all cases 1`] = `
     <div
       aria-expanded="true"
       aria-owns="autocomplete-listbox"
-      class="MuiAutocomplete-root Mui-focused MuiAutocomplete-hasClearIcon ep0uteb2 css-78p48u-MuiAutocomplete-root-StyledAutocomplete"
+      class="MuiAutocomplete-root Mui-focused MuiAutocomplete-hasClearIcon ep0uteb3 css-78p48u-MuiAutocomplete-root-StyledAutocomplete"
       role="combobox"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium ep0uteb0 css-rtscnx-MuiSvgIcon-root-StyledSearchIcon"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium ep0uteb1 css-1cntsc7-MuiSvgIcon-root-StyledSearchIcon"
         data-testid="SearchIcon"
         focusable="false"
         viewBox="0 0 24 24"
@@ -21,7 +21,7 @@ exports[`searchBar should check all cases 1`] = `
         />
       </svg>
       <div
-        class="MuiFormControl-root MuiFormControl-marginNone MuiFormControl-fullWidth MuiTextField-root ep0uteb1 css-1oyzkgj-MuiFormControl-root-StyledTextField"
+        class="MuiFormControl-root MuiFormControl-marginNone MuiFormControl-fullWidth MuiTextField-root ep0uteb2 css-1oyzkgj-MuiFormControl-root-StyledTextField"
       >
         <div
           class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth Mui-focused MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-4a33cb-MuiInputBase-root-MuiOutlinedInput-root"
@@ -115,12 +115,12 @@ exports[`searchBar should check all cases 1`] = `
           >
             <span>
               <span
-                class="css-1rdldya"
+                class="css-1gbrnq5-TextHighlight-TextHighlight ep0uteb0"
               >
                 test-movie
               </span>
               <span
-                class="css-1a121vd"
+                class="css-ztfl0n-TextHighlight ep0uteb0"
               >
                  title
               </span>

@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { Favorite } from '@/apollo/client'
 
 const Title = styled(Typography)`
-  padding-left: 15px;
+  padding-left: ${({ theme }) => theme.spacing(2)};
   white-space: normal;
   width: 100%;
 `

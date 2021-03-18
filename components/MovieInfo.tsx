@@ -25,7 +25,6 @@ const StyledCard = styled(Card)`
     display: flex;
   }
 `
-
 const ImageWrapper = styled.div`
   height: 400px;
   position: relative;
@@ -36,7 +35,6 @@ const ImageWrapper = styled.div`
     width: 40%;
   }
 `
-
 const StyledCardContent = styled(CardContent)`
   display: flex;
   flex-direction: column;
@@ -46,22 +44,18 @@ const StyledCardContent = styled(CardContent)`
     width: 60%;
   }
 `
-
 const StyledTypography = styled(Typography)`
   padding: ${({ theme }) => theme.spacing(1, 0)};
 `
-
 const StyledButton = styled(Button)`
-  margin-bottom: 8px;
+  margin-bottom: ${({ theme }) => theme.spacing(1)};
   width: 100%;
-
   ${({ theme }) => theme.breakpoints.up('md')} {
     align-self: center;
     height: 36px;
     width: 188px;
   }
 `
-
 const TitleWrapper = styled.div`
   ${({ theme }) => theme.breakpoints.up('md')} {
     display: flex;

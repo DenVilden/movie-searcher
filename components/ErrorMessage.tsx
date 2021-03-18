@@ -8,7 +8,6 @@ const Container = styled.div`
   justify-content: center;
   text-align: center;
 `
-
 const Code = styled.h1`
   border-right: 1px solid;
   display: inline-block;
@@ -19,7 +18,6 @@ const Code = styled.h1`
   padding: 10px 23px 10px 0;
   vertical-align: top;
 `
-
 const TextWrapper = styled.div`
   display: inline-block;
   height: 49px;
@@ -27,7 +25,6 @@ const TextWrapper = styled.div`
   text-align: left;
   vertical-align: middle;
 `
-
 const Text = styled.h2`
   font-size: 14px;
   font-weight: normal;

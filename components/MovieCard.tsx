@@ -23,7 +23,6 @@ const CardContainer = styled(Card)`
     width: 170px;
   }
 `
-
 const StyledCardContent = styled(CardContent)`
   display: flex;
   flex-direction: column;
@@ -32,13 +31,11 @@ const StyledCardContent = styled(CardContent)`
   padding: ${({ theme }) => theme.spacing(1)};
   text-align: center;
 `
-
 const StyledStarIcon = styled(StarIcon)`
   font-size: 20px;
   margin-right: 3px;
   vertical-align: top;
 `
-
 const StyledTypography = styled(Typography)`
   overflow: auto;
 `

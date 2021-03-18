@@ -20,7 +20,6 @@ const StyledAutocomplete = styled(Autocomplete)`
     margin-left: ${({ theme }) => theme.spacing(5)};
   }
 `
-
 const StyledTextField = styled(TextField)`
   background-color: ${({ theme }) => alpha(theme.palette.common.black, 0.15)};
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
@@ -29,9 +28,8 @@ const StyledTextField = styled(TextField)`
     margin-left: ${({ theme }) => theme.spacing(1)};
   }
 `
-
 const StyledSearchIcon = styled(SearchIcon)`
-  font-size: 25px;
+  font-size: ${({ theme }) => theme.typography.pxToRem(25)};
   height: 100%;
   margin-left: ${({ theme }) => theme.spacing(2)};
   position: absolute;
@@ -41,6 +39,14 @@ const StyledSearchIcon = styled(SearchIcon)`
   ${({ theme }) => theme.breakpoints.up('sm')} {
     margin-left: ${({ theme }) => theme.spacing(3)};
   }
+`
+const TextHighlight = styled.span<{ highlight: boolean }>`
+  ${props =>
+    props.highlight &&
+    css`
+      font-weight: 700;
+    `};
+  white-space: pre-wrap;
 `
 
 export default function SearchBar() {
@@ -101,17 +107,9 @@ export default function SearchBar() {
             <li {...props}>
               <span>
                 {parts.map(part => (
-                  <span
-                    css={css`
-                      ${part.highlight &&
-                      css`
-                        font-weight: 700;
-                      `};
-                      white-space: pre-wrap;
-                    `}
-                  >
+                  <TextHighlight highlight={part.highlight}>
                     {part.text}
-                  </span>
+                  </TextHighlight>
                 ))}
               </span>
             </li>

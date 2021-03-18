@@ -1,5 +1,5 @@
 import { ApolloProvider, useReactiveVar } from '@apollo/client'
-import { css } from '@emotion/react'
+import styled from '@emotion/styled'
 import { CssBaseline, LinearProgress, useMediaQuery } from '@material-ui/core'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import { AppProps } from 'next/app'
@@ -9,6 +9,11 @@ import { useEffect, useMemo, useState } from 'react'
 
 import { prefersDarkModeVar, useApollo } from '@/apollo/client'
 import Header from '@/components/Header'
+
+const StyledLinearProgress = styled(LinearProgress)`
+  height: 3px;
+  z-index: ${({ theme }) => theme.zIndex.tooltip};
+`
 
 export default function NextApp({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps)
@@ -63,13 +68,7 @@ export default function NextApp({ Component, pageProps }: AppProps) {
         <CssBaseline />
         <Header />
         {loading ? (
-          <LinearProgress
-            color="secondary"
-            css={css`
-              height: 3px;
-              z-index: 9999;
-            `}
-          />
+          <StyledLinearProgress color="secondary" />
         ) : (
           <Component {...pageProps} />
         )}

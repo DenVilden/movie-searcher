@@ -4,10 +4,10 @@ import Link from 'next/link'
 
 const StyledPagination = styled(Pagination)`
   margin: auto;
-  margin-bottom: 10px;
+  margin-bottom: ${({ theme }) => theme.spacing(1)};
 
   ${({ theme }) => theme.breakpoints.up('md')} {
-    margin-bottom: 35px;
+    margin-bottom: ${({ theme }) => theme.spacing(4)};
   }
 `
 

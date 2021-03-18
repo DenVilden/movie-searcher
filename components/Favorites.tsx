@@ -27,11 +27,9 @@ const StyledMenuList = styled(MenuList)`
     width: 300px;
   }
 `
-
 const StyledTypography = styled(Typography)`
-  padding-left: 10px;
+  padding-left: ${({ theme }) => theme.spacing(1)};
 `
-
 const StyledPaper = styled(Paper)`
   max-height: 60vh;
   overflow: auto;
