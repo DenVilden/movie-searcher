@@ -12,10 +12,9 @@ import MovieInfo from '@/components/MovieInfo'
 export default function TvPage({ id }: { id: string }) {
   const { data, error } = useGetTvShowInfoQuery({ variables: { id } })
 
-  if (error || !data)
-    return <ErrorMessage error={error?.message || 'No data'} />
+  if (error) return <ErrorMessage error={error.message} />
 
-  return <MovieInfo data={data.tvShowInfo} />
+  return data ? <MovieInfo data={data.tvShowInfo} /> : null
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {

@@ -20,17 +20,16 @@ export default function UpcomingPage({ page }: Props) {
     variables: { page },
   })
 
-  if (error || !data)
-    return <ErrorMessage error={error?.message || 'No data'} />
+  if (error) return <ErrorMessage error={error.message} />
 
-  return (
+  return data ? (
     <>
       <Head>
         <title>Upcoming</title>
       </Head>
       <MoviesLayout data={data.upcoming} path="upcoming" />
     </>
-  )
+  ) : null
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -55,7 +54,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       page: +page,
     },
-    revalidate: 10,
+    revalidate: 1,
   })
 }
 

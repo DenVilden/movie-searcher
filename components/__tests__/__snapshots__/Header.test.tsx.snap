@@ -7,7 +7,7 @@ exports[`header should toggle theme and save to local storage 1`] = `
       class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorInherit MuiAppBar-positionFixed mui-fixed css-1vlwt05-MuiPaper-root-MuiAppBar-root"
     >
       <div
-        class="MuiToolbar-root MuiToolbar-regular e1aqnoh80 css-blhzm8-MuiToolbar-root-StyledToolbar"
+        class="MuiToolbar-root MuiToolbar-regular e1aqnoh81 css-blhzm8-MuiToolbar-root-StyledToolbar"
       >
         <button
           aria-label="go to home page"
@@ -96,7 +96,7 @@ exports[`header should toggle theme and save to local storage 1`] = `
         </div>
         <button
           aria-label="theme switch"
-          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-o0ycpe-MuiButtonBase-root-MuiIconButton-root-Header"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium e1aqnoh80 css-17n4xwh-MuiButtonBase-root-MuiIconButton-root-StyledIconButton"
           tabindex="0"
           type="button"
         >

@@ -13,10 +13,9 @@ import MoviesLayout from '@/components/MoviesLayout'
 export default function HomePage() {
   const { data, error } = useGetMoviesQuery()
 
-  if (error || !data)
-    return <ErrorMessage error={error?.message || 'No data'} />
+  if (error) return <ErrorMessage error={error.message} />
 
-  return (
+  return data ? (
     <Grid container>
       <Grid item lg={6}>
         <MoviesLayout
@@ -29,7 +28,7 @@ export default function HomePage() {
         <MoviesLayout data={data.upcoming} path="upcoming" title="Upcoming" />
       </Grid>
     </Grid>
-  )
+  ) : null
 }
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -41,6 +40,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return addApolloState(apolloClient, {
     props: {},
-    revalidate: 10,
+    revalidate: 1,
   })
 }

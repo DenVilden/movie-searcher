@@ -19,17 +19,16 @@ export default function NowPlayingPage({ page }: Props) {
     variables: { page },
   })
 
-  if (error || !data)
-    return <ErrorMessage error={error?.message || 'No data'} />
+  if (error) return <ErrorMessage error={error.message} />
 
-  return (
+  return data ? (
     <>
       <Head>
         <title>Now Playing</title>
       </Head>
       <MoviesLayout data={data.nowPlaying} path="now_playing" />
     </>
-  )
+  ) : null
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -54,7 +53,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       page: +page,
     },
-    revalidate: 10,
+    revalidate: 1,
   })
 }
 

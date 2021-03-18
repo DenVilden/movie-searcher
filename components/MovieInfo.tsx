@@ -50,10 +50,11 @@ const StyledTypography = styled(Typography)`
 const StyledButton = styled(Button)`
   margin-bottom: ${({ theme }) => theme.spacing(1)};
   width: 100%;
+
   ${({ theme }) => theme.breakpoints.up('md')} {
     align-self: center;
     height: 36px;
-    width: 188px;
+    max-width: 188px;
   }
 `
 const TitleWrapper = styled.div`

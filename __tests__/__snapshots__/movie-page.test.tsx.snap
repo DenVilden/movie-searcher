@@ -35,7 +35,7 @@ exports[`movie page should fetch movie by id 1`] = `
               rendered movie
             </h5>
             <button
-              class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButtonBase-root eeexpct1 css-s706il-MuiButtonBase-root-MuiButton-root-StyledButton"
+              class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButtonBase-root eeexpct1 css-1ob3qkx-MuiButtonBase-root-MuiButton-root-StyledButton"
               tabindex="0"
             >
               <span

@@ -12,10 +12,9 @@ import MovieInfo from '@/components/MovieInfo'
 export default function MoviePage({ id }: { id: string }) {
   const { data, error } = useGetMovieInfoQuery({ variables: { id } })
 
-  if (error || !data)
-    return <ErrorMessage error={error?.message || 'No data'} />
+  if (error) return <ErrorMessage error={error.message} />
 
-  return <MovieInfo data={data.movieInfo} />
+  return data ? <MovieInfo data={data.movieInfo} /> : null
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
