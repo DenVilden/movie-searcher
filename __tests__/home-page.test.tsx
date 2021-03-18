@@ -16,7 +16,7 @@ const mocks = [
               __typename: 'NowPlayingResults',
               id: 1,
               media_type: 'movie',
-              poster_path: null,
+              poster_path: 'https://example.com/img/1',
               title: 'now playing rendered',
               vote_average: 5,
             },

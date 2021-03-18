@@ -14,7 +14,7 @@ const mocks = [
       data: {
         movieInfo: {
           __typename: 'MovieInfo',
-          backdrop_path: null,
+          backdrop_path: 'https://example.com/img/1',
           budget: '200',
           id: 1,
           media_type: 'movie',

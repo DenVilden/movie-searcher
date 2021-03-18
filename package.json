@@ -2,6 +2,9 @@
   "name": "movie-searcher",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "yarn": "1.x"
+  },
   "scripts": {
     "serve": "next",
     "build": "next build",
@@ -30,7 +33,7 @@
     "@material-ui/core": "^5.0.0-alpha.27",
     "@material-ui/icons": "^5.0.0-alpha.27",
     "apollo-datasource-rest": "^0.10.0",
-    "apollo-server-micro": "^2.21.1",
+    "apollo-server-micro": "^2.21.2",
     "autosuggest-highlight": "^3.1.1",
     "dayjs": "^1.10.4",
     "deepmerge": "^4.2.2",

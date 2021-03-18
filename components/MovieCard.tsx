@@ -52,6 +52,7 @@ export default function MovieCard({ movie }: Props) {
           <Image
             alt={movie.title}
             height={300}
+            objectFit={movie.poster_path ? 'cover' : 'contain'}
             src={movie.poster_path || '/no-image.png'}
             width={200}
           />

@@ -106,7 +106,7 @@ export default function MovieInfoComponent({ data }: Props) {
             <Image
               alt={data.title}
               layout="fill"
-              objectFit="cover"
+              objectFit={data.backdrop_path ? 'cover' : 'contain'}
               src={data.backdrop_path || '/no-image.png'}
             />
           </ImageWrapper>

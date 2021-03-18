@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 const Container = styled.div`
   align-items: center;
   display: flex;
-  flex-direction: column;
   height: 100vh;
   justify-content: center;
   text-align: center;
@@ -40,12 +39,10 @@ interface Props {
 export default function ErrorMessage({ error }: Props) {
   return (
     <Container>
-      <div>
-        {!error && <Code>404</Code>}
-        <TextWrapper>
-          <Text>{error || 'This page could not be found.'}</Text>
-        </TextWrapper>
-      </div>
+      {!error && <Code>404</Code>}
+      <TextWrapper>
+        <Text>{error || 'This page could not be found.'}</Text>
+      </TextWrapper>
     </Container>
   )
 }

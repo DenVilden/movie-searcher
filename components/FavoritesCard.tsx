@@ -16,22 +16,19 @@ interface Props {
   handleToggle: () => void
 }
 
-export default function FavoritesCard({
-  favorite: { id, media_type, poster_path, title },
-  handleToggle,
-}: Props) {
+export default function FavoritesCard({ favorite, handleToggle }: Props) {
   return (
-    <Link href={`/${media_type}/${id}`}>
+    <Link href={`/${favorite.media_type}/${favorite.id}`}>
       <MenuItem onClick={handleToggle}>
         <Image
-          alt={title}
+          alt={favorite.title}
           height={50}
           layout="fixed"
           objectFit="cover"
-          src={poster_path || '/no-image.png'}
+          src={favorite.poster_path || '/no-image.png'}
           width={50}
         />
-        <Title>{title}</Title>
+        <Title>{favorite.title}</Title>
       </MenuItem>
     </Link>
   )
