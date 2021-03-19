@@ -10,6 +10,10 @@ const Title = styled(Typography)`
   white-space: normal;
   width: 100%;
 `
+const StyledMenuItem = styled(MenuItem)`
+  padding-left: ${({ theme }) => theme.spacing(2)};
+  padding-right: ${({ theme }) => theme.spacing(2)};
+`
 
 interface Props {
   favorite: Favorite
@@ -19,7 +23,7 @@ interface Props {
 export default function FavoritesCard({ favorite, handleToggle }: Props) {
   return (
     <Link href={`/${favorite.media_type}/${favorite.id}`}>
-      <MenuItem onClick={handleToggle}>
+      <StyledMenuItem disableGutters onClick={handleToggle}>
         <Image
           alt={favorite.title}
           height={50}
@@ -29,7 +33,7 @@ export default function FavoritesCard({ favorite, handleToggle }: Props) {
           width={50}
         />
         <Title>{favorite.title}</Title>
-      </MenuItem>
+      </StyledMenuItem>
     </Link>
   )
 }

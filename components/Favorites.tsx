@@ -76,7 +76,7 @@ export default function Favorites() {
           <StyledPaper elevation={10}>
             <StyledTypography variant="overline">Favorites</StyledTypography>
             <Divider />
-            <StyledMenuList>
+            <StyledMenuList disablePadding>
               {favorites.map(favorite => (
                 <FavoritesCard
                   key={favorite.id}
