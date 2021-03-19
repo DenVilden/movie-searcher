@@ -90,7 +90,7 @@ export default function SearchBar() {
           setInputValue('')
         }
       }}
-      open
+      openOnFocus
       options={(inputValue.trim() && data?.moviesSearch.results) || []}
       renderInput={params => (
         <>
