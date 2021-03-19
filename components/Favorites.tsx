@@ -22,7 +22,6 @@ import FavoritesCard from './FavoritesCard'
 
 const StyledMenuList = styled(MenuList)`
   width: 250px;
-
   ${({ theme }) => theme.breakpoints.up('md')} {
     width: 300px;
   }

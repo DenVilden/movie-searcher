@@ -2,7 +2,11 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { Autocomplete, TextField } from '@material-ui/core'
 import { alpha } from '@material-ui/core/styles'
-import { Search as SearchIcon } from '@material-ui/icons'
+import {
+  Movie as MovieIcon,
+  Search as SearchIcon,
+  Tv as TvIcon,
+} from '@material-ui/icons'
 import match from 'autosuggest-highlight/match'
 import parse from 'autosuggest-highlight/parse'
 import Link from 'next/link'
@@ -15,7 +19,6 @@ import {
 
 const StyledAutocomplete = styled(Autocomplete)`
   width: 70%;
-
   input {
     margin-left: ${({ theme }) => theme.spacing(5)};
   }
@@ -23,7 +26,6 @@ const StyledAutocomplete = styled(Autocomplete)`
 const StyledTextField = styled(TextField)`
   background-color: ${({ theme }) => alpha(theme.palette.common.black, 0.15)};
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
-
   ${({ theme }) => theme.breakpoints.up('sm')} {
     margin-left: ${({ theme }) => theme.spacing(1)};
   }
@@ -35,7 +37,6 @@ const StyledSearchIcon = styled(SearchIcon)`
   position: absolute;
   top: 0;
   user-select: none;
-
   ${({ theme }) => theme.breakpoints.up('sm')} {
     margin-left: ${({ theme }) => theme.spacing(3)};
   }
@@ -47,6 +48,13 @@ const TextHighlight = styled.span<{ highlight: boolean }>`
       font-weight: 700;
     `};
   white-space: pre-wrap;
+`
+const IconContainer = styled.span`
+  padding-right: ${({ theme }) => theme.spacing(1)};
+  vertical-align: text-top;
+  svg {
+    font-size: inherit;
+  }
 `
 
 export default function SearchBar() {
@@ -82,7 +90,7 @@ export default function SearchBar() {
           setInputValue('')
         }
       }}
-      openOnFocus
+      open
       options={(inputValue.trim() && data?.moviesSearch.results) || []}
       renderInput={params => (
         <>
@@ -106,6 +114,9 @@ export default function SearchBar() {
           <Link href={`/${movie.media_type}/${movie.id}`}>
             <li {...props}>
               <span>
+                <IconContainer>
+                  {movie.media_type === 'movie' ? <MovieIcon /> : <TvIcon />}
+                </IconContainer>
                 {parts.map(part => (
                   <TextHighlight highlight={part.highlight}>
                     {part.text}

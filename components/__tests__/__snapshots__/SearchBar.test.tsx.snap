@@ -6,12 +6,12 @@ exports[`searchBar should check all cases 1`] = `
     <div
       aria-expanded="true"
       aria-owns="autocomplete-listbox"
-      class="MuiAutocomplete-root Mui-focused MuiAutocomplete-hasClearIcon ep0uteb3 css-78p48u-MuiAutocomplete-root-StyledAutocomplete"
+      class="MuiAutocomplete-root Mui-focused MuiAutocomplete-hasClearIcon ep0uteb4 css-78p48u-MuiAutocomplete-root-StyledAutocomplete"
       role="combobox"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium ep0uteb1 css-1cntsc7-MuiSvgIcon-root-StyledSearchIcon"
+        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium ep0uteb2 css-1cntsc7-MuiSvgIcon-root-StyledSearchIcon"
         data-testid="SearchIcon"
         focusable="false"
         viewBox="0 0 24 24"
@@ -21,7 +21,7 @@ exports[`searchBar should check all cases 1`] = `
         />
       </svg>
       <div
-        class="MuiFormControl-root MuiFormControl-marginNone MuiFormControl-fullWidth MuiTextField-root ep0uteb2 css-1oyzkgj-MuiFormControl-root-StyledTextField"
+        class="MuiFormControl-root MuiFormControl-marginNone MuiFormControl-fullWidth MuiTextField-root ep0uteb3 css-1oyzkgj-MuiFormControl-root-StyledTextField"
       >
         <div
           class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth Mui-focused MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-4a33cb-MuiInputBase-root-MuiOutlinedInput-root"
@@ -115,14 +115,66 @@ exports[`searchBar should check all cases 1`] = `
           >
             <span>
               <span
-                class="css-1gbrnq5-TextHighlight-TextHighlight ep0uteb0"
+                class="css-1n2wxre-IconContainer ep0uteb0"
               >
-                test-movie
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="MovieIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"
+                  />
+                </svg>
               </span>
               <span
-                class="css-ztfl0n-TextHighlight ep0uteb0"
+                class="css-ztfl0n-TextHighlight ep0uteb1"
               >
-                 title
+                movie 
+              </span>
+              <span
+                class="css-1gbrnq5-TextHighlight-TextHighlight ep0uteb1"
+              >
+                title
+              </span>
+            </span>
+          </li>
+          <li
+            aria-disabled="false"
+            aria-selected="false"
+            class="MuiAutocomplete-option"
+            data-option-index="1"
+            id="autocomplete-option-1"
+            role="option"
+            tabindex="-1"
+          >
+            <span>
+              <span
+                class="css-1n2wxre-IconContainer ep0uteb0"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="TvIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="css-ztfl0n-TextHighlight ep0uteb1"
+              >
+                tv 
+              </span>
+              <span
+                class="css-1gbrnq5-TextHighlight-TextHighlight ep0uteb1"
+              >
+                title
               </span>
             </span>
           </li>

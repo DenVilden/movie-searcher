@@ -15,7 +15,6 @@ import SearchBar from './SearchBar'
 
 const StyledToolbar = styled(Toolbar)`
   padding: ${({ theme }) => theme.spacing(0, 1)};
-
   ${({ theme }) => theme.breakpoints.up('sm')} {
     padding: ${({ theme }) => theme.spacing(0, 2)};
   }

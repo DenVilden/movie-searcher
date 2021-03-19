@@ -18,7 +18,6 @@ import {
 
 const CardContainer = styled(Card)`
   width: 150px;
-
   ${({ theme }) => theme.breakpoints.up('sm')} {
     width: 170px;
   }

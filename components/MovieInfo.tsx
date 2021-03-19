@@ -20,7 +20,6 @@ import MoviesBox from './MoviesBox'
 const StyledCard = styled(Card)`
   background-color: inherit;
   margin: ${({ theme }) => theme.spacing(11, 1, -8, 1)};
-
   ${({ theme }) => theme.breakpoints.up('md')} {
     display: flex;
   }
@@ -29,7 +28,6 @@ const ImageWrapper = styled.div`
   height: 400px;
   position: relative;
   width: 100%;
-
   ${({ theme }) => theme.breakpoints.up('md')} {
     height: 500px;
     width: 40%;
@@ -39,7 +37,6 @@ const StyledCardContent = styled(CardContent)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   ${({ theme }) => theme.breakpoints.up('md')} {
     width: 60%;
   }
@@ -50,7 +47,6 @@ const StyledTypography = styled(Typography)`
 const StyledButton = styled(Button)`
   margin-bottom: ${({ theme }) => theme.spacing(1)};
   width: 100%;
-
   ${({ theme }) => theme.breakpoints.up('md')} {
     align-self: center;
     height: 36px;

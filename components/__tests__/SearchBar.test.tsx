@@ -7,7 +7,7 @@ const mocks = [
   {
     request: {
       query: GetMoviesSearchDocument,
-      variables: { query: 'test-movie' },
+      variables: { query: 'title' },
     },
     result: {
       data: {
@@ -16,7 +16,12 @@ const mocks = [
             {
               id: 1,
               media_type: 'movie',
-              title: 'test-movie title',
+              title: 'movie title',
+            },
+            {
+              id: 2,
+              media_type: 'tv',
+              title: 'tv title',
             },
           ],
         },
@@ -38,11 +43,11 @@ describe('searchBar', () => {
     fireEvent.input(inputElement, { target: { value: '   ' } })
 
     // fetch movie
-    fireEvent.input(inputElement, { target: { value: 'test-movie' } })
-    const movieSearchResultHighlight = await screen.findByText('test-movie')
-    const movieSearchResult = await screen.findByText('title')
+    fireEvent.input(inputElement, { target: { value: 'title' } })
+    const movieSearchResultHighlight = await screen.findAllByText('title')
+    const movieSearchResult = screen.getByText('movie')
+    expect(movieSearchResultHighlight[0]).toBeInTheDocument()
     expect(movieSearchResult).toBeInTheDocument()
-    expect(movieSearchResultHighlight).toBeInTheDocument()
     expect(baseElement).toMatchSnapshot()
 
     // clear input on click
