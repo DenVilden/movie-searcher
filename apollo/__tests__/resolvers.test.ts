@@ -23,7 +23,7 @@ describe('[Query.upcoming]', () => {
       {} as any,
       { page: 1 },
       mockContext as any,
-      {} as any,
+      {} as any
     )
 
     expect(res).toStrictEqual(mockUpcoming)
@@ -39,12 +39,12 @@ describe('[Query.upcoming]', () => {
         {} as any,
         { page: 100 },
         mockContext as any,
-        {} as any,
+        {} as any
       )
     } catch (error) {
       errorMessage = error.message
     } finally {
-      expect(errorMessage).toStrictEqual('Error: 404 Not found')
+      expect(errorMessage).toBe('Error: 404 Not found')
     }
   })
 
@@ -58,12 +58,12 @@ describe('[Query.upcoming]', () => {
         {} as any,
         { page: 1 },
         mockContext as any,
-        {} as any,
+        {} as any
       )
     } catch (error) {
       errorMessage = error.message
     } finally {
-      expect(errorMessage).toStrictEqual('error')
+      expect(errorMessage).toBe('error')
     }
   })
 })
@@ -84,7 +84,7 @@ describe('[Query.nowPlaying]', () => {
       {} as any,
       { page: 1 },
       mockContext as any,
-      {} as any,
+      {} as any
     )
 
     expect(res).toStrictEqual(mockNowPlaying)
@@ -100,12 +100,12 @@ describe('[Query.nowPlaying]', () => {
         {} as any,
         { page: 100 },
         mockContext as any,
-        {} as any,
+        {} as any
       )
     } catch (error) {
       errorMessage = error.message
     } finally {
-      expect(errorMessage).toStrictEqual('Error: 404 Not found')
+      expect(errorMessage).toBe('Error: 404 Not found')
     }
   })
 
@@ -119,12 +119,12 @@ describe('[Query.nowPlaying]', () => {
         {} as any,
         { page: 1 },
         mockContext as any,
-        {} as any,
+        {} as any
       )
     } catch (error) {
       errorMessage = error.message
     } finally {
-      expect(errorMessage).toStrictEqual('error')
+      expect(errorMessage).toBe('error')
     }
   })
 })
@@ -145,7 +145,7 @@ describe('[Query.moviesSearch]', () => {
       {} as any,
       { cursor: 2, pageSize: 2, query: 'spider' },
       mockContext as any,
-      {} as any,
+      {} as any
     )
 
     expect(res).toStrictEqual({
@@ -162,15 +162,13 @@ describe('[Query.moviesSearch]', () => {
       total_pages: 5,
     }
 
-    getMoviesSearch
-      .mockReturnValueOnce(mock)
-      .mockReturnValueOnce(mockMoviesSearch)
+    getMoviesSearch.mockReturnValueOnce(mock).mockReturnValueOnce(mockMoviesSearch)
 
     const res = await resolvers.Query?.moviesSearch!(
       {} as any,
       { cursor: 2, pageSize: 2, query: 'spider' },
       mockContext as any,
-      {} as any,
+      {} as any
     )
 
     expect(res).toStrictEqual({
@@ -190,12 +188,12 @@ describe('[Query.moviesSearch]', () => {
         {} as any,
         { cursor: 2, pageSize: 2, query: 'spider' },
         mockContext as any,
-        {} as any,
+        {} as any
       )
     } catch (error) {
       errorMessage = error.message
     } finally {
-      expect(errorMessage).toStrictEqual('error')
+      expect(errorMessage).toBe('error')
     }
   })
 })
@@ -216,7 +214,7 @@ describe('[Query.movieInfo]', () => {
       {} as any,
       { id: '556678', pageSize: 1 },
       mockContext as any,
-      {} as any,
+      {} as any
     )
 
     expect(res).toStrictEqual({
@@ -239,12 +237,12 @@ describe('[Query.movieInfo]', () => {
         {} as any,
         { id: '556678', pageSize: 1 },
         mockContext as any,
-        {} as any,
+        {} as any
       )
     } catch (error) {
       errorMessage = error.message
     } finally {
-      expect(errorMessage).toStrictEqual('error')
+      expect(errorMessage).toBe('error')
     }
   })
 })
@@ -265,7 +263,7 @@ describe('[Query.tvShowInfo]', () => {
       {} as any,
       { id: '888', pageSize: 1 },
       mockContext as any,
-      {} as any,
+      {} as any
     )
 
     expect(res).toStrictEqual({
@@ -288,12 +286,12 @@ describe('[Query.tvShowInfo]', () => {
         {} as any,
         { id: '888', pageSize: 1 },
         mockContext as any,
-        {} as any,
+        {} as any
       )
     } catch (error) {
       errorMessage = error.message
     } finally {
-      expect(errorMessage).toStrictEqual('error')
+      expect(errorMessage).toBe('error')
     }
   })
 })

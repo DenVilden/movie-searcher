@@ -8,6 +8,7 @@ const server = new ApolloServer({
   dataSources: () => ({ moviesAPI: new MoviesAPI() }),
   resolvers,
   typeDefs: loader('apollo/schema.graphql'),
+  playground: true,
 })
 
 export const config = {

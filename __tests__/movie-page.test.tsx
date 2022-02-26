@@ -14,7 +14,7 @@ const mocks = [
       data: {
         movieInfo: {
           __typename: 'MovieInfo',
-          backdrop_path: 'https://example.com/img/1',
+          backdrop_path: null,
           budget: '200',
           id: 1,
           media_type: 'movie',
@@ -49,8 +49,8 @@ describe('movie page', () => {
       mocks,
     })
 
-    expect(await screen.findByText('rendered movie')).toBeInTheDocument()
-    expect(await screen.findByText('rendered similar')).toBeInTheDocument()
+    await expect(screen.findByText('rendered movie')).resolves.toBeInTheDocument()
+    await expect(screen.findByText('rendered similar')).resolves.toBeInTheDocument()
     expect(baseElement).toMatchSnapshot()
   })
 
@@ -69,8 +69,8 @@ describe('movie page', () => {
 
     renderApollo(<MoviePage id="1" />, { mocks: mock })
 
-    expect(
-      await screen.findByText(/an error has occurred/i),
-    ).toBeInTheDocument()
+    await expect(
+      screen.findByText(/an error has occurred/i)
+    ).resolves.toBeInTheDocument()
   })
 })

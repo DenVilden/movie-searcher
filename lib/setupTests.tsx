@@ -2,10 +2,10 @@
 import '@testing-library/jest-dom/extend-expect'
 
 import { MockedProvider, MockedResponse } from '@apollo/client/testing'
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 import { render } from '@testing-library/preact'
 
-const theme = createMuiTheme()
+const theme = createTheme()
 
 interface RenderApolloOptions {
   addTypeName?: boolean
@@ -14,12 +14,12 @@ interface RenderApolloOptions {
 
 export function renderApollo(
   element: React.ReactElement,
-  { mocks = [], addTypeName = false }: RenderApolloOptions = {},
+  { mocks = [], addTypeName = false }: RenderApolloOptions = {}
 ) {
   return render(
     <MockedProvider addTypename={addTypeName} mocks={mocks}>
       <ThemeProvider theme={theme}>{element}</ThemeProvider>
-    </MockedProvider>,
+    </MockedProvider>
   )
 }
 

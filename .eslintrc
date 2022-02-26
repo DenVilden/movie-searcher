@@ -9,7 +9,6 @@
   "plugins": [
     "better-styled-components",
     "typescript-sort-keys",
-    "sort-keys-fix",
     "sort-destructure-keys",
     "simple-import-sort"
   ],
@@ -19,7 +18,6 @@
   "rules": {
     "typescript-sort-keys/interface": "warn",
     "typescript-sort-keys/string-enum": "warn",
-    "sort-keys-fix/sort-keys-fix": "warn",
     "react/jsx-sort-props": "warn",
     "sort-destructure-keys/sort-destructure-keys": "warn",
     "better-styled-components/sort-declarations-alphabetically": "warn",
@@ -29,6 +27,7 @@
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
-    "import/order": "off"
+    "import/order": "off",
+    "import/extensions": "off"
   }
 }

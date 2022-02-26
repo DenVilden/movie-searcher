@@ -20,8 +20,8 @@ describe('now playing page', () => {
       mocks: mock,
     })
 
-    expect(
-      await screen.findByText(/an error has occurred/i),
-    ).toBeInTheDocument()
+    await expect(
+      screen.findByText(/an error has occurred/i)
+    ).resolves.toBeInTheDocument()
   })
 })

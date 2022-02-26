@@ -1,7 +1,7 @@
 import { ApolloProvider, useReactiveVar } from '@apollo/client'
 import styled from '@emotion/styled'
 import { CssBaseline, LinearProgress, useMediaQuery } from '@material-ui/core'
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import Router from 'next/router'
@@ -23,12 +23,12 @@ export default function NextApp({ Component, pageProps }: AppProps) {
 
   const theme = useMemo(
     () =>
-      createMuiTheme({
+      createTheme({
         palette: {
           mode: prefersDarkMode ? 'dark' : 'light',
         },
       }),
-    [prefersDarkMode],
+    [prefersDarkMode]
   )
 
   useEffect(() => {

@@ -4,10 +4,10 @@ exports[`home page should fetch initial movies 1`] = `
 <body>
   <div>
     <div
-      class="MuiGrid-root MuiGrid-container css-15fev7r-MuiGrid-root"
+      class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined css-11lq3yg-MuiGrid-root"
     >
       <div
-        class="MuiGrid-root MuiGrid-item MuiGrid-grid-lg-6 css-rdfm1p-MuiGrid-root"
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-lg-6 css-1c04pp-MuiGrid-root"
       >
         <div
           class="css-1ry038z-Container emm7brd0"
@@ -21,10 +21,10 @@ exports[`home page should fetch initial movies 1`] = `
               Now Playing
             </h4>
             <div
-              class="MuiGrid-root MuiGrid-container css-15fev7r-MuiGrid-root"
+              class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined css-11lq3yg-MuiGrid-root"
             >
               <div
-                class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-md-3 efhkdvm0 css-11ine10-MuiGrid-root-Wrapper"
+                class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-undefined MuiGrid-grid-xs-6 MuiGrid-grid-md-3 efhkdvm0 css-13ztvr1-MuiGrid-root-Wrapper"
               >
                 <div
                   class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root ejzktm53 css-18ogkrw-MuiPaper-root-MuiCard-root-CardContainer"
@@ -48,11 +48,12 @@ exports[`home page should fetch initial movies 1`] = `
                           style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
                         />
                       </div>
+                      <noscript />
                       <img
                         alt="now playing rendered"
                         decoding="async"
                         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                        style="visibility: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"
+                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;"
                       />
                     </div>
                     <div
@@ -74,7 +75,7 @@ exports[`home page should fetch initial movies 1`] = `
                           viewBox="0 0 24 24"
                         >
                           <path
-                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                            d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
                           />
                         </svg>
                         5
@@ -90,7 +91,7 @@ exports[`home page should fetch initial movies 1`] = `
           </div>
           <nav
             aria-label="pagination navigation"
-            class="MuiPagination-root MuiPagination-text e10om17h0 css-ue6cel-MuiPagination-root-StyledPagination"
+            class="MuiPagination-root MuiPagination-text e10om17h0 css-166l9gh-MuiPagination-root-StyledPagination"
           >
             <ul
               class="MuiPagination-ul css-wjh20t-MuiPagination-ul"
@@ -98,7 +99,7 @@ exports[`home page should fetch initial movies 1`] = `
               <li>
                 <button
                   aria-label="Go to previous page"
-                  class="MuiButtonBase-root Mui-disabled MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular Mui-disabled MuiPaginationItem-page css-12h979j-MuiButtonBase-root-MuiPaginationItem-root"
+                  class="MuiButtonBase-root Mui-disabled MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular Mui-disabled MuiPaginationItem-previousNext css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root"
                   disabled=""
                   tabindex="-1"
                   type="button"
@@ -188,7 +189,7 @@ exports[`home page should fetch initial movies 1`] = `
               <li>
                 <button
                   aria-label="Go to next page"
-                  class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular MuiPaginationItem-page css-12h979j-MuiButtonBase-root-MuiPaginationItem-root"
+                  class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular MuiPaginationItem-previousNext css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root"
                   tabindex="0"
                   type="button"
                 >
@@ -210,7 +211,7 @@ exports[`home page should fetch initial movies 1`] = `
         </div>
       </div>
       <div
-        class="MuiGrid-root MuiGrid-item MuiGrid-grid-lg-6 css-rdfm1p-MuiGrid-root"
+        class="MuiGrid-root MuiGrid-item MuiGrid-grid-lg-6 css-1c04pp-MuiGrid-root"
       >
         <div
           class="css-1ry038z-Container emm7brd0"
@@ -224,10 +225,10 @@ exports[`home page should fetch initial movies 1`] = `
               Upcoming
             </h4>
             <div
-              class="MuiGrid-root MuiGrid-container css-15fev7r-MuiGrid-root"
+              class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-undefined css-11lq3yg-MuiGrid-root"
             >
               <div
-                class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-grid-xs-6 MuiGrid-grid-md-3 efhkdvm0 css-11ine10-MuiGrid-root-Wrapper"
+                class="MuiGrid-root MuiGrid-container MuiGrid-item MuiGrid-spacing-xs-undefined MuiGrid-grid-xs-6 MuiGrid-grid-md-3 efhkdvm0 css-13ztvr1-MuiGrid-root-Wrapper"
               >
                 <div
                   class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiCard-root ejzktm53 css-18ogkrw-MuiPaper-root-MuiCard-root-CardContainer"
@@ -251,11 +252,12 @@ exports[`home page should fetch initial movies 1`] = `
                           style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
                         />
                       </div>
+                      <noscript />
                       <img
                         alt="upcoming rendered"
                         decoding="async"
                         src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                        style="visibility: hidden; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;"
+                        style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: contain;"
                       />
                     </div>
                     <div
@@ -282,7 +284,7 @@ exports[`home page should fetch initial movies 1`] = `
           </div>
           <nav
             aria-label="pagination navigation"
-            class="MuiPagination-root MuiPagination-text e10om17h0 css-ue6cel-MuiPagination-root-StyledPagination"
+            class="MuiPagination-root MuiPagination-text e10om17h0 css-166l9gh-MuiPagination-root-StyledPagination"
           >
             <ul
               class="MuiPagination-ul css-wjh20t-MuiPagination-ul"
@@ -290,7 +292,7 @@ exports[`home page should fetch initial movies 1`] = `
               <li>
                 <button
                   aria-label="Go to previous page"
-                  class="MuiButtonBase-root Mui-disabled MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular Mui-disabled MuiPaginationItem-page css-12h979j-MuiButtonBase-root-MuiPaginationItem-root"
+                  class="MuiButtonBase-root Mui-disabled MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular Mui-disabled MuiPaginationItem-previousNext css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root"
                   disabled=""
                   tabindex="-1"
                   type="button"
@@ -380,7 +382,7 @@ exports[`home page should fetch initial movies 1`] = `
               <li>
                 <button
                   aria-label="Go to next page"
-                  class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular MuiPaginationItem-page css-12h979j-MuiButtonBase-root-MuiPaginationItem-root"
+                  class="MuiButtonBase-root MuiPaginationItem-root MuiPaginationItem-sizeMedium MuiPaginationItem-text MuiPaginationItem-circular MuiPaginationItem-previousNext css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root"
                   tabindex="0"
                   type="button"
                 >

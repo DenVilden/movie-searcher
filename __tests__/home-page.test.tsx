@@ -16,7 +16,7 @@ const mocks = [
               __typename: 'NowPlayingResults',
               id: 1,
               media_type: 'movie',
-              poster_path: 'https://example.com/img/1',
+              poster_path: null,
               title: 'now playing rendered',
               vote_average: 5,
             },
@@ -49,8 +49,8 @@ describe('home page', () => {
       mocks,
     })
 
-    expect(await screen.findByText('upcoming rendered')).toBeInTheDocument()
-    expect(await screen.findByText('now playing rendered')).toBeInTheDocument()
+    await expect(screen.findByText('upcoming rendered')).resolves.toBeInTheDocument()
+    await expect(screen.findByText('now playing rendered')).resolves.toBeInTheDocument()
     expect(baseElement).toMatchSnapshot()
   })
 
@@ -66,8 +66,8 @@ describe('home page', () => {
 
     renderApollo(<HomePage />, { mocks: mock })
 
-    expect(
-      await screen.findByText(/an error has occurred/i),
-    ).toBeInTheDocument()
+    await expect(
+      screen.findByText(/an error has occurred/i)
+    ).resolves.toBeInTheDocument()
   })
 })
