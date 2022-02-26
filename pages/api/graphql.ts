@@ -9,6 +9,7 @@ const server = new ApolloServer({
   resolvers,
   typeDefs: loader('apollo/schema.graphql'),
   playground: true,
+  introspection: true,
 })
 
 export const config = {
