@@ -2,9 +2,6 @@
   "name": "movie-searcher",
   "version": "1.0.0",
   "private": true,
-  "engines": {
-    "yarn": "1.x"
-  },
   "scripts": {
     "serve": "next",
     "build": "next build",
@@ -20,7 +17,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "yarn lint",
+      "tsc && eslint . --ext ts,tsx --fix",
       "prettier --write",
       "jest --bail --findRelatedTests"
     ],
